@@ -1,0 +1,156 @@
+'添加 Command1 Picture1 
+
+Private Sub Form_Load() 
+ Me.Move (Screen.Width - Me.Width) \ 2, (Screen.Height - Me.Height) \ 2 
+ Picture1.Width = Me.Width 
+ Picture1.Height = Me.ScaleHeight - Command1.Height - 100 
+ Picture1.Move 0, 0 
+ Picture1.AutoRedraw = True 
+ Command1.Move (Me.ScaleWidth - Command1.Width) \ 2, Me.ScaleHeight - Command1.Height 
+End Sub 
+
+Private Sub MakeRGB(ByVal Color1 As Long, ByVal Color2 As Long, dest, Optional ByVal startX As Long = 0, Optional ByVal startY As Long = 0, Optional ByVal Width As Long = 0, Optional ByVal Height As Long = 0, Optional ByVal s As Integer = 0) '0=横 1=竖
+ '修改后的【littleczb 的渐变背景窗体】 
+ Dim r1%, r2%, g1%, g2%, b1%, b2%, r As Double, g As Double, b As Double 
+ r1 = Color1 And RGB(255, 0, 0) 
+ g1 = (Color1 And RGB(0, 255, 0)) \ &H100 
+ b1 = (Color1 And RGB(0, 0, 255)) \ &H10000 
+ r2 = Color2 And RGB(255, 0, 0) 
+ g2 = (Color2 And RGB(0, 255, 0)) \ &H100 
+ b2 = (Color2 And RGB(0, 0, 255)) \ &H10000 
+ Dim gStepR As Double, gStepG As Double, gStepB As Double 
+ Dim i As Long 
+ r = r1 
+ g = g1 
+ b = b1 
+ If s = 0 Then 
+ gStepR = (r2 - r1) / (IIf(Width = 0, dest.ScaleWidth - startX, Width) - 1) 
+ gStepG = (g2 - g1) / (IIf(Width = 0, dest.ScaleWidth - startX, Width) - 1) 
+ gStepB = (b2 - b1) / (IIf(Width = 0, dest.ScaleWidth - startX, Width) - 1) 
+ For i = startX To IIf(Width = 0, dest.ScaleWidth - startX, Width) + startX 
+ dest.Line (i, 0)-(i, dest.ScaleHeight), RGB(r, g, b) 
+ r = r + gStepR 
+ If r < 0 Then r = 0 
+ g = g + gStepG 
+ If g < 0 Then g = 0 
+ b = b + gStepB 
+ If b < 0 Then b = 0 
+ Next i 
+ Else 
+ gStepR = (r2 - r1) / (IIf(Height = 0, dest.ScaleHeight - startY, Height) - 1) 
+ gStepG = (g2 - g1) / (IIf(Height = 0, dest.ScaleHeight - startY, Height) - 1) 
+ gStepB = (b2 - b1) / (IIf(Height = 0, dest.ScaleHeight - startY, Height) - 1) 
+ For i = startY To IIf(Height = 0, dest.ScaleHeight - startY, Height) + startY 
+ dest.Line (0, i)-(dest.ScaleWidth, i), RGB(r, g, b) 
+ r = r + gStepR 
+ If r < 0 Then r = 0 
+ g = g + gStepG 
+ If g < 0 Then g = 0 
+ b = b + gStepB 
+ If b < 0 Then b = 0 
+ Next i 
+ End If 
+End Sub 
+
+Private Sub Command1_Click() 
+ MakeRGB RGB(255, 0, 0), RGB(255, 255, 0), Picture1, 0, , Int(Picture1.ScaleWidth / 6) 
+ MakeRGB RGB(255, 255, 0), RGB(0, 255, 0), Picture1, Int(Picture1.ScaleWidth / 6) + 1, , Int(Picture1.ScaleWidth / 6) 
+ MakeRGB RGB(0, 255, 0), RGB(0, 255, 255), Picture1, Int(Picture1.ScaleWidth / 6) * 2 + 2, , Int(Picture1.ScaleWidth / 6) 
+ MakeRGB RGB(0, 255, 255), RGB(0, 0, 255), Picture1, Int(Picture1.ScaleWidth / 6) * 3 + 3, , Int(Picture1.ScaleWidth / 6) 
+ MakeRGB RGB(0, 0, 255), RGB(255, 0, 255), Picture1, Int(Picture1.ScaleWidth / 6) * 4 + 4, , Int(Picture1.ScaleWidth / 6) 
+ MakeRGB RGB(255, 0, 255), RGB(255, 0, 0), Picture1, Int(Picture1.ScaleWidth / 6) * 5 + 5, , Int(Picture1.ScaleWidth / 6) - 5 
+End Sub
+
+
+
+
+
+
+鲸无敌的优化代码： 
+Option Explicit 
+
+Private Const GRADIENT_FILL_RECT_H = &H0& 
+Private Const GRADIENT_FILL_RECT_V = &H1& 
+
+Private Type TRIVERTEX 
+        x As Long 
+        y As Long 
+        Red As Integer 
+        Green As Integer 
+        Blue As Integer 
+        Alpha As Integer 
+End Type 
+
+Private Type GRADIENT_RECT 
+        UpperLeft As Long 
+        LowerRight As Long 
+End Type 
+
+Private Type RGBCOLOR 
+        rgbRed As Byte 
+        rgbGreen As Byte 
+        rgbBlue As Byte 
+        rgbReserved As Byte 
+End Type 
+
+Private Declare Function GradientFill Lib "msimg32.dll" (ByVal hdc As Long, pVertex As Any, ByVal dwNumVertex As Long, pMesh As Any, ByVal dwNumMesh As Long, ByVal dwMode As Long) As Long 
+Private Declare Sub CopyMemory Lib "kernel32" Alias "RtlMoveMemory" (Destination As Any, Source As Any, ByVal Length As Long) 
+
+Private Sub MakeRGB(ByVal Color1 As Long, ByVal Color2 As Long, ByVal destDC As Long, ByVal startX As Long, ByVal startY As Long, ByVal dwWidth As Long, ByVal dwHeight As Long, ByVal dwDriection As Long)  '最后一个参数 等于零=横 非零=竖 
+    Dim dwColor(1) As RGBCOLOR 
+    Dim vert(1) As TRIVERTEX 
+    Dim gRect As GRADIENT_RECT 
+     
+    CopyMemory dwColor(0), Color1, 4 
+    CopyMemory dwColor(1), Color2, 4 
+     
+    With vert(0) 
+        .x = startX 
+        .y = startY 
+        CopyMemory ByVal VarPtr(.Red) + 1, dwColor(0).rgbRed, 1 
+        CopyMemory ByVal VarPtr(.Green) + 1, dwColor(0).rgbGreen, 1 
+        CopyMemory ByVal VarPtr(.Blue) + 1, dwColor(0).rgbBlue, 1
+        .Alpha = 0 
+    End With 
+     
+    With vert(1) 
+        .x = startX + dwWidth 
+        .y = startY + dwHeight 
+        CopyMemory ByVal VarPtr(.Red) + 1, dwColor(1).rgbRed, 1 
+        CopyMemory ByVal VarPtr(.Green) + 1, dwColor(1).rgbGreen, 1 
+        CopyMemory ByVal VarPtr(.Blue) + 1, dwColor(1).rgbBlue, 1 
+        .Alpha = 0 
+    End With 
+     
+    With gRect 
+        .UpperLeft = 0 
+        .LowerRight = 1 
+    End With 
+         
+    If dwDriection = 0 Then 
+        GradientFill destDC, vert(0), 2, gRect, 1, GRADIENT_FILL_RECT_H 
+    Else 
+        GradientFill destDC, vert(0), 2, gRect, 1, GRADIENT_FILL_RECT_V 
+    End If 
+End Sub 
+
+Private Sub Command1_Click() 
+    '实现的代码： 
+    Picture1.ScaleMode = vbPixels 
+    Picture1.AutoRedraw = True 
+    Picture1.Cls 
+     
+    Dim dwWidth As Long, dwHeight As Long 
+     
+    dwWidth = Picture1.ScaleWidth / 6 
+    dwHeight = Picture1.ScaleHeight 
+     
+    MakeRGB RGB(255, 0, 0), RGB(255, 255, 0), Picture1.hdc, 0, 0, dwWidth, dwHeight, 0 
+    MakeRGB RGB(255, 255, 0), RGB(0, 255, 0), Picture1.hdc, dwWidth, 0, dwWidth, dwHeight, 0 
+    MakeRGB RGB(0, 255, 0), RGB(0, 255, 255), Picture1.hdc, dwWidth * 2, 0, dwWidth, dwHeight, 0 
+    MakeRGB RGB(0, 255, 255), RGB(0, 0, 255), Picture1.hdc, dwWidth * 3, 0, dwWidth, dwHeight, 0 
+    MakeRGB RGB(0, 0, 255), RGB(255, 0, 255), Picture1.hdc, dwWidth * 4, 0, dwWidth, dwHeight, 0 
+    MakeRGB RGB(255, 0, 255), RGB(255, 0, 0), Picture1.hdc, dwWidth * 5, 0, dwWidth, dwHeight, 0 
+     
+    Picture1.Refresh 
+End Sub

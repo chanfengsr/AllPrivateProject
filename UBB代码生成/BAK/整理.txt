@@ -1,0 +1,62 @@
+粗体	Bold	[B][/B]
+斜体	Italic	[I][/I]
+下划线	Underline	[U][/U]
+中划线	Scored	[S][/S]
+飞翔	Fly	[FLY]文字[/FLY]
+发光	Luminescence	[GLOW=255,RED,2][/GLOW]	宽度、颜色和边界大小
+阴影	Shadow	[SHADOW=255,RED,2][/SHADOW]
+逐字闪烁	VerbatimFlash	[LIGHT][/LIGHT]
+免费信息	[FREE][/FREE]
+文本对齐	Alignment	[ALIGN=center][/ALIGN]	center、left、right、justify
+
+文字颜色	Color	[COLOR=#FF33FF][/COLOR]
+文字大小	Size	[size=2][/size]
+文字字体	Font	[font=宋体][/font]
+背景颜色	BackgroundColor	[BGCOLOR=#FF33FF][/BGCOLOR]
+
+邮件	Mail	[EMAIL][/EMAIL]	[EMAIL=][/EMAIL]
+链接	Link	[URL][/URL]	[URL=][/URL]
+图片	Picture	[IMG][/IMG]
+Flash	Flash	[Flash][/Flash]
+代码	Code	[CODE][/CODE]
+引用	Quote	[QUOTE][/QUOTE]
+上标	Superscript	[sup][/sup]
+下标	Subscript	[sub][/sub]
+EMULE	EMULE	[EMULE][/EMULE]
+QQ	QQ	[QQ][/QQ]
+已编排格式	Formatted	[PRE][/PRE]
+
+单元线	CellLine	[HR]
+
+http://www.caoqiao.com/forumUBBhelp.asp
+http://www.itmirror.cn/Article/ColorComboBox.html
+
+粗体	Bold	[B]{0}[/B]
+斜体	Italic	[I]{0}[/I]
+下划线	Underline	[U]{0}[/U]
+中划线	Scored	[S]{0}[/S]
+飞翔	Fly	[FLY]{0}[/FLY]
+发光	Luminescence	[GLOW=255,{0},2]{1}[/GLOW]	宽度、颜色和边界大小
+阴影	Shadow	[SHADOW=255,{0},2]{1}[/SHADOW]
+逐字闪烁	VerbatimFlash	[LIGHT]{0}[/LIGHT]
+免费信息	Free	[FREE]{0}[/FREE]
+文本对齐	Alignment	[align={0}]{1}[/align]	center、left、right、justify
+
+文字颜色	Color	[COLOR={0}]{1}[/COLOR]
+文字大小	Size	[size={0}]{1}[/size]
+文字字体	Font	[font={0}]{1}[/font]
+背景颜色	BackgroundColor	[BGCOLOR={0}]{1}[/BGCOLOR]
+
+邮件	Mail	[EMAIL]{0}[/EMAIL]	[EMAIL={0}]{1}[/EMAIL]
+链接	Link	[URL]{0}[/URL]	[URL={0}]{1}[/URL]
+图片	Picture	[IMG]{0}[/IMG]
+Flash	Flash	[Flash]{0}[/Flash]
+代码	Code	[CODE]{0}[/CODE]
+引用	Quote	[QUOTE]{0}[/QUOTE]
+上标	Superscript	[sup]{0}[/sup]
+下标	Subscript	[sub]{0}[/sub]
+EMULE	EMULE	[EMULE]{0}[/EMULE]
+QQ	QQ	[QQ]{0}[/QQ]
+已编排格式	Formatted	[PRE]{0}[/PRE]
+
+单元线	CellLine	[HR]

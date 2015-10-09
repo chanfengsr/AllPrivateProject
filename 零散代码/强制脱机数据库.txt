@@ -1,0 +1,24 @@
+--关闭用户打开的进程处理 
+USE master
+
+
+Declare @dbname   varchar(200) --要关闭进程的数据库名 
+Declare @programName     nvarchar(200)
+Declare @spid   nvarchar(20) 
+
+SET @dbname = ''
+declare   cDblogin   cursor   for 
+select   cast(spid   as   varchar(20))  AS spid   from   master..sysprocesses   where   dbid=db_id(@dbname) 
+open   cDblogin
+fetch   next   from   cDblogin   into   @spid 
+while   @@fetch_status=0 
+begin    
+--防止自己终止自己的进程  
+--否则会报错不能用KILL 来终止您自己的进程。   
+IF	@spid <> @@SPID
+	exec( 'kill   '+@spid) 
+fetch   next   from  cDblogin   into   @spid 
+end     
+close   cDblogin 
+deallocate   cDblogin
+

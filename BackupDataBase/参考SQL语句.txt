@@ -1,0 +1,17 @@
+
+Select * From sysfiles
+RESTORE FILELISTONLY From disk='R:\a.bak'
+
+覆盖现有数据库
+RESTORE DATABASE [tfb] FROM  DISK = N'R:\a.bak' WITH  FILE = 1,  MOVE N'testForBackup_Data' TO N'r:\tfbf.MDF',  MOVE N'testForBackup_Log' TO N'r:\tfbf.LDF',  NOUNLOAD,  REPLACE,  STATS = 10
+GO
+
+ALTER DATABASE [tfb] MODIFY FILE (NAME=N'testForBackup_Data', NEWNAME=N'tfb_Data')
+GO
+ALTER DATABASE [tfb] MODIFY FILE (NAME=N'testForBackup_Log', NEWNAME=N'tfb_Log')
+GO
+
+
+
+
+Public   Declare   Function   CopyFile   Lib   "kernel32"   Alias   "CopyFileA"   (ByVal   lpExistingFileName   As   String,   ByVal   lpNewFileName   As   String,   ByVal   bFailIfExists   As   Long)   As   Long   

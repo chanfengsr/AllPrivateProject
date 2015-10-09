@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FileManager", "FileManager\FileManager.csproj", "{2FD68A3C-8474-46BC-8EE1-B7A431B80097}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "参考文档", "参考文档", "{B28747B6-4EA3-4FE6-8F80-03E42B1B23F5}"
+	ProjectSection(SolutionItems) = preProject
+		利用C#为数码照片添加拍照日期.docx = 利用C#为数码照片添加拍照日期.docx
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|x86 = Debug|x86
+		Release|x86 = Release|x86
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{2FD68A3C-8474-46BC-8EE1-B7A431B80097}.Debug|x86.ActiveCfg = Debug|x86
+		{2FD68A3C-8474-46BC-8EE1-B7A431B80097}.Debug|x86.Build.0 = Debug|x86
+		{2FD68A3C-8474-46BC-8EE1-B7A431B80097}.Release|x86.ActiveCfg = Release|x86
+		{2FD68A3C-8474-46BC-8EE1-B7A431B80097}.Release|x86.Build.0 = Release|x86
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

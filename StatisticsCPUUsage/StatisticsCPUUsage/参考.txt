@@ -1,0 +1,58 @@
+powercfg -L
+powercfg -Q 381b4222-f694-41f0-9685-ff5bb260df2e 54533251-82be-4824-96c1-47b60b740d00
+
+  子组 GUID: 54533251-82be-4824-96c1-47b60b740d00  (处理器电源管理)
+    电源设置 GUID: 893dee8e-2bef-41e0-89c6-b55d0929964c  (最小处理器状态)
+    电源设置 GUID: bc5038f7-23e0-4960-96da-33abaf5935ec  (最大处理器状态)
+
+C#使用WinAPI 修改电源设置，临时禁止笔记本合上盖子时睡眠
+http://www.cnblogs.com/h46incon/archive/2013/09/03/3299138.html
+
+Power Management Functions
+https://msdn.microsoft.com/en-us/library/windows/desktop/aa373163(v=vs.85).aspx
+
+Power Management API Issues in Windows Vista
+https://social.msdn.microsoft.com/Forums/windowsdesktop/en-US/c0a6e824-851c-436b-bda9-b5dd5a99a1ac/power-management-api-issues-in-windows-vista?forum=windowsgeneraldevelopmentissues
+https://social.msdn.microsoft.com/Forums/en-US/c0a6e824-851c-436b-bda9-b5dd5a99a1ac/power-management-api-issues-in-windows-vista?forum=windowsgeneraldevelopmentissues
+
+WM_POWERBROADCAST message
+https://msdn.microsoft.com/en-us/library/windows/desktop/aa373247(v=vs.85).aspx
+
+System Error Codes
+https://msdn.microsoft.com/en-us/library/windows/desktop/ms681382(v=vs.85).aspx
+
+
+
+
+DWORD WINAPI PowerGetActiveScheme(
+  _In_opt_ HKEY UserRootPowerKey,
+  _Out_    GUID **ActivePolicyGuid
+);
+
+
+DWORD WINAPI PowerSetActiveScheme(
+  _In_opt_       HKEY UserRootPowerKey,
+  _In_     const GUID *SchemeGuid
+);
+
+DWORD WINAPI PowerReadACValueIndex(
+  _In_opt_       HKEY    RootPowerKey,
+  _In_opt_ const GUID    *SchemeGuid,
+  _In_opt_ const GUID    *SubGroupOfPowerSettingsGuid,
+  _In_opt_ const GUID    *PowerSettingGuid,
+  _Out_          LPDWORD AcValueIndex
+);
+
+DWORD WINAPI PowerWriteACValueIndex(
+  _In_opt_       HKEY  RootPowerKey,
+  _In_     const GUID  *SchemeGuid,
+  _In_opt_ const GUID  *SubGroupOfPowerSettingsGuid,
+  _In_opt_ const GUID  *PowerSettingGuid,
+  _In_           DWORD AcValueIndex
+);
+
+HPOWERNOTIFY WINAPI RegisterPowerSettingNotification(
+  _In_ HANDLE  hRecipient,
+  _In_ LPCGUID PowerSettingGuid,
+  _In_ DWORD   Flags
+);

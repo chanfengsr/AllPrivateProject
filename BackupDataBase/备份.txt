@@ -1,0 +1,16 @@
+DECLARE @strFile           nvarchar(200)
+DECLARE @strSQLCmd         nvarchar(1000)
+SET @strFile = '\\solomontest\d$\SQL_Data\Data_' + convert(varchar(10),getdate(),112) + '.bak'
+
+
+SET @strSQLCmd = 'net use \\solomontest\d$\SQL_Data hfs /user:solomontest\Administrator '
+EXEC master..xp_cmdshell @strSQLCmd
+
+SET @strSQLCmd = 'BACKUP DATABASE [HR_JC] TO DISK = ''' + @strFile + ''' WITH NOINIT, NOUNLOAD, NAME =  N''±¸·Ý'', NOSKIP, STATS = 10, NOFORMAT '
+EXEC (@strSQLCmd)
+
+SET @strSQLCmd = 'net use \\solomontest\d$\SQL_Data /delete /y '
+EXEC master..xp_cmdshell @strSQLCmd
+
+
+--password

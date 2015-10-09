@@ -1,0 +1,130 @@
+zxing二维码的生成与解码(C#)
+http://www.cnblogs.com/mfryf/archive/2012/02/13/2349014.html
+
+二维码的生成：
+
+using com.google.zxing.qrcode;
+using com.google.zxing;
+using com.google.zxing.common;
+using ByteMatrix = com.google.zxing.common.ByteMatrix;
+using EAN13Writer = com.google.zxing.oned.EAN13Writer;
+using EAN8Writer = com.google.zxing.oned.EAN8Writer;
+using MultiFormatWriter = com.google.zxing.MultiFormatWriter;
+
+ 
+
+ private void button1_Click(object sender, EventArgs e)
+        {
+
+
+            string content = textBox1.Text;
+            ByteMatrix byteMatrix = new MultiFormatWriter().encode(content, BarcodeFormat.QR_CODE, 200, 200);
+            Bitmap bitmap = toBitmap(byteMatrix);
+            pictureBox1.Image = bitmap;
+            //writeToFile(byteMatrix, System.Drawing.Imaging.ImageFormat.Png, sFD.FileName);
+
+            //SaveFileDialog sFD = new SaveFileDialog();
+            //sFD.DefaultExt = "*.png|*.png";
+            //sFD.AddExtension = true;
+            //try
+            //{
+            //    if (sFD.ShowDialog() == DialogResult.OK)
+            //    {
+
+ 
+
+            //    }
+
+            //}
+            //catch (Exception ex)
+            //{
+            //    MessageBox.Show(ex.Message);
+
+            //}
+
+
+        }
+
+ 
+
+ 
+
+ public static void writeToFile(ByteMatrix matrix, System.Drawing.Imaging.ImageFormat format, string file)
+        {
+            Bitmap bmap = toBitmap(matrix);
+            bmap.Save(file, format);
+        }  
+
+        public static Bitmap toBitmap(ByteMatrix matrix)   
+        {   
+            int width = matrix.Width;   
+            int height = matrix.Height;   
+            Bitmap bmap = new Bitmap(width, height, System.Drawing.Imaging.PixelFormat.Format32bppArgb);   
+            for (int x = 0; x < width; x++)   
+            {   
+                for (int y = 0; y < height; y++)   
+                {   
+                    bmap.SetPixel(x, y, matrix.get_Renamed(x, y) != -1 ? ColorTranslator.FromHtml("0xFF000000") : ColorTranslator.FromHtml("0xFFFFFFFF"));   
+                }   
+            }   
+            return bmap;               
+        } 
+
+ 
+
+ 
+
+二维码的读取识别：
+
+private void button1_Click(object sender, EventArgs e)   
+        {   
+            if (this.openFileDialog1.ShowDialog() != DialogResult.OK)   
+            {   
+                return;   
+            }   
+            Image img = Image.FromFile(this.openFileDialog1.FileName);                           
+            Bitmap bmap;   
+            try  
+            {   
+                bmap = new Bitmap(img);   
+            }   
+            catch (System.IO.IOException ioe)   
+            {   
+                MessageBox.Show(ioe.ToString());   
+                return;   
+            }   
+            if (bmap == null)   
+            {   
+                MessageBox.Show("Could not decode image");   
+                return;   
+            }   
+            LuminanceSource source = new RGBLuminanceSource(bmap, bmap.Width, bmap.Height);   
+            com.google.zxing.BinaryBitmap bitmap = new com.google.zxing.BinaryBitmap(new COMMON.HybridBinarizer(source));   
+            Result result;   
+            try  
+            {   
+                result = new MultiFormatReader().decode(bitmap);   
+            }   
+            catch(ReaderException re)   
+            {   
+                MessageBox.Show(re.ToString());   
+                return;   
+            }   
+               
+            MessageBox.Show(result.Text);           
+        } 
+
+
+源代码中有两处UTF-8的问题，会导致乱码，
+
+其一：com.google.zxing.qrcode.encoder.encoder类中的
+
+internal const System.String DEFAULT_BYTE_MODE_ENCODING = "ISO-8859-1";
+
+此处，将ISO-8859-1改为UTF-8
+
+其二：com.google.zxing.qrcode.decoder.DecodedBitStreamParser类的成员
+
+private const System.String UTF8 = "UTF8";
+
+应将UTF8改为UTF-8

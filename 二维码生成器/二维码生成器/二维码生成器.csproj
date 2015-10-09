@@ -1,0 +1,277 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{F2E5751A-A6EE-49CB-839C-23193B0E7700}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>二维码生成器</RootNamespace>
+    <AssemblyName>二维码生成器</AssemblyName>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>r:\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Disk</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <ApplicationRevision>1</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>423AE2D1002529670C4C1302AA7AD69B8743C90A</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>显示二维码_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>true</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>false</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>无标题.ico</ApplicationIcon>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Form1.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Form1.Designer.cs">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="zxing\BarcodeFormat.cs" />
+    <Compile Include="zxing\Binarizer.cs" />
+    <Compile Include="zxing\BinaryBitmap.cs" />
+    <Compile Include="zxing\client\result\AbstractDoCoMoResultParser.cs" />
+    <Compile Include="zxing\client\result\AddressBookAUResultParser.cs" />
+    <Compile Include="zxing\client\result\AddressBookDoCoMoResultParser.cs" />
+    <Compile Include="zxing\client\result\AddressBookParsedResult.cs" />
+    <Compile Include="zxing\client\result\BizcardResultParser.cs" />
+    <Compile Include="zxing\client\result\BookmarkDoCoMoResultParser.cs" />
+    <Compile Include="zxing\client\result\CalendarParsedResult.cs" />
+    <Compile Include="zxing\client\result\EmailAddressParsedResult.cs" />
+    <Compile Include="zxing\client\result\EmailAddressResultParser.cs" />
+    <Compile Include="zxing\client\result\EmailDoCoMoResultParser.cs" />
+    <Compile Include="zxing\client\result\GeoParsedResult.cs" />
+    <Compile Include="zxing\client\result\GeoResultParser.cs" />
+    <Compile Include="zxing\client\result\ISBNParsedResult.cs" />
+    <Compile Include="zxing\client\result\ISBNResultParser.cs" />
+    <Compile Include="zxing\client\result\optional\AbstractNDEFResultParser.cs" />
+    <Compile Include="zxing\client\result\optional\NDEFRecord.cs" />
+    <Compile Include="zxing\client\result\optional\NDEFSmartPosterParsedResult.cs" />
+    <Compile Include="zxing\client\result\optional\NDEFSmartPosterResultParser.cs" />
+    <Compile Include="zxing\client\result\optional\NDEFTextResultParser.cs" />
+    <Compile Include="zxing\client\result\optional\NDEFURIResultParser.cs" />
+    <Compile Include="zxing\client\result\ParsedResult.cs" />
+    <Compile Include="zxing\client\result\ParsedResultType.cs" />
+    <Compile Include="zxing\client\result\ProductParsedResult.cs" />
+    <Compile Include="zxing\client\result\ProductResultParser.cs" />
+    <Compile Include="zxing\client\result\ResultParser.cs" />
+    <Compile Include="zxing\client\result\SMSMMSResultParser.cs" />
+    <Compile Include="zxing\client\result\SMSParsedResult.cs" />
+    <Compile Include="zxing\client\result\TelParsedResult.cs" />
+    <Compile Include="zxing\client\result\TelResultParser.cs" />
+    <Compile Include="zxing\client\result\TextParsedResult.cs" />
+    <Compile Include="zxing\client\result\URIParsedResult.cs" />
+    <Compile Include="zxing\client\result\URIResultParser.cs" />
+    <Compile Include="zxing\client\result\URLTOResultParser.cs" />
+    <Compile Include="zxing\client\result\VCardResultParser.cs" />
+    <Compile Include="zxing\client\result\VEventResultParser.cs" />
+    <Compile Include="zxing\common\BitArray.cs" />
+    <Compile Include="zxing\common\BitMatrix.cs" />
+    <Compile Include="zxing\common\BitSource.cs" />
+    <Compile Include="zxing\common\ByteArray.cs" />
+    <Compile Include="zxing\common\ByteMatrix.cs" />
+    <Compile Include="zxing\common\CharacterSetECI.cs" />
+    <Compile Include="zxing\common\Collections.cs" />
+    <Compile Include="zxing\common\Comparator.cs" />
+    <Compile Include="zxing\common\DecoderResult.cs" />
+    <Compile Include="zxing\common\DefaultGridSampler.cs" />
+    <Compile Include="zxing\common\DetectorResult.cs" />
+    <Compile Include="zxing\common\detector\MonochromeRectangleDetector.cs" />
+    <Compile Include="zxing\common\ECI.cs" />
+    <Compile Include="zxing\common\GlobalHistogramBinarizer.cs" />
+    <Compile Include="zxing\common\GridSampler.cs" />
+    <Compile Include="zxing\common\HybridBinarizer.cs" />
+    <Compile Include="zxing\common\PerspectiveTransform.cs" />
+    <Compile Include="zxing\common\reedsolomon\GF256.cs" />
+    <Compile Include="zxing\common\reedsolomon\GF256Poly.cs" />
+    <Compile Include="zxing\common\reedsolomon\ReedSolomonDecoder.cs" />
+    <Compile Include="zxing\common\reedsolomon\ReedSolomonEncoder.cs" />
+    <Compile Include="zxing\common\reedsolomon\ReedSolomonException.cs" />
+    <Compile Include="zxing\datamatrix\DataMatrixReader.cs" />
+    <Compile Include="zxing\datamatrix\decoder\BitMatrixParser.cs" />
+    <Compile Include="zxing\datamatrix\decoder\DataBlock.cs" />
+    <Compile Include="zxing\datamatrix\decoder\DecodedBitStreamParser.cs" />
+    <Compile Include="zxing\datamatrix\decoder\Decoder.cs" />
+    <Compile Include="zxing\datamatrix\decoder\Version.cs" />
+    <Compile Include="zxing\datamatrix\detector\Detector.cs" />
+    <Compile Include="zxing\DecodeHintType.cs" />
+    <Compile Include="zxing\EncodeHintType.cs" />
+    <Compile Include="zxing\LuminanceSource.cs" />
+    <Compile Include="zxing\MultiFormatReader.cs" />
+    <Compile Include="zxing\MultiFormatWriter.cs" />
+    <Compile Include="zxing\multi\ByQuadrantReader.cs" />
+    <Compile Include="zxing\multi\GenericMultipleBarcodeReader.cs" />
+    <Compile Include="zxing\multi\MultipleBarcodeReader.cs" />
+    <Compile Include="zxing\multi\qrcode\detector\MultiDetector.cs" />
+    <Compile Include="zxing\multi\qrcode\detector\MultiFinderPatternFinder.cs" />
+    <Compile Include="zxing\multi\qrcode\QRCodeMultiReader.cs" />
+    <Compile Include="zxing\oned\Code128Reader.cs" />
+    <Compile Include="zxing\oned\Code39Reader.cs" />
+    <Compile Include="zxing\oned\Code39Writer.cs" />
+    <Compile Include="zxing\oned\EAN13Reader.cs" />
+    <Compile Include="zxing\oned\EAN13Writer.cs" />
+    <Compile Include="zxing\oned\EAN8Reader.cs" />
+    <Compile Include="zxing\oned\EAN8Writer.cs" />
+    <Compile Include="zxing\oned\ITFReader.cs" />
+    <Compile Include="zxing\oned\MultiFormatOneDReader.cs" />
+    <Compile Include="zxing\oned\MultiFormatUPCEANReader.cs" />
+    <Compile Include="zxing\oned\OneDReader.cs" />
+    <Compile Include="zxing\oned\UPCAReader.cs" />
+    <Compile Include="zxing\oned\UPCEANReader.cs" />
+    <Compile Include="zxing\oned\UPCEANWriter.cs" />
+    <Compile Include="zxing\oned\UPCEReader.cs" />
+    <Compile Include="zxing\pdf417\decoder\BitMatrixParser.cs" />
+    <Compile Include="zxing\pdf417\decoder\DecodedBitStreamParser.cs" />
+    <Compile Include="zxing\pdf417\decoder\Decoder.cs" />
+    <Compile Include="zxing\pdf417\detector\Detector.cs" />
+    <Compile Include="zxing\pdf417\PDF417Reader.cs" />
+    <Compile Include="zxing\qrcode\decoder\BitMatrixParser.cs" />
+    <Compile Include="zxing\qrcode\decoder\DataBlock.cs" />
+    <Compile Include="zxing\qrcode\decoder\DataMask.cs" />
+    <Compile Include="zxing\qrcode\decoder\DecodedBitStreamParser.cs" />
+    <Compile Include="zxing\qrcode\decoder\Decoder.cs" />
+    <Compile Include="zxing\qrcode\decoder\ErrorCorrectionLevel.cs" />
+    <Compile Include="zxing\qrcode\decoder\FormatInformation.cs" />
+    <Compile Include="zxing\qrcode\decoder\Mode.cs" />
+    <Compile Include="zxing\qrcode\decoder\Version.cs" />
+    <Compile Include="zxing\qrcode\detector\AlignmentPattern.cs" />
+    <Compile Include="zxing\qrcode\detector\AlignmentPatternFinder.cs" />
+    <Compile Include="zxing\qrcode\detector\Detector.cs" />
+    <Compile Include="zxing\qrcode\detector\FinderPattern.cs" />
+    <Compile Include="zxing\qrcode\detector\FinderPatternFinder.cs" />
+    <Compile Include="zxing\qrcode\detector\FinderPatternInfo.cs" />
+    <Compile Include="zxing\qrcode\encoder\BitVector.cs" />
+    <Compile Include="zxing\qrcode\encoder\BlockPair.cs" />
+    <Compile Include="zxing\qrcode\encoder\Encoder.cs" />
+    <Compile Include="zxing\qrcode\encoder\MaskUtil.cs" />
+    <Compile Include="zxing\qrcode\encoder\MatrixUtil.cs" />
+    <Compile Include="zxing\qrcode\encoder\QRCode.cs" />
+    <Compile Include="zxing\qrcode\QRCodeReader.cs" />
+    <Compile Include="zxing\qrcode\QRCodeWriter.cs" />
+    <Compile Include="zxing\Reader.cs" />
+    <Compile Include="zxing\ReaderException.cs" />
+    <Compile Include="zxing\Result.cs" />
+    <Compile Include="zxing\ResultMetadataType.cs" />
+    <Compile Include="zxing\ResultPoint.cs" />
+    <Compile Include="zxing\ResultPointCallback.cs" />
+    <Compile Include="zxing\RGBLuminanceSource.cs" />
+    <Compile Include="zxing\SupportClass.cs" />
+    <Compile Include="zxing\Writer.cs" />
+    <Compile Include="zxing\WriterException.cs" />
+    <EmbeddedResource Include="Form1.resx">
+      <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
+    </Compile>
+    <None Include="app.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0,Profile=Client">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 Client Profile %28x86 and x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="无标题.ico" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

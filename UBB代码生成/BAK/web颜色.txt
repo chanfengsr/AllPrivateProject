@@ -1,0 +1,156 @@
+[b][size=5][color=red]你[/color][color=blue]看[/color][color=green]这[/color][color=orange]楼[/color][color=purple]盖[/color][color=red]的[/color][color=brown]可[/color][color=blue]真[/color]不[color=pink]是[/color][color=green]盖[/color]的[/size][/b]
+[b]a[/b]
+[i]b[/i]
+[u]c[/u]
+[url=www.sohu.com]搜狐[/url]
+[quote]呆板厂[/quote]
+[code]承德[/code]
+[img]www.aaa.com/a.jpg[/img]
+
+W3C十六色色盘
+"White":"#FFFFFF","Green":"#008000","Silver":"#C0C0C0","Lime":"#00FF00","Gray":"#808080","Olive":"#808000","Black":"#000000","Yellow":"#FFFF00","Maroon":"#800000","Navy":"#000080","Red":"#FF0000","Blue":"#0000FF","Purple":"#800080","Teal":"#008080","Fuchsia":"#FF00FF","Aqua":"#00FFFF"
+
+216 安全色色盘
+"#FFFFFF","#000033","#000066","#000099","#0000CC","#0000FF","#003300","#000033","#003366","#003399","#0033CC","#0033FF","#006600","#006633","#006666","#006699","#0066CC","#0066FF","#009900","#009933","#009966","#009999","#0099CC","#0099FF","#00CC00","#00CC33","#00CC66","#00CC99","#00CCCC","#00CCFF","#00FF00","#00FF33","#00FF66","#00FF99","#00FFCC","#00FFFF","#330000","#330033","#330066","#330099","#3300CC","#3300FF","#333300","#333333","#333366","#333399","#3333CC","#3333FF","#336600","#336633","#336666","#336699","#3366CC","#3366FF","#339900","#339933","#339966","#339999","#3399CC","#3399FF","#33CC00","#33CC33","#33CC66","#33CC99","#33CCCC","#33CCFF","#33FF00","#33FF33","#33FF66","#33FF99","#33FFCC","#33FFFF","#660000","#660033","#660066","#660099","#6600CC","#6600FF","#663300","#663333","#663366","#663399","#6633CC","#6633FF","#666600","#666633","#666666","#666699","#6666CC","#6666FF","#669900","#669933","#669966","#669999","#6699CC","#6699FF","#66CC00","#66CC33","#66CC66","#66CC99","#66CCCC","#66CCFF","#66FF00","#66FF33","#66FF66","#66FF99","#66FFCC","#66FFFF","#990000","#990033","#990066","#990099","#9900CC","#9900FF","#993300","#993333","#993366","#993399","#9933CC","#9933FF","#996600","#996633","#996666","#996699","#9966CC","#9966FF","#999900","#999933","#999966","#999999","#9999CC","#9999FF","#99CC00","#99CC33","#99CC66","#99CC99","#99CCCC","#99CCFF","#99FF00","#99FF33","#99FF66","#99FF99","#99FFCC","#99FFFF","#CC0000","#CC3333","#CC0066","#CC0099","#CC00CC","#CC00FF","#CC3300","#CC3333","#CC3366","#CC3399","#CC33CC","#CC33FF","#CC6600","#CC6633","#CC6666","#CC6699","#CC66CC","#CC66FF","#CC9900","#CC9933","#CC9966","#CC9999","#CCCCCC","#CCCCFF","#CCFF00","#CCFF33","#CCFF66","#CCFF99","#CCFFCC","#CCFFFF","#FF0000","#FF0033","#FF0066","#FF0099","#FF00CC","#FF00FF","#FF3300","#FF3333","#FF3366","#FF3399","#FF33CC","#FF33FF","#FF9900","#FF6633","#FF6666","#FF6699","#FF66CC","#FF66FF","#FF9900","#FF9933","#FF9966","#FF9999","#FF99CC","#FF99FF","#FFCC00","#FFCC33","#FFCC66","#FFCC99","#FFCCCC","#FFCCFF","#FFFF00","#FFFF33","#FFFF66","#FFFF99","#FFFFCC","#000000"
+
+IE4+预命名颜色
+"aliceblue":"#F0F8FF","antiquewhite":"#FAEBD7","aqua":"#00FFFF","aquamarine":"#7FFFD4","azure":"#F0FFFF","beige":"#F5F5DC","bisque":"#FFE4C4","black":"#000000","blanchedalmond":"#FFEBCD","blue":"#0000FF","blueviolet":"#8A2BE2","brown":"#A52A2A","burlywood":"#DEB887","cadetblue":"#5F9EA0","chartreuse":"#7FFF00","chocolate":"#D2691E","coral":"#FF7F50","cornflowerblue":"#6495ED","cornsilk":"#FFF8DC","crimson":"#DC143C","cyan":"#00FFFF","darkblue":"#00008B","darkcyan":"#008B8B","darkgoldenrod":"#B8860B","darkgray":"#A9A9A9","darkgreen":"#006400","darkkhaki":"#BDB76B","darkmagenta":"#8B008B","darkolivegreen":"#556B2F","darkorange":"#FF8C00","darkorchid":"#9932CC","darkred":"#8B0000","darksalmon":"#E9967A","darkseagreen":"#8FBC8B","darkslateblue":"#483D8B","darkslategray":"#2F4F4F","darkturquoise":"#00CED1","darkviolet":"#9400D3","deeppink":"#FF1493","deepskyblue":"#00BFFF","dimgray":"#696969","dodgerblue":"#1E90FF","firebrick":"#B22222","floralwhite":"#FFFAF0","forestgreen":"#228B22","Fuchsia":"#FF00FF","gainsboro":"#DCDCDC","ghostwhite":"#F8F8FF","gold":"#FFD700","goldenrod":"#DAA520","gray":"#808080","green":"#008000","greenyellow":"#ADFF2F","honeydew":"#F0FFF0","hotpink":"#FF69B4","indianred":"#CD5C5C","indigo":"#4B0082","ivory":"#FFFFF0","khaki":"#F0E68C","lavender":"#E6E6FA","lavenderblush":"#FFF0F5","lawngreen":"#7CFC00","lemonchiffon":"#FFFACD","lightblue":"#ADD8E6","lightcoral":"#F08080","lightcyan":"#E0FFFF","lightgoldenrodyellow":"#FAFAD2","lightgreen":"#90EE90","lightgrey":"#D3D3D3","lightpink":"#FFB6C1","lightsalmon":"#FFA07A","lightseagreen":"#20B2AA","lightskyblue":"#87CEFA","lightslategray":"#778899","lightsteelblue":"#B0C4DE","lightyellow":"#FFFFE0","lime":"#00FF00","limegreen":"#32CD32","linen":"#FAF0E6","magenta":"#FF00FF","maroon":"#800000","mediumaquamarine":"#66CDAA","mediumblue":"#0000CD","mediumorchid":"#BA55D3","mediumpurple":"#9370DB","mediumseagreen":"#3CB371","mediumslateblue":"#7B68EE","mediumspringgreen":"#00FA9A","mediumturquoise":"#48D1CC","mediumvioletred":"#C71585","midnightblue":"#191970","mintcream":"#F5FFFA","mistyrose":"#FFE4E1","moccasin":"#FFE4B5","navajowhite":"#FFDEAD","navy":"#000080","oldlace":"#FDF5E6","olive":"#808000","olivedrab":"#6B8E23","orange":"#FFA500","orangered":"#FF4500","orchid":"#DA70D6","palegoldenrod":"#EEE8AA","palegreen":"#98FB98","paleturquoise":"#AFEEEE","palevioletred":"#DB7093","papayawhip":"#FFEFD5","peachpuff":"#FFDAB9","peru":"#CD853F","pink":"#FFC0CB","plum":"#DDA0DD","powderblue":"#B0E0E6","purple":"#800080","red":"#FF0000","rosybrown":"#BC8F8F","royalblue":"#4169E1","saddlebrown":"#8B4513","salmon":"#FA8072","sandybrown":"#F4A460","seagreen":"#2E8B57","seashell":"#FFF5EE","sienna":"#A0522D","silver":"#C0C0C0","skyblue":"#87CEEB","slateblue":"#6A5ACD","slategray":"#708090","snow":"#FFFAFA","springgreen":"#00FF7F","steelblue":"#4682B4","tan":"#D2B48C","teal":"#008080","thistle":"#D8BFD8","tomato":"#FF6347","turquoise":"#40E0D0","violet":"#EE82EE","wheat":"#F5DEB3","white":"#FFFFFF","whitesmoke":"#F5F5F5","yellow":"#FFFF00","yellowgreen":"#9ACD32"
+
+WIN- 用户系统色盘
+"captiontext","windowframe","window","threedshadow","buttonshadow","threedlightshadow","threedhighlight","threedface","threeddarkshadow","scrollbar","menutext","menu","infotext","infobackground","inactivecaptiontext","inactivecaption","inactiveborder","highlighttext","highlight","graytext","windowtext","buttontext","buttonhighlight","buttonface","background","appworkspace","activecaption","activeborder"
+
+
+网页部分：
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" >
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312" />
+<title>网页颜色代码选择器</title>
+<meta name="description" content="网页颜色代码选择器"/>
+<meta name="keywords" content="网页颜色代码选择器" /> 
+<link href="/css/toolsite.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div>
+</div>
+
+    <div class="wrap">
+      <div class="top-nav">
+    <div class="top-menu">
+        <a href="http://xue163.com/" class="toplan" target="_parent">学网首页</a> | 
+        <a href="http://xue163.com/news/" class="toplan" target="_blank">新闻中心</a> | 
+        <a href="http://xue163.com/tjxz/" class="toplan" target="_blank">素材下载</a> | 
+        <a href="http://xue163.com/exploit/" class="toplan" target="_blank">编程大全</a> | 	
+        <a href="http://xue163.com/zhanzhang/" class="toplan" target="_blank">站长之家</a> | 
+        <a href="http://font.xue163.com/" class="toplan" target="_blank">字体大全</a> | 
+        <a href="http://xue163.com/english/" class="toplan" target="_blank">英语学习</a> | 
+        <a href="http://xue163.com/yxdq/" class="toplan" target="_blank">数万音效</a>
+    </div>
+        <div class="top-nav-logo"></div>
+      </div>
+      <div class="top">
+        <div class="top640-480"><script type="text/javascript"><!--
+google_ad_client = "pub-3504291405005063";
+/* 468x60, 创建于 08-10-3 */
+google_ad_slot = "3435113177";
+google_ad_width = 468;
+google_ad_height = 60;
+//-->
+</script>
+<script type="text/javascript"
+src="http://pagead2.googlesyndication.com/pagead/show_ads.js">
+</script></div>
+      </div>
+
+        <div class="main">
+            
+<div class="box">
+  <div id="b_1">
+    <h1><span></span>网页颜色代码选择器</h1>
+    <div class="box1" style="text-align:center;">
+        <div id="detail" class="info1" >
+	<script>
+		function setcolor(gname,cname,cvalue,iswin){
+			if(cname) document.getElementById(gname+"_cname").value = cname;
+			if(cvalue && !iswin) document.getElementById(gname+"_cvalue").value = cvalue;
+			document.getElementById(gname+"_cbg").style.backgroundColor = cvalue;
+		}
+	</script>
+	<style type="text/css">
+	<!--
+	h2{font:bold 14px/24px Verdana;height:24px;margin:0;padding:3px 0;}
+	.ttl{float:left;width:200px;}
+	.rgt{float:left;}
+	.rgt input{border:1px solid #7AAFE4;background:#FFF;padding:2px 3px 0;height:17px;font:12px/14px Verdana;margin:0 15px 0 0;}
+	.retextcon1{margin:12px 15px 12px 0;}
+	.colorlist{overflow-y:auto;zoom:1;margin:0 0 0 15px;padding:8px 0;clear:both;}
+	.colorlist li{float:left;width:80px;height:20px;overflow:hidden;}
+	.colorlist label{display:block;}
+	.colorlist label input{float:left;}
+	.colorbox{float:left;width:32px;height:14px;overflow:hidden;border:1px solid #333;margin:3px 0 0;}
+	-->
+	</style>
+
+
+        <div id="result">
+            <h5 class="title"><span class="text"><em class="icon1"></em>
+			网页颜色代码选择器</span></h5>
+            <div class="box">
+                <div class="con">
+                    <div id="gb2big" class="bg" style="padding-left:20px;overflow:auto;zoom:1;">
+                     <div><p class="intro">
+		W3C 16色色盘：16色色盘即可以直接用英文单词描述的颜色，如red,yellow
+		</p>
+		<p class="intro">
+		216安全色色盘：指在不同的硬件环境、不同的操作系统、不同浏览器中都能够正常显示的色彩集合 		</p>
+		<p class="intro">
+		IE4+预命名颜色：IE4及以上浏览器中可以正常显示的颜色
+		</p>
+		<p class="intro">
+		Win-用户系统色盘：Windows系统颜色  <span style="position:relative;left:200px;top:0px;"><a href="images/PickColor.rar">
+		下载屏幕取色工具&nbsp;</a><a href="PickColor.rar"><img src="images/pickcolor.gif" style="margin:0 0 -5px 0;"></a></span>
+		</p></div>
+                    	 <div class="recon1">
+		<h2><span class="ttl">W3C十六色色盘</span><div class="rgt">颜色名称：<input id="sixteen_cname" type="text" name="" />色值：<input id="sixteen_cvalue" type="text" name="" /></div><div class="clr"></div></h2>
+		<div class="retextcon1" id="sixteen_cbg">
+		<ul class="colorlist"><!-- <li><label><input type="radio" name="" /><div class="colorbox"></div></label></li> -->
+		<script>
+		var sixteen = {"White":"#FFFFFF","Green":"#008000","Silver":"#C0C0C0","Lime":"#00FF00","Gray":"#808080","Olive":"#808000","Black":"#000000","Yellow":"#FFFF00","Maroon":"#800000","Navy":"#000080","Red":"#FF0000","Blue":"#0000FF","Purple":"#800080","Teal":"#008080","Fuchsia":"#FF00FF","Aqua":"#00FFFF"};
+	for (key in sixteen){
+		document.write('<li><label onclick="setcolor(\'sixteen\',\''+key+'\',\''+sixteen[key]+'\')"><input type="radio" name="sixteen" /><div class="colorbox" style="background:'+sixteen[key]+'"></div></label></li>');
+	}
+	</script>
+		</ul>
+		</div>
+		</div>
+
+		<div class="recon1">
+		<h2><span class="ttl">216 安全色色盘</span><div class="rgt">色值：<input id="safe216_cvalue" type="text" name="" /></div><div class="clr"></div></h2>
+		<div class="retextcon1"  id="safe216_cbg">
+		<ul class="colorlist">
+		<script>
+		var safe216 = ["#FFFFFF","#000033","#000066","#000099","#0000CC","#0000FF","#003300","#000033","#003366","#003399","#0033CC","#0033FF","#006600","#006633","#006666","#006699","#0066CC","#0066FF","#009900","#009933","#009966","#009999","#0099CC","#0099FF","#00CC00","#00CC33","#00CC66","#00CC99","#00CCCC","#00CCFF","#00FF00","#00FF33","#00FF66","#00FF99","#00FFCC","#00FFFF","#330000","#330033","#330066","#330099","#3300CC","#3300FF","#333300","#333333","#333366","#333399","#3333CC","#3333FF","#336600","#336633","#336666","#336699","#3366CC","#3366FF","#339900","#339933","#339966","#339999","#3399CC","#3399FF","#33CC00","#33CC33","#33CC66","#33CC99","#33CCCC","#33CCFF","#33FF00","#33FF33","#33FF66","#33FF99","#33FFCC","#33FFFF","#660000","#660033","#660066","#660099","#6600CC","#6600FF","#663300","#663333","#663366","#663399","#6633CC","#6633FF","#666600","#666633","#666666","#666699","#6666CC","#6666FF","#669900","#669933","#669966","#669999","#6699CC","#6699FF","#66CC00","#66CC33","#66CC66","#66CC99","#66CCCC","#66CCFF","#66FF00","#66FF33","#66FF66","#66FF99","#66FFCC","#66FFFF","#990000","#990033","#990066","#990099","#9900CC","#9900FF","#993300","#993333","#993366","#993399","#9933CC","#9933FF","#996600","#996633","#996666","#996699","#9966CC","#9966FF","#999900","#999933","#999966","#999999","#9999CC","#9999FF","#99CC00","#99CC33","#99CC66","#99CC99","#99CCCC","#99CCFF","#99FF00","#99FF33","#99FF66","#99FF99","#99FFCC","#99FFFF","#CC0000","#CC3333","#CC0066","#CC0099","#CC00CC","#CC00FF","#CC3300","#CC3333","#CC3366","#CC3399","#CC33CC","#CC33FF","#CC6600","#CC6633","#CC6666","#CC6699","#CC66CC","#CC66FF","#CC9900","#CC9933","#CC9966","#CC9999","#CCCCCC","#CCCCFF","#CCFF00","#CCFF33","#CCFF66","#CCFF99","#CCFFCC","#CCFFFF","#FF0000","#FF0033","#FF0066","#FF0099","#FF00CC","#FF00FF","#FF3300","#FF3333","#FF3366","#FF3399","#FF33CC","#FF33FF","#FF9900","#FF6633","#FF6666","#FF6699","#FF66CC","#FF66FF","#FF9900","#FF9933","#FF9966","#FF9999","#FF99CC","#FF99FF","#FFCC00","#FFCC33","#FFCC66","#FFCC99","#FFCCCC","#FFCCFF","#FFFF00","#FFFF33","#FFFF66","#FFFF99","#FFFFCC","#000000"];
+	for (i=0;i<safe216.length;i++){
+		document.write('<li><label onclick="setcolor(\'safe216\',\'\',\''+safe216[i]+'\')"><input type="radio" name="safe216" /><div class="colorbox" style="background:'+safe216[i]+'"></div></label></li>');
+	}
+	</script>
+		</ul>
+		</div>
+		</div>
+
+		<div class="recon1">
+		<h2><span class="ttl">IE4+预命名颜色</span><div class="rgt">颜色名称：<input id="IE4_cname" type="text" name="" />色值：<input id="IE4_cvalue" type="text" name="" /></div><div class="clr"></div></h2>
+		<div class="retextcon1" id="IE4_cbg">
+		<ul class="colorlist">
+		<script>
+		var IE4 = {"aliceblue":"#F0F8FF","antiquewhite":"#FAEBD7","aqua":"#00FFFF","aquamarine":"#7FFFD4","azure":"#F0FFFF","beige":"#F5F5DC","bisque":"#FFE4C4","black":"#000000","blanchedalmond":"#FFEBCD","blue":"#0000FF","blueviolet":"#8A2BE2","brown":"#A52A2A","burlywood":"#DEB887","cadetblue":"#5F9EA0","chartreuse":"#7FFF00","chocolate":"#D2691E","coral":"#FF7F50","cornflowerblue":"#6495ED","cornsilk":"#FFF8DC","crimson":"#DC143C","cyan":"#00FFFF","darkblue":"#00008B","darkcyan":"#008B8B","darkgoldenrod":"#B8860B","darkgray":"#A9A9A9","darkgreen":"#006400","darkkhaki":"#BDB76B","darkmagenta":"#8B008B","darkolivegreen":"#556B2F","darkorange":"#FF8C00","darkorchid":"#9932CC","darkred":"#8B0000","darksalmon":"#E9967A","darkseagreen":"#8FBC8B","darkslateblue":"#483D8B","darkslategray":"#2F4F4F","darkturquoise":"#00CED1","darkviolet":"#9400D3","deeppink":"#FF1493","deepskyblue":"#00BFFF","dimgray":"#696969","dodgerblue":"#1E90FF","firebrick":"#B22222","floralwhite":"#FFFAF0","forestgreen":"#228B22","Fuchsia":"#FF00FF","gainsboro":"#DCDCDC","ghostwhite":"#F8F8FF","gold":"#FFD700","goldenrod":"#DAA520","gray":"#808080","green":"#008000","greenyellow":"#ADFF2F","honeydew":"#F0FFF0","hotpink":"#FF69B4","indianred":"#CD5C5C","indigo":"#4B0082","ivory":"#FFFFF0","khaki":"#F0E68C","lavender":"#E6E6FA","lavenderblush":"#FFF0F5","lawngreen":"#7CFC00","lemonchiffon":"#FFFACD","lightblue":"#ADD8E6","lightcoral":"#F08080","lightcyan":"#E0FFFF","lightgoldenrodyellow":"#FAFAD2","lightgreen":"#90EE90","lightgrey":"#D3D3D3","lightpink":"#FFB6C1","lightsalmon":"#FFA07A","lightseagreen":"#20B2AA","lightskyblue":"#87CEFA","lightslategray":"#778899","lightsteelblue":"#B0C4DE","lightyellow":"#FFFFE0","lime":"#00FF00","limegreen":"#32CD32","linen":"#FAF0E6","magenta":"#FF00FF","maroon":"#800000","mediumaquamarine":"#66CDAA","mediumblue":"#0000CD","mediumorchid":"#BA55D3","mediumpurple":"#9370DB","mediumseagreen":"#3CB371","mediumslateblue":"#7B68EE","mediumspringgreen":"#00FA9A","mediumturquoise":"#48D1CC","mediumvioletred":"#C71585","midnightblue":"#191970","mintcream":"#F5FFFA","mistyrose":"#FFE4E1","moccasin":"#FFE4B5","navajowhite":"#FFDEAD","navy":"#000080","oldlace":"#FDF5E6","olive":"#808000","olivedrab":"#6B8E23","orange":"#FFA500","orangered":"#FF4500","orchid":"#DA70D6","palegoldenrod":"#EEE8AA","palegreen":"#98FB98","paleturquoise":"#AFEEEE","palevioletred":"#DB7093","papayawhip":"#FFEFD5","peachpuff":"#FFDAB9","peru":"#CD853F","pink":"#FFC0CB","plum":"#DDA0DD","powderblue":"#B0E0E6","purple":"#800080","red":"#FF0000","rosybrown":"#BC8F8F","royalblue":"#4169E1","saddlebrown":"#8B4513","salmon":"#FA8072","sandybrown":"#F4A460","seagreen":"#2E8B57","seashell":"#FFF5EE","sienna":"#A0522D","silver":"#C0C0C0","skyblue":"#87CEEB","slateblue":"#6A5ACD","slategray":"#708090","snow":"#FFFAFA","springgreen":"#00FF7F","steelblue":"#4682B4","tan":"#D2B48C","teal":"#008080","thistle":"#D8BFD8","tomato":"#FF6347","turquoise":"#40E0D0","violet":"#EE82EE","wheat":"#F5DEB3","white":"#FFFFFF","whitesmoke":"#F5F5F5","yellow":"#FFFF00","yellowgreen":"#9ACD32"};
+	for (key in IE4){
+		document.write('<li><label onclick="setcolor(\'IE4\',\''+key+'\',\''+IE4[key]+'\')"><input type="radio" name="sixteen" /><div class="colorbox" style="background:'+IE4[key]+'"></div></label></li>');
+	}
+	</script>
+		</ul>
+		</div>
+		</div>
+
+		<div class="recon1">
+		<h2><span class="ttl">WIN- 用户系统色盘</span><div class="rgt">颜

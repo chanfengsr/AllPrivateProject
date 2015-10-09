@@ -1,0 +1,273 @@
+using System;
+using System.Collections.Generic;
+using System.Text;
+using System.Data;
+using System.Data.SqlClient;
+
+namespace SmartTools.ExtendClass
+{
+    class OutPutSQLHelper
+    {
+
+
+        #region CommonExecuteCommand
+        public static int ExecuteNonQuery(SqlCommand command, SqlConnection connection)
+        {
+            return ExecuteNonQuery(command, connection, null);
+        }
+
+        public static int ExecuteNonQuery(SqlCommand command, SqlConnection connection, SqlTransaction transaction)
+        {
+            bool mustCloseConnection = false;
+
+            #region Check
+            if (connection == null) throw new ArgumentNullException("connection");
+
+            if (command == null) throw new ArgumentNullException("command");
+
+            if (connection.State != ConnectionState.Open)
+            {
+                mustCloseConnection = true;
+                connection.Open();
+            }
+            else
+            {
+                mustCloseConnection = false;
+            }
+
+            if (transaction != null)
+            {
+                if (transaction.Connection == null) throw new ArgumentException("The transaction was rollbacked or commited, please provide an open transaction.", "transaction");
+                command.Transaction = transaction;
+            }
+            #endregion
+
+            command.Connection = connection;
+
+            command.Transaction = transaction;
+
+            int retval;
+
+            if (transaction == null)
+            {
+                retval = command.ExecuteNonQuery();
+            }
+            else
+            {
+                try
+                {
+                    retval = command.ExecuteNonQuery();
+                    transaction.Commit();
+                }
+                catch (Exception ex)
+                {
+                    transaction.Rollback();
+                    throw ex;
+                }
+            }
+
+            if (mustCloseConnection)
+                connection.Close();
+
+            return retval;
+        }
+
+        public static SqlDataReader ExecuteReader(SqlCommand command, SqlConnection connection)
+        {
+            return ExecuteReader(command, connection, null);
+        }
+
+        public static SqlDataReader ExecuteReader(SqlCommand command, SqlConnection connection, SqlTransaction transaction)
+        {
+            bool mustCloseConnection = false;
+
+            #region Check
+            if (connection == null) throw new ArgumentNullException("connection");
+
+            if (command == null) throw new ArgumentNullException("command");
+
+            if (connection.State != ConnectionState.Open)
+            {
+                mustCloseConnection = true;
+                connection.Open();
+            }
+            else
+            {
+                mustCloseConnection = false;
+            }
+
+            if (transaction != null)
+            {
+                if (transaction.Connection == null) throw new ArgumentException("The transaction was rollbacked or commited, please provide an open transaction.", "transaction");
+                command.Transaction = transaction;
+            }
+            #endregion
+
+            command.Connection = connection;
+
+            command.Transaction = transaction;
+
+            SqlDataReader retval;
+
+            if (transaction == null)
+            {
+                retval = command.ExecuteReader();
+            }
+            else
+            {
+                try
+                {
+                    retval = command.ExecuteReader();
+                    transaction.Commit();
+                }
+                catch (Exception ex)
+                {
+                    transaction.Rollback();
+                    throw ex;
+                }
+            }
+
+            if (mustCloseConnection)
+                connection.Close();
+
+            return retval;
+        }
+
+        public static object ExecuteScalar(SqlCommand command, SqlConnection connection)
+        {
+            return ExecuteScalar(command, connection, null);
+        }
+
+        public static object ExecuteScalar(SqlCommand command, SqlConnection connection, SqlTransaction transaction)
+        {
+            bool mustCloseConnection = false;
+
+            #region Check
+            if (connection == null) throw new ArgumentNullException("connection");
+
+            if (command == null) throw new ArgumentNullException("command");
+
+            if (connection.State != ConnectionState.Open)
+            {
+                mustCloseConnection = true;
+                connection.Open();
+            }
+            else
+            {
+                mustCloseConnection = false;
+            }
+
+            if (transaction != null)
+            {
+                if (transaction.Connection == null) throw new ArgumentException("The transaction was rollbacked or commited, please provide an open transaction.", "transaction");
+                command.Transaction = transaction;
+            }
+            #endregion
+
+            command.Connection = connection;
+
+            command.Transaction = transaction;
+
+            object retval = new object();
+
+            if (transaction == null)
+            {
+                retval = command.ExecuteScalar();
+            }
+            else
+            {
+                try
+                {
+                    retval = command.ExecuteScalar();
+                    transaction.Commit();
+                }
+                catch (Exception ex)
+                {
+                    transaction.Rollback();
+                    throw ex;
+                }
+            }
+
+            if (mustCloseConnection)
+                connection.Close();
+
+            return retval;
+        }
+
+        public static DataSet ExecuteDataset(SqlCommand command, SqlConnection connection)
+        {
+            return ExecuteDataset(command, connection, null);
+        }
+
+        public static DataSet ExecuteDataset(SqlCommand command, SqlConnection connection, SqlTransaction transaction)
+        {
+            bool mustCloseConnection = false;
+
+            #region Check
+            if (connection == null) throw new ArgumentNullException("connection");
+
+            if (command == null) throw new ArgumentNullException("command");
+
+            if (connection.State != ConnectionState.Open)
+            {
+                mustCloseConnection = true;
+                connection.Open();
+            }
+            else
+            {
+                mustCloseConnection = false;
+            }
+
+            if (transaction != null)
+            {
+                if (transaction.Connection == null) throw new ArgumentException("The transaction was rollbacked or commited, please provide an open transaction.", "transaction");
+                command.Transaction = transaction;
+            }
+            #endregion
+
+            command.Connection = connection;
+
+            command.Transaction = transaction;
+
+            using (SqlDataAdapter da = new SqlDataAdapter(command))
+            {
+                DataSet retval = new DataSet();
+
+                if (transaction == null)
+                {
+                    da.Fill(retval);
+                }
+                else
+                {
+                    try
+                    {
+                        da.Fill(retval);
+                        transaction.Commit();
+                    }
+                    catch (Exception ex)
+                    {
+                        transaction.Rollback();
+                        throw ex;
+                    }
+                }
+
+                if (mustCloseConnection)
+                    connection.Close();
+
+                return retval;
+            }
+        }
+
+        public static DataTable ExecuteDataTable(SqlCommand command, SqlConnection connection)
+        {
+            return ExecuteDataset(command, connection).Tables[0];
+        }
+
+        public static DataTable ExecuteDataTable(SqlCommand command, SqlConnection connection, SqlTransaction transaction)
+        {
+            return ExecuteDataset(command, connection, transaction).Tables[0];
+        }
+        #endregion
+
+    }
+}

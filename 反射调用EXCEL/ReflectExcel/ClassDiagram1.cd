@@ -1,0 +1,4358 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1">
+  <Class Name="ReflectOffice.Excel.Application">
+    <Position X="11" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>voeqiYeC17o/n9fX9/r87/4hg/2+9PyNX1u8497Ucd4=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.Workbooks" Collapsed="true">
+    <Position X="5.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIEAAAAABAAJAAACAAAQAQAAIAgAIAAEQAAAACAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.Workbook" Collapsed="true">
+    <Position X="4" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>MwfsmYfqm/Rwgfva+s7O5Eee+II+rTeG/hkIXzX2piY=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.Worksheets" Collapsed="true">
+    <Position X="18" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAACAAJAQAAAACAAAQAYIAsEAAAAIEAgCQAACAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.Worksheet" Collapsed="true">
+    <Position X="14.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>FpQEhRi0JZQS4kBuQYJQQgYYA6MMwAMJURECTAiCODI=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.Range" Collapsed="true">
+    <Position X="35.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>4lSgAFGsTfhkh0jDzHdy3U4jp6GNbwu5HAW8z5xGmDI=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.PageSetup" Collapsed="true">
+    <Position X="33.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IQlABAAohTIABNoqFAAh0GEAAgCAAAAAkVkAAAEABQA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.Pages" Collapsed="true">
+    <Position X="32" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAACAAAAAQAAAAAAAAAAAAEAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.Page" Collapsed="true">
+    <Position X="30.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgAAABEAAAAAgAEAAAAAAAAAAAEAEAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.Graphic" Collapsed="true">
+    <Position X="16.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABBgAQAAAAAAkQGAAAAAAAAABEAAAAAgQAIA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.HeaderFooter" Collapsed="true">
+    <Position X="19.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.Font" Collapsed="true">
+    <Position X="7.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACACIABAAgiAAEIAAQAQAAAAAAAAAEABggASQIBE=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.Borders" Collapsed="true">
+    <Position X="23.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIABAAAAAACBAAQAQAAKAAAAAAEAAggAQAIAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.Border" Collapsed="true">
+    <Position X="21.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIABAAAAAAABAAQAAAECAAAAAAEAAAgAQAIAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.Windows" Collapsed="true">
+    <Position X="2.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAIAAAAFAAAAAgCAAAQAQAAIAAAABAMAAAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.Window" Collapsed="true">
+    <Position X="0.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CgMAEAKgpxAEAJRgUAFiSMIREIAJgACZmQkCMFCWSQg=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.Shapes" Collapsed="true">
+    <Position X="23.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAgAIAAAADAACAIECAIAQQQEgIAAAAAgQABAAAAAQgA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.Shape" Collapsed="true">
+    <Position X="16.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>oiRgQCAkFRgwooBENIKhZF0AArE4KABIWSgIQEATgAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.GroupShapes" Collapsed="true">
+    <Position X="18" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAACAAAAAAASAQEAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.Adjustments" Collapsed="true">
+    <Position X="7.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAAAAAAAQAQEAAAAAAAAEAAAAAAAACA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.FreeformBuilder" Collapsed="true">
+    <Position X="12.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIABAAAAABAAAAQAAAAIAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.ShapeRange" Collapsed="true">
+    <Position X="21.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACBgQGAEFRgRoIBEFIKg5EUEALE4KCEMWSgIQEATgAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.Charts" Collapsed="true">
+    <Position X="37.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAACAgJAQAAAACAAAQAYIAoEAAAAIEAACQAACAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.Chart" Collapsed="true">
+    <Position X="28.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>Yt4khdjlFJBi45hIWLrIxibAA8VLSzPPE1NKQaDniAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.Hyperlinks" Collapsed="true">
+    <Position X="26.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAABAAAAAACAAAQAQAAIEAAAAAEAAAAAABAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.Hyperlink" Collapsed="true">
+    <Position X="25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAIARAACAAAAAAAQAQAAIEAAAgGEQAAIAAAAAM=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.LineFormat" Collapsed="true">
+    <Position X="37.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAQAAAhAAAAAAAABAQAASACCAAAAIFAQAAQADBAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.LinkFormat" Collapsed="true">
+    <Position X="0.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAgABAAAABAAAAAQAAAAAAAAAAAkAAAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.ShapeNodes" Collapsed="true">
+    <Position X="19.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAEDAAAAAACAAAQAQAAIECAgAAEAAAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.ShapeNode" Collapsed="true">
+    <Position X="18" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAABEAgAAAAAAAYAAAAAAAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.Sheets" Collapsed="true">
+    <Position X="26.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAACAAJAQQAAAKAAAQAYIAoEQAAAIEAACQAACAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.Areas" Collapsed="true">
+    <Position X="12.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAABAAAAAACAAAQAQAAAAAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.OLEFormat" Collapsed="true">
+    <Position X="26.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.PictureFormat" Collapsed="true">
+    <Position X="5.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.ShadowFormat" Collapsed="true">
+    <Position X="14.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.TextEffectFormat" Collapsed="true">
+    <Position X="19.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.TextFrame" Collapsed="true">
+    <Position X="21.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.TextFrame2" Collapsed="true">
+    <Position X="23.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.ThreeDFormat" Collapsed="true">
+    <Position X="25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.CalloutFormat" Collapsed="true">
+    <Position X="25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.ConnectorFormat" Collapsed="true">
+    <Position X="16.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.ControlFormat" Collapsed="true">
+    <Position X="18" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAEAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.AddIns" Collapsed="true">
+    <Position X="5.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAACAAAAAAAAIAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.AddIn" Collapsed="true">
+    <Position X="4" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.AnswerWizard" Collapsed="true">
+    <Position X="9.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAACAAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.IAssistance" Collapsed="true">
+    <Position X="28.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAACAAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.Assistant" Collapsed="true">
+    <Position X="14.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIAAAAQAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.AutoCorrect" Collapsed="true">
+    <Position X="16.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.AutoRecover" Collapsed="true">
+    <Position X="19.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.DefaultWebOptions" Collapsed="true">
+    <Position X="28.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIAAgAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.Dialogs" Collapsed="true">
+    <Position X="32" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAACAACAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.Dialog" Collapsed="true">
+    <Position X="30.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAEAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.ErrorCheckingOptions" Collapsed="true">
+    <Position X="0.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAACAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.CellFormat" Collapsed="true">
+    <Position X="26.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIAAAACAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.MultiThreadedCalculation" Collapsed="true">
+    <Position X="11" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.Names" Collapsed="true">
+    <Position X="14.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAAAACAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.Name" Collapsed="true">
+    <Position X="12.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.ODBCErrors" Collapsed="true">
+    <Position X="19.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAACAAgAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.ODBCError" Collapsed="true">
+    <Position X="18" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAQAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.OLEDBErrors" Collapsed="true">
+    <Position X="25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAACAAAAAAAAIAAAAAAAAAAABAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.OLEDBError" Collapsed="true">
+    <Position X="23.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAABAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.RecentFiles" Collapsed="true">
+    <Position X="37.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAIA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.RTD" Collapsed="true">
+    <Position X="5.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.SmartTagRecognizers" Collapsed="true">
+    <Position X="0.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAACAAAAAABAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.SmartTagRecognizer" Collapsed="true">
+    <Position X="37.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAACAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.Speech" Collapsed="true">
+    <Position X="7.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.SpellingOptions" Collapsed="true">
+    <Position X="9.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.UsedObjects" Collapsed="true">
+    <Position X="26.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAACAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.Watches" Collapsed="true">
+    <Position X="35.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAQAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.WorksheetFunction" Collapsed="true">
+    <Position X="16.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.XmlMaps" Collapsed="true">
+    <Position X="21.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAACAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.XmlMap" Collapsed="true">
+    <Position X="19.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAgAAAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.Connections" Collapsed="true">
+    <Position X="14.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.CustomViews" Collapsed="true">
+    <Position X="21.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAACAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.IconSets" Collapsed="true">
+    <Position X="30.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIAAAgAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.Mailer" Collapsed="true">
+    <Position X="5.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.PublishObjects" Collapsed="true">
+    <Position X="30.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAAAACAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.PublishObject" Collapsed="true">
+    <Position X="28.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.Research" Collapsed="true">
+    <Position X="2.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAIAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.RoutingSlip" Collapsed="true">
+    <Position X="4" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAACAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.ServerViewableItems" Collapsed="true">
+    <Position X="12.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.SmartTagOptions" Collapsed="true">
+    <Position X="35.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.Styles" Collapsed="true">
+    <Position X="12.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAACAAAAAgAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.Style" Collapsed="true">
+    <Position X="11" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAABAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.TableStyles" Collapsed="true">
+    <Position X="18" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.WebOptions" Collapsed="true">
+    <Position X="37.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIAAAAEAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.XmlNamespaces" Collapsed="true">
+    <Position X="25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAICAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.XmlNamespace" Collapsed="true">
+    <Position X="23.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.PivotCaches" Collapsed="true">
+    <Position X="9.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAACAAAAAAAAIAAAAAAAAAAAAQAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.PivotCache" Collapsed="true">
+    <Position X="7.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAQAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.HPageBreaks" Collapsed="true">
+    <Position X="23.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAACAAAAAAAAIAAAAAABAAAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.HPageBreak" Collapsed="true">
+    <Position X="21.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.VPageBreaks" Collapsed="true">
+    <Position X="32" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAACAAAAAAAAIAAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.VPageBreak" Collapsed="true">
+    <Position X="30.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAEAAAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.AutoFilter" Collapsed="true">
+    <Position X="18" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAEAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.Comments" Collapsed="true">
+    <Position X="12.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAACAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.Comment" Collapsed="true">
+    <Position X="11" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAACAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.CustomProperties" Collapsed="true">
+    <Position X="19.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIAAAAABAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.ListObjects" Collapsed="true">
+    <Position X="4" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAAAACAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.ListObject" Collapsed="true">
+    <Position X="2.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.Outline" Collapsed="true">
+    <Position X="28.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAEAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.Protection" Collapsed="true">
+    <Position X="26.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAIAAAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.QueryTables" Collapsed="true">
+    <Position X="33.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAQAAACAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.QueryTable" Collapsed="true">
+    <Position X="32" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAQAAAAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.SmartTags" Collapsed="true">
+    <Position X="2.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAACAAAAAAAAIAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.SmartTag" Collapsed="true">
+    <Position X="33.75" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.Sort" Collapsed="true">
+    <Position X="5.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.ChartObjects" Collapsed="true">
+    <Position X="35.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAACAAAAAAAAIAAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.ChartObject" Collapsed="true">
+    <Position X="33.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.PivotTables" Collapsed="true">
+    <Position X="23.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAgACAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.PivotTable" Collapsed="true">
+    <Position X="21.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAgAAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.Scenarios" Collapsed="true">
+    <Position X="9.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAACAAAAAAAAIAAAEAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.Scenario" Collapsed="true">
+    <Position X="7.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAACA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.Errors" Collapsed="true">
+    <Position X="2.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAIAAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.FormatConditions" Collapsed="true">
+    <Position X="11" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQACAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.FormatCondition" Collapsed="true">
+    <Position X="9.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.Interior" Collapsed="true">
+    <Position X="32" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAEAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.Phonetics" Collapsed="true">
+    <Position X="4" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAACAAAAAAAAIAAAAAAAACAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.Phonetic" Collapsed="true">
+    <Position X="2.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.PivotCell" Collapsed="true">
+    <Position X="11" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.PivotFields" Collapsed="true">
+    <Position X="14.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAAAACAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.PivotField" Collapsed="true">
+    <Position X="12.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.PivotItems" Collapsed="true">
+    <Position X="18" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAACAAAAAAAAIAAAAAAAAAAEAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.PivotItem" Collapsed="true">
+    <Position X="16.25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAICAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.Actions" Collapsed="true">
+    <Position X="2.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAACAAAAAAAAIACAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.Action" Collapsed="true">
+    <Position X="0.5" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIAAEAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.Validation" Collapsed="true">
+    <Position X="28.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAACAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.XPath" Collapsed="true">
+    <Position X="26.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.Panes" Collapsed="true">
+    <Position X="37.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAACAAAAAAAAIAAAAAAAAAAAgAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.Pane" Collapsed="true">
+    <Position X="35.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAgAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.SheetViews" Collapsed="true">
+    <Position X="28.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAQAAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.FillFormat" Collapsed="true">
+    <Position X="4" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.ChartGroup" Collapsed="true">
+    <Position X="32" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.Walls" Collapsed="true">
+    <Position X="33.75" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAACAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.ChartArea" Collapsed="true">
+    <Position X="30.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.ChartTitle" Collapsed="true">
+    <Position X="0.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAEAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.DataTable" Collapsed="true">
+    <Position X="26.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAgAAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.Floor" Collapsed="true">
+    <Position X="5.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAEAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.Legend" Collapsed="true">
+    <Position X="35.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAQAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.PivotLayout" Collapsed="true">
+    <Position X="19.75" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.PlotArea" Collapsed="true">
+    <Position X="25" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAABAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Excel.Tab" Collapsed="true">
+    <Position X="16.25" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeExcelObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Core.GlowFormat" Collapsed="true">
+    <Position X="14.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAgAABAAAAAAAAAAAAAAAAAAAAAAEAAAgAAAAAA=</HashCode>
+      <FileName>OfficeSystemObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Core.ColorFormat" Collapsed="true">
+    <Position X="2.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAABAAAAAAAgAAQAAgAAAAAAAAEQAAAAQAAAA=</HashCode>
+      <FileName>OfficeSystemObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Core.ReflectionFormat" Collapsed="true">
+    <Position X="0.5" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeSystemObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Core.SoftEdgeFormat" Collapsed="true">
+    <Position X="4" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAA=</HashCode>
+      <FileName>OfficeSystemObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Core.COMAddIns" Collapsed="true">
+    <Position X="5.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeSystemObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Core.COMAddIn" Collapsed="true">
+    <Position X="4" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeSystemObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Core.CommandBars" Collapsed="true">
+    <Position X="9.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeSystemObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Core.CommandBar" Collapsed="true">
+    <Position X="7.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeSystemObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Core.LanguageSettings" Collapsed="true">
+    <Position X="33.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeSystemObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Core.NewFile" Collapsed="true">
+    <Position X="16.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIAAAAQAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeSystemObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Core.MetaProperties" Collapsed="true">
+    <Position X="7.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAEAAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeSystemObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Core.CustomXMLParts" Collapsed="true">
+    <Position X="25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeSystemObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Core.CustomXMLPart" Collapsed="true">
+    <Position X="23.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeSystemObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Core.DocumentInspectors" Collapsed="true">
+    <Position X="35.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAKAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeSystemObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Core.DocumentInspector" Collapsed="true">
+    <Position X="33.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeSystemObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Core.DocumentLibraryVersions" Collapsed="true">
+    <Position X="37.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeSystemObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Core.Permission" Collapsed="true">
+    <Position X="0.5" Y="4.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeSystemObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Core.ServerPolicy" Collapsed="true">
+    <Position X="11" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAACAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeSystemObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Core.SharedWorkspace" Collapsed="true">
+    <Position X="25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>OfficeSystemObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Core.SignatureSet" Collapsed="true">
+    <Position X="30.25" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeSystemObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Core.SmartDocument" Collapsed="true">
+    <Position X="32" Y="5.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeSystemObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Core.Sync" Collapsed="true">
+    <Position X="14.5" Y="6.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAEAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeSystemObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Core.OfficeTheme" Collapsed="true">
+    <Position X="21.5" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAgAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeSystemObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Core.WorkflowTemplates" Collapsed="true">
+    <Position X="12.75" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>OfficeSystemObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Core.WorkflowTemplate" Collapsed="true">
+    <Position X="11" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>OfficeSystemObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Core.WorkflowTasks" Collapsed="true">
+    <Position X="9.25" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeSystemObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Core.WorkflowTask" Collapsed="true">
+    <Position X="7.5" Y="7.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAIAAAAAAAA=</HashCode>
+      <FileName>OfficeSystemObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="ReflectOffice.Core.MsoEnvelope" Collapsed="true">
+    <Position X="9.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAIAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeSystemObject.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="ReflectOffice.Excel.Constants" Collapsed="true">
+    <Position X="5.75" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>4CgZJWTUXLH7ChpC3KNt5wrsl/dj/M5k7AnwQsFjhjQ=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlAboveBelow" Collapsed="true">
+    <Position X="12.75" Y="14.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAAEAAQAAAAAAAAAAIAAQAAgAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlActionType" Collapsed="true">
+    <Position X="14.5" Y="14.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAg=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlApplicationInternational" Collapsed="true">
+    <Position X="16.25" Y="14.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>giIICqAAoAgIgKEACACAAgAogEAAASwEAJBGAJACACA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlApplyNamesOrder" Collapsed="true">
+    <Position X="18" Y="14.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlArabicModes" Collapsed="true">
+    <Position X="19.75" Y="14.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAAAAAAAAACAAAAAAAgAABAAAAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlArrangeStyle" Collapsed="true">
+    <Position X="21.5" Y="14.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAAAAAAAAAAAAQAAAAQAAAAAAAAEAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlArrowHeadLength" Collapsed="true">
+    <Position X="23.25" Y="14.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAAAAAAABAAAAAAAAAAAAAAAAAAAAQAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlArrowHeadStyle" Collapsed="true">
+    <Position X="25" Y="14.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAAAACAAAAAAAAAAAAAAAACAAAAAAAAAQAI=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlArrowHeadWidth" Collapsed="true">
+    <Position X="26.75" Y="14.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAEAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlAutoFillType" Collapsed="true">
+    <Position X="28.5" Y="14.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAIAAAAAAAIAAQAAAAAABCAAIAAIAABAAAAAAAABA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlAutoFilterOperator" Collapsed="true">
+    <Position X="30.25" Y="14.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAEEgEAAAAEDAAAAAAAAAAAAAQAAABAAAAAAIAECA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlAxisCrosses" Collapsed="true">
+    <Position X="33.75" Y="14.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAACAAAEAAAAg=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlAxisGroup" Collapsed="true">
+    <Position X="37.25" Y="14.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAE=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlAxisType" Collapsed="true">
+    <Position X="0.5" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAAAAAAAAAEEAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlBackground" Collapsed="true">
+    <Position X="4" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAACAAACAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlBarShape" Collapsed="true">
+    <Position X="7.5" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAGIACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlBordersIndex" Collapsed="true">
+    <Position X="9.25" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAgAAAABAAAEAAAAAAAYAAAAAAAgAAAAAEA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlBorderWeight" Collapsed="true">
+    <Position X="12.75" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAAAQAAAIAAAIAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlBuiltInDialog" Collapsed="true">
+    <Position X="14.5" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>i74feCHY6qyNvR0l91Xeu+pnT5j/x5357u3eyILdr7o=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlCalcFor" Collapsed="true">
+    <Position X="16.25" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAACAAAAgAAAAAAAEAAAAAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlCalculatedMemberType" Collapsed="true">
+    <Position X="18" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlCalculation" Collapsed="true">
+    <Position X="19.75" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAACAAgAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlCalculationInterruptKey" Collapsed="true">
+    <Position X="21.5" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAIACA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlCalculationState" Collapsed="true">
+    <Position X="23.25" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAAAAAAABAAAAAAACAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlCategoryType" Collapsed="true">
+    <Position X="25" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAAAQAAAAAAAAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlCellInsertionMode" Collapsed="true">
+    <Position X="28.5" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAACIAAAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlCellType" Collapsed="true">
+    <Position X="30.25" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAQAAAIAAAACAAAAACAAABgAgQAAAAAYA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlChartElementPosition" Collapsed="true">
+    <Position X="32" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAIAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlChartGallery" Collapsed="true">
+    <Position X="35.5" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgAAAAAAAAAAAAAAEAAAAAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlChartItem" Collapsed="true">
+    <Position X="37.25" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAEAAAJAgECQAGAAAgEACSQAIAACQAApAEARKIAAgAI=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlChartLocation" Collapsed="true">
+    <Position X="2.25" Y="16.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACACAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlChartPicturePlacement" Collapsed="true">
+    <Position X="5.75" Y="16.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAEAAAAAAAAwAAAAAAgAAAAEAAAAAAQAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlChartPictureType" Collapsed="true">
+    <Position X="9.25" Y="16.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAQAAAAEAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlChartSplitType" Collapsed="true">
+    <Position X="12.75" Y="16.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAgAAAAAAAAAAAAAAAAgAAAAAAAEAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlChartType" Collapsed="true">
+    <Position X="16.25" Y="16.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>iyABAHQTQCeFABCEAY1KAQCDQMAJErkwkABBYJAFRIk=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlCheckInVersionType" Collapsed="true">
+    <Position X="18" Y="16.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAIA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlClipboardFormat" Collapsed="true">
+    <Position X="19.75" Y="16.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEkcAAAIACAAWgAgAAEMDAAQQTAAAAAQAgVAAAAAEQA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlCmdType" Collapsed="true">
+    <Position X="21.5" Y="16.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAoAAAAAAAAAAAAAABAACAAAAAAAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlColorIndex" Collapsed="true">
+    <Position X="23.25" Y="16.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlColumnDataType" Collapsed="true">
+    <Position X="26.75" Y="16.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAACAAAAAAAgAAAAAAAAIAIAAAAACAAABAAAAQBAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlCommandUnderlines" Collapsed="true">
+    <Position X="28.5" Y="16.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAQAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlCommentDisplayMode" Collapsed="true">
+    <Position X="30.25" Y="16.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAAAQAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlConditionValueTypes" Collapsed="true">
+    <Position X="32" Y="16.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAEAAAABAAAAAAQAAgAAIAAAAAAAAAAAAAAAgAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlConnectionType" Collapsed="true">
+    <Position X="33.75" Y="16.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAABAAEAAAAAAAAAiAIAAAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlConsolidationFunction" Collapsed="true">
+    <Position X="35.5" Y="16.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACQAKAAMAAQAAACAAAAAAAgQAAAAAABAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlContainsOperator" Collapsed="true">
+    <Position X="0.5" Y="17" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAAAEQAAAAAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlCopyPictureFormat" Collapsed="true">
+    <Position X="2.25" Y="17" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAIAAAAAABAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlCorruptLoad" Collapsed="true">
+    <Position X="4" Y="17" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEAAAAAAABAAAAAAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlCreator" Collapsed="true">
+    <Position X="5.75" Y="17" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlCredentialsMethod" Collapsed="true">
+    <Position X="7.5" Y="17" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABAAAQAAAAAAAAAAAAAAAAAIAAAAAAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlCubeFieldSubType" Collapsed="true">
+    <Position X="9.25" Y="17" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAEAAAAAAAAgAAAEAAAAQAAAABQEAACAAAAIA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlCubeFieldType" Collapsed="true">
+    <Position X="11" Y="17" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAggA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlCutCopyMode" Collapsed="true">
+    <Position X="12.75" Y="17" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlCVError" Collapsed="true">
+    <Position X="14.5" Y="17" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAEAAAAAAAAACAAAAAAAAAQAAEgAgAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlDataLabelPosition" Collapsed="true">
+    <Position X="16.25" Y="17" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQQAAAAAAAAAGAAAAAAAEAAAAABAQAAAAEACAAIAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlDataLabelSeparator" Collapsed="true">
+    <Position X="19.75" Y="17" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlDataLabelsType" Collapsed="true">
+    <Position X="23.25" Y="17" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAEAAAAEAAAAAAAAAAABAAAAQAAAABA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlDataSeriesDate" Collapsed="true">
+    <Position X="25" Y="17" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAQAAAAAQAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlDataSeriesType" Collapsed="true">
+    <Position X="26.75" Y="17" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAgAAAAAAAAE=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlDeleteShiftDirection" Collapsed="true">
+    <Position X="28.5" Y="17" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAQAAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlDirection" Collapsed="true">
+    <Position X="30.25" Y="17" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAGAAAAAEABAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlDisplayBlanksAs" Collapsed="true">
+    <Position X="33.75" Y="17" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAAAABAAAAAAAAAAAAAAAAAAAAACA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlDisplayDrawingObjects" Collapsed="true">
+    <Position X="35.5" Y="17" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAICgAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlDisplayUnit" Collapsed="true">
+    <Position X="37.25" Y="17" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAGAAAAAAIAEACQAAAAAAAAAAIAAAAAAAAIAAAQ=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlDupeUnique" Collapsed="true">
+    <Position X="2.25" Y="17.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlDVAlertStyle" Collapsed="true">
+    <Position X="4" Y="17.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAEAAgAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlDVType" Collapsed="true">
+    <Position X="5.75" Y="17.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gAAAAAAAAABAAABAAAAAAAAAAAAEAQAAAAIAAAQCAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlDynamicFilterCriteria" Collapsed="true">
+    <Position X="7.5" Y="17.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAQAAAAAAtCQAAACQiQAAAEBRYgAAQhVAQEAgAAgQ=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlEditionFormat" Collapsed="true">
+    <Position X="9.25" Y="17.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEIBAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlEditionOptionsOption" Collapsed="true">
+    <Position X="11" Y="17.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAAAAAIAAAABQAAAIAAAAAEAAAAAAAAQAEA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlEditionType" Collapsed="true">
+    <Position X="12.75" Y="17.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlEnableCancelKey" Collapsed="true">
+    <Position X="14.5" Y="17.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAIAAAAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlEnableSelection" Collapsed="true">
+    <Position X="16.25" Y="17.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAIAAAAAAAQAAAAAAAAAAAAIA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlEndStyleCap" Collapsed="true">
+    <Position X="19.75" Y="17.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAABAAAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlErrorBarDirection" Collapsed="true">
+    <Position X="23.25" Y="17.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlErrorBarInclude" Collapsed="true">
+    <Position X="26.75" Y="17.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAABAAAAAAIAAAAAAAAAAAAAAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlErrorBarType" Collapsed="true">
+    <Position X="30.25" Y="17.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAAAAAAAAAiAAAAAAAAAAAAAAAAAAAAAgAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlErrorChecks" Collapsed="true">
+    <Position X="32" Y="17.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAAAAAAACAAAAAAAAAAAhAACgIAAAAEABA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlFileAccess" Collapsed="true">
+    <Position X="33.75" Y="17.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAEAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlFileFormat" Collapsed="true">
+    <Position X="35.5" Y="17.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>YEmAQgIAAIBgxEIA0UAhAAAGQFkGAAEgiBEhAEgBoIM=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlFillWith" Collapsed="true">
+    <Position X="37.25" Y="17.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAACAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlFilterAction" Collapsed="true">
+    <Position X="0.5" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAEAAIAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlFilterAllDatesInPeriod" Collapsed="true">
+    <Position X="2.25" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAAAAAIAAAAAAAAAAAAAgAAAAAAEAAACA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlFindLookIn" Collapsed="true">
+    <Position X="4" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAIAAAAI=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlFixedFormatQuality" Collapsed="true">
+    <Position X="5.75" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlFixedFormatType" Collapsed="true">
+    <Position X="7.5" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAIAAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlFormatConditionOperator" Collapsed="true">
+    <Position X="9.25" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAEBAAAAAAIAAABAAIAAAAAAAAAAAAggAAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlFormatConditionType" Collapsed="true">
+    <Position X="11" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EQAAQAEIACAABQAAIAAAAAQAAAAAAACAAAAIAIAgAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlFormatFilterTypes" Collapsed="true">
+    <Position X="12.75" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAIAgAAAAAAAAAAAAAAAIAg=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlFormControl" Collapsed="true">
+    <Position X="14.5" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAABAAIAAQCAAABAAAAAAAwAAAABAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlFormulaLabel" Collapsed="true">
+    <Position X="16.25" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAEAAAAAAAgAAAAAAAAAAAAAAAAgAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlGenerateTableRefs" Collapsed="true">
+    <Position X="18" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlGradientFillType" Collapsed="true">
+    <Position X="19.75" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAACAAAAAQAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlHAlign" Collapsed="true">
+    <Position X="23.25" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAIAAAAAgAAQEAAAAAEAAAAAABAAgAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlHebrewModes" Collapsed="true">
+    <Position X="25" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAABAAAAQCAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlHighlightChangesTime" Collapsed="true">
+    <Position X="26.75" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAABACAAAAAIAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlHtmlType" Collapsed="true">
+    <Position X="28.5" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAACBAAAAAAABAAAAAAAAAAAABAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlIconSet" Collapsed="true">
+    <Position X="30.25" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AYAABAAIAAQIAAAAAAAAAACACAADAAAAAAAAAAAEAAg=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlIMEMode" Collapsed="true">
+    <Position X="32" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAACAAAAgAAAACAERAAAAEBAAAAAAAAAAAEAAAAQA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlImportDataAs" Collapsed="true">
+    <Position X="33.75" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAAAAAAAAAACAAAAAAAAAAABAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlInsertFormatOrigin" Collapsed="true">
+    <Position X="35.5" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlInsertShiftDirection" Collapsed="true">
+    <Position X="37.25" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlLayoutFormType" Collapsed="true">
+    <Position X="0.5" Y="19.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlLayoutRowType" Collapsed="true">
+    <Position X="2.25" Y="19.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAACAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlLegendPosition" Collapsed="true">
+    <Position X="5.75" Y="19.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAACAAAAAABAAAQAAAAAAAAAAAAAABAAIAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlLineStyle" Collapsed="true">
+    <Position X="7.5" Y="19.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAQAAAADAAAAAAAAAAQAAAAAAIAAAAAAEAAAACA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlLink" Collapsed="true">
+    <Position X="9.25" Y="19.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAAAAAAAAABAAAAAAACAABAAAAAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlLinkInfo" Collapsed="true">
+    <Position X="11" Y="19.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAIAAAAIAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlLinkInfoType" Collapsed="true">
+    <Position X="12.75" Y="19.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAgAAAgAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlLinkStatus" Collapsed="true">
+    <Position X="14.5" Y="19.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAYAhAAAgAAAAAAAAEAAAAIAACAAAAAAAAAEIAQAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlLinkType" Collapsed="true">
+    <Position X="16.25" Y="19.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlListConflict" Collapsed="true">
+    <Position X="18" Y="19.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAAAAAAAAAAAAAAQAAEAAAAAAAAAAAIAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlListDataType" Collapsed="true">
+    <Position X="19.75" Y="19.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgEiAAAABAAAAAAAAAABQAAAAEQAAAAAQAAAQCQAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlListObjectSourceType" Collapsed="true">
+    <Position X="21.5" Y="19.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAgIAAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlLocationInTable" Collapsed="true">
+    <Position X="23.25" Y="19.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QABACAAAgAAAgAAAACAIAAAAAAAAAACAAAAAAAAgAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlLookAt" Collapsed="true">
+    <Position X="25" Y="19.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAIAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlLookFor" Collapsed="true">
+    <Position X="26.75" Y="19.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAAAABAAAAAAIAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlMailSystem" Collapsed="true">
+    <Position X="28.5" Y="19.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAACIAAAAAAAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlMarkerStyle" Collapsed="true">
+    <Position X="30.25" Y="19.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gIAAAAAABAAAAAAAAAAAAAEAAAAAAAkABAAAQAABARA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlMeasurementUnits" Collapsed="true">
+    <Position X="33.75" Y="19.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAAAAAAAAAAAgAAAAAAAAAAAIAAAAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlMouseButton" Collapsed="true">
+    <Position X="35.5" Y="19.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAACAAQAAAAAAAAAIAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlMousePointer" Collapsed="true">
+    <Position X="37.25" Y="19.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAAQAAAAAAAAAABAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlMSApplication" Collapsed="true">
+    <Position X="0.5" Y="20" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAQAAAAAAAAAAAAAIIAAgAAAAAAAIAAAAAAAAAAQA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlObjectSize" Collapsed="true">
+    <Position X="2.25" Y="20" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAACAAAAAAAAAAAAAAQAAAAAACAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlOLEType" Collapsed="true">
+    <Position X="4" Y="20" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAEAAAAAAAAAAAAAEAAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlOLEVerb" Collapsed="true">
+    <Position X="5.75" Y="20" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAABAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlOrder" Collapsed="true">
+    <Position X="7.5" Y="20" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlOrientation" Collapsed="true">
+    <Position X="9.25" Y="20" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAAAAAGAAAAAAAAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlPageBreak" Collapsed="true">
+    <Position X="11" Y="20" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAgAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlPageBreakExtent" Collapsed="true">
+    <Position X="12.75" Y="20" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAACAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlPageOrientation" Collapsed="true">
+    <Position X="14.5" Y="20" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlPaperSize" Collapsed="true">
+    <Position X="16.25" Y="20" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AGgwAAMgAARAggGAABAJDSQACAAEBoAAC4QIAAAAAWA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlParameterDataType" Collapsed="true">
+    <Position X="18" Y="20" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAQgAACAFgAQIAAAAAAABCEAAEAAAAQEAABgAAgAAAg=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlParameterType" Collapsed="true">
+    <Position X="19.75" Y="20" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAEAAAAAAAAQA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlPasteSpecialOperation" Collapsed="true">
+    <Position X="21.5" Y="20" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAEAAAEAAAAAAASAAgAAAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlPasteType" Collapsed="true">
+    <Position X="23.25" Y="20" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAgCQAQAAAAAAECAAAACABAAAgAAAAAAAQAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlPattern" Collapsed="true">
+    <Position X="25" Y="20" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgEAgUAAAqAAAgCgAAQQAAABAgAAAIAAAAoAAkCAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlPhoneticAlignment" Collapsed="true">
+    <Position X="26.75" Y="20" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAACAAAAAAgAAAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlPhoneticCharacterType" Collapsed="true">
+    <Position X="28.5" Y="20" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAEA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlPictureAppearance" Collapsed="true">
+    <Position X="30.25" Y="20" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlPictureConvertorType" Collapsed="true">
+    <Position X="32" Y="20" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAgAYhAAAAAAAAAAACAAAAAIAAABIAICABAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlPivotCellType" Collapsed="true">
+    <Position X="37.25" Y="20" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAEAAAAAAAACAAABBAAAAAAAAAAAAABBAEQAAAAAQA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlPivotConditionScope" Collapsed="true">
+    <Position X="0.5" Y="20.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAABAAIAAAAAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlPivotFieldCalculation" Collapsed="true">
+    <Position X="2.25" Y="20.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAACAABAAAAAAEAAQAQgAgAAAAAAAAEAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlPivotFieldDataType" Collapsed="true">
+    <Position X="4" Y="20.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlPivotFieldOrientation" Collapsed="true">
+    <Position X="5.75" Y="20.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAQAACAAAAAEAAAAEAAAAAEAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlPivotFilterType" Collapsed="true">
+    <Position X="9.25" Y="20.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>SQAAgCAA4ILAaCQu1CEjoTIUDAlZIxFABAAAAQQKGhQ=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlPivotFormatType" Collapsed="true">
+    <Position X="11" Y="20.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAEAggICAIAAAQCACAAAAAAAAAAAAEIAAAAAAg=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlPivotLineType" Collapsed="true">
+    <Position X="12.75" Y="20.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAABAAAAAAAAAAAAAAAAAAAAAAAIABAAAAAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlPivotTableMissingItems" Collapsed="true">
+    <Position X="14.5" Y="20.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>wAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlPivotTableSourceType" Collapsed="true">
+    <Position X="16.25" Y="20.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAIAAAAAAAAAARAAAAAAAAAAgAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlPivotTableVersionList" Collapsed="true">
+    <Position X="18" Y="20.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAQAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlPlacement" Collapsed="true">
+    <Position X="19.75" Y="20.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAACAAAAAAACA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlPlatform" Collapsed="true">
+    <Position X="21.5" Y="20.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAACAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlPrintErrors" Collapsed="true">
+    <Position X="23.25" Y="20.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAgAAAAEAAAAAAAAAAAAACAAAAAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlPrintLocation" Collapsed="true">
+    <Position X="25" Y="20.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAABAAAAAAAgEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlPriority" Collapsed="true">
+    <Position X="26.75" Y="20.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAABAAAQAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlPropertyDisplayedIn" Collapsed="true">
+    <Position X="28.5" Y="20.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAgAAAAABAAAAAAAAAgAAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlPTSelectionMode" Collapsed="true">
+    <Position X="30.25" Y="20.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAQAAAAAhAAAAAAAAAAAAgAAAAABAAEAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlQueryType" Collapsed="true">
+    <Position X="32" Y="20.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAQAIAAAAAAIEAAAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlRangeAutoFormat" Collapsed="true">
+    <Position X="33.75" Y="20.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>siKBwAAgAgAAQAAJAMQhIBBAAAAAAOgQABAAAAAAIgg=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlRangeValueDataType" Collapsed="true">
+    <Position X="35.5" Y="20.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAAAAAAAAAAAAAAAAIAAAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlReferenceStyle" Collapsed="true">
+    <Position X="0.5" Y="21.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAgAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlReferenceType" Collapsed="true">
+    <Position X="2.25" Y="21.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAACEAAAACAAAAABAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlRemoveDocInfoType" Collapsed="true">
+    <Position X="4" Y="21.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAASAAAAAAAAwABAAGEgAAAAABAAgAIAUgAAAEAAAAE=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlRgbColor" Collapsed="true">
+    <Position X="5.75" Y="21.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>Rs22KMoCcggitebFIeVggvoJqmI1pwRfUogfXAvniQA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlRobustConnect" Collapsed="true">
+    <Position X="7.5" Y="21.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlRoutingSlipDelivery" Collapsed="true">
+    <Position X="9.25" Y="21.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAE=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlRoutingSlipStatus" Collapsed="true">
+    <Position X="11" Y="21.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlRowCol" Collapsed="true">
+    <Position X="12.75" Y="21.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlRunAutoMacro" Collapsed="true">
+    <Position X="16.25" Y="21.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAAAgAAAAAAAAIAAABAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlSaveAction" Collapsed="true">
+    <Position X="18" Y="21.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAABAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlSaveAsAccessMode" Collapsed="true">
+    <Position X="19.75" Y="21.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAQAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlSaveConflictResolution" Collapsed="true">
+    <Position X="21.5" Y="21.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAAAAAAAAgAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlScaleType" Collapsed="true">
+    <Position X="23.25" Y="21.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlSearchDirection" Collapsed="true">
+    <Position X="26.75" Y="21.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAQAAAAAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlSearchOrder" Collapsed="true">
+    <Position X="28.5" Y="21.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAg=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlSearchWithin" Collapsed="true">
+    <Position X="30.25" Y="21.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAKAAAAAAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlSheetType" Collapsed="true">
+    <Position X="32" Y="21.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAIAAIAAAAIAAgAAAAAAAAAAAAI=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlSheetVisibility" Collapsed="true">
+    <Position X="33.75" Y="21.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlSizeRepresents" Collapsed="true">
+    <Position X="37.25" Y="21.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAQA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlSmartTagControlType" Collapsed="true">
+    <Position X="0.5" Y="22.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIFAAAATAUCAAAAAAAAAAQAIBAAAAAAAAAEACAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlSmartTagDisplayMode" Collapsed="true">
+    <Position X="2.25" Y="22.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAAAAAAAAAAAAAAAAACAAAAAAEAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlSortDataOption" Collapsed="true">
+    <Position X="4" Y="22.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlSortMethod" Collapsed="true">
+    <Position X="5.75" Y="22.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlSortMethodOld" Collapsed="true">
+    <Position X="7.5" Y="22.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlSortOn" Collapsed="true">
+    <Position X="9.25" Y="22.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAAAAAAAAAAAAAAAAABAAABAAAAABAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlSortOrder" Collapsed="true">
+    <Position X="11" Y="22.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAQAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlSortOrientation" Collapsed="true">
+    <Position X="12.75" Y="22.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAACAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlSortType" Collapsed="true">
+    <Position X="14.5" Y="22.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAACAAAAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlSourceType" Collapsed="true">
+    <Position X="16.25" Y="22.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAQAAAEgAiAAAAAAAAAAAAIAAACAAAAAAAAAAAg=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlSpeakDirection" Collapsed="true">
+    <Position X="18" Y="22.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAABAAgAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlSpecialCellsValue" Collapsed="true">
+    <Position X="19.75" Y="22.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlStdColorScale" Collapsed="true">
+    <Position X="21.5" Y="22.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAIAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlSubscribeToFormat" Collapsed="true">
+    <Position X="23.25" Y="22.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlSubtototalLocationType" Collapsed="true">
+    <Position X="25" Y="22.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAAEAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlSummaryColumn" Collapsed="true">
+    <Position X="26.75" Y="22.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAACAAAAAAAAQAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlSummaryReportType" Collapsed="true">
+    <Position X="28.5" Y="22.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAEAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlSummaryRow" Collapsed="true">
+    <Position X="30.25" Y="22.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAEAAAAACAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlTableStyleElementType" Collapsed="true">
+    <Position X="32" Y="22.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAADYAAgBAQAACAAgAssEAAAIAMAEABiAAIAAQIAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlTabPosition" Collapsed="true">
+    <Position X="33.75" Y="22.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAI=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlTextParsingType" Collapsed="true">
+    <Position X="35.5" Y="22.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAQAAAAAAAAAABAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlTextQualifier" Collapsed="true">
+    <Position X="37.25" Y="22.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAQAAAAAAAAAAAAABAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlTextVisualLayoutType" Collapsed="true">
+    <Position X="0.5" Y="23" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlThemeColor" Collapsed="true">
+    <Position X="2.25" Y="23" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAKfgAAAAAAAAAAAABAAAAAAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlThemeFont" Collapsed="true">
+    <Position X="4" Y="23" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAgAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlThreadMode" Collapsed="true">
+    <Position X="5.75" Y="23" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlTickLabelOrientation" Collapsed="true">
+    <Position X="9.25" Y="23" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAAAAAAAAAAAAAIAAAAgAAQAAAEAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlTickLabelPosition" Collapsed="true">
+    <Position X="12.75" Y="23" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAEAAAAAAAAQAAAAAAAAAAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlTickMark" Collapsed="true">
+    <Position X="16.25" Y="23" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAAAAAAAABAAAAAgAAAAAAAAAAAAABA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlTimePeriods" Collapsed="true">
+    <Position X="18" Y="23" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAQAAEAAAAAAAAIQAAACAAAgEAAAAACAAACAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlTimeUnit" Collapsed="true">
+    <Position X="21.5" Y="23" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQQAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlToolbarProtection" Collapsed="true">
+    <Position X="23.25" Y="23" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAABAAAAAAAAAAAAAAABACCAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlTopBottom" Collapsed="true">
+    <Position X="25" Y="23" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAgAAAAAAEAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlTotalsCalculation" Collapsed="true">
+    <Position X="26.75" Y="23" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAghEggABAEAABAAAAAAAAAAAAAACAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlTrendlineType" Collapsed="true">
+    <Position X="28.5" Y="23" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAEAAAAAAAABAAAAQAAAAAAAAEAAAACAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlUnderlineStyle" Collapsed="true">
+    <Position X="33.75" Y="23" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAAAAAAAAAAQAAAAAAACAAAAAAAQEAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlUpdateLinks" Collapsed="true">
+    <Position X="35.5" Y="23" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AABAAAAAAAAAAAAAAIAACAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlVAlign" Collapsed="true">
+    <Position X="0.5" Y="23.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAgAAwEAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlWBATemplate" Collapsed="true">
+    <Position X="2.25" Y="23.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgQAAAAAAAAAAAAAAAAAAQAAAAAAACAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlWebFormatting" Collapsed="true">
+    <Position X="4" Y="23.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlWebSelectionType" Collapsed="true">
+    <Position X="5.75" Y="23.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAACAAAAAAEAAAAAAAAAAAAAACAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlWindowState" Collapsed="true">
+    <Position X="7.5" Y="23.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAQAEAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlWindowType" Collapsed="true">
+    <Position X="9.25" Y="23.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAACAAAAAAAAAAQAAAAIAAAAAAEAAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlWindowView" Collapsed="true">
+    <Position X="11" Y="23.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlXLMMacroType" Collapsed="true">
+    <Position X="12.75" Y="23.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAQAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlXmlExportResult" Collapsed="true">
+    <Position X="14.5" Y="23.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlXmlImportResult" Collapsed="true">
+    <Position X="16.25" Y="23.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAAAgAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlXmlLoadOption" Collapsed="true">
+    <Position X="18" Y="23.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAABAAAAAAAAAAAAAAIAABAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Excel.XlYesNoGuess" Collapsed="true">
+    <Position X="19.75" Y="23.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAgAAAAAAAAAAAAACAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>ExcelEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.BackstageGroupStyle" Collapsed="true">
+    <Position X="0.5" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAACAAAEACAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.CertificateDetail" Collapsed="true">
+    <Position X="2.25" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAACAIAAAACAAAAAAAAAAAAAABAQAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.CertificateVerificationResults" Collapsed="true">
+    <Position X="4" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAEAAACAAAQAEACAAAAAAAAAAAAAIgAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.ContentVerificationResults" Collapsed="true">
+    <Position X="7.5" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAAgAAABAAAAAIAAAAAAAAAAAgAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.DocProperties" Collapsed="true">
+    <Position X="9.25" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAAAAAAAAAAAAAAEAAAAAAABAAAAAAAABIAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.EncryptionCipherMode" Collapsed="true">
+    <Position X="11" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.EncryptionProviderDetail" Collapsed="true">
+    <Position X="12.75" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAAAAAAAAAAgAAAAAAABAAAABAAAEAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MailFormat" Collapsed="true">
+    <Position X="14.5" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAAAABAAAEA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoAlertButtonType" Collapsed="true">
+    <Position X="16.25" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAAAAAAAEAAAAIABAAAEAAAAAAAAAAQIAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoAlertCancelType" Collapsed="true">
+    <Position X="18" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAgAAEAAAAAAAAAAAAAAQCAABAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoAlertDefaultType" Collapsed="true">
+    <Position X="19.75" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAAAAAAAAAAAQARAgAAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoAlertIconType" Collapsed="true">
+    <Position X="21.5" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgABAAAAAAAAAAABAAAAAAAgAAAAAABAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoAlignCmd" Collapsed="true">
+    <Position X="23.25" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAAkAAAAAAEAAAAKAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoAnimationType" Collapsed="true">
+    <Position X="25" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAlAAKAIRAAAEIACFIIDAABAASgAKBADARCABUDAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoAppLanguageID" Collapsed="true">
+    <Position X="26.75" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgBAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAgAgAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoArrowheadLength" Collapsed="true">
+    <Position X="28.5" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAAAAAAAAAAAAAAAAAAAIAAIAAAAAAAAAAAABAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoArrowheadStyle" Collapsed="true">
+    <Position X="30.25" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAQAAAAAAAAAAAAAAAAAACBIAAAABAAAAAAAgAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoArrowheadWidth" Collapsed="true">
+    <Position X="32" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAABAAAAAACAAEAEAAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoAutomationSecurity" Collapsed="true">
+    <Position X="33.75" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAIAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoAutoShapeType" Collapsed="true">
+    <Position X="35.5" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>MolmqVqRVjnzwSlT1dlAaKjNQ/U+1ev5w22XHjIrITc=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoAutoSize" Collapsed="true">
+    <Position X="37.25" Y="8.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAABAAAAAAAAAAAAAAAAAAAAQAAAAAAAAEAAAACAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoBackgroundStyleIndex" Collapsed="true">
+    <Position X="0.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAD8BwAAAAAAAAAAAAAAIAAAAAAAEABAAAg=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoBalloonButtonType" Collapsed="true">
+    <Position X="2.25" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIBABAAIAAAEAAAFAAAACIAAAAABAAAAIEAEAAEAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoBalloonErrorType" Collapsed="true">
+    <Position X="4" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAIAAAAFAgEAEAAAAAAASAAAEAAAAAAABAEAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoBalloonType" Collapsed="true">
+    <Position X="5.75" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAAAQAAAAAAAAAAAAAAAAAAAAAACA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoBarPosition" Collapsed="true">
+    <Position X="7.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAQAAAAAAAAAIAAAAAEQAAAAAAAIAgAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoBarProtection" Collapsed="true">
+    <Position X="9.25" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAIAAgAAAAoAAAAAAAAAAAAAAIAAIAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoBarRow" Collapsed="true">
+    <Position X="11" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAgAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoBarType" Collapsed="true">
+    <Position X="12.75" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAQAAAAAAAAAAAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoBaselineAlignment" Collapsed="true">
+    <Position X="14.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAACBAIAAAAEAAAAAAAAAAAABAAAAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoBevelType" Collapsed="true">
+    <Position X="16.25" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAAAAABAAIAQAAAAAAAAAQBMAAgABAAAAQABAAQAAAg=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoBlackWhiteMode" Collapsed="true">
+    <Position X="18" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACEAAAEAAAAAAAIAAAAAwAAAQAIAAAYAAQAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoBlogCategorySupport" Collapsed="true">
+    <Position X="19.75" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAEAAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoBlogImageType" Collapsed="true">
+    <Position X="21.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAAAAAAAAAEAAAAAIAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoBulletType" Collapsed="true">
+    <Position X="23.25" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAABgAAAAAAAAAAAAAABAAgAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoButtonSetType" Collapsed="true">
+    <Position X="25" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEEAAAAIAEAEEBIAAGAAABAYQAAAAQAAAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoButtonState" Collapsed="true">
+    <Position X="26.75" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAIAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoButtonStyle" Collapsed="true">
+    <Position X="28.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAACAAgAACAAAAAAAAAAgEAAAAAAAAAgEAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoButtonStyleHidden" Collapsed="true">
+    <Position X="30.25" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoCalloutAngleType" Collapsed="true">
+    <Position X="32" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAhBAAAAAAAAQAAAEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoCalloutDropType" Collapsed="true">
+    <Position X="33.75" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAAAIAAAAAAAAQAAAAAAAAACAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoCalloutType" Collapsed="true">
+    <Position X="35.5" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAEQAACAAAAAAAIAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoCharacterSet" Collapsed="true">
+    <Position X="37.25" Y="9.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IACAAACAQBQAgAAAAABBAAAAAAAAEAAAAgAACAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoChartElementType" Collapsed="true">
+    <Position X="0.5" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BEUjU/S/81KGkIBigtaUKAxY0Bx6lxIG2FCDDAA4Q1Q=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoClipboardFormat" Collapsed="true">
+    <Position X="2.25" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAAAAAAAAAAAAAAAAAAAAIAAAIAAAAAAAAAEAgAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoColorType" Collapsed="true">
+    <Position X="4" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAEAAAIAAAAAgAAAAIABAgAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoComboStyle" Collapsed="true">
+    <Position X="5.75" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAECAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoCommandBarButtonHyperlinkType" Collapsed="true">
+    <Position X="7.5" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAAAAAAAAAAIAAAAEAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoCondition" Collapsed="true">
+    <Position X="9.25" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>lwIQAS0gYJEwUmKFgBEAQEhIQkAZIYTaIsBHCkASACA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoConnector" Collapsed="true">
+    <Position X="11" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAoAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoConnectorType" Collapsed="true">
+    <Position X="12.75" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAgAAAAAAAAAAAAAAAACAAEAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoContactCardAddressType" Collapsed="true">
+    <Position X="14.5" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAAAAAAAAAgAAAgAAAAAAAAAIAAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoContactCardStyle" Collapsed="true">
+    <Position X="16.25" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoContactCardType" Collapsed="true">
+    <Position X="18" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABAAAAEAAAAAAAAAAAAAAAAAAAABAAAAAACAAIAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoControlOLEUsage" Collapsed="true">
+    <Position X="19.75" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAABAAAAAAQAAAAAAAAAAAAAEAAgAAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoControlType" Collapsed="true">
+    <Position X="21.5" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAMCQIAIAAAMAICAAAAAAAagiAgABAAECAgASAABBRA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoCTPDockPosition" Collapsed="true">
+    <Position X="23.25" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAEAAAAgAAAAAAAAAAAAAAAAAAAAAABAAgAAAABAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoCTPDockPositionRestrict" Collapsed="true">
+    <Position X="25" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAEAAAAIAAAAAAAAQAAIAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoCustomXMLNodeType" Collapsed="true">
+    <Position X="26.75" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAAAAAAEgAAABAAAIAAAAAAAAAQAAAAAAAAAI=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoCustomXMLValidationErrorType" Collapsed="true">
+    <Position X="28.5" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAgAAAAAAEAAAAAAAAAAAAAAgAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoDateTimeFormat" Collapsed="true">
+    <Position X="30.25" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ERAAAAAAAAAAACIAAAAAAAJAAAAAAEAEACgADAAAIAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoDiagramNodeType" Collapsed="true">
+    <Position X="32" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAACAAAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoDiagramType" Collapsed="true">
+    <Position X="33.75" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgACAAAAAAAAAAIQAAAAAAAAAAAAAAAAAAAAAAAIwAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoDistributeCmd" Collapsed="true">
+    <Position X="35.5" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAEACAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoDocInspectorStatus" Collapsed="true">
+    <Position X="37.25" Y="10.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoDocProperties" Collapsed="true">
+    <Position X="0.5" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAABIAAAAAAAAAAAAAAAAAAAAACAIACAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoEditingType" Collapsed="true">
+    <Position X="2.25" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAACAAAAAAAAAAQAAACAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoEncoding" Collapsed="true">
+    <Position X="4" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>JdGSWERCoYAhbTaZiq3uBegfJ6yg0BQDoLcIEzDccSU=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoExtraInfoMethod" Collapsed="true">
+    <Position X="5.75" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAACAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoExtrusionColorType" Collapsed="true">
+    <Position X="7.5" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAAAAEAAAAAAAAAAACAAAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoFarEastLineBreakLanguageID" Collapsed="true">
+    <Position X="9.25" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAABAAAAgBAAAAAAAAAACAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoFeatureInstall" Collapsed="true">
+    <Position X="11" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAACAAAAAAAAACAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoFileDialogType" Collapsed="true">
+    <Position X="12.75" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAAAAAgAAABAAAAAAAQAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoFileDialogView" Collapsed="true">
+    <Position X="14.5" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAAAEAAAAAAgIEAABAAAAAAFAAABAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoFileFindListBy" Collapsed="true">
+    <Position X="16.25" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACCAAAAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoFileFindOptions" Collapsed="true">
+    <Position X="18" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAgAAAACAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoFileFindSortBy" Collapsed="true">
+    <Position X="19.75" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAAECAAEAAgAAAAAAAAAAIAAAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoFileFindView" Collapsed="true">
+    <Position X="21.5" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAQAAAAAAIAACAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoFileNewAction" Collapsed="true">
+    <Position X="23.25" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAABAAAAAAAAAAAAAAAAABAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoFileNewSection" Collapsed="true">
+    <Position X="25" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAECAAAAAAAAAAAAAQAgAAAAAAAAAAAAAEAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoFileType" Collapsed="true">
+    <Position X="26.75" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAIIggAAAAABAQCAAAAAClgAA4CAACgAAAIAICAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoFileValidationMode" Collapsed="true">
+    <Position X="28.5" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoFillType" Collapsed="true">
+    <Position X="30.25" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAIAAAAACAAAAAQAAAQAAAAACAAIEAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoFilterComparison" Collapsed="true">
+    <Position X="32" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IUAAAAAAAQAAAAgAAARAAAAAAgAAAAAAAAAIAAIAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoFilterConjunction" Collapsed="true">
+    <Position X="33.75" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoFlipCmd" Collapsed="true">
+    <Position X="35.5" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoFontLanguageIndex" Collapsed="true">
+    <Position X="37.25" Y="11" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAAAAAAAAAAAAAAACAAAAAAAIAAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoGradientColorType" Collapsed="true">
+    <Position X="0.5" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAARABAAAAAAAAAAAACAAAAAAAAAAAAAAAAAAAAABA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoGradientStyle" Collapsed="true">
+    <Position X="2.25" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AGAAAAAAAAQAIAAAAAAAAAQAAAAAgAAAAAAAIAAAABA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoHorizontalAnchor" Collapsed="true">
+    <Position X="4" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAAEAAAAAAAAAAAAAAAQA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoHTMLProjectOpen" Collapsed="true">
+    <Position X="5.75" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoHTMLProjectState" Collapsed="true">
+    <Position X="7.5" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAABAAAAAAAAAAABCAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoHyperlinkType" Collapsed="true">
+    <Position X="9.25" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAAAAACAQAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoIconType" Collapsed="true">
+    <Position X="11" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAABAACAAkAAAAAAAAQAACAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoIodGroup" Collapsed="true">
+    <Position X="12.75" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAAAAAAAAAAAAAAAAACAEAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoLanguageID" Collapsed="true">
+    <Position X="14.5" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>XMsbITEceMa7m9rvdo2V/qgNRX35Xl+b7oZBJPlubO0=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoLanguageIDHidden" Collapsed="true">
+    <Position X="16.25" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAQAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoLastModified" Collapsed="true">
+    <Position X="18" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAgEAAAAAAAAAAAAADggAAAAAAgAAAAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoLightRigType" Collapsed="true">
+    <Position X="19.75" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ABEAEEAAAAAQBgQIeAAAAAICAAAAAAAQCCAIAAgEBOA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoLineDashStyle" Collapsed="true">
+    <Position X="21.5" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AEAAgAAABAAAABAAAQAACAAAAAAAwAAAQIAAAADAAgA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoLineStyle" Collapsed="true">
+    <Position X="23.25" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAgAAAEAAAAAAAAAAAABAAAgAAAAQAAAAAAIAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoMenuAnimation" Collapsed="true">
+    <Position X="25" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAAAAAAAAAAAgAAAAAAAQAEAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoMetaPropertyType" Collapsed="true">
+    <Position X="26.75" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAGAAAAAAYgEEEAgAIAABCAAEQgBFACAAgAAEAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoMixedType" Collapsed="true">
+    <Position X="28.5" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAEAAAAAAAAAAAAACAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoModeType" Collapsed="true">
+    <Position X="30.25" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAIAAAAAAAACAAIAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoMoveRow" Collapsed="true">
+    <Position X="32" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAAAAAAAAAAAEAAAAAgAAABAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoNumberedBulletStyle" Collapsed="true">
+    <Position X="33.75" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAFAgEAEAAQYIEOACEQAAAgAAAAIMDggARKABgQCAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoOLEMenuGroup" Collapsed="true">
+    <Position X="35.5" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAQAAAAAEIgEAAAAAAAAQAAAAAAAAAAIAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoOrgChartLayoutType" Collapsed="true">
+    <Position X="37.25" Y="11.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAAAAAAAAAAAAABAmAAAAAAAAABAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoOrgChartOrientation" Collapsed="true">
+    <Position X="0.5" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoOrientation" Collapsed="true">
+    <Position X="2.25" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAgAAAACAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoParagraphAlignment" Collapsed="true">
+    <Position X="4" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAACAEAAAAAAQAAAEAAAIAAAAQAAAAAAAAQAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoPathFormat" Collapsed="true">
+    <Position X="5.75" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgBAAAAAAAAAAAAAAAAAAAAAAAgAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoPatternType" Collapsed="true">
+    <Position X="7.5" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BgLQAQAQ4CEAQCAHCACAINgQQQCQIMJBoJAAMNGIhAw=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoPermission" Collapsed="true">
+    <Position X="9.25" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAgQAAEAEpAAAAAACAAAAAAAAAAAAAAAAAAAAgAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoPickerField" Collapsed="true">
+    <Position X="11" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAgAAAAAQAAAAIgAAAAAAAAAAAIAAACAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoPictureColorType" Collapsed="true">
+    <Position X="12.75" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAAAgAAAAAAAACAAAAAAAAQAAAAAAAAAgAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoPictureEffectType" Collapsed="true">
+    <Position X="14.5" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>hgAAAEAIEAQgAAACAAAgBACABgggAQBAAQACIAIAiRA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoPresetCamera" Collapsed="true">
+    <Position X="16.25" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>KdAgDAgBVCFBQAFBgQqkgSAIQBqAIAggEGEtGAQIsAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoPresetExtrusionDirection" Collapsed="true">
+    <Position X="18" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAECAAIAEAEAAAAAAAAAAAAAAAAABAAgAAABA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoPresetGradientType" Collapsed="true">
+    <Position X="19.75" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQAAAiAAJAQAAAiAAiQQBABGAAgAUIAAAAQAAEAQAQ=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoPresetLightingDirection" Collapsed="true">
+    <Position X="21.5" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAIAAABIAAAAAAAAAAAAIBBAAAgAAAAEAAgAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoPresetLightingSoftness" Collapsed="true">
+    <Position X="23.25" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAAAAAAAAAABAAAAAAAgAAAAACAAAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoPresetMaterial" Collapsed="true">
+    <Position X="25" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IBgACIIAAAAAAABIAAABACEAAQAABAAAgCAAAAAgAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoPresetTextEffect" Collapsed="true">
+    <Position X="26.75" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAAEAAAAAAAAAAAAIBKBAAAAEAgAgAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoPresetTextEffectShape" Collapsed="true">
+    <Position X="28.5" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AoiCGAAAAEQkAVAEBBCAYRAAwASAQAAIgAgAAgAHIAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoPresetTexture" Collapsed="true">
+    <Position X="30.25" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>KgABAQAACAQAAFhCQIBIAAMEMAAEAAAAAAAAAAABCAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoPresetThreeDFormat" Collapsed="true">
+    <Position X="32" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAABACoQAAAAAAEAAAAABACAQAAAAAAAAEAAD8AkM=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoReflectionType" Collapsed="true">
+    <Position X="33.75" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAgAAAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoRelativeNodePosition" Collapsed="true">
+    <Position X="35.5" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAEAAAAAAAAABAAAAAAAACAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoScaleFrom" Collapsed="true">
+    <Position X="37.25" Y="12.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAEAAAAAAAAAAgAAAAAAAAAAAAAAAQAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoScreenSize" Collapsed="true">
+    <Position X="0.5" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AgAAAACIAAAICEAAAAAAIAAAAAAAAAAAACAAAAgIAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoScriptLanguage" Collapsed="true">
+    <Position X="2.25" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAAACAAAAAAAAAAAAAAAAAABAAEAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoScriptLocation" Collapsed="true">
+    <Position X="4" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAIAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoSearchIn" Collapsed="true">
+    <Position X="5.75" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAAAABAAAAAAAAABAAAAAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoSegmentType" Collapsed="true">
+    <Position X="7.5" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoShadowStyle" Collapsed="true">
+    <Position X="9.25" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAgAAAAAgAAAAAAAAAABAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoShadowType" Collapsed="true">
+    <Position X="11" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AHgAAACPczwAAADAARwPIAAAAA4AAAD4DwAAAAAAAA4=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoShapeStyleIndex" Collapsed="true">
+    <Position X="12.75" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gIUAACAQAQIAAAAoBIkAAAAQGAAABGC4BwAQAgAAACA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoShapeType" Collapsed="true">
+    <Position X="14.5" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BQAISAAAAAoACCACBBAgEAAAMCCABQAgAIAAAIAAQBQ=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoSharedWorkspaceTaskPriority" Collapsed="true">
+    <Position X="16.25" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEAABAAAAAAAAAAAAAAAAQAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoSharedWorkspaceTaskStatus" Collapsed="true">
+    <Position X="18" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAQgEABAAAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoSignatureSubset" Collapsed="true">
+    <Position X="19.75" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAhAAAAAAAAAIAAAAAAAAAAAAAAAAAIABCAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoSmartArtNodePosition" Collapsed="true">
+    <Position X="21.5" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAAAAAAAQAABAgAAAAACAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoSmartArtNodeType" Collapsed="true">
+    <Position X="23.25" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoSoftEdgeType" Collapsed="true">
+    <Position X="25" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAABAAAAAAAgAAAA0AsAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoSortBy" Collapsed="true">
+    <Position X="26.75" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAEEAAAAAAAAAAAAAAAAAAgAAAAAAAAIAIA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoSortOrder" Collapsed="true">
+    <Position X="28.5" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAEAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoSyncAvailableType" Collapsed="true">
+    <Position X="30.25" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAQAAAAQAAAAAAAAAAAAAAAAAAAAIAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoSyncCompareType" Collapsed="true">
+    <Position X="32" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoSyncConflictResolutionType" Collapsed="true">
+    <Position X="33.75" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAEAAAAAAAAAAAAAAAAAAAAAABAAAAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoSyncErrorType" Collapsed="true">
+    <Position X="35.5" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAgAAAgIAAAIEAAAAAAJAAgAAAAQAAABqAEAAAoQAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoSyncEventType" Collapsed="true">
+    <Position X="37.25" Y="13.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAEAAABAAAAAAAACAAAAAAAAAACAAAAAAEAAAIAAEA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoSyncStatusType" Collapsed="true">
+    <Position X="0.5" Y="14" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AIAIAAAAAEAAAAAARQAAAgAAAAAAAAAAAACAAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoSyncVersionType" Collapsed="true">
+    <Position X="2.25" Y="14" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoTabStopType" Collapsed="true">
+    <Position X="4" Y="14" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAIQAAAIAAAAAAQgAAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoTargetBrowser" Collapsed="true">
+    <Position X="5.75" Y="14" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoTextCaps" Collapsed="true">
+    <Position X="7.5" Y="14" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAABAAAAABAAAAAAAAAAAAACIAAAAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoTextChangeCase" Collapsed="true">
+    <Position X="9.25" Y="14" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAAAAAAAAAAAACAAAAAAAgAAAAASAAAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoTextCharWrap" Collapsed="true">
+    <Position X="11" Y="14" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAAAAAAAAAAAAAABAAAAAgAAAAAAAAAAAQAACA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoTextDirection" Collapsed="true">
+    <Position X="12.75" Y="14" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAACAAAAAAAAAAAAEAAAgAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoTextEffectAlignment" Collapsed="true">
+    <Position X="14.5" Y="14" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAQgABAAAABQAAAEABAAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoTextFontAlign" Collapsed="true">
+    <Position X="16.25" Y="14" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAAAAAAIIAAAAAAAAAAAAABAAAAAgAAAAAAIAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoTextOrientation" Collapsed="true">
+    <Position X="18" Y="14" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAQIAAAAAAAAAAYAAAAAAAAAAAAAAAAAACAEAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoTextStrike" Collapsed="true">
+    <Position X="19.75" Y="14" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAAAAAAAAEAAAAAAAEAACAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoTextTabAlign" Collapsed="true">
+    <Position X="21.5" Y="14" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAACAAAAAAABAIAAAAAAAAAAAAQAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoTextUnderlineType" Collapsed="true">
+    <Position X="23.25" Y="14" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>RAAAAECAAkAAEAAAAAAAABAgAAAAACAAACESAEKAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoTextureAlignment" Collapsed="true">
+    <Position X="25" Y="14" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IAAAABIAAAQAAAAEAAAAAAAAAAAAAAAAAAAAAAAGCEQ=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoTextureType" Collapsed="true">
+    <Position X="26.75" Y="14" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAACAAAAAAAAAAAAAAAAAAAAAAACAAAAAAAAAACAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoThemeColorIndex" Collapsed="true">
+    <Position X="28.5" Y="14" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>IBAAAACEABgAAAADAQAAAEAAAAIAAABQQAAAAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoThemeColorSchemeIndex" Collapsed="true">
+    <Position X="30.25" Y="14" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAAQAAAQAAAAAGAAAAAAAAAAAAAAQAAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoTriState" Collapsed="true">
+    <Position X="32" Y="14" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAgAAAAAAAAAAAAAACCAAAAAAAAAAACAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoVerticalAnchor" Collapsed="true">
+    <Position X="33.75" Y="14" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAAAAAAAAAAAgQAUAAAAAAABAAAAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoWarpFormat" Collapsed="true">
+    <Position X="35.5" Y="14" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQCAAAAAAAAAIAAAAAAAEAAAAAgEAgAAgAQAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoWizardActType" Collapsed="true">
+    <Position X="37.25" Y="14" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAARAQAAAAAAAAAAAAAAAAAE=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoWizardMsgType" Collapsed="true">
+    <Position X="0.5" Y="14.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAgAAAAAEAwEAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.MsoZOrderCmd" Collapsed="true">
+    <Position X="2.25" Y="14.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAoAAAAAAAAACAAAECEAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.RibbonControlSize" Collapsed="true">
+    <Position X="4" Y="14.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.SignatureDetail" Collapsed="true">
+    <Position X="5.75" Y="14.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAAsBAJEAAAABQgAEAAIAIRAAAAAAAABABAAASQ=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.SignatureLineImage" Collapsed="true">
+    <Position X="7.5" Y="14.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AACAAAAAAACABAAAAAAAAAAABAAAAAAAAAABAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.SignatureProviderDetail" Collapsed="true">
+    <Position X="9.25" Y="14.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAABAAAAAAAAAAAAAAAQAAAAAABgAAAAAAAACAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.SignatureType" Collapsed="true">
+    <Position X="11" Y="14.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAIAoAAAACAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.XlAxisCrosses" Collapsed="true">
+    <Position X="32" Y="14.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAACAAAEAAAAg=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.XlAxisGroup" Collapsed="true">
+    <Position X="35.5" Y="14.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAE=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.XlAxisType" Collapsed="true">
+    <Position X="2.25" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAEAAAAAAAAAAAEEAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.XlBarShape" Collapsed="true">
+    <Position X="5.75" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAGIACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.XlBorderWeight" Collapsed="true">
+    <Position X="11" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAABAAAAAQAAAIAAAIAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.XlCategoryType" Collapsed="true">
+    <Position X="26.75" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAIAAAAAAQAAAAAAAAAAAAAAAAAQAAAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.XlChartElementPosition" Collapsed="true">
+    <Position X="33.75" Y="15.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAABAAAAIAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.XlChartItem" Collapsed="true">
+    <Position X="0.5" Y="16.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>QAEAAAJAgECQAGAAAgEACSQAIAACQAApAEARKIAAgAI=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.XlChartOrientation" Collapsed="true">
+    <Position X="4" Y="16.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAAAAAGAAAAAAAAAAAAAAAAAAAIAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.XlChartPictureType" Collapsed="true">
+    <Position X="7.5" Y="16.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAACAAAAAQAAAAEAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.XlChartSplitType" Collapsed="true">
+    <Position X="11" Y="16.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAIAAAAAAAAAgAAAAAAAAAAAAAAAAgAAAAAAAEAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.XlChartType" Collapsed="true">
+    <Position X="14.5" Y="16.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>iyABAHQTQCeFABCEAY1KAQCDQMAJErkwkABBYJAFRIk=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.XlColorIndex" Collapsed="true">
+    <Position X="25" Y="16.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.XlConstants" Collapsed="true">
+    <Position X="37.25" Y="16.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIBACUSCG4CABCCIEN5wDkhSQg2E4ExAhAAsEBACQ=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.XlDataLabelPosition" Collapsed="true">
+    <Position X="18" Y="17" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAQQAAAAAAAAAGAAAAAAAEAAAAABAQAAAAEACAAIAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.XlDataLabelsType" Collapsed="true">
+    <Position X="21.5" Y="17" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAEAAAAEAAAAAAAAAAABAAAAQAAAABA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.XlDisplayBlanksAs" Collapsed="true">
+    <Position X="32" Y="17" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAIAAAAAAAAABAAAAAAAAAAAAAAAAAAAAACA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.XlDisplayUnit" Collapsed="true">
+    <Position X="0.5" Y="17.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAGAAAAAAIAEACQAAAAAAAAAAIIAACAAAAIAAAQ=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.XlEndStyleCap" Collapsed="true">
+    <Position X="18" Y="17.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAABAAAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.XlErrorBarDirection" Collapsed="true">
+    <Position X="21.5" Y="17.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAACAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.XlErrorBarInclude" Collapsed="true">
+    <Position X="25" Y="17.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAACAAABAAAAAAIAAAAAAAAAAAAAAAAAAAAAAEAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.XlErrorBarType" Collapsed="true">
+    <Position X="28.5" Y="17.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>ACAAAAAAAAAAAAAAiAAAAAAAAAAAAAAAAAAAAAgAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.XlHAlign" Collapsed="true">
+    <Position X="21.5" Y="18.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAAAIAAAAAgAAQEAAAAAEAAAAAABAAgAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.XlLegendPosition" Collapsed="true">
+    <Position X="4" Y="19.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AQAAAAAACAAAAAABAAAQAAAAAAAAAAAAAABAAIAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.XlMarkerStyle" Collapsed="true">
+    <Position X="32" Y="19.25" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>gIAAAAAABAAAAAAAAAAAAAEAAAAAAAkABAAAQAABARA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.XlPieSliceIndex" Collapsed="true">
+    <Position X="33.75" Y="20" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAABAAAAAgAAAgAAAAIBAEABAAAACCAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.XlPieSliceLocation" Collapsed="true">
+    <Position X="35.5" Y="20" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAIAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.XlPivotFieldOrientation" Collapsed="true">
+    <Position X="7.5" Y="20.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAQAACAAAAAEAAAAEAAAAAEAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.XlReadingOrder" Collapsed="true">
+    <Position X="37.25" Y="20.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAAAAAABAAAAAAABAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.XlRowCol" Collapsed="true">
+    <Position X="14.5" Y="21.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAABAAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.XlScaleType" Collapsed="true">
+    <Position X="25" Y="21.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAABAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.XlSizeRepresents" Collapsed="true">
+    <Position X="35.5" Y="21.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAAAAAQA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.XlTickLabelOrientation" Collapsed="true">
+    <Position X="7.5" Y="23" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAQAAAAAAAAAAAAAIAAAAgAAQAAAEAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.XlTickLabelPosition" Collapsed="true">
+    <Position X="11" Y="23" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAIAEAAAAAAAAQAAAAAAAAAAAAAAAAAQAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.XlTickMark" Collapsed="true">
+    <Position X="14.5" Y="23" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAABAAAAAAAAAAABAAAAAgAAAAAAAAAAAAABA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.XlTimeUnit" Collapsed="true">
+    <Position X="19.75" Y="23" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQQAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.XlTrendlineType" Collapsed="true">
+    <Position X="30.25" Y="23" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>CAAAAAAAAEAAAAAAAABAAAAQAAAAAAAAEAAAACAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.XlUnderlineStyle" Collapsed="true">
+    <Position X="32" Y="23" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAIAAAAAAAAAAAAQAAAAAAACAAAAAAAQEAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="ReflectOffice.Core.XlVAlign" Collapsed="true">
+    <Position X="37.25" Y="23" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAgAAwEAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>OfficeEnum.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Microsoft YaHei" Size="9" />
+</ClassDiagram>

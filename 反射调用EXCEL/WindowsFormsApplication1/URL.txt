@@ -1,0 +1,12 @@
+﻿http://blog.csdn.net/hbxtlhx/archive/2007/07/13/1688386.aspx
+http://topic.csdn.net/u/20080822/14/ac85d6f5-7f28-42cd-b2d1-9b92f40e16ef.html
+
+关于SaveAs方法有个问题：
+我调用Com时的SaveAs方法，保存成3003格式，方法如下：
+_xlsBook.SaveAs(_strFileName, XlFileFormat.xlExcel9795);
+其中的“XlFileFormat”为Microsoft.Office.Interop.Excel中的枚举。
+那我在反射调用SaveAs时始终无法正确反射出此枚举：
+_objaParameters = new Object[] { _strFileName, XlFileFormat.xlExcel9795 };
+_objWorkbook.GetType().InvokeMember("SaveAs", BindingFlags.InvokeMethod, null, _objWorkbook, _objaParameters);
+
+请问贴住是否知道如何反射出这个枚举？

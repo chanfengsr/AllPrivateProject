@@ -1,0 +1,20 @@
+DECLARE @strFile           nvarchar(200)
+DECLARE @strSQLCmd         nvarchar(1000)
+SET @strFile = '\\solomontest\d$\SQL_Data\Data_' + convert(varchar(10),getdate(),112) + '.bak'
+
+
+SET @strSQLCmd = 'net use \\solomontest\d$\SQL_Data hfs /user:solomontest\Administrator '
+EXEC master..xp_cmdshell @strSQLCmd
+
+RESTORE DATABASE [HR_JC] FROM  DISK = @strFile WITH  FILE = 1,  MOVE N'JC_dat' TO N'G:\Temp\HR_JC.MDF',  MOVE N'JC_log' TO N'G:\Temp\HR_JC.LDF',  NOUNLOAD,  REPLACE,  STATS = 10
+ALTER DATABASE [HR_JC] MODIFY FILE (NAME=N'JC_dat', NEWNAME=N'HR_JC')
+ALTER DATABASE [HR_JC] MODIFY FILE (NAME=N'JC_log', NEWNAME=N'HR_JC_log')
+
+SET @strSQLCmd = 'del ' + @strFile
+EXEC master..xp_cmdshell @strSQLCmd
+
+SET @strSQLCmd = 'net use \\solomontest\d$\SQL_Data /delete /y '
+EXEC master..xp_cmdshell @strSQLCmd
+
+
+--password

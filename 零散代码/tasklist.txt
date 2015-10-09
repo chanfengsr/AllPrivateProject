@@ -1,0 +1,2 @@
+TASKLIST /s uftest /u administrator /p aoc
+TASKKILL /s uftest /u administrator /p aoc /FI "IMAGENAME eq explorer*"

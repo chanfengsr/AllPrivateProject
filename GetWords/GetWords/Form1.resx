@@ -1,0 +1,832 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="textBox1.Text" xml:space="preserve">
+    <value>
+
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;
+&lt;html xmlns="http://www.w3.org/1999/xhtml"&gt;
+&lt;head&gt;
+&lt;title&gt;诡域尸咒最新章节_馨月丶君曦/著_紫幽阁&lt;/title&gt;
+&lt;meta http-equiv="Content-Type" content="text/html; charset=gbk" /&gt;
+&lt;meta name="keywords" content="诡域尸咒最新章节，诡域尸咒全文阅读，馨月丶君曦最新作品，" /&gt;
+&lt;meta name="Description" content="欢迎来紫幽阁阅读诡域尸咒，诡域尸咒为馨月丶君曦最新力作，紫幽阁整理提供诡域尸咒在线阅读与下载，紫幽阁，界面简洁，更新及时，欢迎阅读。" /&gt;
+&lt;link rel="stylesheet" type="text/css" href="http://t.ziyouge.com/css/chapterstyle.css" media="screen" /&gt;
+&lt;script type="text/javascript" src="http://t.ziyouge.com/js/jquery.min.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="http://t.ziyouge.com/js/jquery.tipsy.js" &gt;&lt;/script&gt;
+&lt;script type="text/javascript"&gt;
+$(document).ready(function() {
+	CKshow("5965","0");
+});
+&lt;/script&gt;
+&lt;/head&gt;
+&lt;body&gt;
+    &lt;!--头部Start--&gt;
+&lt;script type="text/javascript"&gt;header(5965,5);&lt;/script&gt;
+    &lt;div class="content_to"&gt;
+        &lt;div class="wrap"&gt;
+			&lt;div class="toad" id="toadsend"&gt;&lt;script type="text/javascript"&gt;htmldataad();&lt;/script&gt;&lt;/div&gt;
+			&lt;div class="crumbs"&gt;
+				&lt;a href="http://www.ziyouge.com" class="f-green"&gt;紫幽阁&lt;/a&gt; &amp;gt; 诡域尸咒&lt;script type="text/javascript"&gt;htmlhint();&lt;/script&gt;
+			&lt;/div&gt;
+            &lt;div class="pannel-1"&gt;
+                &lt;div class="title"&gt;                   
+                    &lt;h1&gt;诡域尸咒&lt;/h1&gt;
+                    &lt;span class="f-gray"&gt;文/&lt;a href="http://www.ziyouge.com/modules/article/authorarticle.php?author=馨月丶君曦" class="f-gray" target="_blank"&gt;馨月丶君曦&lt;/a&gt;&lt;/span&gt;
+                &lt;/div&gt;
+		&lt;script type="text/javascript"&gt;bdsh1('div-share');&lt;/script&gt;
+				&lt;p class="p-share"&gt;
+                &lt;/p&gt;
+                &lt;ul class="chapter-list"&gt;
+                  
+                     
+                         &lt;li class="volume"&gt;
+                             &lt;i class="icon icon-8"&gt;&lt;/i&gt;
+	                            &lt;b&gt;人皮血衣&lt;/b&gt;
+			                    &lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1645860.html" title="第一章 算计" class="f-green"&gt;第一章 算计&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1645861.html" title="第二章 人皮灯笼" class="f-green"&gt;第二章 人皮灯笼&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1645862.html" title="第三章 重见天日" class="f-green"&gt;第三章 重见天日&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1645863.html" title="第四章 幻境or现实" class="f-green"&gt;第四章 幻境or现实&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1645864.html" title="第五章 秦淮" class="f-green"&gt;第五章 秦淮&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1645865.html" title="第六章 隐调局和古五国" class="f-green"&gt;第六章 隐调局和古五国&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1645866.html" title="第七章 灵媒之祸" class="f-green"&gt;第七章 灵媒之祸&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1645867.html" title="第八章 黑色手印" class="f-green"&gt;第八章 黑色手印&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1645868.html" title="第九章 青铜锁鬼阵" class="f-green"&gt;第九章 青铜锁鬼阵&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1645869.html" title="第十章 入我灵门" class="f-green"&gt;第十章 入我灵门&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1645870.html" title="第十一章 诡异火灾" class="f-green"&gt;第十一章 诡异火灾&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1645871.html" title="第十二章 第三场火灾" class="f-green"&gt;第十二章 第三场火灾&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1645872.html" title="第十三章 玄机所在" class="f-green"&gt;第十三章 玄机所在&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1645873.html" title="第十四章 百鬼之子" class="f-green"&gt;第十四章 百鬼之子&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1645874.html" title="第十五章 七人之谜" class="f-green"&gt;第十五章 七人之谜&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1645875.html" title="第十六章 灵煞的诡计" class="f-green"&gt;第十六章 灵煞的诡计&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1645876.html" title="第十七章 拜求巫医世家" class="f-green"&gt;第十七章 拜求巫医世家&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1645877.html" title="第十八章 夜盗仙草" class="f-green"&gt;第十八章 夜盗仙草&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1645878.html" title="第十九章 黑龙煞" class="f-green"&gt;第十九章 黑龙煞&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1645879.html" title="第二十章 死亡现场" class="f-green"&gt;第二十章 死亡现场&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1645880.html" title="第二十一章 诱饵计划" class="f-green"&gt;第二十一章 诱饵计划&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1645881.html" title="第二十二章 食人藤" class="f-green"&gt;第二十二章 食人藤&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1645882.html" title="第二十三章 变异之力" class="f-green"&gt;第二十三章 变异之力&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1645883.html" title="第二十四章 失踪谜案" class="f-green"&gt;第二十四章 失踪谜案&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1645884.html" title="第二十五章 摄魂之乐（上）" class="f-green"&gt;第二十五章 摄魂之乐（上）&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1645885.html" title="第二十六章 摄魂之乐（下）" class="f-green"&gt;第二十六章 摄魂之乐（下）&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1645886.html" title="第二十七章 地宫惊魂" class="f-green"&gt;第二十七章 地宫惊魂&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1645887.html" title="第二十八章 红禅逆袭" class="f-green"&gt;第二十八章 红禅逆袭&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1645888.html" title="第二十九章 凶物为何？" class="f-green"&gt;第二十九章 凶物为何？&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1645889.html" title="第三十章 自食恶果" class="f-green"&gt;第三十章 自食恶果&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1645890.html" title="第三十一章 猫祸" class="f-green"&gt;第三十一章 猫祸&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1645891.html" title="第三十二章 蚂蝗鬼" class="f-green"&gt;第三十二章 蚂蝗鬼&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1645892.html" title="第三十三章 白老妇 为明羽的玉佩更" class="f-green"&gt;第三十三章 白老妇 为明羽的玉佩更&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1645893.html" title="第三十四章 天机残卷" class="f-green"&gt;第三十四章 天机残卷&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1645894.html" title="第三十五章 匪夷所思" class="f-green"&gt;第三十五章 匪夷所思&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1645895.html" title="第三十六章 局中有局" class="f-green"&gt;第三十六章 局中有局&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1645896.html" title="第三十七章 死循环" class="f-green"&gt;第三十七章 死循环&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1645897.html" title="第三十八章 第六个人" class="f-green"&gt;第三十八章 第六个人&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1647975.html" title="第三十九章 看不到的绳子" class="f-green"&gt;第三十九章 看不到的绳子&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1647976.html" title="第四十章 空棺" class="f-green"&gt;第四十章 空棺&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1649683.html" title="第四十一章 浮棺葬" class="f-green"&gt;第四十一章 浮棺葬&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1649684.html" title="第四十二章 真正的第六个人？" class="f-green"&gt;第四十二章 真正的第六个人？&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1651357.html" title="第四十三章 未知" class="f-green"&gt;第四十三章 未知&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1651358.html" title="第四十四章 雷霆诡案" class="f-green"&gt;第四十四章 雷霆诡案&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1653467.html" title="第四十五章 神秘“游”字" class="f-green"&gt;第四十五章 神秘“游”字&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1653468.html" title="第四十六章 大师的诅咒" class="f-green"&gt;第四十六章 大师的诅咒&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1655175.html" title="第四十七章 线虫蛊" class="f-green"&gt;第四十七章 线虫蛊&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1655176.html" title="第四十八章 鬼屋（一）" class="f-green"&gt;第四十八章 鬼屋（一）&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1657941.html" title="第四十九章 鬼屋（二）" class="f-green"&gt;第四十九章 鬼屋（二）&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1657942.html" title="第五十章 笑之谜案（一）" class="f-green"&gt;第五十章 笑之谜案（一）&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1660405.html" title="第五十一章 笑之谜案（二）" class="f-green"&gt;第五十一章 笑之谜案（二）&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1660406.html" title="第五十二章 笑之谜案（三）" class="f-green"&gt;第五十二章 笑之谜案（三）&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1661955.html" title="第五十三章 鬼障房" class="f-green"&gt;第五十三章 鬼障房&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1662435.html" title="第五十四章 龙头戒" class="f-green"&gt;第五十四章 龙头戒&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1664251.html" title="第五十五章 人头锁" class="f-green"&gt;第五十五章 人头锁&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1664252.html" title="第五十六章 一波未平" class="f-green"&gt;第五十六章 一波未平&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1665846.html" title="第五十七章 一场赌局" class="f-green"&gt;第五十七章 一场赌局&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1666476.html" title="第五十八章 意外的死因" class="f-green"&gt;第五十八章 意外的死因&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1666477.html" title="第五十九章 诡异表声" class="f-green"&gt;第五十九章 诡异表声&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1667508.html" title="第六十章 中邪之物" class="f-green"&gt;第六十章 中邪之物&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1668653.html" title="第六十一章 第四起命案" class="f-green"&gt;第六十一章 第四起命案&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1669826.html" title="第六十二章 一语成谶" class="f-green"&gt;第六十二章 一语成谶&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1670614.html" title="第六十三章 罪魁祸首不是他？" class="f-green"&gt;第六十三章 罪魁祸首不是他？&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1672555.html" title="第六十四章 死亡笔记" class="f-green"&gt;第六十四章 死亡笔记&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1672556.html" title="第六十五章 我的笔迹？" class="f-green"&gt;第六十五章 我的笔迹？&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1672557.html" title="第六十五章 揭开谜底（一）" class="f-green"&gt;第六十五章 揭开谜底（一）&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1672558.html" title="第六十六章 揭开谜底（二）" class="f-green"&gt;第六十六章 揭开谜底（二）&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1672559.html" title="第六十七章 揭开谜底（三）" class="f-green"&gt;第六十七章 揭开谜底（三）&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1672560.html" title="第六十八章 揭开谜题（四）" class="f-green"&gt;第六十八章 揭开谜题（四）&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1672561.html" title="第六十九章 揭开谜底（五）" class="f-green"&gt;第六十九章 揭开谜底（五）&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1672562.html" title="第七十章 揭开谜底（六）" class="f-green"&gt;第七十章 揭开谜底（六）&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1673379.html" title="第七十一章 父亲的下落" class="f-green"&gt;第七十一章 父亲的下落&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1673696.html" title="第七十二章 消失的金河镇" class="f-green"&gt;第七十二章 消失的金河镇&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1673900.html" title="第七十三章 心神降临" class="f-green"&gt;第七十三章 心神降临&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1674071.html" title="第七十四章 奇怪的建筑" class="f-green"&gt;第七十四章 奇怪的建筑&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1674072.html" title="第七十五章 控尸术" class="f-green"&gt;第七十五章 控尸术&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1675751.html" title="第七十六章 我们是祭品" class="f-green"&gt;第七十六章 我们是祭品&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1675889.html" title="第七十七章 黑影的身份" class="f-green"&gt;第七十七章 黑影的身份&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1676169.html" title="第七十八章 关键之处" class="f-green"&gt;第七十八章 关键之处&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1676422.html" title="第七十九章 心神巢穴" class="f-green"&gt;第七十九章 心神巢穴&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1676573.html" title="第八十章 震惊" class="f-green"&gt;第八十章 震惊&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1691661.html" title="第八十一章 管了一次闲事" class="f-green"&gt;第八十一章 管了一次闲事&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1691662.html" title="第八十二章 惊悚的寻人启事" class="f-green"&gt;第八十二章 惊悚的寻人启事&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1691663.html" title="第八十三章 消失之谜" class="f-green"&gt;第八十三章 消失之谜&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1691664.html" title="第八十四章 目的何在" class="f-green"&gt;第八十四章 目的何在&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1691737.html" title="第八十五章 又见脚印" class="f-green"&gt;第八十五章 又见脚印&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1692405.html" title="第八十六章 紫呓虫" class="f-green"&gt;第八十六章 紫呓虫&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1692687.html" title="第八十七章 怪诞的行为" class="f-green"&gt;第八十七章 怪诞的行为&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1692728.html" title="第八十八章 走阴人" class="f-green"&gt;第八十八章 走阴人&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1694518.html" title="第八十九章 遗漏的重点" class="f-green"&gt;第八十九章 遗漏的重点&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1695184.html" title="第九十章 鬼电话" class="f-green"&gt;第九十章 鬼电话&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1695711.html" title="第九十一章 金戒指" class="f-green"&gt;第九十一章 金戒指&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1696006.html" title="第九十二章 真相大白" class="f-green"&gt;第九十二章 真相大白&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1697708.html" title="第九十三章 八仙盛会" class="f-green"&gt;第九十三章 八仙盛会&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1697965.html" title="第九十四章 供香探鬼" class="f-green"&gt;第九十四章 供香探鬼&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1698195.html" title="第九十五章 还愿灯仪式" class="f-green"&gt;第九十五章 还愿灯仪式&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1698982.html" title="第九十六章 席间" class="f-green"&gt;第九十六章 席间&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1699501.html" title="第九十七章 恩怨" class="f-green"&gt;第九十七章 恩怨&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1699589.html" title="第九十八章 大开眼界" class="f-green"&gt;第九十八章 大开眼界&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1699789.html" title="第九十九章 拍卖会突发事件" class="f-green"&gt;第九十九章 拍卖会突发事件&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1700925.html" title="第一百章 乱" class="f-green"&gt;第一百章 乱&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1701312.html" title="第一百零一章 各显神通" class="f-green"&gt;第一百零一章 各显神通&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1701510.html" title="第一百零二章 擒贼擒王" class="f-green"&gt;第一百零二章 擒贼擒王&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1701720.html" title="第一百零三章 归墟之地与我的身世" class="f-green"&gt;第一百零三章 归墟之地与我的身世&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1703250.html" title="第一百零四章 环环相扣" class="f-green"&gt;第一百零四章 环环相扣&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1703457.html" title="第一百零五章 婴灵" class="f-green"&gt;第一百零五章 婴灵&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1703745.html" title="第一百零六章" class="f-green"&gt;第一百零六章&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1718676.html" title="第一百零七章 她们长的一模一样" class="f-green"&gt;第一百零七章 她们长的一模一样&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1718677.html" title="第一百零八章 归途" class="f-green"&gt;第一百零八章 归途&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1718678.html" title="第一百零九章 墓穴之地" class="f-green"&gt;第一百零九章 墓穴之地&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1725217.html" title="第一百一十章 他是我弟弟？" class="f-green"&gt;第一百一十章 他是我弟弟？&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1725431.html" title="第一百一十一章 内斗" class="f-green"&gt;第一百一十一章 内斗&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1725665.html" title="第一百一十二章 复活" class="f-green"&gt;第一百一十二章 复活&lt;/a&gt;&lt;/li&gt;
+		
+                     
+                         &lt;li class="volume"&gt;
+                             &lt;i class="icon icon-8"&gt;&lt;/i&gt;
+	                            &lt;b&gt;冰尸追魂&lt;/b&gt;
+			                    &lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1726281.html" title="第一百一十三章 内奸" class="f-green"&gt;第一百一十三章 内奸&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1727407.html" title="第一百一十四章 人面疮" class="f-green"&gt;第一百一十四章 人面疮&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1727450.html" title="第一百一十五章 入口" class="f-green"&gt;第一百一十五章 入口&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1728669.html" title="第一百一十六章 见人" class="f-green"&gt;第一百一十六章 见人&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1729388.html" title="第一百一十七章 应老" class="f-green"&gt;第一百一十七章 应老&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1729677.html" title="第一百一十八章 壁画" class="f-green"&gt;第一百一十八章 壁画&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1731018.html" title="第一百零一十八章 蒲牢鼓" class="f-green"&gt;第一百零一十八章 蒲牢鼓&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1731294.html" title="第一百一十九章 再回诡村" class="f-green"&gt;第一百一十九章 再回诡村&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1731553.html" title="第一百二十章 大祭祀" class="f-green"&gt;第一百二十章 大祭祀&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1731794.html" title="第一百二十一章 长相之谜" class="f-green"&gt;第一百二十一章 长相之谜&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1733200.html" title="第一百二十二章 送魂" class="f-green"&gt;第一百二十二章 送魂&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1733489.html" title="第一百二十三章 值得和不值得" class="f-green"&gt;第一百二十三章 值得和不值得&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1733685.html" title="第一百二十四章 血字信息" class="f-green"&gt;第一百二十四章 血字信息&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1733971.html" title="第一百二十五章 冰尸" class="f-green"&gt;第一百二十五章 冰尸&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1734838.html" title="第一百二十六章 死者身份" class="f-green"&gt;第一百二十六章 死者身份&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1735161.html" title="第一百二十七章 薄雪万年草" class="f-green"&gt;第一百二十七章 薄雪万年草&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1735371.html" title="第一百二十九章 惊闻" class="f-green"&gt;第一百二十九章 惊闻&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1735543.html" title="第一百二十九章 下卷之秘" class="f-green"&gt;第一百二十九章 下卷之秘&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1736342.html" title="第一百三十章 这个房间有时差" class="f-green"&gt;第一百三十章 这个房间有时差&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1736509.html" title="第一百三十一章 血灵桥" class="f-green"&gt;第一百三十一章 血灵桥&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1736598.html" title="第一百三十二章 皿虫" class="f-green"&gt;第一百三十二章 皿虫&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1738568.html" title="第一百三十三章 触目惊心" class="f-green"&gt;第一百三十三章 触目惊心&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1738724.html" title="第一百三十四章 三大古刃" class="f-green"&gt;第一百三十四章 三大古刃&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1738899.html" title="第一百三十五章 大战三尸" class="f-green"&gt;第一百三十五章 大战三尸&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1739849.html" title="第一百三十六章 盲蜃" class="f-green"&gt;第一百三十六章 盲蜃&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1740402.html" title="第一百三十七章 神秘缺口" class="f-green"&gt;第一百三十七章 神秘缺口&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1740557.html" title="第一百三十八章 迷魂梯" class="f-green"&gt;第一百三十八章 迷魂梯&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1741525.html" title="第一百三十九章 楼梯惊魂" class="f-green"&gt;第一百三十九章 楼梯惊魂&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1742511.html" title="第一百四十章 伤口" class="f-green"&gt;第一百四十章 伤口&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1742512.html" title="第一百四十一章 不寒而栗" class="f-green"&gt;第一百四十一章 不寒而栗&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1743205.html" title="第一百四十二章 嫁阴" class="f-green"&gt;第一百四十二章 嫁阴&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1743601.html" title="第一百四十三章 归来" class="f-green"&gt;第一百四十三章 归来&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1743771.html" title="第一百四十四章 沐灵山" class="f-green"&gt;第一百四十四章 沐灵山&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1743889.html" title="第一百四十五章 天孽之罪" class="f-green"&gt;第一百四十五章 天孽之罪&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1744846.html" title="第一百四十四章 黑白蝶" class="f-green"&gt;第一百四十四章 黑白蝶&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1745132.html" title="第一百四十七章 背后黑影" class="f-green"&gt;第一百四十七章 背后黑影&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1745454.html" title="第一百四十八章 人面蛇" class="f-green"&gt;第一百四十八章 人面蛇&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1745622.html" title="第一百四十九章 吓" class="f-green"&gt;第一百四十九章 吓&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1746958.html" title="第一百五十章 魂使" class="f-green"&gt;第一百五十章 魂使&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1747235.html" title="第一百五十一章 八卦井" class="f-green"&gt;第一百五十一章 八卦井&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1747300.html" title="第一百五十二章 又是密道" class="f-green"&gt;第一百五十二章 又是密道&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1749159.html" title="第一百五十三章 迷惑" class="f-green"&gt;第一百五十三章 迷惑&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1749160.html" title="第一百五十四章 食人" class="f-green"&gt;第一百五十四章 食人&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1749161.html" title="第一百五十五章 六个人" class="f-green"&gt;第一百五十五章 六个人&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1750652.html" title="第一百五十六章 怪风" class="f-green"&gt;第一百五十六章 怪风&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1750804.html" title="第一百五十七章 失踪" class="f-green"&gt;第一百五十七章 失踪&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1750975.html" title="第一百五十八章 传说" class="f-green"&gt;第一百五十八章 传说&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1752292.html" title="第一百五十九章 棺材" class="f-green"&gt;第一百五十九章 棺材&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1752446.html" title="第一百六十章 同一个屋子" class="f-green"&gt;第一百六十章 同一个屋子&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1752623.html" title="第一百六十一章 水糜" class="f-green"&gt;第一百六十一章 水糜&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1756062.html" title="第一百六十二章 水银池" class="f-green"&gt;第一百六十二章 水银池&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1756389.html" title="第一百六十三章 第二个狐狸头" class="f-green"&gt;第一百六十三章 第二个狐狸头&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1756660.html" title="第一百六十四章 竟然是我" class="f-green"&gt;第一百六十四章 竟然是我&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1757789.html" title="第一百六十五章 我是谁" class="f-green"&gt;第一百六十五章 我是谁&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1758201.html" title="第一百六十六章 榴莲的妙用" class="f-green"&gt;第一百六十六章 榴莲的妙用&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1758420.html" title="第一百六十七章 棺材谜阵" class="f-green"&gt;第一百六十七章 棺材谜阵&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1759365.html" title="第一百六十八章 长生术" class="f-green"&gt;第一百六十八章 长生术&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1759878.html" title="第一百六十九章 天眼龟" class="f-green"&gt;第一百六十九章 天眼龟&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1760051.html" title="第一百七十章 黑衣人" class="f-green"&gt;第一百七十章 黑衣人&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1760290.html" title="第一百七十一章 白胡子族长" class="f-green"&gt;第一百七十一章 白胡子族长&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1761197.html" title="第一百七十二章 承受" class="f-green"&gt;第一百七十二章 承受&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1761515.html" title="第一百七十三章 乞丐" class="f-green"&gt;第一百七十三章 乞丐&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1761721.html" title="第一百七十四章 云泽相士" class="f-green"&gt;第一百七十四章 云泽相士&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1761956.html" title="第一百七十五章 秦淮第一次醉酒 为钻石破千加二更" class="f-green"&gt;第一百七十五章 秦淮第一次醉酒 为钻石破千加二更&lt;/a&gt;&lt;/li&gt;
+		
+                     
+                         &lt;li class="volume"&gt;
+                             &lt;i class="icon icon-8"&gt;&lt;/i&gt;
+	                            &lt;b&gt;胃中诡脸&lt;/b&gt;
+			                    &lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1762722.html" title="第一百七十六章 诡脸" class="f-green"&gt;第一百七十六章 诡脸&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1762915.html" title="第一百七十八章 踪迹" class="f-green"&gt;第一百七十八章 踪迹&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1763348.html" title="第一百七十八章 第二个她" class="f-green"&gt;第一百七十八章 第二个她&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1764723.html" title="第一百七十九章 午夜惊魂（一）" class="f-green"&gt;第一百七十九章 午夜惊魂（一）&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1764924.html" title="第一百八十章 午夜惊魂（二）" class="f-green"&gt;第一百八十章 午夜惊魂（二）&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1765078.html" title="第一百八十一章 我的父亲？" class="f-green"&gt;第一百八十一章 我的父亲？&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1766541.html" title="第一百八十二章 周曦与周熙" class="f-green"&gt;第一百八十二章 周曦与周熙&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1766728.html" title="第一百八十三章 铁锅炖" class="f-green"&gt;第一百八十三章 铁锅炖&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1766850.html" title="第一百八十四章 尸吠" class="f-green"&gt;第一百八十四章 尸吠&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1766982.html" title="第一百八十五章 无字碑" class="f-green"&gt;第一百八十五章 无字碑&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1779106.html" title="第一百八十六章 牌楼" class="f-green"&gt;第一百八十六章 牌楼&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1780470.html" title="第一百八十七章 正视" class="f-green"&gt;第一百八十七章 正视&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1781336.html" title="第一百八十八章 灭心" class="f-green"&gt;第一百八十八章 灭心&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1784014.html" title="第一百八十九章 解密" class="f-green"&gt;第一百八十九章 解密&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1784503.html" title="第一百九十章 尾声" class="f-green"&gt;第一百九十章 尾声&lt;/a&gt;&lt;/li&gt;
+		
+                     
+                         &lt;li class="volume"&gt;
+                             &lt;i class="icon icon-8"&gt;&lt;/i&gt;
+	                            &lt;b&gt;天机残卷下半部&lt;/b&gt;
+			                    &lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1784867.html" title="第一百九十一章 征程" class="f-green"&gt;第一百九十一章 征程&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1786507.html" title="第一百九十二章 再次回总局" class="f-green"&gt;第一百九十二章 再次回总局&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1786907.html" title="第一百九十三章 无为子" class="f-green"&gt;第一百九十三章 无为子&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1787411.html" title="第一百九十四章 这个队伍" class="f-green"&gt;第一百九十四章 这个队伍&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1789478.html" title="第一百九十五章 恍然大悟" class="f-green"&gt;第一百九十五章 恍然大悟&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1790313.html" title="第一百九十六章 线索" class="f-green"&gt;第一百九十六章 线索&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1790586.html" title="第一百九十七章 鬼市" class="f-green"&gt;第一百九十七章 鬼市&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1791782.html" title="第一百九十八章 黄金鼬" class="f-green"&gt;第一百九十八章 黄金鼬&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1791906.html" title="第一百九十九章 目录" class="f-green"&gt;第一百九十九章 目录&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1792517.html" title="第二百章 出发" class="f-green"&gt;第二百章 出发&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1794377.html" title="第二百零一章 霸王龙眼" class="f-green"&gt;第二百零一章 霸王龙眼&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1794709.html" title="第二百零二章 立威" class="f-green"&gt;第二百零二章 立威&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1795127.html" title="第二百零三章 机关" class="f-green"&gt;第二百零三章 机关&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1796281.html" title="第二百零四章 出阵" class="f-green"&gt;第二百零四章 出阵&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1796433.html" title="第二百零五章 绿脑灵" class="f-green"&gt;第二百零五章 绿脑灵&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1796780.html" title="第二百零六章 千军万马的脚步" class="f-green"&gt;第二百零六章 千军万马的脚步&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1798000.html" title="第二百零七章 阴兵借道" class="f-green"&gt;第二百零七章 阴兵借道&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1799294.html" title="第二百零八章 女尸异变" class="f-green"&gt;第二百零八章 女尸异变&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1799690.html" title="第二百零九章 尸神降" class="f-green"&gt;第二百零九章 尸神降&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1802422.html" title="第二百一十章 黑袍人" class="f-green"&gt;第二百一十章 黑袍人&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1802859.html" title="第二百一十一章 泣泪壁" class="f-green"&gt;第二百一十一章 泣泪壁&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1803196.html" title="第二百一十二章 灵盖的诅咒" class="f-green"&gt;第二百一十二章 灵盖的诅咒&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1803871.html" title="第二百一十三章 公输之死" class="f-green"&gt;第二百一十三章 公输之死&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1806775.html" title="第二百一十四章 羽蛇桥" class="f-green"&gt;第二百一十四章 羽蛇桥&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1806776.html" title="第二百一十五章 悬空寺 为书友@5388577599玉佩加更" class="f-green"&gt;第二百一十五章 悬空寺 为书友@5388577599玉佩加更&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1806980.html" title="第二百一十六章 吹埙人的真面目" class="f-green"&gt;第二百一十六章 吹埙人的真面目&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1807355.html" title="第二百一十七章 真假天机残卷" class="f-green"&gt;第二百一十七章 真假天机残卷&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1807523.html" title="第二百一十八章 飞剑" class="f-green"&gt;第二百一十八章 飞剑&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1808864.html" title="第二百一十九章 水晶头骨 为钻石满2千加一更" class="f-green"&gt;第二百一十九章 水晶头骨 为钻石满2千加一更&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1809008.html" title="第二百二十章 还有一个？" class="f-green"&gt;第二百二十章 还有一个？&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1809459.html" title="第二百二十一章 天机残卷的秘密" class="f-green"&gt;第二百二十一章 天机残卷的秘密&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1809746.html" title="第二百二十二章 金袍女和镜中女" class="f-green"&gt;第二百二十二章 金袍女和镜中女&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1811356.html" title="第二百二十三章 天镜阵" class="f-green"&gt;第二百二十三章 天镜阵&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1812350.html" title="第二百二十四章 发阵 为钻石过2千加第二更" class="f-green"&gt;第二百二十四章 发阵 为钻石过2千加第二更&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1812540.html" title="第二百二十五章 演技太浮夸" class="f-green"&gt;第二百二十五章 演技太浮夸&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1812651.html" title="第二百二十六章 诡画" class="f-green"&gt;第二百二十六章 诡画&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1813560.html" title="第二百二十七章 蚀骨炉" class="f-green"&gt;第二百二十七章 蚀骨炉&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1813695.html" title="第二百二十八章 混战" class="f-green"&gt;第二百二十八章 混战&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1814490.html" title="第二百二十九章 地仙降世" class="f-green"&gt;第二百二十九章 地仙降世&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1815588.html" title="第二百三十章 现任左使" class="f-green"&gt;第二百三十章 现任左使&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1816345.html" title="第二百三十一章 进退两难" class="f-green"&gt;第二百三十一章 进退两难&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1816833.html" title="第二百三十二章 并派" class="f-green"&gt;第二百三十二章 并派&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1819175.html" title="第二百三十三章 噬灵石" class="f-green"&gt;第二百三十三章 噬灵石&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1819314.html" title="第二百三十四章 人面疮身世之谜" class="f-green"&gt;第二百三十四章 人面疮身世之谜&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1819415.html" title="第二百三十五章 一切未曾结束，只是开始" class="f-green"&gt;第二百三十五章 一切未曾结束，只是开始&lt;/a&gt;&lt;/li&gt;
+		
+                     
+                         &lt;li class="volume"&gt;
+                             &lt;i class="icon icon-8"&gt;&lt;/i&gt;
+	                            &lt;b&gt;拯救红禅&lt;/b&gt;
+			                    &lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1820023.html" title="第二百三十六章 路上" class="f-green"&gt;第二百三十六章 路上&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1820173.html" title="第二百三十八章 第三股势力" class="f-green"&gt;第二百三十八章 第三股势力&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1820383.html" title="第二百三十九章 再次案发" class="f-green"&gt;第二百三十九章 再次案发&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1822574.html" title="第二百四十章 线索" class="f-green"&gt;第二百四十章 线索&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1823287.html" title="第二百四十一章 涅槃成蛹" class="f-green"&gt;第二百四十一章 涅槃成蛹&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1823454.html" title="第二百四十二章 窗外的脸" class="f-green"&gt;第二百四十二章 窗外的脸&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1826182.html" title="第二百四十三章 炮楼和那个男人" class="f-green"&gt;第二百四十三章 炮楼和那个男人&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1826458.html" title="第二百四十四章 荒野鬼踪" class="f-green"&gt;第二百四十四章 荒野鬼踪&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1826640.html" title="第二百四十五章 老顽童沧道子" class="f-green"&gt;第二百四十五章 老顽童沧道子&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1828226.html" title="第二百四十六章 蜘蛛背后的字" class="f-green"&gt;第二百四十六章 蜘蛛背后的字&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1829079.html" title="第二百四十七章 落荒而逃" class="f-green"&gt;第二百四十七章 落荒而逃&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1829329.html" title="第二百四十八章 这里是祭坛" class="f-green"&gt;第二百四十八章 这里是祭坛&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1829935.html" title="第二百四十九章 大战赶尸" class="f-green"&gt;第二百四十九章 大战赶尸&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1830976.html" title="第二百五十章 疑问" class="f-green"&gt;第二百五十章 疑问&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1831200.html" title="第二百五十一章 交易" class="f-green"&gt;第二百五十一章 交易&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1832157.html" title="第二百五十二章 祭坛做法" class="f-green"&gt;第二百五十二章 祭坛做法&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1833030.html" title="第二百五十三章 第十个人" class="f-green"&gt;第二百五十三章 第十个人&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1833157.html" title="第二百五十四章 太岁灵" class="f-green"&gt;第二百五十四章 太岁灵&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1835439.html" title="第二百五十五章 岛中人现身" class="f-green"&gt;第二百五十五章 岛中人现身&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1836317.html" title="第二百五十六章 原来是他" class="f-green"&gt;第二百五十六章 原来是他&lt;/a&gt;&lt;/li&gt;
+		
+                     &lt;li class="chapter"&gt;&lt;a href="1836725.html" title="第二百五十七章 抓纠下落" class="f-green"&gt;第二百五十七章 抓纠下落&lt;/a&gt;&lt;/li&gt;
+		
+              &lt;/ul&gt;
+           &lt;/div&gt;            
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;!--内容区域Ent--&gt;
+    
+    &lt;!--底部Start--&gt;
+    &lt;div id="footer" class="wrap"&gt;
+	&lt;div class="footer-ad"&gt;
+		&lt;script type="text/javascript"&gt;htmladdown();&lt;/script&gt;
+	&lt;/div&gt;
+        &lt;div class="footer-link"&gt;
+            紫幽阁 |
+            联系我们 |
+            帮助中心 |
+            网站地图
+        &lt;/div&gt;
+		&lt;p&gt;
+            本站拒绝任何色情小说，一经发现，即作删除&lt;br/&gt;
+            本站所收录作品、社区话题、书库评论及本站所做之广告均属其个人行为，与本站立场无关&lt;br/&gt;&lt;script type="text/javascript"&gt;toStats();&lt;/script&gt;
+        &lt;/p&gt;
+    &lt;/div&gt;
+    &lt;!--底部End--&gt;
+&lt;/body&gt;
+&lt;/html&gt;</value>
+  </data>
+  <data name="textBox2.Text" xml:space="preserve">
+    <value>
+&lt;!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"&gt;
+&lt;html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-cn" lang="zh-cn"&gt;
+&lt;head&gt;
+&lt;title&gt;第二百五十七章 抓纠下落_诡域尸咒_(馨月丶君曦)_紫幽阁&lt;/title&gt;
+&lt;meta http-equiv="Content-Type" content="text/html; charset=gbk" /&gt;
+&lt;meta name="keywords" content="诡域尸咒最新章节，第二百五十七章 抓纠下落" /&gt;
+&lt;meta name="Description" content="章名:第二百五十七章 抓纠下落，书名:诡域尸咒。享乐读书一紫幽阁。站内小说由会员转载自网络，版权归作者所有。如转载侵犯了您的权益，请联系本站，我们将核实删除！" /&gt;
+&lt;link rel="stylesheet" type="text/css" href="http://t.ziyouge.com/css/novel.css" media="screen" /&gt;
+&lt;!--[if IE 6]&gt;
+&lt;style type="text/css"&gt;
+/*ie6 fix顶端元素*/
+    .header{
+    top:expression(eval(document.documentElement.scrollTop));
+}
+/*ie6 fix底端元素*/
+.foot{
+ top: expression(eval((document.compatMode&amp;&amp;document.compatMode=="CSS1Compat")?documentElement.scrollTop+documentElement.clientHeight-this.clientHeight-1:document.body.scrollTop+document.body.clientHeight-this.clientHeight-1));
+}
+&lt;/style&gt;
+&lt;![endif]--&gt;
+&lt;script type="text/javascript" src="http://t.ziyouge.com/js/jquery.min.js"&gt;&lt;/script&gt;
+&lt;script type="text/javascript" src="http://t.ziyouge.com/js/jquery.tipsy.js" &gt;&lt;/script&gt;
+&lt;script type="text/javascript"&gt;
+$(function() {
+	CKshow("5965","1836725");
+});
+var preview_page = "1836317.html";
+var next_page = "index.html";
+var index_page = "index.html";
+var article_id = "5965";
+var chapter_id = "1836725";
+function jumpPage() {
+  var event = document.all ? window.event : arguments[0];
+  if (event.keyCode == 37) document.location = preview_page;
+  if (event.keyCode == 39) document.location = next_page;
+  if (event.keyCode == 13) document.location = index_page;
+}
+document.onkeydown=jumpPage;
+--&gt;
+&lt;/script&gt;
+&lt;/head&gt;
+
+&lt;body&gt;
+    &lt;!--头部Start--&gt;
+&lt;script type="text/javascript"&gt;header(5965,5,1836725,'ture');&lt;/script&gt;
+
+    &lt;div class="content_to"&gt;
+        &lt;div class="wrap"&gt;
+			&lt;div class="toad" id="toadsend"&gt;&lt;script type="text/javascript"&gt;htmldataad();&lt;/script&gt;&lt;/div&gt;
+            &lt;div class="crumbs"&gt;
+                &lt;span class="f-right"&gt;
+                &lt;/span&gt;
+                &lt;a href="http://www.ziyouge.com" class="f-green"&gt;紫幽阁&lt;/a&gt; &amp;gt; &lt;a href="http://www.ziyouge.com/class-7-1.html" class="f-green"&gt;恐怖灵异&lt;/a&gt; &amp;gt; 诡域尸咒
+            &lt;/div&gt;
+            &lt;div class="pannel-1"&gt;
+                &lt;div class="title"&gt;
+                    &lt;span class="f-right f-gray"&gt;&lt;a href="http://www.ziyouge.com/zy/5/5965/index.html" class="f-gray"&gt;诡域尸咒&lt;/a&gt; / &lt;a href="http://www.ziyouge.com/modules/article/authorarticle.php?author=馨月丶君曦" class="f-gray" target="_blank"&gt;馨月丶君曦&lt;/a&gt;&lt;/span&gt;
+                    &lt;h1&gt;第二百五十七章 抓纠下落&lt;/h1&gt;
+					&lt;p class="p-fun"&gt;
+				&lt;script type="text/javascript"&gt;bdsh1('bshareaa');&lt;/script&gt;
+					&lt;/p&gt;
+                &lt;/div&gt;
+                &lt;div id="htmlContent" class="contentbox"&gt;
+                   &amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;老邓愣住了，立马有些不乐意，“秦局长，你这是什么意思。www.ziyouge.com咒我爹早点死啊？什么是个兄弟只有你活到现在，你什么意思啊？”老邓好像一直没明白这剧情是怎么发展的，别说他不知道，其实我也是稀里糊涂的。&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;邓老爷子朝着邓警官摆摆手，上下打量了秦淮一眼，道：“隐调局的局长吗？没想到我老头子在临死之前还能见到这么大的官，我几乎用尽大半生的力气去寻找这个机构，奈何你们保密措施做的太厉害了，普通的百姓根本接触不到，我之所以让我的儿子去当警察，是希望有朝一日能见到你们。今天终于得偿所愿了，没想到隐调局的局长这么年轻。”邓老爷子说话极为利落，跟刚刚好像老年痴呆一样完全判若两人。&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;秦淮微微点点头，说：“刚刚我的问题唐突了，不知道老爷子能不能讲讲当年的事，我们也好心理有个数。”&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;邓老爷子恩了一声，表情微变，他的牙几乎都掉没了，说话的时候有点漏风，所以发音也不是很标准，但是勉强能判断出再说什么。“当年，我才十几岁，家里穷有赶上抗战，那时候我就是个混混，根本没什么爱不爱国的概念，一念之差做了二鬼子。也就是伪军。”&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;邓警官有点惊讶，“爹，你还当过二鬼子呢？”&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;老爷子点点头，继续道：“当时这里的管事的鬼子叫平田一郎，是个什么职位我也不太清楚，只是知道他算是总司令吧，当时修建据点的时候，发现了一个古墓，平田一郎以为能大赚一笔，结果那墓竟然是空的，后来不知道他在哪请来了一个风水师。以风水定位，说那空穴是条后补的龙尾巴，那整座碾子山其实才是真正的墓穴所在之地。”老爷子说的时候，有些颤抖和咳嗽，我就不用省略号来体现了。免得有凑字数之嫌，毕竟他已经将近九十岁的高龄了，一下子说这么多话有点累。&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;凌熠辰一听，立马一拍大腿，“这个风水师挺厉害啊，看来不是个神棍，竟然分析的这么对。”&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;老爷子微微点头，接着说：“后来平田一郎就拍我们去里面盗墓，看看有没有赚钱的东西，当时我们村子受尽了鬼子的欺负，我本来不想干这二鬼子了，就找我们那九个兄弟商量，他们说准备进完这次墓穴之后，就不再干了，偷偷的卷点钱，带着家人往国民政府那边跑，至少有政府均定照着我们，但是需要钱啊，需要路费啊。”&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;老爷子咳嗽的厉害，说的时候情绪也有些激动，邓警官给赶紧给老爷子先吃了点药，喝了些水，才断断续续的说：“要动手之前，村子里有个叫哑姑的神婆来找上我，她是个从来不跟村子里任何人来往的人，从来不说话，她写了一封信送给我，我当时也没念过几年书，有好多字我都不认识，大概意思就是，不要去那个墓穴，去了就会祸及子孙，劝我们走正途，我当时没有当一回事，以为只是一个神神叨叨的妇人，又知道什么，况且我们十个兄弟已经不想再干二鬼子帮着鬼子欺负人，想摆脱他们必须要跑的远远的，没有足够的钱哪行啊？”&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;秦淮叹了口气，“所以后来你们还是去了那个古墓，我很好奇，那密道之中机关重重，你们是怎么进去的？”状向亩圾。&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;老爷子翻了翻眼睛，缓了片刻说：“当时除了我们十个兄弟还有一批鬼子，领路的是个女人，应该不是女鬼子，没穿和服，说的也不是日语，我只记得那个翻译叫她虹姐。”&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;老爷子的话一出我们顿时起了一层鸡皮疙瘩，凌熠辰赶紧问，“邓老，你口中的虹姐，在那个时候多发年岁？”&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;老爷子想了想说：“看上去二十岁左右的样子，长的很漂亮，很多兄弟都为他痴迷过，也包括我。”说的时候，老爷子的头渐渐低了下来。我顿时蒙了，这个虹姐在七十多年前就二十多岁的样子，而马汀他们口中也一直在说这个虹姐，也是二十多岁的样子，特征都是长的很漂亮，很多男人都为她痴迷过，而且马汀他们来这也是因为那个虹姐的指使，难道只是巧合？都是叫虹姐？如果是一个人，那这个人估计就是妖精了，至少活了九十多年，仍然像二十多岁的样子。&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;我们几个人互相对视了一眼，觉得这件事实在太过蹊跷，老爷子接着说：“后来，我们就进到了那个墓穴，说是墓可是根本没有棺材，里面有很多稀奇古怪的昆虫，用枪用炸药都解决不赶紧的，我们几乎是死里逃生，有好几个鬼子都死在了里面，还好我们是个兄弟都没事，拐来拐去最后终于来到了大殿，我们只在高台上见到了一盆花，而且还是绿叶开花的哪种花，当时那个虹姐一看就说是宝贝，这墓穴里哪有阳光啊，那阴暗之处竟然还能长出一盆花，也没人浇水没人施肥的，连我都吓了一跳。”&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;秦淮恩了一声，问道：“邓老，您还记得那盆画长在哪里吗？”&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;邓老揉了揉自己的太阳穴，毕竟这件事已经过去将近七十年，对秦淮说：“我记得，那墓穴中有一个人头鼎，里面有清水，当时花就长在那个鼎里。”我立马想起来，那鼎里的确有清水，而且照我们的样子都是后脑勺，害我吓了一跳。&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;邓老有些累了，秦淮清了清嗓子，说：“邓老，您先歇一会，后面的我来说，都是我的猜测，要是有什么不对，您再来补充，后来那个虹姐应该让你们将花带出去，结果在出去的时候碰到了那个叫哑姑的神婆是不是？”&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;老爷子瞪大了眼睛，难以置信的问，“你是怎么知道的，正是，碰到哑姑，她和虹姐就打了起来，两个人好像都会一些奇门遁甲之术，当时给我们看的都傻眼了，那些鬼子反应过劳以后本来想开枪了，结果被一群黑色的巨大蜘蛛围上了，最后都死在了祭坛之内，后来虹姐就跑了，只剩下我们十个人。”老爷子说完，叹了一口气。&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;故事说到这里，我差不多已经理清了思绪，那个神婆应该就是我们看到的岛中人，她是萨满族最后一个祭坛的守护者，她为了保护祭坛，应该是开启了某种阵法，而他十个人因为进入祭坛之中，所以祸及了子孙，可为什么邓老爷子没事？&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;老爷子连连的咳嗽，不能继续讲了，秦淮看出了大家的疑惑，解释道，“其实说是祸及子孙，不过是交易罢了，当时虹姐跑出去之后，也许是为了防止哑姑追上他们，启动了祭坛之中的阵法，或者是阵法已经启动，她不知道怎么钻了空子跑了出去，其他人若是想出去，成为祭坛的一部分，所以才有那后来的十棺阵……”&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;还没说完，凌熠辰抢道：“哑姑应该也是为他们留了后路，他们都是到了时间寿终正寝，走的时候告诉家人不要吃鱼，是因为通河里的鱼吃了太岁灵，会让诅咒继续下去，可您为什么没事？”&lt;br /&gt;&lt;br /&gt;&amp;nbsp;&amp;nbsp;&amp;nbsp;&amp;nbsp;老爷子动动嘴还没出生，沧道子从外面走了进来，说：“那是因为抓纠儿在他们家。”沧道子指着窗外长的像松树一样的植物，“都是因为这个上古灵物才保住你们家免遭那古墓诅咒的侵害啊。”一听到抓纠儿的下落，我顿时心里咯噔一下，可它长的不是像猪笼草吗？怎么变成松树了？&lt;br /&gt;&lt;br /&gt;本站访问地址http://www.ziyouge.com 任意搜索引擎内输入:紫幽阁 即可访问!&lt;br /&gt;&lt;br /&gt;
+                &lt;/div&gt;
+                &lt;div class="t-center f-gray"&gt;
+                    （快捷键 ←）
+			&lt;a href="1836317.html" id="htmlshangzhang" target="_top" title="阅读《诡域尸咒》的上一章" class="btn-2 f-green"&gt;上一章&lt;/a&gt; 
+			&lt;a href="javascript:void(0);" onclick="userClick('addbookcase',5965,1836725)" class="btn-2 f-green"&gt;加书架&lt;/a&gt; 
+			&lt;a href="index.html" id="htmlmulu" target="_top" title="《诡域尸咒》的章节目录" class="btn-2 f-green"&gt;目录&lt;/a&gt; 
+			&lt;a href="javascript:void(0);" onclick="userClick('uservote',5965)"  class="btn-2 f-green"&gt;投推荐&lt;/a&gt; 
+			&lt;a href="index.html" id="htmlxiazhang" target="_top" title="阅读《诡域尸咒》的下一章" class="btn-2 f-green"&gt;下一章&lt;/a&gt;
+                    （快捷键 →）
+                &lt;/div&gt;
+                &lt;p class="p-fun t-border"&gt;
+			推荐:&lt;a href = "/zy/3/3393/index.html"&gt;黄河捞尸人&lt;/a&gt; &lt;a href = "/zy/3/3468/index.html"&gt;倩女幽魂&lt;/a&gt; &lt;a href = "/zy/2/2184/index.html"&gt;我的女鬼俏佳人&lt;/a&gt; &lt;a href = "/zy/0/285/index.html"&gt;我的师父是棺材&lt;/a&gt; &lt;a href = "/zy/0/287/index.html"&gt;阴阳代理人&lt;/a&gt; &lt;a href = "/zy/1/1232/index.html"&gt;紫玉钗街诡怪传说&lt;/a&gt; &lt;a href = "/zy/1/1180/index.html"&gt;黄河古事&lt;/a&gt; &lt;a href = "/zy/2/2287/index.html"&gt;剃头匠&lt;/a&gt; &lt;a href = "/zy/1/1175/index.html"&gt;出魂记&lt;/a&gt; &lt;a href = "/zy/2/2215/index.html"&gt;吾当道
+                &lt;/p&gt;
+            &lt;/div&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div id="footer" class="wrap"&gt;
+	&lt;div class="footer-ad"&gt;
+		&lt;script type="text/javascript"&gt;htmladdown();&lt;/script&gt;
+	&lt;/div&gt;
+        &lt;div class="footer-link"&gt;
+            紫幽阁|
+            联系我们 |
+            帮助中心 |
+            网站地图 
+        &lt;/div&gt;
+        &lt;p&gt;
+            本站拒绝任何色情小说，一经发现，即作删除&lt;br/&gt;
+            本站所收录作品、社区话题、书库评论及本站所做之广告均属其个人行为，与本站立场无关&lt;br/&gt;&lt;script type="text/javascript"&gt;toStats();&lt;/script&gt;
+        &lt;/p&gt;
+    &lt;/div&gt;
+	    	&lt;script type="text/javascript"&gt;ydclin();&lt;/script&gt;
+    
+&lt;/body&gt;
+&lt;/html&gt;</value>
+  </data>
+</root>
