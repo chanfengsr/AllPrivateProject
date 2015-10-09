@@ -1,0 +1,8 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<SystemConfig>
+  <AppConfig>
+    <key name="SourceFolder" value="" remark="" />
+    <key name="TargetFolder" value="" remark="" />
+    <key name="UseCameraDate" value="true" remark="" />
+  </AppConfig>
+</SystemConfig>
