@@ -384,7 +384,7 @@ namespace 调整PDF导出文字
             foreach (string parm in textBox1.Lines[0].Split(','))
                 sb.Append(string.Format("{0}{1} = {2},", parmHd, parmId++, parm));
 
-            textBox2.Text = sb.ToString().TrimEnd(( "," + Environment.NewLine ).ToCharArray());
+            ToTextBox2(sb.ToString().TrimEnd(( "," + Environment.NewLine ).ToCharArray()));
         }
 
         private void button17_Click(object sender, EventArgs e) {
@@ -403,7 +403,7 @@ namespace 调整PDF导出文字
                 sb.Replace(parmHd + parmId, parms[parmId-1]);
             }
 
-            textBox2.Text = sb.ToString();
+            ToTextBox2(sb);
         }
 
         private void button18_Click(object sender, EventArgs e) {
@@ -412,6 +412,18 @@ namespace 调整PDF导出文字
 
         private void button19_Click(object sender, EventArgs e) {
             textBox2.Text = ChineseConverter.ToTraditional(textBox1.Text);
+        }
+
+        private void button20_Click(object sender, EventArgs e) {
+            StringBuilder sb = new StringBuilder();
+            string model = textBox1.Text;
+
+            foreach (string repla in textBox2.Lines) {
+                sb.AppendLine(model.Replace(txtOld2.Text.Trim(), repla.Trim()));
+                sb.AppendLine();
+            }
+
+            ToTextBox2(sb);
         }
     }
 }
