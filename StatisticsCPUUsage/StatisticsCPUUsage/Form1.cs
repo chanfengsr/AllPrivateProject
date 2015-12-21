@@ -317,7 +317,6 @@ namespace StatisticsCPUUsage {
                     base.DefWndProc(ref m);
                     break;
             }
-
         }
 
         private void btnTest_Click(object sender, EventArgs e) {
