@@ -17,12 +17,12 @@ namespace StatisticsCPUUsage {
         private PerformanceCounter _totalCounter;
         private double _allCpuUsage = 0.00001;
         private readonly List<UsageInfo> _lstUsageInfo = new List<UsageInfo>();
-        private int _timeElapsed;
+        private Int64 _timeElapsed;
         private bool _normalSize = true;
         private int _dynAllocTime;
         private readonly bool _isAutoRun;
         private readonly string _historyRecordFileName;
-
+        
         private Guid _activePolicyGuid;
         private Guid _processSetSubGroupGuid = new Guid(PowerAPI.GUID_PROCESSOR_SETTINGS_SUBGROUP);
         private Guid _processThrottleMinGuid = new Guid(PowerAPI.PROCTHROTTLEMIN);
@@ -34,7 +34,7 @@ namespace StatisticsCPUUsage {
             Control.CheckForIllegalCrossThreadCalls = false;
             InitializeComponent();
             this.Text = this.Text + "  V" + Application.ProductVersion + "  ——by 巉沨散人";
-
+            
             _historyRecordFileName = Application.StartupPath.TrimEnd('\\') + @"\StatisticsCPUUsage.rcd";
         }
 
@@ -96,7 +96,7 @@ namespace StatisticsCPUUsage {
                 return;
 
             try {
-                int.TryParse(hisRecord[0], out _timeElapsed);
+                Int64.TryParse(hisRecord[0], out _timeElapsed);
                 double parseVal;
                 for (int i = 0; i < _lstUsageInfo.Count; i++) {
                     if (double.TryParse(hisRecord[i + 1], out parseVal)) {
