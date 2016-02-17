@@ -258,7 +258,7 @@ namespace FileManager
             foreach (PropertyItem prop   in propItem)
             {
                 string exifDateStr = string.Empty;
-
+                
                 if (prop.Id == (int)ExifPropName.PropertyTagDateTime ||
                     prop.Id == (int)ExifPropName.PropertyTagExifDTOrig ||
                     prop.Id == (int)ExifPropName.PropertyTagExifDTDigitized)

@@ -30,5 +30,21 @@ namespace FileManager
             {
             }
         }
+
+        /// <summary>获取文件日期，图片的话优先取拍摄日期
+        /// </summary>
+        /// <param name="fileInfo"></param>
+        /// <param name="useCameraDate">是否取照片拍摄日期</param>
+        /// <returns></returns>
+        public static DateTime GetFileDateTime(FileInfo fileInfo, bool useCameraDate = false) {
+            if (useCameraDate && fileInfo.Extension.ToLower() == ".jpg") {
+                DateTime picDate = PictureHelper.GetTakePicDateTime(PictureHelper.GetExifProperties(fileInfo.FullName));
+
+                if (picDate > DateTime.MinValue)
+                    return picDate;
+            }
+
+            return fileInfo.LastWriteTime;
+        }
     }
 }
