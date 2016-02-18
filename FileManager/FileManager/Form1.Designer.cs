@@ -44,6 +44,10 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.btnChgNmExecute = new System.Windows.Forms.Button();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.chkChgNmOnlyFixStr = new System.Windows.Forms.CheckBox();
+            this.chkChgNmIsRegex = new System.Windows.Forms.CheckBox();
+            this.btnChgNmViewChgFileNameList = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
             this.btnChgNmEditChangeList = new System.Windows.Forms.Button();
             this.numChgNmWildcardLen = new System.Windows.Forms.NumericUpDown();
             this.label9 = new System.Windows.Forms.Label();
@@ -57,6 +61,8 @@
             this.rdoChgNmRulWildcard = new System.Windows.Forms.RadioButton();
             this.rdoChgNmRulFixedStr = new System.Windows.Forms.RadioButton();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnChgNmEditChangeFileList = new System.Windows.Forms.Button();
+            this.chkChgNmSpecChangeFile = new System.Windows.Forms.CheckBox();
             this.btnChgNmViewFileNameList = new System.Windows.Forms.Button();
             this.grpChgNmSortMode = new System.Windows.Forms.GroupBox();
             this.rdoChgNmSortRecordDate = new System.Windows.Forms.RadioButton();
@@ -78,12 +84,6 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnClear = new System.Windows.Forms.Button();
             this.txtConsole = new System.Windows.Forms.TextBox();
-            this.label8 = new System.Windows.Forms.Label();
-            this.btnChgNmViewChgFileNameList = new System.Windows.Forms.Button();
-            this.chkChgNmSpecChangeFile = new System.Windows.Forms.CheckBox();
-            this.btnChgNmEditChangeFileList = new System.Windows.Forms.Button();
-            this.chkChgNmIsRegex = new System.Windows.Forms.CheckBox();
-            this.chkChgNmOnlyFixStr = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -185,7 +185,7 @@
             this.btnCopyByDate.ForeColor = System.Drawing.Color.DarkRed;
             this.btnCopyByDate.Location = new System.Drawing.Point(21, 146);
             this.btnCopyByDate.Name = "btnCopyByDate";
-            this.btnCopyByDate.Size = new System.Drawing.Size(103, 23);
+            this.btnCopyByDate.Size = new System.Drawing.Size(116, 33);
             this.btnCopyByDate.TabIndex = 5;
             this.btnCopyByDate.Text = "按日期复制";
             this.btnCopyByDate.UseVisualStyleBackColor = true;
@@ -297,6 +297,48 @@
             this.groupBox5.TabIndex = 17;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "改名规则";
+            // 
+            // chkChgNmOnlyFixStr
+            // 
+            this.chkChgNmOnlyFixStr.AutoSize = true;
+            this.chkChgNmOnlyFixStr.Enabled = false;
+            this.chkChgNmOnlyFixStr.Location = new System.Drawing.Point(494, 56);
+            this.chkChgNmOnlyFixStr.Name = "chkChgNmOnlyFixStr";
+            this.chkChgNmOnlyFixStr.Size = new System.Drawing.Size(72, 16);
+            this.chkChgNmOnlyFixStr.TabIndex = 9;
+            this.chkChgNmOnlyFixStr.Text = "仅前后缀";
+            this.chkChgNmOnlyFixStr.UseVisualStyleBackColor = true;
+            this.chkChgNmOnlyFixStr.CheckedChanged += new System.EventHandler(this.chkChgNmOnlyFixStr_CheckedChanged);
+            // 
+            // chkChgNmIsRegex
+            // 
+            this.chkChgNmIsRegex.AutoSize = true;
+            this.chkChgNmIsRegex.Location = new System.Drawing.Point(423, 26);
+            this.chkChgNmIsRegex.Name = "chkChgNmIsRegex";
+            this.chkChgNmIsRegex.Size = new System.Drawing.Size(84, 16);
+            this.chkChgNmIsRegex.TabIndex = 8;
+            this.chkChgNmIsRegex.Text = "正则表达式";
+            this.chkChgNmIsRegex.UseVisualStyleBackColor = true;
+            // 
+            // btnChgNmViewChgFileNameList
+            // 
+            this.btnChgNmViewChgFileNameList.Location = new System.Drawing.Point(605, 39);
+            this.btnChgNmViewChgFileNameList.Name = "btnChgNmViewChgFileNameList";
+            this.btnChgNmViewChgFileNameList.Size = new System.Drawing.Size(93, 23);
+            this.btnChgNmViewChgFileNameList.TabIndex = 7;
+            this.btnChgNmViewChgFileNameList.Text = "更名列表预览";
+            this.btnChgNmViewChgFileNameList.UseVisualStyleBackColor = true;
+            this.btnChgNmViewChgFileNameList.Click += new System.EventHandler(this.btnChgNmViewChgFileNameList_Click);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Font = new System.Drawing.Font("宋体", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label8.Location = new System.Drawing.Point(565, 26);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(44, 48);
+            this.label8.TabIndex = 6;
+            this.label8.Text = "}";
             // 
             // btnChgNmEditChangeList
             // 
@@ -454,6 +496,28 @@
             this.groupBox2.TabIndex = 0;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "文件选择";
+            // 
+            // btnChgNmEditChangeFileList
+            // 
+            this.btnChgNmEditChangeFileList.Enabled = false;
+            this.btnChgNmEditChangeFileList.Location = new System.Drawing.Point(254, 137);
+            this.btnChgNmEditChangeFileList.Name = "btnChgNmEditChangeFileList";
+            this.btnChgNmEditChangeFileList.Size = new System.Drawing.Size(75, 23);
+            this.btnChgNmEditChangeFileList.TabIndex = 18;
+            this.btnChgNmEditChangeFileList.Text = "编辑列表";
+            this.btnChgNmEditChangeFileList.UseVisualStyleBackColor = true;
+            this.btnChgNmEditChangeFileList.Click += new System.EventHandler(this.btnChgNmEditChangeFileList_Click);
+            // 
+            // chkChgNmSpecChangeFile
+            // 
+            this.chkChgNmSpecChangeFile.AutoSize = true;
+            this.chkChgNmSpecChangeFile.Location = new System.Drawing.Point(152, 140);
+            this.chkChgNmSpecChangeFile.Name = "chkChgNmSpecChangeFile";
+            this.chkChgNmSpecChangeFile.Size = new System.Drawing.Size(96, 16);
+            this.chkChgNmSpecChangeFile.TabIndex = 17;
+            this.chkChgNmSpecChangeFile.Text = "指定文件列表";
+            this.chkChgNmSpecChangeFile.UseVisualStyleBackColor = true;
+            this.chkChgNmSpecChangeFile.CheckedChanged += new System.EventHandler(this.chkChgNmSpecChangeFile_CheckedChanged);
             // 
             // btnChgNmViewFileNameList
             // 
@@ -684,70 +748,6 @@
             this.txtConsole.TabIndex = 0;
             this.txtConsole.TabStop = false;
             this.txtConsole.WordWrap = false;
-            // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Font = new System.Drawing.Font("宋体", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label8.Location = new System.Drawing.Point(565, 26);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(44, 48);
-            this.label8.TabIndex = 6;
-            this.label8.Text = "}";
-            // 
-            // btnChgNmViewChgFileNameList
-            // 
-            this.btnChgNmViewChgFileNameList.Location = new System.Drawing.Point(605, 39);
-            this.btnChgNmViewChgFileNameList.Name = "btnChgNmViewChgFileNameList";
-            this.btnChgNmViewChgFileNameList.Size = new System.Drawing.Size(93, 23);
-            this.btnChgNmViewChgFileNameList.TabIndex = 7;
-            this.btnChgNmViewChgFileNameList.Text = "更名列表预览";
-            this.btnChgNmViewChgFileNameList.UseVisualStyleBackColor = true;
-            this.btnChgNmViewChgFileNameList.Click += new System.EventHandler(this.btnChgNmViewChgFileNameList_Click);
-            // 
-            // chkChgNmSpecChangeFile
-            // 
-            this.chkChgNmSpecChangeFile.AutoSize = true;
-            this.chkChgNmSpecChangeFile.Location = new System.Drawing.Point(152, 140);
-            this.chkChgNmSpecChangeFile.Name = "chkChgNmSpecChangeFile";
-            this.chkChgNmSpecChangeFile.Size = new System.Drawing.Size(96, 16);
-            this.chkChgNmSpecChangeFile.TabIndex = 17;
-            this.chkChgNmSpecChangeFile.Text = "指定文件列表";
-            this.chkChgNmSpecChangeFile.UseVisualStyleBackColor = true;
-            this.chkChgNmSpecChangeFile.CheckedChanged += new System.EventHandler(this.chkChgNmSpecChangeFile_CheckedChanged);
-            // 
-            // btnChgNmEditChangeFileList
-            // 
-            this.btnChgNmEditChangeFileList.Enabled = false;
-            this.btnChgNmEditChangeFileList.Location = new System.Drawing.Point(254, 137);
-            this.btnChgNmEditChangeFileList.Name = "btnChgNmEditChangeFileList";
-            this.btnChgNmEditChangeFileList.Size = new System.Drawing.Size(75, 23);
-            this.btnChgNmEditChangeFileList.TabIndex = 18;
-            this.btnChgNmEditChangeFileList.Text = "编辑列表";
-            this.btnChgNmEditChangeFileList.UseVisualStyleBackColor = true;
-            this.btnChgNmEditChangeFileList.Click += new System.EventHandler(this.btnChgNmEditChangeFileList_Click);
-            // 
-            // chkChgNmIsRegex
-            // 
-            this.chkChgNmIsRegex.AutoSize = true;
-            this.chkChgNmIsRegex.Location = new System.Drawing.Point(423, 26);
-            this.chkChgNmIsRegex.Name = "chkChgNmIsRegex";
-            this.chkChgNmIsRegex.Size = new System.Drawing.Size(84, 16);
-            this.chkChgNmIsRegex.TabIndex = 8;
-            this.chkChgNmIsRegex.Text = "正则表达式";
-            this.chkChgNmIsRegex.UseVisualStyleBackColor = true;
-            // 
-            // chkChgNmOnlyFixStr
-            // 
-            this.chkChgNmOnlyFixStr.AutoSize = true;
-            this.chkChgNmOnlyFixStr.Enabled = false;
-            this.chkChgNmOnlyFixStr.Location = new System.Drawing.Point(494, 56);
-            this.chkChgNmOnlyFixStr.Name = "chkChgNmOnlyFixStr";
-            this.chkChgNmOnlyFixStr.Size = new System.Drawing.Size(72, 16);
-            this.chkChgNmOnlyFixStr.TabIndex = 9;
-            this.chkChgNmOnlyFixStr.Text = "仅前后缀";
-            this.chkChgNmOnlyFixStr.UseVisualStyleBackColor = true;
-            this.chkChgNmOnlyFixStr.CheckedChanged += new System.EventHandler(this.chkChgNmOnlyFixStr_CheckedChanged);
             // 
             // Form1
             // 
