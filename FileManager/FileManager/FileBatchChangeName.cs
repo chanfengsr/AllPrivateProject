@@ -21,7 +21,7 @@ namespace FileManager {
 
     internal class FileBatchChangeName {
         public static string ExtensionPicFile = "BMP|PCX|TIFF|GIF|JPEG|JPG|TGA|EXIF|FPX|SVG|PSD|CDR|PCD|DXF|UFO|EPS|AI|PNG|HDRI|RAW";
-        public static string ExtensionAudioFile = "WAV|MP3|MP3|RA|RMA|WMA|ASF|MID|MIDI|RMI|XMI|OGG|VQF|TVQ|MOD|APE|AIFF|AU|FLAC";
+        public static string ExtensionAudioFile = "WAV|MP3|RA|RMA|WMA|ASF|MID|MIDI|RMI|XMI|OGG|VQF|TVQ|MOD|APE|AIFF|AU|FLAC";
         public static string ExtensionVideoFile = "3GP|ASF|AVI|FLV|MKV|MOV|MP4|MPEG|AVI|RMVB|WMV|SWF";
         public static string ExtensionTextFile = "TXT|DOC|DOCX|HLP|WPS|RTF|HTML|HTM|PDF";
 
