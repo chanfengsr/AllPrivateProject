@@ -73,7 +73,7 @@ namespace FileManager {
 
             if (Directory.Exists(this.FileFolder)) {
                 _allFile.Clear();
-                List<string> filterList = this.FileFilter.Split('|').ToList();
+                List<string> filterList = this.FileFilter.ToUpper().Split('|').ToList();
                 bool havAllFilter = filterList.Contains("*");
                 DirectoryInfo dicInfo = new DirectoryInfo(this.FileFolder);
                 List<string> chgFileList = this.UseSpecChangeFileList ? this.SpecChangeFileList.ToUpper().Split(new[] {Environment.NewLine}, StringSplitOptions.RemoveEmptyEntries).ToList() : null;
