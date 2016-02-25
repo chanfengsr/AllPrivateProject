@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.txtOld2 = new System.Windows.Forms.TextBox();
+            this.button20 = new System.Windows.Forms.Button();
             this.button19 = new System.Windows.Forms.Button();
             this.button18 = new System.Windows.Forms.Button();
             this.button17 = new System.Windows.Forms.Button();
@@ -79,8 +81,7 @@
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
-            this.button20 = new System.Windows.Forms.Button();
-            this.txtOld2 = new System.Windows.Forms.TextBox();
+            this.btnCHH = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -103,6 +104,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.btnCHH);
             this.splitContainer1.Panel1.Controls.Add(this.txtOld2);
             this.splitContainer1.Panel1.Controls.Add(this.button20);
             this.splitContainer1.Panel1.Controls.Add(this.button19);
@@ -155,6 +157,23 @@
             this.splitContainer1.Size = new System.Drawing.Size(714, 617);
             this.splitContainer1.SplitterDistance = 239;
             this.splitContainer1.TabIndex = 0;
+            // 
+            // txtOld2
+            // 
+            this.txtOld2.Location = new System.Drawing.Point(273, 43);
+            this.txtOld2.Name = "txtOld2";
+            this.txtOld2.Size = new System.Drawing.Size(100, 21);
+            this.txtOld2.TabIndex = 37;
+            // 
+            // button20
+            // 
+            this.button20.Location = new System.Drawing.Point(173, 43);
+            this.button20.Name = "button20";
+            this.button20.Size = new System.Drawing.Size(94, 23);
+            this.button20.TabIndex = 36;
+            this.button20.Text = "右侧列表替换";
+            this.button20.UseVisualStyleBackColor = true;
+            this.button20.Click += new System.EventHandler(this.button20_Click);
             // 
             // button19
             // 
@@ -667,22 +686,15 @@
             this.textBox2.TabIndex = 0;
             this.textBox2.WordWrap = false;
             // 
-            // button20
+            // btnCHH
             // 
-            this.button20.Location = new System.Drawing.Point(173, 43);
-            this.button20.Name = "button20";
-            this.button20.Size = new System.Drawing.Size(94, 23);
-            this.button20.TabIndex = 36;
-            this.button20.Text = "右侧列表替换";
-            this.button20.UseVisualStyleBackColor = true;
-            this.button20.Click += new System.EventHandler(this.button20_Click);
-            // 
-            // txtOld2
-            // 
-            this.txtOld2.Location = new System.Drawing.Point(273, 43);
-            this.txtOld2.Name = "txtOld2";
-            this.txtOld2.Size = new System.Drawing.Size(100, 21);
-            this.txtOld2.TabIndex = 37;
+            this.btnCHH.Location = new System.Drawing.Point(514, 13);
+            this.btnCHH.Name = "btnCHH";
+            this.btnCHH.Size = new System.Drawing.Size(75, 23);
+            this.btnCHH.TabIndex = 38;
+            this.btnCHH.Text = "CHH验证码";
+            this.btnCHH.UseVisualStyleBackColor = true;
+            this.btnCHH.Click += new System.EventHandler(this.btnCHH_Click);
             // 
             // 调整PDF导出文字
             // 
@@ -765,6 +777,7 @@
         private System.Windows.Forms.Button button18;
         private System.Windows.Forms.TextBox txtOld2;
         private System.Windows.Forms.Button button20;
+        private System.Windows.Forms.Button btnCHH;
     }
 }
 

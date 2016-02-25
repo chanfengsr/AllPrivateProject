@@ -425,5 +425,30 @@ namespace 调整PDF导出文字
 
             ToTextBox2(sb);
         }
+
+        private void btnCHH_Click(object sender, EventArgs e) {
+            int iFirst, iEnd;
+
+            try {
+                string clpbText = Clipboard.GetText(TextDataFormat.UnicodeText);
+                string[] split = clpbText.Split(new[] {Environment.NewLine}, StringSplitOptions.RemoveEmptyEntries);
+                string txtOrig = split[1].Trim().Replace(" ","");
+                iFirst = split[0].IndexOf("第", StringComparison.Ordinal);
+                iEnd = split[0].IndexOf("位", StringComparison.Ordinal);
+                string strOfNum = split[0].Substring(iFirst + 1, iEnd - iFirst-1);
+                string[] aNum = strOfNum.Split('-');
+
+                int.TryParse(aNum[0], out iFirst);
+                int.TryParse(aNum[1], out iEnd);
+
+                if (iFirst > iEnd || iEnd > txtOrig.Length || iFirst == 0)
+                    ToTextBox2("Error");
+                else
+                    ToTextBox2(txtOrig.Substring(iFirst - 1, iEnd - iFirst + 1) + "CHH");
+            }
+            catch (Exception) {
+                ToTextBox2("Error");
+            }
+        }
     }
 }
