@@ -39,12 +39,12 @@ namespace FileManager
         public static DateTime GetFileDateTime(FileInfo fileInfo, bool useCameraDate = false) {
             if (useCameraDate && fileInfo.Extension.ToLower() == ".jpg") {
                 DateTime picDate = PictureHelper.GetTakePicDateTime(PictureHelper.GetExifProperties(fileInfo.FullName));
-
+                
                 if (picDate > DateTime.MinValue)
                     return picDate;
             }
 
-            return fileInfo.LastWriteTime;
+            return fileInfo.CreationTime;
         }
     }
 }

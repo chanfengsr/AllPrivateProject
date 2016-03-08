@@ -11,7 +11,6 @@ using FileManager.Properties;
 
 namespace FileManager {
     public partial class Form1 : Form {
-        private readonly List<FileInfo> _allFile = new List<FileInfo>();
         private string _fileChangeNameChangeList = string.Empty;
         private string _fileChangeNameSpecChgFileList = string.Empty;
 
@@ -25,11 +24,20 @@ namespace FileManager {
         }
 
         private void Form1_Load(object sender, EventArgs e) {
+            btnCloseForm.Top = -1000;
             LoadConfig();
+
+            int addHeight = chkSpecFileList.Height;
+            grpFileSelect.Height = btnViewFileNameList.Location.Y + btnViewFileNameList.Height + addHeight;
+            splitContainer1.SplitterDistance = grpFileSelect.Location.Y + grpFileSelect.Height + tabCtrlFunction.Height + addHeight;
         }
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e) {
             //SaveConfig();
+        }
+
+        private void btnCloseForm_Click(object sender, EventArgs e) {
+            this.Close();
         }
 
         private void btnClear_Click(object sender, EventArgs e) {
@@ -68,62 +76,13 @@ namespace FileManager {
 
         private void btnCopyByDate_Click(object sender, EventArgs e) {
             new System.Threading.Thread(() => {
-                int count = 0;
-                string sourceFolder = txtSourceFolder.Text;
-                string origTargetFolder = txtTargetFolder.Text;
-                string targetFolder;
-                string dupFileFolder; //重复文件放的文件夹
-                bool havDupFileFolder = false;
-                DateTime fileDate;
-
                 try {
                     UIInProcess(true);
 
-                    if (Directory.Exists(sourceFolder)
-                        && Directory.Exists(origTargetFolder)) {
-                        if (!origTargetFolder.EndsWith("\\"))
-                            origTargetFolder = origTargetFolder + "\\";
+                    FileCopyByGroup fileCopyByGroup = ConstructFileCopyByGroup();
+                    fileCopyByGroup.Execute();
 
-                        dupFileFolder = origTargetFolder + "Duplicate files\\";
-
-                        _allFile.Clear();
-                        GetAllFile(new DirectoryInfo(sourceFolder));
-
-                        foreach (FileInfo fileInfo in _allFile) {
-                            try {
-                                //隐藏文件和系统文件就不要过来凑热闹了
-                                if ( /*( fileInfo.Attributes & FileAttributes.Hidden ) == FileAttributes.Hidden || */
-                                    ( fileInfo.Attributes & FileAttributes.System ) == FileAttributes.System)
-                                    continue;
-
-                                fileDate = CommFunction.GetFileDateTime(fileInfo, chkUseCameraDate.Checked);
-                                targetFolder = origTargetFolder + fileDate.ToString("yyyy-MM-dd") + "\\";
-                                if (!Directory.Exists(targetFolder))
-                                    Directory.CreateDirectory(targetFolder);
-
-                                if (File.Exists(targetFolder + fileInfo.Name)) {
-                                    if (!havDupFileFolder || !Directory.Exists(dupFileFolder)) {
-                                        Directory.CreateDirectory(dupFileFolder);
-                                        havDupFileFolder = true;
-                                    }
-
-                                    fileInfo.CopyTo(dupFileFolder + fileInfo.Name, true);
-                                }
-                                else
-                                    fileInfo.CopyTo(targetFolder + fileInfo.Name);
-
-                                count++;
-                            }
-                            catch (Exception ex) {
-                                CommFunction.WriteMessage(ex.Message);
-                            }
-                        }
-
-                        SaveConfig();
-                        CommFunction.WriteMessage("复制完成！ 共 " + count + " 个文件。");
-                    }
-                    else
-                        CommFunction.WriteMessage("文件夹不存在！");
+                    SaveConfig();
                 }
                 catch (Exception ex) {
                     CommFunction.WriteMessage(ex.Message);
@@ -133,16 +92,11 @@ namespace FileManager {
                 }
 
                 GC.Collect();
-            }
-                ).Start();
+            }).Start();
         }
 
-        private void btnChgNmFolderBrowser_Click(object sender, EventArgs e) {
-            FolderBrowser(txtChgNmFileFolder);
-        }
-
-        private void rdoChgNmTypeCust_CheckedChanged(object sender, EventArgs e) {
-            txtChgNmFileType.Enabled = rdoChgNmTypeCust.Checked;
+        private void rdoTypeCust_CheckedChanged(object sender, EventArgs e) {
+            txtFileType.Enabled = rdoTypeCust.Checked;
         }
 
         private void rdoChgNmRulFixedStr_CheckedChanged(object sender, EventArgs e) {
@@ -172,7 +126,7 @@ namespace FileManager {
                 btnChgNmViewChgFileNameList.Enabled = false;
         }
 
-        private void btnChgNmViewFileNameList_Click(object sender, EventArgs e) {
+        private void btnViewFileNameList_Click(object sender, EventArgs e) {
             try {
                 UIInProcess(true);
                 FileBatchChangeName fileBatchChangeName = ConstructFileBatchChangeName();
@@ -193,19 +147,19 @@ namespace FileManager {
             }
         }
 
-        private void chkChgNmSpecChangeFile_CheckedChanged(object sender, EventArgs e) {
-            btnChgNmEditChangeFileList.Enabled = chkChgNmSpecChangeFile.Checked;
+        private void chkSpecChangeFile_CheckedChanged(object sender, EventArgs e) {
+            btnEditChangeFileList.Enabled = chkSpecFileList.Checked;
 
-            grpChgNmFileType.Enabled =
-                grpChgNmSortMode.Enabled =
-                btnChgNmViewFileNameList.Enabled =
-                !chkChgNmSpecChangeFile.Checked;
+            grpFileType.Enabled =
+                grpSortMode.Enabled =
+                btnViewFileNameList.Enabled =
+                !chkSpecFileList.Checked;
         }
 
-        private void btnChgNmEditChangeFileList_Click(object sender, EventArgs e) {
+        private void btnEditChangeFileList_Click(object sender, EventArgs e) {
             using (formTextMessage frmMessage = new formTextMessage("编辑要被更名的文件列表", _fileChangeNameSpecChgFileList)) {
                 frmMessage.ShowDialog(this);
-                
+
                 if (frmMessage.CloseResult == DialogResult.OK)
                     _fileChangeNameSpecChgFileList = frmMessage.FormMessage;
             }
@@ -270,9 +224,20 @@ namespace FileManager {
                 ).Start();
         }
 
+        private void tabCtrlFunction_SelectedIndexChanged(object sender, EventArgs e) {
+            if (tabCtrlFunction.SelectedTab.Name == tabPageCopyByGroup.Name) {
+                txtTargetFolder.Enabled = true;
+                btnTargetFolderBrowser.Enabled = true;
+            }
+            else if (tabCtrlFunction.SelectedTab.Name == tabPageFileBatchChangeName.Name) {
+                txtTargetFolder.Enabled = false;
+                btnTargetFolderBrowser.Enabled = false;
+            }
+        }
+
         private void FolderBrowser(Control txtBox) {
-            if (Directory.Exists(txtTargetFolder.Text))
-                folderBrowser.SelectedPath = txtTargetFolder.Text;
+            if (Directory.Exists(txtBox.Text))
+                folderBrowser.SelectedPath = txtBox.Text;
             else
                 folderBrowser.SelectedPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
 
@@ -284,9 +249,9 @@ namespace FileManager {
             try {
                 txtSourceFolder.Text = SysConfig.GetConfigData("AppConfig", "SourceFolder", "");
                 txtTargetFolder.Text = SysConfig.GetConfigData("AppConfig", "TargetFolder", "");
-                chkUseCameraDate.Checked = SysConfig.GetConfigData("AppConfig", "UseCameraDate", false);
+                //chkUseCameraDate.Checked = SysConfig.GetConfigData("AppConfig", "UseCameraDate", false);
 
-                txtChgNmFileFolder.Text = SysConfig.GetConfigData("AppConfig", "ChangeNameFileFolder", "");
+                txtSourceFolder.Text = SysConfig.GetConfigData("AppConfig", "ChangeNameFileFolder", "");
             }
             catch (Exception ex) {
                 CommFunction.WriteMessage(ex.Message);
@@ -297,81 +262,118 @@ namespace FileManager {
             try {
                 SysConfig.WriteConfigData("AppConfig", "SourceFolder", txtSourceFolder.Text);
                 SysConfig.WriteConfigData("AppConfig", "TargetFolder", txtTargetFolder.Text);
-                SysConfig.WriteConfigData("AppConfig", "UseCameraDate", chkUseCameraDate.Checked.ToString());
+                //SysConfig.WriteConfigData("AppConfig", "UseCameraDate", chkUseCameraDate.Checked.ToString());
 
-                SysConfig.WriteConfigData("AppConfig", "ChangeNameFileFolder", txtChgNmFileFolder.Text);
+                SysConfig.WriteConfigData("AppConfig", "ChangeNameFileFolder", txtSourceFolder.Text);
             }
             catch (Exception ex) {
                 CommFunction.WriteMessage(ex.Message);
             }
         }
 
-        private void GetAllFile(DirectoryInfo dirInfo) {
-            foreach (DirectoryInfo di in dirInfo.GetDirectories())
-                GetAllFile(di);
-
-            foreach (FileInfo fi in dirInfo.GetFiles())
-                _allFile.Add(fi);
-        }
-        
         private void UIInProcess(bool inProcessing) {
             this.Cursor = inProcessing ? Cursors.WaitCursor : Cursors.Default;
 
             grpFunction.Enabled = !inProcessing;
         }
 
+        private FileSelectParm GetFormFileSelParm() {
+            FileSelectParm retVal = new FileSelectParm();
+
+            if (rdoTypePic.Checked)
+                retVal.FileFilter = CommDefinition.ExtensionPicFile;
+            else if (rdoTypeAudio.Checked)
+                retVal.FileFilter = CommDefinition.ExtensionAudioFile;
+            else if (rdoTypeVideo.Checked)
+                retVal.FileFilter = CommDefinition.ExtensionVideoFile;
+            else if (rdoTypeText.Checked)
+                retVal.FileFilter = CommDefinition.ExtensionTextFile;
+            else if (rdoTypeCust.Checked)
+                retVal.FileFilter = txtFileType.Text;
+
+            if (rdoSortName.Checked)
+                retVal.FileSortBy = FileSortMode.FileName;
+            else if (rdoSortCreateDate.Checked)
+                retVal.FileSortBy = FileSortMode.CreateDate;
+            else if (rdoSortModifyDate.Checked)
+                retVal.FileSortBy = FileSortMode.ModifyDate;
+            else if (rdoSortRecordDate.Checked)
+                retVal.FileSortBy = FileSortMode.RecordingDate;
+            else if (rdoSortNameDate.Checked)
+                retVal.FileSortBy = FileSortMode.DateInFileName;
+
+            retVal.SourceFileFolder = txtSourceFolder.Text;
+            retVal.TargetFileFolder = txtTargetFolder.Text;
+            retVal.UseSpecFileList = chkSpecFileList.Checked;
+            retVal.SpecFileList = _fileChangeNameSpecChgFileList;
+
+            return retVal;
+        }
+
         private FileBatchChangeName ConstructFileBatchChangeName() {
-            FileBatchChangeName ret = new FileBatchChangeName();
-            string strFileFilter;
-            FileSortMode fileSortBy;
-            FileChangeRule fileChangeBy;
+            FileBatchChangeName retVal = new FileBatchChangeName();
+            retVal.SetFileSelectParm(this.GetFormFileSelParm());
 
-            if (rdoChgNmTypePic.Checked)
-                strFileFilter = FileBatchChangeName.ExtensionPicFile;
-            else if (rdoChgNmTypeAudio.Checked)
-                strFileFilter = FileBatchChangeName.ExtensionAudioFile;
-            else if (rdoChgNmTypeVideo.Checked)
-                strFileFilter = FileBatchChangeName.ExtensionVideoFile;
-            else if (rdoChgNmTypeText.Checked)
-                strFileFilter = FileBatchChangeName.ExtensionTextFile;
-            else //if (rdoChgNmTypeCust.Checked)
-                strFileFilter = txtChgNmFileType.Text;
+            FileChangeRule fileChangeBy = FileChangeRule.FixedString;
+            /*
+            string strFileFilter = string.Empty;
+            FileSortMode fileSortBy = FileSortMode.FileName;
+            
+            if (rdoTypePic.Checked)
+                strFileFilter = CommDefinition.ExtensionPicFile;
+            else if (rdoTypeAudio.Checked)
+                strFileFilter = CommDefinition.ExtensionAudioFile;
+            else if (rdoTypeVideo.Checked)
+                strFileFilter = CommDefinition.ExtensionVideoFile;
+            else if (rdoTypeText.Checked)
+                strFileFilter = CommDefinition.ExtensionTextFile;
+            else if (rdoTypeCust.Checked)
+                strFileFilter = txtFileType.Text;
 
-            if (rdoChgNmSortName.Checked)
+            if (rdoSortName.Checked)
                 fileSortBy = FileSortMode.FileName;
-            else if (rdoChgNmSortCreateDate.Checked)
+            else if (rdoSortCreateDate.Checked)
                 fileSortBy = FileSortMode.CreateDate;
-            else if (rdoChgNmSortModifyDate.Checked)
+            else if (rdoSortModifyDate.Checked)
                 fileSortBy = FileSortMode.ModifyDate;
-            else //if (rdoChgNmSortRecordDate.Checked)
+            else if (rdoSortRecordDate.Checked)
                 fileSortBy = FileSortMode.RecordingDate;
 
+            retVal.SetFileSelect(txtSourceFolder.Text, strFileFilter, fileSortBy, chkSpecFileList.Checked, _fileChangeNameSpecChgFileList);
+            */
             if (rdoChgNmRulFixedStr.Checked)
                 fileChangeBy = FileChangeRule.FixedString;
             else if (rdoChgNmRulWildcard.Checked)
                 fileChangeBy = FileChangeRule.Wildcard;
-            else
+            else if (rdoChgNmRulSpecList.Checked)
                 fileChangeBy = FileChangeRule.SpecList;
 
-            ret.SetFileSelect(txtChgNmFileFolder.Text, strFileFilter, fileSortBy, chkChgNmSpecChangeFile.Checked, _fileChangeNameSpecChgFileList);
             switch (fileChangeBy) {
                 case FileChangeRule.FixedString:
-                    ret.SetNameChangeRule(fileChangeBy, txtChgNmFixedStr.Text, chkChgNmIsRegex.Checked);
+                    retVal.SetFunctionRule(fileChangeBy, txtChgNmFixedStr.Text, chkChgNmIsRegex.Checked);
                     break;
                 case FileChangeRule.Wildcard:
-                    ret.SetNameChangeRule(fileChangeBy,
-                                          perfixStr: txtChgNmPerfixStr.Text,
-                                          suffixStr: txtChgNmSuffixStr.Text,
-                                          startNum: (int)numChgNmStartNum.Value,
-                                          wildcardLen: (int)numChgNmWildcardLen.Value,
-                                          onlyFixStr: chkChgNmOnlyFixStr.Checked);
+                    retVal.SetFunctionRule(fileChangeBy,
+                                           perfixStr: txtChgNmPerfixStr.Text,
+                                           suffixStr: txtChgNmSuffixStr.Text,
+                                           startNum: (int)numChgNmStartNum.Value,
+                                           wildcardLen: (int)numChgNmWildcardLen.Value,
+                                           onlyFixStr: chkChgNmOnlyFixStr.Checked);
                     break;
                 case FileChangeRule.SpecList:
-                    ret.SetNameChangeRule(fileChangeBy, specChgList: _fileChangeNameChangeList);
+                    retVal.SetFunctionRule(fileChangeBy, specChgList: _fileChangeNameChangeList);
                     break;
             }
 
-            return ret;
+            return retVal;
+        }
+
+        private FileCopyByGroup ConstructFileCopyByGroup() {
+            FileCopyByGroup retVal = new FileCopyByGroup();
+            retVal.SetFileSelectParm(this.GetFormFileSelParm());
+            retVal.SetFunctionRule(chkModMove.Checked);
+
+            return retVal;
         }
     }
 }

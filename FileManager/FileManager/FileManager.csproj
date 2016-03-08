@@ -50,10 +50,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommClass\CommDefinition.cs" />
     <Compile Include="CommClass\CommFunction.cs" />
     <Compile Include="CommClass\ConsoleRedirect.cs" />
     <Compile Include="CommClass\ExifManager.cs" />
-    <Compile Include="FileBatchChangeName.cs" />
+    <Compile Include="ModeClass\FileBatchChangeName.cs" />
+    <Compile Include="ModeClass\FileCopyByGroup.cs" />
+    <Compile Include="ModeClass\FileProcessBaseClass.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>

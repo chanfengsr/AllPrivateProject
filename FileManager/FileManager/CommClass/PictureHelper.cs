@@ -254,31 +254,33 @@ namespace FileManager
             string timeString = string.Empty;
             DateTime retVal = DateTime.MinValue;
 
-            //遍历图像文件元数据，检索所有属性
-            foreach (PropertyItem prop   in propItem)
-            {
-                string exifDateStr = string.Empty;
-                
-                if (prop.Id == (int)ExifPropName.PropertyTagDateTime ||
-                    prop.Id == (int)ExifPropName.PropertyTagExifDTOrig ||
-                    prop.Id == (int)ExifPropName.PropertyTagExifDTDigitized)
-                {
-                    exifDateStr = GetValueOfType2(prop.Value);
+            try {
+                //遍历图像文件元数据，检索所有属性
+                foreach (PropertyItem prop in propItem) {
+                    string exifDateStr = string.Empty;
+
+                    if (prop.Id == (int)ExifPropName.PropertyTagDateTime ||
+                        prop.Id == (int)ExifPropName.PropertyTagExifDTOrig ||
+                        prop.Id == (int)ExifPropName.PropertyTagExifDTDigitized) {
+                        exifDateStr = GetValueOfType2(prop.Value);
+                    }
+
+                    exifDateStr = exifDateStr.Trim().TrimEnd('\0');
+                    if (exifDateStr.Length >= 19) {
+                        exifDateStr = exifDateStr.Substring(0, 19);
+                        timeString = exifDateStr.Substring(0, 10).Replace(":", "/") +
+                                     exifDateStr.Substring(10, 9);
+
+                        if (DateTime.TryParse(timeString, out retVal))
+                            return retVal;
+                    }
                 }
 
-                exifDateStr = exifDateStr.Trim().TrimEnd('\0');
-                if (exifDateStr.Length >= 19)
-                {
-                    exifDateStr = exifDateStr.Substring(0, 19);
-                    timeString = exifDateStr.Substring(0, 10).Replace(":", "/") +
-                                 exifDateStr.Substring(10, 9);
-
-                    if (DateTime.TryParse(timeString, out retVal))
-                        return retVal;
-                }
+                return DateTime.MinValue;
             }
-
-            return DateTime.MinValue;
+            finally {
+                GC.Collect();
+            }
         }
 
         /// <summary>对type=2 的value值进行读取
