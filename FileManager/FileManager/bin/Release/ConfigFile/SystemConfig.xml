@@ -1,8 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <SystemConfig>
   <AppConfig>
-    <key name="SourceFolder" value="" remark="" />
-    <key name="TargetFolder" value="" remark="" />
+    <key name="SourceFolder" value="G:\zhen" remark="" />
+    <key name="TargetFolder" value="G:\zhen2" remark="" />
     <key name="UseCameraDate" value="true" remark="" />
+    <key name="ChangeNameFileFolder" value="G:\zhen" />
   </AppConfig>
 </SystemConfig>
