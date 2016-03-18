@@ -40,7 +40,7 @@ namespace FileManager {
             this.OnlyFixStr = onlyFixStr;
             this.SpecChangeList = specChgList;
         }
-        
+
         public List<string> GetTargetNameList() {
             List<string> retVal = new List<string>();
             int iFileNum = this.StartSeriNum;

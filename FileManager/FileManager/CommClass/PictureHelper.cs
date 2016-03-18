@@ -15,10 +15,8 @@ using System.IO;
 using System.Linq;
 using System.Text;
 
-namespace FileManager
-{
-    public enum ExifPropName
-    {
+namespace FileManager {
+    public enum ExifPropName {
         PropertyTagGpsVer = 0x0000,
         PropertyTagGpsLatitudeRef = 0x0001,
         PropertyTagGpsLatitude = 0x0002,
@@ -238,19 +236,16 @@ namespace FileManager
         PropertyTagExifCfaPattern = 0xA302
     }
 
-    internal class PictureHelper
-    {
+    internal class PictureHelper {
         /// <summary>获取图像文件的所有元数据属性，以PropertyItem数组的格式保存
         /// </summary>
-        public static PropertyItem[] GetExifProperties(string fileName)
-        {
+        public static PropertyItem[] GetExifProperties(string fileName) {
             return Image.FromFile(fileName).PropertyItems;
         }
 
         /// <summary>遍历所有元数据，获取拍照日期/时间
         /// </summary>
-        public static DateTime GetTakePicDateTime(PropertyItem[] propItem)
-        {
+        public static DateTime GetTakePicDateTime(PropertyItem[] propItem) {
             string timeString = string.Empty;
             DateTime retVal = DateTime.MinValue;
 
@@ -285,23 +280,20 @@ namespace FileManager
 
         /// <summary>对type=2 的value值进行读取
         /// </summary>
-        public static string GetValueOfType2(byte[] b) 
-        {
+        public static string GetValueOfType2(byte[] b) {
             return System.Text.Encoding.ASCII.GetString(b);
         }
 
         /// <summary>对type=3 的value值进行读取
         /// </summary>
-        public static string GetValueOfType3(byte[] b) 
-        {
+        public static string GetValueOfType3(byte[] b) {
             if (b.Length != 2) return "unknow";
             return Convert.ToUInt16(b[1] << 8 | b[0]).ToString();
         }
 
         /// <summary>对type=5 的value值进行读取
         /// </summary>
-        public static string GetValueOfType5(byte[] b) 
-        {
+        public static string GetValueOfType5(byte[] b) {
             if (b.Length != 8) return "unknow";
             UInt32 fm, fz;
             fm = 0;
@@ -313,8 +305,7 @@ namespace FileManager
 
         /// <summary>获取光圈的值
         /// </summary>
-        public static string GetValueOfType5A(byte[] b) 
-        {
+        public static string GetValueOfType5A(byte[] b) {
             if (b.Length != 8) return "unknow";
             UInt32 fm, fz;
             fm = 0;

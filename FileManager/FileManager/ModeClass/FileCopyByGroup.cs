@@ -11,7 +11,7 @@ namespace FileManager {
         private List<FileSortMode> DatePriority {
             get {
                 List<FileSortMode> listOfPriority = new List<FileSortMode>();
-                
+
                 switch (FileSelParm.FileSortBy) {
                     case FileSortMode.FileName:
                     case FileSortMode.CreateDate:
@@ -52,6 +52,8 @@ namespace FileManager {
             Dictionary<string, string> moveFileList = new Dictionary<string, string>();
 
             try {
+                base.BeforeExecute();
+
                 if (!Directory.Exists(sourceFolder)) {
                     CommFunction.WriteMessage("源文件夹不存在！");
                     return;
@@ -64,9 +66,8 @@ namespace FileManager {
 
                 if (!origTargetFolder.EndsWith("\\"))
                     origTargetFolder = origTargetFolder + "\\";
-                
+
                 dupFileFolder = origTargetFolder + "Duplicate files\\";
-                base.AllFile.Clear();
                 if (base.LoadFileList(false).Length > 0) {
                     //create and record file target
                     foreach (FileInfo origFile in base.AllFile) {

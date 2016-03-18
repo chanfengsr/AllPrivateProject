@@ -10,10 +10,70 @@ namespace FileManager {
     internal class FileProcessBaseClass {
         protected readonly List<FileInfo> AllFile = new List<FileInfo>();
         protected FileSelectParm FileSelParm = new FileSelectParm();
-        private readonly Dictionary<string, DateTime> DicRecordDate = new Dictionary<string, DateTime>();
+        private readonly Dictionary<string, DateTime> _dicRecordDate = new Dictionary<string, DateTime>();
+
+        protected Dictionary<string, DateTime> DicRecordDate {
+            get {
+                if (_dicRecordDate.Count == 0 && AllFile.Count > 0) {
+                    ParallelQuery<Tuple<string, DateTime>> pqRecordDate = AllFile.Select(f => f.FullName).AsParallel().Select(fName => Tuple.Create(fName, PictureHelper.GetTakePicDateTime(PictureHelper.GetExifProperties(fName))));
+                    foreach (Tuple<string, DateTime> nameDate in pqRecordDate) {
+                        _dicRecordDate.Add(nameDate.Item1, nameDate.Item2);
+                    }
+                }
+
+                return _dicRecordDate;
+            }
+        }
 
         public void SetFileSelectParm(FileSelectParm fileSelectParm) {
             this.FileSelParm = fileSelectParm;
+        }
+
+        protected DateTime GetFileDate(FileInfo fileInfo, FileSortMode fileSortMode) {
+            DateTime retVal = DateTime.MinValue;
+
+            switch (fileSortMode) {
+                case FileSortMode.CreateDate:
+                    retVal = fileInfo.CreationTime;
+                    break;
+                case FileSortMode.ModifyDate:
+                case FileSortMode.FileName:
+                    retVal = fileInfo.LastWriteTime;
+                    break;
+                case FileSortMode.RecordingDate:
+                    if (fileInfo.Extension.ToUpper() == ".JPG")
+                        //retVal = PictureHelper.GetTakePicDateTime(PictureHelper.GetExifProperties(fileInfo.FullName));
+                        retVal = this.DicRecordDate[fileInfo.FullName];
+                    break;
+                case FileSortMode.DateInFileName:
+                    Regex reg = new Regex(@"((19|20)\d{2})-?(0[1-9]|1[0-2])-?(0[1-9]|[1-2][0-9]|3[0-1])");
+                    Match match = reg.Match(fileInfo.Name);
+
+                    if (match.Success)
+                        DateTime.TryParseExact(match.Value, new[] {"yyyy-MM-dd", "yyyyMMdd"}, CultureInfo.CurrentUICulture, DateTimeStyles.None, out retVal);
+
+                    break;
+            }
+
+            return retVal;
+        }
+
+        protected DateTime GetFileDate(FileInfo fileInfo, List<FileSortMode> listOfPriority) {
+            DateTime retVal = DateTime.MinValue;
+
+            foreach (FileSortMode mode in listOfPriority) {
+                retVal = GetFileDate(fileInfo, mode);
+
+                if (retVal > DateTime.MinValue)
+                    break;
+            }
+
+            return retVal;
+        }
+
+        protected void BeforeExecute() {
+            this.AllFile.Clear();
+            this._dicRecordDate.Clear();
         }
 
         public virtual string LoadFileList(bool sortFileList = true) {
@@ -21,7 +81,7 @@ namespace FileManager {
 
             if (Directory.Exists(FileSelParm.SourceFileFolder)) {
                 AllFile.Clear();
-                DicRecordDate.Clear();
+                _dicRecordDate.Clear();
                 List<string> filterList = FileSelParm.FileFilter.ToUpper().Split('|').ToList();
                 bool havAllFilter = filterList.Contains("*");
                 DirectoryInfo dicInfo = new DirectoryInfo(FileSelParm.SourceFileFolder);
@@ -64,11 +124,13 @@ namespace FileManager {
                             break;
                         case FileSortMode.RecordingDate:
                             //直接取拍摄日期，文件多了会内存溢出
-                            foreach (FileInfo fileInfo in AllFile) {
-                                DicRecordDate.Add(fileInfo.FullName, this.GetFileDate(fileInfo, FileSortMode.RecordingDate));
-                            }
+                            //foreach (FileInfo fileInfo in AllFile) {
+                            //    DicRecordDate.Add(fileInfo.FullName, this.GetFileDate(fileInfo, FileSortMode.RecordingDate));
+                            //}
+                            //DicRecordDate = AllFile.AsParallel().ToDictionary(f => f.FullName, f => this.GetFileDate(f, FileSortMode.RecordingDate));
+
                             //_allFile.Sort((x, y) => DateTime.Compare(CommFunction.GetFileDateTime(x, true), CommFunction.GetFileDateTime(y, true)));
-                            AllFile.Sort((x, y) => DateTime.Compare(DicRecordDate[x.FullName], DicRecordDate[y.FullName]));
+                            AllFile.Sort((x, y) => DateTime.Compare(this.DicRecordDate[x.FullName], this.DicRecordDate[y.FullName]));
                             break;
                         case FileSortMode.DateInFileName:
                             AllFile.Sort((x, y) => DateTime.Compare(this.GetFileDate(x, FileSortMode.DateInFileName), this.GetFileDate(y, FileSortMode.DateInFileName)));
@@ -87,47 +149,6 @@ namespace FileManager {
             }
             else {
                 CommFunction.WriteMessage("文件夹不存在！");
-            }
-
-            return retVal;
-        }
-
-        protected DateTime GetFileDate(FileInfo fileInfo, FileSortMode fileSortMode) {
-            DateTime retVal = DateTime.MinValue;
-
-            switch (fileSortMode) {
-                case FileSortMode.CreateDate:
-                    retVal = fileInfo.CreationTime;
-                    break;
-                case FileSortMode.ModifyDate:
-                case FileSortMode.FileName:
-                    retVal = fileInfo.LastWriteTime;
-                    break;
-                case FileSortMode.RecordingDate:
-                    if (fileInfo.Extension.ToUpper() == ".JPG")
-                        retVal = PictureHelper.GetTakePicDateTime(PictureHelper.GetExifProperties(fileInfo.FullName));
-                    break;
-                case FileSortMode.DateInFileName:
-                    Regex reg = new Regex(@"((19|20)\d{2})-?(0[1-9]|1[0-2])-?(0[1-9]|[1-2][0-9]|3[0-1])");
-                    Match match = reg.Match(fileInfo.Name);
-
-                    if (match.Success)
-                        DateTime.TryParseExact(match.Value, new[] {"yyyy-MM-dd", "yyyyMMdd"}, CultureInfo.CurrentUICulture, DateTimeStyles.None, out retVal);
-
-                    break;
-            }
-
-            return retVal;
-        }
-
-        protected DateTime GetFileDate(FileInfo fileInfo, List<FileSortMode> listOfPriority) {
-            DateTime retVal = DateTime.MinValue;
-
-            foreach (FileSortMode mode in listOfPriority) {
-                retVal = GetFileDate(fileInfo, mode);
-
-                if (retVal > DateTime.MinValue)
-                    break;
             }
 
             return retVal;
