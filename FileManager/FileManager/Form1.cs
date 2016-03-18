@@ -129,8 +129,13 @@ namespace FileManager {
         private void btnViewFileNameList_Click(object sender, EventArgs e) {
             try {
                 UIInProcess(true);
-                FileBatchChangeName fileBatchChangeName = ConstructFileBatchChangeName();
-                string fileList = fileBatchChangeName.LoadFileList();
+                //FileBatchChangeName fileBatchChangeName = ConstructFileBatchChangeName();
+                //string fileList = fileBatchChangeName.LoadFileList();
+
+                FileProcessBaseClass fileProcBase = new FileProcessBaseClass();
+                fileProcBase.SetFileSelectParm(this.GetFormFileSelParm());
+                string fileList = fileProcBase.LoadFileList();
+
                 UIInProcess(false);
 
                 if (fileList.Length > 0) {
@@ -315,32 +320,6 @@ namespace FileManager {
             retVal.SetFileSelectParm(this.GetFormFileSelParm());
 
             FileChangeRule fileChangeBy = FileChangeRule.FixedString;
-            /*
-            string strFileFilter = string.Empty;
-            FileSortMode fileSortBy = FileSortMode.FileName;
-            
-            if (rdoTypePic.Checked)
-                strFileFilter = CommDefinition.ExtensionPicFile;
-            else if (rdoTypeAudio.Checked)
-                strFileFilter = CommDefinition.ExtensionAudioFile;
-            else if (rdoTypeVideo.Checked)
-                strFileFilter = CommDefinition.ExtensionVideoFile;
-            else if (rdoTypeText.Checked)
-                strFileFilter = CommDefinition.ExtensionTextFile;
-            else if (rdoTypeCust.Checked)
-                strFileFilter = txtFileType.Text;
-
-            if (rdoSortName.Checked)
-                fileSortBy = FileSortMode.FileName;
-            else if (rdoSortCreateDate.Checked)
-                fileSortBy = FileSortMode.CreateDate;
-            else if (rdoSortModifyDate.Checked)
-                fileSortBy = FileSortMode.ModifyDate;
-            else if (rdoSortRecordDate.Checked)
-                fileSortBy = FileSortMode.RecordingDate;
-
-            retVal.SetFileSelect(txtSourceFolder.Text, strFileFilter, fileSortBy, chkSpecFileList.Checked, _fileChangeNameSpecChgFileList);
-            */
             if (rdoChgNmRulFixedStr.Checked)
                 fileChangeBy = FileChangeRule.FixedString;
             else if (rdoChgNmRulWildcard.Checked)

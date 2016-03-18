@@ -15,9 +15,13 @@ namespace FileManager {
         protected Dictionary<string, DateTime> DicRecordDate {
             get {
                 if (_dicRecordDate.Count == 0 && AllFile.Count > 0) {
-                    ParallelQuery<Tuple<string, DateTime>> pqRecordDate = AllFile.Select(f => f.FullName).AsParallel().Select(fName => Tuple.Create(fName, PictureHelper.GetTakePicDateTime(PictureHelper.GetExifProperties(fName))));
+                    ParallelQuery<Tuple<string, DateTime>> pqRecordDate = AllFile.Where(f => f.Extension.ToUpper() == ".JPG").Select(f => f.FullName).AsParallel().Select(fName => Tuple.Create(fName, PictureHelper.GetTakePicDateTime(PictureHelper.GetExifProperties(fName))));
                     foreach (Tuple<string, DateTime> nameDate in pqRecordDate) {
                         _dicRecordDate.Add(nameDate.Item1, nameDate.Item2);
+                    }
+                    
+                    foreach (FileInfo fileInfo in AllFile.Where(f => f.Extension.ToUpper() != ".JPG")) {
+                        _dicRecordDate.Add(fileInfo.FullName, DateTime.MinValue);
                     }
                 }
 
@@ -43,7 +47,8 @@ namespace FileManager {
                 case FileSortMode.RecordingDate:
                     if (fileInfo.Extension.ToUpper() == ".JPG")
                         //retVal = PictureHelper.GetTakePicDateTime(PictureHelper.GetExifProperties(fileInfo.FullName));
-                        retVal = this.DicRecordDate[fileInfo.FullName];
+                        if (this.DicRecordDate.ContainsKey(fileInfo.FullName))
+                            retVal = this.DicRecordDate[fileInfo.FullName];
                     break;
                 case FileSortMode.DateInFileName:
                     Regex reg = new Regex(@"((19|20)\d{2})-?(0[1-9]|1[0-2])-?(0[1-9]|[1-2][0-9]|3[0-1])");
