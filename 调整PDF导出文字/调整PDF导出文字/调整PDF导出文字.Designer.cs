@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.btnCHH = new System.Windows.Forms.Button();
             this.txtOld2 = new System.Windows.Forms.TextBox();
             this.button20 = new System.Windows.Forms.Button();
             this.button19 = new System.Windows.Forms.Button();
@@ -81,7 +82,6 @@
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
-            this.btnCHH = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -155,8 +155,18 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.splitContainer2);
             this.splitContainer1.Size = new System.Drawing.Size(714, 617);
-            this.splitContainer1.SplitterDistance = 239;
+            this.splitContainer1.SplitterDistance = 251;
             this.splitContainer1.TabIndex = 0;
+            // 
+            // btnCHH
+            // 
+            this.btnCHH.Location = new System.Drawing.Point(13, 217);
+            this.btnCHH.Name = "btnCHH";
+            this.btnCHH.Size = new System.Drawing.Size(94, 23);
+            this.btnCHH.TabIndex = 38;
+            this.btnCHH.Text = "CHH验证码";
+            this.btnCHH.UseVisualStyleBackColor = true;
+            this.btnCHH.Click += new System.EventHandler(this.btnCHH_Click);
             // 
             // txtOld2
             // 
@@ -465,7 +475,7 @@
             // 
             this.linkLabel4.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.linkLabel4.AutoSize = true;
-            this.linkLabel4.Location = new System.Drawing.Point(623, 222);
+            this.linkLabel4.Location = new System.Drawing.Point(623, 234);
             this.linkLabel4.Name = "linkLabel4";
             this.linkLabel4.Size = new System.Drawing.Size(41, 12);
             this.linkLabel4.TabIndex = 30;
@@ -477,7 +487,7 @@
             // 
             this.linkLabel3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.linkLabel3.AutoSize = true;
-            this.linkLabel3.Location = new System.Drawing.Point(541, 222);
+            this.linkLabel3.Location = new System.Drawing.Point(541, 234);
             this.linkLabel3.Name = "linkLabel3";
             this.linkLabel3.Size = new System.Drawing.Size(35, 12);
             this.linkLabel3.TabIndex = 28;
@@ -489,7 +499,7 @@
             // 
             this.linkLabel2.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.linkLabel2.AutoSize = true;
-            this.linkLabel2.Location = new System.Drawing.Point(670, 222);
+            this.linkLabel2.Location = new System.Drawing.Point(670, 234);
             this.linkLabel2.Name = "linkLabel2";
             this.linkLabel2.Size = new System.Drawing.Size(41, 12);
             this.linkLabel2.TabIndex = 31;
@@ -510,7 +520,7 @@
             // 
             this.linkLabel1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.linkLabel1.AutoSize = true;
-            this.linkLabel1.Location = new System.Drawing.Point(582, 222);
+            this.linkLabel1.Location = new System.Drawing.Point(582, 234);
             this.linkLabel1.Name = "linkLabel1";
             this.linkLabel1.Size = new System.Drawing.Size(35, 12);
             this.linkLabel1.TabIndex = 29;
@@ -658,7 +668,7 @@
             // splitContainer2.Panel2
             // 
             this.splitContainer2.Panel2.Controls.Add(this.textBox2);
-            this.splitContainer2.Size = new System.Drawing.Size(714, 374);
+            this.splitContainer2.Size = new System.Drawing.Size(714, 362);
             this.splitContainer2.SplitterDistance = 335;
             this.splitContainer2.TabIndex = 0;
             // 
@@ -670,7 +680,7 @@
             this.textBox1.Multiline = true;
             this.textBox1.Name = "textBox1";
             this.textBox1.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textBox1.Size = new System.Drawing.Size(335, 374);
+            this.textBox1.Size = new System.Drawing.Size(335, 362);
             this.textBox1.TabIndex = 0;
             this.textBox1.WordWrap = false;
             // 
@@ -682,19 +692,9 @@
             this.textBox2.Multiline = true;
             this.textBox2.Name = "textBox2";
             this.textBox2.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.textBox2.Size = new System.Drawing.Size(375, 374);
+            this.textBox2.Size = new System.Drawing.Size(375, 362);
             this.textBox2.TabIndex = 0;
             this.textBox2.WordWrap = false;
-            // 
-            // btnCHH
-            // 
-            this.btnCHH.Location = new System.Drawing.Point(514, 13);
-            this.btnCHH.Name = "btnCHH";
-            this.btnCHH.Size = new System.Drawing.Size(75, 23);
-            this.btnCHH.TabIndex = 38;
-            this.btnCHH.Text = "CHH验证码";
-            this.btnCHH.UseVisualStyleBackColor = true;
-            this.btnCHH.Click += new System.EventHandler(this.btnCHH_Click);
             // 
             // 调整PDF导出文字
             // 
