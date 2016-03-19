@@ -12,9 +12,39 @@ namespace FileManager {
         protected FileSelectParm FileSelParm = new FileSelectParm();
         private readonly Dictionary<string, DateTime> _dicRecordDate = new Dictionary<string, DateTime>();
 
+        /// <summary>获取文件日期的优先级
+        /// </summary>
+        protected List<FileSortMode> DatePriority {
+            get {
+                List<FileSortMode> listOfPriority = new List<FileSortMode>();
+
+                switch (FileSelParm.FileSortBy) {
+                    case FileSortMode.FileName:
+                    case FileSortMode.CreateDate:
+                    case FileSortMode.ModifyDate:
+                        listOfPriority.Add(FileSelParm.FileSortBy);
+                        break;
+                    case FileSortMode.RecordingDate:
+                        listOfPriority.Add(FileSortMode.RecordingDate);
+                        listOfPriority.Add(FileSortMode.ModifyDate);
+                        break;
+                    case FileSortMode.DateInFileName:
+                        listOfPriority.Add(FileSortMode.DateInFileName);
+                        listOfPriority.Add(FileSortMode.RecordingDate);
+                        listOfPriority.Add(FileSortMode.ModifyDate);
+                        break;
+                }
+
+                return listOfPriority;
+            }
+        }
+
+        /// <summary>获取所有照片文件拍摄日期
+        /// </summary>
         protected Dictionary<string, DateTime> DicRecordDate {
             get {
                 if (_dicRecordDate.Count == 0 && AllFile.Count > 0) {
+                    //并行获取
                     ParallelQuery<Tuple<string, DateTime>> pqRecordDate = AllFile.Where(f => f.Extension.ToUpper() == ".JPG").Select(f => f.FullName).AsParallel().Select(fName => Tuple.Create(fName, PictureHelper.GetTakePicDateTime(PictureHelper.GetExifProperties(fName))));
                     foreach (Tuple<string, DateTime> nameDate in pqRecordDate) {
                         _dicRecordDate.Add(nameDate.Item1, nameDate.Item2);
@@ -128,17 +158,8 @@ namespace FileManager {
                             AllFile.Sort((x, y) => DateTime.Compare(x.LastWriteTime, y.LastWriteTime));
                             break;
                         case FileSortMode.RecordingDate:
-                            //直接取拍摄日期，文件多了会内存溢出
-                            //foreach (FileInfo fileInfo in AllFile) {
-                            //    DicRecordDate.Add(fileInfo.FullName, this.GetFileDate(fileInfo, FileSortMode.RecordingDate));
-                            //}
-                            //DicRecordDate = AllFile.AsParallel().ToDictionary(f => f.FullName, f => this.GetFileDate(f, FileSortMode.RecordingDate));
-
-                            //_allFile.Sort((x, y) => DateTime.Compare(CommFunction.GetFileDateTime(x, true), CommFunction.GetFileDateTime(y, true)));
-                            AllFile.Sort((x, y) => DateTime.Compare(this.DicRecordDate[x.FullName], this.DicRecordDate[y.FullName]));
-                            break;
                         case FileSortMode.DateInFileName:
-                            AllFile.Sort((x, y) => DateTime.Compare(this.GetFileDate(x, FileSortMode.DateInFileName), this.GetFileDate(y, FileSortMode.DateInFileName)));
+                            AllFile.Sort((x, y) => DateTime.Compare(this.GetFileDate(x, this.DatePriority), this.GetFileDate(y, this.DatePriority)));
                             break;
                         default:
                             throw new ArgumentOutOfRangeException();

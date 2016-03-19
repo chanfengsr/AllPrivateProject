@@ -8,31 +8,6 @@ namespace FileManager {
     internal class FileCopyByGroup : FileProcessBaseClass {
         private bool MoveFile { get; set; }
 
-        private List<FileSortMode> DatePriority {
-            get {
-                List<FileSortMode> listOfPriority = new List<FileSortMode>();
-
-                switch (FileSelParm.FileSortBy) {
-                    case FileSortMode.FileName:
-                    case FileSortMode.CreateDate:
-                    case FileSortMode.ModifyDate:
-                        listOfPriority.Add(FileSelParm.FileSortBy);
-                        break;
-                    case FileSortMode.RecordingDate:
-                        listOfPriority.Add(FileSortMode.RecordingDate);
-                        listOfPriority.Add(FileSortMode.ModifyDate);
-                        break;
-                    case FileSortMode.DateInFileName:
-                        listOfPriority.Add(FileSortMode.DateInFileName);
-                        listOfPriority.Add(FileSortMode.RecordingDate);
-                        listOfPriority.Add(FileSortMode.ModifyDate);
-                        break;
-                }
-
-                return listOfPriority;
-            }
-        }
-
         public FileCopyByGroup() {
             this.MoveFile = false;
         }
@@ -71,7 +46,7 @@ namespace FileManager {
                 if (base.LoadFileList(false).Length > 0) {
                     //create and record file target
                     foreach (FileInfo origFile in base.AllFile) {
-                        fileDate = base.GetFileDate(origFile, this.DatePriority);
+                        fileDate = base.GetFileDate(origFile, base.DatePriority);
                         targetFolder = origTargetFolder + fileDate.ToString("yyyy-MM-dd") + "\\";
                         if (!Directory.Exists(targetFolder))
                             Directory.CreateDirectory(targetFolder);

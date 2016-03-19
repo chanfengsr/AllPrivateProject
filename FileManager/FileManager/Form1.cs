@@ -33,7 +33,7 @@ namespace FileManager {
         }
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e) {
-            //SaveConfig();
+            SaveConfig();
         }
 
         private void btnCloseForm_Click(object sender, EventArgs e) {
@@ -129,8 +129,6 @@ namespace FileManager {
         private void btnViewFileNameList_Click(object sender, EventArgs e) {
             try {
                 UIInProcess(true);
-                //FileBatchChangeName fileBatchChangeName = ConstructFileBatchChangeName();
-                //string fileList = fileBatchChangeName.LoadFileList();
 
                 FileProcessBaseClass fileProcBase = new FileProcessBaseClass();
                 fileProcBase.SetFileSelectParm(this.GetFormFileSelParm());
@@ -140,7 +138,7 @@ namespace FileManager {
 
                 if (fileList.Length > 0) {
                     using (formTextMessage frmMessage = new formTextMessage("文件列表预览", fileList, true)) {
-                        frmMessage.ShowDialog(this);
+                        frmMessage.ShowDialog(this);                        
                     }
                 }
             }
@@ -229,6 +227,54 @@ namespace FileManager {
                 ).Start();
         }
 
+        private void btnSpFunDeleteEmptyFolder_Click(object sender, EventArgs e) {
+            try {
+                UIInProcess(true);
+
+                string str = "abc";
+
+                UIInProcess(false);
+
+                if (str.Length > 0) {
+                    using (formTextMessage frmMessage = new formTextMessage("文件列表预览", str, true)) {
+                        frmMessage.ShowDialog(this);
+
+                        MessageBox.Show(frmMessage.CloseResult.ToString());
+                    }
+                }
+            }
+            catch (Exception ex) {
+                CommFunction.WriteMessage(ex.Message);
+            }
+            finally {
+                UIInProcess(false);
+            }
+        }
+
+        private void btnSpFunFindMisplacedPhoto_Click(object sender, EventArgs e) {
+            try {
+                UIInProcess(true);
+
+                string str = "abc";
+
+                UIInProcess(false);
+
+                if (str.Length > 0) {
+                    using (formTextMessage frmMessage = new formTextMessage("文件列表预览", str, true)) {
+                        frmMessage.ShowDialog(this);
+
+                        MessageBox.Show(frmMessage.CloseResult.ToString());
+                    }
+                }
+            }
+            catch (Exception ex) {
+                CommFunction.WriteMessage(ex.Message);
+            }
+            finally {
+                UIInProcess(false);
+            }
+        }
+
         private void tabCtrlFunction_SelectedIndexChanged(object sender, EventArgs e) {
             if (tabCtrlFunction.SelectedTab.Name == tabPageCopyByGroup.Name) {
                 txtTargetFolder.Enabled = true;
@@ -237,6 +283,10 @@ namespace FileManager {
             else if (tabCtrlFunction.SelectedTab.Name == tabPageFileBatchChangeName.Name) {
                 txtTargetFolder.Enabled = false;
                 btnTargetFolderBrowser.Enabled = false;
+            }
+            else {
+                txtTargetFolder.Enabled = true;
+                btnTargetFolderBrowser.Enabled = true;
             }
         }
 
@@ -254,9 +304,6 @@ namespace FileManager {
             try {
                 txtSourceFolder.Text = SysConfig.GetConfigData("AppConfig", "SourceFolder", "");
                 txtTargetFolder.Text = SysConfig.GetConfigData("AppConfig", "TargetFolder", "");
-                //chkUseCameraDate.Checked = SysConfig.GetConfigData("AppConfig", "UseCameraDate", false);
-
-                txtSourceFolder.Text = SysConfig.GetConfigData("AppConfig", "ChangeNameFileFolder", "");
             }
             catch (Exception ex) {
                 CommFunction.WriteMessage(ex.Message);
@@ -267,9 +314,6 @@ namespace FileManager {
             try {
                 SysConfig.WriteConfigData("AppConfig", "SourceFolder", txtSourceFolder.Text);
                 SysConfig.WriteConfigData("AppConfig", "TargetFolder", txtTargetFolder.Text);
-                //SysConfig.WriteConfigData("AppConfig", "UseCameraDate", chkUseCameraDate.Checked.ToString());
-
-                SysConfig.WriteConfigData("AppConfig", "ChangeNameFileFolder", txtSourceFolder.Text);
             }
             catch (Exception ex) {
                 CommFunction.WriteMessage(ex.Message);
