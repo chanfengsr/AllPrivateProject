@@ -11,6 +11,17 @@ using FileManager.Properties;
 
 namespace FileManager {
     public partial class Form1 : Form {
+        struct FormControlProperties {
+            public bool SourceFolderEnabled;
+            public bool TargetFolderEnabled;
+            public bool FileTypeEnabled;
+            public string FileTypeDefaultString;
+            public bool SortModeEnabled;
+            public bool ViewFileNameListEnabled;
+            public bool SpecFileListEnabled;
+
+        }
+
         private string _fileChangeNameChangeList = string.Empty;
         private string _fileChangeNameSpecChgFileList = string.Empty;
 
@@ -150,7 +161,7 @@ namespace FileManager {
             }
         }
 
-        private void chkSpecChangeFile_CheckedChanged(object sender, EventArgs e) {
+        private void chkSpecFileList_CheckedChanged(object sender, EventArgs e) {
             btnEditChangeFileList.Enabled = chkSpecFileList.Checked;
 
             grpFileType.Enabled =
@@ -231,15 +242,26 @@ namespace FileManager {
             try {
                 UIInProcess(true);
 
-                string str = "abc";
-
+                FileSporadicFunction sporadicFunction = new FileSporadicFunction();
+                FileSelectParm fileSelParm = this.GetFormFileSelParm();
+                sporadicFunction.SetFileSelectParm(fileSelParm);
+                List<string> emptyFolderList = sporadicFunction.GetEmptyFolderList(fileSelParm.SourceFileFolder, fileSelParm.FileFilter);
+                emptyFolderList.Reverse();
+                StringBuilder sbMsg = new StringBuilder();
+                foreach (string empFolder in emptyFolderList)
+                    sbMsg.AppendLine(empFolder);
+                
                 UIInProcess(false);
 
-                if (str.Length > 0) {
-                    using (formTextMessage frmMessage = new formTextMessage("文件列表预览", str, true)) {
+                if (emptyFolderList.Count > 0) {
+                    using (formTextMessage frmMessage = new formTextMessage("是否删除以下空文件夹？", sbMsg.ToString().Trim().TrimEnd(Environment.NewLine.ToArray()), true)) {
                         frmMessage.ShowDialog(this);
 
-                        MessageBox.Show(frmMessage.CloseResult.ToString());
+                        if (frmMessage.CloseResult == DialogResult.OK) {
+                            emptyFolderList.Reverse();
+
+                            sporadicFunction.Execute_DeleteEmptyFolder(emptyFolderList);
+                        }
                     }
                 }
             }
@@ -276,18 +298,40 @@ namespace FileManager {
         }
 
         private void tabCtrlFunction_SelectedIndexChanged(object sender, EventArgs e) {
+            FormControlProperties formCtrlProps = new FormControlProperties();
+
             if (tabCtrlFunction.SelectedTab.Name == tabPageCopyByGroup.Name) {
-                txtTargetFolder.Enabled = true;
-                btnTargetFolderBrowser.Enabled = true;
+                formCtrlProps.SourceFolderEnabled = true;
+                formCtrlProps.TargetFolderEnabled = true;
+                formCtrlProps.FileTypeEnabled = true;
+                formCtrlProps.SortModeEnabled = true;
+                formCtrlProps.ViewFileNameListEnabled = true;
+                formCtrlProps.SpecFileListEnabled = true;
+
+                formCtrlProps.FileTypeDefaultString = txtFileType.Text == "" ? "*" : txtFileType.Text;
             }
             else if (tabCtrlFunction.SelectedTab.Name == tabPageFileBatchChangeName.Name) {
-                txtTargetFolder.Enabled = false;
-                btnTargetFolderBrowser.Enabled = false;
+                formCtrlProps.SourceFolderEnabled = true;
+                formCtrlProps.TargetFolderEnabled = false;
+                formCtrlProps.FileTypeEnabled = true;
+                formCtrlProps.SortModeEnabled = true;
+                formCtrlProps.ViewFileNameListEnabled = true;
+                formCtrlProps.SpecFileListEnabled = true;
+
+                formCtrlProps.FileTypeDefaultString = txtFileType.Text == "" ? "*" : txtFileType.Text;
             }
-            else {
-                txtTargetFolder.Enabled = true;
-                btnTargetFolderBrowser.Enabled = true;
+            else if (tabCtrlFunction.SelectedTab.Name == tabPageSporadicFunction.Name) {
+                formCtrlProps.SourceFolderEnabled = true;
+                formCtrlProps.TargetFolderEnabled = false;
+                formCtrlProps.FileTypeEnabled = true;
+                formCtrlProps.SortModeEnabled = false;
+                formCtrlProps.ViewFileNameListEnabled = false;
+                formCtrlProps.SpecFileListEnabled = false;
+
+                formCtrlProps.FileTypeDefaultString = txtFileType.Text == "*" ? "" : txtFileType.Text;
             }
+
+            this.SetFormControlProperties(formCtrlProps);
         }
 
         private void FolderBrowser(Control txtBox) {
@@ -357,6 +401,26 @@ namespace FileManager {
             retVal.SpecFileList = _fileChangeNameSpecChgFileList;
 
             return retVal;
+        }
+
+        private void SetFormControlProperties(FormControlProperties formCtrlProps) {
+            txtSourceFolder.Enabled =
+                btnSourceFolderBrowser.Enabled = formCtrlProps.SourceFolderEnabled;
+
+            txtTargetFolder.Enabled =
+                btnTargetFolderBrowser.Enabled = formCtrlProps.TargetFolderEnabled;
+
+            grpFileType.Enabled = formCtrlProps.FileTypeEnabled;
+            txtFileType.Text = formCtrlProps.FileTypeDefaultString;
+
+            grpSortMode.Enabled = formCtrlProps.SortModeEnabled;
+
+            btnViewFileNameList.Enabled = formCtrlProps.ViewFileNameListEnabled;
+            chkSpecFileList.Enabled =
+                btnEditChangeFileList.Enabled = formCtrlProps.SpecFileListEnabled;
+
+            if (formCtrlProps.SpecFileListEnabled)
+                this.chkSpecFileList_CheckedChanged(chkSpecFileList, new EventArgs());
         }
 
         private FileBatchChangeName ConstructFileBatchChangeName() {

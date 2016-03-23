@@ -54,6 +54,9 @@
             this.rdoChgNmRulSpecList = new System.Windows.Forms.RadioButton();
             this.rdoChgNmRulWildcard = new System.Windows.Forms.RadioButton();
             this.rdoChgNmRulFixedStr = new System.Windows.Forms.RadioButton();
+            this.tabPageSporadicFunction = new System.Windows.Forms.TabPage();
+            this.btnSpFunFindMisplacedPhoto = new System.Windows.Forms.Button();
+            this.btnSpFunDeleteEmptyFolder = new System.Windows.Forms.Button();
             this.grpFileSelect = new System.Windows.Forms.GroupBox();
             this.btnEditChangeFileList = new System.Windows.Forms.Button();
             this.chkSpecFileList = new System.Windows.Forms.CheckBox();
@@ -83,9 +86,6 @@
             this.btnCloseForm = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
             this.txtConsole = new System.Windows.Forms.TextBox();
-            this.tabPageSporadicFunction = new System.Windows.Forms.TabPage();
-            this.btnSpFunDeleteEmptyFolder = new System.Windows.Forms.Button();
-            this.btnSpFunFindMisplacedPhoto = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -97,11 +97,11 @@
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numChgNmWildcardLen)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numChgNmStartNum)).BeginInit();
+            this.tabPageSporadicFunction.SuspendLayout();
             this.grpFileSelect.SuspendLayout();
             this.grpSortMode.SuspendLayout();
             this.grpFileType.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            this.tabPageSporadicFunction.SuspendLayout();
             this.SuspendLayout();
             // 
             // splitContainer1
@@ -109,7 +109,6 @@
             this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.splitContainer1.FixedPanel = System.Windows.Forms.FixedPanel.Panel1;
             this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.splitContainer1.Name = "splitContainer1";
             this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
             // 
@@ -120,9 +119,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.groupBox1);
-            this.splitContainer1.Size = new System.Drawing.Size(1008, 804);
+            this.splitContainer1.Size = new System.Drawing.Size(756, 643);
             this.splitContainer1.SplitterDistance = 500;
-            this.splitContainer1.SplitterWidth = 5;
             this.splitContainer1.TabIndex = 12;
             // 
             // grpFunction
@@ -131,10 +129,8 @@
             this.grpFunction.Controls.Add(this.grpFileSelect);
             this.grpFunction.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grpFunction.Location = new System.Drawing.Point(0, 0);
-            this.grpFunction.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.grpFunction.Name = "grpFunction";
-            this.grpFunction.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.grpFunction.Size = new System.Drawing.Size(1008, 500);
+            this.grpFunction.Size = new System.Drawing.Size(756, 500);
             this.grpFunction.TabIndex = 1;
             this.grpFunction.TabStop = false;
             this.grpFunction.Text = "功能";
@@ -145,11 +141,10 @@
             this.tabCtrlFunction.Controls.Add(this.tabPageFileBatchChangeName);
             this.tabCtrlFunction.Controls.Add(this.tabPageSporadicFunction);
             this.tabCtrlFunction.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tabCtrlFunction.Location = new System.Drawing.Point(4, 235);
-            this.tabCtrlFunction.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabCtrlFunction.Location = new System.Drawing.Point(3, 288);
             this.tabCtrlFunction.Name = "tabCtrlFunction";
             this.tabCtrlFunction.SelectedIndex = 0;
-            this.tabCtrlFunction.Size = new System.Drawing.Size(1000, 261);
+            this.tabCtrlFunction.Size = new System.Drawing.Size(750, 209);
             this.tabCtrlFunction.TabIndex = 1;
             this.tabCtrlFunction.SelectedIndexChanged += new System.EventHandler(this.tabCtrlFunction_SelectedIndexChanged);
             // 
@@ -157,11 +152,10 @@
             // 
             this.tabPageCopyByGroup.Controls.Add(this.chkModMove);
             this.tabPageCopyByGroup.Controls.Add(this.btnCopyByDate);
-            this.tabPageCopyByGroup.Location = new System.Drawing.Point(4, 25);
-            this.tabPageCopyByGroup.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPageCopyByGroup.Location = new System.Drawing.Point(4, 22);
             this.tabPageCopyByGroup.Name = "tabPageCopyByGroup";
-            this.tabPageCopyByGroup.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.tabPageCopyByGroup.Size = new System.Drawing.Size(992, 232);
+            this.tabPageCopyByGroup.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPageCopyByGroup.Size = new System.Drawing.Size(742, 183);
             this.tabPageCopyByGroup.TabIndex = 0;
             this.tabPageCopyByGroup.Text = "日期分组复制文件";
             this.tabPageCopyByGroup.UseVisualStyleBackColor = true;
@@ -169,10 +163,9 @@
             // chkModMove
             // 
             this.chkModMove.AutoSize = true;
-            this.chkModMove.Location = new System.Drawing.Point(27, 19);
-            this.chkModMove.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkModMove.Location = new System.Drawing.Point(20, 15);
             this.chkModMove.Name = "chkModMove";
-            this.chkModMove.Size = new System.Drawing.Size(59, 19);
+            this.chkModMove.Size = new System.Drawing.Size(48, 16);
             this.chkModMove.TabIndex = 0;
             this.chkModMove.Text = "移动";
             this.chkModMove.UseVisualStyleBackColor = true;
@@ -181,10 +174,9 @@
             // 
             this.btnCopyByDate.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Bold);
             this.btnCopyByDate.ForeColor = System.Drawing.Color.DarkRed;
-            this.btnCopyByDate.Location = new System.Drawing.Point(99, 19);
-            this.btnCopyByDate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCopyByDate.Location = new System.Drawing.Point(74, 15);
             this.btnCopyByDate.Name = "btnCopyByDate";
-            this.btnCopyByDate.Size = new System.Drawing.Size(155, 41);
+            this.btnCopyByDate.Size = new System.Drawing.Size(116, 33);
             this.btnCopyByDate.TabIndex = 1;
             this.btnCopyByDate.Text = "按日期复制";
             this.btnCopyByDate.UseVisualStyleBackColor = true;
@@ -194,11 +186,10 @@
             // 
             this.tabPageFileBatchChangeName.Controls.Add(this.btnChgNmExecute);
             this.tabPageFileBatchChangeName.Controls.Add(this.groupBox5);
-            this.tabPageFileBatchChangeName.Location = new System.Drawing.Point(4, 25);
-            this.tabPageFileBatchChangeName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.tabPageFileBatchChangeName.Location = new System.Drawing.Point(4, 22);
             this.tabPageFileBatchChangeName.Name = "tabPageFileBatchChangeName";
-            this.tabPageFileBatchChangeName.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.tabPageFileBatchChangeName.Size = new System.Drawing.Size(992, 232);
+            this.tabPageFileBatchChangeName.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPageFileBatchChangeName.Size = new System.Drawing.Size(742, 183);
             this.tabPageFileBatchChangeName.TabIndex = 1;
             this.tabPageFileBatchChangeName.Text = "文件批量改名";
             this.tabPageFileBatchChangeName.UseVisualStyleBackColor = true;
@@ -207,10 +198,9 @@
             // 
             this.btnChgNmExecute.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
             this.btnChgNmExecute.ForeColor = System.Drawing.Color.DarkRed;
-            this.btnChgNmExecute.Location = new System.Drawing.Point(23, 170);
-            this.btnChgNmExecute.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnChgNmExecute.Location = new System.Drawing.Point(17, 136);
             this.btnChgNmExecute.Name = "btnChgNmExecute";
-            this.btnChgNmExecute.Size = new System.Drawing.Size(117, 36);
+            this.btnChgNmExecute.Size = new System.Drawing.Size(88, 29);
             this.btnChgNmExecute.TabIndex = 19;
             this.btnChgNmExecute.Text = "执 行";
             this.btnChgNmExecute.UseVisualStyleBackColor = true;
@@ -236,11 +226,9 @@
             this.groupBox5.Controls.Add(this.rdoChgNmRulSpecList);
             this.groupBox5.Controls.Add(this.rdoChgNmRulWildcard);
             this.groupBox5.Controls.Add(this.rdoChgNmRulFixedStr);
-            this.groupBox5.Location = new System.Drawing.Point(8, 8);
-            this.groupBox5.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.groupBox5.Location = new System.Drawing.Point(6, 6);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.groupBox5.Size = new System.Drawing.Size(973, 150);
+            this.groupBox5.Size = new System.Drawing.Size(730, 120);
             this.groupBox5.TabIndex = 17;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "改名规则";
@@ -249,10 +237,9 @@
             // 
             this.chkChgNmOnlyFixStr.AutoSize = true;
             this.chkChgNmOnlyFixStr.Enabled = false;
-            this.chkChgNmOnlyFixStr.Location = new System.Drawing.Point(659, 69);
-            this.chkChgNmOnlyFixStr.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkChgNmOnlyFixStr.Location = new System.Drawing.Point(494, 55);
             this.chkChgNmOnlyFixStr.Name = "chkChgNmOnlyFixStr";
-            this.chkChgNmOnlyFixStr.Size = new System.Drawing.Size(89, 19);
+            this.chkChgNmOnlyFixStr.Size = new System.Drawing.Size(72, 16);
             this.chkChgNmOnlyFixStr.TabIndex = 8;
             this.chkChgNmOnlyFixStr.Text = "仅前后缀";
             this.chkChgNmOnlyFixStr.UseVisualStyleBackColor = true;
@@ -261,20 +248,18 @@
             // chkChgNmIsRegex
             // 
             this.chkChgNmIsRegex.AutoSize = true;
-            this.chkChgNmIsRegex.Location = new System.Drawing.Point(564, 31);
-            this.chkChgNmIsRegex.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkChgNmIsRegex.Location = new System.Drawing.Point(423, 25);
             this.chkChgNmIsRegex.Name = "chkChgNmIsRegex";
-            this.chkChgNmIsRegex.Size = new System.Drawing.Size(104, 19);
+            this.chkChgNmIsRegex.Size = new System.Drawing.Size(84, 16);
             this.chkChgNmIsRegex.TabIndex = 2;
             this.chkChgNmIsRegex.Text = "正则表达式";
             this.chkChgNmIsRegex.UseVisualStyleBackColor = true;
             // 
             // btnChgNmViewChgFileNameList
             // 
-            this.btnChgNmViewChgFileNameList.Location = new System.Drawing.Point(807, 48);
-            this.btnChgNmViewChgFileNameList.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnChgNmViewChgFileNameList.Location = new System.Drawing.Point(605, 38);
             this.btnChgNmViewChgFileNameList.Name = "btnChgNmViewChgFileNameList";
-            this.btnChgNmViewChgFileNameList.Size = new System.Drawing.Size(124, 29);
+            this.btnChgNmViewChgFileNameList.Size = new System.Drawing.Size(93, 23);
             this.btnChgNmViewChgFileNameList.TabIndex = 9;
             this.btnChgNmViewChgFileNameList.Text = "更名列表预览";
             this.btnChgNmViewChgFileNameList.UseVisualStyleBackColor = true;
@@ -284,20 +269,18 @@
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("宋体", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.label8.Location = new System.Drawing.Point(753, 31);
-            this.label8.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label8.Location = new System.Drawing.Point(565, 25);
             this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(55, 60);
+            this.label8.Size = new System.Drawing.Size(44, 48);
             this.label8.TabIndex = 6;
             this.label8.Text = "}";
             // 
             // btnChgNmEditChangeList
             // 
             this.btnChgNmEditChangeList.Enabled = false;
-            this.btnChgNmEditChangeList.Location = new System.Drawing.Point(179, 108);
-            this.btnChgNmEditChangeList.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnChgNmEditChangeList.Location = new System.Drawing.Point(134, 86);
             this.btnChgNmEditChangeList.Name = "btnChgNmEditChangeList";
-            this.btnChgNmEditChangeList.Size = new System.Drawing.Size(100, 29);
+            this.btnChgNmEditChangeList.Size = new System.Drawing.Size(75, 23);
             this.btnChgNmEditChangeList.TabIndex = 11;
             this.btnChgNmEditChangeList.Text = "编辑列表";
             this.btnChgNmEditChangeList.UseVisualStyleBackColor = true;
@@ -306,8 +289,7 @@
             // numChgNmWildcardLen
             // 
             this.numChgNmWildcardLen.Enabled = false;
-            this.numChgNmWildcardLen.Location = new System.Drawing.Point(441, 66);
-            this.numChgNmWildcardLen.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numChgNmWildcardLen.Location = new System.Drawing.Point(331, 53);
             this.numChgNmWildcardLen.Maximum = new decimal(new int[] {
             4,
             0,
@@ -319,7 +301,7 @@
             0,
             0});
             this.numChgNmWildcardLen.Name = "numChgNmWildcardLen";
-            this.numChgNmWildcardLen.Size = new System.Drawing.Size(65, 25);
+            this.numChgNmWildcardLen.Size = new System.Drawing.Size(50, 21);
             this.numChgNmWildcardLen.TabIndex = 6;
             this.numChgNmWildcardLen.Value = new decimal(new int[] {
             2,
@@ -330,25 +312,23 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(344, 71);
-            this.label9.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label9.Location = new System.Drawing.Point(258, 57);
             this.label9.Name = "label9";
-            this.label9.Size = new System.Drawing.Size(82, 15);
+            this.label9.Size = new System.Drawing.Size(65, 12);
             this.label9.TabIndex = 3;
             this.label9.Text = "通配符长度";
             // 
             // numChgNmStartNum
             // 
             this.numChgNmStartNum.Enabled = false;
-            this.numChgNmStartNum.Location = new System.Drawing.Point(272, 66);
-            this.numChgNmStartNum.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.numChgNmStartNum.Location = new System.Drawing.Point(204, 53);
             this.numChgNmStartNum.Maximum = new decimal(new int[] {
             9999,
             0,
             0,
             0});
             this.numChgNmStartNum.Name = "numChgNmStartNum";
-            this.numChgNmStartNum.Size = new System.Drawing.Size(65, 25);
+            this.numChgNmStartNum.Size = new System.Drawing.Size(50, 21);
             this.numChgNmStartNum.TabIndex = 5;
             this.numChgNmStartNum.Value = new decimal(new int[] {
             1,
@@ -359,56 +339,50 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(531, 71);
-            this.label7.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label7.Location = new System.Drawing.Point(398, 57);
             this.label7.Name = "label7";
-            this.label7.Size = new System.Drawing.Size(15, 15);
+            this.label7.Size = new System.Drawing.Size(11, 12);
             this.label7.TabIndex = 7;
             this.label7.Text = "+";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(169, 71);
-            this.label6.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label6.Location = new System.Drawing.Point(127, 57);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(91, 15);
+            this.label6.Size = new System.Drawing.Size(71, 12);
             this.label6.TabIndex = 3;
             this.label6.Text = "+  起始序号";
             // 
             // txtChgNmSuffixStr
             // 
             this.txtChgNmSuffixStr.Enabled = false;
-            this.txtChgNmSuffixStr.Location = new System.Drawing.Point(556, 66);
-            this.txtChgNmSuffixStr.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtChgNmSuffixStr.Location = new System.Drawing.Point(417, 53);
             this.txtChgNmSuffixStr.Name = "txtChgNmSuffixStr";
-            this.txtChgNmSuffixStr.Size = new System.Drawing.Size(93, 25);
+            this.txtChgNmSuffixStr.Size = new System.Drawing.Size(71, 21);
             this.txtChgNmSuffixStr.TabIndex = 2;
             // 
             // txtChgNmPerfixStr
             // 
             this.txtChgNmPerfixStr.Enabled = false;
-            this.txtChgNmPerfixStr.Location = new System.Drawing.Point(56, 66);
-            this.txtChgNmPerfixStr.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtChgNmPerfixStr.Location = new System.Drawing.Point(42, 53);
             this.txtChgNmPerfixStr.Name = "txtChgNmPerfixStr";
-            this.txtChgNmPerfixStr.Size = new System.Drawing.Size(93, 25);
+            this.txtChgNmPerfixStr.Size = new System.Drawing.Size(71, 21);
             this.txtChgNmPerfixStr.TabIndex = 4;
             // 
             // txtChgNmFixedStr
             // 
-            this.txtChgNmFixedStr.Location = new System.Drawing.Point(177, 29);
-            this.txtChgNmFixedStr.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtChgNmFixedStr.Location = new System.Drawing.Point(133, 23);
             this.txtChgNmFixedStr.Name = "txtChgNmFixedStr";
-            this.txtChgNmFixedStr.Size = new System.Drawing.Size(377, 25);
+            this.txtChgNmFixedStr.Size = new System.Drawing.Size(284, 21);
             this.txtChgNmFixedStr.TabIndex = 1;
             // 
             // rdoChgNmRulSpecList
             // 
             this.rdoChgNmRulSpecList.AutoSize = true;
-            this.rdoChgNmRulSpecList.Location = new System.Drawing.Point(27, 111);
-            this.rdoChgNmRulSpecList.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rdoChgNmRulSpecList.Location = new System.Drawing.Point(20, 89);
             this.rdoChgNmRulSpecList.Name = "rdoChgNmRulSpecList";
-            this.rdoChgNmRulSpecList.Size = new System.Drawing.Size(118, 19);
+            this.rdoChgNmRulSpecList.Size = new System.Drawing.Size(95, 16);
             this.rdoChgNmRulSpecList.TabIndex = 10;
             this.rdoChgNmRulSpecList.Text = "指定更名列表";
             this.rdoChgNmRulSpecList.UseVisualStyleBackColor = true;
@@ -417,10 +391,9 @@
             // rdoChgNmRulWildcard
             // 
             this.rdoChgNmRulWildcard.AutoSize = true;
-            this.rdoChgNmRulWildcard.Location = new System.Drawing.Point(27, 71);
-            this.rdoChgNmRulWildcard.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rdoChgNmRulWildcard.Location = new System.Drawing.Point(20, 57);
             this.rdoChgNmRulWildcard.Name = "rdoChgNmRulWildcard";
-            this.rdoChgNmRulWildcard.Size = new System.Drawing.Size(17, 16);
+            this.rdoChgNmRulWildcard.Size = new System.Drawing.Size(14, 13);
             this.rdoChgNmRulWildcard.TabIndex = 3;
             this.rdoChgNmRulWildcard.UseVisualStyleBackColor = true;
             this.rdoChgNmRulWildcard.CheckedChanged += new System.EventHandler(this.rdoChgNmRulWildcard_CheckedChanged);
@@ -429,15 +402,51 @@
             // 
             this.rdoChgNmRulFixedStr.AutoSize = true;
             this.rdoChgNmRulFixedStr.Checked = true;
-            this.rdoChgNmRulFixedStr.Location = new System.Drawing.Point(27, 31);
-            this.rdoChgNmRulFixedStr.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rdoChgNmRulFixedStr.Location = new System.Drawing.Point(20, 25);
             this.rdoChgNmRulFixedStr.Name = "rdoChgNmRulFixedStr";
-            this.rdoChgNmRulFixedStr.Size = new System.Drawing.Size(133, 19);
+            this.rdoChgNmRulFixedStr.Size = new System.Drawing.Size(107, 16);
             this.rdoChgNmRulFixedStr.TabIndex = 0;
             this.rdoChgNmRulFixedStr.TabStop = true;
             this.rdoChgNmRulFixedStr.Text = "去掉固定字符串";
             this.rdoChgNmRulFixedStr.UseVisualStyleBackColor = true;
             this.rdoChgNmRulFixedStr.CheckedChanged += new System.EventHandler(this.rdoChgNmRulFixedStr_CheckedChanged);
+            // 
+            // tabPageSporadicFunction
+            // 
+            this.tabPageSporadicFunction.Controls.Add(this.btnSpFunFindMisplacedPhoto);
+            this.tabPageSporadicFunction.Controls.Add(this.btnSpFunDeleteEmptyFolder);
+            this.tabPageSporadicFunction.Location = new System.Drawing.Point(4, 22);
+            this.tabPageSporadicFunction.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPageSporadicFunction.Name = "tabPageSporadicFunction";
+            this.tabPageSporadicFunction.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPageSporadicFunction.Size = new System.Drawing.Size(742, 183);
+            this.tabPageSporadicFunction.TabIndex = 2;
+            this.tabPageSporadicFunction.Text = "零星功能";
+            this.tabPageSporadicFunction.UseVisualStyleBackColor = true;
+            // 
+            // btnSpFunFindMisplacedPhoto
+            // 
+            this.btnSpFunFindMisplacedPhoto.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Bold);
+            this.btnSpFunFindMisplacedPhoto.ForeColor = System.Drawing.Color.DarkRed;
+            this.btnSpFunFindMisplacedPhoto.Location = new System.Drawing.Point(135, 14);
+            this.btnSpFunFindMisplacedPhoto.Name = "btnSpFunFindMisplacedPhoto";
+            this.btnSpFunFindMisplacedPhoto.Size = new System.Drawing.Size(232, 33);
+            this.btnSpFunFindMisplacedPhoto.TabIndex = 3;
+            this.btnSpFunFindMisplacedPhoto.Text = "按文件名查找放错文件夹的照片";
+            this.btnSpFunFindMisplacedPhoto.UseVisualStyleBackColor = true;
+            this.btnSpFunFindMisplacedPhoto.Click += new System.EventHandler(this.btnSpFunFindMisplacedPhoto_Click);
+            // 
+            // btnSpFunDeleteEmptyFolder
+            // 
+            this.btnSpFunDeleteEmptyFolder.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Bold);
+            this.btnSpFunDeleteEmptyFolder.ForeColor = System.Drawing.Color.DarkRed;
+            this.btnSpFunDeleteEmptyFolder.Location = new System.Drawing.Point(13, 14);
+            this.btnSpFunDeleteEmptyFolder.Name = "btnSpFunDeleteEmptyFolder";
+            this.btnSpFunDeleteEmptyFolder.Size = new System.Drawing.Size(116, 33);
+            this.btnSpFunDeleteEmptyFolder.TabIndex = 2;
+            this.btnSpFunDeleteEmptyFolder.Text = "删除空文件夹";
+            this.btnSpFunDeleteEmptyFolder.UseVisualStyleBackColor = true;
+            this.btnSpFunDeleteEmptyFolder.Click += new System.EventHandler(this.btnSpFunDeleteEmptyFolder_Click);
             // 
             // grpFileSelect
             // 
@@ -456,11 +465,9 @@
             this.grpFileSelect.Controls.Add(this.btnTargetFolderBrowser);
             this.grpFileSelect.Controls.Add(this.txtSourceFolder);
             this.grpFileSelect.Controls.Add(this.btnSourceFolderBrowser);
-            this.grpFileSelect.Location = new System.Drawing.Point(17, 28);
-            this.grpFileSelect.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grpFileSelect.Location = new System.Drawing.Point(13, 22);
             this.grpFileSelect.Name = "grpFileSelect";
-            this.grpFileSelect.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.grpFileSelect.Size = new System.Drawing.Size(973, 255);
+            this.grpFileSelect.Size = new System.Drawing.Size(730, 204);
             this.grpFileSelect.TabIndex = 0;
             this.grpFileSelect.TabStop = false;
             this.grpFileSelect.Text = "文件选择";
@@ -468,10 +475,9 @@
             // btnEditChangeFileList
             // 
             this.btnEditChangeFileList.Enabled = false;
-            this.btnEditChangeFileList.Location = new System.Drawing.Point(339, 212);
-            this.btnEditChangeFileList.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnEditChangeFileList.Location = new System.Drawing.Point(254, 170);
             this.btnEditChangeFileList.Name = "btnEditChangeFileList";
-            this.btnEditChangeFileList.Size = new System.Drawing.Size(100, 29);
+            this.btnEditChangeFileList.Size = new System.Drawing.Size(75, 23);
             this.btnEditChangeFileList.TabIndex = 8;
             this.btnEditChangeFileList.Text = "编辑列表";
             this.btnEditChangeFileList.UseVisualStyleBackColor = true;
@@ -480,21 +486,19 @@
             // chkSpecFileList
             // 
             this.chkSpecFileList.AutoSize = true;
-            this.chkSpecFileList.Location = new System.Drawing.Point(203, 216);
-            this.chkSpecFileList.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.chkSpecFileList.Location = new System.Drawing.Point(152, 173);
             this.chkSpecFileList.Name = "chkSpecFileList";
-            this.chkSpecFileList.Size = new System.Drawing.Size(119, 19);
+            this.chkSpecFileList.Size = new System.Drawing.Size(96, 16);
             this.chkSpecFileList.TabIndex = 7;
             this.chkSpecFileList.Text = "指定文件列表";
             this.chkSpecFileList.UseVisualStyleBackColor = true;
-            this.chkSpecFileList.CheckedChanged += new System.EventHandler(this.chkSpecChangeFile_CheckedChanged);
+            this.chkSpecFileList.CheckedChanged += new System.EventHandler(this.chkSpecFileList_CheckedChanged);
             // 
             // btnViewFileNameList
             // 
-            this.btnViewFileNameList.Location = new System.Drawing.Point(27, 212);
-            this.btnViewFileNameList.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnViewFileNameList.Location = new System.Drawing.Point(20, 170);
             this.btnViewFileNameList.Name = "btnViewFileNameList";
-            this.btnViewFileNameList.Size = new System.Drawing.Size(123, 29);
+            this.btnViewFileNameList.Size = new System.Drawing.Size(92, 23);
             this.btnViewFileNameList.TabIndex = 6;
             this.btnViewFileNameList.Text = "文件列表预览";
             this.btnViewFileNameList.UseVisualStyleBackColor = true;
@@ -507,21 +511,18 @@
             this.grpSortMode.Controls.Add(this.rdoSortModifyDate);
             this.grpSortMode.Controls.Add(this.rdoSortCreateDate);
             this.grpSortMode.Controls.Add(this.rdoSortName);
-            this.grpSortMode.Location = new System.Drawing.Point(151, 156);
-            this.grpSortMode.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grpSortMode.Location = new System.Drawing.Point(113, 125);
             this.grpSortMode.Name = "grpSortMode";
-            this.grpSortMode.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.grpSortMode.Size = new System.Drawing.Size(804, 46);
+            this.grpSortMode.Size = new System.Drawing.Size(603, 37);
             this.grpSortMode.TabIndex = 5;
             this.grpSortMode.TabStop = false;
             // 
             // rdoSortNameDate
             // 
             this.rdoSortNameDate.AutoSize = true;
-            this.rdoSortNameDate.Location = new System.Drawing.Point(501, 18);
-            this.rdoSortNameDate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rdoSortNameDate.Location = new System.Drawing.Point(376, 14);
             this.rdoSortNameDate.Name = "rdoSortNameDate";
-            this.rdoSortNameDate.Size = new System.Drawing.Size(253, 19);
+            this.rdoSortNameDate.Size = new System.Drawing.Size(203, 16);
             this.rdoSortNameDate.TabIndex = 4;
             this.rdoSortNameDate.Text = "文件名日期，拍摄日期，修改日期";
             this.rdoSortNameDate.UseVisualStyleBackColor = true;
@@ -529,10 +530,9 @@
             // rdoSortRecordDate
             // 
             this.rdoSortRecordDate.AutoSize = true;
-            this.rdoSortRecordDate.Location = new System.Drawing.Point(316, 18);
-            this.rdoSortRecordDate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rdoSortRecordDate.Location = new System.Drawing.Point(237, 14);
             this.rdoSortRecordDate.Name = "rdoSortRecordDate";
-            this.rdoSortRecordDate.Size = new System.Drawing.Size(163, 19);
+            this.rdoSortRecordDate.Size = new System.Drawing.Size(131, 16);
             this.rdoSortRecordDate.TabIndex = 3;
             this.rdoSortRecordDate.Text = "拍摄日期，修改日期";
             this.rdoSortRecordDate.UseVisualStyleBackColor = true;
@@ -540,10 +540,9 @@
             // rdoSortModifyDate
             // 
             this.rdoSortModifyDate.AutoSize = true;
-            this.rdoSortModifyDate.Location = new System.Drawing.Point(211, 18);
-            this.rdoSortModifyDate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rdoSortModifyDate.Location = new System.Drawing.Point(158, 14);
             this.rdoSortModifyDate.Name = "rdoSortModifyDate";
-            this.rdoSortModifyDate.Size = new System.Drawing.Size(88, 19);
+            this.rdoSortModifyDate.Size = new System.Drawing.Size(71, 16);
             this.rdoSortModifyDate.TabIndex = 2;
             this.rdoSortModifyDate.Text = "修改日期";
             this.rdoSortModifyDate.UseVisualStyleBackColor = true;
@@ -551,10 +550,9 @@
             // rdoSortCreateDate
             // 
             this.rdoSortCreateDate.AutoSize = true;
-            this.rdoSortCreateDate.Location = new System.Drawing.Point(105, 18);
-            this.rdoSortCreateDate.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rdoSortCreateDate.Location = new System.Drawing.Point(79, 14);
             this.rdoSortCreateDate.Name = "rdoSortCreateDate";
-            this.rdoSortCreateDate.Size = new System.Drawing.Size(88, 19);
+            this.rdoSortCreateDate.Size = new System.Drawing.Size(71, 16);
             this.rdoSortCreateDate.TabIndex = 1;
             this.rdoSortCreateDate.Text = "创建日期";
             this.rdoSortCreateDate.UseVisualStyleBackColor = true;
@@ -563,10 +561,9 @@
             // 
             this.rdoSortName.AutoSize = true;
             this.rdoSortName.Checked = true;
-            this.rdoSortName.Location = new System.Drawing.Point(16, 18);
-            this.rdoSortName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rdoSortName.Location = new System.Drawing.Point(12, 14);
             this.rdoSortName.Name = "rdoSortName";
-            this.rdoSortName.Size = new System.Drawing.Size(73, 19);
+            this.rdoSortName.Size = new System.Drawing.Size(59, 16);
             this.rdoSortName.TabIndex = 0;
             this.rdoSortName.TabStop = true;
             this.rdoSortName.Text = "文件名";
@@ -575,10 +572,9 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(24, 171);
-            this.label5.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label5.Location = new System.Drawing.Point(18, 137);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(105, 15);
+            this.label5.Size = new System.Drawing.Size(83, 12);
             this.label5.TabIndex = 14;
             this.label5.Text = "排序/日期方式";
             // 
@@ -590,20 +586,17 @@
             this.grpFileType.Controls.Add(this.rdoTypeAudio);
             this.grpFileType.Controls.Add(this.rdoTypeVideo);
             this.grpFileType.Controls.Add(this.rdoTypePic);
-            this.grpFileType.Location = new System.Drawing.Point(151, 105);
-            this.grpFileType.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.grpFileType.Location = new System.Drawing.Point(113, 84);
             this.grpFileType.Name = "grpFileType";
-            this.grpFileType.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.grpFileType.Size = new System.Drawing.Size(804, 46);
+            this.grpFileType.Size = new System.Drawing.Size(603, 37);
             this.grpFileType.TabIndex = 4;
             this.grpFileType.TabStop = false;
             // 
             // txtFileType
             // 
-            this.txtFileType.Location = new System.Drawing.Point(509, 15);
-            this.txtFileType.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtFileType.Location = new System.Drawing.Point(382, 12);
             this.txtFileType.Name = "txtFileType";
-            this.txtFileType.Size = new System.Drawing.Size(245, 25);
+            this.txtFileType.Size = new System.Drawing.Size(185, 21);
             this.txtFileType.TabIndex = 0;
             this.txtFileType.Text = "*";
             // 
@@ -611,10 +604,9 @@
             // 
             this.rdoTypeCust.AutoSize = true;
             this.rdoTypeCust.Checked = true;
-            this.rdoTypeCust.Location = new System.Drawing.Point(352, 18);
-            this.rdoTypeCust.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rdoTypeCust.Location = new System.Drawing.Point(264, 14);
             this.rdoTypeCust.Name = "rdoTypeCust";
-            this.rdoTypeCust.Size = new System.Drawing.Size(143, 19);
+            this.rdoTypeCust.Size = new System.Drawing.Size(113, 16);
             this.rdoTypeCust.TabIndex = 5;
             this.rdoTypeCust.TabStop = true;
             this.rdoTypeCust.Text = "自定义(\"|\"分割)";
@@ -624,10 +616,9 @@
             // rdoTypeText
             // 
             this.rdoTypeText.AutoSize = true;
-            this.rdoTypeText.Location = new System.Drawing.Point(268, 18);
-            this.rdoTypeText.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rdoTypeText.Location = new System.Drawing.Point(201, 14);
             this.rdoTypeText.Name = "rdoTypeText";
-            this.rdoTypeText.Size = new System.Drawing.Size(58, 19);
+            this.rdoTypeText.Size = new System.Drawing.Size(47, 16);
             this.rdoTypeText.TabIndex = 3;
             this.rdoTypeText.Text = "文本";
             this.rdoTypeText.UseVisualStyleBackColor = true;
@@ -635,10 +626,9 @@
             // rdoTypeAudio
             // 
             this.rdoTypeAudio.AutoSize = true;
-            this.rdoTypeAudio.Location = new System.Drawing.Point(184, 18);
-            this.rdoTypeAudio.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rdoTypeAudio.Location = new System.Drawing.Point(138, 14);
             this.rdoTypeAudio.Name = "rdoTypeAudio";
-            this.rdoTypeAudio.Size = new System.Drawing.Size(58, 19);
+            this.rdoTypeAudio.Size = new System.Drawing.Size(47, 16);
             this.rdoTypeAudio.TabIndex = 2;
             this.rdoTypeAudio.Text = "音频";
             this.rdoTypeAudio.UseVisualStyleBackColor = true;
@@ -646,10 +636,9 @@
             // rdoTypeVideo
             // 
             this.rdoTypeVideo.AutoSize = true;
-            this.rdoTypeVideo.Location = new System.Drawing.Point(100, 18);
-            this.rdoTypeVideo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rdoTypeVideo.Location = new System.Drawing.Point(75, 14);
             this.rdoTypeVideo.Name = "rdoTypeVideo";
-            this.rdoTypeVideo.Size = new System.Drawing.Size(58, 19);
+            this.rdoTypeVideo.Size = new System.Drawing.Size(47, 16);
             this.rdoTypeVideo.TabIndex = 1;
             this.rdoTypeVideo.Text = "视频";
             this.rdoTypeVideo.UseVisualStyleBackColor = true;
@@ -657,10 +646,9 @@
             // rdoTypePic
             // 
             this.rdoTypePic.AutoSize = true;
-            this.rdoTypePic.Location = new System.Drawing.Point(16, 18);
-            this.rdoTypePic.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.rdoTypePic.Location = new System.Drawing.Point(12, 14);
             this.rdoTypePic.Name = "rdoTypePic";
-            this.rdoTypePic.Size = new System.Drawing.Size(58, 19);
+            this.rdoTypePic.Size = new System.Drawing.Size(47, 16);
             this.rdoTypePic.TabIndex = 0;
             this.rdoTypePic.Text = "图片";
             this.rdoTypePic.UseVisualStyleBackColor = true;
@@ -668,30 +656,27 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(24, 120);
-            this.label4.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label4.Location = new System.Drawing.Point(18, 96);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(67, 15);
+            this.label4.Size = new System.Drawing.Size(53, 12);
             this.label4.TabIndex = 14;
             this.label4.Text = "文件类型";
             // 
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(24, 72);
-            this.label10.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label10.Location = new System.Drawing.Point(18, 58);
             this.label10.Name = "label10";
-            this.label10.Size = new System.Drawing.Size(113, 15);
+            this.label10.Size = new System.Drawing.Size(89, 12);
             this.label10.TabIndex = 13;
             this.label10.Text = "文件路径(目标)";
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(24, 35);
-            this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label3.Location = new System.Drawing.Point(18, 28);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(98, 15);
+            this.label3.Size = new System.Drawing.Size(77, 12);
             this.label3.TabIndex = 13;
             this.label3.Text = "文件路径(源)";
             // 
@@ -700,10 +685,9 @@
             this.txtTargetFolder.AllowDrop = true;
             this.txtTargetFolder.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtTargetFolder.Location = new System.Drawing.Point(151, 69);
-            this.txtTargetFolder.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtTargetFolder.Location = new System.Drawing.Point(113, 55);
             this.txtTargetFolder.Name = "txtTargetFolder";
-            this.txtTargetFolder.Size = new System.Drawing.Size(725, 25);
+            this.txtTargetFolder.Size = new System.Drawing.Size(545, 21);
             this.txtTargetFolder.TabIndex = 2;
             this.txtTargetFolder.DragDrop += new System.Windows.Forms.DragEventHandler(this.txtFileFolder_DragDrop);
             this.txtTargetFolder.DragEnter += new System.Windows.Forms.DragEventHandler(this.txtFileFolder_DragEnter);
@@ -711,10 +695,9 @@
             // btnTargetFolderBrowser
             // 
             this.btnTargetFolderBrowser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnTargetFolderBrowser.Location = new System.Drawing.Point(896, 68);
-            this.btnTargetFolderBrowser.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnTargetFolderBrowser.Location = new System.Drawing.Point(672, 54);
             this.btnTargetFolderBrowser.Name = "btnTargetFolderBrowser";
-            this.btnTargetFolderBrowser.Size = new System.Drawing.Size(44, 29);
+            this.btnTargetFolderBrowser.Size = new System.Drawing.Size(33, 23);
             this.btnTargetFolderBrowser.TabIndex = 3;
             this.btnTargetFolderBrowser.Text = "...";
             this.btnTargetFolderBrowser.UseVisualStyleBackColor = true;
@@ -725,10 +708,9 @@
             this.txtSourceFolder.AllowDrop = true;
             this.txtSourceFolder.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.txtSourceFolder.Location = new System.Drawing.Point(151, 31);
-            this.txtSourceFolder.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.txtSourceFolder.Location = new System.Drawing.Point(113, 25);
             this.txtSourceFolder.Name = "txtSourceFolder";
-            this.txtSourceFolder.Size = new System.Drawing.Size(725, 25);
+            this.txtSourceFolder.Size = new System.Drawing.Size(545, 21);
             this.txtSourceFolder.TabIndex = 0;
             this.txtSourceFolder.DragDrop += new System.Windows.Forms.DragEventHandler(this.txtFileFolder_DragDrop);
             this.txtSourceFolder.DragEnter += new System.Windows.Forms.DragEventHandler(this.txtFileFolder_DragEnter);
@@ -736,10 +718,9 @@
             // btnSourceFolderBrowser
             // 
             this.btnSourceFolderBrowser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSourceFolderBrowser.Location = new System.Drawing.Point(896, 30);
-            this.btnSourceFolderBrowser.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnSourceFolderBrowser.Location = new System.Drawing.Point(672, 24);
             this.btnSourceFolderBrowser.Name = "btnSourceFolderBrowser";
-            this.btnSourceFolderBrowser.Size = new System.Drawing.Size(44, 29);
+            this.btnSourceFolderBrowser.Size = new System.Drawing.Size(33, 23);
             this.btnSourceFolderBrowser.TabIndex = 1;
             this.btnSourceFolderBrowser.Text = "...";
             this.btnSourceFolderBrowser.UseVisualStyleBackColor = true;
@@ -752,10 +733,8 @@
             this.groupBox1.Controls.Add(this.txtConsole);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-            this.groupBox1.Size = new System.Drawing.Size(1008, 299);
+            this.groupBox1.Size = new System.Drawing.Size(756, 139);
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "执行信息";
@@ -765,10 +744,9 @@
             this.btnCloseForm.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCloseForm.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Bold);
             this.btnCloseForm.ForeColor = System.Drawing.Color.DarkRed;
-            this.btnCloseForm.Location = new System.Drawing.Point(819, 65);
-            this.btnCloseForm.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnCloseForm.Location = new System.Drawing.Point(614, 52);
             this.btnCloseForm.Name = "btnCloseForm";
-            this.btnCloseForm.Size = new System.Drawing.Size(155, 41);
+            this.btnCloseForm.Size = new System.Drawing.Size(116, 33);
             this.btnCloseForm.TabIndex = 12;
             this.btnCloseForm.TabStop = false;
             this.btnCloseForm.Text = "Close Form";
@@ -778,10 +756,9 @@
             // btnClear
             // 
             this.btnClear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClear.Location = new System.Drawing.Point(897, 31);
-            this.btnClear.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+            this.btnClear.Location = new System.Drawing.Point(673, 25);
             this.btnClear.Name = "btnClear";
-            this.btnClear.Size = new System.Drawing.Size(76, 26);
+            this.btnClear.Size = new System.Drawing.Size(57, 21);
             this.btnClear.TabIndex = 0;
             this.btnClear.Text = "&Clear";
             this.btnClear.UseVisualStyleBackColor = true;
@@ -794,63 +771,24 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtConsole.BackColor = System.Drawing.Color.Black;
             this.txtConsole.ForeColor = System.Drawing.Color.Lime;
-            this.txtConsole.Location = new System.Drawing.Point(8, 26);
-            this.txtConsole.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.txtConsole.Location = new System.Drawing.Point(6, 21);
+            this.txtConsole.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtConsole.Multiline = true;
             this.txtConsole.Name = "txtConsole";
             this.txtConsole.ReadOnly = true;
             this.txtConsole.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtConsole.Size = new System.Drawing.Size(991, 265);
+            this.txtConsole.Size = new System.Drawing.Size(744, 113);
             this.txtConsole.TabIndex = 0;
             this.txtConsole.TabStop = false;
             this.txtConsole.WordWrap = false;
             // 
-            // tabPageSporadicFunction
-            // 
-            this.tabPageSporadicFunction.Controls.Add(this.btnSpFunFindMisplacedPhoto);
-            this.tabPageSporadicFunction.Controls.Add(this.btnSpFunDeleteEmptyFolder);
-            this.tabPageSporadicFunction.Location = new System.Drawing.Point(4, 25);
-            this.tabPageSporadicFunction.Name = "tabPageSporadicFunction";
-            this.tabPageSporadicFunction.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageSporadicFunction.Size = new System.Drawing.Size(992, 232);
-            this.tabPageSporadicFunction.TabIndex = 2;
-            this.tabPageSporadicFunction.Text = "零星功能";
-            this.tabPageSporadicFunction.UseVisualStyleBackColor = true;
-            // 
-            // btnSpFunDeleteEmptyFolder
-            // 
-            this.btnSpFunDeleteEmptyFolder.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Bold);
-            this.btnSpFunDeleteEmptyFolder.ForeColor = System.Drawing.Color.DarkRed;
-            this.btnSpFunDeleteEmptyFolder.Location = new System.Drawing.Point(17, 17);
-            this.btnSpFunDeleteEmptyFolder.Margin = new System.Windows.Forms.Padding(4);
-            this.btnSpFunDeleteEmptyFolder.Name = "btnSpFunDeleteEmptyFolder";
-            this.btnSpFunDeleteEmptyFolder.Size = new System.Drawing.Size(155, 41);
-            this.btnSpFunDeleteEmptyFolder.TabIndex = 2;
-            this.btnSpFunDeleteEmptyFolder.Text = "删除空文件夹";
-            this.btnSpFunDeleteEmptyFolder.UseVisualStyleBackColor = true;
-            this.btnSpFunDeleteEmptyFolder.Click += new System.EventHandler(this.btnSpFunDeleteEmptyFolder_Click);
-            // 
-            // btnSpFunFindMisplacedPhoto
-            // 
-            this.btnSpFunFindMisplacedPhoto.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Bold);
-            this.btnSpFunFindMisplacedPhoto.ForeColor = System.Drawing.Color.DarkRed;
-            this.btnSpFunFindMisplacedPhoto.Location = new System.Drawing.Point(180, 17);
-            this.btnSpFunFindMisplacedPhoto.Margin = new System.Windows.Forms.Padding(4);
-            this.btnSpFunFindMisplacedPhoto.Name = "btnSpFunFindMisplacedPhoto";
-            this.btnSpFunFindMisplacedPhoto.Size = new System.Drawing.Size(292, 41);
-            this.btnSpFunFindMisplacedPhoto.TabIndex = 3;
-            this.btnSpFunFindMisplacedPhoto.Text = "按文件名查找放错文件夹的照片";
-            this.btnSpFunFindMisplacedPhoto.UseVisualStyleBackColor = true;
-            this.btnSpFunFindMisplacedPhoto.Click += new System.EventHandler(this.btnSpFunFindMisplacedPhoto_Click);
-            // 
             // Form1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCloseForm;
-            this.ClientSize = new System.Drawing.Size(1008, 804);
+            this.ClientSize = new System.Drawing.Size(756, 643);
             this.Controls.Add(this.splitContainer1);
-            this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
             this.Name = "Form1";
             this.Text = "自用文件管理器";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
@@ -868,6 +806,7 @@
             this.groupBox5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numChgNmWildcardLen)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numChgNmStartNum)).EndInit();
+            this.tabPageSporadicFunction.ResumeLayout(false);
             this.grpFileSelect.ResumeLayout(false);
             this.grpFileSelect.PerformLayout();
             this.grpSortMode.ResumeLayout(false);
@@ -876,7 +815,6 @@
             this.grpFileType.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
-            this.tabPageSporadicFunction.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
