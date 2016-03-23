@@ -9,19 +9,13 @@ using System.Windows.Forms;
 
 namespace FileManager {
     public partial class formTextMessage : Form {
-        private string _formTitle, _formMessage;
-        private bool _lockMessage;
-        private DialogResult _closeResult = DialogResult.Cancel;
+        private readonly string _formTitle;
+        private readonly bool _lockMessage;
+        private string _formMessage;
 
         public string FormMessage {
             get {
                 return _formMessage;
-            }
-        }
-
-        public DialogResult CloseResult {
-            get {
-                return _closeResult;
             }
         }
 
@@ -41,20 +35,8 @@ namespace FileManager {
             this.txtMessage.Select(0, 0);
         }
 
-        private void formTextMessage_FormClosing(object sender, FormClosingEventArgs e) {
-            e.Cancel = true;
-            this.btnCancel.PerformClick();
-        }
-
         private void btnOK_Click(object sender, EventArgs e) {
             _formMessage = txtMessage.Text;
-            _closeResult = DialogResult.OK;
-            this.Visible = false;
-        }
-
-        private void btnCancel_Click(object sender, EventArgs e) {
-            _closeResult = DialogResult.Cancel;
-            this.Visible = false;
         }
     }
 }

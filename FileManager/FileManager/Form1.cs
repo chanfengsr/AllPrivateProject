@@ -11,7 +11,7 @@ using FileManager.Properties;
 
 namespace FileManager {
     public partial class Form1 : Form {
-        struct FormControlProperties {
+        private struct FormControlProperties {
             public bool SourceFolderEnabled;
             public bool TargetFolderEnabled;
             public bool FileTypeEnabled;
@@ -149,7 +149,7 @@ namespace FileManager {
 
                 if (fileList.Length > 0) {
                     using (formTextMessage frmMessage = new formTextMessage("文件列表预览", fileList, true)) {
-                        frmMessage.ShowDialog(this);                        
+                        frmMessage.ShowDialog(this);
                     }
                 }
             }
@@ -172,9 +172,7 @@ namespace FileManager {
 
         private void btnEditChangeFileList_Click(object sender, EventArgs e) {
             using (formTextMessage frmMessage = new formTextMessage("编辑要被更名的文件列表", _fileChangeNameSpecChgFileList)) {
-                frmMessage.ShowDialog(this);
-
-                if (frmMessage.CloseResult == DialogResult.OK)
+                if (frmMessage.ShowDialog(this) == DialogResult.OK)
                     _fileChangeNameSpecChgFileList = frmMessage.FormMessage;
             }
         }
@@ -209,9 +207,7 @@ namespace FileManager {
 
         private void btnChgNmEditChangeList_Click(object sender, EventArgs e) {
             using (formTextMessage frmMessage = new formTextMessage("编辑文件更名列表", _fileChangeNameChangeList)) {
-                frmMessage.ShowDialog(this);
-
-                if (frmMessage.CloseResult == DialogResult.OK)
+                if (frmMessage.ShowDialog(this) == DialogResult.OK)
                     _fileChangeNameChangeList = frmMessage.FormMessage;
             }
         }
@@ -250,20 +246,20 @@ namespace FileManager {
                 StringBuilder sbMsg = new StringBuilder();
                 foreach (string empFolder in emptyFolderList)
                     sbMsg.AppendLine(empFolder);
-                
-                UIInProcess(false);
 
                 if (emptyFolderList.Count > 0) {
                     using (formTextMessage frmMessage = new formTextMessage("是否删除以下空文件夹？", sbMsg.ToString().Trim().TrimEnd(Environment.NewLine.ToArray()), true)) {
-                        frmMessage.ShowDialog(this);
-
-                        if (frmMessage.CloseResult == DialogResult.OK) {
-                            emptyFolderList.Reverse();
-
+                        if (frmMessage.ShowDialog(this) == DialogResult.OK) {
+                            emptyFolderList.Reverse(); //重新倒置，使从子目录开始删
                             sporadicFunction.Execute_DeleteEmptyFolder(emptyFolderList);
                         }
                     }
                 }
+                else {
+                    CommFunction.WriteMessage("没有找到空文件夹。");
+                }
+
+                UIInProcess(false);
             }
             catch (Exception ex) {
                 CommFunction.WriteMessage(ex.Message);
@@ -277,16 +273,26 @@ namespace FileManager {
             try {
                 UIInProcess(true);
 
-                string str = "abc";
+                FileSporadicFunction sporadicFunction = new FileSporadicFunction();
+                FileSelectParm fileSelParm = this.GetFormFileSelParm();
+                if (fileSelParm.FileFilter == string.Empty)
+                    fileSelParm.FileFilter = CommDefinition.ExtensionPicFile;
+                sporadicFunction.SetFileSelectParm(fileSelParm);
+
+                StringBuilder sbMsg = new StringBuilder();
+                List<string> fileInWrongFolder = sporadicFunction.GetFileInWrongFolder();
+                foreach (string fName in fileInWrongFolder)
+                    sbMsg.AppendLine(fName);
 
                 UIInProcess(false);
 
-                if (str.Length > 0) {
-                    using (formTextMessage frmMessage = new formTextMessage("文件列表预览", str, true)) {
+                if (fileInWrongFolder.Count > 0) {
+                    using (formTextMessage frmMessage = new formTextMessage("找到的文件列表", sbMsg.ToString().Trim().TrimEnd(Environment.NewLine.ToArray()), true)) {
                         frmMessage.ShowDialog(this);
-
-                        MessageBox.Show(frmMessage.CloseResult.ToString());
                     }
+                }
+                else {
+                    CommFunction.WriteMessage("没有找到此类文件。");
                 }
             }
             catch (Exception ex) {

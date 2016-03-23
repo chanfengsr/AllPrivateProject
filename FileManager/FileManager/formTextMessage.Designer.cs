@@ -46,6 +46,7 @@
             // btnOK
             // 
             this.btnOK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.btnOK.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.btnOK.Location = new System.Drawing.Point(17, 282);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(75, 23);
@@ -64,7 +65,6 @@
             this.btnCancel.TabIndex = 2;
             this.btnCancel.Text = "取 消(&C)";
             this.btnCancel.UseVisualStyleBackColor = true;
-            this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // formTextMessage
             // 
@@ -78,7 +78,6 @@
             this.Name = "formTextMessage";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "formTextMessage";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.formTextMessage_FormClosing);
             this.Load += new System.EventHandler(this.formTextMessage_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
