@@ -111,6 +111,30 @@ namespace FileManager {
             this._dicRecordDate.Clear();
         }
 
+        /// <summary>排序已获得的文件
+        /// </summary>
+        protected void SortFileList() {
+            if (AllFile.Count > 0) {
+                switch (FileSelParm.FileSortBy) {
+                    case FileSortMode.FileName:
+                        AllFile.Sort((x, y) => String.Compare(x.Name, y.Name, StringComparison.Ordinal));
+                        break;
+                    case FileSortMode.CreateDate:
+                        AllFile.Sort((x, y) => DateTime.Compare(x.CreationTime, y.CreationTime));
+                        break;
+                    case FileSortMode.ModifyDate:
+                        AllFile.Sort((x, y) => DateTime.Compare(x.LastWriteTime, y.LastWriteTime));
+                        break;
+                    case FileSortMode.RecordingDate:
+                    case FileSortMode.DateInFileName:
+                        AllFile.Sort((x, y) => DateTime.Compare(this.GetFileDate(x, this.DatePriority), this.GetFileDate(y, this.DatePriority)));
+                        break;
+                    default:
+                        throw new ArgumentOutOfRangeException();
+                }
+            }
+        }
+
         public virtual string LoadFileList(bool sortFileList = true) {
             string retVal = string.Empty;
 
@@ -119,6 +143,7 @@ namespace FileManager {
                 _dicRecordDate.Clear();
                 List<string> filterList = FileSelParm.FileFilter.ToUpper().Split('|').ToList();
                 bool havAllFilter = filterList.Contains("*");
+                bool typeIgnore = FileSelParm.FileTypeIsIgnore;
                 DirectoryInfo dicInfo = new DirectoryInfo(FileSelParm.SourceFileFolder);
                 List<string> chgFileList = FileSelParm.UseSpecFileList ? FileSelParm.SpecFileList.ToUpper().Split(new[] {Environment.NewLine}, StringSplitOptions.RemoveEmptyEntries).ToList() : null;
 
@@ -133,51 +158,112 @@ namespace FileManager {
                             AllFile.Add(fileInfo);
                     }
                     else {
-                        if (havAllFilter) {
+                        if (havAllFilter && !typeIgnore) {
                             AllFile.Add(fileInfo);
                         }
                         else {
                             string strExt = fileInfo.Extension.Remove(0, 1).ToUpper();
-                            if (filterList.Contains(strExt)) {
+                            //符合异或条件
+                            if (typeIgnore ^ filterList.Contains(strExt))
                                 AllFile.Add(fileInfo);
-                            }
                         }
                     }
                 }
 
                 //排序
-                if (sortFileList) {
-                    switch (FileSelParm.FileSortBy) {
-                        case FileSortMode.FileName:
-                            AllFile.Sort((x, y) => String.Compare(x.Name, y.Name, StringComparison.Ordinal));
-                            break;
-                        case FileSortMode.CreateDate:
-                            AllFile.Sort((x, y) => DateTime.Compare(x.CreationTime, y.CreationTime));
-                            break;
-                        case FileSortMode.ModifyDate:
-                            AllFile.Sort((x, y) => DateTime.Compare(x.LastWriteTime, y.LastWriteTime));
-                            break;
-                        case FileSortMode.RecordingDate:
-                        case FileSortMode.DateInFileName:
-                            AllFile.Sort((x, y) => DateTime.Compare(this.GetFileDate(x, this.DatePriority), this.GetFileDate(y, this.DatePriority)));
-                            break;
-                        default:
-                            throw new ArgumentOutOfRangeException();
-                    }
-                }
+                if (sortFileList)
+                    this.SortFileList();
 
                 //一行一行显示文件名
-                StringBuilder sbFilenames = new StringBuilder();
-                foreach (FileInfo fileInfo in AllFile)
-                    sbFilenames.AppendLine(fileInfo.Name);
-
-                retVal = sbFilenames.ToString().TrimEnd(Environment.NewLine.ToCharArray());
+                retVal = CommFunction.StringList2String(AllFile.Select(f => f.FullName).ToList());
             }
             else {
                 CommFunction.WriteMessage("文件夹不存在！");
             }
 
             return retVal;
+        }
+
+        protected virtual void LoadFileListAllTree(DirectoryInfo dirInfo, List<string> filterList, bool havAllFilter, bool typeIgnore) {
+            foreach (DirectoryInfo di in dirInfo.GetDirectories())
+                LoadFileListAllTree(di, filterList, havAllFilter, typeIgnore);
+
+            foreach (FileInfo fi in dirInfo.GetFiles().Where(fi => ( fi.Attributes & FileAttributes.System ) != FileAttributes.System)) {
+                if (havAllFilter && !typeIgnore) {
+                    AllFile.Add(fi);
+                }
+                else {
+                    string strExt = fi.Extension.Remove(0, 1).ToUpper();
+                    //符合异或条件
+                    if (typeIgnore ^ filterList.Contains(strExt))
+                        AllFile.Add(fi);
+                }
+            }
+        }
+
+        public virtual string LoadFileListAllTree(bool sortFileList = true) {
+            string retVal = string.Empty;
+
+            if (Directory.Exists(FileSelParm.SourceFileFolder)) {
+                AllFile.Clear();
+                _dicRecordDate.Clear();
+                List<string> filterList = FileSelParm.FileFilter.ToUpper().Split('|').ToList();
+                bool havAllFilter = filterList.Contains("*");
+                bool typeIgnore = FileSelParm.FileTypeIsIgnore;
+                DirectoryInfo dicInfo = new DirectoryInfo(FileSelParm.SourceFileFolder);
+
+                this.LoadFileListAllTree(dicInfo, filterList, havAllFilter, typeIgnore);
+
+                //排序
+                if (sortFileList)
+                    this.SortFileList();
+
+                //一行一行显示文件名
+                retVal = CommFunction.StringList2String(AllFile.Select(f => f.FullName).ToList());
+            }
+            else {
+                CommFunction.WriteMessage("文件夹不存在！");
+            }
+
+            return retVal;
+        }
+
+        protected virtual void LoadFileNameListAllTree(DirectoryInfo dirInfo, List<string> filterList, bool havAllFilter, bool typeIgnore,List<string> foundList) {
+            foreach (DirectoryInfo di in dirInfo.GetDirectories())
+                LoadFileNameListAllTree(di, filterList, havAllFilter, typeIgnore,foundList);
+
+            foreach (FileInfo fi in dirInfo.GetFiles().Where(fi => (fi.Attributes & FileAttributes.System) != FileAttributes.System)) {
+                if (havAllFilter && !typeIgnore) {
+                    foundList.Add(fi.FullName);
+                }
+                else {
+                    string strExt = fi.Extension.Remove(0, 1).ToUpper();
+                    //符合异或条件
+                    if (typeIgnore ^ filterList.Contains(strExt))
+                        foundList.Add(fi.FullName);
+                }
+            }
+        }
+
+        public virtual List<string> LoadFileNameListAllTree() {
+            List<string> foundList = new List<string>();
+
+            if (Directory.Exists(FileSelParm.SourceFileFolder)) {
+                AllFile.Clear();
+                _dicRecordDate.Clear();
+                List<string> filterList = FileSelParm.FileFilter.ToUpper().Split('|').ToList();
+                bool havAllFilter = filterList.Contains("*");
+                bool typeIgnore = FileSelParm.FileTypeIsIgnore;
+                DirectoryInfo dicInfo = new DirectoryInfo(FileSelParm.SourceFileFolder);
+
+                this.LoadFileNameListAllTree(dicInfo, filterList, havAllFilter, typeIgnore, foundList);
+            }
+            else {
+                CommFunction.WriteMessage("文件夹不存在！");
+            }
+
+            foundList.Reverse();
+            return foundList;
         }
     }
 }

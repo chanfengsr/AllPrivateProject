@@ -42,6 +42,9 @@ namespace FileManager {
         /// <summary>文件类型过滤</summary>
         public string FileFilter { get; set; }
 
+        /// <summary>文件类型为忽略类型</summary>
+        public bool FileTypeIsIgnore { get; set; }
+
         /// <summary>排序方式</summary>
         public FileSortMode FileSortBy { get; set; }
 

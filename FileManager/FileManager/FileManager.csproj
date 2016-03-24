@@ -54,6 +54,7 @@
     <Compile Include="CommClass\CommFunction.cs" />
     <Compile Include="CommClass\ConsoleRedirect.cs" />
     <Compile Include="CommClass\ExifManager.cs" />
+    <Compile Include="CommClass\SysSecurityFactory.cs" />
     <Compile Include="ModeClass\FileBatchChangeName.cs" />
     <Compile Include="ModeClass\FileCopyByGroup.cs" />
     <Compile Include="ModeClass\FileProcessBaseClass.cs" />

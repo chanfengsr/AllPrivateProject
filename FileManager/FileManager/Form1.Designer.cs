@@ -86,6 +86,9 @@
             this.btnCloseForm = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
             this.txtConsole = new System.Windows.Forms.TextBox();
+            this.btnSpFunFindDuplicateFilesByContent = new System.Windows.Forms.Button();
+            this.chkIsIgnoreFileType = new System.Windows.Forms.CheckBox();
+            this.progressBar1 = new System.Windows.Forms.ProgressBar();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -154,7 +157,7 @@
             this.tabPageCopyByGroup.Controls.Add(this.btnCopyByDate);
             this.tabPageCopyByGroup.Location = new System.Drawing.Point(4, 22);
             this.tabPageCopyByGroup.Name = "tabPageCopyByGroup";
-            this.tabPageCopyByGroup.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPageCopyByGroup.Padding = new System.Windows.Forms.Padding(3);
             this.tabPageCopyByGroup.Size = new System.Drawing.Size(742, 183);
             this.tabPageCopyByGroup.TabIndex = 0;
             this.tabPageCopyByGroup.Text = "日期分组复制文件";
@@ -188,7 +191,7 @@
             this.tabPageFileBatchChangeName.Controls.Add(this.groupBox5);
             this.tabPageFileBatchChangeName.Location = new System.Drawing.Point(4, 22);
             this.tabPageFileBatchChangeName.Name = "tabPageFileBatchChangeName";
-            this.tabPageFileBatchChangeName.Padding = new System.Windows.Forms.Padding(3, 3, 3, 3);
+            this.tabPageFileBatchChangeName.Padding = new System.Windows.Forms.Padding(3);
             this.tabPageFileBatchChangeName.Size = new System.Drawing.Size(742, 183);
             this.tabPageFileBatchChangeName.TabIndex = 1;
             this.tabPageFileBatchChangeName.Text = "文件批量改名";
@@ -413,12 +416,14 @@
             // 
             // tabPageSporadicFunction
             // 
+            this.tabPageSporadicFunction.Controls.Add(this.progressBar1);
+            this.tabPageSporadicFunction.Controls.Add(this.btnSpFunFindDuplicateFilesByContent);
             this.tabPageSporadicFunction.Controls.Add(this.btnSpFunFindMisplacedPhoto);
             this.tabPageSporadicFunction.Controls.Add(this.btnSpFunDeleteEmptyFolder);
             this.tabPageSporadicFunction.Location = new System.Drawing.Point(4, 22);
-            this.tabPageSporadicFunction.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPageSporadicFunction.Margin = new System.Windows.Forms.Padding(2);
             this.tabPageSporadicFunction.Name = "tabPageSporadicFunction";
-            this.tabPageSporadicFunction.Padding = new System.Windows.Forms.Padding(2, 2, 2, 2);
+            this.tabPageSporadicFunction.Padding = new System.Windows.Forms.Padding(2);
             this.tabPageSporadicFunction.Size = new System.Drawing.Size(742, 183);
             this.tabPageSporadicFunction.TabIndex = 2;
             this.tabPageSporadicFunction.Text = "零星功能";
@@ -467,7 +472,7 @@
             this.grpFileSelect.Controls.Add(this.btnSourceFolderBrowser);
             this.grpFileSelect.Location = new System.Drawing.Point(13, 22);
             this.grpFileSelect.Name = "grpFileSelect";
-            this.grpFileSelect.Size = new System.Drawing.Size(730, 204);
+            this.grpFileSelect.Size = new System.Drawing.Size(730, 241);
             this.grpFileSelect.TabIndex = 0;
             this.grpFileSelect.TabStop = false;
             this.grpFileSelect.Text = "文件选择";
@@ -475,7 +480,7 @@
             // btnEditChangeFileList
             // 
             this.btnEditChangeFileList.Enabled = false;
-            this.btnEditChangeFileList.Location = new System.Drawing.Point(254, 170);
+            this.btnEditChangeFileList.Location = new System.Drawing.Point(254, 193);
             this.btnEditChangeFileList.Name = "btnEditChangeFileList";
             this.btnEditChangeFileList.Size = new System.Drawing.Size(75, 23);
             this.btnEditChangeFileList.TabIndex = 8;
@@ -486,7 +491,7 @@
             // chkSpecFileList
             // 
             this.chkSpecFileList.AutoSize = true;
-            this.chkSpecFileList.Location = new System.Drawing.Point(152, 173);
+            this.chkSpecFileList.Location = new System.Drawing.Point(152, 196);
             this.chkSpecFileList.Name = "chkSpecFileList";
             this.chkSpecFileList.Size = new System.Drawing.Size(96, 16);
             this.chkSpecFileList.TabIndex = 7;
@@ -496,7 +501,7 @@
             // 
             // btnViewFileNameList
             // 
-            this.btnViewFileNameList.Location = new System.Drawing.Point(20, 170);
+            this.btnViewFileNameList.Location = new System.Drawing.Point(20, 193);
             this.btnViewFileNameList.Name = "btnViewFileNameList";
             this.btnViewFileNameList.Size = new System.Drawing.Size(92, 23);
             this.btnViewFileNameList.TabIndex = 6;
@@ -511,7 +516,7 @@
             this.grpSortMode.Controls.Add(this.rdoSortModifyDate);
             this.grpSortMode.Controls.Add(this.rdoSortCreateDate);
             this.grpSortMode.Controls.Add(this.rdoSortName);
-            this.grpSortMode.Location = new System.Drawing.Point(113, 125);
+            this.grpSortMode.Location = new System.Drawing.Point(113, 148);
             this.grpSortMode.Name = "grpSortMode";
             this.grpSortMode.Size = new System.Drawing.Size(603, 37);
             this.grpSortMode.TabIndex = 5;
@@ -572,7 +577,7 @@
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(18, 137);
+            this.label5.Location = new System.Drawing.Point(18, 160);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(83, 12);
             this.label5.TabIndex = 14;
@@ -581,6 +586,7 @@
             // grpFileType
             // 
             this.grpFileType.Controls.Add(this.txtFileType);
+            this.grpFileType.Controls.Add(this.chkIsIgnoreFileType);
             this.grpFileType.Controls.Add(this.rdoTypeCust);
             this.grpFileType.Controls.Add(this.rdoTypeText);
             this.grpFileType.Controls.Add(this.rdoTypeAudio);
@@ -588,7 +594,7 @@
             this.grpFileType.Controls.Add(this.rdoTypePic);
             this.grpFileType.Location = new System.Drawing.Point(113, 84);
             this.grpFileType.Name = "grpFileType";
-            this.grpFileType.Size = new System.Drawing.Size(603, 37);
+            this.grpFileType.Size = new System.Drawing.Size(603, 60);
             this.grpFileType.TabIndex = 4;
             this.grpFileType.TabStop = false;
             // 
@@ -597,7 +603,7 @@
             this.txtFileType.Location = new System.Drawing.Point(382, 12);
             this.txtFileType.Name = "txtFileType";
             this.txtFileType.Size = new System.Drawing.Size(185, 21);
-            this.txtFileType.TabIndex = 0;
+            this.txtFileType.TabIndex = 5;
             this.txtFileType.Text = "*";
             // 
             // rdoTypeCust
@@ -607,7 +613,7 @@
             this.rdoTypeCust.Location = new System.Drawing.Point(264, 14);
             this.rdoTypeCust.Name = "rdoTypeCust";
             this.rdoTypeCust.Size = new System.Drawing.Size(113, 16);
-            this.rdoTypeCust.TabIndex = 5;
+            this.rdoTypeCust.TabIndex = 4;
             this.rdoTypeCust.TabStop = true;
             this.rdoTypeCust.Text = "自定义(\"|\"分割)";
             this.rdoTypeCust.UseVisualStyleBackColor = true;
@@ -656,7 +662,7 @@
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(18, 96);
+            this.label4.Location = new System.Drawing.Point(18, 108);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(53, 12);
             this.label4.TabIndex = 14;
@@ -782,6 +788,36 @@
             this.txtConsole.TabStop = false;
             this.txtConsole.WordWrap = false;
             // 
+            // btnSpFunFindDuplicateFilesByContent
+            // 
+            this.btnSpFunFindDuplicateFilesByContent.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Bold);
+            this.btnSpFunFindDuplicateFilesByContent.ForeColor = System.Drawing.Color.DarkRed;
+            this.btnSpFunFindDuplicateFilesByContent.Location = new System.Drawing.Point(373, 14);
+            this.btnSpFunFindDuplicateFilesByContent.Name = "btnSpFunFindDuplicateFilesByContent";
+            this.btnSpFunFindDuplicateFilesByContent.Size = new System.Drawing.Size(171, 33);
+            this.btnSpFunFindDuplicateFilesByContent.TabIndex = 4;
+            this.btnSpFunFindDuplicateFilesByContent.Text = "按内容查找重复文件";
+            this.btnSpFunFindDuplicateFilesByContent.UseVisualStyleBackColor = true;
+            this.btnSpFunFindDuplicateFilesByContent.Click += new System.EventHandler(this.btnSpFunFindDuplicateFilesByContent_Click);
+            // 
+            // chkIsIgnoreFileType
+            // 
+            this.chkIsIgnoreFileType.AutoSize = true;
+            this.chkIsIgnoreFileType.Location = new System.Drawing.Point(12, 38);
+            this.chkIsIgnoreFileType.Name = "chkIsIgnoreFileType";
+            this.chkIsIgnoreFileType.Size = new System.Drawing.Size(84, 16);
+            this.chkIsIgnoreFileType.TabIndex = 6;
+            this.chkIsIgnoreFileType.Text = "类型为忽略";
+            this.chkIsIgnoreFileType.UseVisualStyleBackColor = true;
+            // 
+            // progressBar1
+            // 
+            this.progressBar1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.progressBar1.Location = new System.Drawing.Point(2, 158);
+            this.progressBar1.Name = "progressBar1";
+            this.progressBar1.Size = new System.Drawing.Size(738, 23);
+            this.progressBar1.TabIndex = 6;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -879,6 +915,9 @@
         private System.Windows.Forms.TabPage tabPageSporadicFunction;
         private System.Windows.Forms.Button btnSpFunDeleteEmptyFolder;
         private System.Windows.Forms.Button btnSpFunFindMisplacedPhoto;
+        private System.Windows.Forms.CheckBox chkIsIgnoreFileType;
+        private System.Windows.Forms.Button btnSpFunFindDuplicateFilesByContent;
+        private System.Windows.Forms.ProgressBar progressBar1;
 
     }
 }

@@ -61,6 +61,10 @@ namespace FileManager {
             return retVal;
         }
 
+        /// <summary>删除空文件夹
+        /// </summary>
+        /// <param name="emptyFolderList">指定需要删除的文件夹列表</param>
+        /// <returns></returns>
         public int Execute_DeleteEmptyFolder(List<string> emptyFolderList = null) {
             int delCount = 0;
 
@@ -85,21 +89,11 @@ namespace FileManager {
 
             return delCount;
         }
-
-        private void LoadAllFileList(DirectoryInfo dirInfo, ICollection<string> filterList) {
-            foreach (DirectoryInfo di in dirInfo.GetDirectories())
-                LoadAllFileList(di,filterList);
-
-            foreach (FileInfo fi in dirInfo.GetFiles()) {
-                if (( fi.Attributes & FileAttributes.System ) == FileAttributes.System)
-                    continue;
-
-                if (filterList.Contains(fi.Extension.Remove(0, 1).ToUpper()))
-                    base.AllFile.Add(fi);
-            }
-        }
-
-        public List<string> GetFileInWrongFolder() {
+        
+        /// <summary>按文件名查找放错文件夹的照片
+        /// </summary>
+        /// <returns></returns>
+        public List<string> Execute_GetFileInWrongFolder() {
             List<string> retVal = new List<string>();
 
             if (!Directory.Exists(this.FileSelParm.SourceFileFolder)) {
@@ -119,7 +113,7 @@ namespace FileManager {
             };
 
             base.AllFile.Clear();
-            this.LoadAllFileList(new DirectoryInfo(this.FileSelParm.SourceFileFolder), this.FileSelParm.FileFilter.ToUpper().Split('|').ToList());
+            base.LoadFileListAllTree(false);
             
             //文件名包含日期，所在文件夹包含日期，但两者日期不一致
             foreach (FileInfo fileInfo in base.AllFile) {
@@ -133,6 +127,56 @@ namespace FileManager {
             }
 
             return retVal;
+        }
+
+        /// <summary>按内容查找重复文件
+        /// </summary>
+        /// <returns></returns>
+        public string Execute_FindDuplicateFilesByContent() {
+            Dictionary<string, List<string>> foundList = new Dictionary<string, List<string>>();
+
+            //加载所有文件
+            List<string> lstAllFileName = base.LoadFileNameListAllTree();
+
+            //算出Hash，填充序列
+            foreach (string fName in lstAllFileName) {
+                try {
+                    using (FileStream fileStream = new FileStream(fName, FileMode.Open)) {
+                        try {
+                            if (fileStream.Length > 0) {
+                                string md5Val = CommFunction.GetMD5HashFromFile(fileStream);
+                                string fileHash = fileStream.Length + "|" + md5Val;
+
+                                //创建/更新哈希列表组
+                                if (foundList.ContainsKey(fileHash))
+                                    foundList[fileHash].Add(fName);
+                                else
+                                    foundList.Add(fileHash, new List<string>(new[] {fName}));
+                            }
+                        }
+                        finally {
+                            fileStream.Close();
+                        }
+                    }
+                }
+                catch (Exception ex) {
+                    CommFunction.WriteMessage(ex.Message);
+                }
+            }
+     
+            StringBuilder retSb = new StringBuilder();
+            foreach (KeyValuePair<string, List<string>> foundGroup in foundList.Where(fl => fl.Value.Count > 1)) {
+                //倒置列表以符合常规文件排序
+                foundGroup.Value.Reverse();
+
+                foreach (string fName in foundGroup.Value) {
+                    retSb.AppendLine(fName);
+                }
+
+                retSb.AppendLine();
+            }
+
+            return retSb.ToString().TrimEnd(Environment.NewLine.ToCharArray());
         }
     }
 }

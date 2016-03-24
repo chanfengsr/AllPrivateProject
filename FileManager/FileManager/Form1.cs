@@ -19,7 +19,6 @@ namespace FileManager {
             public bool SortModeEnabled;
             public bool ViewFileNameListEnabled;
             public bool SpecFileListEnabled;
-
         }
 
         private string _fileChangeNameChangeList = string.Empty;
@@ -280,11 +279,9 @@ namespace FileManager {
                 sporadicFunction.SetFileSelectParm(fileSelParm);
 
                 StringBuilder sbMsg = new StringBuilder();
-                List<string> fileInWrongFolder = sporadicFunction.GetFileInWrongFolder();
+                List<string> fileInWrongFolder = sporadicFunction.Execute_GetFileInWrongFolder();
                 foreach (string fName in fileInWrongFolder)
                     sbMsg.AppendLine(fName);
-
-                UIInProcess(false);
 
                 if (fileInWrongFolder.Count > 0) {
                     using (formTextMessage frmMessage = new formTextMessage("找到的文件列表", sbMsg.ToString().Trim().TrimEnd(Environment.NewLine.ToArray()), true)) {
@@ -294,6 +291,36 @@ namespace FileManager {
                 else {
                     CommFunction.WriteMessage("没有找到此类文件。");
                 }
+
+                UIInProcess(false);
+            }
+            catch (Exception ex) {
+                CommFunction.WriteMessage(ex.Message);
+            }
+            finally {
+                UIInProcess(false);
+            }
+        }
+
+        private void btnSpFunFindDuplicateFilesByContent_Click(object sender, EventArgs e) {
+            try {
+                UIInProcess(true);
+
+                FileSporadicFunction sporadicFunction = new FileSporadicFunction();
+                sporadicFunction.SetFileSelectParm(this.GetFormFileSelParm());
+
+                string fileNames = sporadicFunction.Execute_FindDuplicateFilesByContent();
+
+                if (fileNames.Length > 0) {
+                    using (formTextMessage frmMessage = new formTextMessage("找到的文件列表", fileNames, true)) {
+                        frmMessage.ShowDialog(this);
+                    }
+                }
+                else {
+                    CommFunction.WriteMessage("没有找到此类文件。");
+                }
+                
+                UIInProcess(false);
             }
             catch (Exception ex) {
                 CommFunction.WriteMessage(ex.Message);
@@ -405,6 +432,7 @@ namespace FileManager {
             retVal.TargetFileFolder = txtTargetFolder.Text;
             retVal.UseSpecFileList = chkSpecFileList.Checked;
             retVal.SpecFileList = _fileChangeNameSpecChgFileList;
+            retVal.FileTypeIsIgnore = chkIsIgnoreFileType.Checked;
 
             return retVal;
         }

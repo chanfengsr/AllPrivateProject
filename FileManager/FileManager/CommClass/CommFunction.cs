@@ -40,5 +40,58 @@ namespace FileManager {
 
             return fileInfo.CreationTime;
         }
+
+        /// <summary>将List弄成一个字符串，用StringBuilder，量大可能会快一点
+        /// </summary>
+        /// <param name="list"></param>
+        /// <returns></returns>
+        public static string StringList2String(ICollection<string> list) {
+            StringBuilder sb = new StringBuilder();
+            foreach (string s in list)
+                sb.AppendLine(s);
+
+            return sb.ToString().TrimEnd(Environment.NewLine.ToCharArray());
+        }
+
+        public static string GetMD5HashFromFile(FileStream fileStream) {
+            try {
+                if (fileStream.Length > 0) {
+                    System.Security.Cryptography.MD5 md5 = new System.Security.Cryptography.MD5CryptoServiceProvider();
+                    byte[] retVal = md5.ComputeHash(fileStream);
+                    
+                    StringBuilder sb = new StringBuilder();
+                    for (int i = 0; i < retVal.Length; i++) {
+                        sb.Append(retVal[i].ToString("x2"));
+                    }
+                    return sb.ToString();
+                }
+                else
+                    return string.Empty;
+            }
+            catch (Exception ex) {
+                throw new Exception("GetMD5HashFromFile() fail,error:" + ex.Message);
+            }
+        }
+
+        public static string GetMD5HashFromFile(string fileName) {
+            string retVal;
+
+            try {
+                using (FileStream fileStream = new FileStream(fileName, FileMode.Open)) {
+                    try {
+                        retVal = GetMD5HashFromFile(fileStream);
+                    }
+                    finally {
+                        fileStream.Close();
+                    }
+
+                }
+            }
+            catch (Exception ex) {
+                throw new Exception("GetMD5HashFromFile() fail,error:" + ex.Message);
+            }
+
+            return retVal;
+        }
     }
 }
