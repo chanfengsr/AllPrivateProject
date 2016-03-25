@@ -349,7 +349,7 @@
             // 
             // txtProcThrottleMax
             // 
-            this.txtProcThrottleMax.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.txtProcThrottleMax.BackColor = System.Drawing.SystemColors.Window;
             this.txtProcThrottleMax.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtProcThrottleMax.Location = new System.Drawing.Point(163, 21);
             this.txtProcThrottleMax.Name = "txtProcThrottleMax";
@@ -359,7 +359,7 @@
             // 
             // txtProcThrottleMin
             // 
-            this.txtProcThrottleMin.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.txtProcThrottleMin.BackColor = System.Drawing.SystemColors.Window;
             this.txtProcThrottleMin.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtProcThrottleMin.Location = new System.Drawing.Point(122, 21);
             this.txtProcThrottleMin.Name = "txtProcThrottleMin";
