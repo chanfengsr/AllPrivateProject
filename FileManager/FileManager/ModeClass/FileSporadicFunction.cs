@@ -165,15 +165,15 @@ namespace FileManager {
             }
      
             StringBuilder retSb = new StringBuilder();
+            //取数量大于1的为相同的文件
             foreach (KeyValuePair<string, List<string>> foundGroup in foundList.Where(fl => fl.Value.Count > 1)) {
                 //倒置列表以符合常规文件排序
                 foundGroup.Value.Reverse();
 
-                foreach (string fName in foundGroup.Value) {
+                foreach (string fName in foundGroup.Value)
                     retSb.AppendLine(fName);
-                }
 
-                retSb.AppendLine();
+                retSb.AppendLine();//每组加一空行
             }
 
             return retSb.ToString().TrimEnd(Environment.NewLine.ToCharArray());

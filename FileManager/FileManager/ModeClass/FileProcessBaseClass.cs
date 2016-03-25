@@ -44,12 +44,13 @@ namespace FileManager {
         protected Dictionary<string, DateTime> DicRecordDate {
             get {
                 if (_dicRecordDate.Count == 0 && AllFile.Count > 0) {
-                    //并行获取
+                    //并行获取照片文件的日期
                     ParallelQuery<Tuple<string, DateTime>> pqRecordDate = AllFile.Where(f => f.Extension.ToUpper() == ".JPG").Select(f => f.FullName).AsParallel().Select(fName => Tuple.Create(fName, PictureHelper.GetTakePicDateTime(PictureHelper.GetExifProperties(fName))));
                     foreach (Tuple<string, DateTime> nameDate in pqRecordDate) {
                         _dicRecordDate.Add(nameDate.Item1, nameDate.Item2);
                     }
                     
+                    //非照片文件直接取最小日期
                     foreach (FileInfo fileInfo in AllFile.Where(f => f.Extension.ToUpper() != ".JPG")) {
                         _dicRecordDate.Add(fileInfo.FullName, DateTime.MinValue);
                     }
