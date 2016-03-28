@@ -5,9 +5,18 @@ using System.Text;
 using System.IO;
 using System.Text.RegularExpressions;
 using System.Globalization;
+using System.Windows.Forms;
 
 namespace FileManager {
     internal class FileSporadicFunction : FileProcessBaseClass {
+        public FileSporadicFunction() {}
+        /// <summary>构造函数，用于需要设置、修改显示内容的方法
+        /// </summary>
+        /// <param name="consoleTextBox"></param>
+        public FileSporadicFunction(TextBox consoleTextBox) {
+                base.FormConsoleTextBox = consoleTextBox;
+        }
+
         private void GetEmptyFolderList(DirectoryInfo dirInfo, List<string> ignoreTypes, ref List<string> foundList, ref bool subFolderFound) {
             bool thisSubFolderFound = false;
 
@@ -27,7 +36,7 @@ namespace FileManager {
                     foundList.Add(dirInfo.FullName);
                 }
                 else {
-                    bool foundFile = dirInfo.GetFiles().Any(fileInfo => !ignoreTypes.Contains(fileInfo.Extension.Remove(0, 1).ToUpper()));
+                    bool foundFile = dirInfo.GetFiles().Any(fileInfo => !ignoreTypes.Contains(fileInfo.Extension.Length > 0 ? fileInfo.Extension.Remove(0, 1).ToUpper() : ""));
 
                     if (foundFile)
                         subFolderFound = true;
@@ -136,10 +145,20 @@ namespace FileManager {
             Dictionary<string, List<string>> foundList = new Dictionary<string, List<string>>();
 
             //加载所有文件
+            CommFunction.WriteMessage("正在加载文件列表...", isWrap: false);
             List<string> lstAllFileName = base.LoadFileNameListAllTree();
+            CommFunction.WriteMessage(string.Format("(完成)  总共 {0} 个文件", lstAllFileName.Count), addTime: false);
 
             //算出Hash，填充序列
+            CommFunction.WriteMessage("正在计算文件Hash值...", isWrap: false);
+            StringBuilder errText = new StringBuilder();
+            float fileIndex = 0;
             foreach (string fName in lstAllFileName) {
+                fileIndex++;
+                int percent = (int)( fileIndex / lstAllFileName.Count * 100 );
+                string msgText = string.Format("({0}%) {1}", percent, fName);
+                CommFunction.WriteMessage(msgText, isWrap: false, addTime: false);
+
                 try {
                     using (FileStream fileStream = new FileStream(fName, FileMode.Open)) {
                         try {
@@ -160,10 +179,17 @@ namespace FileManager {
                     }
                 }
                 catch (Exception ex) {
-                    CommFunction.WriteMessage(ex.Message);
+                    errText.AppendLine(ex.Message);
                 }
+
+                CommFunction.BackspaceInConsole(msgText, base.FormConsoleTextBox);
             }
-     
+            CommFunction.WriteMessage("(完成) ", addTime: false);
+            if (errText.Length > 0) {
+                //CommFunction.WriteMessage(errText.ToString(), addTime: false);
+                base.FormConsoleTextBox.Text = base.FormConsoleTextBox.Text + errText;
+            }
+
             StringBuilder retSb = new StringBuilder();
             //取数量大于1的为相同的文件
             foreach (KeyValuePair<string, List<string>> foundGroup in foundList.Where(fl => fl.Value.Count > 1)) {

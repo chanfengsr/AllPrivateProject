@@ -5,6 +5,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.IO;
 using System.Globalization;
+using System.Windows.Forms;
 
 namespace FileManager {
     internal class FileProcessBaseClass {
@@ -59,6 +60,10 @@ namespace FileManager {
                 return _dicRecordDate;
             }
         }
+
+        /// <summary>界面上的显示控件
+        /// </summary>
+        protected TextBox FormConsoleTextBox { get; set; }
 
         public void SetFileSelectParm(FileSelectParm fileSelectParm) {
             this.FileSelParm = fileSelectParm;
@@ -163,7 +168,7 @@ namespace FileManager {
                             AllFile.Add(fileInfo);
                         }
                         else {
-                            string strExt = fileInfo.Extension.Remove(0, 1).ToUpper();
+                            string strExt = fileInfo.Extension.Length > 0 ? fileInfo.Extension.Remove(0, 1).ToUpper() : "";
                             //符合异或条件
                             if (typeIgnore ^ filterList.Contains(strExt))
                                 AllFile.Add(fileInfo);
@@ -194,7 +199,7 @@ namespace FileManager {
                     AllFile.Add(fi);
                 }
                 else {
-                    string strExt = fi.Extension.Remove(0, 1).ToUpper();
+                    string strExt = fi.Extension.Length > 0 ? fi.Extension.Remove(0, 1).ToUpper() : "";
                     //符合异或条件
                     if (typeIgnore ^ filterList.Contains(strExt))
                         AllFile.Add(fi);
@@ -238,7 +243,7 @@ namespace FileManager {
                     foundList.Add(fi.FullName);
                 }
                 else {
-                    string strExt = fi.Extension.Remove(0, 1).ToUpper();
+                    string strExt = fi.Extension.Length > 0 ? fi.Extension.Remove(0, 1).ToUpper() : "";
                     //符合异或条件
                     if (typeIgnore ^ filterList.Contains(strExt))
                         foundList.Add(fi.FullName);

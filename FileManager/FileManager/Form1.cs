@@ -306,7 +306,7 @@ namespace FileManager {
             try {
                 UIInProcess(true);
 
-                FileSporadicFunction sporadicFunction = new FileSporadicFunction();
+                FileSporadicFunction sporadicFunction = new FileSporadicFunction(txtConsole);
                 sporadicFunction.SetFileSelectParm(this.GetFormFileSelParm());
 
                 string fileNames = sporadicFunction.Execute_FindDuplicateFilesByContent();
@@ -328,6 +328,12 @@ namespace FileManager {
             finally {
                 UIInProcess(false);
             }
+        }
+
+        private void btnTest_Click(object sender, EventArgs e) {
+            CommFunction.WriteMessage("abc", isWrap: false);
+            //Console.Write("abc");
+            CommFunction.BackspaceInConsole("bc", txtConsole);
         }
 
         private void tabCtrlFunction_SelectedIndexChanged(object sender, EventArgs e) {

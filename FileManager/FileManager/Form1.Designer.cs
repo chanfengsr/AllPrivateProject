@@ -55,6 +55,8 @@
             this.rdoChgNmRulWildcard = new System.Windows.Forms.RadioButton();
             this.rdoChgNmRulFixedStr = new System.Windows.Forms.RadioButton();
             this.tabPageSporadicFunction = new System.Windows.Forms.TabPage();
+            this.progressBarSpFun = new System.Windows.Forms.ProgressBar();
+            this.btnSpFunFindDuplicateFilesByContent = new System.Windows.Forms.Button();
             this.btnSpFunFindMisplacedPhoto = new System.Windows.Forms.Button();
             this.btnSpFunDeleteEmptyFolder = new System.Windows.Forms.Button();
             this.grpFileSelect = new System.Windows.Forms.GroupBox();
@@ -70,6 +72,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.grpFileType = new System.Windows.Forms.GroupBox();
             this.txtFileType = new System.Windows.Forms.TextBox();
+            this.chkIsIgnoreFileType = new System.Windows.Forms.CheckBox();
             this.rdoTypeCust = new System.Windows.Forms.RadioButton();
             this.rdoTypeText = new System.Windows.Forms.RadioButton();
             this.rdoTypeAudio = new System.Windows.Forms.RadioButton();
@@ -86,9 +89,7 @@
             this.btnCloseForm = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
             this.txtConsole = new System.Windows.Forms.TextBox();
-            this.btnSpFunFindDuplicateFilesByContent = new System.Windows.Forms.Button();
-            this.chkIsIgnoreFileType = new System.Windows.Forms.CheckBox();
-            this.progressBar1 = new System.Windows.Forms.ProgressBar();
+            this.btnTest = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -416,7 +417,7 @@
             // 
             // tabPageSporadicFunction
             // 
-            this.tabPageSporadicFunction.Controls.Add(this.progressBar1);
+            this.tabPageSporadicFunction.Controls.Add(this.progressBarSpFun);
             this.tabPageSporadicFunction.Controls.Add(this.btnSpFunFindDuplicateFilesByContent);
             this.tabPageSporadicFunction.Controls.Add(this.btnSpFunFindMisplacedPhoto);
             this.tabPageSporadicFunction.Controls.Add(this.btnSpFunDeleteEmptyFolder);
@@ -428,6 +429,26 @@
             this.tabPageSporadicFunction.TabIndex = 2;
             this.tabPageSporadicFunction.Text = "零星功能";
             this.tabPageSporadicFunction.UseVisualStyleBackColor = true;
+            // 
+            // progressBarSpFun
+            // 
+            this.progressBarSpFun.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.progressBarSpFun.Location = new System.Drawing.Point(2, 158);
+            this.progressBarSpFun.Name = "progressBarSpFun";
+            this.progressBarSpFun.Size = new System.Drawing.Size(738, 23);
+            this.progressBarSpFun.TabIndex = 6;
+            // 
+            // btnSpFunFindDuplicateFilesByContent
+            // 
+            this.btnSpFunFindDuplicateFilesByContent.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Bold);
+            this.btnSpFunFindDuplicateFilesByContent.ForeColor = System.Drawing.Color.DarkRed;
+            this.btnSpFunFindDuplicateFilesByContent.Location = new System.Drawing.Point(373, 14);
+            this.btnSpFunFindDuplicateFilesByContent.Name = "btnSpFunFindDuplicateFilesByContent";
+            this.btnSpFunFindDuplicateFilesByContent.Size = new System.Drawing.Size(171, 33);
+            this.btnSpFunFindDuplicateFilesByContent.TabIndex = 4;
+            this.btnSpFunFindDuplicateFilesByContent.Text = "按内容查找重复文件";
+            this.btnSpFunFindDuplicateFilesByContent.UseVisualStyleBackColor = true;
+            this.btnSpFunFindDuplicateFilesByContent.Click += new System.EventHandler(this.btnSpFunFindDuplicateFilesByContent_Click);
             // 
             // btnSpFunFindMisplacedPhoto
             // 
@@ -457,6 +478,7 @@
             // 
             this.grpFileSelect.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
+            this.grpFileSelect.Controls.Add(this.btnTest);
             this.grpFileSelect.Controls.Add(this.btnEditChangeFileList);
             this.grpFileSelect.Controls.Add(this.chkSpecFileList);
             this.grpFileSelect.Controls.Add(this.btnViewFileNameList);
@@ -605,6 +627,16 @@
             this.txtFileType.Size = new System.Drawing.Size(185, 21);
             this.txtFileType.TabIndex = 5;
             this.txtFileType.Text = "*";
+            // 
+            // chkIsIgnoreFileType
+            // 
+            this.chkIsIgnoreFileType.AutoSize = true;
+            this.chkIsIgnoreFileType.Location = new System.Drawing.Point(12, 38);
+            this.chkIsIgnoreFileType.Name = "chkIsIgnoreFileType";
+            this.chkIsIgnoreFileType.Size = new System.Drawing.Size(84, 16);
+            this.chkIsIgnoreFileType.TabIndex = 6;
+            this.chkIsIgnoreFileType.Text = "类型为忽略";
+            this.chkIsIgnoreFileType.UseVisualStyleBackColor = true;
             // 
             // rdoTypeCust
             // 
@@ -788,35 +820,17 @@
             this.txtConsole.TabStop = false;
             this.txtConsole.WordWrap = false;
             // 
-            // btnSpFunFindDuplicateFilesByContent
+            // btnTest
             // 
-            this.btnSpFunFindDuplicateFilesByContent.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Bold);
-            this.btnSpFunFindDuplicateFilesByContent.ForeColor = System.Drawing.Color.DarkRed;
-            this.btnSpFunFindDuplicateFilesByContent.Location = new System.Drawing.Point(373, 14);
-            this.btnSpFunFindDuplicateFilesByContent.Name = "btnSpFunFindDuplicateFilesByContent";
-            this.btnSpFunFindDuplicateFilesByContent.Size = new System.Drawing.Size(171, 33);
-            this.btnSpFunFindDuplicateFilesByContent.TabIndex = 4;
-            this.btnSpFunFindDuplicateFilesByContent.Text = "按内容查找重复文件";
-            this.btnSpFunFindDuplicateFilesByContent.UseVisualStyleBackColor = true;
-            this.btnSpFunFindDuplicateFilesByContent.Click += new System.EventHandler(this.btnSpFunFindDuplicateFilesByContent_Click);
-            // 
-            // chkIsIgnoreFileType
-            // 
-            this.chkIsIgnoreFileType.AutoSize = true;
-            this.chkIsIgnoreFileType.Location = new System.Drawing.Point(12, 38);
-            this.chkIsIgnoreFileType.Name = "chkIsIgnoreFileType";
-            this.chkIsIgnoreFileType.Size = new System.Drawing.Size(84, 16);
-            this.chkIsIgnoreFileType.TabIndex = 6;
-            this.chkIsIgnoreFileType.Text = "类型为忽略";
-            this.chkIsIgnoreFileType.UseVisualStyleBackColor = true;
-            // 
-            // progressBar1
-            // 
-            this.progressBar1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.progressBar1.Location = new System.Drawing.Point(2, 158);
-            this.progressBar1.Name = "progressBar1";
-            this.progressBar1.Size = new System.Drawing.Size(738, 23);
-            this.progressBar1.TabIndex = 6;
+            this.btnTest.Location = new System.Drawing.Point(406, 192);
+            this.btnTest.Name = "btnTest";
+            this.btnTest.Size = new System.Drawing.Size(75, 23);
+            this.btnTest.TabIndex = 15;
+            this.btnTest.TabStop = false;
+            this.btnTest.Text = "btnTest";
+            this.btnTest.UseVisualStyleBackColor = true;
+            this.btnTest.Visible = false;
+            this.btnTest.Click += new System.EventHandler(this.btnTest_Click);
             // 
             // Form1
             // 
@@ -917,7 +931,8 @@
         private System.Windows.Forms.Button btnSpFunFindMisplacedPhoto;
         private System.Windows.Forms.CheckBox chkIsIgnoreFileType;
         private System.Windows.Forms.Button btnSpFunFindDuplicateFilesByContent;
-        private System.Windows.Forms.ProgressBar progressBar1;
+        private System.Windows.Forms.ProgressBar progressBarSpFun;
+        private System.Windows.Forms.Button btnTest;
 
     }
 }

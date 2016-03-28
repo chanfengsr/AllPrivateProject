@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Windows.Forms;
 
 namespace FileManager {
     internal class CommFunction {
@@ -93,5 +94,34 @@ namespace FileManager {
 
             return retVal;
         }
+
+        #region 在命令行中实行退格键
+        /// <summary>在命令行中实行退格键
+        /// </summary>
+        /// <param name="previousObject">前一个显示的内容（用于测长度）</param>
+        public static void BackspaceInConsole(dynamic previousObject) {
+            try {
+                int length = previousObject.ToString().Length;
+
+                for (int i = 0; i < length; i++)
+                    Console.Write("\b \b");
+                //Console.Write(Keys.Back);
+            }
+            catch (Exception ex) {
+                throw ex;
+            }
+        }
+
+        public static void BackspaceInConsole(dynamic previousObject, TextBox textBox) {
+            try {
+                int length = previousObject.ToString().Length;
+
+                textBox.Text = textBox.Text.Substring(0, textBox.Text.Length - length);
+            }
+            catch (Exception ex) {
+                throw ex;
+            }
+        }
+        #endregion 在命令行中实行退格键
     }
 }
