@@ -239,23 +239,28 @@ namespace FileManager {
 
                 FileSporadicFunction sporadicFunction = new FileSporadicFunction();
                 FileSelectParm fileSelParm = this.GetFormFileSelParm();
-                sporadicFunction.SetFileSelectParm(fileSelParm);
-                List<string> emptyFolderList = sporadicFunction.GetEmptyFolderList(fileSelParm.SourceFileFolder, fileSelParm.FileFilter);
-                emptyFolderList.Reverse();
-                StringBuilder sbMsg = new StringBuilder();
-                foreach (string empFolder in emptyFolderList)
-                    sbMsg.AppendLine(empFolder);
-
-                if (emptyFolderList.Count > 0) {
-                    using (formTextMessage frmMessage = new formTextMessage("是否删除以下空文件夹？", sbMsg.ToString().Trim().TrimEnd(Environment.NewLine.ToArray()), true)) {
-                        if (frmMessage.ShowDialog(this) == DialogResult.OK) {
-                            emptyFolderList.Reverse(); //重新倒置，使从子目录开始删
-                            sporadicFunction.Execute_DeleteEmptyFolder(emptyFolderList);
-                        }
-                    }
+                if (fileSelParm.FileFilter == "*") {
+                    MessageBox.Show("删除空文件夹时不能忽略所有文件。", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
                 else {
-                    CommFunction.WriteMessage("没有找到空文件夹。");
+                    sporadicFunction.SetFileSelectParm(fileSelParm);
+                    List<string> emptyFolderList = sporadicFunction.GetEmptyFolderList(fileSelParm.SourceFileFolder, fileSelParm.FileFilter);
+                    emptyFolderList.Reverse();
+                    StringBuilder sbMsg = new StringBuilder();
+                    foreach (string empFolder in emptyFolderList)
+                        sbMsg.AppendLine(empFolder);
+
+                    if (emptyFolderList.Count > 0) {
+                        using (formTextMessage frmMessage = new formTextMessage("是否删除以下空文件夹？", sbMsg.ToString().Trim().TrimEnd(Environment.NewLine.ToArray()), true)) {
+                            if (frmMessage.ShowDialog(this) == DialogResult.OK) {
+                                emptyFolderList.Reverse(); //重新倒置，使从子目录开始删
+                                sporadicFunction.Execute_DeleteEmptyFolder(emptyFolderList);
+                            }
+                        }
+                    }
+                    else {
+                        CommFunction.WriteMessage("没有找到空文件夹。");
+                    }
                 }
 
                 UIInProcess(false);
@@ -367,7 +372,7 @@ namespace FileManager {
                 formCtrlProps.ViewFileNameListEnabled = false;
                 formCtrlProps.SpecFileListEnabled = false;
 
-                formCtrlProps.FileTypeDefaultString = txtFileType.Text == "*" ? "" : txtFileType.Text;
+                formCtrlProps.FileTypeDefaultString = txtFileType.Text;
             }
 
             this.SetFormControlProperties(formCtrlProps);

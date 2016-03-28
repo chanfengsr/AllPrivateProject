@@ -152,6 +152,43 @@ namespace FileManager {
             //算出Hash，填充序列
             CommFunction.WriteMessage("正在计算文件Hash值...", isWrap: false);
             StringBuilder errText = new StringBuilder();
+            
+            //获取文件Hash，在此方法中，出错的话，Hash随机取 "-1"
+            Func<string, string> getFileHashValue = delegate(string fName) {
+                string fileHash = string.Empty;
+
+                try {
+                    using (FileStream fileStream = new FileStream(fName, FileMode.Open)) {
+                        try {
+                            if (fileStream.Length > 0) {
+                                string md5Val = CommFunction.GetMD5HashFromFile(fileStream);
+                                fileHash = fileStream.Length + "|" + md5Val;
+                            }
+                        }
+                        finally {
+                            fileStream.Close();
+                        }
+                    }
+                }
+                catch (Exception ex) {
+                    errText.AppendLine(ex.Message);
+                    fileHash = "-1";
+                }
+
+                return fileHash;
+            };
+            //异步获取所有文件的Hash
+            ParallelQuery<Tuple<string, string>> fileHashs = lstAllFileName.AsParallel().Select(fName => Tuple.Create(fName, getFileHashValue(fName))).Where(fh => fh.Item2 != "-1");
+            foreach (Tuple<string, string> fileHash in fileHashs) {
+                //创建/更新哈希列表组
+                if (foundList.ContainsKey(fileHash.Item2))
+                    foundList[fileHash.Item2].Add(fileHash.Item1);
+                else
+                    foundList.Add(fileHash.Item2, new List<string>(new[] {fileHash.Item1}));
+            }
+
+            //此为同步版本，可显示百分比
+            /*
             float fileIndex = 0;
             foreach (string fName in lstAllFileName) {
                 fileIndex++;
@@ -184,6 +221,8 @@ namespace FileManager {
 
                 CommFunction.BackspaceInConsole(msgText, base.FormConsoleTextBox);
             }
+            */
+
             CommFunction.WriteMessage("(完成) ", addTime: false);
             if (errText.Length > 0) {
                 //CommFunction.WriteMessage(errText.ToString(), addTime: false);
