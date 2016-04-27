@@ -136,7 +136,18 @@ namespace 调整PDF导出文字
 
         private void button5_Click(object sender, EventArgs e)
         {
-            ToTextBox2(textBox1.Text.Replace(PretreatmentString(txtOld.Text), PretreatmentString(txtNew.Text)));
+            if (chkRegex.Checked) {
+                Regex r = new Regex(txtOld.Text);
+                MatchCollection mc = r.Matches(textBox1.Text);
+
+                StringBuilder sb = new StringBuilder(textBox1.Text);
+                for (int i = 0; i < mc.Count; i++)
+                    sb.Replace(mc[i].Value, txtNew.Text);
+
+                ToTextBox2(sb.ToString().Trim());
+            }
+            else
+                ToTextBox2(textBox1.Text.Replace(PretreatmentString(txtOld.Text), PretreatmentString(txtNew.Text)));
         }
 
         private void linkLabel3_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)

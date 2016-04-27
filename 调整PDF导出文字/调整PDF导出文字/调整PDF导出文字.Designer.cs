@@ -82,6 +82,7 @@
             this.splitContainer2 = new System.Windows.Forms.SplitContainer();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
+            this.chkRegex = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -104,6 +105,7 @@
             // 
             // splitContainer1.Panel1
             // 
+            this.splitContainer1.Panel1.Controls.Add(this.chkRegex);
             this.splitContainer1.Panel1.Controls.Add(this.btnCHH);
             this.splitContainer1.Panel1.Controls.Add(this.txtOld2);
             this.splitContainer1.Panel1.Controls.Add(this.button20);
@@ -696,6 +698,16 @@
             this.textBox2.TabIndex = 0;
             this.textBox2.WordWrap = false;
             // 
+            // chkRegex
+            // 
+            this.chkRegex.AutoSize = true;
+            this.chkRegex.Location = new System.Drawing.Point(555, 12);
+            this.chkRegex.Name = "chkRegex";
+            this.chkRegex.Size = new System.Drawing.Size(48, 16);
+            this.chkRegex.TabIndex = 39;
+            this.chkRegex.Text = "正则";
+            this.chkRegex.UseVisualStyleBackColor = true;
+            // 
             // 调整PDF导出文字
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -778,6 +790,7 @@
         private System.Windows.Forms.TextBox txtOld2;
         private System.Windows.Forms.Button button20;
         private System.Windows.Forms.Button btnCHH;
+        private System.Windows.Forms.CheckBox chkRegex;
     }
 }
 
