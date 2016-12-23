@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <SystemConfig>
   <AppConfig>
-    <key name="SourceFolder" value="" remark="" />
+    <key name="SourceFolder" value="R:\BT" remark="" />
     <key name="TargetFolder" value="" remark="" />
   </AppConfig>
 </SystemConfig>

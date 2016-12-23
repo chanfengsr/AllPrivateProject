@@ -337,9 +337,17 @@ namespace WindowsFormsApplication1
 
         private void 新功能测试_Click(object sender, EventArgs e)
         {
-            string strTemplatesFile = @"E:\Project\SunlikeERP\ERP实施\ERP相关开发\ERP外挂小工具\ERP外挂小工具\bin\Release\ExcelTemplates\tmpltsRequisition.xls";
+            string strTemplatesFile = @"‪D:\a.txt";
+            if (!System.IO.File.Exists(strTemplatesFile)) {
+                MessageBox.Show("Excel文件不存在！");
+                return;
+            }
+
             ReflectOffice.Excel.Application app = new ReflectOffice.Excel.Application();
 
+            app.Visible = true;
+            app.DisplayAlerts = false;
+            //app.Visible = false;
             Workbook tmpBook = app.Workbooks.Open(Filename: strTemplatesFile, ReadOnly: true);
             Workbook book = app.Workbooks.Add();
             

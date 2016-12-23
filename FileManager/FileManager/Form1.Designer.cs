@@ -478,7 +478,6 @@
             // 
             this.grpFileSelect.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.grpFileSelect.Controls.Add(this.btnTest);
             this.grpFileSelect.Controls.Add(this.btnEditChangeFileList);
             this.grpFileSelect.Controls.Add(this.chkSpecFileList);
             this.grpFileSelect.Controls.Add(this.btnViewFileNameList);
@@ -766,6 +765,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnTest);
             this.groupBox1.Controls.Add(this.btnCloseForm);
             this.groupBox1.Controls.Add(this.btnClear);
             this.groupBox1.Controls.Add(this.txtConsole);
@@ -822,7 +822,7 @@
             // 
             // btnTest
             // 
-            this.btnTest.Location = new System.Drawing.Point(406, 192);
+            this.btnTest.Location = new System.Drawing.Point(592, 25);
             this.btnTest.Name = "btnTest";
             this.btnTest.Size = new System.Drawing.Size(75, 23);
             this.btnTest.TabIndex = 15;

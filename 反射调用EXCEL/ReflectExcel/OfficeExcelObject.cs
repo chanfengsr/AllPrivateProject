@@ -2686,6 +2686,7 @@ namespace ReflectOffice.Excel
                                                                 Local == null ? System.Type.Missing:Local,
                                                                 CorruptLoad == null ? System.Type.Missing:CorruptLoad
             };
+
             return new Workbook(_objWorkbooks.GetType().InvokeMember("Open", BindingFlags.InvokeMethod, null, _objWorkbooks, _objaParameters));
         }
 
