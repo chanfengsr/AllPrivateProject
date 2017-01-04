@@ -3,3 +3,4 @@
 2. 删除空文件夹（部分文件可忽略）(done)
 3. 按文件名查找放错文件夹的文件(done)
 4. 文件同步(cancel, use Beyond Compare)
+5. 按内容查找不在目标路径下的文件(done)

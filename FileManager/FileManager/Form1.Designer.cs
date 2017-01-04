@@ -86,10 +86,12 @@
             this.txtSourceFolder = new System.Windows.Forms.TextBox();
             this.btnSourceFolderBrowser = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnTest = new System.Windows.Forms.Button();
             this.btnCloseForm = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
             this.txtConsole = new System.Windows.Forms.TextBox();
-            this.btnTest = new System.Windows.Forms.Button();
+            this.btnSpFunFindNotInTargetPathFileByContent = new System.Windows.Forms.Button();
+            this.chkSpFunGenCopyCmd = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -417,6 +419,8 @@
             // 
             // tabPageSporadicFunction
             // 
+            this.tabPageSporadicFunction.Controls.Add(this.chkSpFunGenCopyCmd);
+            this.tabPageSporadicFunction.Controls.Add(this.btnSpFunFindNotInTargetPathFileByContent);
             this.tabPageSporadicFunction.Controls.Add(this.progressBarSpFun);
             this.tabPageSporadicFunction.Controls.Add(this.btnSpFunFindDuplicateFilesByContent);
             this.tabPageSporadicFunction.Controls.Add(this.btnSpFunFindMisplacedPhoto);
@@ -777,6 +781,18 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "执行信息";
             // 
+            // btnTest
+            // 
+            this.btnTest.Location = new System.Drawing.Point(592, 25);
+            this.btnTest.Name = "btnTest";
+            this.btnTest.Size = new System.Drawing.Size(75, 23);
+            this.btnTest.TabIndex = 15;
+            this.btnTest.TabStop = false;
+            this.btnTest.Text = "btnTest";
+            this.btnTest.UseVisualStyleBackColor = true;
+            this.btnTest.Visible = false;
+            this.btnTest.Click += new System.EventHandler(this.btnTest_Click);
+            // 
             // btnCloseForm
             // 
             this.btnCloseForm.DialogResult = System.Windows.Forms.DialogResult.Cancel;
@@ -820,17 +836,27 @@
             this.txtConsole.TabStop = false;
             this.txtConsole.WordWrap = false;
             // 
-            // btnTest
+            // btnSpFunFindNotInTargetPathFileByContent
             // 
-            this.btnTest.Location = new System.Drawing.Point(592, 25);
-            this.btnTest.Name = "btnTest";
-            this.btnTest.Size = new System.Drawing.Size(75, 23);
-            this.btnTest.TabIndex = 15;
-            this.btnTest.TabStop = false;
-            this.btnTest.Text = "btnTest";
-            this.btnTest.UseVisualStyleBackColor = true;
-            this.btnTest.Visible = false;
-            this.btnTest.Click += new System.EventHandler(this.btnTest_Click);
+            this.btnSpFunFindNotInTargetPathFileByContent.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Bold);
+            this.btnSpFunFindNotInTargetPathFileByContent.ForeColor = System.Drawing.Color.DarkRed;
+            this.btnSpFunFindNotInTargetPathFileByContent.Location = new System.Drawing.Point(13, 53);
+            this.btnSpFunFindNotInTargetPathFileByContent.Name = "btnSpFunFindNotInTargetPathFileByContent";
+            this.btnSpFunFindNotInTargetPathFileByContent.Size = new System.Drawing.Size(241, 33);
+            this.btnSpFunFindNotInTargetPathFileByContent.TabIndex = 7;
+            this.btnSpFunFindNotInTargetPathFileByContent.Text = "按内容查找不在目标路径下的文件";
+            this.btnSpFunFindNotInTargetPathFileByContent.UseVisualStyleBackColor = true;
+            this.btnSpFunFindNotInTargetPathFileByContent.Click += new System.EventHandler(this.btnSpFunFindNotInTargetPathFileByContent_Click);
+            // 
+            // chkSpFunGenCopyCmd
+            // 
+            this.chkSpFunGenCopyCmd.AutoSize = true;
+            this.chkSpFunGenCopyCmd.Location = new System.Drawing.Point(261, 69);
+            this.chkSpFunGenCopyCmd.Name = "chkSpFunGenCopyCmd";
+            this.chkSpFunGenCopyCmd.Size = new System.Drawing.Size(96, 16);
+            this.chkSpFunGenCopyCmd.TabIndex = 8;
+            this.chkSpFunGenCopyCmd.Text = "生成Copy命令";
+            this.chkSpFunGenCopyCmd.UseVisualStyleBackColor = true;
             // 
             // Form1
             // 
@@ -857,6 +883,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.numChgNmWildcardLen)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numChgNmStartNum)).EndInit();
             this.tabPageSporadicFunction.ResumeLayout(false);
+            this.tabPageSporadicFunction.PerformLayout();
             this.grpFileSelect.ResumeLayout(false);
             this.grpFileSelect.PerformLayout();
             this.grpSortMode.ResumeLayout(false);
@@ -933,6 +960,8 @@
         private System.Windows.Forms.Button btnSpFunFindDuplicateFilesByContent;
         private System.Windows.Forms.ProgressBar progressBarSpFun;
         private System.Windows.Forms.Button btnTest;
+        private System.Windows.Forms.Button btnSpFunFindNotInTargetPathFileByContent;
+        private System.Windows.Forms.CheckBox chkSpFunGenCopyCmd;
 
     }
 }

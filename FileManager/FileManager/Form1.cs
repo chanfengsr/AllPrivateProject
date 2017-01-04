@@ -9,9 +9,12 @@ using System.Text;
 using System.Windows.Forms;
 using FileManager.Properties;
 
-namespace FileManager {
-    public partial class Form1 : Form {
-        private struct FormControlProperties {
+namespace FileManager
+{
+    public partial class Form1 : Form
+    {
+        private struct FormControlProperties
+        {
             public bool SourceFolderEnabled;
             public bool TargetFolderEnabled;
             public bool FileTypeEnabled;
@@ -24,7 +27,8 @@ namespace FileManager {
         private string _fileChangeNameChangeList = string.Empty;
         private string _fileChangeNameSpecChgFileList = string.Empty;
 
-        public Form1() {
+        public Form1()
+        {
             Control.CheckForIllegalCrossThreadCalls = false;
             InitializeComponent();
             ConsoleRedirect.AttachTextBox(this.txtConsole);
@@ -33,7 +37,8 @@ namespace FileManager {
             this.Icon = Resources.MainIco;
         }
 
-        private void Form1_Load(object sender, EventArgs e) {
+        private void Form1_Load(object sender, EventArgs e)
+        {
             btnCloseForm.Top = -1000;
             LoadConfig();
 
@@ -42,33 +47,41 @@ namespace FileManager {
             splitContainer1.SplitterDistance = grpFileSelect.Location.Y + grpFileSelect.Height + tabCtrlFunction.Height + addHeight;
         }
 
-        private void Form1_FormClosed(object sender, FormClosedEventArgs e) {
+        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
+        {
             SaveConfig();
         }
 
-        private void btnCloseForm_Click(object sender, EventArgs e) {
+        private void btnCloseForm_Click(object sender, EventArgs e)
+        {
             this.Close();
         }
 
-        private void btnClear_Click(object sender, EventArgs e) {
+        private void btnClear_Click(object sender, EventArgs e)
+        {
             txtConsole.Clear();
         }
 
-        private void btnSourceFolderBrowser_Click(object sender, EventArgs e) {
+        private void btnSourceFolderBrowser_Click(object sender, EventArgs e)
+        {
             FolderBrowser(txtSourceFolder);
         }
 
-        private void btnTargetFolderBrowser_Click(object sender, EventArgs e) {
+        private void btnTargetFolderBrowser_Click(object sender, EventArgs e)
+        {
             FolderBrowser(txtTargetFolder);
         }
 
-        private void txtFileFolder_DragEnter(object sender, DragEventArgs e) {
+        private void txtFileFolder_DragEnter(object sender, DragEventArgs e)
+        {
             if (e.Data.GetDataPresent(DataFormats.FileDrop))
                 e.Effect = DragDropEffects.Copy;
         }
 
-        private void txtFileFolder_DragDrop(object sender, DragEventArgs e) {
-            if (e.Data.GetDataPresent(DataFormats.FileDrop)) {
+        private void txtFileFolder_DragDrop(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
                 Array ary = (Array)e.Data.GetData(DataFormats.FileDrop);
 
                 if (ary.Length == 0)
@@ -76,7 +89,8 @@ namespace FileManager {
 
                 string folderName = ary.GetValue(0).ToString();
 
-                if (Directory.Exists(folderName)) {
+                if (Directory.Exists(folderName))
+                {
                     var textBox = sender as TextBox;
                     if (textBox != null)
                         textBox.Text = folderName;
@@ -84,9 +98,12 @@ namespace FileManager {
             }
         }
 
-        private void btnCopyByDate_Click(object sender, EventArgs e) {
-            new System.Threading.Thread(() => {
-                try {
+        private void btnCopyByDate_Click(object sender, EventArgs e)
+        {
+            new System.Threading.Thread(() =>
+            {
+                try
+                {
                     UIInProcess(true);
 
                     FileCopyByGroup fileCopyByGroup = ConstructFileCopyByGroup();
@@ -94,10 +111,12 @@ namespace FileManager {
 
                     SaveConfig();
                 }
-                catch (Exception ex) {
+                catch (Exception ex)
+                {
                     CommFunction.WriteMessage(ex.Message);
                 }
-                finally {
+                finally
+                {
                     UIInProcess(false);
                 }
 
@@ -105,11 +124,13 @@ namespace FileManager {
             }).Start();
         }
 
-        private void rdoTypeCust_CheckedChanged(object sender, EventArgs e) {
+        private void rdoTypeCust_CheckedChanged(object sender, EventArgs e)
+        {
             txtFileType.Enabled = rdoTypeCust.Checked;
         }
 
-        private void rdoChgNmRulFixedStr_CheckedChanged(object sender, EventArgs e) {
+        private void rdoChgNmRulFixedStr_CheckedChanged(object sender, EventArgs e)
+        {
             txtChgNmFixedStr.Enabled =
                 chkChgNmIsRegex.Enabled =
                 rdoChgNmRulFixedStr.Checked;
@@ -118,7 +139,8 @@ namespace FileManager {
                 btnChgNmViewChgFileNameList.Enabled = true;
         }
 
-        private void rdoChgNmRulWildcard_CheckedChanged(object sender, EventArgs e) {
+        private void rdoChgNmRulWildcard_CheckedChanged(object sender, EventArgs e)
+        {
             txtChgNmPerfixStr.Enabled =
                 numChgNmStartNum.Enabled =
                 numChgNmWildcardLen.Enabled =
@@ -129,15 +151,18 @@ namespace FileManager {
                 btnChgNmViewChgFileNameList.Enabled = true;
         }
 
-        private void rdoChgNmRulSpecList_CheckedChanged(object sender, EventArgs e) {
+        private void rdoChgNmRulSpecList_CheckedChanged(object sender, EventArgs e)
+        {
             btnChgNmEditChangeList.Enabled = rdoChgNmRulSpecList.Checked;
 
             if (rdoChgNmRulSpecList.Checked)
                 btnChgNmViewChgFileNameList.Enabled = false;
         }
 
-        private void btnViewFileNameList_Click(object sender, EventArgs e) {
-            try {
+        private void btnViewFileNameList_Click(object sender, EventArgs e)
+        {
+            try
+            {
                 UIInProcess(true);
 
                 FileProcessBaseClass fileProcBase = new FileProcessBaseClass();
@@ -146,21 +171,26 @@ namespace FileManager {
 
                 UIInProcess(false);
 
-                if (fileList.Length > 0) {
-                    using (formTextMessage frmMessage = new formTextMessage("文件列表预览", fileList, true)) {
+                if (fileList.Length > 0)
+                {
+                    using (formTextMessage frmMessage = new formTextMessage("文件列表预览", fileList, true))
+                    {
                         frmMessage.ShowDialog(this);
                     }
                 }
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 CommFunction.WriteMessage(ex.Message);
             }
-            finally {
+            finally
+            {
                 UIInProcess(false);
             }
         }
 
-        private void chkSpecFileList_CheckedChanged(object sender, EventArgs e) {
+        private void chkSpecFileList_CheckedChanged(object sender, EventArgs e)
+        {
             btnEditChangeFileList.Enabled = chkSpecFileList.Checked;
 
             grpFileType.Enabled =
@@ -169,51 +199,65 @@ namespace FileManager {
                 !chkSpecFileList.Checked;
         }
 
-        private void btnEditChangeFileList_Click(object sender, EventArgs e) {
-            using (formTextMessage frmMessage = new formTextMessage("编辑要被更名的文件列表", _fileChangeNameSpecChgFileList)) {
+        private void btnEditChangeFileList_Click(object sender, EventArgs e)
+        {
+            using (formTextMessage frmMessage = new formTextMessage("编辑要被更名的文件列表", _fileChangeNameSpecChgFileList))
+            {
                 if (frmMessage.ShowDialog(this) == DialogResult.OK)
                     _fileChangeNameSpecChgFileList = frmMessage.FormMessage;
             }
         }
 
-        private void chkChgNmOnlyFixStr_CheckedChanged(object sender, EventArgs e) {
+        private void chkChgNmOnlyFixStr_CheckedChanged(object sender, EventArgs e)
+        {
             numChgNmStartNum.Enabled =
                 numChgNmWildcardLen.Enabled = !chkChgNmOnlyFixStr.Checked;
         }
 
-        private void btnChgNmViewChgFileNameList_Click(object sender, EventArgs e) {
-            try {
+        private void btnChgNmViewChgFileNameList_Click(object sender, EventArgs e)
+        {
+            try
+            {
                 UIInProcess(true);
                 FileBatchChangeName fileBatchChangeName = ConstructFileBatchChangeName();
                 List<string> targetNameList = fileBatchChangeName.GetTargetNameList();
                 UIInProcess(false);
 
-                if (targetNameList.Count > 0) {
+                if (targetNameList.Count > 0)
+                {
                     string nameAll = targetNameList.Aggregate("", (current, name) => current + name + Environment.NewLine).TrimEnd(Environment.NewLine.ToCharArray());
 
-                    using (formTextMessage frmMessage = new formTextMessage("更名列表预览", nameAll, true)) {
+                    using (formTextMessage frmMessage = new formTextMessage("更名列表预览", nameAll, true))
+                    {
                         frmMessage.ShowDialog(this);
                     }
                 }
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 CommFunction.WriteMessage(ex.Message);
             }
-            finally {
+            finally
+            {
                 UIInProcess(false);
             }
         }
 
-        private void btnChgNmEditChangeList_Click(object sender, EventArgs e) {
-            using (formTextMessage frmMessage = new formTextMessage("编辑文件更名列表", _fileChangeNameChangeList)) {
+        private void btnChgNmEditChangeList_Click(object sender, EventArgs e)
+        {
+            using (formTextMessage frmMessage = new formTextMessage("编辑文件更名列表", _fileChangeNameChangeList))
+            {
                 if (frmMessage.ShowDialog(this) == DialogResult.OK)
                     _fileChangeNameChangeList = frmMessage.FormMessage;
             }
         }
 
-        private void btnChgNmExecute_Click(object sender, EventArgs e) {
-            new System.Threading.Thread(() => {
-                try {
+        private void btnChgNmExecute_Click(object sender, EventArgs e)
+        {
+            new System.Threading.Thread(() =>
+            {
+                try
+                {
                     UIInProcess(true);
 
                     FileBatchChangeName fileBatchChangeName = ConstructFileBatchChangeName();
@@ -221,10 +265,12 @@ namespace FileManager {
 
                     SaveConfig();
                 }
-                catch (Exception ex) {
+                catch (Exception ex)
+                {
                     CommFunction.WriteMessage(ex.Message);
                 }
-                finally {
+                finally
+                {
                     UIInProcess(false);
                 }
 
@@ -233,16 +279,20 @@ namespace FileManager {
                 ).Start();
         }
 
-        private void btnSpFunDeleteEmptyFolder_Click(object sender, EventArgs e) {
-            try {
+        private void btnSpFunDeleteEmptyFolder_Click(object sender, EventArgs e)
+        {
+            try
+            {
                 UIInProcess(true);
 
                 FileSporadicFunction sporadicFunction = new FileSporadicFunction();
                 FileSelectParm fileSelParm = this.GetFormFileSelParm();
-                if (fileSelParm.FileFilter == "*") {
+                if (fileSelParm.FileFilter == "*")
+                {
                     MessageBox.Show("删除空文件夹时不能忽略所有文件。", "Message", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
-                else {
+                else
+                {
                     sporadicFunction.SetFileSelectParm(fileSelParm);
                     List<string> emptyFolderList = sporadicFunction.GetEmptyFolderList(fileSelParm.SourceFileFolder, fileSelParm.FileFilter);
                     emptyFolderList.Reverse();
@@ -250,31 +300,39 @@ namespace FileManager {
                     foreach (string empFolder in emptyFolderList)
                         sbMsg.AppendLine(empFolder);
 
-                    if (emptyFolderList.Count > 0) {
-                        using (formTextMessage frmMessage = new formTextMessage("是否删除以下空文件夹？", sbMsg.ToString().Trim().TrimEnd(Environment.NewLine.ToArray()), true)) {
-                            if (frmMessage.ShowDialog(this) == DialogResult.OK) {
+                    if (emptyFolderList.Count > 0)
+                    {
+                        using (formTextMessage frmMessage = new formTextMessage("是否删除以下空文件夹？", sbMsg.ToString().Trim().TrimEnd(Environment.NewLine.ToArray()), true))
+                        {
+                            if (frmMessage.ShowDialog(this) == DialogResult.OK)
+                            {
                                 emptyFolderList.Reverse(); //重新倒置，使从子目录开始删
                                 sporadicFunction.Execute_DeleteEmptyFolder(emptyFolderList);
                             }
                         }
                     }
-                    else {
+                    else
+                    {
                         CommFunction.WriteMessage("没有找到空文件夹。");
                     }
                 }
 
                 UIInProcess(false);
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 CommFunction.WriteMessage(ex.Message);
             }
-            finally {
+            finally
+            {
                 UIInProcess(false);
             }
         }
 
-        private void btnSpFunFindMisplacedPhoto_Click(object sender, EventArgs e) {
-            try {
+        private void btnSpFunFindMisplacedPhoto_Click(object sender, EventArgs e)
+        {
+            try
+            {
                 UIInProcess(true);
 
                 FileSporadicFunction sporadicFunction = new FileSporadicFunction();
@@ -288,27 +346,34 @@ namespace FileManager {
                 foreach (string fName in fileInWrongFolder)
                     sbMsg.AppendLine(fName);
 
-                if (fileInWrongFolder.Count > 0) {
-                    using (formTextMessage frmMessage = new formTextMessage("找到的文件列表", sbMsg.ToString().Trim().TrimEnd(Environment.NewLine.ToArray()), true)) {
+                if (fileInWrongFolder.Count > 0)
+                {
+                    using (formTextMessage frmMessage = new formTextMessage("找到的文件列表", sbMsg.ToString().Trim().TrimEnd(Environment.NewLine.ToArray()), true))
+                    {
                         frmMessage.ShowDialog(this);
                     }
                 }
-                else {
+                else
+                {
                     CommFunction.WriteMessage("没有找到此类文件。");
                 }
 
                 UIInProcess(false);
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 CommFunction.WriteMessage(ex.Message);
             }
-            finally {
+            finally
+            {
                 UIInProcess(false);
             }
         }
 
-        private void btnSpFunFindDuplicateFilesByContent_Click(object sender, EventArgs e) {
-            try {
+        private void btnSpFunFindDuplicateFilesByContent_Click(object sender, EventArgs e)
+        {
+            try
+            {
                 UIInProcess(true);
 
                 FileSporadicFunction sporadicFunction = new FileSporadicFunction(txtConsole);
@@ -316,35 +381,78 @@ namespace FileManager {
 
                 string fileNames = sporadicFunction.Execute_FindDuplicateFilesByContent();
 
-                if (fileNames.Length > 0) {
-                    using (formTextMessage frmMessage = new formTextMessage("找到的文件列表", fileNames, true)) {
+                if (fileNames.Length > 0)
+                {
+                    using (formTextMessage frmMessage = new formTextMessage("找到的文件列表", fileNames, true))
+                    {
                         frmMessage.ShowDialog(this);
                     }
                 }
-                else {
+                else
+                {
                     CommFunction.WriteMessage("没有找到此类文件。");
                 }
-                
+
                 UIInProcess(false);
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 CommFunction.WriteMessage(ex.Message);
             }
-            finally {
+            finally
+            {
                 UIInProcess(false);
             }
         }
 
-        private void btnTest_Click(object sender, EventArgs e) {
+        private void btnSpFunFindNotInTargetPathFileByContent_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                UIInProcess(true);
+
+                FileSporadicFunction sporadicFunction = new FileSporadicFunction(txtConsole);
+                sporadicFunction.SetFileSelectParm(this.GetFormFileSelParm());
+
+                string fileNames = sporadicFunction.Execute_FindNotInTargetPathFileByContent(chkSpFunGenCopyCmd.Checked);
+
+                if (fileNames.Length > 0)
+                {
+                    using (formTextMessage frmMessage = new formTextMessage("找到的文件列表", fileNames, true))
+                    {
+                        frmMessage.ShowDialog(this);
+                    }
+                }
+                else
+                {
+                    CommFunction.WriteMessage("没有找到此类文件。");
+                }
+
+                UIInProcess(false);
+            }
+            catch (Exception ex)
+            {
+                CommFunction.WriteMessage(ex.Message);
+            }
+            finally
+            {
+                UIInProcess(false);
+            }
+        }
+
+        private void btnTest_Click(object sender, EventArgs e)
+        {
             CommFunction.WriteMessage("abc", isWrap: false);
             //Console.Write("abc");
             CommFunction.BackspaceInConsole("bc", txtConsole);
         }
 
-        private void tabCtrlFunction_SelectedIndexChanged(object sender, EventArgs e) {
+        private void tabCtrlFunction_SelectedIndexChanged(object sender, EventArgs e)
+        {
             FormControlProperties formCtrlProps = new FormControlProperties();
 
-            if (tabCtrlFunction.SelectedTab.Name == tabPageCopyByGroup.Name) {
+            if (tabCtrlFunction.SelectedTab.Name == tabPageCopyByGroup.Name)
+            {
                 formCtrlProps.SourceFolderEnabled = true;
                 formCtrlProps.TargetFolderEnabled = true;
                 formCtrlProps.FileTypeEnabled = true;
@@ -354,7 +462,8 @@ namespace FileManager {
 
                 formCtrlProps.FileTypeDefaultString = txtFileType.Text == "" ? "*" : txtFileType.Text;
             }
-            else if (tabCtrlFunction.SelectedTab.Name == tabPageFileBatchChangeName.Name) {
+            else if (tabCtrlFunction.SelectedTab.Name == tabPageFileBatchChangeName.Name)
+            {
                 formCtrlProps.SourceFolderEnabled = true;
                 formCtrlProps.TargetFolderEnabled = false;
                 formCtrlProps.FileTypeEnabled = true;
@@ -364,9 +473,10 @@ namespace FileManager {
 
                 formCtrlProps.FileTypeDefaultString = txtFileType.Text == "" ? "*" : txtFileType.Text;
             }
-            else if (tabCtrlFunction.SelectedTab.Name == tabPageSporadicFunction.Name) {
+            else if (tabCtrlFunction.SelectedTab.Name == tabPageSporadicFunction.Name)
+            {
                 formCtrlProps.SourceFolderEnabled = true;
-                formCtrlProps.TargetFolderEnabled = false;
+                formCtrlProps.TargetFolderEnabled = true;
                 formCtrlProps.FileTypeEnabled = true;
                 formCtrlProps.SortModeEnabled = false;
                 formCtrlProps.ViewFileNameListEnabled = false;
@@ -378,7 +488,8 @@ namespace FileManager {
             this.SetFormControlProperties(formCtrlProps);
         }
 
-        private void FolderBrowser(Control txtBox) {
+        private void FolderBrowser(Control txtBox)
+        {
             if (Directory.Exists(txtBox.Text))
                 folderBrowser.SelectedPath = txtBox.Text;
             else
@@ -388,33 +499,44 @@ namespace FileManager {
                 txtBox.Text = folderBrowser.SelectedPath;
         }
 
-        private void LoadConfig() {
-            try {
+        private void LoadConfig()
+        {
+            try
+            {
                 txtSourceFolder.Text = SysConfig.GetConfigData("AppConfig", "SourceFolder", "");
                 txtTargetFolder.Text = SysConfig.GetConfigData("AppConfig", "TargetFolder", "");
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 CommFunction.WriteMessage(ex.Message);
             }
         }
 
-        private void SaveConfig() {
-            try {
+        private void SaveConfig()
+        {
+            try
+            {
                 SysConfig.WriteConfigData("AppConfig", "SourceFolder", txtSourceFolder.Text);
                 SysConfig.WriteConfigData("AppConfig", "TargetFolder", txtTargetFolder.Text);
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 CommFunction.WriteMessage(ex.Message);
             }
         }
 
-        private void UIInProcess(bool inProcessing) {
+        private void UIInProcess(bool inProcessing)
+        {
             this.Cursor = inProcessing ? Cursors.WaitCursor : Cursors.Default;
 
             grpFunction.Enabled = !inProcessing;
         }
 
-        private FileSelectParm GetFormFileSelParm() {
+        /// <summary> 获取界面文件过滤勾选项
+        /// </summary>
+        /// <returns></returns>
+        private FileSelectParm GetFormFileSelParm()
+        {
             FileSelectParm retVal = new FileSelectParm();
 
             if (rdoTypePic.Checked)
@@ -448,7 +570,8 @@ namespace FileManager {
             return retVal;
         }
 
-        private void SetFormControlProperties(FormControlProperties formCtrlProps) {
+        private void SetFormControlProperties(FormControlProperties formCtrlProps)
+        {
             txtSourceFolder.Enabled =
                 btnSourceFolderBrowser.Enabled = formCtrlProps.SourceFolderEnabled;
 
@@ -468,7 +591,8 @@ namespace FileManager {
                 this.chkSpecFileList_CheckedChanged(chkSpecFileList, new EventArgs());
         }
 
-        private FileBatchChangeName ConstructFileBatchChangeName() {
+        private FileBatchChangeName ConstructFileBatchChangeName()
+        {
             FileBatchChangeName retVal = new FileBatchChangeName();
             retVal.SetFileSelectParm(this.GetFormFileSelParm());
 
@@ -480,7 +604,8 @@ namespace FileManager {
             else if (rdoChgNmRulSpecList.Checked)
                 fileChangeBy = FileChangeRule.SpecList;
 
-            switch (fileChangeBy) {
+            switch (fileChangeBy)
+            {
                 case FileChangeRule.FixedString:
                     retVal.SetFunctionRule(fileChangeBy, txtChgNmFixedStr.Text, chkChgNmIsRegex.Checked);
                     break;
@@ -500,7 +625,8 @@ namespace FileManager {
             return retVal;
         }
 
-        private FileCopyByGroup ConstructFileCopyByGroup() {
+        private FileCopyByGroup ConstructFileCopyByGroup()
+        {
             FileCopyByGroup retVal = new FileCopyByGroup();
             retVal.SetFileSelectParm(this.GetFormFileSelParm());
             retVal.SetFunctionRule(chkModMove.Checked);

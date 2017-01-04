@@ -7,19 +7,24 @@ using System.IO;
 using System.Globalization;
 using System.Windows.Forms;
 
-namespace FileManager {
-    internal class FileProcessBaseClass {
+namespace FileManager
+{
+    internal class FileProcessBaseClass
+    {
         protected readonly List<FileInfo> AllFile = new List<FileInfo>();
         protected FileSelectParm FileSelParm = new FileSelectParm();
         private readonly Dictionary<string, DateTime> _dicRecordDate = new Dictionary<string, DateTime>();
 
         /// <summary>获取文件日期的优先级
         /// </summary>
-        protected List<FileSortMode> DatePriority {
-            get {
+        protected List<FileSortMode> DatePriority
+        {
+            get
+            {
                 List<FileSortMode> listOfPriority = new List<FileSortMode>();
 
-                switch (FileSelParm.FileSortBy) {
+                switch (FileSelParm.FileSortBy)
+                {
                     case FileSortMode.FileName:
                     case FileSortMode.CreateDate:
                     case FileSortMode.ModifyDate:
@@ -42,17 +47,22 @@ namespace FileManager {
 
         /// <summary>获取所有照片文件拍摄日期
         /// </summary>
-        protected Dictionary<string, DateTime> DicRecordDate {
-            get {
-                if (_dicRecordDate.Count == 0 && AllFile.Count > 0) {
+        protected Dictionary<string, DateTime> DicRecordDate
+        {
+            get
+            {
+                if (_dicRecordDate.Count == 0 && AllFile.Count > 0)
+                {
                     //并行获取照片文件的日期
                     ParallelQuery<Tuple<string, DateTime>> pqRecordDate = AllFile.Where(f => f.Extension.ToUpper() == ".JPG").Select(f => f.FullName).AsParallel().Select(fName => Tuple.Create(fName, PictureHelper.GetTakePicDateTime(PictureHelper.GetExifProperties(fName))));
-                    foreach (Tuple<string, DateTime> nameDate in pqRecordDate) {
+                    foreach (Tuple<string, DateTime> nameDate in pqRecordDate)
+                    {
                         _dicRecordDate.Add(nameDate.Item1, nameDate.Item2);
                     }
-                    
+
                     //非照片文件直接取最小日期
-                    foreach (FileInfo fileInfo in AllFile.Where(f => f.Extension.ToUpper() != ".JPG")) {
+                    foreach (FileInfo fileInfo in AllFile.Where(f => f.Extension.ToUpper() != ".JPG"))
+                    {
                         _dicRecordDate.Add(fileInfo.FullName, DateTime.MinValue);
                     }
                 }
@@ -65,14 +75,17 @@ namespace FileManager {
         /// </summary>
         protected TextBox FormConsoleTextBox { get; set; }
 
-        public void SetFileSelectParm(FileSelectParm fileSelectParm) {
+        public void SetFileSelectParm(FileSelectParm fileSelectParm)
+        {
             this.FileSelParm = fileSelectParm;
         }
 
-        protected DateTime GetFileDate(FileInfo fileInfo, FileSortMode fileSortMode) {
+        protected DateTime GetFileDate(FileInfo fileInfo, FileSortMode fileSortMode)
+        {
             DateTime retVal = DateTime.MinValue;
 
-            switch (fileSortMode) {
+            switch (fileSortMode)
+            {
                 case FileSortMode.CreateDate:
                     retVal = fileInfo.CreationTime;
                     break;
@@ -99,10 +112,12 @@ namespace FileManager {
             return retVal;
         }
 
-        protected DateTime GetFileDate(FileInfo fileInfo, List<FileSortMode> listOfPriority) {
+        protected DateTime GetFileDate(FileInfo fileInfo, List<FileSortMode> listOfPriority)
+        {
             DateTime retVal = DateTime.MinValue;
 
-            foreach (FileSortMode mode in listOfPriority) {
+            foreach (FileSortMode mode in listOfPriority)
+            {
                 retVal = GetFileDate(fileInfo, mode);
 
                 if (retVal > DateTime.MinValue)
@@ -112,16 +127,20 @@ namespace FileManager {
             return retVal;
         }
 
-        protected void BeforeExecute() {
+        protected void BeforeExecute()
+        {
             this.AllFile.Clear();
             this._dicRecordDate.Clear();
         }
 
         /// <summary>排序已获得的文件
         /// </summary>
-        protected void SortFileList() {
-            if (AllFile.Count > 0) {
-                switch (FileSelParm.FileSortBy) {
+        protected void SortFileList()
+        {
+            if (AllFile.Count > 0)
+            {
+                switch (FileSelParm.FileSortBy)
+                {
                     case FileSortMode.FileName:
                         AllFile.Sort((x, y) => String.Compare(x.Name, y.Name, StringComparison.Ordinal));
                         break;
@@ -141,10 +160,12 @@ namespace FileManager {
             }
         }
 
-        public virtual string LoadFileList(bool sortFileList = true) {
+        public virtual string LoadFileList(bool sortFileList = true)
+        {
             string retVal = string.Empty;
 
-            if (Directory.Exists(FileSelParm.SourceFileFolder)) {
+            if (Directory.Exists(FileSelParm.SourceFileFolder))
+            {
                 AllFile.Clear();
                 _dicRecordDate.Clear();
                 List<string> filterList = FileSelParm.FileFilter.ToUpper().Split('|').ToList();
@@ -153,21 +174,26 @@ namespace FileManager {
                 DirectoryInfo dicInfo = new DirectoryInfo(FileSelParm.SourceFileFolder);
                 List<string> chgFileList = FileSelParm.UseSpecFileList ? FileSelParm.SpecFileList.ToUpper().Split(new[] {Environment.NewLine}, StringSplitOptions.RemoveEmptyEntries).ToList() : null;
 
-                foreach (FileInfo fileInfo in dicInfo.GetFiles()) {
+                foreach (FileInfo fileInfo in dicInfo.GetFiles())
+                {
                     //隐藏文件和系统文件就不要过来凑热闹了
                     if ( /*( fileInfo.Attributes & FileAttributes.Hidden ) == FileAttributes.Hidden || */
                         ( fileInfo.Attributes & FileAttributes.System ) == FileAttributes.System)
                         continue;
 
-                    if (FileSelParm.UseSpecFileList) {
+                    if (FileSelParm.UseSpecFileList)
+                    {
                         if (chgFileList != null && chgFileList.Contains(fileInfo.Name.ToUpper()))
                             AllFile.Add(fileInfo);
                     }
-                    else {
-                        if (havAllFilter && !typeIgnore) {
+                    else
+                    {
+                        if (havAllFilter && !typeIgnore)
+                        {
                             AllFile.Add(fileInfo);
                         }
-                        else {
+                        else
+                        {
                             string strExt = fileInfo.Extension.Length > 0 ? fileInfo.Extension.Remove(0, 1).ToUpper() : "";
                             //符合异或条件
                             if (typeIgnore ^ filterList.Contains(strExt))
@@ -183,22 +209,27 @@ namespace FileManager {
                 //一行一行显示文件名
                 retVal = CommFunction.StringList2String(AllFile.Select(f => f.FullName).ToList());
             }
-            else {
+            else
+            {
                 CommFunction.WriteMessage("文件夹不存在！");
             }
 
             return retVal;
         }
 
-        protected virtual void LoadFileListAllTree(DirectoryInfo dirInfo, List<string> filterList, bool havAllFilter, bool typeIgnore) {
+        protected virtual void LoadFileListAllTree(DirectoryInfo dirInfo, List<string> filterList, bool havAllFilter, bool typeIgnore)
+        {
             foreach (DirectoryInfo di in dirInfo.GetDirectories())
                 LoadFileListAllTree(di, filterList, havAllFilter, typeIgnore);
 
-            foreach (FileInfo fi in dirInfo.GetFiles().Where(fi => ( fi.Attributes & FileAttributes.System ) != FileAttributes.System)) {
-                if (havAllFilter && !typeIgnore) {
+            foreach (FileInfo fi in dirInfo.GetFiles().Where(fi => ( fi.Attributes & FileAttributes.System ) != FileAttributes.System))
+            {
+                if (havAllFilter && !typeIgnore)
+                {
                     AllFile.Add(fi);
                 }
-                else {
+                else
+                {
                     string strExt = fi.Extension.Length > 0 ? fi.Extension.Remove(0, 1).ToUpper() : "";
                     //符合异或条件
                     if (typeIgnore ^ filterList.Contains(strExt))
@@ -207,10 +238,12 @@ namespace FileManager {
             }
         }
 
-        public virtual string LoadFileListAllTree(bool sortFileList = true) {
+        public virtual string LoadFileListAllTree(bool sortFileList = true)
+        {
             string retVal = string.Empty;
 
-            if (Directory.Exists(FileSelParm.SourceFileFolder)) {
+            if (Directory.Exists(FileSelParm.SourceFileFolder))
+            {
                 AllFile.Clear();
                 _dicRecordDate.Clear();
                 List<string> filterList = FileSelParm.FileFilter.ToUpper().Split('|').ToList();
@@ -227,22 +260,27 @@ namespace FileManager {
                 //一行一行显示文件名
                 retVal = CommFunction.StringList2String(AllFile.Select(f => f.FullName).ToList());
             }
-            else {
+            else
+            {
                 CommFunction.WriteMessage("文件夹不存在！");
             }
 
             return retVal;
         }
 
-        protected virtual void LoadFileNameListAllTree(DirectoryInfo dirInfo, List<string> filterList, bool havAllFilter, bool typeIgnore,List<string> foundList) {
+        protected virtual void LoadFileNameListAllTree(DirectoryInfo dirInfo, List<string> filterList, bool havAllFilter, bool typeIgnore, List<string> foundList)
+        {
             foreach (DirectoryInfo di in dirInfo.GetDirectories())
-                LoadFileNameListAllTree(di, filterList, havAllFilter, typeIgnore,foundList);
+                LoadFileNameListAllTree(di, filterList, havAllFilter, typeIgnore, foundList);
 
-            foreach (FileInfo fi in dirInfo.GetFiles().Where(fi => (fi.Attributes & FileAttributes.System) != FileAttributes.System)) {
-                if (havAllFilter && !typeIgnore) {
+            foreach (FileInfo fi in dirInfo.GetFiles().Where(fi => ( fi.Attributes & FileAttributes.System ) != FileAttributes.System))
+            {
+                if (havAllFilter && !typeIgnore)
+                {
                     foundList.Add(fi.FullName);
                 }
-                else {
+                else
+                {
                     string strExt = fi.Extension.Length > 0 ? fi.Extension.Remove(0, 1).ToUpper() : "";
                     //符合异或条件
                     if (typeIgnore ^ filterList.Contains(strExt))
@@ -251,20 +289,23 @@ namespace FileManager {
             }
         }
 
-        public virtual List<string> LoadFileNameListAllTree() {
+        public virtual List<string> LoadFileNameListAllTree(string fileFolder)
+        {
             List<string> foundList = new List<string>();
 
-            if (Directory.Exists(FileSelParm.SourceFileFolder)) {
+            if (Directory.Exists(fileFolder))
+            {
                 AllFile.Clear();
                 _dicRecordDate.Clear();
                 List<string> filterList = FileSelParm.FileFilter.ToUpper().Split('|').ToList();
                 bool havAllFilter = filterList.Contains("*");
                 bool typeIgnore = FileSelParm.FileTypeIsIgnore;
-                DirectoryInfo dicInfo = new DirectoryInfo(FileSelParm.SourceFileFolder);
+                DirectoryInfo dicInfo = new DirectoryInfo(fileFolder);
 
                 this.LoadFileNameListAllTree(dicInfo, filterList, havAllFilter, typeIgnore, foundList);
             }
-            else {
+            else
+            {
                 CommFunction.WriteMessage("文件夹不存在！");
             }
 
