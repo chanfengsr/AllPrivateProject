@@ -440,6 +440,41 @@ namespace FileManager
             }
         }
 
+        private void btnSpFunFindNotInTargetPathFileByFileName_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                UIInProcess(true);
+
+                FileSporadicFunction sporadicFunction = new FileSporadicFunction(txtConsole);
+                sporadicFunction.SetFileSelectParm(this.GetFormFileSelParm());
+
+                string fileNames = sporadicFunction.Execute_FindNotInTargetPathFileByFileName();
+
+                if (fileNames.Length > 0)
+                {
+                    using (formTextMessage frmMessage = new formTextMessage("找到的文件列表", fileNames, true))
+                    {
+                        frmMessage.ShowDialog(this);
+                    }
+                }
+                else
+                {
+                    CommFunction.WriteMessage("没有找到此类文件。");
+                }
+
+                UIInProcess(false);
+            }
+            catch (Exception ex)
+            {
+                CommFunction.WriteMessage(ex.Message);
+            }
+            finally
+            {
+                UIInProcess(false);
+            }
+        }
+
         private void btnTest_Click(object sender, EventArgs e)
         {
             CommFunction.WriteMessage("abc", isWrap: false);

@@ -55,6 +55,8 @@
             this.rdoChgNmRulWildcard = new System.Windows.Forms.RadioButton();
             this.rdoChgNmRulFixedStr = new System.Windows.Forms.RadioButton();
             this.tabPageSporadicFunction = new System.Windows.Forms.TabPage();
+            this.chkSpFunGenCopyCmd = new System.Windows.Forms.CheckBox();
+            this.btnSpFunFindNotInTargetPathFileByContent = new System.Windows.Forms.Button();
             this.progressBarSpFun = new System.Windows.Forms.ProgressBar();
             this.btnSpFunFindDuplicateFilesByContent = new System.Windows.Forms.Button();
             this.btnSpFunFindMisplacedPhoto = new System.Windows.Forms.Button();
@@ -90,8 +92,7 @@
             this.btnCloseForm = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
             this.txtConsole = new System.Windows.Forms.TextBox();
-            this.btnSpFunFindNotInTargetPathFileByContent = new System.Windows.Forms.Button();
-            this.chkSpFunGenCopyCmd = new System.Windows.Forms.CheckBox();
+            this.btnSpFunFindNotInTargetPathFileByFileName = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -125,8 +126,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.groupBox1);
-            this.splitContainer1.Size = new System.Drawing.Size(756, 643);
-            this.splitContainer1.SplitterDistance = 500;
+            this.splitContainer1.Size = new System.Drawing.Size(788, 669);
+            this.splitContainer1.SplitterDistance = 508;
             this.splitContainer1.TabIndex = 12;
             // 
             // grpFunction
@@ -136,7 +137,7 @@
             this.grpFunction.Dock = System.Windows.Forms.DockStyle.Fill;
             this.grpFunction.Location = new System.Drawing.Point(0, 0);
             this.grpFunction.Name = "grpFunction";
-            this.grpFunction.Size = new System.Drawing.Size(756, 500);
+            this.grpFunction.Size = new System.Drawing.Size(788, 508);
             this.grpFunction.TabIndex = 1;
             this.grpFunction.TabStop = false;
             this.grpFunction.Text = "功能";
@@ -147,10 +148,10 @@
             this.tabCtrlFunction.Controls.Add(this.tabPageFileBatchChangeName);
             this.tabCtrlFunction.Controls.Add(this.tabPageSporadicFunction);
             this.tabCtrlFunction.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.tabCtrlFunction.Location = new System.Drawing.Point(3, 288);
+            this.tabCtrlFunction.Location = new System.Drawing.Point(3, 269);
             this.tabCtrlFunction.Name = "tabCtrlFunction";
             this.tabCtrlFunction.SelectedIndex = 0;
-            this.tabCtrlFunction.Size = new System.Drawing.Size(750, 209);
+            this.tabCtrlFunction.Size = new System.Drawing.Size(782, 236);
             this.tabCtrlFunction.TabIndex = 1;
             this.tabCtrlFunction.SelectedIndexChanged += new System.EventHandler(this.tabCtrlFunction_SelectedIndexChanged);
             // 
@@ -420,8 +421,9 @@
             // tabPageSporadicFunction
             // 
             this.tabPageSporadicFunction.Controls.Add(this.chkSpFunGenCopyCmd);
-            this.tabPageSporadicFunction.Controls.Add(this.btnSpFunFindNotInTargetPathFileByContent);
+            this.tabPageSporadicFunction.Controls.Add(this.btnSpFunFindNotInTargetPathFileByFileName);
             this.tabPageSporadicFunction.Controls.Add(this.progressBarSpFun);
+            this.tabPageSporadicFunction.Controls.Add(this.btnSpFunFindNotInTargetPathFileByContent);
             this.tabPageSporadicFunction.Controls.Add(this.btnSpFunFindDuplicateFilesByContent);
             this.tabPageSporadicFunction.Controls.Add(this.btnSpFunFindMisplacedPhoto);
             this.tabPageSporadicFunction.Controls.Add(this.btnSpFunDeleteEmptyFolder);
@@ -429,24 +431,46 @@
             this.tabPageSporadicFunction.Margin = new System.Windows.Forms.Padding(2);
             this.tabPageSporadicFunction.Name = "tabPageSporadicFunction";
             this.tabPageSporadicFunction.Padding = new System.Windows.Forms.Padding(2);
-            this.tabPageSporadicFunction.Size = new System.Drawing.Size(742, 183);
+            this.tabPageSporadicFunction.Size = new System.Drawing.Size(774, 210);
             this.tabPageSporadicFunction.TabIndex = 2;
             this.tabPageSporadicFunction.Text = "零星功能";
             this.tabPageSporadicFunction.UseVisualStyleBackColor = true;
             // 
+            // chkSpFunGenCopyCmd
+            // 
+            this.chkSpFunGenCopyCmd.AutoSize = true;
+            this.chkSpFunGenCopyCmd.Location = new System.Drawing.Point(252, 54);
+            this.chkSpFunGenCopyCmd.Name = "chkSpFunGenCopyCmd";
+            this.chkSpFunGenCopyCmd.Size = new System.Drawing.Size(96, 16);
+            this.chkSpFunGenCopyCmd.TabIndex = 8;
+            this.chkSpFunGenCopyCmd.Text = "生成Copy命令";
+            this.chkSpFunGenCopyCmd.UseVisualStyleBackColor = true;
+            // 
+            // btnSpFunFindNotInTargetPathFileByContent
+            // 
+            this.btnSpFunFindNotInTargetPathFileByContent.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Bold);
+            this.btnSpFunFindNotInTargetPathFileByContent.ForeColor = System.Drawing.Color.DarkRed;
+            this.btnSpFunFindNotInTargetPathFileByContent.Location = new System.Drawing.Point(5, 44);
+            this.btnSpFunFindNotInTargetPathFileByContent.Name = "btnSpFunFindNotInTargetPathFileByContent";
+            this.btnSpFunFindNotInTargetPathFileByContent.Size = new System.Drawing.Size(241, 33);
+            this.btnSpFunFindNotInTargetPathFileByContent.TabIndex = 7;
+            this.btnSpFunFindNotInTargetPathFileByContent.Text = "按内容查找不在目标路径下的文件";
+            this.btnSpFunFindNotInTargetPathFileByContent.UseVisualStyleBackColor = true;
+            this.btnSpFunFindNotInTargetPathFileByContent.Click += new System.EventHandler(this.btnSpFunFindNotInTargetPathFileByContent_Click);
+            // 
             // progressBarSpFun
             // 
             this.progressBarSpFun.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.progressBarSpFun.Location = new System.Drawing.Point(2, 158);
+            this.progressBarSpFun.Location = new System.Drawing.Point(2, 185);
             this.progressBarSpFun.Name = "progressBarSpFun";
-            this.progressBarSpFun.Size = new System.Drawing.Size(738, 23);
+            this.progressBarSpFun.Size = new System.Drawing.Size(770, 23);
             this.progressBarSpFun.TabIndex = 6;
             // 
             // btnSpFunFindDuplicateFilesByContent
             // 
             this.btnSpFunFindDuplicateFilesByContent.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Bold);
             this.btnSpFunFindDuplicateFilesByContent.ForeColor = System.Drawing.Color.DarkRed;
-            this.btnSpFunFindDuplicateFilesByContent.Location = new System.Drawing.Point(373, 14);
+            this.btnSpFunFindDuplicateFilesByContent.Location = new System.Drawing.Point(127, 5);
             this.btnSpFunFindDuplicateFilesByContent.Name = "btnSpFunFindDuplicateFilesByContent";
             this.btnSpFunFindDuplicateFilesByContent.Size = new System.Drawing.Size(171, 33);
             this.btnSpFunFindDuplicateFilesByContent.TabIndex = 4;
@@ -458,7 +482,7 @@
             // 
             this.btnSpFunFindMisplacedPhoto.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Bold);
             this.btnSpFunFindMisplacedPhoto.ForeColor = System.Drawing.Color.DarkRed;
-            this.btnSpFunFindMisplacedPhoto.Location = new System.Drawing.Point(135, 14);
+            this.btnSpFunFindMisplacedPhoto.Location = new System.Drawing.Point(304, 5);
             this.btnSpFunFindMisplacedPhoto.Name = "btnSpFunFindMisplacedPhoto";
             this.btnSpFunFindMisplacedPhoto.Size = new System.Drawing.Size(232, 33);
             this.btnSpFunFindMisplacedPhoto.TabIndex = 3;
@@ -470,7 +494,7 @@
             // 
             this.btnSpFunDeleteEmptyFolder.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Bold);
             this.btnSpFunDeleteEmptyFolder.ForeColor = System.Drawing.Color.DarkRed;
-            this.btnSpFunDeleteEmptyFolder.Location = new System.Drawing.Point(13, 14);
+            this.btnSpFunDeleteEmptyFolder.Location = new System.Drawing.Point(5, 5);
             this.btnSpFunDeleteEmptyFolder.Name = "btnSpFunDeleteEmptyFolder";
             this.btnSpFunDeleteEmptyFolder.Size = new System.Drawing.Size(116, 33);
             this.btnSpFunDeleteEmptyFolder.TabIndex = 2;
@@ -497,7 +521,7 @@
             this.grpFileSelect.Controls.Add(this.btnSourceFolderBrowser);
             this.grpFileSelect.Location = new System.Drawing.Point(13, 22);
             this.grpFileSelect.Name = "grpFileSelect";
-            this.grpFileSelect.Size = new System.Drawing.Size(730, 241);
+            this.grpFileSelect.Size = new System.Drawing.Size(762, 241);
             this.grpFileSelect.TabIndex = 0;
             this.grpFileSelect.TabStop = false;
             this.grpFileSelect.Text = "文件选择";
@@ -728,7 +752,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtTargetFolder.Location = new System.Drawing.Point(113, 55);
             this.txtTargetFolder.Name = "txtTargetFolder";
-            this.txtTargetFolder.Size = new System.Drawing.Size(545, 21);
+            this.txtTargetFolder.Size = new System.Drawing.Size(577, 21);
             this.txtTargetFolder.TabIndex = 2;
             this.txtTargetFolder.DragDrop += new System.Windows.Forms.DragEventHandler(this.txtFileFolder_DragDrop);
             this.txtTargetFolder.DragEnter += new System.Windows.Forms.DragEventHandler(this.txtFileFolder_DragEnter);
@@ -736,7 +760,7 @@
             // btnTargetFolderBrowser
             // 
             this.btnTargetFolderBrowser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnTargetFolderBrowser.Location = new System.Drawing.Point(672, 54);
+            this.btnTargetFolderBrowser.Location = new System.Drawing.Point(704, 54);
             this.btnTargetFolderBrowser.Name = "btnTargetFolderBrowser";
             this.btnTargetFolderBrowser.Size = new System.Drawing.Size(33, 23);
             this.btnTargetFolderBrowser.TabIndex = 3;
@@ -751,7 +775,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.txtSourceFolder.Location = new System.Drawing.Point(113, 25);
             this.txtSourceFolder.Name = "txtSourceFolder";
-            this.txtSourceFolder.Size = new System.Drawing.Size(545, 21);
+            this.txtSourceFolder.Size = new System.Drawing.Size(577, 21);
             this.txtSourceFolder.TabIndex = 0;
             this.txtSourceFolder.DragDrop += new System.Windows.Forms.DragEventHandler(this.txtFileFolder_DragDrop);
             this.txtSourceFolder.DragEnter += new System.Windows.Forms.DragEventHandler(this.txtFileFolder_DragEnter);
@@ -759,7 +783,7 @@
             // btnSourceFolderBrowser
             // 
             this.btnSourceFolderBrowser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSourceFolderBrowser.Location = new System.Drawing.Point(672, 24);
+            this.btnSourceFolderBrowser.Location = new System.Drawing.Point(704, 24);
             this.btnSourceFolderBrowser.Name = "btnSourceFolderBrowser";
             this.btnSourceFolderBrowser.Size = new System.Drawing.Size(33, 23);
             this.btnSourceFolderBrowser.TabIndex = 1;
@@ -776,7 +800,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(756, 139);
+            this.groupBox1.Size = new System.Drawing.Size(788, 157);
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "执行信息";
@@ -810,7 +834,7 @@
             // btnClear
             // 
             this.btnClear.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnClear.Location = new System.Drawing.Point(673, 25);
+            this.btnClear.Location = new System.Drawing.Point(705, 25);
             this.btnClear.Name = "btnClear";
             this.btnClear.Size = new System.Drawing.Size(57, 21);
             this.btnClear.TabIndex = 0;
@@ -831,39 +855,29 @@
             this.txtConsole.Name = "txtConsole";
             this.txtConsole.ReadOnly = true;
             this.txtConsole.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtConsole.Size = new System.Drawing.Size(744, 113);
+            this.txtConsole.Size = new System.Drawing.Size(776, 131);
             this.txtConsole.TabIndex = 0;
             this.txtConsole.TabStop = false;
             this.txtConsole.WordWrap = false;
             // 
-            // btnSpFunFindNotInTargetPathFileByContent
+            // btnSpFunFindNotInTargetPathFileByFileName
             // 
-            this.btnSpFunFindNotInTargetPathFileByContent.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Bold);
-            this.btnSpFunFindNotInTargetPathFileByContent.ForeColor = System.Drawing.Color.DarkRed;
-            this.btnSpFunFindNotInTargetPathFileByContent.Location = new System.Drawing.Point(13, 53);
-            this.btnSpFunFindNotInTargetPathFileByContent.Name = "btnSpFunFindNotInTargetPathFileByContent";
-            this.btnSpFunFindNotInTargetPathFileByContent.Size = new System.Drawing.Size(241, 33);
-            this.btnSpFunFindNotInTargetPathFileByContent.TabIndex = 7;
-            this.btnSpFunFindNotInTargetPathFileByContent.Text = "按内容查找不在目标路径下的文件";
-            this.btnSpFunFindNotInTargetPathFileByContent.UseVisualStyleBackColor = true;
-            this.btnSpFunFindNotInTargetPathFileByContent.Click += new System.EventHandler(this.btnSpFunFindNotInTargetPathFileByContent_Click);
-            // 
-            // chkSpFunGenCopyCmd
-            // 
-            this.chkSpFunGenCopyCmd.AutoSize = true;
-            this.chkSpFunGenCopyCmd.Location = new System.Drawing.Point(261, 69);
-            this.chkSpFunGenCopyCmd.Name = "chkSpFunGenCopyCmd";
-            this.chkSpFunGenCopyCmd.Size = new System.Drawing.Size(96, 16);
-            this.chkSpFunGenCopyCmd.TabIndex = 8;
-            this.chkSpFunGenCopyCmd.Text = "生成Copy命令";
-            this.chkSpFunGenCopyCmd.UseVisualStyleBackColor = true;
+            this.btnSpFunFindNotInTargetPathFileByFileName.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Bold);
+            this.btnSpFunFindNotInTargetPathFileByFileName.ForeColor = System.Drawing.Color.DarkRed;
+            this.btnSpFunFindNotInTargetPathFileByFileName.Location = new System.Drawing.Point(6, 83);
+            this.btnSpFunFindNotInTargetPathFileByFileName.Name = "btnSpFunFindNotInTargetPathFileByFileName";
+            this.btnSpFunFindNotInTargetPathFileByFileName.Size = new System.Drawing.Size(256, 33);
+            this.btnSpFunFindNotInTargetPathFileByFileName.TabIndex = 7;
+            this.btnSpFunFindNotInTargetPathFileByFileName.Text = "按文件名查找不在目标路径下的文件";
+            this.btnSpFunFindNotInTargetPathFileByFileName.UseVisualStyleBackColor = true;
+            this.btnSpFunFindNotInTargetPathFileByFileName.Click += new System.EventHandler(this.btnSpFunFindNotInTargetPathFileByFileName_Click);
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.btnCloseForm;
-            this.ClientSize = new System.Drawing.Size(756, 643);
+            this.ClientSize = new System.Drawing.Size(788, 669);
             this.Controls.Add(this.splitContainer1);
             this.Name = "Form1";
             this.Text = "自用文件管理器";
@@ -962,6 +976,7 @@
         private System.Windows.Forms.Button btnTest;
         private System.Windows.Forms.Button btnSpFunFindNotInTargetPathFileByContent;
         private System.Windows.Forms.CheckBox chkSpFunGenCopyCmd;
+        private System.Windows.Forms.Button btnSpFunFindNotInTargetPathFileByFileName;
 
     }
 }

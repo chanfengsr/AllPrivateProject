@@ -268,28 +268,33 @@ namespace FileManager
             return retVal;
         }
 
-        protected virtual void LoadFileNameListAllTree(DirectoryInfo dirInfo, List<string> filterList, bool havAllFilter, bool typeIgnore, List<string> foundList)
+        protected virtual void LoadFileNameListAllTree(DirectoryInfo dirInfo, List<string> filterList, bool havAllFilter, bool typeIgnore, List<string> foundList, bool returnFullName)
         {
             foreach (DirectoryInfo di in dirInfo.GetDirectories())
-                LoadFileNameListAllTree(di, filterList, havAllFilter, typeIgnore, foundList);
+                LoadFileNameListAllTree(di, filterList, havAllFilter, typeIgnore, foundList, returnFullName);
 
             foreach (FileInfo fi in dirInfo.GetFiles().Where(fi => ( fi.Attributes & FileAttributes.System ) != FileAttributes.System))
             {
                 if (havAllFilter && !typeIgnore)
                 {
-                    foundList.Add(fi.FullName);
+                    foundList.Add(returnFullName ? fi.FullName : fi.Name);
                 }
                 else
                 {
                     string strExt = fi.Extension.Length > 0 ? fi.Extension.Remove(0, 1).ToUpper() : "";
                     //符合异或条件
                     if (typeIgnore ^ filterList.Contains(strExt))
-                        foundList.Add(fi.FullName);
+                        foundList.Add(returnFullName ? fi.FullName : fi.Name);
                 }
             }
         }
 
-        public virtual List<string> LoadFileNameListAllTree(string fileFolder)
+        /// <summary>返回文件目录及其子目录下的所有文件
+        /// </summary>
+        /// <param name="fileFolder">文件目录</param>
+        /// <param name="returnFullName">是否返回 FullName</param>
+        /// <returns></returns>
+        public virtual List<string> LoadFileNameListAllTree(string fileFolder, bool returnFullName)
         {
             List<string> foundList = new List<string>();
 
@@ -302,7 +307,7 @@ namespace FileManager
                 bool typeIgnore = FileSelParm.FileTypeIsIgnore;
                 DirectoryInfo dicInfo = new DirectoryInfo(fileFolder);
 
-                this.LoadFileNameListAllTree(dicInfo, filterList, havAllFilter, typeIgnore, foundList);
+                this.LoadFileNameListAllTree(dicInfo, filterList, havAllFilter, typeIgnore, foundList, returnFullName);
             }
             else
             {

@@ -202,7 +202,7 @@ namespace FileManager
 
             //加载所有文件
             CommFunction.WriteMessage("正在加载文件列表...", isWrap: false);
-            List<string> lstAllFileName = base.LoadFileNameListAllTree(FileSelParm.SourceFileFolder);
+            List<string> lstAllFileName = base.LoadFileNameListAllTree(FileSelParm.SourceFileFolder, true);
             CommFunction.WriteMessage(string.Format("(完成)  总共 {0} 个文件", lstAllFileName.Count), addTime: false);
 
             //算出Hash，填充序列
@@ -292,10 +292,10 @@ namespace FileManager
         {
             //加载所有文件
             CommFunction.WriteMessage("正在加载源文件列表...", isWrap: false);
-            List<string> lstAllSourceFileName = base.LoadFileNameListAllTree(FileSelParm.SourceFileFolder);
+            List<string> lstAllSourceFileName = base.LoadFileNameListAllTree(FileSelParm.SourceFileFolder, true);
             CommFunction.WriteMessage(string.Format("(完成)  总共 {0} 个文件", lstAllSourceFileName.Count), addTime: false);
             CommFunction.WriteMessage("正在加载目标文件列表...", isWrap: false);
-            List<string> lstAllTargetFileName = base.LoadFileNameListAllTree(FileSelParm.TargetFileFolder);
+            List<string> lstAllTargetFileName = base.LoadFileNameListAllTree(FileSelParm.TargetFileFolder, true);
             CommFunction.WriteMessage(string.Format("(完成)  总共 {0} 个文件", lstAllTargetFileName.Count), addTime: false);
 
             //算出Hash，填充序列
@@ -335,6 +335,23 @@ namespace FileManager
             else
                 foreach (string fName in foundList)
                     retSb.AppendLine(fName);
+
+            return retSb.ToString().TrimEnd(Environment.NewLine.ToCharArray());
+        }
+
+        public string Execute_FindNotInTargetPathFileByFileName()
+        {
+            //加载所有文件
+            CommFunction.WriteMessage("正在加载源文件列表...", isWrap: false);
+            List<string> lstAllSourceFileName = base.LoadFileNameListAllTree(FileSelParm.SourceFileFolder,false);
+            CommFunction.WriteMessage(string.Format("(完成)  总共 {0} 个文件", lstAllSourceFileName.Count), addTime: false);
+            CommFunction.WriteMessage("正在加载目标文件列表...", isWrap: false);
+            List<string> lstAllTargetFileName = base.LoadFileNameListAllTree(FileSelParm.TargetFileFolder,false);
+            CommFunction.WriteMessage(string.Format("(完成)  总共 {0} 个文件", lstAllTargetFileName.Count), addTime: false);
+
+            StringBuilder retSb = new StringBuilder();
+            foreach (string fName in lstAllSourceFileName.Where(s => !lstAllTargetFileName.Contains(s)))
+                retSb.AppendLine(fName);
 
             return retSb.ToString().TrimEnd(Environment.NewLine.ToCharArray());
         }
