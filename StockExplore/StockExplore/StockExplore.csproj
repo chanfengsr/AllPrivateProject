@@ -47,6 +47,19 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CommClass\CommFunction.cs" />
+    <Compile Include="CommClass\ConsoleRedirect.cs" />
+    <Compile Include="CommClass\NumericUpDownEx.cs">
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="CommClass\SQLHelper.cs" />
+    <Compile Include="CommClass\SysConfig.cs" />
+    <Compile Include="CommClass\SysFunction.cs" />
+    <Compile Include="CommClass\SysMessageBox.cs" />
+    <Compile Include="CommClass\SysSecurityFactory.cs" />
+    <Compile Include="CommClass\TextBoxStreamWriter.cs" />
+    <Compile Include="CommClass\TupleValue.cs" />
+    <Compile Include="CommProp.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -55,6 +68,9 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="MainForm.resx">
+      <DependentUpon>MainForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
@@ -76,6 +92,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="ConfigFile\SystemConfig.xml">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="DatabaseScript\DatabaseScript.sql" />
     <Content Include="DatabaseScript\TableScript.sql" />
   </ItemGroup>

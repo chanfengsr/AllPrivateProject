@@ -12,5 +12,12 @@ namespace StockExplore {
         public MainForm() {
             InitializeComponent();
         }
+
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            CommFunction.LoadAllConfig();
+
+            MessageBox.Show(SQLHelper.TestConnectString(CommProp.ConnectionString).ToString());
+        }
     }
 }
