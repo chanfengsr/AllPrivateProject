@@ -12,6 +12,8 @@ namespace StockExplore
 {
     public partial class MainForm : Form
     {
+        private bool sqlConnect;
+
         public MainForm()
         {
             InitializeComponent();
@@ -21,7 +23,9 @@ namespace StockExplore
         {
             CommFunction.LoadAllConfig();
 
-            MessageBox.Show(SQLHelper.TestConnectString(CommProp.ConnectionString).ToString());
+            sqlConnect = SQLHelper.TestConnectString(CommProp.ConnectionString);
+            if (!sqlConnect)
+                SysMessageBox.ErrorMessage("数据库连接错误!", "");
         }
 
         private void btnTest_Click(object sender, EventArgs e)
