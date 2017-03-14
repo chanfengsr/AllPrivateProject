@@ -7,24 +7,32 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using StockExplore.Properties;
 
 namespace StockExplore
 {
     public partial class MainForm : Form
     {
-        private bool sqlConnect;
+        private bool _sqlConnect;
 
         public MainForm()
         {
+            Control.CheckForIllegalCrossThreadCalls = false;
             InitializeComponent();
+            ConsoleRedirect.AttachTextBox(this.txtConsole);
+
+            this.Text += "  V" + Application.ProductVersion;
+            this.Icon = Resources.Stocks;
         }
 
         private void MainForm_Load(object sender, EventArgs e)
         {
+            btnCloseForm.Top = -1000;
+
             CommFunction.LoadAllConfig();
 
-            sqlConnect = SQLHelper.TestConnectString(CommProp.ConnectionString);
-            if (!sqlConnect)
+            _sqlConnect = SQLHelper.TestConnectString(CommProp.ConnectionString);
+            if (!_sqlConnect)
                 SysMessageBox.ErrorMessage("数据库连接错误!", "");
         }
 
@@ -40,6 +48,16 @@ namespace StockExplore
             }
 
             streamReader.Close();
+        }
+
+        private void btnCloseForm_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            txtConsole.Clear();
         }
     }
 }
