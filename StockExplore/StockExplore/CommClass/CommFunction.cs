@@ -32,19 +32,14 @@ namespace StockExplore
         #region 本程序专用
 
         private const string ConsDatabaseConfig = "DatabaseConfig";
-
-        /// <summary>从配置文件中加载DatabaseConfig信息至CommProp中
-        /// </summary>
-        public static void LoadDatabaseConfig()
-        {
-            CommProp.ConnectionString = SysConfig.GetConfigData(ConsDatabaseConfig, "ConnectionString", "");
-        }
+        private const string ConsAppConfig = "AppConfig";
 
         /// <summary>从配置文件中加载所有配置信息至CommProp中
         /// </summary>
         public static void LoadAllConfig()
         {
-            LoadDatabaseConfig();
+            CommProp.ConnectionString = SysConfig.GetConfigData(ConsDatabaseConfig, "ConnectionString", "");
+            CommProp.SourceFolder = SysConfig.GetConfigData(ConsAppConfig, "SourceFolder", "");
         }
 
         /// <summary>检测文件的写权限

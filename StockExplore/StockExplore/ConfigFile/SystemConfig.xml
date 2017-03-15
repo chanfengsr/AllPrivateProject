@@ -3,4 +3,7 @@
   <DatabaseConfig>
     <key name="ConnectionString" value="Data Source=127.0.0.1;Initial Catalog=StockExp;Integrated Security=True" />
   </DatabaseConfig>
+  <AppConfig>
+    <key name="SourceFolder" value="" remark="" />
+  </AppConfig>
 </SystemConfig>

@@ -6,6 +6,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Windows.Forms;
 using StockExplore.Properties;
 
@@ -13,8 +14,6 @@ namespace StockExplore
 {
     public partial class MainForm : Form
     {
-        private bool _sqlConnect;
-
         public MainForm()
         {
             Control.CheckForIllegalCrossThreadCalls = false;
@@ -28,12 +27,18 @@ namespace StockExplore
         private void MainForm_Load(object sender, EventArgs e)
         {
             btnCloseForm.Top = -1000;
+            LoadConfig();
 
-            CommFunction.LoadAllConfig();
+            new Thread(() =>
+            {
+                if (!SQLHelper.TestConnectString(CommProp.ConnectionString))
+                    Console.WriteLine("数据库连接错误!");
+            }).Start();
+        }
 
-            _sqlConnect = SQLHelper.TestConnectString(CommProp.ConnectionString);
-            if (!_sqlConnect)
-                SysMessageBox.ErrorMessage("数据库连接错误!", "");
+        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            SaveConfig();
         }
 
         private void btnTest_Click(object sender, EventArgs e)
@@ -59,5 +64,80 @@ namespace StockExplore
         {
             txtConsole.Clear();
         }
+
+        private void btnSourceFolderBrowser_Click(object sender, EventArgs e)
+        {
+            FolderBrowser(txtSourceFolder);
+        }
+
+        private void txtFileFolder_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+                e.Effect = DragDropEffects.Copy;
+        }
+
+        private void txtFileFolder_DragDrop(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                Array ary = (Array)e.Data.GetData(DataFormats.FileDrop);
+
+                if (ary.Length == 0)
+                    return;
+
+                string folderName = ary.GetValue(0).ToString();
+
+                if (Directory.Exists(folderName))
+                {
+                    var textBox = sender as TextBox;
+                    if (textBox != null)
+                        textBox.Text = folderName;
+                }
+            }
+        }
+
+        private void FolderBrowser(Control txtBox)
+        {
+            if (Directory.Exists(txtBox.Text))
+                folderBrowserDialog.SelectedPath = txtBox.Text;
+            else
+                folderBrowserDialog.SelectedPath = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+
+            if (folderBrowserDialog.ShowDialog(this) == DialogResult.OK)
+                txtBox.Text = folderBrowserDialog.SelectedPath;
+        }
+
+        private void LoadConfig()
+        {
+            try
+            {
+                CommFunction.LoadAllConfig();
+                txtSourceFolder.Text = CommProp.SourceFolder;
+            }
+            catch (Exception ex)
+            {
+                CommFunction.WriteMessage(ex.Message);
+            }
+        }
+
+        private void SaveConfig()
+        {
+            try
+            {
+                SysConfig.WriteConfigData("AppConfig", "SourceFolder", txtSourceFolder.Text);
+            }
+            catch (Exception ex)
+            {
+                CommFunction.WriteMessage(ex.Message);
+            }
+        }
+
+        private void UIInProcess(bool inProcessing)
+        {
+            this.Cursor = inProcessing ? Cursors.WaitCursor : Cursors.Default;
+
+            //grpFunction.Enabled = !inProcessing;
+        }
+        
     }
 }

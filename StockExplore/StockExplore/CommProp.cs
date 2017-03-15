@@ -10,5 +10,9 @@ namespace StockExplore
         /// <summary>系统连接字符串
         /// </summary>
         public static string ConnectionString { get; set; }
+
+        /// <summary>源文件夹路径
+        /// </summary>
+        public static string SourceFolder { get; set; }
     }
 }

@@ -19,6 +19,7 @@ using System;
 using System.Data.SqlClient;
 using System.Data;
 using System.Collections;
+using System.Threading;
 
 namespace StockExplore
 {
@@ -1117,33 +1118,45 @@ namespace StockExplore
 
         #region 测试数据库连接字符串
         /// <summary>测试数据库连接字符串</summary>
-        public static bool TestConnectString(string ConnectionString)
+        public static bool TestConnectString(string connectionString)
         {
-            SqlConnection cnn = new SqlConnection(ConnectionString);
-            try
+            string cnnString = connectionString.Contains("Connect Timeout") ? connectionString : connectionString + ";Connect Timeout=5";
+            
+            Thread testFun = new Thread(() =>
             {
-                cnn.Open();
-                cnn.Close();
+                SqlConnection cnn = new SqlConnection(cnnString);
 
-                return true;
-            }
-            catch (Exception)
-            {
-                return false;
-            }
-            finally
-            {
-                if (cnn != null)
+                try
                 {
-                    if (cnn.State != System.Data.ConnectionState.Closed)
-                    {
-                        cnn.Close();
-                    }
-                    cnn.Dispose();
+                    cnn.Open();
+                    cnn.Close();
+
+                    Thread.CurrentThread.Name = true.ToString();
                 }
-            }
+                catch (Exception)
+                {
+                    Thread.CurrentThread.Name = false.ToString();
+                }
+                finally
+                {
+                    if (cnn != null)
+                    {
+                        if (cnn.State != System.Data.ConnectionState.Closed)
+                        {
+                            cnn.Close();
+                        }
+                        cnn.Dispose();
+                    }
+                }
+            });
+
+            testFun.Start();
+            testFun.Join(5000);
+            testFun.Abort();
+
+            return testFun.Name == true.ToString();
         }
-        #endregion
+        #endregion 测试数据库连接字符串
 
         #region 保存数据表所做的更改
         #region 保存数据表所做的更改（不带事务）

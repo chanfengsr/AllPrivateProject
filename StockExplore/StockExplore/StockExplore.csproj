@@ -97,6 +97,7 @@
   <ItemGroup>
     <Content Include="ConfigFile\SystemConfig.xml">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <SubType>Designer</SubType>
     </Content>
     <Content Include="DatabaseScript\DatabaseScript.sql" />
     <Content Include="DatabaseScript\TableScript.sql" />
