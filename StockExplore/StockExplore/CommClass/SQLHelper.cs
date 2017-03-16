@@ -11,7 +11,7 @@
 //	日期(Create Date):		2012-4-16
 //
 //	修改日期(Alter Date):	
-//
+//  2017-3-16   修改 TestConnectString 方法，线程检测，只等待 5 分钟
 //	备注(Remark):			
 //
 // ==================================================================================
@@ -20,6 +20,7 @@ using System.Data.SqlClient;
 using System.Data;
 using System.Collections;
 using System.Threading;
+using System.Threading.Tasks;
 
 namespace StockExplore
 {
@@ -1120,22 +1121,22 @@ namespace StockExplore
         /// <summary>测试数据库连接字符串</summary>
         public static bool TestConnectString(string connectionString)
         {
-            string cnnString = connectionString.Contains("Connect Timeout") ? connectionString : connectionString + ";Connect Timeout=5";
-            
-            Thread testFun = new Thread(() =>
+            Task<bool> t1 = Task.Factory.StartNew(() =>
+            #region MainTask
+
             {
-                SqlConnection cnn = new SqlConnection(cnnString);
+                SqlConnection cnn = new SqlConnection(connectionString);
 
                 try
                 {
                     cnn.Open();
                     cnn.Close();
 
-                    Thread.CurrentThread.Name = true.ToString();
+                    return true;
                 }
                 catch (Exception)
                 {
-                    Thread.CurrentThread.Name = false.ToString();
+                    return false;
                 }
                 finally
                 {
@@ -1150,11 +1151,19 @@ namespace StockExplore
                 }
             });
 
-            testFun.Start();
-            testFun.Join(5000);
-            testFun.Abort();
+            #endregion MainTask
 
-            return testFun.Name == true.ToString();
+            Task<bool> t2 = Task.Factory.StartNew(() =>
+            #region 延时监测进程，超过5秒则报失败
+            {
+                Thread.Sleep(5000);
+                return false;
+            });
+            # endregion 延时监测进程，超过5秒则报失败
+
+            Task.WaitAny(t1, t2);
+            
+            return t1.Status == TaskStatus.RanToCompletion && t1.Result;
         }
         #endregion 测试数据库连接字符串
 
