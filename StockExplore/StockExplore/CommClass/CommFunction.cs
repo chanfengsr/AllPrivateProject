@@ -76,6 +76,17 @@ namespace StockExplore
             return CheckFileWritPermission(fileName);
         }
 
+        /// <summary>将List弄成一个字符串，用StringBuilder，量大可能会快一点
+        /// </summary>
+        /// <param name="list"></param>
+        /// <returns></returns>
+        public static string StringList2String(ICollection<string> list) {
+            StringBuilder sb = new StringBuilder();
+            foreach (string s in list)
+                sb.AppendLine(s);
+
+            return sb.ToString().TrimEnd(Environment.NewLine.ToCharArray());
+        }
         #endregion 本程序专用
     }
 }
