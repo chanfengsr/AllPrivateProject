@@ -34,5 +34,27 @@ namespace StockExplore
 
             return ret;
         }
+
+        public void InsertStkKLine(TupleValue<FileInfo, StockHead> stkInfo, bool overwrite, bool isComposite)
+        {
+            FileInfo fileInfo = stkInfo.Value1;
+            StockHead stkHead = stkInfo.Value2;
+            stkHead.StkType = isComposite ? "0" : "1";
+
+            if (overwrite)
+                this.InsertStkKLine_Overwrite(fileInfo, stkHead);
+            else
+                this.InsertStkKLine_AddNew(fileInfo, stkHead);
+        }
+
+        private void InsertStkKLine_Overwrite(FileInfo fileInfo, StockHead stkHead)
+        { 
+            // todo
+        }
+
+        private void InsertStkKLine_AddNew(FileInfo fileInfo, StockHead stkHead)
+        {
+            // todo
+        }
     }
 }
