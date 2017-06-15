@@ -10,7 +10,7 @@ namespace StockExplore {
         private String _MarkType;
         private String _StkCode;
         private String _StkName;
-        private String _StkType = "1";
+        private String _StkType = "1";// 0 指数，1 股票
         #endregion 私有变量及默认值
 
         public List<string> AllColNames = new List<string> { "MarkType", "StkCode", "StkName", "StkType" };
@@ -61,7 +61,7 @@ namespace StockExplore {
             }
         }
 
-        /// <summary>
+        /// <summary> 0 指数，1 股票
         /// </summary>
         public String StkType {
             get { return _StkType; }

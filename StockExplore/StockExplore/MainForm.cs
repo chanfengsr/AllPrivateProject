@@ -15,6 +15,7 @@ namespace StockExplore
     public partial class MainForm : Form
     {
         protected readonly List<FileInfo> AllFile = new List<FileInfo>();
+        private BL _bl;
 
         public MainForm()
         {
@@ -33,7 +34,9 @@ namespace StockExplore
 
             new Thread(() =>
             {
-                if (!SQLHelper.TestConnectString(CommProp.ConnectionString))
+                if (SQLHelper.TestConnectString(CommProp.ConnectionString))
+                    _bl = new BL(CommProp.ConnectionString);
+                else
                     Console.WriteLine("数据库连接错误!");
             }).Start();
         }
@@ -59,7 +62,7 @@ namespace StockExplore
              */
 
             string str = this.LoadFileList();
-
+            Console.WriteLine(str);
         }
 
         private void btnCloseForm_Click(object sender, EventArgs e)
@@ -146,18 +149,21 @@ namespace StockExplore
             //grpFunction.Enabled = !inProcessing;
         }
 
-        private string LoadFileList() {
+        private string LoadFileList()
+        {
             string retVal = string.Empty;
             string sourceFolder = txtSourceFolder.Text;
 
-            if (Directory.Exists(sourceFolder)) {
+            if (Directory.Exists(sourceFolder))
+            {
                 AllFile.Clear();
                 DirectoryInfo dicInfo = new DirectoryInfo(sourceFolder);
 
-                foreach (FileInfo fileInfo in dicInfo.GetFiles()) {
+                foreach (FileInfo fileInfo in dicInfo.GetFiles())
+                {
                     //隐藏文件和系统文件就不要过来凑热闹了
                     if ( /*( fileInfo.Attributes & FileAttributes.Hidden ) == FileAttributes.Hidden || */
-                        (fileInfo.Attributes & FileAttributes.System) == FileAttributes.System)
+                        ( fileInfo.Attributes & FileAttributes.System ) == FileAttributes.System)
                         continue;
 
                     AllFile.Add(fileInfo);
@@ -166,11 +172,27 @@ namespace StockExplore
                 //一行一行显示文件名
                 retVal = CommFunction.StringList2String(AllFile.Select(f => f.FullName).ToList());
             }
-            else {
+            else
+            {
                 CommFunction.WriteMessage("文件夹不存在！");
             }
 
             return retVal;
+        }
+
+        private void bkgDataImport_DoWork(object sender, DoWorkEventArgs e)
+        {
+
+        }
+
+        private void bkgDataImport_ProgressChanged(object sender, ProgressChangedEventArgs e)
+        {
+
+        }
+
+        private void bkgDataImport_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
+        {
+
         }
     }
 }

@@ -27,6 +27,10 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageImportData = new System.Windows.Forms.TabPage();
+            this.grpDayKLine = new System.Windows.Forms.GroupBox();
+            this.dataImptDayKLineBtnImport = new System.Windows.Forms.Button();
+            this.dataImptDayKLineChkIsComposite = new System.Windows.Forms.CheckBox();
+            this.dataImptDayKLineChkConvert = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtSourceFolder = new System.Windows.Forms.TextBox();
             this.btnSourceFolderBrowser = new System.Windows.Forms.Button();
@@ -36,18 +40,15 @@
             this.btnClear = new System.Windows.Forms.Button();
             this.txtConsole = new System.Windows.Forms.TextBox();
             this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
-            this.grpDayKLine = new System.Windows.Forms.GroupBox();
-            this.dataImptDayKLineChkConvert = new System.Windows.Forms.CheckBox();
-            this.dataImptDayKLineChkIsComposite = new System.Windows.Forms.CheckBox();
-            this.dataImptDayKLineBtnImport = new System.Windows.Forms.Button();
+            this.bkgDataImport = new System.ComponentModel.BackgroundWorker();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPageImportData.SuspendLayout();
-            this.groupBox1.SuspendLayout();
             this.grpDayKLine.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnTest
@@ -104,6 +105,47 @@
             this.tabPageImportData.TabIndex = 0;
             this.tabPageImportData.Text = "数据导入";
             this.tabPageImportData.UseVisualStyleBackColor = true;
+            // 
+            // grpDayKLine
+            // 
+            this.grpDayKLine.Controls.Add(this.dataImptDayKLineBtnImport);
+            this.grpDayKLine.Controls.Add(this.dataImptDayKLineChkIsComposite);
+            this.grpDayKLine.Controls.Add(this.dataImptDayKLineChkConvert);
+            this.grpDayKLine.Location = new System.Drawing.Point(12, 39);
+            this.grpDayKLine.Name = "grpDayKLine";
+            this.grpDayKLine.Size = new System.Drawing.Size(99, 103);
+            this.grpDayKLine.TabIndex = 17;
+            this.grpDayKLine.TabStop = false;
+            this.grpDayKLine.Text = "日K线";
+            // 
+            // dataImptDayKLineBtnImport
+            // 
+            this.dataImptDayKLineBtnImport.Location = new System.Drawing.Point(12, 67);
+            this.dataImptDayKLineBtnImport.Name = "dataImptDayKLineBtnImport";
+            this.dataImptDayKLineBtnImport.Size = new System.Drawing.Size(75, 23);
+            this.dataImptDayKLineBtnImport.TabIndex = 1;
+            this.dataImptDayKLineBtnImport.Text = "导入";
+            this.dataImptDayKLineBtnImport.UseVisualStyleBackColor = true;
+            // 
+            // dataImptDayKLineChkIsComposite
+            // 
+            this.dataImptDayKLineChkIsComposite.AutoSize = true;
+            this.dataImptDayKLineChkIsComposite.Location = new System.Drawing.Point(11, 44);
+            this.dataImptDayKLineChkIsComposite.Name = "dataImptDayKLineChkIsComposite";
+            this.dataImptDayKLineChkIsComposite.Size = new System.Drawing.Size(48, 16);
+            this.dataImptDayKLineChkIsComposite.TabIndex = 0;
+            this.dataImptDayKLineChkIsComposite.Text = "指数";
+            this.dataImptDayKLineChkIsComposite.UseVisualStyleBackColor = true;
+            // 
+            // dataImptDayKLineChkConvert
+            // 
+            this.dataImptDayKLineChkConvert.AutoSize = true;
+            this.dataImptDayKLineChkConvert.Location = new System.Drawing.Point(11, 22);
+            this.dataImptDayKLineChkConvert.Name = "dataImptDayKLineChkConvert";
+            this.dataImptDayKLineChkConvert.Size = new System.Drawing.Size(48, 16);
+            this.dataImptDayKLineChkConvert.TabIndex = 0;
+            this.dataImptDayKLineChkConvert.Text = "覆盖";
+            this.dataImptDayKLineChkConvert.UseVisualStyleBackColor = true;
             // 
             // label3
             // 
@@ -203,46 +245,13 @@
             this.txtConsole.TabStop = false;
             this.txtConsole.WordWrap = false;
             // 
-            // grpDayKLine
+            // bkgDataImport
             // 
-            this.grpDayKLine.Controls.Add(this.dataImptDayKLineBtnImport);
-            this.grpDayKLine.Controls.Add(this.dataImptDayKLineChkIsComposite);
-            this.grpDayKLine.Controls.Add(this.dataImptDayKLineChkConvert);
-            this.grpDayKLine.Location = new System.Drawing.Point(12, 39);
-            this.grpDayKLine.Name = "grpDayKLine";
-            this.grpDayKLine.Size = new System.Drawing.Size(99, 103);
-            this.grpDayKLine.TabIndex = 17;
-            this.grpDayKLine.TabStop = false;
-            this.grpDayKLine.Text = "日K线";
-            // 
-            // dataImptDayKLineChkConvert
-            // 
-            this.dataImptDayKLineChkConvert.AutoSize = true;
-            this.dataImptDayKLineChkConvert.Location = new System.Drawing.Point(11, 22);
-            this.dataImptDayKLineChkConvert.Name = "dataImptDayKLineChkConvert";
-            this.dataImptDayKLineChkConvert.Size = new System.Drawing.Size(48, 16);
-            this.dataImptDayKLineChkConvert.TabIndex = 0;
-            this.dataImptDayKLineChkConvert.Text = "覆盖";
-            this.dataImptDayKLineChkConvert.UseVisualStyleBackColor = true;
-            // 
-            // dataImptDayKLineChkIsComposite
-            // 
-            this.dataImptDayKLineChkIsComposite.AutoSize = true;
-            this.dataImptDayKLineChkIsComposite.Location = new System.Drawing.Point(11, 44);
-            this.dataImptDayKLineChkIsComposite.Name = "dataImptDayKLineChkIsComposite";
-            this.dataImptDayKLineChkIsComposite.Size = new System.Drawing.Size(48, 16);
-            this.dataImptDayKLineChkIsComposite.TabIndex = 0;
-            this.dataImptDayKLineChkIsComposite.Text = "指数";
-            this.dataImptDayKLineChkIsComposite.UseVisualStyleBackColor = true;
-            // 
-            // dataImptDayKLineBtnImport
-            // 
-            this.dataImptDayKLineBtnImport.Location = new System.Drawing.Point(12, 67);
-            this.dataImptDayKLineBtnImport.Name = "dataImptDayKLineBtnImport";
-            this.dataImptDayKLineBtnImport.Size = new System.Drawing.Size(75, 23);
-            this.dataImptDayKLineBtnImport.TabIndex = 1;
-            this.dataImptDayKLineBtnImport.Text = "导入";
-            this.dataImptDayKLineBtnImport.UseVisualStyleBackColor = true;
+            this.bkgDataImport.WorkerReportsProgress = true;
+            this.bkgDataImport.WorkerSupportsCancellation = true;
+            this.bkgDataImport.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bkgDataImport_DoWork);
+            this.bkgDataImport.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bkgDataImport_ProgressChanged);
+            this.bkgDataImport.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bkgDataImport_RunWorkerCompleted);
             // 
             // MainForm
             // 
@@ -262,10 +271,10 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPageImportData.ResumeLayout(false);
             this.tabPageImportData.PerformLayout();
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
             this.grpDayKLine.ResumeLayout(false);
             this.grpDayKLine.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -289,6 +298,7 @@
         private System.Windows.Forms.Button dataImptDayKLineBtnImport;
         private System.Windows.Forms.CheckBox dataImptDayKLineChkIsComposite;
         private System.Windows.Forms.CheckBox dataImptDayKLineChkConvert;
+        private System.ComponentModel.BackgroundWorker bkgDataImport;
     }
 }
 

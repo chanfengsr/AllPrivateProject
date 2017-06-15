@@ -63,6 +63,7 @@
     <Compile Include="CommClass\TextBoxStreamWriter.cs" />
     <Compile Include="CommClass\TupleValue.cs" />
     <Compile Include="CommProp.cs" />
+    <Compile Include="Layer\BL.cs" />
     <Compile Include="Layer\DA.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
@@ -70,6 +71,7 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Model\Enums.cs" />
     <Compile Include="Model\KLineDay.cs" />
     <Compile Include="Model\StockHead.cs" />
     <Compile Include="Program.cs" />

@@ -5,5 +5,11 @@ using System.Text;
 
 namespace StockExplore
 {
-    internal class DA {}
+    internal enum KLineType
+    {
+        Day,
+        Week,
+        Month,
+        Minute
+    }
 }
