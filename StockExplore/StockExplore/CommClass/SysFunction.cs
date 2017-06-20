@@ -29,10 +29,12 @@ using System.Text.RegularExpressions;
 using System.IO;
 using System.Linq;
 
-namespace StockExplore {
+namespace StockExplore
+{
     /// <summary>系统公共函数
     /// </summary>
-    public class SysFunction {
+    public class SysFunction
+    {
         private const string EncryptKey = "ChanFengSanRen026";
 
         #region 获得数据库系统时间
@@ -41,7 +43,8 @@ namespace StockExplore {
         /// </summary>
         /// <param name="connection">SQLServer 连接</param>
         /// <returns></returns>
-        public static DateTime GetServerDateTime(SqlConnection connection) {
+        public static DateTime GetServerDateTime(SqlConnection connection)
+        {
             return (DateTime)SQLHelper.ExecuteScalar("SELECT GETDATE()", CommandType.Text, connection);
         }
 
@@ -50,7 +53,8 @@ namespace StockExplore {
         /// <param name="connection">SQLServer 连接</param>
         /// <param name="transaction">SQLServer 事务</param>
         /// <returns></returns>
-        public static DateTime GetServerDateTime(SqlConnection connection, SqlTransaction transaction) {
+        public static DateTime GetServerDateTime(SqlConnection connection, SqlTransaction transaction)
+        {
             return (DateTime)SQLHelper.ExecuteScalar("SELECT GETDATE()", CommandType.Text, connection, transaction);
         }
 
@@ -63,7 +67,8 @@ namespace StockExplore {
         /// <param name="format">标准或自定义日期和时间格式的字符串，默认（yyyy-MM-dd HH:mm:ss）</param>
         /// <param name="needParentheses">是否需要括号包围，默认（无括号）</param>
         /// <returns></returns>
-        public static string GetStandDataTimeString(string format = "yyyy-MM-dd HH:mm:ss", bool needParentheses = false) {
+        public static string GetStandDataTimeString(string format = "yyyy-MM-dd HH:mm:ss", bool needParentheses = false)
+        {
             if (needParentheses)
                 return Parenthesis(DateTime.Now.ToString(format));
             else
@@ -78,7 +83,8 @@ namespace StockExplore {
         /// </summary>
         /// <param name="String">原字符串</param>
         /// <returns></returns>
-        public static string SParm(string String) {
+        public static string SParm(string String)
+        {
             if (String == null) throw new ArgumentNullException("String");
             return " '" + String.Replace("'", "''") + "' ";
         }
@@ -87,7 +93,8 @@ namespace StockExplore {
         /// </summary>
         /// <param name="aString">原字符串数组</param>
         /// <returns></returns>
-        public static string SParm(string[] aString) {
+        public static string SParm(string[] aString)
+        {
             StringBuilder sb = new StringBuilder();
 
             foreach (string str in aString)
@@ -108,7 +115,8 @@ namespace StockExplore {
         /// <param name="dt">DataTable</param>
         /// <param name="colIndex">需要返回的列的Index</param>
         /// <returns></returns>
-        public static IEnumerable<T> GetColList<T>(DataTable dt, int colIndex) {
+        public static IEnumerable<T> GetColList<T>(DataTable dt, int colIndex)
+        {
             //for (int i = 0; i < dt.Rows.Count; i++)
             //    yield return (T)(dt.Rows[i][colIndex]);
 
@@ -123,7 +131,8 @@ namespace StockExplore {
         /// <param name="dt">DataTable</param>
         /// <param name="colName">需要返回的列的名称</param>
         /// <returns></returns>
-        public static IEnumerable<T> GetColList<T>(DataTable dt, string colName) {
+        public static IEnumerable<T> GetColList<T>(DataTable dt, string colName)
+        {
             //for (int i = 0; i < dt.Rows.Count; i++)
             //    yield return (T) (dt.Rows[i][colName]);
 
@@ -141,11 +150,13 @@ namespace StockExplore {
         /// <param name="lstParms">任意数据类型的参数集</param>
         /// <param name="needSParm">是否需要两边加单引号</param>
         /// <returns></returns>
-        public static string TransToSQLParmString<T>(List<T> lstParms, bool needSParm) {
+        public static string TransToSQLParmString<T>(List<T> lstParms, bool needSParm)
+        {
             StringBuilder sb = new StringBuilder();
             string retVal = "";
 
-            if (lstParms.Count > 0) {
+            if (lstParms.Count > 0)
+            {
                 foreach (T parm in lstParms)
                     if (needSParm)
                         sb.Append(SysFunction.SParm(parm.ToString()) + ",");
@@ -172,18 +183,23 @@ namespace StockExplore {
         /// <param name="keyColIndex">作为Key的列下标</param>
         /// <param name="valueColIndex">作为Value的列下标</param>
         /// <returns></returns>
-        public static Dictionary<T1, T2> GetColDictionary<T1, T2>(DataTable table, int keyColIndex, int valueColIndex) {
+        public static Dictionary<T1, T2> GetColDictionary<T1, T2>(DataTable table, int keyColIndex, int valueColIndex)
+        {
             Dictionary<T1, T2> retVal = new Dictionary<T1, T2>();
 
             if (keyColIndex != -1 && valueColIndex != -1 &&
-                table.Columns.Count > keyColIndex && table.Columns.Count > valueColIndex) {
-                foreach (DataRow dr in table.Rows) {
-                    try {
+                table.Columns.Count > keyColIndex && table.Columns.Count > valueColIndex)
+            {
+                foreach (DataRow dr in table.Rows)
+                {
+                    try
+                    {
                         object objColKey = null;
                         object objColValue = null;
                         T1 tKey;
                         T2 tValue;
-                        try {
+                        try
+                        {
                             if (table.Columns[keyColIndex].DataType.FullName == "System.Type")
                                 objColKey = dr[keyColIndex].ToString();
                             else
@@ -194,16 +210,19 @@ namespace StockExplore {
                             else
                                 objColValue = (T2)dr[valueColIndex];
                         }
-                        catch (Exception) {
+                        catch (Exception)
+                        {
                             objColKey = dr[keyColIndex].ToString();
                             objColValue = dr[valueColIndex].ToString();
                         }
-                        finally {
+                        finally
+                        {
                             tKey = (T1)objColKey;
                             tValue = (T2)objColValue;
                         }
 
-                        if (!retVal.ContainsKey(tKey)) {
+                        if (!retVal.ContainsKey(tKey))
+                        {
                             retVal.Add(tKey, tValue);
                         }
                     }
@@ -223,12 +242,15 @@ namespace StockExplore {
         /// <param name="keyColName">作为Key的列名</param>
         /// <param name="valueColName">作为Value的列名</param>
         /// <returns></returns>
-        public static Dictionary<T1, T2> GetColDictionary<T1, T2>(DataTable table, string keyColName, string valueColName) {
+        public static Dictionary<T1, T2> GetColDictionary<T1, T2>(DataTable table, string keyColName, string valueColName)
+        {
             Dictionary<T1, T2> retVal = new Dictionary<T1, T2>();
 
-            if (table.Columns.Contains(keyColName) && table.Columns.Contains(valueColName)) {
+            if (table.Columns.Contains(keyColName) && table.Columns.Contains(valueColName))
+            {
                 int intKeyIndex = -1, intValIndex = -1;
-                for (int i = 0; i < table.Columns.Count; i++) {
+                for (int i = 0; i < table.Columns.Count; i++)
+                {
                     if (table.Columns[i].ColumnName.Trim().ToLower() == keyColName.Trim().ToLower())
                         intKeyIndex = i;
 
@@ -250,14 +272,17 @@ namespace StockExplore {
         /// </summary>
         /// <param name="value">待检验的字符串</param>
         /// <returns></returns>
-        public static bool IsFloatValue(string value) {
+        public static bool IsFloatValue(string value)
+        {
             bool retVal = false;
-            try {
+            try
+            {
                 float flt = float.Parse(value);
 
                 retVal = true;
             }
-            catch (Exception) {
+            catch (Exception)
+            {
                 retVal = false;
             }
 
@@ -268,14 +293,17 @@ namespace StockExplore {
         /// </summary>
         /// <param name="value">待检验的字符串</param>
         /// <returns></returns>
-        public static bool IsIntValue(string value) {
+        public static bool IsIntValue(string value)
+        {
             bool retVal = false;
-            try {
+            try
+            {
                 int iVal = int.Parse(value);
 
                 retVal = true;
             }
-            catch (Exception) {
+            catch (Exception)
+            {
                 retVal = false;
             }
 
@@ -290,7 +318,8 @@ namespace StockExplore {
         /// </summary>
         /// <param name="emailAddress">Email地址</param>
         /// <returns></returns>
-        public static bool VerifyEmailAddress(string emailAddress) {
+        public static bool VerifyEmailAddress(string emailAddress)
+        {
             return Regex.IsMatch(emailAddress, @"^[\w-]+(\.[\w-]+)*@[\w-]+(\.[\w-]+)+$");
         }
 
@@ -303,14 +332,18 @@ namespace StockExplore {
         /// </summary>
         /// <param name="Value">被测字符串</param>
         /// <returns></returns>
-        public static int TestTrueLens(string Value) {
+        public static int TestTrueLens(string Value)
+        {
             int Lens = 0;
 
-            for (int i = 0; i < Value.Length; i++) {
-                if (Convert.ToInt32(Value[i]) < 0 || Convert.ToInt32(Value[i]) > 255) {
+            for (int i = 0; i < Value.Length; i++)
+            {
+                if (Convert.ToInt32(Value[i]) < 0 || Convert.ToInt32(Value[i]) > 255)
+                {
                     Lens += 2;
                 }
-                else {
+                else
+                {
                     Lens += 1;
                 }
             }
@@ -326,15 +359,18 @@ namespace StockExplore {
         /// 在命令行中实行退格键
         /// </summary>
         /// <param name="previousObject">前一个显示的内容（用于测长度）</param>
-        public static void BackspaceInConsole(object previousObject) {
-            try {
+        public static void BackspaceInConsole(object previousObject)
+        {
+            try
+            {
                 int length = previousObject.ToString().Length;
 
                 for (int i = 0; i < length; i++)
                     Console.Write("\b \b");
                 //Console.Write(Keys.Back);
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 throw ex;
             }
         }
@@ -344,13 +380,16 @@ namespace StockExplore {
         /// </summary>
         /// <param name="previousObject">前一个显示的内容（用于测长度）</param>
         /// <param name="textBox">对应的TextBox</param>
-        public static void BackspaceInConsole(object previousObject, TextBox textBox) {
-            try {
+        public static void BackspaceInConsole(object previousObject, TextBox textBox)
+        {
+            try
+            {
                 int length = previousObject.ToString().Length;
 
                 textBox.Text = textBox.Text.Substring(0, textBox.Text.Length - length);
             }
-            catch (Exception ex) {
+            catch (Exception ex)
+            {
                 throw ex;
             }
         }
@@ -364,7 +403,8 @@ namespace StockExplore {
         /// </summary>
         /// <param name="character"></param>
         /// <returns></returns>
-        public static int GetAscII(char character) {
+        public static int GetAscII(char character)
+        {
             System.Text.ASCIIEncoding asciiEncoding = new System.Text.ASCIIEncoding();
 
             return (int)asciiEncoding.GetBytes(new char[] {character})[0];
@@ -375,14 +415,16 @@ namespace StockExplore {
         /// </summary>
         /// <param name="text"></param>
         /// <returns></returns>
-        public int[] GetAscII(string text) {
+        public int[] GetAscII(string text)
+        {
             System.Text.ASCIIEncoding asciiEncoding = new System.Text.ASCIIEncoding();
             byte[] bytes = asciiEncoding.GetBytes(text);
 
             return Array.ConvertAll<byte, int>(bytes, new Converter<byte, int>(ByteToInt));
         }
 
-        private int ByteToInt(byte byt) {
+        private int ByteToInt(byte byt)
+        {
             return (int)byt;
         }
 
@@ -397,7 +439,8 @@ namespace StockExplore {
         /// <param name="leftSymbol">左边符号</param>
         /// <param name="rightSymbol">右边符号</param>
         /// <returns></returns>
-        public static string Parenthesis(string String, string leftSymbol = "(", string rightSymbol = ")") {
+        public static string Parenthesis(string String, string leftSymbol = "(", string rightSymbol = ")")
+        {
             return leftSymbol + String + rightSymbol;
         }
 
@@ -411,14 +454,18 @@ namespace StockExplore {
         /// <param name="type">转换后的类型</param>
         /// <param name="value">待转换的字符串</param>
         /// <returns></returns>
-        public static object ConvertStringType(Type type, string value) {
-            if (type == typeof (string)) {
+        public static object ConvertStringType(Type type, string value)
+        {
+            if (type == typeof (string))
+            {
                 return value;
             }
 
             //转换已知的格式
-            if (type == typeof (System.Boolean)) {
-                switch (value) {
+            if (type == typeof (System.Boolean))
+            {
+                switch (value)
+                {
                     case "1":
                         value = "true";
                         break;
@@ -430,14 +477,17 @@ namespace StockExplore {
 
             MethodInfo parseMethod = null;
 
-            foreach (MethodInfo mi in type.GetMethods(BindingFlags.Static | BindingFlags.Public)) {
-                if (mi.Name == "Parse" && mi.GetParameters().Length == 1) {
+            foreach (MethodInfo mi in type.GetMethods(BindingFlags.Static | BindingFlags.Public))
+            {
+                if (mi.Name == "Parse" && mi.GetParameters().Length == 1)
+                {
                     parseMethod = mi;
                     break;
                 }
             }
 
-            if (parseMethod == null) {
+            if (parseMethod == null)
+            {
                 throw new ArgumentException(string.Format("Type: {0} has not Parse static method!", type));
             }
 
@@ -453,8 +503,10 @@ namespace StockExplore {
         /// </summary>
         /// <param name="type"></param>
         /// <returns></returns>
-        public static Type GetTypeByString(string type) {
-            switch (type.ToLower()) {
+        public static Type GetTypeByString(string type)
+        {
+            switch (type.ToLower())
+            {
                 case "bool":
                     return Type.GetType("System.Boolean", true, true);
                 case "byte":
@@ -505,9 +557,9 @@ namespace StockExplore {
         /// <param name="origString">原字符串</param>
         /// <param name="removeString">要剪掉的字符串</param>
         /// <returns></returns>
-        public static string RemoveSurround(string origString, string removeString) {
+        public static string RemoveSurround(string origString, string removeString)
+        {
             return origString.Trim(removeString.ToCharArray());
-            ;
         }
 
         /// <summary>
@@ -517,9 +569,11 @@ namespace StockExplore {
         /// <param name="startRemoveString">要剪掉的起始字符串</param>
         /// <param name="endRemoveString">要剪掉的结束字符串</param>
         /// <returns></returns>
-        public static string RemoveSurround(string origString, string startRemoveString, string endRemoveString) {
+        public static string RemoveSurround(string origString, string startRemoveString, string endRemoveString)
+        {
             string retVal = origString;
-            while (retVal.StartsWith(startRemoveString) && retVal.EndsWith(endRemoveString)) {
+            while (retVal.StartsWith(startRemoveString) && retVal.EndsWith(endRemoveString))
+            {
                 retVal = retVal.Substring(startRemoveString.Length, retVal.Length - startRemoveString.Length - endRemoveString.Length);
             }
 
@@ -536,7 +590,8 @@ namespace StockExplore {
         /// <param name="origTable">初始DataTable</param>
         /// <param name="tableName">数据库物理表名</param>
         /// <param name="cnn">SqlConnection</param>
-        public static void SetDatatableDefaultValue(ref DataTable origTable, string tableName, SqlConnection cnn) {
+        public static void SetDatatableDefaultValue(ref DataTable origTable, string tableName, SqlConnection cnn)
+        {
             #region 原始SQL语句
 
             /*
@@ -557,9 +612,12 @@ WHERE C.name = 'Pub_Inventory'
 
             Dictionary<string, string> dicColDefaultValue = GetColDictionary<string, string>(dtColDefaultValue, "name", "text");
 
-            foreach (DataColumn dc in origTable.Columns) {
-                if (dicColDefaultValue.ContainsKey(dc.ColumnName)) {
-                    try {
+            foreach (DataColumn dc in origTable.Columns)
+            {
+                if (dicColDefaultValue.ContainsKey(dc.ColumnName))
+                {
+                    try
+                    {
                         strSQL = "SELECT " + dicColDefaultValue[dc.ColumnName].Trim();
                         object defaultValue = SQLHelper.ExecuteScalar(strSQL, CommandType.Text, cnn);
 
@@ -582,7 +640,8 @@ WHERE C.name = 'Pub_Inventory'
         /// <param name="connection">SqlConnection</param>
         /// <param name="strSQL">SQL查询语句</param>
         /// <param name="dt">DataGridView的DataSource的DataTable</param>
-        public static void SaveChanges(SqlConnection connection, string strSQL, DataTable dt) {
+        public static void SaveChanges(SqlConnection connection, string strSQL, DataTable dt)
+        {
             SQLHelper.SaveChanges(connection, strSQL, dt);
         }
 
@@ -593,7 +652,8 @@ WHERE C.name = 'Pub_Inventory'
         /// <param name="connection">SqlConnection</param>
         /// <param name="cmdSQLs">需要更新的表的SQL语句集</param>
         /// <param name="dts">需要更新的DataTable集</param>
-        public static void SaveChanges(SqlConnection connection, string[] cmdSQLs, DataTable[] dts) {
+        public static void SaveChanges(SqlConnection connection, string[] cmdSQLs, DataTable[] dts)
+        {
             SQLHelper.SaveChanges(connection, cmdSQLs, dts);
         }
 
@@ -610,7 +670,8 @@ WHERE C.name = 'Pub_Inventory'
         /// <param name="trans">SqlTransaction</param>
         /// <param name="strSQL">需要更新的表的SQL语句</param>
         /// <param name="dt">需要更新的DataTable</param>
-        public static void SaveChanges(SqlConnection connection, SqlTransaction trans, string strSQL, DataTable dt) {
+        public static void SaveChanges(SqlConnection connection, SqlTransaction trans, string strSQL, DataTable dt)
+        {
             SQLHelper.SaveChanges(connection, trans, strSQL, dt);
         }
 
@@ -622,7 +683,8 @@ WHERE C.name = 'Pub_Inventory'
         /// <param name="trans">SqlTransaction</param>
         /// <param name="commandTexts">需要更新的表的SQL语句集</param>
         /// <param name="dts">需要更新的DataTable集</param>
-        public static void SaveChanges(SqlConnection connection, SqlTransaction trans, string[] commandTexts, DataTable[] dts) {
+        public static void SaveChanges(SqlConnection connection, SqlTransaction trans, string[] commandTexts, DataTable[] dts)
+        {
             SQLHelper.SaveChanges(connection, trans, commandTexts, dts);
         }
 
@@ -639,14 +701,17 @@ WHERE C.name = 'Pub_Inventory'
         /// </summary>
         /// <param name="dataTable">DataTable</param>
         /// <returns></returns>
-        public static bool TableChanged(DataTable dataTable) {
-            try {
+        public static bool TableChanged(DataTable dataTable)
+        {
+            try
+            {
                 if (dataTable.GetChanges() != null)
                     return true;
                 else
                     return false;
             }
-            catch (Exception) {
+            catch (Exception)
+            {
                 return false;
             }
         }
@@ -662,12 +727,15 @@ WHERE C.name = 'Pub_Inventory'
         /// <param name="tableName">表名</param>
         /// <param name="colNames">列名集合</param>
         /// <returns></returns>
-        public static DataTable ConvertArrayToDatatable(object[][] aobj, string tableName, params string[] colNames) {
+        public static DataTable ConvertArrayToDatatable(object[][] aobj, string tableName, params string[] colNames)
+        {
             DataTable retVal = new DataTable(tableName);
 
             //生成列
-            if (aobj != null) {
-                for (int i = 0; i < aobj[0].Length; i++) {
+            if (aobj != null)
+            {
+                for (int i = 0; i < aobj[0].Length; i++)
+                {
                     Type type = aobj[0][i].GetType();
                     string colName = colNames.Length > i ? colNames[i] : Guid.NewGuid().ToString();
 
@@ -678,7 +746,8 @@ WHERE C.name = 'Pub_Inventory'
             }
 
             //填充数据
-            for (int i = 0; i < aobj.GetLength(0); i++) {
+            for (int i = 0; i < aobj.GetLength(0); i++)
+            {
                 DataRow dr = retVal.NewRow();
 
                 for (int j = 0; j < aobj[i].Length; j++)
@@ -699,14 +768,17 @@ WHERE C.name = 'Pub_Inventory'
         /// </summary>
         /// <param name="dgv">dgv控件作为参数</param>
         /// <returns>返回临时内存表</returns>
-        public static DataTable GetDataGridViewToTable(DataGridView dgv) {
+        public static DataTable GetDataGridViewToTable(DataGridView dgv)
+        {
             DataTable dt = new DataTable();
             for (int count = 0; count < dgv.Columns.Count; count++)
                 dt.Columns.Add(dgv.Columns[count].Name.ToString(), dgv.Columns[count].ValueType);
 
-            for (int iRow = 0; iRow < dgv.Rows.Count; iRow++) {
+            for (int iRow = 0; iRow < dgv.Rows.Count; iRow++)
+            {
                 DataRow dr = dt.NewRow();
-                for (int iCol = 0; iCol < dgv.Columns.Count; iCol++) {
+                for (int iCol = 0; iCol < dgv.Columns.Count; iCol++)
+                {
                     dr[iCol] = dgv.Rows[iRow].Cells[iCol].Value;
                 }
                 dt.Rows.Add(dr);
@@ -722,7 +794,8 @@ WHERE C.name = 'Pub_Inventory'
         /// </summary>
         /// <param name="act">委托</param>
         /// <example>MultithreadedExecution(delegate() {/*执行内容*/ });</example>
-        public static void MultithreadedExecution(Action act) {
+        public static void MultithreadedExecution(Action act)
+        {
             ThreadStart tds = new ThreadStart(act);
             Thread td = new Thread(tds);
             td.Start();
@@ -733,7 +806,8 @@ WHERE C.name = 'Pub_Inventory'
         /// <param name="act">委托</param>
         /// <param name="parameter">方法参数</param>
         /// <example>MultithreadedExecution(delegate() {/*执行内容*/ },"");</example>
-        public static void MultithreadedExecution(Action act, object parameter) {
+        public static void MultithreadedExecution(Action act, object parameter)
+        {
             ThreadStart tds = new ThreadStart(act);
             Thread td = new Thread(tds);
             td.Start(parameter);
@@ -747,7 +821,8 @@ WHERE C.name = 'Pub_Inventory'
         /// </summary>
         /// <param name="command">参数</param>
         /// <returns></returns>
-        public static string RunCmd(string command = "") {
+        public static string RunCmd(string command = "")
+        {
             //实例一个Process类，启动一个独立进程  
             Process p = new Process();
 
@@ -777,7 +852,8 @@ WHERE C.name = 'Pub_Inventory'
         /// </summary>
         /// <param name="OriginalValue"></param>
         /// <returns></returns>
-        public static string StringEncrypt(string OriginalValue) {
+        public static string StringEncrypt(string OriginalValue)
+        {
             SysSecurityFactory _security = new SysSecurityFactory();
             byte[] key = System.Text.Encoding.Default.GetBytes(EncryptKey);
             return _security.AESEncrypt(OriginalValue, key);
@@ -788,7 +864,8 @@ WHERE C.name = 'Pub_Inventory'
         /// </summary>
         /// <param name="EncryptedValue"></param>
         /// <returns></returns>
-        public static string StringDecrypt(string EncryptedValue) {
+        public static string StringDecrypt(string EncryptedValue)
+        {
             SysSecurityFactory _security = new SysSecurityFactory();
             byte[] key = System.Text.Encoding.Default.GetBytes(EncryptKey);
             return _security.AESDecrypt(EncryptedValue, key);
@@ -806,8 +883,10 @@ WHERE C.name = 'Pub_Inventory'
         /// <param name="functionName"></param>
         /// <param name="message"></param>
         /// <param name="level">0 none,1 normal [Info],2 warning [Warn△],-1 error[Err▲]</param>
-        public static void WriteLocalLogFile(string path, string module, string functionName, string message, int level = 0) {
-            try {
+        public static void WriteLocalLogFile(string path, string module, string functionName, string message, int level = 0)
+        {
+            try
+            {
                 string folder_SysLog = "SysLog\\" + DateTime.Now.ToString("yyyy-MM");
                 string fileName_SysLog = DateTime.Now.ToString("dd") + "Day.log";
 
@@ -819,7 +898,8 @@ WHERE C.name = 'Pub_Inventory'
 
                 string str;
 
-                switch (level) {
+                switch (level)
+                {
                     case 1:
                         str = "[Info]";
                         break;
@@ -850,7 +930,8 @@ WHERE C.name = 'Pub_Inventory'
                 sw.Close();
                 fs.Close();
             }
-            catch (Exception err) {
+            catch (Exception err)
+            {
                 MessageBox.Show("module:Sysfunction\nfunction:WriteLocalLogFile\n" + err.Message, "Err", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
 
@@ -864,11 +945,13 @@ WHERE C.name = 'Pub_Inventory'
         /// </summary>  
         /// <param name="fileFullName">文件完整名称.</param>  
         /// <returns></returns>  
-        public static byte[] File2Byte(string fileFullName) {
+        public static byte[] File2Byte(string fileFullName)
+        {
             if (fileFullName == null) throw new ArgumentNullException("fileFullName");
             FileStream fs = null;
 
-            try {
+            try
+            {
                 fs = new FileStream(fileFullName, FileMode.Open, FileAccess.Read);
 
                 byte[] buffur = new byte[fs.Length];
@@ -876,7 +959,8 @@ WHERE C.name = 'Pub_Inventory'
 
                 return buffur;
             }
-            finally {
+            finally
+            {
                 if (fs != null)
                     fs.Close();
             }
@@ -891,7 +975,8 @@ WHERE C.name = 'Pub_Inventory'
         /// <param name="origStr">原始字符串</param>
         /// <param name="withDiv">是否两边包 DIV</param>
         /// <returns></returns>
-        public static string ConvertSpecialChar2Html(string origStr, bool withDiv) {
+        public static string ConvertSpecialChar2Html(string origStr, bool withDiv)
+        {
             if (string.IsNullOrEmpty(origStr))
                 return withDiv ? "<DIV>&nbsp;</DIV>" : string.Empty;
 
@@ -915,17 +1000,20 @@ WHERE C.name = 'Pub_Inventory'
         /// </summary>
         /// <param name="fileFullName">文件名全名</param>
         /// <returns></returns>
-        public static bool CheckFileWritPermission(string fileFullName) {
+        public static bool CheckFileWritPermission(string fileFullName)
+        {
             string fileEnd = Guid.NewGuid().ToString().Substring(0, 8);
             fileFullName += fileEnd;
 
-            try {
+            try
+            {
                 File.WriteAllText(fileFullName, "");
                 File.Delete(fileFullName);
 
                 return true;
             }
-            catch (Exception) {
+            catch (Exception)
+            {
                 return false;
             }
         }
@@ -934,7 +1022,8 @@ WHERE C.name = 'Pub_Inventory'
         /// </summary>
         /// <param name="folderName">文件夹全名</param>
         /// <returns></returns>
-        public static bool CheckFolderWritPermission(string folderName) {
+        public static bool CheckFolderWritPermission(string folderName)
+        {
             string fileEnd = Guid.NewGuid().ToString().Substring(0, 8);
             string fileName = folderName.TrimEnd('\\') + "\\" + fileEnd;
 

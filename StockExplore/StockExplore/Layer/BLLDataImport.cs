@@ -3,16 +3,29 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.IO;
+using System.Data.SqlClient;
 
 namespace StockExplore
 {
     class BLLDataImport
     {
-        DBO _dbo;
+        private SqlConnection _cnn;
 
-        public BLLDataImport(string sqlCnnString)
+        public BLLDataImport(string connectionString)
         {
-            _dbo = new DBO(sqlCnnString);
+            _cnn = new SqlConnection(connectionString);
+        }
+
+        public void OpenConnection()
+        {
+            if (_cnn.State == System.Data.ConnectionState.Closed)
+                _cnn.Open();
+        }
+
+        public void CloseConnection()
+        {
+            if (_cnn.State != System.Data.ConnectionState.Closed)
+                _cnn.Close();
         }
 
         public List<TupleValue<FileInfo, StockHead>> LoadMrkTypeAndCode(List<FileInfo> allFile)
@@ -35,26 +48,52 @@ namespace StockExplore
             return ret;
         }
 
-        public void InsertStkKLine(TupleValue<FileInfo, StockHead> stkInfo, bool overwrite, bool isComposite)
+        public void InsertStkKLine(TupleValue<FileInfo, StockHead> stkInfo, bool isConvert, bool isComposite, KLineType kLineType)
         {
             FileInfo fileInfo = stkInfo.Value1;
             StockHead stkHead = stkInfo.Value2;
             stkHead.StkType = isComposite ? "0" : "1";
 
-            if (overwrite)
-                this.InsertStkKLine_Overwrite(fileInfo, stkHead);
+            if (isConvert)
+                this.InsertStkKLine_Convert(fileInfo, stkHead, kLineType);
             else
-                this.InsertStkKLine_AddNew(fileInfo, stkHead);
+                this.InsertStkKLine_AddNew(fileInfo, stkHead, kLineType);
         }
 
-        private void InsertStkKLine_Overwrite(FileInfo fileInfo, StockHead stkHead)
+        private void InsertStkKLine_Convert(FileInfo fileInfo, StockHead stkHead, KLineType kLineType)
         { 
             // todo
+            switch (kLineType)
+            {
+                case KLineType.Day:
+                    break;
+                case KLineType.Week:
+                    break;
+                case KLineType.Month:
+                    break;
+                case KLineType.Minute:
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException("kLineType");
+            }
         }
 
-        private void InsertStkKLine_AddNew(FileInfo fileInfo, StockHead stkHead)
+        private void InsertStkKLine_AddNew(FileInfo fileInfo, StockHead stkHead, KLineType kLineType)
         {
             // todo
+            switch (kLineType)
+            {
+                case KLineType.Day:
+                    break;
+                case KLineType.Week:
+                    break;
+                case KLineType.Month:
+                    break;
+                case KLineType.Minute:
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException("kLineType");
+            }
         }
     }
 }

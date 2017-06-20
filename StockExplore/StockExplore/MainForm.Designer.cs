@@ -26,11 +26,7 @@
             this.btnTest = new System.Windows.Forms.Button();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-<<<<<<< HEAD
-            this.tabPageImportData = new System.Windows.Forms.TabPage();
-=======
             this.tabPageDataImport = new System.Windows.Forms.TabPage();
->>>>>>> 748a489a6853118fe53cee1a236f4b2d37c69e4f
             this.grpDayKLine = new System.Windows.Forms.GroupBox();
             this.dataImptDayKLineBtnImport = new System.Windows.Forms.Button();
             this.dataImptDayKLineChkIsComposite = new System.Windows.Forms.CheckBox();
@@ -44,20 +40,13 @@
             this.btnClear = new System.Windows.Forms.Button();
             this.txtConsole = new System.Windows.Forms.TextBox();
             this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
-<<<<<<< HEAD
             this.bkgDataImport = new System.ComponentModel.BackgroundWorker();
-=======
->>>>>>> 748a489a6853118fe53cee1a236f4b2d37c69e4f
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.tabControl1.SuspendLayout();
-<<<<<<< HEAD
-            this.tabPageImportData.SuspendLayout();
-=======
             this.tabPageDataImport.SuspendLayout();
->>>>>>> 748a489a6853118fe53cee1a236f4b2d37c69e4f
             this.grpDayKLine.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -159,51 +148,10 @@
             this.dataImptDayKLineChkConvert.Text = "覆盖";
             this.dataImptDayKLineChkConvert.UseVisualStyleBackColor = true;
             // 
-            // grpDayKLine
-            // 
-            this.grpDayKLine.Controls.Add(this.dataImptDayKLineBtnImport);
-            this.grpDayKLine.Controls.Add(this.dataImptDayKLineChkIsComposite);
-            this.grpDayKLine.Controls.Add(this.dataImptDayKLineChkConvert);
-            this.grpDayKLine.Location = new System.Drawing.Point(12, 39);
-            this.grpDayKLine.Name = "grpDayKLine";
-            this.grpDayKLine.Size = new System.Drawing.Size(99, 103);
-            this.grpDayKLine.TabIndex = 17;
-            this.grpDayKLine.TabStop = false;
-            this.grpDayKLine.Text = "日K线";
-            // 
-            // dataImptDayKLineBtnImport
-            // 
-            this.dataImptDayKLineBtnImport.Location = new System.Drawing.Point(12, 67);
-            this.dataImptDayKLineBtnImport.Name = "dataImptDayKLineBtnImport";
-            this.dataImptDayKLineBtnImport.Size = new System.Drawing.Size(75, 23);
-            this.dataImptDayKLineBtnImport.TabIndex = 1;
-            this.dataImptDayKLineBtnImport.Text = "导入";
-            this.dataImptDayKLineBtnImport.UseVisualStyleBackColor = true;
-            // 
-            // dataImptDayKLineChkIsComposite
-            // 
-            this.dataImptDayKLineChkIsComposite.AutoSize = true;
-            this.dataImptDayKLineChkIsComposite.Location = new System.Drawing.Point(11, 44);
-            this.dataImptDayKLineChkIsComposite.Name = "dataImptDayKLineChkIsComposite";
-            this.dataImptDayKLineChkIsComposite.Size = new System.Drawing.Size(48, 16);
-            this.dataImptDayKLineChkIsComposite.TabIndex = 0;
-            this.dataImptDayKLineChkIsComposite.Text = "指数";
-            this.dataImptDayKLineChkIsComposite.UseVisualStyleBackColor = true;
-            // 
-            // dataImptDayKLineChkConvert
-            // 
-            this.dataImptDayKLineChkConvert.AutoSize = true;
-            this.dataImptDayKLineChkConvert.Location = new System.Drawing.Point(11, 22);
-            this.dataImptDayKLineChkConvert.Name = "dataImptDayKLineChkConvert";
-            this.dataImptDayKLineChkConvert.Size = new System.Drawing.Size(48, 16);
-            this.dataImptDayKLineChkConvert.TabIndex = 0;
-            this.dataImptDayKLineChkConvert.Text = "覆盖";
-            this.dataImptDayKLineChkConvert.UseVisualStyleBackColor = true;
-            // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(10, 16);
+            this.label3.Location = new System.Drawing.Point(13, 19);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(77, 12);
             this.label3.TabIndex = 16;
@@ -222,7 +170,7 @@
             // btnSourceFolderBrowser
             // 
             this.btnSourceFolderBrowser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSourceFolderBrowser.Location = new System.Drawing.Point(505, 11);
+            this.btnSourceFolderBrowser.Location = new System.Drawing.Point(949, 14);
             this.btnSourceFolderBrowser.Name = "btnSourceFolderBrowser";
             this.btnSourceFolderBrowser.Size = new System.Drawing.Size(33, 23);
             this.btnSourceFolderBrowser.TabIndex = 15;
@@ -298,17 +246,12 @@
             this.txtConsole.TabStop = false;
             this.txtConsole.WordWrap = false;
             // 
-<<<<<<< HEAD
             // bkgDataImport
             // 
             this.bkgDataImport.WorkerReportsProgress = true;
             this.bkgDataImport.WorkerSupportsCancellation = true;
             this.bkgDataImport.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bkgDataImport_DoWork);
-            this.bkgDataImport.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bkgDataImport_ProgressChanged);
-            this.bkgDataImport.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bkgDataImport_RunWorkerCompleted);
             // 
-=======
->>>>>>> 748a489a6853118fe53cee1a236f4b2d37c69e4f
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -325,13 +268,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
-<<<<<<< HEAD
-            this.tabPageImportData.ResumeLayout(false);
-            this.tabPageImportData.PerformLayout();
-=======
             this.tabPageDataImport.ResumeLayout(false);
             this.tabPageDataImport.PerformLayout();
->>>>>>> 748a489a6853118fe53cee1a236f4b2d37c69e4f
             this.grpDayKLine.ResumeLayout(false);
             this.grpDayKLine.PerformLayout();
             this.groupBox1.ResumeLayout(false);

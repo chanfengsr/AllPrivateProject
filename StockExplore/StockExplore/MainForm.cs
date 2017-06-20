@@ -15,7 +15,6 @@ namespace StockExplore
     public partial class MainForm : Form
     {
         protected readonly List<FileInfo> AllFile = new List<FileInfo>();
-        private BL _bl;
 
         public MainForm()
         {
@@ -34,9 +33,7 @@ namespace StockExplore
 
             new Thread(() =>
             {
-                if (SQLHelper.TestConnectString(CommProp.ConnectionString))
-                    _bl = new BL(CommProp.ConnectionString);
-                else
+                if (!SQLHelper.TestConnectString(CommProp.ConnectionString))
                     Console.WriteLine("数据库连接错误!");
             }).Start();
         }
@@ -106,11 +103,56 @@ namespace StockExplore
             }
         }
 
-        private void dataImptDayKLineBtnImport_Click(object sender, EventArgs e) {
+        private void dataImptDayKLineBtnImport_Click(object sender, EventArgs e)
+        {
+            TupleValue<bool, bool, KLineType> arg = new TupleValue<bool, bool, KLineType>(dataImptDayKLineChkConvert.Checked, dataImptDayKLineChkIsComposite.Checked, KLineType.Day);
+            bkgDataImport.RunWorkerAsync(arg);
+        }
+
+        private void bkgDataImport_DoWork(object sender, DoWorkEventArgs e)
+        {
+            TupleValue<bool, bool, KLineType> arg = (TupleValue<bool, bool, KLineType>)e.Argument;
             BLLDataImport bll = new BLLDataImport(CommProp.ConnectionString);
+            bool isConvert = arg.Value1;
+            bool isComposite = arg.Value2;
+
+            UIInProcess(true);
 
             this.LoadFileList();
-            bll.LoadMrkTypeAndCode(AllFile);
+
+            List<TupleValue<FileInfo, StockHead>> lstStockData = bll.LoadMrkTypeAndCode(AllFile);
+
+            if (lstStockData.Count > 0)
+            {
+                try
+                {
+                    bll.OpenConnection();
+                    int count = lstStockData.Count;
+                    string msgString = string.Empty;
+
+                    Console.Write("正在导入...（");
+                    for (int i = 0; i < count; i++)
+                    {
+                        TupleValue<FileInfo, StockHead> stkData = lstStockData[i];
+
+                        SysFunction.BackspaceInConsole(msgString, txtConsole);
+                        msgString = string.Format("{0} / {1})", i + 1, count);
+                        Console.Write(msgString);
+                        bll.InsertStkKLine(stkData, isConvert, isComposite, arg.Value3);
+                        
+                        // todo delete this
+                        Thread.Sleep(100);
+                    }
+
+                    Console.WriteLine("  导入完成！");
+                }
+                finally
+                {
+                    bll.CloseConnection();
+                }
+            }
+
+            UIInProcess(false);
         }
 
         private void FolderBrowser(Control txtBox)
@@ -153,7 +195,7 @@ namespace StockExplore
         {
             this.Cursor = inProcessing ? Cursors.WaitCursor : Cursors.Default;
 
-            //grpFunction.Enabled = !inProcessing;
+            tabControl1.Enabled = !inProcessing;
         }
 
         private string LoadFileList()
@@ -187,19 +229,5 @@ namespace StockExplore
             return retVal;
         }
 
-        private void bkgDataImport_DoWork(object sender, DoWorkEventArgs e)
-        {
-
-        }
-
-        private void bkgDataImport_ProgressChanged(object sender, ProgressChangedEventArgs e)
-        {
-
-        }
-
-        private void bkgDataImport_RunWorkerCompleted(object sender, RunWorkerCompletedEventArgs e)
-        {
-
-        }
     }
 }
