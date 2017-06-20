@@ -106,6 +106,13 @@ namespace StockExplore
             }
         }
 
+        private void dataImptDayKLineBtnImport_Click(object sender, EventArgs e) {
+            BLLDataImport bll = new BLLDataImport(CommProp.ConnectionString);
+
+            this.LoadFileList();
+            bll.LoadMrkTypeAndCode(AllFile);
+        }
+
         private void FolderBrowser(Control txtBox)
         {
             if (Directory.Exists(txtBox.Text))

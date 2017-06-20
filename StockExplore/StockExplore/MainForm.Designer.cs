@@ -26,7 +26,11 @@
             this.btnTest = new System.Windows.Forms.Button();
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.tabControl1 = new System.Windows.Forms.TabControl();
+<<<<<<< HEAD
             this.tabPageImportData = new System.Windows.Forms.TabPage();
+=======
+            this.tabPageDataImport = new System.Windows.Forms.TabPage();
+>>>>>>> 748a489a6853118fe53cee1a236f4b2d37c69e4f
             this.grpDayKLine = new System.Windows.Forms.GroupBox();
             this.dataImptDayKLineBtnImport = new System.Windows.Forms.Button();
             this.dataImptDayKLineChkIsComposite = new System.Windows.Forms.CheckBox();
@@ -40,13 +44,20 @@
             this.btnClear = new System.Windows.Forms.Button();
             this.txtConsole = new System.Windows.Forms.TextBox();
             this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
+<<<<<<< HEAD
             this.bkgDataImport = new System.ComponentModel.BackgroundWorker();
+=======
+>>>>>>> 748a489a6853118fe53cee1a236f4b2d37c69e4f
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.tabControl1.SuspendLayout();
+<<<<<<< HEAD
             this.tabPageImportData.SuspendLayout();
+=======
+            this.tabPageDataImport.SuspendLayout();
+>>>>>>> 748a489a6853118fe53cee1a236f4b2d37c69e4f
             this.grpDayKLine.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
@@ -83,7 +94,7 @@
             // 
             // tabControl1
             // 
-            this.tabControl1.Controls.Add(this.tabPageImportData);
+            this.tabControl1.Controls.Add(this.tabPageDataImport);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
@@ -92,19 +103,61 @@
             this.tabControl1.Size = new System.Drawing.Size(655, 202);
             this.tabControl1.TabIndex = 0;
             // 
-            // tabPageImportData
+            // tabPageDataImport
             // 
-            this.tabPageImportData.Controls.Add(this.grpDayKLine);
-            this.tabPageImportData.Controls.Add(this.label3);
-            this.tabPageImportData.Controls.Add(this.txtSourceFolder);
-            this.tabPageImportData.Controls.Add(this.btnSourceFolderBrowser);
-            this.tabPageImportData.Location = new System.Drawing.Point(4, 22);
-            this.tabPageImportData.Name = "tabPageImportData";
-            this.tabPageImportData.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageImportData.Size = new System.Drawing.Size(647, 176);
-            this.tabPageImportData.TabIndex = 0;
-            this.tabPageImportData.Text = "数据导入";
-            this.tabPageImportData.UseVisualStyleBackColor = true;
+            this.tabPageDataImport.Controls.Add(this.grpDayKLine);
+            this.tabPageDataImport.Controls.Add(this.label3);
+            this.tabPageDataImport.Controls.Add(this.txtSourceFolder);
+            this.tabPageDataImport.Controls.Add(this.btnSourceFolderBrowser);
+            this.tabPageDataImport.Location = new System.Drawing.Point(4, 22);
+            this.tabPageDataImport.Name = "tabPageDataImport";
+            this.tabPageDataImport.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageDataImport.Size = new System.Drawing.Size(647, 176);
+            this.tabPageDataImport.TabIndex = 0;
+            this.tabPageDataImport.Text = "数据导入";
+            this.tabPageDataImport.UseVisualStyleBackColor = true;
+            // 
+            // grpDayKLine
+            // 
+            this.grpDayKLine.Controls.Add(this.dataImptDayKLineBtnImport);
+            this.grpDayKLine.Controls.Add(this.dataImptDayKLineChkIsComposite);
+            this.grpDayKLine.Controls.Add(this.dataImptDayKLineChkConvert);
+            this.grpDayKLine.Location = new System.Drawing.Point(12, 39);
+            this.grpDayKLine.Name = "grpDayKLine";
+            this.grpDayKLine.Size = new System.Drawing.Size(99, 103);
+            this.grpDayKLine.TabIndex = 17;
+            this.grpDayKLine.TabStop = false;
+            this.grpDayKLine.Text = "日K线";
+            // 
+            // dataImptDayKLineBtnImport
+            // 
+            this.dataImptDayKLineBtnImport.Location = new System.Drawing.Point(12, 67);
+            this.dataImptDayKLineBtnImport.Name = "dataImptDayKLineBtnImport";
+            this.dataImptDayKLineBtnImport.Size = new System.Drawing.Size(75, 23);
+            this.dataImptDayKLineBtnImport.TabIndex = 1;
+            this.dataImptDayKLineBtnImport.Text = "导入";
+            this.dataImptDayKLineBtnImport.UseVisualStyleBackColor = true;
+            this.dataImptDayKLineBtnImport.Click += new System.EventHandler(this.dataImptDayKLineBtnImport_Click);
+            // 
+            // dataImptDayKLineChkIsComposite
+            // 
+            this.dataImptDayKLineChkIsComposite.AutoSize = true;
+            this.dataImptDayKLineChkIsComposite.Location = new System.Drawing.Point(11, 44);
+            this.dataImptDayKLineChkIsComposite.Name = "dataImptDayKLineChkIsComposite";
+            this.dataImptDayKLineChkIsComposite.Size = new System.Drawing.Size(48, 16);
+            this.dataImptDayKLineChkIsComposite.TabIndex = 0;
+            this.dataImptDayKLineChkIsComposite.Text = "指数";
+            this.dataImptDayKLineChkIsComposite.UseVisualStyleBackColor = true;
+            // 
+            // dataImptDayKLineChkConvert
+            // 
+            this.dataImptDayKLineChkConvert.AutoSize = true;
+            this.dataImptDayKLineChkConvert.Location = new System.Drawing.Point(11, 22);
+            this.dataImptDayKLineChkConvert.Name = "dataImptDayKLineChkConvert";
+            this.dataImptDayKLineChkConvert.Size = new System.Drawing.Size(48, 16);
+            this.dataImptDayKLineChkConvert.TabIndex = 0;
+            this.dataImptDayKLineChkConvert.Text = "覆盖";
+            this.dataImptDayKLineChkConvert.UseVisualStyleBackColor = true;
             // 
             // grpDayKLine
             // 
@@ -245,6 +298,7 @@
             this.txtConsole.TabStop = false;
             this.txtConsole.WordWrap = false;
             // 
+<<<<<<< HEAD
             // bkgDataImport
             // 
             this.bkgDataImport.WorkerReportsProgress = true;
@@ -253,6 +307,8 @@
             this.bkgDataImport.ProgressChanged += new System.ComponentModel.ProgressChangedEventHandler(this.bkgDataImport_ProgressChanged);
             this.bkgDataImport.RunWorkerCompleted += new System.ComponentModel.RunWorkerCompletedEventHandler(this.bkgDataImport_RunWorkerCompleted);
             // 
+=======
+>>>>>>> 748a489a6853118fe53cee1a236f4b2d37c69e4f
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -269,8 +325,13 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
+<<<<<<< HEAD
             this.tabPageImportData.ResumeLayout(false);
             this.tabPageImportData.PerformLayout();
+=======
+            this.tabPageDataImport.ResumeLayout(false);
+            this.tabPageDataImport.PerformLayout();
+>>>>>>> 748a489a6853118fe53cee1a236f4b2d37c69e4f
             this.grpDayKLine.ResumeLayout(false);
             this.grpDayKLine.PerformLayout();
             this.groupBox1.ResumeLayout(false);
@@ -288,7 +349,7 @@
         private System.Windows.Forms.Button btnClear;
         private System.Windows.Forms.TextBox txtConsole;
         private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPageImportData;
+        private System.Windows.Forms.TabPage tabPageDataImport;
         private System.Windows.Forms.TabPage tabPage2;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtSourceFolder;
