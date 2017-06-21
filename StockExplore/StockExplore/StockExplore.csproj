@@ -63,7 +63,9 @@
     <Compile Include="CommClass\TextBoxStreamWriter.cs" />
     <Compile Include="CommClass\TupleValue.cs" />
     <Compile Include="CommProp.cs" />
+    <Compile Include="Layer\BLL.cs" />
     <Compile Include="Layer\BLLDataImport.cs" />
+    <Compile Include="Layer\DBODataImport.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>

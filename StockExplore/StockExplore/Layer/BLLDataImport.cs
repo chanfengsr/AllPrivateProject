@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.IO;
@@ -10,10 +11,12 @@ namespace StockExplore
     class BLLDataImport
     {
         private SqlConnection _cnn;
+        private DBODataImport _dbo;
 
         public BLLDataImport(string connectionString)
         {
             _cnn = new SqlConnection(connectionString);
+            _dbo = new DBODataImport(_cnn);
         }
 
         public void OpenConnection()
@@ -53,46 +56,93 @@ namespace StockExplore
             FileInfo fileInfo = stkInfo.Value1;
             StockHead stkHead = stkInfo.Value2;
             stkHead.StkType = isComposite ? "0" : "1";
+            string tableName = BLL.GetDBTableName(kLineType);
+            DateTime existMaxDay = DateTime.MinValue;
+            DataTable insTable = _dbo.GetEmptyTable(tableName);
+
+            insTable.TableName = tableName;
 
             if (isConvert)
-                this.InsertStkKLine_Convert(fileInfo, stkHead, kLineType);
+                _dbo.DeleteTable(tableName, stkHead);
             else
-                this.InsertStkKLine_AddNew(fileInfo, stkHead, kLineType);
+                existMaxDay = _dbo.FindMaxExistTradeDay(tableName, stkHead);
+
+            this.LoadFileData(fileInfo, stkHead, existMaxDay, ref insTable);
+
+            // 新增或修改 StockHead
+            _dbo.InsertOrUpdateStockHead(stkHead);
+
+            // 插入实体数据
+            _dbo.BulkInsertTable(insTable);
         }
 
-        private void InsertStkKLine_Convert(FileInfo fileInfo, StockHead stkHead, KLineType kLineType)
-        { 
-            // todo
-            switch (kLineType)
-            {
-                case KLineType.Day:
-                    break;
-                case KLineType.Week:
-                    break;
-                case KLineType.Month:
-                    break;
-                case KLineType.Minute:
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException("kLineType");
-            }
-        }
-
-        private void InsertStkKLine_AddNew(FileInfo fileInfo, StockHead stkHead, KLineType kLineType)
+        public void TruncateStkKLine(KLineType kLineType)
         {
-            // todo
-            switch (kLineType)
+            string tableName = BLL.GetDBTableName(kLineType);
+            _dbo.TruncateTable(tableName);
+        }
+
+        /// <summary>
+        /// 从文本文件加载数据，小于最大日期的数据直接过滤掉
+        /// </summary>
+        private void LoadFileData(FileInfo fileInfo, StockHead stkHead, DateTime existMaxDay, ref DataTable insTable)
+        {
+            bool isConvert = existMaxDay == DateTime.MinValue;
+            StreamReader sr = new StreamReader(fileInfo.FullName, Encoding.Default);
+            string line;
+            const string idxTabMarkType = "MarkType",
+                         idxTabStkCode = "StkCode",
+                         idxTabTradeDay = "TradeDay",
+                         idxTabOpen = "Open",
+                         idxTabHigh = "High",
+                         idxTabLow = "Low",
+                         idxTabClose = "Close",
+                         idxTabVolume = "Volume",
+                         idxTabAmount = "Amount";
+            const int idxTradeDay = 0,
+                      idxOpen = 1,
+                      idxHigh = 2,
+                      idxLow = 3,
+                      idxClose = 4,
+                      idxVolume = 5,
+                      idxAmount = 6;
+
+            bool firstLine = true;
+            while (( line = sr.ReadLine() ) != null)
             {
-                case KLineType.Day:
-                    break;
-                case KLineType.Week:
-                    break;
-                case KLineType.Month:
-                    break;
-                case KLineType.Minute:
-                    break;
-                default:
-                    throw new ArgumentOutOfRangeException("kLineType");
+                // 第一行中有股票名称
+                if (firstLine)
+                {
+                    string[] split = line.Split(' ');
+                    if (split.Length > 1)
+                        stkHead.StkName = split[1];
+
+                    firstLine = false;
+                }
+                // 第三行开始为数据
+                else
+                {
+                    string[] split = line.Split('\t');
+                    DateTime tradeDate;
+                    if (DateTime.TryParse(split[0], out tradeDate))
+                    {
+                        if (isConvert || tradeDate > existMaxDay)
+                        {
+                            DataRow newRow = insTable.NewRow();
+                            newRow[idxTabMarkType] = stkHead.MarkType;
+                            newRow[idxTabStkCode] = stkHead.StkCode;
+                            newRow[idxTabTradeDay] = split[idxTradeDay];
+                            newRow[idxTabOpen] = split[idxOpen];
+                            newRow[idxTabHigh] = split[idxHigh];
+                            newRow[idxTabLow] = split[idxLow];
+                            newRow[idxTabClose] = split[idxClose];
+                            newRow[idxTabVolume] = split[idxVolume];
+                            newRow[idxTabAmount] = split[idxAmount];
+
+                            insTable.Rows.Add(newRow);
+                        }
+                    }
+                }
             }
         }
     }

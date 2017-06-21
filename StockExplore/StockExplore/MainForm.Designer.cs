@@ -41,6 +41,7 @@
             this.txtConsole = new System.Windows.Forms.TextBox();
             this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.bkgDataImport = new System.ComponentModel.BackgroundWorker();
+            this.dataImptDayKLineBtnTruncate = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -108,12 +109,13 @@
             // 
             // grpDayKLine
             // 
+            this.grpDayKLine.Controls.Add(this.dataImptDayKLineBtnTruncate);
             this.grpDayKLine.Controls.Add(this.dataImptDayKLineBtnImport);
             this.grpDayKLine.Controls.Add(this.dataImptDayKLineChkIsComposite);
             this.grpDayKLine.Controls.Add(this.dataImptDayKLineChkConvert);
             this.grpDayKLine.Location = new System.Drawing.Point(12, 39);
             this.grpDayKLine.Name = "grpDayKLine";
-            this.grpDayKLine.Size = new System.Drawing.Size(99, 103);
+            this.grpDayKLine.Size = new System.Drawing.Size(99, 131);
             this.grpDayKLine.TabIndex = 17;
             this.grpDayKLine.TabStop = false;
             this.grpDayKLine.Text = "日K线";
@@ -141,6 +143,8 @@
             // dataImptDayKLineChkConvert
             // 
             this.dataImptDayKLineChkConvert.AutoSize = true;
+            this.dataImptDayKLineChkConvert.Checked = true;
+            this.dataImptDayKLineChkConvert.CheckState = System.Windows.Forms.CheckState.Checked;
             this.dataImptDayKLineChkConvert.Location = new System.Drawing.Point(11, 22);
             this.dataImptDayKLineChkConvert.Name = "dataImptDayKLineChkConvert";
             this.dataImptDayKLineChkConvert.Size = new System.Drawing.Size(48, 16);
@@ -252,6 +256,16 @@
             this.bkgDataImport.WorkerSupportsCancellation = true;
             this.bkgDataImport.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bkgDataImport_DoWork);
             // 
+            // dataImptDayKLineBtnTruncate
+            // 
+            this.dataImptDayKLineBtnTruncate.Location = new System.Drawing.Point(12, 96);
+            this.dataImptDayKLineBtnTruncate.Name = "dataImptDayKLineBtnTruncate";
+            this.dataImptDayKLineBtnTruncate.Size = new System.Drawing.Size(75, 23);
+            this.dataImptDayKLineBtnTruncate.TabIndex = 2;
+            this.dataImptDayKLineBtnTruncate.Text = "清空";
+            this.dataImptDayKLineBtnTruncate.UseVisualStyleBackColor = true;
+            this.dataImptDayKLineBtnTruncate.Click += new System.EventHandler(this.dataImptDayKLineBtnTruncate_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -298,6 +312,7 @@
         private System.Windows.Forms.CheckBox dataImptDayKLineChkIsComposite;
         private System.Windows.Forms.CheckBox dataImptDayKLineChkConvert;
         private System.ComponentModel.BackgroundWorker bkgDataImport;
+        private System.Windows.Forms.Button dataImptDayKLineBtnTruncate;
     }
 }
 

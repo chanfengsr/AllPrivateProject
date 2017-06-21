@@ -109,10 +109,35 @@ namespace StockExplore
             bkgDataImport.RunWorkerAsync(arg);
         }
 
+        private void dataImptDayKLineBtnTruncate_Click(object sender, EventArgs e)
+        {
+            BLLDataImport bllDaImpt = new BLLDataImport(CommProp.ConnectionString);
+            UIInProcess(true);
+
+            try
+            {
+                bllDaImpt.OpenConnection();
+                bllDaImpt.TruncateStkKLine(KLineType.Day);
+
+                Console.WriteLine("日K线数据清除完成！");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                bllDaImpt.CloseConnection();
+            }
+
+
+            UIInProcess(false);
+        }
+
         private void bkgDataImport_DoWork(object sender, DoWorkEventArgs e)
         {
             TupleValue<bool, bool, KLineType> arg = (TupleValue<bool, bool, KLineType>)e.Argument;
-            BLLDataImport bll = new BLLDataImport(CommProp.ConnectionString);
+            BLLDataImport bllDaImpt = new BLLDataImport(CommProp.ConnectionString);
             bool isConvert = arg.Value1;
             bool isComposite = arg.Value2;
 
@@ -120,13 +145,13 @@ namespace StockExplore
 
             this.LoadFileList();
 
-            List<TupleValue<FileInfo, StockHead>> lstStockData = bll.LoadMrkTypeAndCode(AllFile);
+            List<TupleValue<FileInfo, StockHead>> lstStockData = bllDaImpt.LoadMrkTypeAndCode(AllFile);
 
             if (lstStockData.Count > 0)
             {
                 try
                 {
-                    bll.OpenConnection();
+                    bllDaImpt.OpenConnection();
                     int count = lstStockData.Count;
                     string msgString = string.Empty;
 
@@ -138,17 +163,18 @@ namespace StockExplore
                         SysFunction.BackspaceInConsole(msgString, txtConsole);
                         msgString = string.Format("{0} / {1})", i + 1, count);
                         Console.Write(msgString);
-                        bll.InsertStkKLine(stkData, isConvert, isComposite, arg.Value3);
-                        
-                        // todo delete this
-                        Thread.Sleep(100);
+                        bllDaImpt.InsertStkKLine(stkData, isConvert, isComposite, arg.Value3);
                     }
 
                     Console.WriteLine("  导入完成！");
                 }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
                 finally
                 {
-                    bll.CloseConnection();
+                    bllDaImpt.CloseConnection();
                 }
             }
 
