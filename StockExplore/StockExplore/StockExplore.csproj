@@ -52,6 +52,7 @@
   <ItemGroup>
     <Compile Include="CommClass\CommFunction.cs" />
     <Compile Include="CommClass\ConsoleRedirect.cs" />
+    <Compile Include="CommClass\ModelHelp.cs" />
     <Compile Include="CommClass\NumericUpDownEx.cs">
       <SubType>Component</SubType>
     </Compile>

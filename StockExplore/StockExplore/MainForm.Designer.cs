@@ -143,8 +143,6 @@
             // dataImptDayKLineChkConvert
             // 
             this.dataImptDayKLineChkConvert.AutoSize = true;
-            this.dataImptDayKLineChkConvert.Checked = true;
-            this.dataImptDayKLineChkConvert.CheckState = System.Windows.Forms.CheckState.Checked;
             this.dataImptDayKLineChkConvert.Location = new System.Drawing.Point(11, 22);
             this.dataImptDayKLineChkConvert.Name = "dataImptDayKLineChkConvert";
             this.dataImptDayKLineChkConvert.Size = new System.Drawing.Size(48, 16);
