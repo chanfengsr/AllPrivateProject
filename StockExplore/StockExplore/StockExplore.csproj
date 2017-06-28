@@ -66,13 +66,16 @@
     <Compile Include="CommProp.cs" />
     <Compile Include="Layer\BLL.cs" />
     <Compile Include="Layer\BLLDataImport.cs" />
+    <Compile Include="Layer\BLLMetrics.cs" />
     <Compile Include="Layer\DBODataImport.cs" />
+    <Compile Include="Layer\DBOMetrics.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Layer\DBO.cs" />
     <Compile Include="Model\Enums.cs" />
     <Compile Include="Model\KLineDay.cs" />
     <Compile Include="Model\StockHead.cs" />

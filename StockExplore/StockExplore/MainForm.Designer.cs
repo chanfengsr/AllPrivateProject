@@ -28,6 +28,7 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageDataImport = new System.Windows.Forms.TabPage();
             this.grpDayKLine = new System.Windows.Forms.GroupBox();
+            this.dataImptDayKLineBtnTruncate = new System.Windows.Forms.Button();
             this.dataImptDayKLineBtnImport = new System.Windows.Forms.Button();
             this.dataImptDayKLineChkIsComposite = new System.Windows.Forms.CheckBox();
             this.dataImptDayKLineChkConvert = new System.Windows.Forms.CheckBox();
@@ -41,7 +42,7 @@
             this.txtConsole = new System.Windows.Forms.TextBox();
             this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.bkgDataImport = new System.ComponentModel.BackgroundWorker();
-            this.dataImptDayKLineBtnTruncate = new System.Windows.Forms.Button();
+            this.btnProcCancel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -120,6 +121,16 @@
             this.grpDayKLine.TabStop = false;
             this.grpDayKLine.Text = "日K线";
             // 
+            // dataImptDayKLineBtnTruncate
+            // 
+            this.dataImptDayKLineBtnTruncate.Location = new System.Drawing.Point(12, 96);
+            this.dataImptDayKLineBtnTruncate.Name = "dataImptDayKLineBtnTruncate";
+            this.dataImptDayKLineBtnTruncate.Size = new System.Drawing.Size(75, 23);
+            this.dataImptDayKLineBtnTruncate.TabIndex = 2;
+            this.dataImptDayKLineBtnTruncate.Text = "清空";
+            this.dataImptDayKLineBtnTruncate.UseVisualStyleBackColor = true;
+            this.dataImptDayKLineBtnTruncate.Click += new System.EventHandler(this.dataImptDayKLineBtnTruncate_Click);
+            // 
             // dataImptDayKLineBtnImport
             // 
             this.dataImptDayKLineBtnImport.Location = new System.Drawing.Point(12, 67);
@@ -192,6 +203,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnProcCancel);
             this.groupBox1.Controls.Add(this.btnTest);
             this.groupBox1.Controls.Add(this.btnCloseForm);
             this.groupBox1.Controls.Add(this.btnClear);
@@ -210,7 +222,7 @@
             this.btnCloseForm.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCloseForm.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Bold);
             this.btnCloseForm.ForeColor = System.Drawing.Color.DarkRed;
-            this.btnCloseForm.Location = new System.Drawing.Point(513, 56);
+            this.btnCloseForm.Location = new System.Drawing.Point(513, 92);
             this.btnCloseForm.Name = "btnCloseForm";
             this.btnCloseForm.Size = new System.Drawing.Size(116, 33);
             this.btnCloseForm.TabIndex = 12;
@@ -254,15 +266,20 @@
             this.bkgDataImport.WorkerSupportsCancellation = true;
             this.bkgDataImport.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bkgDataImport_DoWork);
             // 
-            // dataImptDayKLineBtnTruncate
+            // btnProcCancel
             // 
-            this.dataImptDayKLineBtnTruncate.Location = new System.Drawing.Point(12, 96);
-            this.dataImptDayKLineBtnTruncate.Name = "dataImptDayKLineBtnTruncate";
-            this.dataImptDayKLineBtnTruncate.Size = new System.Drawing.Size(75, 23);
-            this.dataImptDayKLineBtnTruncate.TabIndex = 2;
-            this.dataImptDayKLineBtnTruncate.Text = "清空";
-            this.dataImptDayKLineBtnTruncate.UseVisualStyleBackColor = true;
-            this.dataImptDayKLineBtnTruncate.Click += new System.EventHandler(this.dataImptDayKLineBtnTruncate_Click);
+            this.btnProcCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnProcCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnProcCancel.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Bold);
+            this.btnProcCancel.ForeColor = System.Drawing.Color.DarkRed;
+            this.btnProcCancel.Location = new System.Drawing.Point(527, 52);
+            this.btnProcCancel.Name = "btnProcCancel";
+            this.btnProcCancel.Size = new System.Drawing.Size(102, 34);
+            this.btnProcCancel.TabIndex = 13;
+            this.btnProcCancel.TabStop = false;
+            this.btnProcCancel.Text = "Cancel...";
+            this.btnProcCancel.UseVisualStyleBackColor = true;
+            this.btnProcCancel.Click += new System.EventHandler(this.btnProcCancel_Click);
             // 
             // MainForm
             // 
@@ -311,6 +328,7 @@
         private System.Windows.Forms.CheckBox dataImptDayKLineChkConvert;
         private System.ComponentModel.BackgroundWorker bkgDataImport;
         private System.Windows.Forms.Button dataImptDayKLineBtnTruncate;
+        private System.Windows.Forms.Button btnProcCancel;
     }
 }
 

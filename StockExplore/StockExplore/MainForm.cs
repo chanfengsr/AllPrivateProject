@@ -15,6 +15,7 @@ namespace StockExplore
     public partial class MainForm : Form
     {
         protected readonly List<FileInfo> AllFile = new List<FileInfo>();
+        private bool _processCancel;
 
         public MainForm()
         {
@@ -29,6 +30,8 @@ namespace StockExplore
         private void MainForm_Load(object sender, EventArgs e)
         {
             btnCloseForm.Top = -1000;
+            btnProcCancel.Visible = false;
+
             LoadConfig();
 
             new Thread(() =>
@@ -109,6 +112,11 @@ namespace StockExplore
             bkgDataImport.RunWorkerAsync(arg);
         }
 
+        private void btnProcCancel_Click(object sender, EventArgs e)
+        {
+            _processCancel = true;
+        }
+
         private void dataImptDayKLineBtnTruncate_Click(object sender, EventArgs e)
         {
             BLLDataImport bllDaImpt = new BLLDataImport(CommProp.ConnectionString);
@@ -142,6 +150,7 @@ namespace StockExplore
             bool isComposite = arg.Value2;
 
             UIInProcess(true);
+            _processCancel = false;
 
             this.LoadFileList();
 
@@ -164,9 +173,15 @@ namespace StockExplore
                         msgString = string.Format("{0} / {1})", i + 1, count);
                         Console.Write(msgString);
                         bllDaImpt.InsertStkKLine(stkData, isConvert, isComposite, arg.Value3);
+
+                        if (_processCancel)
+                            break;
                     }
 
-                    Console.WriteLine("  导入完成！");
+                    if (_processCancel)
+                        Console.WriteLine("  导入终止！");
+                    else
+                        Console.WriteLine("  导入完成！");
                 }
                 catch (Exception ex)
                 {
@@ -175,6 +190,7 @@ namespace StockExplore
                 finally
                 {
                     bllDaImpt.CloseConnection();
+                    _processCancel = false;
                 }
             }
 
@@ -222,6 +238,7 @@ namespace StockExplore
             this.Cursor = inProcessing ? Cursors.WaitCursor : Cursors.Default;
 
             tabControl1.Enabled = !inProcessing;
+            btnProcCancel.Visible = inProcessing;
         }
 
         private string LoadFileList()

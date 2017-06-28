@@ -8,10 +8,10 @@ using System.Data.SqlClient;
 
 namespace StockExplore
 {
-    class BLLDataImport
+    class BLLDataImport:BLL
     {
-        private SqlConnection _cnn;
-        private DBODataImport _dbo;
+        private readonly SqlConnection _cnn;
+        private readonly DBODataImport _dbo;
 
         public BLLDataImport(string connectionString)
         {
@@ -21,13 +21,13 @@ namespace StockExplore
 
         public void OpenConnection()
         {
-            if (_cnn.State == System.Data.ConnectionState.Closed)
+            if (_cnn.State == ConnectionState.Closed)
                 _cnn.Open();
         }
 
         public void CloseConnection()
         {
-            if (_cnn.State != System.Data.ConnectionState.Closed)
+            if (_cnn.State != ConnectionState.Closed)
                 _cnn.Close();
         }
 
@@ -39,7 +39,7 @@ namespace StockExplore
             {
                 string[] nameSplit = file.Name.Replace(file.Extension, "").Split('#');
 
-                StockHead stkHead = new StockHead()
+                StockHead stkHead = new StockHead
                 {
                     MarkType = nameSplit[0],
                     StkCode = nameSplit[1]

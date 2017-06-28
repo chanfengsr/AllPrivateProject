@@ -8,38 +8,30 @@ using System.Data.SqlClient;
 
 namespace StockExplore
 {
-    internal class DBODataImport
+    internal class DBODataImport:DBO
     {
-        private SqlConnection _cnn;
-
-        public DBODataImport(SqlConnection cnn)
+        public DBODataImport(SqlConnection cnn): base(cnn)
         {
-            _cnn = cnn;
+
         }
 
         public DataTable GetEmptyTable(string tableName)
         {
-            string strSql = string.Format("SELECT TOP 0 * FROM {0}", tableName);
-            return SQLHelper.ExecuteDataTable(strSql, CommandType.Text, _cnn);
+            const string strSql = "SELECT TOP 0 * FROM {0}";
+            return SQLHelper.ExecuteDataTable(string.Format(strSql, tableName), CommandType.Text, Connection);
         }
 
         public void TruncateTable(string tableName)
         {
-            string strSql = string.Format("TRUNCATE TABLE {0}", tableName);
-
-            SQLHelper.ExecuteNonQuery(strSql, CommandType.Text, _cnn);
+            const string strSql = "TRUNCATE TABLE {0}";
+            SQLHelper.ExecuteNonQuery(string.Format(strSql, tableName), CommandType.Text, Connection);
         }
 
         public void DeleteTable(string tableName, StockHead stkHead)
         {
-            string strSql = string.Format("DELETE FROM {0} WHERE MarkType = @MarkType AND StkCode = @StkCode", tableName);
-            SqlParameter[] parms = new[]
-            {
-                new SqlParameter("@MarkType", stkHead.MarkType),
-                new SqlParameter("@StkCode", stkHead.StkCode)
-            };
+            const string strSql = "DELETE FROM {0} WHERE MarkType = '{1}' AND StkCode = '{2}'";
 
-            SQLHelper.ExecuteNonQuery(strSql, CommandType.Text, parms, _cnn);
+            SQLHelper.ExecuteNonQuery(string.Format(strSql, tableName, stkHead.MarkType, stkHead.StkCode), CommandType.Text, Connection);
         }
 
         /// <summary>找到指定股票代码已有数据的最大交易日
@@ -48,7 +40,7 @@ namespace StockExplore
         {
             DateTime retVal = DateTime.MinValue;
 
-/**/
+/*
             string strSql = string.Format("SELECT TradeDay = MAX(TradeDay) FROM {0}" + Environment.NewLine
                                           + "WHERE MarkType = @MarkType AND StkCode = @StkCode", tableName);
             SqlParameter[] parms = new[]
@@ -58,13 +50,13 @@ namespace StockExplore
             };
             
             object objMaxDay = SQLHelper.ExecuteScalar(strSql, CommandType.Text, parms, _cnn);
+*/
+            /**/
+            const string strSql = "SELECT TradeDay = MAX(TradeDay) FROM {0}" + "\r\n"
+                                  + "WHERE MarkType = '{1}' AND StkCode = '{2}'";
 
-            /*
-                        const string strSql = "SELECT TradeDay = MAX(TradeDay) FROM {0}" + "\r\n"
-                                                           + "WHERE MarkType = '{1}' AND StkCode = '{2}'";
+            object objMaxDay = SQLHelper.ExecuteScalar(string.Format(strSql, tableName, stkHead.MarkType, stkHead.StkCode), CommandType.Text, Connection);
 
-                        object objMaxDay = SQLHelper.ExecuteScalar(string.Format(strSql, tableName, stkHead.MarkType, stkHead.StkCode), CommandType.Text, _cnn);
-            */
 
             if (objMaxDay != System.DBNull.Value)
                 retVal = (DateTime)objMaxDay;
@@ -78,7 +70,7 @@ namespace StockExplore
         {
             if (dataTable.Rows.Count > 0)
             {
-                SqlBulkCopy bulkCopy = new SqlBulkCopy(_cnn);
+                SqlBulkCopy bulkCopy = new SqlBulkCopy(Connection);
                 bulkCopy.DestinationTableName = dataTable.TableName;
                 foreach (DataColumn col in dataTable.Columns)
                     if (!col.AutoIncrement)
@@ -96,14 +88,8 @@ namespace StockExplore
         /// <returns></returns>
         public StockHead FindStockHead(string markType, string stkCode)
         {
-            const string strSql = "SELECT * FROM StockHead WHERE MarkType = @MarkType AND StkCode = @StkCode";
-            SqlParameter[] parms = new[]
-            {
-                new SqlParameter("@MarkType", markType),
-                new SqlParameter("@StkCode", stkCode)
-            };
-
-            DataTable dt = SQLHelper.ExecuteDataTable(strSql, CommandType.Text, parms, _cnn);
+            const string strSql = "SELECT * FROM StockHead WHERE MarkType = '{0}' AND StkCode = '{1}'";
+            DataTable dt = SQLHelper.ExecuteDataTable(string.Format(strSql, markType, stkCode), CommandType.Text, Connection);
 
             if (dt.Rows.Count > 0)
                 return ModelHelp.GenerateList<StockHead>(dt)[0];
@@ -121,30 +107,16 @@ namespace StockExplore
             {
                 if (existStkHead.StkName.Trim() != stockHead.StkName.Trim())
                 {
-                    const string strSql = "UPDATE StockHead SET StkName = @StkName WHERE MarkType = @MarkType AND StkCode = @StkCode";
-                    SqlParameter[] parms = new[]
-                    {
-                        new SqlParameter("@StkName", stockHead.StkName),
-                        new SqlParameter("@MarkType", stockHead.MarkType),
-                        new SqlParameter("@StkCode", stockHead.StkCode)
-                    };
-
-                    SQLHelper.ExecuteNonQuery(strSql, CommandType.Text, parms, _cnn);
+                    const string strSql = "UPDATE StockHead SET StkName = '{0}' WHERE MarkType = '{1}' AND StkCode = '{2}'";
+                    SQLHelper.ExecuteNonQuery(string.Format(strSql, stockHead.StkName, stockHead.MarkType, stockHead.StkCode), CommandType.Text, Connection);
                 }
             }
             else
             {
-                const string strSql = "INSERT INTO StockHead(MarkType,StkCode,StkName,StkType) " + "\r\n"
-                                      + "VALUES(@MarkType,@StkCode,@StkName,@StkType) ";
-                SqlParameter[] parms = new[]
-                {
-                    new SqlParameter("@MarkType", stockHead.MarkType),
-                    new SqlParameter("@StkCode", stockHead.StkCode),
-                    new SqlParameter("@StkName", stockHead.StkName),
-                    new SqlParameter("@StkType", stockHead.StkType)
-                };
+                const string strSql = "INSERT INTO StockHead(MarkType, StkCode, StkName, StkType) " + "\r\n"
+                                      + "VALUES('{0}','{1}','{2}','{3}') ";
 
-                SQLHelper.ExecuteNonQuery(strSql, CommandType.Text, parms, _cnn);
+                SQLHelper.ExecuteNonQuery(string.Format(strSql, stockHead.MarkType, stockHead.StkCode, stockHead.StkName, stockHead.StkType), CommandType.Text, Connection);
             }
         }
     }

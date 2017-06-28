@@ -12,4 +12,14 @@ namespace StockExplore
         Month,
         Minute
     }
+
+    internal enum ValueType
+    {
+        Open,
+        High,
+        Low,
+        Close,
+        Volume,
+        Amount
+    }
 }
