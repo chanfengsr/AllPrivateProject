@@ -90,6 +90,7 @@ namespace StockExplore
             bool isConvert = existMaxDay == DateTime.MinValue;
             StreamReader sr = new StreamReader(fileInfo.FullName, Encoding.Default);
             string line;
+            decimal vol, amt;
             const string idxTabMarkType = "MarkType",
                          idxTabStkCode = "StkCode",
                          idxTabTradeDay = "TradeDay",
@@ -106,7 +107,7 @@ namespace StockExplore
                       idxClose = 4,
                       idxVolume = 5,
                       idxAmount = 6;
-
+            
             bool firstLine = true;
             while (( line = sr.ReadLine() ) != null)
             {
@@ -128,18 +129,24 @@ namespace StockExplore
                     {
                         if (isConvert || tradeDate > existMaxDay)
                         {
-                            DataRow newRow = insTable.NewRow();
-                            newRow[idxTabMarkType] = stkHead.MarkType;
-                            newRow[idxTabStkCode] = stkHead.StkCode;
-                            newRow[idxTabTradeDay] = split[idxTradeDay];
-                            newRow[idxTabOpen] = split[idxOpen];
-                            newRow[idxTabHigh] = split[idxHigh];
-                            newRow[idxTabLow] = split[idxLow];
-                            newRow[idxTabClose] = split[idxClose];
-                            newRow[idxTabVolume] = split[idxVolume];
-                            newRow[idxTabAmount] = split[idxAmount];
+                            vol = decimal.Parse(split[idxVolume]);
+                            amt = decimal.Parse(split[idxAmount]);
 
-                            insTable.Rows.Add(newRow);
+                            if (vol > 0 || amt > 0)
+                            {
+                                DataRow newRow = insTable.NewRow();
+                                newRow[idxTabMarkType] = stkHead.MarkType;
+                                newRow[idxTabStkCode] = stkHead.StkCode;
+                                newRow[idxTabTradeDay] = split[idxTradeDay];
+                                newRow[idxTabOpen] = split[idxOpen];
+                                newRow[idxTabHigh] = split[idxHigh];
+                                newRow[idxTabLow] = split[idxLow];
+                                newRow[idxTabClose] = split[idxClose];
+                                newRow[idxTabVolume] = vol;
+                                newRow[idxTabAmount] = amt;
+
+                                insTable.Rows.Add(newRow);
+                            }
                         }
                     }
                 }

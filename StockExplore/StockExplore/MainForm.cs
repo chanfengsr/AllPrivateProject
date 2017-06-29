@@ -48,21 +48,20 @@ namespace StockExplore
 
         private void btnTest_Click(object sender, EventArgs e)
         {
-            /*
-            string str = @"r:\SZ#002321.txt";
-            StreamReader streamReader = new StreamReader(File.OpenRead(str), Encoding.Default);
+            Console.WriteLine(DateTime.Now.ToString());
 
-            string line;
-            while (( line = streamReader.ReadLine() ) != null)
+            BLLMetrics bll = new BLLMetrics(CommProp.ConnectionString);
+            bll.OpenConnection();
+            StringBuilder sb = new StringBuilder();
+            const string msgMod = "{0} : {1}";
+            Dictionary<DateTime, decimal> mas = bll.CalcAllMA(bll.GetDayCloseValue("SH", "600362"), 5);
+            foreach (KeyValuePair<DateTime, decimal> ma25 in mas)
             {
-                MessageBox.Show(line);
+                sb.AppendLine(string.Format(msgMod, ma25.Key.ToShortDateString(), ma25.Value));
             }
+            bll.CloseConnection();
 
-            streamReader.Close();
-             */
-
-            string str = this.LoadFileList();
-            Console.WriteLine(str);
+            txtConsole.Text = sb.ToString();
         }
 
         private void btnCloseForm_Click(object sender, EventArgs e)

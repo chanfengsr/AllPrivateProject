@@ -8,7 +8,7 @@ using System.Data.SqlClient;
 
 namespace StockExplore
 {
-    class BLLMetrics:BLL
+    internal class BLLMetrics : BLL
     {
         private readonly SqlConnection _cnn;
         private DBOMetrics _dbo;
@@ -17,7 +17,7 @@ namespace StockExplore
         {
             _cnn = new SqlConnection(connectionString);
             _dbo = new DBOMetrics(_cnn);
-            
+
         }
 
         public void OpenConnection()
@@ -32,12 +32,28 @@ namespace StockExplore
                 _cnn.Close();
         }
 
+        /// <summary>获取个股的所有收盘价
+        /// </summary>
+        /// <param name="markType">市场类型（沪市、深市、创业板）</param>
+        /// <param name="stkCode">股票代码</param>
+        /// <param name="startDay">开始日期</param>
+        /// <param name="endDay">结束日期</param>
+        /// <returns></returns>
+        public Dictionary<DateTime, decimal> GetDayCloseValue(string markType, string stkCode, DateTime startDay = default( DateTime ), DateTime endDay = default( DateTime ))
+        {
+            DataTable closePrice = _dbo.GetAllClosePrice(BLL.GetDBTableName(KLineType.Day), markType, stkCode, new List<ValueType> {ValueType.Close}, startDay, endDay);
+            Dictionary<DateTime, decimal> ret = SysFunction.GetColDictionary<DateTime, decimal>(closePrice, 0, 1);
+
+            return ret;
+        }
+
         /// <summary> 一次计算指定日期的所有简单移动平均线值
         /// </summary>
         /// <param name="origNumber">原金额（一般为收盘价）</param>
         /// <param name="avgNumber">平均日数</param>
+        /// <param name="startDay">开始日期</param>
         /// <returns></returns>
-        public Dictionary<DateTime, decimal> CalcAllMA(Dictionary<DateTime, decimal> origNumber, int avgNumber)
+        public Dictionary<DateTime, decimal> CalcAllMA(Dictionary<DateTime, decimal> origNumber, int avgNumber, DateTime startDay = default( DateTime ))
         {
             Dictionary<DateTime, decimal> ret = new Dictionary<DateTime, decimal>();
             Dictionary<int, decimal> calcResult = new Dictionary<int, decimal>();
@@ -45,6 +61,7 @@ namespace StockExplore
             Dictionary<int, DateTime> remarkDate = new Dictionary<int, DateTime>();
             int count = 0;
             bool havPrev = false;
+            bool havStartDay = startDay != default( DateTime );
 
             if (avgNumber > origNumber.Count)
                 return ret;
@@ -61,18 +78,25 @@ namespace StockExplore
             {
                 price = 0;
 
-                if (havPrev)
+                if (!havStartDay || startDay <= remarkDate[count])
                 {
-                    price = calcResult[count + 1] - origPrice[count + 1]+ origPrice[count-avgNumber+1];
-                    calcResult.Add(count, price);
+                    if (havPrev)
+                    {
+                        price = calcResult[count + 1] - origPrice[count + 1] + origPrice[count - avgNumber + 1];
+                        calcResult.Add(count, price);
+                    }
+                    else
+                    {
+                        for (int i = 0; i < avgNumber; i++)
+                            price += origPrice[count - i];
+
+                        calcResult.Add(count, price);
+                        havPrev = true;
+                    }
                 }
                 else
                 {
-                    for (int i = 0; i < avgNumber; i++)
-                        price += origPrice[count - i];
-
-                    calcResult.Add(count, price);
-                    havPrev = true;
+                    break;
                 }
 
                 count--;
@@ -80,7 +104,8 @@ namespace StockExplore
 
             foreach (KeyValuePair<int, DateTime> keyDay in remarkDate)
             {
-                ret.Add(keyDay.Value, calcResult[keyDay.Key]);
+                if (calcResult.ContainsKey(keyDay.Key))
+                    ret.Add(keyDay.Value, calcResult[keyDay.Key] / avgNumber);
             }
 
             return ret;
