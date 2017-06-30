@@ -48,20 +48,9 @@ namespace StockExplore
 
         private void btnTest_Click(object sender, EventArgs e)
         {
-            Console.WriteLine(DateTime.Now.ToString());
 
-            BLLMetrics bll = new BLLMetrics(CommProp.ConnectionString);
-            bll.OpenConnection();
-            StringBuilder sb = new StringBuilder();
-            const string msgMod = "{0} : {1}";
-            Dictionary<DateTime, decimal> mas = bll.CalcAllMA(bll.GetDayCloseValue("SH", "600362"), 5);
-            foreach (KeyValuePair<DateTime, decimal> ma25 in mas)
-            {
-                sb.AppendLine(string.Format(msgMod, ma25.Key.ToShortDateString(), ma25.Value));
-            }
-            bll.CloseConnection();
+            Console.WriteLine("abc".IndexOf("cd"));
 
-            txtConsole.Text = sb.ToString();
         }
 
         private void btnCloseForm_Click(object sender, EventArgs e)
@@ -273,3 +262,20 @@ namespace StockExplore
 
     }
 }
+
+
+/*      计算 简单移动平均线
+ 
+            BLLMetrics bll = new BLLMetrics(CommProp.ConnectionString);
+            bll.OpenConnection();
+            StringBuilder sb = new StringBuilder();
+            const string msgMod = "{0} : {1}";
+            Dictionary<DateTime, decimal> mas = bll.CalcAllMA(bll.GetDayCloseValue("SH", "600362"), 5);
+            foreach (KeyValuePair<DateTime, decimal> ma in mas)
+            {
+                sb.AppendLine(string.Format(msgMod, ma.Key.ToShortDateString(), ma.Value));
+            }
+            bll.CloseConnection();
+
+            txtConsole.Text = sb.ToString();
+ */

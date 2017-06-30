@@ -9,16 +9,21 @@ namespace StockExplore
     {
         public static string GetDBTableName(KLineType kLineType)
         {
+            const string kLineDay = "KLineDay",
+                         kLineWeek = "KLineWeek",
+                         kLineMonth = "KLineMonth",
+                         kLineMinute = "KLineMinute";
+
             switch (kLineType)
             {
                 case KLineType.Day:
-                    return "KLineDay";
+                    return kLineDay;
                 case KLineType.Week:
-                    return "KLineWeek";
+                    return kLineWeek;
                 case KLineType.Month:
-                    return "KLineMonth";
+                    return kLineMonth;
                 case KLineType.Minute:
-                    return "KLineMinute";
+                    return kLineMinute;
                 default:
                     throw new ArgumentOutOfRangeException("kLineType");
             }

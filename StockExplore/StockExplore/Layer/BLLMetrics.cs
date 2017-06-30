@@ -41,9 +41,9 @@ namespace StockExplore
         /// <returns></returns>
         public Dictionary<DateTime, decimal> GetDayCloseValue(string markType, string stkCode, DateTime startDay = default( DateTime ), DateTime endDay = default( DateTime ))
         {
-            DataTable closePrice = _dbo.GetAllClosePrice(BLL.GetDBTableName(KLineType.Day), markType, stkCode, new List<ValueType> {ValueType.Close}, startDay, endDay);
+            DataTable closePrice = _dbo.GetStockAllPrice(BLL.GetDBTableName(KLineType.Day), markType, stkCode, new List<ValueType> {ValueType.Close}, startDay, endDay);
             Dictionary<DateTime, decimal> ret = SysFunction.GetColDictionary<DateTime, decimal>(closePrice, 0, 1);
-
+            
             return ret;
         }
 
@@ -109,6 +109,21 @@ namespace StockExplore
             }
 
             return ret;
+        }
+
+        public void CalcStockIncrease_OneDay(DateTime day)
+        {
+            
+        }
+
+        /// <summary> 计算个股所有日涨幅
+        /// </summary>
+        /// <param name="markType">市场类型（沪市、深市、创业板）</param>
+        /// <param name="stkCode">股票代码</param>
+        /// <returns></returns>
+        public Dictionary<DateTime, decimal> CalcStockIncrease_OneStock(string markType, string stkCode)
+        {
+            return _dbo.CalcStockIncrease_OneStock(markType, stkCode);
         }
     }
 }

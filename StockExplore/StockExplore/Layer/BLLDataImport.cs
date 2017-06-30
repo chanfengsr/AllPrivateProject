@@ -116,7 +116,16 @@ namespace StockExplore
                 {
                     string[] split = line.Split(' ');
                     if (split.Length > 1)
+                    {
                         stkHead.StkName = split[1];
+                        for (int i = 2; i < split.Length; i++)
+                        {
+                            if (split[i].IndexOf("日线") < 0 && split[i].IndexOf("分钟线") < 0)
+                                stkHead.StkName += split[i];
+                            else
+                                break;
+                        }
+                    }
 
                     firstLine = false;
                 }
@@ -130,9 +139,8 @@ namespace StockExplore
                         if (isConvert || tradeDate > existMaxDay)
                         {
                             vol = decimal.Parse(split[idxVolume]);
-                            amt = decimal.Parse(split[idxAmount]);
 
-                            if (vol > 0 || amt > 0)
+                            if (vol > 0 )
                             {
                                 DataRow newRow = insTable.NewRow();
                                 newRow[idxTabMarkType] = stkHead.MarkType;
@@ -143,7 +151,7 @@ namespace StockExplore
                                 newRow[idxTabLow] = split[idxLow];
                                 newRow[idxTabClose] = split[idxClose];
                                 newRow[idxTabVolume] = vol;
-                                newRow[idxTabAmount] = amt;
+                                newRow[idxTabAmount] = split[idxAmount];
 
                                 insTable.Rows.Add(newRow);
                             }
