@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -146,21 +147,34 @@ namespace StockExplore
 
             if (lstStockData.Count > 0)
             {
+                Stopwatch stopWatch = Stopwatch.StartNew();
+                
                 try
                 {
                     bllDaImpt.OpenConnection();
                     int count = lstStockData.Count;
+                    int insLineCount=0;
                     string msgString = string.Empty;
+
+                    // 显示百分比提示信息
+                    Action<int, int, int> showMsg = ( (per, all, lineCnt) =>
+                    {
+                        SysFunction.BackspaceInConsole(msgString, txtConsole);
+                        msgString = string.Format("{0} / {1}，已导入：{2} 行)", per, all, lineCnt.ToString("N0"));
+                        Console.Write(msgString);
+                    } );
 
                     Console.Write("正在导入...（");
                     for (int i = 0; i < count; i++)
                     {
+                        showMsg(i + 1, count, insLineCount);
+                        
                         TupleValue<FileInfo, StockHead> stkData = lstStockData[i];
+                        insLineCount += bllDaImpt.InsertStkKLine(stkData, isConvert, isComposite, arg.Value3);
 
-                        SysFunction.BackspaceInConsole(msgString, txtConsole);
-                        msgString = string.Format("{0} / {1})", i + 1, count);
-                        Console.Write(msgString);
-                        bllDaImpt.InsertStkKLine(stkData, isConvert, isComposite, arg.Value3);
+                        // 最后一批完成后，再刷一下
+                        if (i == count - 1)
+                            showMsg(i + 1, count, insLineCount);
 
                         if (_processCancel)
                             break;
@@ -179,6 +193,7 @@ namespace StockExplore
                 {
                     bllDaImpt.CloseConnection();
                     _processCancel = false;
+                    Console.WriteLine("总耗时：{0}", stopWatch.Elapsed);
                 }
             }
 

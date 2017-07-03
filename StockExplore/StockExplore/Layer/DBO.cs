@@ -39,15 +39,14 @@ namespace StockExplore
         /// <summary>获取某只个股的所有指定价格
         /// </summary>
         /// <param name="tableName"></param>
-        /// <param name="markType">市场类型（沪市、深市、创业板）</param>
         /// <param name="stkCode">股票代码</param>
         /// <param name="valueTypes">指定类型</param>
         /// <param name="startDay">开始日期</param>
         /// <param name="endDay">结束日期</param>
         /// <returns></returns>
-        public DataTable GetStockAllPrice(string tableName, string markType, string stkCode, List<ValueType> valueTypes, DateTime startDay = default( DateTime ), DateTime endDay = default( DateTime ))
+        public DataTable GetStockAllPrice(string tableName,  string stkCode, List<ValueType> valueTypes, DateTime startDay = default( DateTime ), DateTime endDay = default( DateTime ))
         {
-            const string sqlMod = "SELECT TradeDay, {0} FROM {1} WHERE MarkType = '{2}' AND StkCode = '{3}' {4} ORDER BY TradeDay ASC";
+            const string sqlMod = "SELECT TradeDay, {0} FROM {1} WHERE StkCode = '{2}' {3} ORDER BY TradeDay ASC";
             string condTradeDay = string.Empty;
             if (startDay != default( DateTime ))
                 condTradeDay = string.Format(" AND TradeDay >= '{0}'", startDay.ToString());
@@ -57,7 +56,6 @@ namespace StockExplore
             string strSql = string.Format(sqlMod,
                                           ValueTypes2ColNames(valueTypes),
                                           tableName,
-                                          markType,
                                           stkCode,
                                           condTradeDay);
 
@@ -66,15 +64,14 @@ namespace StockExplore
 
         /// <summary> 获取个股总交易日数
         /// </summary>
-        /// <param name="markType">市场类型（沪市、深市、创业板）</param>
         /// <param name="stkCode">股票代码</param>
         /// <returns></returns>
-        public int GetStockTradeDayCount(string markType, string stkCode)
+        public int GetStockTradeDayCount(string stkCode)
         {
             const string sqlMod = "SELECT TradeDayCount = COUNT(1) FROM KLineDay" + "\r\n"
-                                  + "WHERE MarkType = '{0}' AND StkCode = '{1}'";
-            
-            return (int)SQLHelper.ExecuteScalar(string.Format(sqlMod, markType, stkCode), CommandType.Text, Connection);
+                                  + "WHERE StkCode = '{0}'";
+
+            return (int)SQLHelper.ExecuteScalar(string.Format(sqlMod, stkCode), CommandType.Text, Connection);
         }
 
         /// <summary> 查找所有历史交易日

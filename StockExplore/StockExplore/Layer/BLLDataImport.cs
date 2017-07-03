@@ -12,7 +12,7 @@ namespace StockExplore
     {
         private readonly SqlConnection _cnn;
         private readonly DBODataImport _dbo;
-
+        
         public BLLDataImport(string connectionString)
         {
             _cnn = new SqlConnection(connectionString);
@@ -51,7 +51,7 @@ namespace StockExplore
             return ret;
         }
 
-        public void InsertStkKLine(TupleValue<FileInfo, StockHead> stkInfo, bool isConvert, bool isComposite, KLineType kLineType)
+        public int InsertStkKLine(TupleValue<FileInfo, StockHead> stkInfo, bool isConvert, bool isComposite, KLineType kLineType)
         {
             FileInfo fileInfo = stkInfo.Value1;
             StockHead stkHead = stkInfo.Value2;
@@ -59,8 +59,6 @@ namespace StockExplore
             string tableName = BLL.GetDBTableName(kLineType);
             DateTime existMaxDay = DateTime.MinValue;
             DataTable insTable = _dbo.GetEmptyTable(tableName);
-
-            insTable.TableName = tableName;
 
             if (isConvert)
                 _dbo.DeleteTable(tableName, stkHead);
@@ -72,8 +70,9 @@ namespace StockExplore
             // 新增或修改 StockHead
             _dbo.InsertOrUpdateStockHead(stkHead);
 
-            // 插入实体数据
             _dbo.BulkInsertTable(insTable);
+
+            return insTable.Rows.Count;
         }
 
         public void TruncateStkKLine(KLineType kLineType)
@@ -90,7 +89,7 @@ namespace StockExplore
             bool isConvert = existMaxDay == DateTime.MinValue;
             StreamReader sr = new StreamReader(fileInfo.FullName, Encoding.Default);
             string line;
-            decimal vol, amt;
+            decimal vol;
             const string idxTabMarkType = "MarkType",
                          idxTabStkCode = "StkCode",
                          idxTabTradeDay = "TradeDay",
