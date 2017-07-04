@@ -111,11 +111,6 @@ namespace StockExplore
             return ret;
         }
 
-        public void CalcStockIncrease_OneDay(DateTime day)
-        {
-            
-        }
-
         /// <summary> 计算个股所有日涨幅
         /// </summary>
         /// <param name="stkCode">股票代码</param>
@@ -123,6 +118,11 @@ namespace StockExplore
         public Dictionary<DateTime, decimal> CalcStockIncrease_OneStock( string stkCode)
         {
             return _dbo.CalcStockIncrease_OneStock( stkCode);
+        }
+
+        public void CalcStockIncrease_OneDay(DateTime day)
+        {
+            
         }
     }
 }

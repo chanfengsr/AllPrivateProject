@@ -112,6 +112,7 @@
     <Content Include="DatabaseScript\DatabaseScript.sql" />
     <Content Include="DatabaseScript\TableScript.sql" />
     <Content Include="Resources\Stocks.ico" />
+    <Content Include="Todo List.txt" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

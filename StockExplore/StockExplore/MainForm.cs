@@ -47,13 +47,6 @@ namespace StockExplore
             SaveConfig();
         }
 
-        private void btnTest_Click(object sender, EventArgs e)
-        {
-
-            Console.WriteLine("abc".IndexOf("cd"));
-
-        }
-
         private void btnCloseForm_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -113,10 +106,13 @@ namespace StockExplore
 
             try
             {
-                bllDaImpt.OpenConnection();
-                bllDaImpt.TruncateStkKLine(KLineType.Day);
+                if (SysMessageBox.ShowMessage("清空日线数据表，确认？", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+                {
+                    bllDaImpt.OpenConnection();
+                    bllDaImpt.TruncateStkKLine(KLineType.Day);
 
-                Console.WriteLine("日K线数据清除完成！");
+                    Console.WriteLine("日K线数据清除完成！");   
+                }
             }
             catch (Exception ex)
             {
@@ -273,6 +269,24 @@ namespace StockExplore
             }
 
             return retVal;
+        }
+
+        private void btnTest_Click(object sender, EventArgs e)
+        {
+
+            BLLMetrics bll = new BLLMetrics(CommProp.ConnectionString);
+            bll.OpenConnection();
+            StringBuilder sb = new StringBuilder();
+            const string msgMod = "{0} : {1}";
+            Dictionary<DateTime, decimal> mas = bll.CalcAllMA(bll.GetDayCloseValue("600362"), 453);
+            foreach (KeyValuePair<DateTime, decimal> ma in mas)
+            {
+                sb.AppendLine(string.Format(msgMod, ma.Key.ToShortDateString(), ma.Value.ToString("N3")));
+            }
+            bll.CloseConnection();
+            
+            txtConsole.Text = sb.ToString();
+
         }
 
     }

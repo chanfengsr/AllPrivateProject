@@ -74,13 +74,13 @@ namespace StockExplore
             return (int)SQLHelper.ExecuteScalar(string.Format(sqlMod, stkCode), CommandType.Text, Connection);
         }
 
-        /// <summary> 查找所有历史交易日
+        /// <summary> 查找所有历史交易日（取上证指数为参考项）
         /// </summary>
         /// <param name="tableName"></param>
         /// <returns></returns>
         public List<DateTime> GetAllTradeDay(string tableName)
         {
-            const string sqlMod = "SELECT DISTINCT TradeDay FROM {0} ORDER BY TradeDay";
+            const string sqlMod = "SELECT DISTINCT TradeDay FROM {0} WHERE StkCode = '999999' ORDER BY TradeDay";
             
             DataTable dtDays = SQLHelper.ExecuteDataTable(string.Format(sqlMod, tableName), CommandType.Text, Connection);
             return SysFunction.GetColList<DateTime>(dtDays, 0).ToList();
