@@ -7,7 +7,7 @@ using System.Data.SqlClient;
 
 namespace StockExplore
 {
-    class DBO
+    internal class DBO
     {
         protected SqlConnection Connection;
 
@@ -15,7 +15,7 @@ namespace StockExplore
         {
             Connection = cnn;
         }
-        
+
         /// <summary> 枚举 ValueType 类型转换成SQL中要用到的列名
         /// </summary>
         public static string ValueType2ColName(ValueType valueType)
@@ -44,7 +44,7 @@ namespace StockExplore
         /// <param name="startDay">开始日期</param>
         /// <param name="endDay">结束日期</param>
         /// <returns></returns>
-        public DataTable GetStockAllPrice(string tableName,  string stkCode, List<ValueType> valueTypes, DateTime startDay = default( DateTime ), DateTime endDay = default( DateTime ))
+        public DataTable GetStockAllPrice(string tableName, string stkCode, List<ValueType> valueTypes, DateTime startDay = default( DateTime ), DateTime endDay = default( DateTime ))
         {
             const string sqlMod = "SELECT TradeDay, {0} FROM {1} WHERE StkCode = '{2}' {3} ORDER BY TradeDay ASC";
             string condTradeDay = string.Empty;
@@ -62,17 +62,29 @@ namespace StockExplore
             return SQLHelper.ExecuteDataTable(strSql, CommandType.Text, Connection);
         }
 
+        private static Dictionary<string, int> _allStockTradeDayCount = new Dictionary<string, int>();
+
         /// <summary> 获取个股总交易日数
         /// </summary>
         /// <param name="stkCode">股票代码</param>
         /// <returns></returns>
         public int GetStockTradeDayCount(string stkCode)
         {
-            const string sqlMod = "SELECT TradeDayCount = COUNT(1) FROM KLineDay" + "\r\n"
-                                  + "WHERE StkCode = '{0}'";
+            if (_allStockTradeDayCount.Count > 0 && !_allStockTradeDayCount.ContainsKey(stkCode))
+                return 0;
 
-            return (int)SQLHelper.ExecuteScalar(string.Format(sqlMod, stkCode), CommandType.Text, Connection);
+            if (_allStockTradeDayCount.Count == 0)
+            {
+                const string strSql = "SELECT StkCode, DayCount = COUNT(TradeDay) FROM KLineDay GROUP BY StkCode";
+                DataTable dtCount = SQLHelper.ExecuteDataTable(strSql, CommandType.Text, Connection);
+
+                _allStockTradeDayCount = SysFunction.GetColDictionary<string, int>(dtCount, 0, 1);
+            }
+
+            return _allStockTradeDayCount.ContainsKey(stkCode) ? _allStockTradeDayCount[stkCode] : 0;
         }
+
+        private static readonly Dictionary<string, List<DateTime>> AllTypeTradeDay = new Dictionary<string, List<DateTime>>();
 
         /// <summary> 查找所有历史交易日（取上证指数为参考项）
         /// </summary>
@@ -80,12 +92,34 @@ namespace StockExplore
         /// <returns></returns>
         public List<DateTime> GetAllTradeDay(string tableName)
         {
-            const string sqlMod = "SELECT DISTINCT TradeDay FROM {0} WHERE StkCode = '999999' ORDER BY TradeDay";
-            
-            DataTable dtDays = SQLHelper.ExecuteDataTable(string.Format(sqlMod, tableName), CommandType.Text, Connection);
-            return SysFunction.GetColList<DateTime>(dtDays, 0).ToList();
+            if (! AllTypeTradeDay.ContainsKey(tableName))
+            {
+                const string sqlMod = "SELECT DISTINCT TradeDay FROM {0} WHERE StkCode = '999999' ORDER BY TradeDay";
+
+                DataTable dtDays = SQLHelper.ExecuteDataTable(string.Format(sqlMod, tableName), CommandType.Text, Connection);
+                List<DateTime> lstDay = SysFunction.GetColList<DateTime>(dtDays, 0).ToList();
+
+                AllTypeTradeDay.Add(tableName, lstDay);
+            }
+
+            return AllTypeTradeDay[tableName];
         }
 
+        private static Dictionary<string, DateTime> _stockFirstDay = new Dictionary<string, DateTime>();
 
+        /// <summary> 所有股票（包括指数）的第一个交易日。如果数据不全，则不代表上市日
+        /// </summary>
+        /// <returns></returns>
+        public Dictionary<string, DateTime> GetAllStockFirstDay()
+        {
+            if (_stockFirstDay.Count > 0)
+            {
+                const string strSql = "SELECT StkCode, FirstDay = MIN(TradeDay) FROM KLineDay GROUP BY StkCode";
+                DataTable dt = SQLHelper.ExecuteDataTable(strSql, CommandType.Text, Connection);
+                _stockFirstDay = SysFunction.GetColDictionary<string, DateTime>(dt, 0, 1);
+            }
+
+            return _stockFirstDay;
+        }
     }
 }

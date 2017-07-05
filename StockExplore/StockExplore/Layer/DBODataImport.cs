@@ -10,10 +10,7 @@ namespace StockExplore
 {
     internal class DBODataImport:DBO
     {
-        public DBODataImport(SqlConnection cnn): base(cnn)
-        {
-
-        }
+        public DBODataImport(SqlConnection cnn): base(cnn){ }
 
         public DataTable GetEmptyTable(string tableName)
         {
