@@ -111,6 +111,7 @@
     </Content>
     <Content Include="DatabaseScript\DatabaseScript.sql" />
     <Content Include="DatabaseScript\TableScript.sql" />
+    <Content Include="DatabaseScript\ProcedureScript.sql" />
     <Content Include="Resources\Stocks.ico" />
     <Content Include="Todo List.txt" />
   </ItemGroup>
