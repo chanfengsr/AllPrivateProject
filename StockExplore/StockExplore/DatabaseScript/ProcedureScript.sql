@@ -10,8 +10,8 @@ SET NOCOUNT ON
 DECLARE @startDay DATETIME
 DECLARE @endDay   DATETIME
 
--- 最后一个星期五
-SET @endDay   = (SELECT TOP 1 TradeDay FROM KLineDay WHERE StkCode = '999999' AND DATEPART(weekday, TradeDay) = 6 ORDER BY TradeDay DESC)
+-- 最后一个交易周的最后一天
+SET @endDay   = (SELECT TOP 1 TradeDay FROM KLineDay WHERE StkCode = '999999' AND (DATEPART(weekday, TradeDay) = 6 OR DATEDIFF(week, TradeDay, GETDATE()) > 0) ORDER BY TradeDay DESC)
 
 IF @ReCalcAll = 1
     BEGIN

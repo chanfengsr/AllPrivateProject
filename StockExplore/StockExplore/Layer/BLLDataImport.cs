@@ -51,20 +51,32 @@ namespace StockExplore
             return ret;
         }
 
-        public int InsertStkKLine(TupleValue<FileInfo, StockHead> stkInfo, bool isConvert, bool isComposite, KLineType kLineType)
+        /// <summary> 获取表记录数
+        /// </summary>
+        /// <param name="tableName"></param>
+        /// <returns></returns>
+        public int GetTableRecordCount(string tableName)
+        {
+            return _dbo.GetTableRecordCount(tableName);
+        }
+
+        public int InsertStkKLine(TupleValue<FileInfo, StockHead> stkInfo, bool isConvert, bool isComposite, KLineType kLineType, bool haveRecord = true)
         {
             FileInfo fileInfo = stkInfo.Value1;
             StockHead stkHead = stkInfo.Value2;
             stkHead.StkType = isComposite ? "0" : "1";
-            string tableName = BLL.GetDBTableName(kLineType);
+            string tableName = BLL.GetDBTableName(kLineType, isComposite);
             DateTime existMaxDay = DateTime.MinValue;
             DataTable insTable = _dbo.GetEmptyTable(tableName);
 
-            if (isConvert)
-                _dbo.DeleteTable(tableName, stkHead);
-            else
-                existMaxDay = _dbo.FindMaxExistTradeDay(tableName, stkHead);
-
+            if (haveRecord)
+            {
+                if (isConvert)
+                    _dbo.DeleteTable(tableName, stkHead);
+                else
+                    existMaxDay = _dbo.FindMaxExistTradeDay(tableName, stkHead);
+            }
+            
             this.LoadFileData(fileInfo, stkHead, existMaxDay, ref insTable);
 
             // 新增或修改 StockHead
@@ -75,9 +87,9 @@ namespace StockExplore
             return insTable.Rows.Count;
         }
 
-        public void TruncateStkKLine(KLineType kLineType)
+        public void TruncateStkKLine(KLineType kLineType, bool isComposite)
         {
-            string tableName = BLL.GetDBTableName(kLineType);
+            string tableName = BLL.GetDBTableName(kLineType, isComposite);
             _dbo.TruncateTable(tableName);
         }
 

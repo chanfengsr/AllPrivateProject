@@ -6,7 +6,7 @@ namespace StockExplore
     /// <summary>
     /// </summary>
     [Serializable]
-    public class KLineDay
+    public class KLineWeek
     {
         #region 私有变量及默认值
         private String _MarkType;
@@ -24,9 +24,8 @@ namespace StockExplore
         public List<string> AllColNames = new List<string> { "MarkType", "StkCode", "TradeDay", "Open", "High", "Low", "Close", "Volume", "Amount", "RecId" };
 
         #region 索引组
-        public List<string> UniIdxPK_KLineDay = new List<string> { "MarkType", "StkCode", "TradeDay" };
-        public List<string> IdxIX_KLineDay = new List<string> { "StkCode" };
-        public List<string> UniIdxIX_KLineDay_RecId = new List<string> { "RecId" };
+        public List<string> UniIdxPK_KLineWeek = new List<string> { "MarkType", "StkCode", "TradeDay" };
+        public List<string> UniIdxIX_KLineWeek_RecId = new List<string> { "RecId" };
         #endregion 索引组
 
         #region 公共属性

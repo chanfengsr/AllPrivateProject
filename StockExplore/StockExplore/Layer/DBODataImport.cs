@@ -8,9 +8,9 @@ using System.Data.SqlClient;
 
 namespace StockExplore
 {
-    internal class DBODataImport:DBO
+    internal class DBODataImport : DBO
     {
-        public DBODataImport(SqlConnection cnn): base(cnn){ }
+        public DBODataImport(SqlConnection cnn) : base(cnn) {}
 
         public DataTable GetEmptyTable(string tableName)
         {
@@ -29,9 +29,9 @@ namespace StockExplore
 
         public void DeleteTable(string tableName, StockHead stkHead)
         {
-            const string strSql = "DELETE FROM {0} WHERE StkCode = '{1}'";
+            const string strSql = "DELETE FROM {0} WHERE MarkType = '{1}' AND StkCode = '{2}'";
 
-            SQLHelper.ExecuteNonQuery(string.Format(strSql, tableName,  stkHead.StkCode), CommandType.Text, Connection);
+            SQLHelper.ExecuteNonQuery(string.Format(strSql, tableName, stkHead.MarkType, stkHead.StkCode), CommandType.Text, Connection);
         }
 
         /// <summary>找到指定股票代码已有数据的最大交易日
@@ -40,22 +40,10 @@ namespace StockExplore
         {
             DateTime retVal = DateTime.MinValue;
 
-/*
-            string strSql = string.Format("SELECT TradeDay = MAX(TradeDay) FROM {0}" + Environment.NewLine
-                                          + "WHERE MarkType = @MarkType AND StkCode = @StkCode", tableName);
-            SqlParameter[] parms = new[]
-            {
-                new SqlParameter("@MarkType", stkHead.MarkType),
-                new SqlParameter("@StkCode", stkHead.StkCode)
-            };
-            
-            object objMaxDay = SQLHelper.ExecuteScalar(strSql, CommandType.Text, parms, _cnn);
-*/
-            /**/
             const string strSql = "SELECT TradeDay = MAX(TradeDay) FROM {0}" + "\r\n"
-                                  + "WHERE StkCode = '{1}'";
+                                  + "WHERE MarkType = '{1}' AND StkCode = '{2}'";
 
-            object objMaxDay = SQLHelper.ExecuteScalar(string.Format(strSql, tableName,  stkHead.StkCode), CommandType.Text, Connection);
+            object objMaxDay = SQLHelper.ExecuteScalar(string.Format(strSql, tableName, stkHead.MarkType, stkHead.StkCode), CommandType.Text, Connection);
 
 
             if (objMaxDay != System.DBNull.Value)
@@ -83,12 +71,13 @@ namespace StockExplore
 
         /// <summary> 数据库中查找 StockHead
         /// </summary>
+        /// <param name="markType"></param>
         /// <param name="stkCode">股票代码</param>
         /// <returns></returns>
-        public StockHead FindStockHead( string stkCode)
+        public StockHead FindStockHead(string markType, string stkCode)
         {
-            const string strSql = "SELECT * FROM StockHead WHERE StkCode = '{0}'";
-            DataTable dt = SQLHelper.ExecuteDataTable(string.Format(strSql,  stkCode), CommandType.Text, Connection);
+            const string strSql = "SELECT * FROM StockHead WHERE MarkType = '{0}' AND StkCode = '{1}'";
+            DataTable dt = SQLHelper.ExecuteDataTable(string.Format(strSql, markType, stkCode), CommandType.Text, Connection);
 
             if (dt.Rows.Count > 0)
                 return ModelHelp.GenerateList<StockHead>(dt)[0];
@@ -100,14 +89,14 @@ namespace StockExplore
         /// </summary>
         public void InsertOrUpdateStockHead(StockHead stockHead)
         {
-            StockHead existStkHead = this.FindStockHead(stockHead.StkCode);
+            StockHead existStkHead = this.FindStockHead(stockHead.MarkType, stockHead.StkCode);
 
             if (!string.IsNullOrEmpty(existStkHead.StkCode))
             {
                 if (existStkHead.StkName.Trim() != stockHead.StkName.Trim())
                 {
-                    const string strSql = "UPDATE StockHead SET StkName = '{0}' WHERE StkCode = '{1}'";
-                    SQLHelper.ExecuteNonQuery(string.Format(strSql, stockHead.StkName, stockHead.StkCode), CommandType.Text, Connection);
+                    const string strSql = "UPDATE StockHead SET StkName = '{0}' WHERE MarkType = '{1}' AND StkCode = '{2}'";
+                    SQLHelper.ExecuteNonQuery(string.Format(strSql, stockHead.StkName, stockHead.MarkType, stockHead.StkCode), CommandType.Text, Connection);
                 }
             }
             else

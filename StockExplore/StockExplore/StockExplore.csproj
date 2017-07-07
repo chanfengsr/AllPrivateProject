@@ -78,6 +78,8 @@
     <Compile Include="Layer\DBO.cs" />
     <Compile Include="Model\Enums.cs" />
     <Compile Include="Model\KLineDay.cs" />
+    <Compile Include="Model\KLineDayZS.cs" />
+    <Compile Include="Model\KLineWeek.cs" />
     <Compile Include="Model\StockHead.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -112,6 +114,7 @@
     <Content Include="DatabaseScript\DatabaseScript.sql" />
     <Content Include="DatabaseScript\TableScript.sql" />
     <Content Include="DatabaseScript\ProcedureScript.sql" />
+    <Content Include="DatabaseScript\WorkingSQL.sql" />
     <Content Include="Resources\Stocks.ico" />
     <Content Include="Todo List.txt" />
   </ItemGroup>

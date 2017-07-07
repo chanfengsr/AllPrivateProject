@@ -11,7 +11,7 @@ namespace StockExplore
     internal class BLLMetrics : BLL
     {
         private readonly SqlConnection _cnn;
-        private DBOMetrics _dbo;
+        private readonly DBOMetrics _dbo;
 
         public BLLMetrics(string connectionString)
         {
@@ -34,14 +34,14 @@ namespace StockExplore
 
         /// <summary>获取个股的所有收盘价
         /// </summary>
-        /// <param name="markType">市场类型（沪市、深市、创业板）</param>
         /// <param name="stkCode">股票代码</param>
+        /// <param name="isComposite">是否指数</param>
         /// <param name="startDay">开始日期</param>
         /// <param name="endDay">结束日期</param>
         /// <returns></returns>
-        public Dictionary<DateTime, decimal> GetDayCloseValue(string stkCode, DateTime startDay = default( DateTime ), DateTime endDay = default( DateTime ))
+        public Dictionary<DateTime, decimal> GetDayCloseValue(string stkCode, bool isComposite, DateTime startDay = default( DateTime ), DateTime endDay = default( DateTime ))
         {
-            DataTable closePrice = _dbo.GetStockAllPrice(BLL.GetDBTableName(KLineType.Day),  stkCode, new List<ValueType> {ValueType.Close}, startDay, endDay);
+            DataTable closePrice = _dbo.GetStockAllPrice(BLL.GetDBTableName(KLineType.Day,isComposite),  stkCode, new List<ValueType> {ValueType.Close}, startDay, endDay);
             Dictionary<DateTime, decimal> ret = SysFunction.GetColDictionary<DateTime, decimal>(closePrice, 0, 1);
             
             return ret;
@@ -113,16 +113,17 @@ namespace StockExplore
 
         /// <summary> 计算个股所有日涨幅
         /// </summary>
+        /// <param name="dayTableName"></param>
         /// <param name="stkCode">股票代码</param>
         /// <returns></returns>
-        public Dictionary<DateTime, decimal> CalcStockIncrease_OneStock( string stkCode)
+        public Dictionary<DateTime, decimal> CalcStockIncrease_OneStock(string dayTableName, string stkCode)
         {
-            return _dbo.CalcStockIncrease_OneStock( stkCode);
+            return _dbo.CalcStockIncrease_OneStock(dayTableName, stkCode);
         }
 
-        public void CalcStockIncrease_OneDay(DateTime day)
+        public void CalcStockIncrease_OneDay(string dayTableName, DateTime day)
         {
-            
+            _dbo.CalcStockIncrease_OneDay(dayTableName, day);
         }
     }
 }

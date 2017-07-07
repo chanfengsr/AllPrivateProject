@@ -28,21 +28,21 @@
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageDataImport = new System.Windows.Forms.TabPage();
             this.grpDayKLine = new System.Windows.Forms.GroupBox();
-            this.dataImptDayKLineBtnTruncate = new System.Windows.Forms.Button();
             this.dataImptDayKLineBtnImport = new System.Windows.Forms.Button();
             this.dataImptDayKLineChkIsComposite = new System.Windows.Forms.CheckBox();
             this.dataImptDayKLineChkConvert = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtSourceFolder = new System.Windows.Forms.TextBox();
             this.btnSourceFolderBrowser = new System.Windows.Forms.Button();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.tabPageDataClear = new System.Windows.Forms.TabPage();
+            this.dataClearDayKLineBtnTruncate = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnProcCancel = new System.Windows.Forms.Button();
             this.btnCloseForm = new System.Windows.Forms.Button();
             this.btnClear = new System.Windows.Forms.Button();
             this.txtConsole = new System.Windows.Forms.TextBox();
             this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.bkgDataImport = new System.ComponentModel.BackgroundWorker();
-            this.btnProcCancel = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -50,6 +50,7 @@
             this.tabControl1.SuspendLayout();
             this.tabPageDataImport.SuspendLayout();
             this.grpDayKLine.SuspendLayout();
+            this.tabPageDataClear.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -86,7 +87,7 @@
             // tabControl1
             // 
             this.tabControl1.Controls.Add(this.tabPageDataImport);
-            this.tabControl1.Controls.Add(this.tabPage2);
+            this.tabControl1.Controls.Add(this.tabPageDataClear);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
@@ -110,7 +111,6 @@
             // 
             // grpDayKLine
             // 
-            this.grpDayKLine.Controls.Add(this.dataImptDayKLineBtnTruncate);
             this.grpDayKLine.Controls.Add(this.dataImptDayKLineBtnImport);
             this.grpDayKLine.Controls.Add(this.dataImptDayKLineChkIsComposite);
             this.grpDayKLine.Controls.Add(this.dataImptDayKLineChkConvert);
@@ -120,16 +120,6 @@
             this.grpDayKLine.TabIndex = 17;
             this.grpDayKLine.TabStop = false;
             this.grpDayKLine.Text = "日K线";
-            // 
-            // dataImptDayKLineBtnTruncate
-            // 
-            this.dataImptDayKLineBtnTruncate.Location = new System.Drawing.Point(12, 96);
-            this.dataImptDayKLineBtnTruncate.Name = "dataImptDayKLineBtnTruncate";
-            this.dataImptDayKLineBtnTruncate.Size = new System.Drawing.Size(75, 23);
-            this.dataImptDayKLineBtnTruncate.TabIndex = 2;
-            this.dataImptDayKLineBtnTruncate.Text = "清空";
-            this.dataImptDayKLineBtnTruncate.UseVisualStyleBackColor = true;
-            this.dataImptDayKLineBtnTruncate.Click += new System.EventHandler(this.dataImptDayKLineBtnTruncate_Click);
             // 
             // dataImptDayKLineBtnImport
             // 
@@ -191,15 +181,26 @@
             this.btnSourceFolderBrowser.UseVisualStyleBackColor = true;
             this.btnSourceFolderBrowser.Click += new System.EventHandler(this.btnSourceFolderBrowser_Click);
             // 
-            // tabPage2
+            // tabPageDataClear
             // 
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(647, 176);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "tabPage2";
-            this.tabPage2.UseVisualStyleBackColor = true;
+            this.tabPageDataClear.Controls.Add(this.dataClearDayKLineBtnTruncate);
+            this.tabPageDataClear.Location = new System.Drawing.Point(4, 22);
+            this.tabPageDataClear.Name = "tabPageDataClear";
+            this.tabPageDataClear.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPageDataClear.Size = new System.Drawing.Size(647, 176);
+            this.tabPageDataClear.TabIndex = 1;
+            this.tabPageDataClear.Text = "数据清理";
+            this.tabPageDataClear.UseVisualStyleBackColor = true;
+            // 
+            // dataClearDayKLineBtnTruncate
+            // 
+            this.dataClearDayKLineBtnTruncate.Location = new System.Drawing.Point(32, 32);
+            this.dataClearDayKLineBtnTruncate.Name = "dataClearDayKLineBtnTruncate";
+            this.dataClearDayKLineBtnTruncate.Size = new System.Drawing.Size(127, 23);
+            this.dataClearDayKLineBtnTruncate.TabIndex = 3;
+            this.dataClearDayKLineBtnTruncate.Text = "清空所有个股日线";
+            this.dataClearDayKLineBtnTruncate.UseVisualStyleBackColor = true;
+            this.dataClearDayKLineBtnTruncate.Click += new System.EventHandler(this.dataClearDayKLineBtnTruncate_Click);
             // 
             // groupBox1
             // 
@@ -215,6 +216,21 @@
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "执行信息";
+            // 
+            // btnProcCancel
+            // 
+            this.btnProcCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnProcCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.btnProcCancel.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Bold);
+            this.btnProcCancel.ForeColor = System.Drawing.Color.DarkRed;
+            this.btnProcCancel.Location = new System.Drawing.Point(527, 52);
+            this.btnProcCancel.Name = "btnProcCancel";
+            this.btnProcCancel.Size = new System.Drawing.Size(102, 34);
+            this.btnProcCancel.TabIndex = 13;
+            this.btnProcCancel.TabStop = false;
+            this.btnProcCancel.Text = "Cancel...";
+            this.btnProcCancel.UseVisualStyleBackColor = true;
+            this.btnProcCancel.Click += new System.EventHandler(this.btnProcCancel_Click);
             // 
             // btnCloseForm
             // 
@@ -266,21 +282,6 @@
             this.bkgDataImport.WorkerSupportsCancellation = true;
             this.bkgDataImport.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bkgDataImport_DoWork);
             // 
-            // btnProcCancel
-            // 
-            this.btnProcCancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnProcCancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
-            this.btnProcCancel.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Bold);
-            this.btnProcCancel.ForeColor = System.Drawing.Color.DarkRed;
-            this.btnProcCancel.Location = new System.Drawing.Point(527, 52);
-            this.btnProcCancel.Name = "btnProcCancel";
-            this.btnProcCancel.Size = new System.Drawing.Size(102, 34);
-            this.btnProcCancel.TabIndex = 13;
-            this.btnProcCancel.TabStop = false;
-            this.btnProcCancel.Text = "Cancel...";
-            this.btnProcCancel.UseVisualStyleBackColor = true;
-            this.btnProcCancel.Click += new System.EventHandler(this.btnProcCancel_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -301,6 +302,7 @@
             this.tabPageDataImport.PerformLayout();
             this.grpDayKLine.ResumeLayout(false);
             this.grpDayKLine.PerformLayout();
+            this.tabPageDataClear.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.ResumeLayout(false);
@@ -317,7 +319,7 @@
         private System.Windows.Forms.TextBox txtConsole;
         private System.Windows.Forms.TabControl tabControl1;
         private System.Windows.Forms.TabPage tabPageDataImport;
-        private System.Windows.Forms.TabPage tabPage2;
+        private System.Windows.Forms.TabPage tabPageDataClear;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox txtSourceFolder;
         private System.Windows.Forms.Button btnSourceFolderBrowser;
@@ -327,8 +329,8 @@
         private System.Windows.Forms.CheckBox dataImptDayKLineChkIsComposite;
         private System.Windows.Forms.CheckBox dataImptDayKLineChkConvert;
         private System.ComponentModel.BackgroundWorker bkgDataImport;
-        private System.Windows.Forms.Button dataImptDayKLineBtnTruncate;
         private System.Windows.Forms.Button btnProcCancel;
+        private System.Windows.Forms.Button dataClearDayKLineBtnTruncate;
     }
 }
 

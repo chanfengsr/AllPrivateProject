@@ -7,9 +7,10 @@ namespace StockExplore
 {
     internal class BLL
     {
-        public static string GetDBTableName(KLineType kLineType)
+        public static string GetDBTableName(KLineType kLineType, bool isComposite)
         {
             const string kLineDay = "KLineDay",
+                         kLineDayZS = "KLineDayZS",
                          kLineWeek = "KLineWeek",
                          kLineMonth = "KLineMonth",
                          kLineMinute = "KLineMinute";
@@ -17,7 +18,7 @@ namespace StockExplore
             switch (kLineType)
             {
                 case KLineType.Day:
-                    return kLineDay;
+                    return isComposite ? kLineDayZS : kLineDay;
                 case KLineType.Week:
                     return kLineWeek;
                 case KLineType.Month:

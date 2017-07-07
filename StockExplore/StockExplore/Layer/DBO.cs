@@ -36,6 +36,16 @@ namespace StockExplore
                 return ret.TrimEnd(',');
         }
 
+        /// <summary> 获取表记录数
+        /// </summary>
+        /// <param name="tableName"></param>
+        /// <returns></returns>
+        public int GetTableRecordCount(string tableName)
+        {
+            const string sqlMod = "SELECT COUNT(1) FROM {0}";
+            return (int)SQLHelper.ExecuteScalar(string.Format(sqlMod, tableName), CommandType.Text, Connection);
+        }
+
         /// <summary>获取某只个股的所有指定价格
         /// </summary>
         /// <param name="tableName"></param>
@@ -107,7 +117,7 @@ namespace StockExplore
 
         private static Dictionary<string, DateTime> _stockFirstDay = new Dictionary<string, DateTime>();
 
-        /// <summary> 所有股票（包括指数）的第一个交易日。如果数据不全，则不代表上市日
+        /// <summary> 所有股票（不包括指数）的第一个交易日。如果数据不全，则不代表上市日
         /// </summary>
         /// <returns></returns>
         public Dictionary<string, DateTime> GetAllStockFirstDay()

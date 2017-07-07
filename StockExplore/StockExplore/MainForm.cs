@@ -28,174 +28,6 @@ namespace StockExplore
             this.Icon = Resources.Stocks;
         }
 
-        private void MainForm_Load(object sender, EventArgs e)
-        {
-            btnCloseForm.Top = -1000;
-            btnProcCancel.Visible = false;
-
-            LoadConfig();
-
-            new Thread(() =>
-            {
-                if (!SQLHelper.TestConnectString(CommProp.ConnectionString))
-                    Console.WriteLine("数据库连接错误!");
-            }).Start();
-        }
-
-        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            SaveConfig();
-        }
-
-        private void btnCloseForm_Click(object sender, EventArgs e)
-        {
-            this.Close();
-        }
-
-        private void btnClear_Click(object sender, EventArgs e)
-        {
-            txtConsole.Clear();
-        }
-
-        private void btnSourceFolderBrowser_Click(object sender, EventArgs e)
-        {
-            FolderBrowser(txtSourceFolder);
-        }
-
-        private void txtFileFolder_DragEnter(object sender, DragEventArgs e)
-        {
-            if (e.Data.GetDataPresent(DataFormats.FileDrop))
-                e.Effect = DragDropEffects.Copy;
-        }
-
-        private void txtFileFolder_DragDrop(object sender, DragEventArgs e)
-        {
-            if (e.Data.GetDataPresent(DataFormats.FileDrop))
-            {
-                Array ary = (Array)e.Data.GetData(DataFormats.FileDrop);
-
-                if (ary.Length == 0)
-                    return;
-
-                string folderName = ary.GetValue(0).ToString();
-
-                if (Directory.Exists(folderName))
-                {
-                    var textBox = sender as TextBox;
-                    if (textBox != null)
-                        textBox.Text = folderName;
-                }
-            }
-        }
-
-        private void dataImptDayKLineBtnImport_Click(object sender, EventArgs e)
-        {
-            TupleValue<bool, bool, KLineType> arg = new TupleValue<bool, bool, KLineType>(dataImptDayKLineChkConvert.Checked, dataImptDayKLineChkIsComposite.Checked, KLineType.Day);
-            bkgDataImport.RunWorkerAsync(arg);
-        }
-
-        private void btnProcCancel_Click(object sender, EventArgs e)
-        {
-            _processCancel = true;
-        }
-
-        private void dataImptDayKLineBtnTruncate_Click(object sender, EventArgs e)
-        {
-            BLLDataImport bllDaImpt = new BLLDataImport(CommProp.ConnectionString);
-            UIInProcess(true);
-
-            try
-            {
-                if (SysMessageBox.ShowMessage("清空日线数据表，确认？", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
-                {
-                    bllDaImpt.OpenConnection();
-                    bllDaImpt.TruncateStkKLine(KLineType.Day);
-
-                    Console.WriteLine("日K线数据清除完成！");   
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine(ex.Message);
-            }
-            finally
-            {
-                bllDaImpt.CloseConnection();
-            }
-
-
-            UIInProcess(false);
-        }
-
-        private void bkgDataImport_DoWork(object sender, DoWorkEventArgs e)
-        {
-            TupleValue<bool, bool, KLineType> arg = (TupleValue<bool, bool, KLineType>)e.Argument;
-            BLLDataImport bllDaImpt = new BLLDataImport(CommProp.ConnectionString);
-            bool isConvert = arg.Value1;
-            bool isComposite = arg.Value2;
-
-            UIInProcess(true);
-            _processCancel = false;
-
-            this.LoadFileList();
-
-            List<TupleValue<FileInfo, StockHead>> lstStockData = bllDaImpt.LoadMrkTypeAndCode(AllFile);
-
-            if (lstStockData.Count > 0)
-            {
-                Stopwatch stopWatch = Stopwatch.StartNew();
-                
-                try
-                {
-                    bllDaImpt.OpenConnection();
-                    int count = lstStockData.Count;
-                    int insLineCount=0;
-                    string msgString = string.Empty;
-
-                    // 显示百分比提示信息
-                    Action<int, int, int> showMsg = ( (per, all, lineCnt) =>
-                    {
-                        SysFunction.BackspaceInConsole(msgString, txtConsole);
-                        msgString = string.Format("{0} / {1}，已导入：{2} 行)", per, all, lineCnt.ToString("N0"));
-                        Console.Write(msgString);
-                    } );
-
-                    Console.Write("正在导入...（");
-                    for (int i = 0; i < count; i++)
-                    {
-                        showMsg(i + 1, count, insLineCount);
-                        
-                        TupleValue<FileInfo, StockHead> stkData = lstStockData[i];
-                        insLineCount += bllDaImpt.InsertStkKLine(stkData, isConvert, isComposite, arg.Value3);
-
-                        // 最后一批完成后，再刷一下
-                        if (i == count - 1)
-                            showMsg(i + 1, count, insLineCount);
-
-                        if (_processCancel)
-                            break;
-                    }
-
-                    if (_processCancel)
-                        Console.WriteLine("  导入终止！");
-                    else
-                        Console.WriteLine("  导入完成！");
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(ex.Message);
-                }
-                finally
-                {
-                    bllDaImpt.CloseConnection();
-                    _processCancel = false;
-                    Console.WriteLine("总耗时：{0}", stopWatch.Elapsed);
-                }
-            }
-
-            UIInProcess(false);
-        }
-
         private void FolderBrowser(Control txtBox)
         {
             if (Directory.Exists(txtBox.Text))
@@ -271,6 +103,149 @@ namespace StockExplore
             return retVal;
         }
 
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            btnCloseForm.Top = -1000;
+            btnProcCancel.Visible = false;
+
+            LoadConfig();
+
+            new Thread(() =>
+            {
+                if (!SQLHelper.TestConnectString(CommProp.ConnectionString))
+                    Console.WriteLine("数据库连接错误!");
+            }).Start();
+        }
+
+        private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            SaveConfig();
+        }
+
+        private void btnCloseForm_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void btnClear_Click(object sender, EventArgs e)
+        {
+            txtConsole.Clear();
+        }
+
+        private void btnSourceFolderBrowser_Click(object sender, EventArgs e)
+        {
+            FolderBrowser(txtSourceFolder);
+        }
+
+        private void txtFileFolder_DragEnter(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+                e.Effect = DragDropEffects.Copy;
+        }
+
+        private void txtFileFolder_DragDrop(object sender, DragEventArgs e)
+        {
+            if (e.Data.GetDataPresent(DataFormats.FileDrop))
+            {
+                Array ary = (Array)e.Data.GetData(DataFormats.FileDrop);
+
+                if (ary.Length == 0)
+                    return;
+
+                string folderName = ary.GetValue(0).ToString();
+
+                if (Directory.Exists(folderName))
+                {
+                    var textBox = sender as TextBox;
+                    if (textBox != null)
+                        textBox.Text = folderName;
+                }
+            }
+        }
+
+        private void dataImptDayKLineBtnImport_Click(object sender, EventArgs e)
+        {
+            TupleValue<bool, bool, KLineType> arg = new TupleValue<bool, bool, KLineType>(dataImptDayKLineChkConvert.Checked, dataImptDayKLineChkIsComposite.Checked, KLineType.Day);
+            bkgDataImport.RunWorkerAsync(arg);
+        }
+
+        private void btnProcCancel_Click(object sender, EventArgs e)
+        {
+            _processCancel = true;
+        }
+        
+        private void bkgDataImport_DoWork(object sender, DoWorkEventArgs e)
+        {
+            TupleValue<bool, bool, KLineType> arg = (TupleValue<bool, bool, KLineType>)e.Argument;
+            BLLDataImport bllDaImpt = new BLLDataImport(CommProp.ConnectionString);
+            bool isConvert = arg.Value1;
+            bool isComposite = arg.Value2;
+
+            UIInProcess(true);
+            _processCancel = false;
+
+            this.LoadFileList();
+
+            List<TupleValue<FileInfo, StockHead>> lstStockData = bllDaImpt.LoadMrkTypeAndCode(AllFile);
+
+            if (lstStockData.Count > 0)
+            {
+                Stopwatch stopWatch = Stopwatch.StartNew();
+                
+                try
+                {
+                    bllDaImpt.OpenConnection();
+                    int count = lstStockData.Count;
+                    int insLineCount=0;
+                    string msgString = string.Empty;
+
+                    // 显示百分比提示信息
+                    Action<int, int, int> showMsg = ( (per, all, lineCnt) =>
+                    {
+                        SysFunction.BackspaceInConsole(msgString, txtConsole);
+                        msgString = string.Format("{0} / {1}，已导入：{2} 行)", per, all, lineCnt.ToString("N0"));
+                        Console.Write(msgString);
+                    } );
+
+                    Console.Write("正在导入...（");
+                    // 是否需要删表动作，如果表中无记录，则省去 Delete 动作
+                    bool haveRecord = bllDaImpt.GetTableRecordCount(BLL.GetDBTableName(arg.Value3, isComposite)) > 0;
+                    for (int i = 0; i < count; i++)
+                    {
+                        showMsg(i + 1, count, insLineCount);
+                        
+                        TupleValue<FileInfo, StockHead> stkData = lstStockData[i];
+
+                        insLineCount += bllDaImpt.InsertStkKLine(stkData, isConvert, isComposite, arg.Value3, haveRecord);
+
+                        // 最后一批完成后，再刷一下
+                        if (i == count - 1)
+                            showMsg(i + 1, count, insLineCount);
+
+                        if (_processCancel)
+                            break;
+                    }
+
+                    if (_processCancel)
+                        Console.WriteLine("  导入终止！");
+                    else
+                        Console.WriteLine("  导入完成！");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine(ex.Message);
+                }
+                finally
+                {
+                    bllDaImpt.CloseConnection();
+                    _processCancel = false;
+                    Console.WriteLine("总耗时：{0}", stopWatch.Elapsed);
+                }
+            }
+
+            UIInProcess(false);
+        }
+
         private void btnTest_Click(object sender, EventArgs e)
         {
 
@@ -278,7 +253,7 @@ namespace StockExplore
             bll.OpenConnection();
             StringBuilder sb = new StringBuilder();
             const string msgMod = "{0} : {1}";
-            Dictionary<DateTime, decimal> mas = bll.CalcAllMA(bll.GetDayCloseValue("600362"), 453);
+            Dictionary<DateTime, decimal> mas = bll.CalcAllMA(bll.GetDayCloseValue("600362", false), 453);
             foreach (KeyValuePair<DateTime, decimal> ma in mas)
             {
                 sb.AppendLine(string.Format(msgMod, ma.Key.ToShortDateString(), ma.Value.ToString("N3")));
@@ -287,6 +262,34 @@ namespace StockExplore
             
             txtConsole.Text = sb.ToString();
 
+        }
+
+        private void dataClearDayKLineBtnTruncate_Click(object sender, EventArgs e)
+        {
+            BLLDataImport bllDaImpt = new BLLDataImport(CommProp.ConnectionString);
+            UIInProcess(true);
+
+            try
+            {
+                if (SysMessageBox.ShowMessage("清空日线数据表，确认？", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+                {
+                    bllDaImpt.OpenConnection();
+                    bllDaImpt.TruncateStkKLine(KLineType.Day, false);
+
+                    Console.WriteLine("日K线数据清除完成！");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                bllDaImpt.CloseConnection();
+            }
+
+
+            UIInProcess(false);
         }
 
     }

@@ -23,7 +23,7 @@ namespace StockExplore
         #region 索引组
 
         public List<string> UniIdxPK_StockHead = new List<string> {"MarkType", "StkCode"};
-        public List<string> UniIdxIX_StockHead = new List<string> {"StkType", "MarkType", "StkCode"};
+        public List<string> UniIdxIX_StockHead = new List<string> {"MarkType", "StkCode", "StkType"};
         public List<string> UniIdxIX_StockHead_RecId = new List<string> {"RecId"};
 
         #endregion 索引组
@@ -84,7 +84,7 @@ namespace StockExplore
             }
         }
 
-        /// <summary> 0 指数，1 股票
+        /// <summary>
         /// </summary>
         public String StkType
         {
