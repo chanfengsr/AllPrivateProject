@@ -11,21 +11,20 @@ DECLARE @startDay DATETIME
 DECLARE @endDay   DATETIME
 
 -- 最后一个交易周的最后一天
-SET @endDay   = (SELECT TOP 1 TradeDay FROM KLineDay WHERE StkCode = '999999' AND (DATEPART(weekday, TradeDay) = 6 OR DATEDIFF(week, TradeDay, GETDATE()) > 0) ORDER BY TradeDay DESC)
+SET @endDay   = (SELECT TOP 1 TradeDay FROM KLineDayZS WHERE StkCode = '999999' AND (DATEPART(weekday, TradeDay) = 6 OR DATEDIFF(week, TradeDay, GETDATE()) > 0) ORDER BY TradeDay DESC)
 
 IF @ReCalcAll = 1
     BEGIN
         TRUNCATE TABLE KLineWeek
-        SET @startDay = (SELECT TOP 1 TradeDay FROM KLineDay WHERE StkCode = '999999' ORDER BY TradeDay)
+        SET @startDay = (SELECT TOP 1 TradeDay FROM KLineDayZS WHERE StkCode = '999999' ORDER BY TradeDay)
     END
 ELSE
     BEGIN
         SET @startDay = (SELECT TOP 1 TradeDay
-                         FROM   KLineDay
+                         FROM   KLineDayZS
                          WHERE  StkCode = '999999'
                          AND    TradeDay > ISNULL((SELECT TOP 1 TradeDay FROM KLineWeek WHERE StkCode = '999999' ORDER BY TradeDay DESC), 0)
-                         ORDER BY
-                                TradeDay)
+                         ORDER BY TradeDay)
     END
 
 IF @startDay = NULL OR @endDay = NULL OR @startDay > @endDay
@@ -57,6 +56,17 @@ WHILE @weekDiff <= @maxWeekDiff
         JOIN (SELECT MarkType, StkCode, [Open], RecId FROM KLineDay) b
         ON a.OpenDayId = b.RecId
         JOIN (SELECT TradeDay, [Close], RecId FROM KLineDay) c
+        ON a.CloseDayId = c.RecId
+        UNION ALL
+        SELECT b.MarkType, b.StkCode, c.TradeDay, b.[Open], a.[High], a.[Low], c.[Close], a.Volume, a.Amount
+          FROM
+        (
+            SELECT [High] = MAX([High]), [Low] = MIN([Low]), Volume = SUM(Volume), Amount = SUM(Amount), OpenDayId = MIN(RecId), CloseDayId = MAX(RecId)
+              FROM KLineDayZS WHERE TradeDay BETWEEN @weekStartDay AND @weekEndDay GROUP BY StkCode
+        ) a
+        JOIN (SELECT MarkType, StkCode, [Open], RecId FROM KLineDayZS) b
+        ON a.OpenDayId = b.RecId
+        JOIN (SELECT TradeDay, [Close], RecId FROM KLineDayZS) c
         ON a.CloseDayId = c.RecId
         
         SET @weekDiff = @weekDiff + 1
