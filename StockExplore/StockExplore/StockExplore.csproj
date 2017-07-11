@@ -112,6 +112,7 @@
       <SubType>Designer</SubType>
     </Content>
     <Content Include="DatabaseScript\DatabaseScript.sql" />
+    <Content Include="DatabaseScript\ReferenceSQL.sql" />
     <Content Include="DatabaseScript\TableScript.sql" />
     <Content Include="DatabaseScript\ProcedureScript.sql" />
     <Content Include="DatabaseScript\WorkingSQL.sql" />

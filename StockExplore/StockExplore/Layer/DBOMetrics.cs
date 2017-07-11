@@ -16,7 +16,7 @@ namespace StockExplore
         /// <param name="dayTableName"></param>
         /// <param name="stkCode">股票代码</param>
         /// <returns></returns>
-        public Dictionary<DateTime, decimal> CalcStockIncrease_OneStock(string dayTableName, string stkCode)
+        public Dictionary<DateTime, decimal> CalcStockRatio_OneStock(string dayTableName, string stkCode)
         {
             #region SQL
 
@@ -58,12 +58,12 @@ ON curP.RowNum = prepP.RowNum
             return ret;
         }
 
-        /// <summary> 计算单日个股所有涨幅
+        /// <summary> 计算单日所有个股涨幅
         /// </summary>
         /// <param name="dayTableName"></param>
         /// <param name="day"></param>
         /// <returns></returns>
-        public Dictionary<string, decimal> CalcStockIncrease_OneDay(string dayTableName, DateTime day)
+        public Dictionary<string, decimal> CalcStockRatio_OneDay(string dayTableName, DateTime day)
         {
             #region SQL
 

@@ -116,14 +116,19 @@ namespace StockExplore
         /// <param name="dayTableName"></param>
         /// <param name="stkCode">股票代码</param>
         /// <returns></returns>
-        public Dictionary<DateTime, decimal> CalcStockIncrease_OneStock(string dayTableName, string stkCode)
+        public Dictionary<DateTime, decimal> CalcStockRatio_OneStock(string dayTableName, string stkCode)
         {
-            return _dbo.CalcStockIncrease_OneStock(dayTableName, stkCode);
+            return _dbo.CalcStockRatio_OneStock(dayTableName, stkCode);
         }
 
-        public void CalcStockIncrease_OneDay(string dayTableName, DateTime day)
+        /// <summary>计算单日所有个股涨幅
+        /// </summary>
+        /// <param name="dayTableName"></param>
+        /// <param name="day"></param>
+        /// <returns></returns>
+        public Dictionary<string, decimal> CalcStockRatio_OneDay(string dayTableName, DateTime day)
         {
-            _dbo.CalcStockIncrease_OneDay(dayTableName, day);
+            return _dbo.CalcStockRatio_OneDay(dayTableName, day);
         }
     }
 }
