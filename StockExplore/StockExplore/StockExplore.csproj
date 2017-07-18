@@ -83,7 +83,7 @@
     <Compile Include="Model\StockHead.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ReferenceCode.cs" />
+    <Compile Include="Working\ReferenceCode.cs" />
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -116,7 +116,8 @@
     <Content Include="DatabaseScript\ReferenceSQL.sql" />
     <Content Include="DatabaseScript\TableScript.sql" />
     <Content Include="DatabaseScript\ProcedureScript.sql" />
-    <Content Include="DatabaseScript\WorkingSQL.sql" />
+    <Content Include="Working\Message.txt" />
+    <Content Include="Working\WorkingSQL.sql" />
     <Content Include="Resources\Stocks.ico" />
     <Content Include="Todo List.txt" />
   </ItemGroup>

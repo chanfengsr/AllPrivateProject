@@ -40,6 +40,7 @@ namespace StockExplore
         {
             CommProp.ConnectionString = SysConfig.GetConfigData(ConsDatabaseConfig, "ConnectionString", "");
             CommProp.SourceFolder = SysConfig.GetConfigData(ConsAppConfig, "SourceFolder", "");
+            CommProp.TDXFolder = SysConfig.GetConfigData(ConsAppConfig, "TDXFolder", "");
         }
 
         /// <summary>检测文件的写权限

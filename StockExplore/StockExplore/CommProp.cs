@@ -14,5 +14,9 @@ namespace StockExplore
         /// <summary>源文件夹路径
         /// </summary>
         public static string SourceFolder { get; set; }
+
+        /// <summary>通达信安装目录
+        /// </summary>
+        public static string TDXFolder { get; set; }
     }
 }

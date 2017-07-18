@@ -5,5 +5,6 @@
   </DatabaseConfig>
   <AppConfig>
     <key name="SourceFolder" value="" remark="" />
+    <key name="TDXFolder" value="D:\通达信超赢版\" remark="通达信安装目录" />
   </AppConfig>
 </SystemConfig>
