@@ -39,6 +39,25 @@ namespace StockExplore
                 txtBox.Text = folderBrowserDialog.SelectedPath;
         }
 
+        private void FileBrowser(Control txtBox)
+        {
+            OpenFileDialog fileBrowser = new OpenFileDialog();
+
+            if (File.Exists(txtBox.Text))
+            {
+                FileInfo fInfo = new FileInfo(txtBox.Text);
+                fileBrowser.InitialDirectory = fInfo.DirectoryName;
+                fileBrowser.FileName = fInfo.Name;
+            }
+            else
+            {
+                fileBrowser.InitialDirectory = Environment.GetFolderPath(Environment.SpecialFolder.Personal);
+            }
+
+            if (fileBrowser.ShowDialog(this) == DialogResult.OK)
+                txtBox.Text = fileBrowser.FileName;
+        }
+
         private void LoadConfig()
         {
             try
@@ -136,6 +155,11 @@ namespace StockExplore
         {
             FolderBrowser(txtSourceFolder);
         }
+        
+        private void btnSourceFileBrowser_Click(object sender, EventArgs e)
+        {
+            FileBrowser(txtSourceFolder);
+        }
 
         private void txtFileFolder_DragEnter(object sender, DragEventArgs e)
         {
@@ -154,7 +178,7 @@ namespace StockExplore
 
                 string folderName = ary.GetValue(0).ToString();
 
-                if (Directory.Exists(folderName))
+                if (Directory.Exists(folderName) || File.Exists(folderName))
                 {
                     var textBox = sender as TextBox;
                     if (textBox != null)
@@ -163,7 +187,7 @@ namespace StockExplore
             }
         }
 
-        private void dataImptDayKLineBtnImport_Click(object sender, EventArgs e)
+        private void dataImptBtnDayKLineImport_Click(object sender, EventArgs e)
         {
             TupleValue<bool, bool, KLineType> arg = new TupleValue<bool, bool, KLineType>(dataImptDayKLineChkConvert.Checked, dataImptDayKLineChkIsComposite.Checked, KLineType.Day);
             bkgDataImport.RunWorkerAsync(arg);
@@ -264,17 +288,17 @@ namespace StockExplore
 
         }
 
-        private void dataClearDayKLineBtnTruncate_Click(object sender, EventArgs e)
+        private void dataClearDayBtnKLineTruncate_Click(object sender, EventArgs e)
         {
-            BLLDataImport bllDaImpt = new BLLDataImport(CommProp.ConnectionString);
+            BLLClear bllDataClear = new BLLClear(CommProp.ConnectionString);
             UIInProcess(true);
 
             try
             {
                 if (SysMessageBox.ShowMessage("清空日线数据表，确认？", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
                 {
-                    bllDaImpt.OpenConnection();
-                    bllDaImpt.TruncateStkKLine(KLineType.Day, false);
+                    bllDataClear.OpenConnection();
+                    bllDataClear.TruncateStkKLine(KLineType.Day, false);
 
                     Console.WriteLine("日K线数据清除完成！");
                 }
@@ -285,11 +309,75 @@ namespace StockExplore
             }
             finally
             {
-                bllDaImpt.CloseConnection();
+                bllDataClear.CloseConnection();
+            }
+            
+            UIInProcess(false);
+        }
+
+        private void dataClearBtnDayKLineZSTruncate_Click(object sender, EventArgs e)
+        {
+            BLLClear bllDataClear = new BLLClear(CommProp.ConnectionString);
+            UIInProcess(true);
+
+            try
+            {
+                if (SysMessageBox.ShowMessage("清空指数日线数据表，确认？", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+                {
+                    bllDataClear.OpenConnection();
+                    bllDataClear.TruncateStkKLine(KLineType.Day, true);
+
+                    Console.WriteLine("指数日K线数据清除完成！");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                bllDataClear.CloseConnection();
+            }
+            
+            UIInProcess(false);
+        }
+
+        private void dataClearBtnWeekKLineTruncate_Click(object sender, EventArgs e)
+        {
+            BLLClear bllDataClear = new BLLClear(CommProp.ConnectionString);
+            UIInProcess(true);
+
+            try
+            {
+                if (SysMessageBox.ShowMessage("清空周线数据表，确认？", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+                {
+                    bllDataClear.OpenConnection();
+                    bllDataClear.TruncateStkKLine(KLineType.Week);
+
+                    Console.WriteLine("周线数据清除完成！");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                bllDataClear.CloseConnection();
             }
 
 
             UIInProcess(false);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
         }
 
     }

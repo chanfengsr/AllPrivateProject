@@ -86,13 +86,7 @@ namespace StockExplore
 
             return insTable.Rows.Count;
         }
-
-        public void TruncateStkKLine(KLineType kLineType, bool isComposite)
-        {
-            string tableName = BLL.GetDBTableName(kLineType, isComposite);
-            _dbo.TruncateTable(tableName);
-        }
-
+        
         /// <summary>
         /// 从文本文件加载数据，小于最大日期的数据直接过滤掉
         /// </summary>

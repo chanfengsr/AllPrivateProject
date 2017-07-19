@@ -20,13 +20,7 @@ namespace StockExplore
 
             return retVal;
         }
-
-        public void TruncateTable(string tableName)
-        {
-            const string strSql = "TRUNCATE TABLE {0}";
-            SQLHelper.ExecuteNonQuery(string.Format(strSql, tableName), CommandType.Text, Connection);
-        }
-
+        
         public void DeleteTable(string tableName, StockHead stkHead)
         {
             const string strSql = "DELETE FROM {0} WHERE MarkType = '{1}' AND StkCode = '{2}'";

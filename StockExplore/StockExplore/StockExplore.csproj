@@ -65,8 +65,10 @@
     <Compile Include="CommClass\TupleValue.cs" />
     <Compile Include="CommProp.cs" />
     <Compile Include="Layer\BLL.cs" />
+    <Compile Include="Layer\BLLClear.cs" />
     <Compile Include="Layer\BLLDataImport.cs" />
     <Compile Include="Layer\BLLMetrics.cs" />
+    <Compile Include="Layer\DBOClear.cs" />
     <Compile Include="Layer\DBODataImport.cs" />
     <Compile Include="Layer\DBOMetrics.cs" />
     <Compile Include="MainForm.cs">

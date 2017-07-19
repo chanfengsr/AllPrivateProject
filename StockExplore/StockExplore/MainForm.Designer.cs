@@ -27,15 +27,20 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageDataImport = new System.Windows.Forms.TabPage();
+            this.grpBlock = new System.Windows.Forms.GroupBox();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
             this.grpDayKLine = new System.Windows.Forms.GroupBox();
-            this.dataImptDayKLineBtnImport = new System.Windows.Forms.Button();
+            this.dataImptBtnDayKLineImport = new System.Windows.Forms.Button();
             this.dataImptDayKLineChkIsComposite = new System.Windows.Forms.CheckBox();
             this.dataImptDayKLineChkConvert = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
             this.txtSourceFolder = new System.Windows.Forms.TextBox();
             this.btnSourceFolderBrowser = new System.Windows.Forms.Button();
             this.tabPageDataClear = new System.Windows.Forms.TabPage();
-            this.dataClearDayKLineBtnTruncate = new System.Windows.Forms.Button();
+            this.dataClearBtnWeekKLineTruncate = new System.Windows.Forms.Button();
+            this.dataClearBtnDayKLineZSTruncate = new System.Windows.Forms.Button();
+            this.dataClearBtnDayKLineTruncate = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnProcCancel = new System.Windows.Forms.Button();
             this.btnCloseForm = new System.Windows.Forms.Button();
@@ -43,12 +48,14 @@
             this.txtConsole = new System.Windows.Forms.TextBox();
             this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.bkgDataImport = new System.ComponentModel.BackgroundWorker();
+            this.btnSourceFileBrowser = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPageDataImport.SuspendLayout();
+            this.grpBlock.SuspendLayout();
             this.grpDayKLine.SuspendLayout();
             this.tabPageDataClear.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -97,6 +104,8 @@
             // 
             // tabPageDataImport
             // 
+            this.tabPageDataImport.Controls.Add(this.btnSourceFileBrowser);
+            this.tabPageDataImport.Controls.Add(this.grpBlock);
             this.tabPageDataImport.Controls.Add(this.grpDayKLine);
             this.tabPageDataImport.Controls.Add(this.label3);
             this.tabPageDataImport.Controls.Add(this.txtSourceFolder);
@@ -109,9 +118,40 @@
             this.tabPageDataImport.Text = "数据导入";
             this.tabPageDataImport.UseVisualStyleBackColor = true;
             // 
+            // grpBlock
+            // 
+            this.grpBlock.Controls.Add(this.button2);
+            this.grpBlock.Controls.Add(this.button1);
+            this.grpBlock.Location = new System.Drawing.Point(117, 39);
+            this.grpBlock.Name = "grpBlock";
+            this.grpBlock.Size = new System.Drawing.Size(200, 131);
+            this.grpBlock.TabIndex = 18;
+            this.grpBlock.TabStop = false;
+            this.grpBlock.Text = "板块";
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(20, 67);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(159, 38);
+            this.button2.TabIndex = 0;
+            this.button2.Text = "地区、行业细分\r\n（使用导出报表的数据）";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.button2_Click);
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(20, 22);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(159, 38);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "概念、风格、指数、行业\r\n（tdx文件直接导入）";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // grpDayKLine
             // 
-            this.grpDayKLine.Controls.Add(this.dataImptDayKLineBtnImport);
+            this.grpDayKLine.Controls.Add(this.dataImptBtnDayKLineImport);
             this.grpDayKLine.Controls.Add(this.dataImptDayKLineChkIsComposite);
             this.grpDayKLine.Controls.Add(this.dataImptDayKLineChkConvert);
             this.grpDayKLine.Location = new System.Drawing.Point(12, 39);
@@ -121,15 +161,15 @@
             this.grpDayKLine.TabStop = false;
             this.grpDayKLine.Text = "日K线";
             // 
-            // dataImptDayKLineBtnImport
+            // dataImptBtnDayKLineImport
             // 
-            this.dataImptDayKLineBtnImport.Location = new System.Drawing.Point(12, 67);
-            this.dataImptDayKLineBtnImport.Name = "dataImptDayKLineBtnImport";
-            this.dataImptDayKLineBtnImport.Size = new System.Drawing.Size(75, 23);
-            this.dataImptDayKLineBtnImport.TabIndex = 1;
-            this.dataImptDayKLineBtnImport.Text = "导入";
-            this.dataImptDayKLineBtnImport.UseVisualStyleBackColor = true;
-            this.dataImptDayKLineBtnImport.Click += new System.EventHandler(this.dataImptDayKLineBtnImport_Click);
+            this.dataImptBtnDayKLineImport.Location = new System.Drawing.Point(12, 67);
+            this.dataImptBtnDayKLineImport.Name = "dataImptBtnDayKLineImport";
+            this.dataImptBtnDayKLineImport.Size = new System.Drawing.Size(75, 23);
+            this.dataImptBtnDayKLineImport.TabIndex = 1;
+            this.dataImptBtnDayKLineImport.Text = "导入";
+            this.dataImptBtnDayKLineImport.UseVisualStyleBackColor = true;
+            this.dataImptBtnDayKLineImport.Click += new System.EventHandler(this.dataImptBtnDayKLineImport_Click);
             // 
             // dataImptDayKLineChkIsComposite
             // 
@@ -154,7 +194,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(13, 19);
+            this.label3.Location = new System.Drawing.Point(13, 16);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(77, 12);
             this.label3.TabIndex = 16;
@@ -173,17 +213,19 @@
             // btnSourceFolderBrowser
             // 
             this.btnSourceFolderBrowser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSourceFolderBrowser.Location = new System.Drawing.Point(949, 14);
+            this.btnSourceFolderBrowser.Location = new System.Drawing.Point(501, 11);
             this.btnSourceFolderBrowser.Name = "btnSourceFolderBrowser";
-            this.btnSourceFolderBrowser.Size = new System.Drawing.Size(33, 23);
+            this.btnSourceFolderBrowser.Size = new System.Drawing.Size(53, 23);
             this.btnSourceFolderBrowser.TabIndex = 15;
-            this.btnSourceFolderBrowser.Text = "...";
+            this.btnSourceFolderBrowser.Text = "文件夹";
             this.btnSourceFolderBrowser.UseVisualStyleBackColor = true;
             this.btnSourceFolderBrowser.Click += new System.EventHandler(this.btnSourceFolderBrowser_Click);
             // 
             // tabPageDataClear
             // 
-            this.tabPageDataClear.Controls.Add(this.dataClearDayKLineBtnTruncate);
+            this.tabPageDataClear.Controls.Add(this.dataClearBtnWeekKLineTruncate);
+            this.tabPageDataClear.Controls.Add(this.dataClearBtnDayKLineZSTruncate);
+            this.tabPageDataClear.Controls.Add(this.dataClearBtnDayKLineTruncate);
             this.tabPageDataClear.Location = new System.Drawing.Point(4, 22);
             this.tabPageDataClear.Name = "tabPageDataClear";
             this.tabPageDataClear.Padding = new System.Windows.Forms.Padding(3);
@@ -192,15 +234,35 @@
             this.tabPageDataClear.Text = "数据清理";
             this.tabPageDataClear.UseVisualStyleBackColor = true;
             // 
-            // dataClearDayKLineBtnTruncate
+            // dataClearBtnWeekKLineTruncate
             // 
-            this.dataClearDayKLineBtnTruncate.Location = new System.Drawing.Point(32, 32);
-            this.dataClearDayKLineBtnTruncate.Name = "dataClearDayKLineBtnTruncate";
-            this.dataClearDayKLineBtnTruncate.Size = new System.Drawing.Size(127, 23);
-            this.dataClearDayKLineBtnTruncate.TabIndex = 3;
-            this.dataClearDayKLineBtnTruncate.Text = "清空所有个股日线";
-            this.dataClearDayKLineBtnTruncate.UseVisualStyleBackColor = true;
-            this.dataClearDayKLineBtnTruncate.Click += new System.EventHandler(this.dataClearDayKLineBtnTruncate_Click);
+            this.dataClearBtnWeekKLineTruncate.Location = new System.Drawing.Point(11, 70);
+            this.dataClearBtnWeekKLineTruncate.Name = "dataClearBtnWeekKLineTruncate";
+            this.dataClearBtnWeekKLineTruncate.Size = new System.Drawing.Size(127, 23);
+            this.dataClearBtnWeekKLineTruncate.TabIndex = 5;
+            this.dataClearBtnWeekKLineTruncate.Text = "清空周线";
+            this.dataClearBtnWeekKLineTruncate.UseVisualStyleBackColor = true;
+            this.dataClearBtnWeekKLineTruncate.Click += new System.EventHandler(this.dataClearBtnWeekKLineTruncate_Click);
+            // 
+            // dataClearBtnDayKLineZSTruncate
+            // 
+            this.dataClearBtnDayKLineZSTruncate.Location = new System.Drawing.Point(11, 41);
+            this.dataClearBtnDayKLineZSTruncate.Name = "dataClearBtnDayKLineZSTruncate";
+            this.dataClearBtnDayKLineZSTruncate.Size = new System.Drawing.Size(127, 23);
+            this.dataClearBtnDayKLineZSTruncate.TabIndex = 4;
+            this.dataClearBtnDayKLineZSTruncate.Text = "清空指数日线";
+            this.dataClearBtnDayKLineZSTruncate.UseVisualStyleBackColor = true;
+            this.dataClearBtnDayKLineZSTruncate.Click += new System.EventHandler(this.dataClearBtnDayKLineZSTruncate_Click);
+            // 
+            // dataClearBtnDayKLineTruncate
+            // 
+            this.dataClearBtnDayKLineTruncate.Location = new System.Drawing.Point(11, 12);
+            this.dataClearBtnDayKLineTruncate.Name = "dataClearBtnDayKLineTruncate";
+            this.dataClearBtnDayKLineTruncate.Size = new System.Drawing.Size(127, 23);
+            this.dataClearBtnDayKLineTruncate.TabIndex = 3;
+            this.dataClearBtnDayKLineTruncate.Text = "清空个股日线";
+            this.dataClearBtnDayKLineTruncate.UseVisualStyleBackColor = true;
+            this.dataClearBtnDayKLineTruncate.Click += new System.EventHandler(this.dataClearDayBtnKLineTruncate_Click);
             // 
             // groupBox1
             // 
@@ -282,6 +344,17 @@
             this.bkgDataImport.WorkerSupportsCancellation = true;
             this.bkgDataImport.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bkgDataImport_DoWork);
             // 
+            // btnSourceFileBrowser
+            // 
+            this.btnSourceFileBrowser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSourceFileBrowser.Location = new System.Drawing.Point(560, 11);
+            this.btnSourceFileBrowser.Name = "btnSourceFileBrowser";
+            this.btnSourceFileBrowser.Size = new System.Drawing.Size(53, 23);
+            this.btnSourceFileBrowser.TabIndex = 19;
+            this.btnSourceFileBrowser.Text = "文件";
+            this.btnSourceFileBrowser.UseVisualStyleBackColor = true;
+            this.btnSourceFileBrowser.Click += new System.EventHandler(this.btnSourceFileBrowser_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -300,6 +373,7 @@
             this.tabControl1.ResumeLayout(false);
             this.tabPageDataImport.ResumeLayout(false);
             this.tabPageDataImport.PerformLayout();
+            this.grpBlock.ResumeLayout(false);
             this.grpDayKLine.ResumeLayout(false);
             this.grpDayKLine.PerformLayout();
             this.tabPageDataClear.ResumeLayout(false);
@@ -325,12 +399,18 @@
         private System.Windows.Forms.Button btnSourceFolderBrowser;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog;
         private System.Windows.Forms.GroupBox grpDayKLine;
-        private System.Windows.Forms.Button dataImptDayKLineBtnImport;
+        private System.Windows.Forms.Button dataImptBtnDayKLineImport;
         private System.Windows.Forms.CheckBox dataImptDayKLineChkIsComposite;
         private System.Windows.Forms.CheckBox dataImptDayKLineChkConvert;
         private System.ComponentModel.BackgroundWorker bkgDataImport;
         private System.Windows.Forms.Button btnProcCancel;
-        private System.Windows.Forms.Button dataClearDayKLineBtnTruncate;
+        private System.Windows.Forms.Button dataClearBtnDayKLineTruncate;
+        private System.Windows.Forms.Button dataClearBtnWeekKLineTruncate;
+        private System.Windows.Forms.Button dataClearBtnDayKLineZSTruncate;
+        private System.Windows.Forms.GroupBox grpBlock;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnSourceFileBrowser;
     }
 }
 
