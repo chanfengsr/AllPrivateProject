@@ -366,16 +366,15 @@ namespace StockExplore
                 bllDataClear.CloseConnection();
             }
 
-
             UIInProcess(false);
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void dataImptBtnBlockImport1_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void dataImptBtnBlockImport2_Click(object sender, EventArgs e)
         {
 
         }

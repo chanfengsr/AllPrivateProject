@@ -27,9 +27,10 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageDataImport = new System.Windows.Forms.TabPage();
+            this.btnSourceFileBrowser = new System.Windows.Forms.Button();
             this.grpBlock = new System.Windows.Forms.GroupBox();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button1 = new System.Windows.Forms.Button();
+            this.dataImptBtnBlockImport2 = new System.Windows.Forms.Button();
+            this.dataImptBtnBlockImport1 = new System.Windows.Forms.Button();
             this.grpDayKLine = new System.Windows.Forms.GroupBox();
             this.dataImptBtnDayKLineImport = new System.Windows.Forms.Button();
             this.dataImptDayKLineChkIsComposite = new System.Windows.Forms.CheckBox();
@@ -48,7 +49,6 @@
             this.txtConsole = new System.Windows.Forms.TextBox();
             this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.bkgDataImport = new System.ComponentModel.BackgroundWorker();
-            this.btnSourceFileBrowser = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -118,10 +118,21 @@
             this.tabPageDataImport.Text = "数据导入";
             this.tabPageDataImport.UseVisualStyleBackColor = true;
             // 
+            // btnSourceFileBrowser
+            // 
+            this.btnSourceFileBrowser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
+            this.btnSourceFileBrowser.Location = new System.Drawing.Point(560, 11);
+            this.btnSourceFileBrowser.Name = "btnSourceFileBrowser";
+            this.btnSourceFileBrowser.Size = new System.Drawing.Size(53, 23);
+            this.btnSourceFileBrowser.TabIndex = 19;
+            this.btnSourceFileBrowser.Text = "文件";
+            this.btnSourceFileBrowser.UseVisualStyleBackColor = true;
+            this.btnSourceFileBrowser.Click += new System.EventHandler(this.btnSourceFileBrowser_Click);
+            // 
             // grpBlock
             // 
-            this.grpBlock.Controls.Add(this.button2);
-            this.grpBlock.Controls.Add(this.button1);
+            this.grpBlock.Controls.Add(this.dataImptBtnBlockImport2);
+            this.grpBlock.Controls.Add(this.dataImptBtnBlockImport1);
             this.grpBlock.Location = new System.Drawing.Point(117, 39);
             this.grpBlock.Name = "grpBlock";
             this.grpBlock.Size = new System.Drawing.Size(200, 131);
@@ -129,25 +140,25 @@
             this.grpBlock.TabStop = false;
             this.grpBlock.Text = "板块";
             // 
-            // button2
+            // dataImptBtnBlockImport2
             // 
-            this.button2.Location = new System.Drawing.Point(20, 67);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(159, 38);
-            this.button2.TabIndex = 0;
-            this.button2.Text = "地区、行业细分\r\n（使用导出报表的数据）";
-            this.button2.UseVisualStyleBackColor = true;
-            this.button2.Click += new System.EventHandler(this.button2_Click);
+            this.dataImptBtnBlockImport2.Location = new System.Drawing.Point(20, 67);
+            this.dataImptBtnBlockImport2.Name = "dataImptBtnBlockImport2";
+            this.dataImptBtnBlockImport2.Size = new System.Drawing.Size(159, 38);
+            this.dataImptBtnBlockImport2.TabIndex = 0;
+            this.dataImptBtnBlockImport2.Text = "地区、行业细分\r\n（使用导出报表的数据）";
+            this.dataImptBtnBlockImport2.UseVisualStyleBackColor = true;
+            this.dataImptBtnBlockImport2.Click += new System.EventHandler(this.dataImptBtnBlockImport2_Click);
             // 
-            // button1
+            // dataImptBtnBlockImport1
             // 
-            this.button1.Location = new System.Drawing.Point(20, 22);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(159, 38);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "概念、风格、指数、行业\r\n（tdx文件直接导入）";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.dataImptBtnBlockImport1.Location = new System.Drawing.Point(20, 22);
+            this.dataImptBtnBlockImport1.Name = "dataImptBtnBlockImport1";
+            this.dataImptBtnBlockImport1.Size = new System.Drawing.Size(159, 38);
+            this.dataImptBtnBlockImport1.TabIndex = 0;
+            this.dataImptBtnBlockImport1.Text = "概念、风格、指数、行业\r\n（tdx文件直接导入）";
+            this.dataImptBtnBlockImport1.UseVisualStyleBackColor = true;
+            this.dataImptBtnBlockImport1.Click += new System.EventHandler(this.dataImptBtnBlockImport1_Click);
             // 
             // grpDayKLine
             // 
@@ -344,17 +355,6 @@
             this.bkgDataImport.WorkerSupportsCancellation = true;
             this.bkgDataImport.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bkgDataImport_DoWork);
             // 
-            // btnSourceFileBrowser
-            // 
-            this.btnSourceFileBrowser.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.btnSourceFileBrowser.Location = new System.Drawing.Point(560, 11);
-            this.btnSourceFileBrowser.Name = "btnSourceFileBrowser";
-            this.btnSourceFileBrowser.Size = new System.Drawing.Size(53, 23);
-            this.btnSourceFileBrowser.TabIndex = 19;
-            this.btnSourceFileBrowser.Text = "文件";
-            this.btnSourceFileBrowser.UseVisualStyleBackColor = true;
-            this.btnSourceFileBrowser.Click += new System.EventHandler(this.btnSourceFileBrowser_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -408,8 +408,8 @@
         private System.Windows.Forms.Button dataClearBtnWeekKLineTruncate;
         private System.Windows.Forms.Button dataClearBtnDayKLineZSTruncate;
         private System.Windows.Forms.GroupBox grpBlock;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button dataImptBtnBlockImport2;
+        private System.Windows.Forms.Button dataImptBtnBlockImport1;
         private System.Windows.Forms.Button btnSourceFileBrowser;
     }
 }

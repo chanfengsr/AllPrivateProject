@@ -131,5 +131,11 @@ namespace StockExplore
 
             return _stockFirstDay;
         }
+
+        public void TruncateTable(string tableName)
+        {
+            const string strSql = "TRUNCATE TABLE {0}";
+            SQLHelper.ExecuteNonQuery(string.Format(strSql, tableName), CommandType.Text, Connection);
+        }
     }
 }

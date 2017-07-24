@@ -150,7 +150,7 @@ namespace StockExplore
         /// <param name="lstParms">任意数据类型的参数集</param>
         /// <param name="needSParm">是否需要两边加单引号</param>
         /// <returns></returns>
-        public static string TransToSQLParmString<T>(List<T> lstParms, bool needSParm)
+        public static string CastToSQLParmString<T>(List<T> lstParms, bool needSParm)
         {
             StringBuilder sb = new StringBuilder();
             string retVal = "";

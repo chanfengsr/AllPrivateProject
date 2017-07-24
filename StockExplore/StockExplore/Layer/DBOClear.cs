@@ -11,10 +11,20 @@ namespace StockExplore
     {
         public DBOClear(SqlConnection cnn) : base(cnn) {}
 
-        public void TruncateTable(string tableName)
+        /// <summary> 清空指定的板块信息
+        /// </summary>
+        /// <param name="lstStockBlockType">为 Null 则清空所有</param>
+        public void ClearStockBlock(List<StockBlockType> lstStockBlockType = null)
         {
-            const string strSql = "TRUNCATE TABLE {0}";
-            SQLHelper.ExecuteNonQuery(string.Format(strSql, tableName), CommandType.Text, Connection);
+            if (lstStockBlockType == null)
+            {
+                base.TruncateTable("StockBlock");
+            }
+            else
+            {
+                // todo
+
+            }
         }
     }
 }

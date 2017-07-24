@@ -82,7 +82,7 @@ namespace StockExplore
             // 新增或修改 StockHead
             _dbo.InsertOrUpdateStockHead(stkHead);
 
-            _dbo.BulkInsertTable(insTable);
+            _dbo.BulkWriteTable(insTable, DataRowState.Added);
 
             return insTable.Rows.Count;
         }

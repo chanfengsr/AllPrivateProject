@@ -48,7 +48,7 @@ namespace StockExplore
 
         /// <summary>批量插入数据
         /// </summary>
-        public void BulkInsertTable(DataTable dataTable)
+        public void BulkWriteTable(DataTable dataTable, DataRowState dataRowState)
         {
             if (dataTable.Rows.Count > 0)
             {
@@ -58,7 +58,7 @@ namespace StockExplore
                     if (!col.AutoIncrement)
                         bulkCopy.ColumnMappings.Add(col.ColumnName, col.ColumnName);
 
-                bulkCopy.WriteToServer(dataTable, DataRowState.Added);
+                bulkCopy.WriteToServer(dataTable, dataRowState);
                 bulkCopy.Close();
             }
         }
@@ -100,6 +100,15 @@ namespace StockExplore
 
                 SQLHelper.ExecuteNonQuery(string.Format(strSql, stockHead.MarkType, stockHead.StkCode, stockHead.StkName, stockHead.StkType), CommandType.Text, Connection);
             }
+        }
+
+        /// <summary>获取指定类型的板块
+        /// </summary>
+        /// <param name="lstStockBlockType"></param>
+        /// <returns></returns>
+        public DataTable GetStockBlock(List<StockBlockType> lstStockBlockType)
+        {
+            return null;
         }
     }
 }
