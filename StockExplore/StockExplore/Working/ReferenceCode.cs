@@ -65,7 +65,7 @@ namespace StockExplore
             // block_gn.dat
             // block_zs.dat
             // block_fg.dat
-            using (var reader = new BinaryReader(File.OpenRead(@"r:\block_gn.dat")))
+            using (var reader = new BinaryReader(File.OpenRead(@"D:\通达信超赢版\T0002\hq_cache\block_gn.dat")))
             {
                 // 文件信息
                 string fileInfoStr = Encoding.Default.GetString(reader.ReadBytes(64)).TrimEnd('\0');

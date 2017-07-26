@@ -9,11 +9,11 @@ namespace StockExplore
 {
     internal class DBO
     {
-        protected SqlConnection Connection;
+        protected SqlConnection _cnn;
 
         public DBO(SqlConnection cnn)
         {
-            Connection = cnn;
+            _cnn = cnn;
         }
 
         /// <summary> 枚举 ValueType 类型转换成SQL中要用到的列名
@@ -43,7 +43,7 @@ namespace StockExplore
         public int GetTableRecordCount(string tableName)
         {
             const string sqlMod = "SELECT COUNT(1) FROM {0}";
-            return (int)SQLHelper.ExecuteScalar(string.Format(sqlMod, tableName), CommandType.Text, Connection);
+            return (int)SQLHelper.ExecuteScalar(string.Format(sqlMod, tableName), CommandType.Text, _cnn);
         }
 
         /// <summary>获取某只个股的所有指定价格
@@ -69,7 +69,7 @@ namespace StockExplore
                                           stkCode,
                                           condTradeDay);
 
-            return SQLHelper.ExecuteDataTable(strSql, CommandType.Text, Connection);
+            return SQLHelper.ExecuteDataTable(strSql, CommandType.Text, _cnn);
         }
 
         private static Dictionary<string, int> _allStockTradeDayCount = new Dictionary<string, int>();
@@ -86,7 +86,7 @@ namespace StockExplore
             if (_allStockTradeDayCount.Count == 0)
             {
                 const string strSql = "SELECT StkCode, DayCount = COUNT(TradeDay) FROM KLineDay GROUP BY StkCode";
-                DataTable dtCount = SQLHelper.ExecuteDataTable(strSql, CommandType.Text, Connection);
+                DataTable dtCount = SQLHelper.ExecuteDataTable(strSql, CommandType.Text, _cnn);
 
                 _allStockTradeDayCount = SysFunction.GetColDictionary<string, int>(dtCount, 0, 1);
             }
@@ -106,7 +106,7 @@ namespace StockExplore
             {
                 const string sqlMod = "SELECT DISTINCT TradeDay FROM {0} WHERE StkCode = '999999' ORDER BY TradeDay";
 
-                DataTable dtDays = SQLHelper.ExecuteDataTable(string.Format(sqlMod, tableName), CommandType.Text, Connection);
+                DataTable dtDays = SQLHelper.ExecuteDataTable(string.Format(sqlMod, tableName), CommandType.Text, _cnn);
                 List<DateTime> lstDay = SysFunction.GetColList<DateTime>(dtDays, 0).ToList();
 
                 AllTypeTradeDay.Add(tableName, lstDay);
@@ -125,7 +125,7 @@ namespace StockExplore
             if (_stockFirstDay.Count > 0)
             {
                 const string strSql = "SELECT StkCode, FirstDay = MIN(TradeDay) FROM KLineDay GROUP BY StkCode";
-                DataTable dt = SQLHelper.ExecuteDataTable(strSql, CommandType.Text, Connection);
+                DataTable dt = SQLHelper.ExecuteDataTable(strSql, CommandType.Text, _cnn);
                 _stockFirstDay = SysFunction.GetColDictionary<string, DateTime>(dt, 0, 1);
             }
 
@@ -135,7 +135,7 @@ namespace StockExplore
         public void TruncateTable(string tableName)
         {
             const string strSql = "TRUNCATE TABLE {0}";
-            SQLHelper.ExecuteNonQuery(string.Format(strSql, tableName), CommandType.Text, Connection);
+            SQLHelper.ExecuteNonQuery(string.Format(strSql, tableName), CommandType.Text, _cnn);
         }
     }
 }

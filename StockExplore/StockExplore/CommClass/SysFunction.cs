@@ -82,23 +82,29 @@ namespace StockExplore
         /// <summary>使字符串参数化
         /// </summary>
         /// <param name="String">原字符串</param>
+        /// <param name="isNChar">是否要在前一个单引号前加“N”</param>
         /// <returns></returns>
-        public static string SParm(string String)
+        public static string SParm(string String, bool isNChar = false)
         {
             if (String == null) throw new ArgumentNullException("String");
+
+            if (isNChar)
+                return " N'" + String.Replace("'", "''") + "' ";
+
             return " '" + String.Replace("'", "''") + "' ";
         }
 
         /// <summary>使字符串参数化
         /// </summary>
         /// <param name="aString">原字符串数组</param>
+        /// <param name="isNChar">是否要在前一个单引号前加“N”</param>
         /// <returns></returns>
-        public static string SParm(string[] aString)
+        public static string SParm(string[] aString, bool isNChar = false)
         {
             StringBuilder sb = new StringBuilder();
 
             foreach (string str in aString)
-                sb.Append(SParm(str) + ",");
+                sb.Append(SParm(str, isNChar) + ",");
 
             return sb.ToString().TrimEnd(',');
         }

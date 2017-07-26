@@ -52,7 +52,7 @@ ON curP.RowNum = prepP.RowNum
 
             #endregion SQL
 
-            DataTable dt = SQLHelper.ExecuteDataTable(string.Format(sqlMod, dayTableName, stkCode), CommandType.Text, Connection);
+            DataTable dt = SQLHelper.ExecuteDataTable(string.Format(sqlMod, dayTableName, stkCode), CommandType.Text, _cnn);
             Dictionary<DateTime, decimal> ret = SysFunction.GetColDictionary<DateTime, decimal>(dt, 0, 1);
 
             return ret;
@@ -98,7 +98,7 @@ WHERE curP.TradeDay = '2017/06/29'
 
             #endregion SQL
 
-            DataTable dt = SQLHelper.ExecuteDataTable(string.Format(sqlMod, day.ToShortDateString()), CommandType.Text, Connection);
+            DataTable dt = SQLHelper.ExecuteDataTable(string.Format(sqlMod, day.ToShortDateString()), CommandType.Text, _cnn);
             Dictionary<string, decimal> ret = SysFunction.GetColDictionary<string, decimal>(dt, 0, 1);
 
             return ret;

@@ -22,8 +22,14 @@ namespace StockExplore
             }
             else
             {
-                // todo
+                if (lstStockBlockType.Count > 0)
+                {
+                    const string modSql = "DELETE FROM StockBlock WHERE BKType IN ({0})";
+                    List<string> lstName = BLL.ConvertBlockTypeList2Name(lstStockBlockType);
+                    string sParm = SysFunction.SParm(lstName.ToArray(), true);
 
+                    SQLHelper.ExecuteNonQuery(string.Format(modSql, sParm), CommandType.Text, _cnn);
+                }
             }
         }
     }

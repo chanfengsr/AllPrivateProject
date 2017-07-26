@@ -44,5 +44,13 @@ namespace StockExplore
 
             this.TruncateStkKLine(kLineType, false);
         }
+
+        /// <summary> 清空指定的板块信息
+        /// </summary>
+        /// <param name="lstStockBlockType">为 Null 则清空所有</param>
+        public void ClearStockBlock(List<StockBlockType> lstStockBlockType = null)
+        {
+            _dbo.ClearStockBlock(lstStockBlockType);
+        }
     }
 }

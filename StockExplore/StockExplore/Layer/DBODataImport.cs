@@ -15,7 +15,7 @@ namespace StockExplore
         public DataTable GetEmptyTable(string tableName)
         {
             const string strSql = "SELECT TOP 0 * FROM {0}";
-            DataTable retVal = SQLHelper.ExecuteDataTable(string.Format(strSql, tableName), CommandType.Text, Connection);
+            DataTable retVal = SQLHelper.ExecuteDataTable(string.Format(strSql, tableName), CommandType.Text, _cnn);
             retVal.TableName = tableName;
 
             return retVal;
@@ -25,7 +25,7 @@ namespace StockExplore
         {
             const string strSql = "DELETE FROM {0} WHERE MarkType = '{1}' AND StkCode = '{2}'";
 
-            SQLHelper.ExecuteNonQuery(string.Format(strSql, tableName, stkHead.MarkType, stkHead.StkCode), CommandType.Text, Connection);
+            SQLHelper.ExecuteNonQuery(string.Format(strSql, tableName, stkHead.MarkType, stkHead.StkCode), CommandType.Text, _cnn);
         }
 
         /// <summary>找到指定股票代码已有数据的最大交易日
@@ -37,7 +37,7 @@ namespace StockExplore
             const string strSql = "SELECT TradeDay = MAX(TradeDay) FROM {0}" + "\r\n"
                                   + "WHERE MarkType = '{1}' AND StkCode = '{2}'";
 
-            object objMaxDay = SQLHelper.ExecuteScalar(string.Format(strSql, tableName, stkHead.MarkType, stkHead.StkCode), CommandType.Text, Connection);
+            object objMaxDay = SQLHelper.ExecuteScalar(string.Format(strSql, tableName, stkHead.MarkType, stkHead.StkCode), CommandType.Text, _cnn);
 
 
             if (objMaxDay != System.DBNull.Value)
@@ -52,7 +52,7 @@ namespace StockExplore
         {
             if (dataTable.Rows.Count > 0)
             {
-                SqlBulkCopy bulkCopy = new SqlBulkCopy(Connection);
+                SqlBulkCopy bulkCopy = new SqlBulkCopy(_cnn);
                 bulkCopy.DestinationTableName = dataTable.TableName;
                 foreach (DataColumn col in dataTable.Columns)
                     if (!col.AutoIncrement)
@@ -71,7 +71,7 @@ namespace StockExplore
         public StockHead FindStockHead(string markType, string stkCode)
         {
             const string strSql = "SELECT * FROM StockHead WHERE MarkType = '{0}' AND StkCode = '{1}'";
-            DataTable dt = SQLHelper.ExecuteDataTable(string.Format(strSql, markType, stkCode), CommandType.Text, Connection);
+            DataTable dt = SQLHelper.ExecuteDataTable(string.Format(strSql, markType, stkCode), CommandType.Text, _cnn);
 
             if (dt.Rows.Count > 0)
                 return ModelHelp.GenerateList<StockHead>(dt)[0];
@@ -90,7 +90,7 @@ namespace StockExplore
                 if (existStkHead.StkName.Trim() != stockHead.StkName.Trim())
                 {
                     const string strSql = "UPDATE StockHead SET StkName = '{0}' WHERE MarkType = '{1}' AND StkCode = '{2}'";
-                    SQLHelper.ExecuteNonQuery(string.Format(strSql, stockHead.StkName, stockHead.MarkType, stockHead.StkCode), CommandType.Text, Connection);
+                    SQLHelper.ExecuteNonQuery(string.Format(strSql, stockHead.StkName, stockHead.MarkType, stockHead.StkCode), CommandType.Text, _cnn);
                 }
             }
             else
@@ -98,7 +98,7 @@ namespace StockExplore
                 const string strSql = "INSERT INTO StockHead(MarkType, StkCode, StkName, StkType) " + "\r\n"
                                       + "VALUES('{0}','{1}','{2}','{3}') ";
 
-                SQLHelper.ExecuteNonQuery(string.Format(strSql, stockHead.MarkType, stockHead.StkCode, stockHead.StkName, stockHead.StkType), CommandType.Text, Connection);
+                SQLHelper.ExecuteNonQuery(string.Format(strSql, stockHead.MarkType, stockHead.StkCode, stockHead.StkName, stockHead.StkType), CommandType.Text, _cnn);
             }
         }
 
@@ -108,7 +108,11 @@ namespace StockExplore
         /// <returns></returns>
         public DataTable GetStockBlock(List<StockBlockType> lstStockBlockType)
         {
-            return null;
+            const string sqlMod = "SELECT * FROM StockBlock WHERE BKType IN ({0})";
+            List<string> lstName = BLL.ConvertBlockTypeList2Name(lstStockBlockType);
+            string sParm = SysFunction.SParm(lstName.ToArray(), true);
+
+            return SQLHelper.ExecuteDataTable(string.Format(sqlMod, sParm), CommandType.Text, _cnn);
         }
     }
 }

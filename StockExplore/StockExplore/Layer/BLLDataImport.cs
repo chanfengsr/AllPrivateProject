@@ -165,5 +165,91 @@ namespace StockExplore
                 }
             }
         }
+
+        /// <summary> 
+        /// </summary>
+        /// <param name="lstStockBlockType"></param>
+        /// <returns></returns>
+        public Dictionary<string, int> GetStockBlock(List<StockBlockType> lstStockBlockType)
+        {
+            Dictionary<string, int> ret = new Dictionary<string, int>();
+            DataTable dtBlock = _dbo.GetStockBlock(lstStockBlockType);
+
+            foreach (DataRow dr in dtBlock.Rows)
+            {
+                string key = string.Format("{0},{1},{2}", dr["StkCode"], dr["BKType"], dr["BKName"]);
+                int recId = (int)dr["RecId"];
+                ret.Add(key, recId);
+            }
+            
+            return ret;
+        }
+
+        /// <summary> 从通达信文件中加载 概念、风格、指数 板块数据
+        /// </summary>
+        public Dictionary<string, int> LoadGnFgZsBlockData(List<StockBlockType> lstStockBlockType)
+        {
+            /*
+             * 通达信V6.1概念板块分类文件格式分析
+             http://blog.csdn.net/starsky2006/article/details/5863444
+             */
+
+            Dictionary<string, int> retDic= new Dictionary<string, int>();
+
+            foreach (StockBlockType blockType in lstStockBlockType)
+            {
+                // 必须是 概念、风格、指数 之中的
+                if (blockType != StockBlockType.gn && blockType != StockBlockType.fg && blockType != StockBlockType.zs) 
+                    continue;
+
+                string blockTypeName = BLL.StockBlockTypeName(blockType); // 概念、风格、指数
+                string fileName = ( CommProp.TDXFolder + BLL.StockBlockFileName(blockType) ).Replace(@"\\", @"\");
+
+                using (BinaryReader reader = new BinaryReader(File.OpenRead(fileName)))
+                {
+                    // 文件信息
+                    string fileInfoStr = Encoding.Default.GetString(reader.ReadBytes(64)).TrimEnd('\0');
+
+                    int indexStart = reader.ReadInt32(); // 板块索引信息起始位置
+                    int bkInfoStart = reader.ReadInt32(); // 板块记录信息起始位置
+
+                    reader.BaseStream.Seek(indexStart, SeekOrigin.Begin);
+                    // 索引名称
+                    string indexName = Encoding.Default.GetString(reader.ReadBytes(64)).TrimEnd('\0');
+
+                    reader.BaseStream.Seek(bkInfoStart, SeekOrigin.Begin);
+                    // 板块数量
+                    int bkCount = reader.ReadInt16();
+
+                    // 第一个版块的起始位置为0x182h。
+                    int offect = bkInfoStart + 2;
+                    for (int i = 0; i < bkCount; i++)
+                    {
+                        reader.BaseStream.Seek(offect, SeekOrigin.Begin);
+                        // 板块名称
+                        string bkName = Encoding.Default.GetString(reader.ReadBytes(9)).TrimEnd('\0');
+                        // 证券数量
+                        int stockCount = reader.ReadInt16();
+                        // 板块级别 
+                        int bkLevel = reader.ReadInt16();
+
+                        // 每个板块最多包括400只股票。(2813 -9 - 2 - 2) / 7 =  400
+                        for (int j = 0; j < 400; j++)
+                        {
+                            string stockCode = Encoding.Default.GetString(reader.ReadBytes(7)).TrimEnd('\0');
+                            if (stockCode.Length == 0)
+                                break;
+
+                            string key = string.Format("{0},{1},{2}", stockCode, blockTypeName, bkName);
+                            retDic.Add(key, 0);
+                        }
+
+                        offect += 2813; // 每个板块占的长度为2813个字节。
+                    }
+                }
+            }
+
+            return retDic;
+        }
     }
 }
