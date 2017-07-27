@@ -137,5 +137,19 @@ namespace StockExplore
             const string strSql = "TRUNCATE TABLE {0}";
             SQLHelper.ExecuteNonQuery(string.Format(strSql, tableName), CommandType.Text, _cnn);
         }
+
+        /// <summary> 用 RecId 来批量删表数据
+        /// </summary>
+        /// <param name="aRecId"></param>
+        public void DeleteTableByRecId(int[] aRecId)
+        {
+            const string modSql = "DELETE FROM StockBlock WHERE RecId IN ({0})";
+            StringBuilder sb = new StringBuilder();
+
+            foreach (int id in aRecId)
+                sb.Append(id + ",");
+            
+            SQLHelper.ExecuteNonQuery(string.Format(modSql, sb.ToString().TrimEnd(',')), CommandType.Text, _cnn);
+        }
     }
 }

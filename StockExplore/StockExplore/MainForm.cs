@@ -371,7 +371,27 @@ namespace StockExplore
 
         private void dataImptBtnBlockImport1_Click(object sender, EventArgs e)
         {
+            BLLDataImport bllDaImpt = new BLLDataImport(CommProp.ConnectionString);
+            UIInProcess(true);
 
+            try
+            {
+                bllDaImpt.OpenConnection();
+
+                bllDaImpt.BlockImport1();
+                
+                Console.WriteLine("导入完成！");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                bllDaImpt.CloseConnection();
+            }
+
+            UIInProcess(false);
         }
 
         private void dataImptBtnBlockImport2_Click(object sender, EventArgs e)

@@ -31,6 +31,8 @@ namespace StockExplore
                 _cnn.Close();
         }
 
+        /// <summary>从文件名获取市场类型及股票代码
+        /// </summary>
         public List<TupleValue<FileInfo, StockHead>> LoadMrkTypeAndCode(List<FileInfo> allFile)
         {
             List<TupleValue<FileInfo, StockHead>> ret = new List<TupleValue<FileInfo, StockHead>>();
@@ -166,11 +168,11 @@ namespace StockExplore
             }
         }
 
-        /// <summary> 
+        /// <summary> 从数据库中加载指定板块的板块信息 key: 代码,板块类型,板块名称  value:RecId
         /// </summary>
         /// <param name="lstStockBlockType"></param>
         /// <returns></returns>
-        public Dictionary<string, int> GetStockBlock(List<StockBlockType> lstStockBlockType)
+        private Dictionary<string, int> GetStockBlock(List<StockBlockType> lstStockBlockType)
         {
             Dictionary<string, int> ret = new Dictionary<string, int>();
             DataTable dtBlock = _dbo.GetStockBlock(lstStockBlockType);
@@ -187,7 +189,7 @@ namespace StockExplore
 
         /// <summary> 从通达信文件中加载 概念、风格、指数 板块数据
         /// </summary>
-        public Dictionary<string, int> LoadGnFgZsBlockData(List<StockBlockType> lstStockBlockType)
+        private Dictionary<string, int> LoadGnFgZsBlockDataFile(List<StockBlockType> lstStockBlockType)
         {
             /*
              * 通达信V6.1概念板块分类文件格式分析
@@ -250,6 +252,64 @@ namespace StockExplore
             }
 
             return retDic;
+        }
+
+        /// <summary> 批量更新板块数据
+        /// </summary>
+        /// <param name="dicData">[(代码,板块类型,板块名称), RecId]</param>
+        /// <param name="operState"></param>
+        private int BulkUpdateBlockData(List<KeyValuePair<string, int>> dicData, DataRowState operState)
+        {
+            const string tableName = "StockBlock";
+            const string idxStkCode = "StkCode",
+                         idxBKType = "BKType",
+                         idxBKName = "BKName";
+
+
+            if (operState == DataRowState.Deleted)
+            {
+                int[] aRecId = dicData.Select(kv => kv.Value).ToArray();
+                _dbo.DeleteTableByRecId(aRecId);
+            }
+            else
+            {
+                DataTable dt = _dbo.GetEmptyTable(tableName);
+                foreach (KeyValuePair<string, int> keyValue in dicData)
+                {
+                    string[] aBlock = keyValue.Key.Split(',');
+
+                    DataRow newRow = dt.NewRow();
+                    newRow[idxStkCode] = aBlock[0];
+                    newRow[idxBKType] = aBlock[1];
+                    newRow[idxBKName] = aBlock[2];
+
+                    dt.Rows.Add(newRow);
+                }
+
+                if (dt.Rows.Count > 0)
+                    _dbo.BulkWriteTable(dt, operState);
+            }
+
+            return dicData.Count;
+        }
+
+        public void BlockImport1()
+        {
+            List<StockBlockType> lstGnFgZs = new List<StockBlockType> { StockBlockType.gn, StockBlockType.fg, StockBlockType.zs };
+            Dictionary<string, int> fileGnFgZsBlock = this.LoadGnFgZsBlockDataFile(lstGnFgZs);
+            Dictionary<string, int> dbGnFgZsBlock = this.GetStockBlock(lstGnFgZs);
+            
+            // 需要删掉的：数据库中有，新文件中没有
+            List<KeyValuePair<string, int>> dicNeedDelete = dbGnFgZsBlock.Where(dbBlock => !fileGnFgZsBlock.ContainsKey(dbBlock.Key)).ToList();
+
+            // 需要新增的：新文件中有，数据库中没有
+            List<KeyValuePair<string, int>> dicNeedAdd = fileGnFgZsBlock.Where(fBlock => !dbGnFgZsBlock.ContainsKey(fBlock.Key)).ToList();
+
+            if (dicNeedDelete.Any())
+                this.BulkUpdateBlockData(dicNeedDelete, DataRowState.Deleted);
+
+            if (dicNeedAdd.Any())
+                this.BulkUpdateBlockData(dicNeedAdd, DataRowState.Added);
         }
     }
 }
