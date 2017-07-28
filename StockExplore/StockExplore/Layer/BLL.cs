@@ -72,6 +72,9 @@ namespace StockExplore
                      return @"\T0002\hq_cache\block_fg.dat";
                  case StockBlockType.zs:
                      return @"\T0002\hq_cache\block_zs.dat";
+                 case StockBlockType.dq:
+                 case StockBlockType.hyDet:
+                     return @"\T0002\hq_cache\base.dbf";
                  case StockBlockType.hy:
                      return string.Format("{0},{1}", @"\incon.dat", @"\T0002\hq_cache\tdxhy.cfg");
                  default:

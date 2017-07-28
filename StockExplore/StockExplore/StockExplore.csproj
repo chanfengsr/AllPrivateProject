@@ -61,6 +61,7 @@
     <Compile Include="CommClass\SysFunction.cs" />
     <Compile Include="CommClass\SysMessageBox.cs" />
     <Compile Include="CommClass\SysSecurityFactory.cs" />
+    <Compile Include="CommClass\TDbfHeader.cs" />
     <Compile Include="CommClass\TextBoxStreamWriter.cs" />
     <Compile Include="CommClass\TupleValue.cs" />
     <Compile Include="CommProp.cs" />

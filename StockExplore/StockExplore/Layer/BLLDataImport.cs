@@ -293,7 +293,7 @@ namespace StockExplore
             return dicData.Count;
         }
 
-        public void BlockImport1()
+        public void BlockImport()
         {
             List<StockBlockType> lstGnFgZs = new List<StockBlockType> { StockBlockType.gn, StockBlockType.fg, StockBlockType.zs };
             Dictionary<string, int> fileGnFgZsBlock = this.LoadGnFgZsBlockDataFile(lstGnFgZs);

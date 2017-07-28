@@ -378,7 +378,7 @@ namespace StockExplore
             {
                 bllDaImpt.OpenConnection();
 
-                bllDaImpt.BlockImport1();
+                bllDaImpt.BlockImport();
                 
                 Console.WriteLine("导入完成！");
             }
