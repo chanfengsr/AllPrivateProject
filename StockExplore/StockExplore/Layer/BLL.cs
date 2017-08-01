@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 
@@ -73,13 +74,33 @@ namespace StockExplore
                  case StockBlockType.zs:
                      return @"\T0002\hq_cache\block_zs.dat";
                  case StockBlockType.dq:
-                 case StockBlockType.hyDet:
-                     return @"\T0002\hq_cache\base.dbf";
+                     return string.Format("{0},{1}", @"\T0002\hq_cache\tdxzs.cfg", @"\T0002\hq_cache\base.dbf");
                  case StockBlockType.hy:
+                 case StockBlockType.hyDet:
                      return string.Format("{0},{1}", @"\incon.dat", @"\T0002\hq_cache\tdxhy.cfg");
                  default:
                      return "";
              }
          }
+
+         /// <summary>base.dbf 文件缓存
+         /// </summary>
+        private static DataTable _baseDbf = null;
+        /// <summary> 从 base.dbf 中加载数据
+        /// </summary>
+        /// <param name="fileName">base.dbf 文件全名</param>
+        /// <returns></returns>
+        public static DataTable LoadBaseDbf(string fileName)
+        {
+            if (_baseDbf == null)
+            {
+                using (TDbfTable dbf = new TDbfTable(fileName))
+                {
+                    _baseDbf = dbf.Table;
+                }
+            }
+
+            return _baseDbf;
+        }
     }
 }

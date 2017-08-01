@@ -254,6 +254,45 @@ namespace StockExplore
             return retDic;
         }
 
+        /// <summary> 从通达信文件中加载 地区 板块数据
+        /// </summary>
+        private Dictionary<string, int> LoadDqBlockDataFile(StockBlockType blockType= StockBlockType.dq)
+        {
+            Dictionary<string, int> retDic = new Dictionary<string, int>();
+            string[] fileNameSplit = BLL.StockBlockFileName(StockBlockType.dq).Split(',');
+            string fileNameZs = ( CommProp.TDXFolder + fileNameSplit[0] ).Replace(@"\\", @"\");
+            string fileNameDb = (CommProp.TDXFolder + fileNameSplit[1]).Replace(@"\\", @"\");
+            string blockTypeName = BLL.StockBlockTypeName(blockType);
+
+            string[] lines = File.ReadAllLines(fileNameZs, Encoding.Default);
+            Dictionary<string, string> dicDqName = new Dictionary<string, string>();
+            foreach (string line in lines)
+            {
+                if (line.Length <= 0) break;
+                string[] split = line.Split('|');
+                if (split.Length == 6 && split[2] == "3")
+                    dicDqName.Add(split[5], split[0]);
+            }
+
+            DataTable baseDbf = BLL.LoadBaseDbf(fileNameDb);
+            if (baseDbf != null && baseDbf.Rows.Count > 0)
+            {
+                foreach (DataRow dr in baseDbf.Rows)
+                {
+                    string dqCode = dr["DY"].ToString().Trim();
+                    if (dicDqName.ContainsKey(dqCode))
+                    {
+                        string stockCode = dr["GPDM"].ToString().Trim();
+                        string bkName = dicDqName[dqCode];
+                        string key = string.Format("{0},{1},{2}", stockCode, blockTypeName, bkName);
+                        retDic.Add(key, 0);
+                    }
+                }
+            }
+
+            return retDic;
+        }
+
         /// <summary> 批量更新板块数据
         /// </summary>
         /// <param name="dicData">[(代码,板块类型,板块名称), RecId]</param>
@@ -293,12 +332,15 @@ namespace StockExplore
             return dicData.Count;
         }
 
-        public void BlockImport()
+        /// <summary> 板块导入：概念、风格、指数
+        /// </summary>
+        private TupleValue<int, int> BlockImportGnFgZs()
         {
-            List<StockBlockType> lstGnFgZs = new List<StockBlockType> { StockBlockType.gn, StockBlockType.fg, StockBlockType.zs };
+            int cntDel = 0, cntAdd = 0;
+            List<StockBlockType> lstGnFgZs = new List<StockBlockType> {StockBlockType.gn, StockBlockType.fg, StockBlockType.zs};
             Dictionary<string, int> fileGnFgZsBlock = this.LoadGnFgZsBlockDataFile(lstGnFgZs);
             Dictionary<string, int> dbGnFgZsBlock = this.GetStockBlock(lstGnFgZs);
-            
+
             // 需要删掉的：数据库中有，新文件中没有
             List<KeyValuePair<string, int>> dicNeedDelete = dbGnFgZsBlock.Where(dbBlock => !fileGnFgZsBlock.ContainsKey(dbBlock.Key)).ToList();
 
@@ -306,10 +348,37 @@ namespace StockExplore
             List<KeyValuePair<string, int>> dicNeedAdd = fileGnFgZsBlock.Where(fBlock => !dbGnFgZsBlock.ContainsKey(fBlock.Key)).ToList();
 
             if (dicNeedDelete.Any())
-                this.BulkUpdateBlockData(dicNeedDelete, DataRowState.Deleted);
+                cntDel = this.BulkUpdateBlockData(dicNeedDelete, DataRowState.Deleted);
 
             if (dicNeedAdd.Any())
-                this.BulkUpdateBlockData(dicNeedAdd, DataRowState.Added);
+                cntAdd = this.BulkUpdateBlockData(dicNeedAdd, DataRowState.Added);
+
+            return new TupleValue<int, int>(cntDel, cntAdd);
+        }
+
+        /// <summary> 板块导入：地区
+        /// </summary>
+        private TupleValue<int, int> BlockImportDq()
+        {
+            int cntDel = 0, cntAdd = 0;
+            List<StockBlockType> lstDq = new List<StockBlockType> {StockBlockType.dq};
+            Dictionary<string, int> fileDqBlock = this.LoadDqBlockDataFile();
+
+            return new TupleValue<int, int>(cntDel, cntAdd);
+        }
+
+        /// <summary> 板块导入/更新
+        /// </summary>
+        public void BlockImport()
+        {
+            // todo Modify 
+            this.BlockImportDq();
+            return;
+
+            int cntDel = 0, cntAdd = 0;
+            TupleValue<int, int> cntGnFgZs = BlockImportGnFgZs();
+            cntDel += cntGnFgZs.Value1;
+            cntAdd += cntGnFgZs.Value2;
         }
     }
 }
