@@ -176,10 +176,11 @@ namespace StockExplore
         {
             Dictionary<string, int> ret = new Dictionary<string, int>();
             DataTable dtBlock = _dbo.GetStockBlock(lstStockBlockType);
+            const string formatMod = "{0},{1},{2}";
 
             foreach (DataRow dr in dtBlock.Rows)
             {
-                string key = string.Format("{0},{1},{2}", dr["StkCode"], dr["BKType"], dr["BKName"]);
+                string key = string.Format(formatMod, dr["StkCode"], dr["BKType"], dr["BKName"]);
                 int recId = (int)dr["RecId"];
                 ret.Add(key, recId);
             }
@@ -197,6 +198,7 @@ namespace StockExplore
              */
 
             Dictionary<string, int> retDic= new Dictionary<string, int>();
+            const string formatMod = "{0},{1},{2}";
 
             foreach (StockBlockType blockType in lstStockBlockType)
             {
@@ -242,7 +244,7 @@ namespace StockExplore
                             if (stockCode.Length == 0)
                                 break;
 
-                            string key = string.Format("{0},{1},{2}", stockCode, blockTypeName, bkName);
+                            string key = string.Format(formatMod, stockCode, blockTypeName, bkName);
                             retDic.Add(key, 0);
                         }
 
@@ -263,6 +265,7 @@ namespace StockExplore
             string fileNameZs = ( CommProp.TDXFolder + fileNameSplit[0] ).Replace(@"\\", @"\");
             string fileNameDb = (CommProp.TDXFolder + fileNameSplit[1]).Replace(@"\\", @"\");
             string blockTypeName = BLL.StockBlockTypeName(blockType);
+            const string formatMod = "{0},{1},{2}";
 
             string[] lines = File.ReadAllLines(fileNameZs, Encoding.Default);
             Dictionary<string, string> dicDqName = new Dictionary<string, string>();
@@ -284,7 +287,104 @@ namespace StockExplore
                     {
                         string stockCode = dr["GPDM"].ToString().Trim();
                         string bkName = dicDqName[dqCode];
-                        string key = string.Format("{0},{1},{2}", stockCode, blockTypeName, bkName);
+                        string key = string.Format(formatMod, stockCode, blockTypeName, bkName);
+                        retDic.Add(key, 0);
+                    }
+                }
+            }
+
+            return retDic;
+        }
+
+        /// <summary> 获取 行业、行业明细 代码对应名称
+        /// </summary>
+        private TupleValue<Dictionary<string, string>, Dictionary<string, string>> GetHyHydetDictionary(string fileName)
+        {
+            Dictionary<string, string> dicHy = new Dictionary<string, string>();
+            Dictionary<string, string> dicHyDet = new Dictionary<string, string>();
+            bool begHy = false, begHyDet = false;
+
+            string[] lines = File.ReadAllLines(fileName, Encoding.Default);
+            foreach (string line in lines)
+            {
+                if (!begHy && !begHyDet)
+                {
+                    if (line.Trim() == "#SWHY")
+                    {
+                        begHy = true;
+                        continue;
+                    }
+
+                    if (line.Trim() == "#TDXNHY")
+                    {
+                        begHyDet = true;
+                        continue;
+                    }
+                }
+                else
+                {
+                    if (line.Trim() == "######")
+                    {
+                        begHy = begHyDet = false;
+                        continue;
+                    }
+                }
+
+                if (begHy || begHyDet)
+                {
+                    string[] splitHy = line.Split('|');
+                    if (splitHy.Length != 2) continue;
+
+                    if (begHy)
+                        dicHy.Add(splitHy[0], splitHy[1]);
+                    else
+                        dicHyDet.Add(splitHy[0], splitHy[1]);
+                }
+            }
+
+            return new TupleValue<Dictionary<string, string>, Dictionary<string, string>>(dicHy, dicHyDet);
+        }
+
+        /// <summary> 从通达信文件中加载 行业、行业明细 板块数据
+        /// </summary>
+        private Dictionary<string, int> LoadHyHyDetBlockDataFile(List<StockBlockType> lstStockBlockType)
+        {
+            Dictionary<string, int> retDic = new Dictionary<string, int>();
+            const string formatMod = "{0},{1},{2}";
+
+            if (lstStockBlockType.Contains(StockBlockType.hy))
+            {
+                string[] fileNameSplit = BLL.StockBlockFileName(StockBlockType.hy).Split(',');
+                string fileNamIncon = (CommProp.TDXFolder + fileNameSplit[0]).Replace(@"\\", @"\");
+                string fileNameHy = (CommProp.TDXFolder + fileNameSplit[1]).Replace(@"\\", @"\");
+                string blockTypeNameHy = BLL.StockBlockTypeName(StockBlockType.hy),
+                       blockTypeNameHyDet = BLL.StockBlockTypeName(StockBlockType.hyDet);
+
+                // 获取 行业、行业明细 代码对应名称
+                TupleValue<Dictionary<string, string>, Dictionary<string, string>> tupleDic = this.GetHyHydetDictionary(fileNamIncon);
+                Dictionary<string, string> dicHy = tupleDic.Value1;
+                Dictionary<string, string> dicHyDet = tupleDic.Value2;
+
+                // 股票代码与其 行业、行业明细 代码对应
+                string[] lines = File.ReadAllLines(fileNameHy, Encoding.Default);
+                foreach (string line in lines)
+                {
+                    string[] split = line.Split('|');
+                    if (split.Length != 4) break;
+
+                    string stockCode = split[1];
+                    string hyDetCode = split[2];
+                    string hyCode = split[3];
+
+                    if (dicHy.ContainsKey(hyCode))
+                    {
+                        string key = string.Format(formatMod, stockCode, blockTypeNameHy, dicHy[hyCode]);
+                        retDic.Add(key, 0);
+                    }
+
+                    if (dicHyDet.ContainsKey(hyDetCode))
+                    {
+                        string key = string.Format(formatMod, stockCode, blockTypeNameHyDet, dicHyDet[hyDetCode]);
                         retDic.Add(key, 0);
                     }
                 }
@@ -363,22 +463,66 @@ namespace StockExplore
             int cntDel = 0, cntAdd = 0;
             List<StockBlockType> lstDq = new List<StockBlockType> {StockBlockType.dq};
             Dictionary<string, int> fileDqBlock = this.LoadDqBlockDataFile();
+            Dictionary<string, int> dbDqBlock = this.GetStockBlock(lstDq);
+
+            // 需要删掉的：数据库中有，新文件中没有
+            List<KeyValuePair<string, int>> dicNeedDelete = dbDqBlock.Where(dbBlock => !fileDqBlock.ContainsKey(dbBlock.Key)).ToList();
+
+            // 需要新增的：新文件中有，数据库中没有
+            List<KeyValuePair<string, int>> dicNeedAdd = fileDqBlock.Where(fBlock => !dbDqBlock.ContainsKey(fBlock.Key)).ToList();
+
+            if (dicNeedDelete.Any())
+                cntDel = this.BulkUpdateBlockData(dicNeedDelete, DataRowState.Deleted);
+
+            if (dicNeedAdd.Any())
+                cntAdd = this.BulkUpdateBlockData(dicNeedAdd, DataRowState.Added);
+
+            return new TupleValue<int, int>(cntDel, cntAdd);
+        }
+
+        /// <summary> 板块导入：行业、行业明细
+        /// </summary>
+        private TupleValue<int, int> BlockImportHyHyDet()
+        {
+            int cntDel = 0, cntAdd = 0;
+            List<StockBlockType> lstHyHyDet = new List<StockBlockType> { StockBlockType.hy, StockBlockType.hyDet };
+            Dictionary<string, int> fileHyHyDetBlock = this.LoadHyHyDetBlockDataFile(lstHyHyDet);
+            Dictionary<string, int> dbHyHyDetBlock = this.GetStockBlock(lstHyHyDet);
+
+            // 需要删掉的：数据库中有，新文件中没有
+            List<KeyValuePair<string, int>> dicNeedDelete = dbHyHyDetBlock.Where(dbBlock => !fileHyHyDetBlock.ContainsKey(dbBlock.Key)).ToList();
+
+            // 需要新增的：新文件中有，数据库中没有
+            List<KeyValuePair<string, int>> dicNeedAdd = fileHyHyDetBlock.Where(fBlock => !dbHyHyDetBlock.ContainsKey(fBlock.Key)).ToList();
+
+            if (dicNeedDelete.Any())
+                cntDel = this.BulkUpdateBlockData(dicNeedDelete, DataRowState.Deleted);
+
+            if (dicNeedAdd.Any())
+                cntAdd = this.BulkUpdateBlockData(dicNeedAdd, DataRowState.Added);
 
             return new TupleValue<int, int>(cntDel, cntAdd);
         }
 
         /// <summary> 板块导入/更新
         /// </summary>
-        public void BlockImport()
+        public TupleValue<int, int> BlockImport()
         {
-            // todo Modify 
-            this.BlockImportDq();
-            return;
-
             int cntDel = 0, cntAdd = 0;
+            
             TupleValue<int, int> cntGnFgZs = BlockImportGnFgZs();
             cntDel += cntGnFgZs.Value1;
             cntAdd += cntGnFgZs.Value2;
+
+            TupleValue<int, int> cntDq = this.BlockImportDq();
+            cntDel += cntDq.Value1;
+            cntAdd += cntDq.Value2;
+
+            TupleValue<int, int> cntHyHyDet = this.BlockImportHyHyDet();
+            cntDel += cntHyHyDet.Value1;
+            cntAdd += cntHyHyDet.Value2;
+
+            return new TupleValue<int, int>(cntDel, cntAdd);
         }
     }
 }
