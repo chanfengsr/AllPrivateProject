@@ -393,12 +393,6 @@ namespace StockExplore
 
             UIInProcess(false);
         }
-
-        private void dataImptBtnBlockImport2_Click(object sender, EventArgs e)
-        {
-
-        }
-
     }
 }
 

@@ -29,7 +29,6 @@
             this.tabPageDataImport = new System.Windows.Forms.TabPage();
             this.btnSourceFileBrowser = new System.Windows.Forms.Button();
             this.grpBlock = new System.Windows.Forms.GroupBox();
-            this.dataImptBtnBlockImport2 = new System.Windows.Forms.Button();
             this.dataImptBtnBlockImport1 = new System.Windows.Forms.Button();
             this.grpDayKLine = new System.Windows.Forms.GroupBox();
             this.dataImptBtnDayKLineImport = new System.Windows.Forms.Button();
@@ -131,7 +130,6 @@
             // 
             // grpBlock
             // 
-            this.grpBlock.Controls.Add(this.dataImptBtnBlockImport2);
             this.grpBlock.Controls.Add(this.dataImptBtnBlockImport1);
             this.grpBlock.Location = new System.Drawing.Point(117, 39);
             this.grpBlock.Name = "grpBlock";
@@ -139,16 +137,6 @@
             this.grpBlock.TabIndex = 18;
             this.grpBlock.TabStop = false;
             this.grpBlock.Text = "板块";
-            // 
-            // dataImptBtnBlockImport2
-            // 
-            this.dataImptBtnBlockImport2.Location = new System.Drawing.Point(20, 67);
-            this.dataImptBtnBlockImport2.Name = "dataImptBtnBlockImport2";
-            this.dataImptBtnBlockImport2.Size = new System.Drawing.Size(159, 38);
-            this.dataImptBtnBlockImport2.TabIndex = 0;
-            this.dataImptBtnBlockImport2.Text = "地区、行业细分\r\n（使用导出报表的数据）";
-            this.dataImptBtnBlockImport2.UseVisualStyleBackColor = true;
-            this.dataImptBtnBlockImport2.Click += new System.EventHandler(this.dataImptBtnBlockImport2_Click);
             // 
             // dataImptBtnBlockImport1
             // 
@@ -408,7 +396,6 @@
         private System.Windows.Forms.Button dataClearBtnWeekKLineTruncate;
         private System.Windows.Forms.Button dataClearBtnDayKLineZSTruncate;
         private System.Windows.Forms.GroupBox grpBlock;
-        private System.Windows.Forms.Button dataImptBtnBlockImport2;
         private System.Windows.Forms.Button dataImptBtnBlockImport1;
         private System.Windows.Forms.Button btnSourceFileBrowser;
     }

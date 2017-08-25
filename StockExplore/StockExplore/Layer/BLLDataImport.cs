@@ -509,15 +509,18 @@ namespace StockExplore
         public TupleValue<int, int> BlockImport()
         {
             int cntDel = 0, cntAdd = 0;
-            
+
+            // 概念、风格、指数
             TupleValue<int, int> cntGnFgZs = BlockImportGnFgZs();
             cntDel += cntGnFgZs.Value1;
             cntAdd += cntGnFgZs.Value2;
 
+            // 地区
             TupleValue<int, int> cntDq = this.BlockImportDq();
             cntDel += cntDq.Value1;
             cntAdd += cntDq.Value2;
 
+            // 行业、行业明细
             TupleValue<int, int> cntHyHyDet = this.BlockImportHyHyDet();
             cntDel += cntHyHyDet.Value1;
             cntAdd += cntHyHyDet.Value2;

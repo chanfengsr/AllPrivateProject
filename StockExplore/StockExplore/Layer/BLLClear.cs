@@ -40,7 +40,7 @@ namespace StockExplore
         public void TruncateStkKLine(KLineType kLineType)
         {
             if (kLineType == KLineType.Day)
-                throw new ArgumentException("KLineDay need specify parm:isComposite)");
+                throw new ArgumentException("KLineDay need specify parm:isComposite");
 
             this.TruncateStkKLine(kLineType, false);
         }

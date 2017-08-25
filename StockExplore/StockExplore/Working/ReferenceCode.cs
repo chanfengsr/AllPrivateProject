@@ -12,9 +12,10 @@ namespace StockExplore
         public static void Main1(string[] args)
         {
             const int lineLength = 32;
-            using (var reader = new BinaryReader(File.OpenRead(@"r:\sh600583.day")))
+            using (var reader = new BinaryReader(File.OpenRead(@"C:\new_tdx\vipdoc\sh\lday\sh999999.day")))     //  C:\new_tdx\vipdoc\sz\lday\sz399001.day
             {
-                for (int i = 0; i < 2; i++)
+                long len = reader.BaseStream.Length / lineLength;
+                for (int i = 0; i < len; i++)
                 {
                     int beg = i * lineLength;
                     int offset = beg;
@@ -53,6 +54,7 @@ namespace StockExplore
 
                     string msg = string.Format("{0} : {1} : {2} : {3} : {4} : {5} : {6} : {7} ", date, open, high, low, close, amount, vol, reservation);
                     Console.WriteLine(msg);
+
                 }
             }
 
