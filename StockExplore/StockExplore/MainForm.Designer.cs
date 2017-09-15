@@ -48,6 +48,7 @@
             this.txtConsole = new System.Windows.Forms.TextBox();
             this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.bkgDataImport = new System.ComponentModel.BackgroundWorker();
+            this.dataImptBtnStkHeadImport = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -87,7 +88,7 @@
             // 
             this.splitContainer1.Panel2.Controls.Add(this.groupBox1);
             this.splitContainer1.Size = new System.Drawing.Size(655, 454);
-            this.splitContainer1.SplitterDistance = 202;
+            this.splitContainer1.SplitterDistance = 210;
             this.splitContainer1.TabIndex = 1;
             // 
             // tabControl1
@@ -98,11 +99,12 @@
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(655, 202);
+            this.tabControl1.Size = new System.Drawing.Size(655, 210);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPageDataImport
             // 
+            this.tabPageDataImport.Controls.Add(this.dataImptBtnStkHeadImport);
             this.tabPageDataImport.Controls.Add(this.btnSourceFileBrowser);
             this.tabPageDataImport.Controls.Add(this.grpBlock);
             this.tabPageDataImport.Controls.Add(this.grpDayKLine);
@@ -112,7 +114,7 @@
             this.tabPageDataImport.Location = new System.Drawing.Point(4, 22);
             this.tabPageDataImport.Name = "tabPageDataImport";
             this.tabPageDataImport.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageDataImport.Size = new System.Drawing.Size(647, 176);
+            this.tabPageDataImport.Size = new System.Drawing.Size(647, 184);
             this.tabPageDataImport.TabIndex = 0;
             this.tabPageDataImport.Text = "数据导入";
             this.tabPageDataImport.UseVisualStyleBackColor = true;
@@ -131,7 +133,7 @@
             // grpBlock
             // 
             this.grpBlock.Controls.Add(this.dataImptBtnBlockImport1);
-            this.grpBlock.Location = new System.Drawing.Point(117, 39);
+            this.grpBlock.Location = new System.Drawing.Point(117, 45);
             this.grpBlock.Name = "grpBlock";
             this.grpBlock.Size = new System.Drawing.Size(200, 131);
             this.grpBlock.TabIndex = 18;
@@ -153,9 +155,9 @@
             this.grpDayKLine.Controls.Add(this.dataImptBtnDayKLineImport);
             this.grpDayKLine.Controls.Add(this.dataImptDayKLineChkIsComposite);
             this.grpDayKLine.Controls.Add(this.dataImptDayKLineChkConvert);
-            this.grpDayKLine.Location = new System.Drawing.Point(12, 39);
+            this.grpDayKLine.Location = new System.Drawing.Point(12, 74);
             this.grpDayKLine.Name = "grpDayKLine";
-            this.grpDayKLine.Size = new System.Drawing.Size(99, 131);
+            this.grpDayKLine.Size = new System.Drawing.Size(99, 102);
             this.grpDayKLine.TabIndex = 17;
             this.grpDayKLine.TabStop = false;
             this.grpDayKLine.Text = "日K线";
@@ -273,7 +275,7 @@
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(655, 248);
+            this.groupBox1.Size = new System.Drawing.Size(655, 240);
             this.groupBox1.TabIndex = 10;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "执行信息";
@@ -299,7 +301,7 @@
             this.btnCloseForm.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.btnCloseForm.Font = new System.Drawing.Font("宋体", 10.5F, System.Drawing.FontStyle.Bold);
             this.btnCloseForm.ForeColor = System.Drawing.Color.DarkRed;
-            this.btnCloseForm.Location = new System.Drawing.Point(513, 92);
+            this.btnCloseForm.Location = new System.Drawing.Point(513, 88);
             this.btnCloseForm.Name = "btnCloseForm";
             this.btnCloseForm.Size = new System.Drawing.Size(116, 33);
             this.btnCloseForm.TabIndex = 12;
@@ -332,7 +334,7 @@
             this.txtConsole.Name = "txtConsole";
             this.txtConsole.ReadOnly = true;
             this.txtConsole.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.txtConsole.Size = new System.Drawing.Size(643, 222);
+            this.txtConsole.Size = new System.Drawing.Size(643, 214);
             this.txtConsole.TabIndex = 0;
             this.txtConsole.TabStop = false;
             this.txtConsole.WordWrap = false;
@@ -342,6 +344,16 @@
             this.bkgDataImport.WorkerReportsProgress = true;
             this.bkgDataImport.WorkerSupportsCancellation = true;
             this.bkgDataImport.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bkgDataImport_DoWork);
+            // 
+            // dataImptBtnStkHeadImport
+            // 
+            this.dataImptBtnStkHeadImport.Location = new System.Drawing.Point(12, 45);
+            this.dataImptBtnStkHeadImport.Name = "dataImptBtnStkHeadImport";
+            this.dataImptBtnStkHeadImport.Size = new System.Drawing.Size(99, 23);
+            this.dataImptBtnStkHeadImport.TabIndex = 2;
+            this.dataImptBtnStkHeadImport.Text = "刷新代码名称";
+            this.dataImptBtnStkHeadImport.UseVisualStyleBackColor = true;
+            this.dataImptBtnStkHeadImport.Click += new System.EventHandler(this.dataImptBtnStkHeadImport_Click);
             // 
             // MainForm
             // 
@@ -398,6 +410,7 @@
         private System.Windows.Forms.GroupBox grpBlock;
         private System.Windows.Forms.Button dataImptBtnBlockImport1;
         private System.Windows.Forms.Button btnSourceFileBrowser;
+        private System.Windows.Forms.Button dataImptBtnStkHeadImport;
     }
 }
 

@@ -63,6 +63,8 @@ namespace StockExplore
             return lstStockBlockType.Select(StockBlockTypeName).ToList();
         }
 
+        /// <summary> 通达信板块文件
+        /// </summary>
          public static string StockBlockFileName(StockBlockType stockBlockType)
          {
              switch (stockBlockType)
@@ -83,7 +85,16 @@ namespace StockExplore
              }
          }
 
-         /// <summary>base.dbf 文件缓存
+        /// <summary> 通达信放股票代码的文件
+        /// </summary>
+        public static TupleValue<string, string> StockHeadFileName()
+        {
+            return new TupleValue<string, string>
+                (@"\T0002\hq_cache\shm.tnf",
+                 @"\T0002\hq_cache\szm.tnf");
+        }
+
+        /// <summary>base.dbf 文件缓存
          /// </summary>
         private static DataTable _baseDbf = null;
         /// <summary> 从 base.dbf 中加载数据

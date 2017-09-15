@@ -122,5 +122,84 @@ namespace StockExplore
 
             Console.ReadKey(false);
         }
+
+
+        public static void Main3(string[] args)
+        {
+            /*
+             * 通达信V6股票代码文件格式分析
+             http://blog.csdn.net/starsky2006/article/details/5863438
+
+                （1）、文件头部信息	
+                数据含义	数据类型
+                IP地址	Char[40]
+                未知	word
+                日期	Integer
+                时间	Integer
+	
+                （2）、股票代码格式	
+                数据含义	数据类型
+                股票代码	Char[9]
+                未知	byte
+                未知	word
+                未知	single
+                未知	Integer
+                未知	Integer
+                股票名称	Char[18]
+                未知	Integer
+                未知	Char[186]
+                昨日收盘	single
+                未知	byte
+                未知	Integer
+                名称缩写	Char[9]
+                注意：	
+                1）、每250个字节为一个记录。	
+             */
+
+            /*
+             我测试下来：每314个字节为一个记录
+             */
+
+            string fileName = @"C:\new_tdx\T0002\hq_cache\szm.tnf";
+
+            using (BinaryReader reader = new BinaryReader(File.OpenRead(fileName)))
+            {
+                // Console.WriteLine(string.Format("{0}"));
+                string strIp = Encoding.Default.GetString(reader.ReadBytes(40)).TrimEnd('\0');
+                Console.WriteLine(strIp);
+
+                Console.WriteLine("可能是某个数量：{0}", reader.ReadInt16()); // 7709
+                Console.WriteLine("日期：{0}", reader.ReadInt32());
+                Console.WriteLine("时间：{0}", reader.ReadInt32());
+
+                Console.WriteLine();
+
+                int count = (int)((reader.BaseStream.Length - 50) / 314);
+                for (int i = 0; i < count; i++)
+                {
+                    string stkCode = Encoding.Default.GetString(reader.ReadBytes(9)).TrimEnd('\0');
+                    reader.ReadBytes(12); // 未知区域
+                    string stkName = Encoding.Default.GetString(reader.ReadBytes(18)).Trim('\0');
+                    reader.ReadBytes(246); // 未知区域
+                    string shortName = Encoding.Default.GetString(reader.ReadBytes(9)).TrimEnd('\0');
+                    reader.ReadBytes(20); // 未知区域
+
+                    if (stkCode.StartsWith("3991")) //stkCode.StartsWith("999")  || stkCode.StartsWith("000")    stkName.Contains("指")
+                    {
+                        Console.WriteLine("行号：{0}", i + 1);
+                        Console.WriteLine("股票代码：{0}", stkCode);
+                        Console.WriteLine("股票名称：{0}", stkName);
+                        Console.WriteLine("名称缩写：{0}", shortName);
+                        Console.WriteLine("Position：{0}", reader.BaseStream.Position);
+
+                        Console.WriteLine();
+                    }
+                }
+
+                Console.WriteLine("Position：{0}", reader.BaseStream.Length);
+            }
+
+            Console.ReadKey(false);
+        }
     }
 }
