@@ -123,7 +123,7 @@ namespace StockExplore
             Console.ReadKey(false);
         }
 
-
+        // 读取股票代码名称文件
         public static void Main3(string[] args)
         {
             /*

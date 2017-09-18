@@ -396,7 +396,6 @@ namespace StockExplore
 
         private void dataImptBtnStkHeadImport_Click(object sender, EventArgs e)
         {
-
             BLLDataImport bllDaImpt = new BLLDataImport(CommProp.ConnectionString);
             UIInProcess(true);
 
@@ -405,6 +404,7 @@ namespace StockExplore
                 bllDaImpt.OpenConnection();
 
                 //bllDaImpt.BlockImport();
+                
 
                 Console.WriteLine("导入完成！");
             }

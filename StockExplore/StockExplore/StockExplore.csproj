@@ -83,6 +83,7 @@
     <Compile Include="Model\KLineDay.cs" />
     <Compile Include="Model\KLineDayZS.cs" />
     <Compile Include="Model\KLineWeek.cs" />
+    <Compile Include="Model\StockBlock.cs" />
     <Compile Include="Model\StockHead.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

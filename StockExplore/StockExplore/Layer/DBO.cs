@@ -46,7 +46,7 @@ namespace StockExplore
             return (int)SQLHelper.ExecuteScalar(string.Format(sqlMod, tableName), CommandType.Text, _cnn);
         }
 
-        /// <summary>获取某只个股的所有指定价格
+        /// <summary>获取某只个股的所有指定日期区间价格
         /// </summary>
         /// <param name="tableName"></param>
         /// <param name="stkCode">股票代码</param>
@@ -140,16 +140,17 @@ namespace StockExplore
 
         /// <summary> 用 RecId 来批量删表数据
         /// </summary>
+        /// <param name="tableName"></param>
         /// <param name="aRecId"></param>
-        public void DeleteTableByRecId(int[] aRecId)
+        public void DeleteTableByRecId(string tableName, int[] aRecId)
         {
-            const string modSql = "DELETE FROM StockBlock WHERE RecId IN ({0})";
+            const string modSql = "DELETE FROM {0} WHERE RecId IN ({1})";
             StringBuilder sb = new StringBuilder();
 
             foreach (int id in aRecId)
                 sb.Append(id + ",");
-            
-            SQLHelper.ExecuteNonQuery(string.Format(modSql, sb.ToString().TrimEnd(',')), CommandType.Text, _cnn);
+
+            SQLHelper.ExecuteNonQuery(string.Format(modSql, tableName, sb.ToString().TrimEnd(',')), CommandType.Text, _cnn);
         }
     }
 }

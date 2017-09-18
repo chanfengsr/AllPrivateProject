@@ -81,7 +81,7 @@ namespace StockExplore
 
         /// <summary> 返回 StockHead 全表
         /// </summary>
-        public DataTable FindStockHeadAll()
+        public DataTable GetStockHeadAll()
         {
             const string strSql = "SELECT * FROM StockHead";
             return SQLHelper.ExecuteDataTable(strSql, CommandType.Text, _cnn);
@@ -95,17 +95,17 @@ namespace StockExplore
 
             if (string.IsNullOrEmpty(existStkHead.StkCode))
             {
-                const string strSql = "INSERT INTO StockHead(MarkType, StkCode, StkName, StkType) " + "\r\n"
-                                      + "VALUES('{0}','{1}','{2}','{3}') ";
+                const string strSql = "INSERT INTO StockHead(MarkType, StkCode, StkName, StkNameAbbr, StkType) " + "\r\n"
+                                      + "VALUES('{0}','{1}','{2}','{3}','{4}') ";
 
-                SQLHelper.ExecuteNonQuery(string.Format(strSql, stockHead.MarkType, stockHead.StkCode, stockHead.StkName, stockHead.StkType), CommandType.Text, _cnn);
+                SQLHelper.ExecuteNonQuery(string.Format(strSql, stockHead.MarkType, stockHead.StkCode, stockHead.StkName, stockHead.StkNameAbbr, stockHead.StkType), CommandType.Text, _cnn);
             }
             else
             {
                 if (existStkHead.StkName.Trim() != stockHead.StkName.Trim())
                 {
-                    const string strSql = "UPDATE StockHead SET StkName = '{0}' WHERE MarkType = '{1}' AND StkCode = '{2}'";
-                    SQLHelper.ExecuteNonQuery(string.Format(strSql, stockHead.StkName, stockHead.MarkType, stockHead.StkCode), CommandType.Text, _cnn);
+                    const string strSql = "UPDATE StockHead SET StkName = '{0}', stockHead = '{1}' WHERE MarkType = '{2}' AND StkCode = '{3}'";
+                    SQLHelper.ExecuteNonQuery(string.Format(strSql, stockHead.StkName, stockHead.StkNameAbbr, stockHead.MarkType, stockHead.StkCode), CommandType.Text, _cnn);
                 }
             }
         }

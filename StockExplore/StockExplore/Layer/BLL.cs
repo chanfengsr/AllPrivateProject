@@ -94,6 +94,22 @@ namespace StockExplore
                  @"\T0002\hq_cache\szm.tnf");
         }
 
+        /// <summary> 日线数据所在文件夹
+        /// </summary>
+        public static string GetDayLineFileFolder(string markType)
+        {
+            const string retTmp = @"\vipdoc\{0}\lday\";
+
+            switch (markType.ToLower())
+            {
+                case "sh":
+                case "sz":
+                    return string.Format(retTmp, markType);
+                default:
+                    throw new ArgumentOutOfRangeException();
+            }
+        }
+
         /// <summary>base.dbf 文件缓存
          /// </summary>
         private static DataTable _baseDbf = null;
