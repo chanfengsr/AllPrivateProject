@@ -27,6 +27,7 @@
             this.splitContainer1 = new System.Windows.Forms.SplitContainer();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPageDataImport = new System.Windows.Forms.TabPage();
+            this.dataImptBtnStkHeadImport = new System.Windows.Forms.Button();
             this.btnSourceFileBrowser = new System.Windows.Forms.Button();
             this.grpBlock = new System.Windows.Forms.GroupBox();
             this.dataImptBtnBlockImport1 = new System.Windows.Forms.Button();
@@ -48,7 +49,7 @@
             this.txtConsole = new System.Windows.Forms.TextBox();
             this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.bkgDataImport = new System.ComponentModel.BackgroundWorker();
-            this.dataImptBtnStkHeadImport = new System.Windows.Forms.Button();
+            this.dataClearBtnStockHeadTruncate = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -118,6 +119,16 @@
             this.tabPageDataImport.TabIndex = 0;
             this.tabPageDataImport.Text = "数据导入";
             this.tabPageDataImport.UseVisualStyleBackColor = true;
+            // 
+            // dataImptBtnStkHeadImport
+            // 
+            this.dataImptBtnStkHeadImport.Location = new System.Drawing.Point(12, 45);
+            this.dataImptBtnStkHeadImport.Name = "dataImptBtnStkHeadImport";
+            this.dataImptBtnStkHeadImport.Size = new System.Drawing.Size(99, 23);
+            this.dataImptBtnStkHeadImport.TabIndex = 2;
+            this.dataImptBtnStkHeadImport.Text = "刷新代码名称";
+            this.dataImptBtnStkHeadImport.UseVisualStyleBackColor = true;
+            this.dataImptBtnStkHeadImport.Click += new System.EventHandler(this.dataImptBtnStkHeadImport_Click);
             // 
             // btnSourceFileBrowser
             // 
@@ -224,20 +235,21 @@
             // 
             // tabPageDataClear
             // 
+            this.tabPageDataClear.Controls.Add(this.dataClearBtnStockHeadTruncate);
             this.tabPageDataClear.Controls.Add(this.dataClearBtnWeekKLineTruncate);
             this.tabPageDataClear.Controls.Add(this.dataClearBtnDayKLineZSTruncate);
             this.tabPageDataClear.Controls.Add(this.dataClearBtnDayKLineTruncate);
             this.tabPageDataClear.Location = new System.Drawing.Point(4, 22);
             this.tabPageDataClear.Name = "tabPageDataClear";
             this.tabPageDataClear.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPageDataClear.Size = new System.Drawing.Size(647, 176);
+            this.tabPageDataClear.Size = new System.Drawing.Size(647, 184);
             this.tabPageDataClear.TabIndex = 1;
             this.tabPageDataClear.Text = "数据清理";
             this.tabPageDataClear.UseVisualStyleBackColor = true;
             // 
             // dataClearBtnWeekKLineTruncate
             // 
-            this.dataClearBtnWeekKLineTruncate.Location = new System.Drawing.Point(11, 70);
+            this.dataClearBtnWeekKLineTruncate.Location = new System.Drawing.Point(8, 97);
             this.dataClearBtnWeekKLineTruncate.Name = "dataClearBtnWeekKLineTruncate";
             this.dataClearBtnWeekKLineTruncate.Size = new System.Drawing.Size(127, 23);
             this.dataClearBtnWeekKLineTruncate.TabIndex = 5;
@@ -247,7 +259,7 @@
             // 
             // dataClearBtnDayKLineZSTruncate
             // 
-            this.dataClearBtnDayKLineZSTruncate.Location = new System.Drawing.Point(11, 41);
+            this.dataClearBtnDayKLineZSTruncate.Location = new System.Drawing.Point(8, 68);
             this.dataClearBtnDayKLineZSTruncate.Name = "dataClearBtnDayKLineZSTruncate";
             this.dataClearBtnDayKLineZSTruncate.Size = new System.Drawing.Size(127, 23);
             this.dataClearBtnDayKLineZSTruncate.TabIndex = 4;
@@ -257,7 +269,7 @@
             // 
             // dataClearBtnDayKLineTruncate
             // 
-            this.dataClearBtnDayKLineTruncate.Location = new System.Drawing.Point(11, 12);
+            this.dataClearBtnDayKLineTruncate.Location = new System.Drawing.Point(8, 39);
             this.dataClearBtnDayKLineTruncate.Name = "dataClearBtnDayKLineTruncate";
             this.dataClearBtnDayKLineTruncate.Size = new System.Drawing.Size(127, 23);
             this.dataClearBtnDayKLineTruncate.TabIndex = 3;
@@ -345,15 +357,15 @@
             this.bkgDataImport.WorkerSupportsCancellation = true;
             this.bkgDataImport.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bkgDataImport_DoWork);
             // 
-            // dataImptBtnStkHeadImport
+            // dataClearBtnStockHeadTruncate
             // 
-            this.dataImptBtnStkHeadImport.Location = new System.Drawing.Point(12, 45);
-            this.dataImptBtnStkHeadImport.Name = "dataImptBtnStkHeadImport";
-            this.dataImptBtnStkHeadImport.Size = new System.Drawing.Size(99, 23);
-            this.dataImptBtnStkHeadImport.TabIndex = 2;
-            this.dataImptBtnStkHeadImport.Text = "刷新代码名称";
-            this.dataImptBtnStkHeadImport.UseVisualStyleBackColor = true;
-            this.dataImptBtnStkHeadImport.Click += new System.EventHandler(this.dataImptBtnStkHeadImport_Click);
+            this.dataClearBtnStockHeadTruncate.Location = new System.Drawing.Point(8, 10);
+            this.dataClearBtnStockHeadTruncate.Name = "dataClearBtnStockHeadTruncate";
+            this.dataClearBtnStockHeadTruncate.Size = new System.Drawing.Size(127, 23);
+            this.dataClearBtnStockHeadTruncate.TabIndex = 6;
+            this.dataClearBtnStockHeadTruncate.Text = "清空股票代码表头";
+            this.dataClearBtnStockHeadTruncate.UseVisualStyleBackColor = true;
+            this.dataClearBtnStockHeadTruncate.Click += new System.EventHandler(this.dataClearBtnStockHeadTruncate_Click);
             // 
             // MainForm
             // 
@@ -411,6 +423,7 @@
         private System.Windows.Forms.Button dataImptBtnBlockImport1;
         private System.Windows.Forms.Button btnSourceFileBrowser;
         private System.Windows.Forms.Button dataImptBtnStkHeadImport;
+        private System.Windows.Forms.Button dataClearBtnStockHeadTruncate;
     }
 }
 

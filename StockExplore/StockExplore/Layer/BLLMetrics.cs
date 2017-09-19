@@ -41,7 +41,7 @@ namespace StockExplore
         /// <returns></returns>
         public Dictionary<DateTime, decimal> GetDayCloseValue(string stkCode, bool isComposite, DateTime startDay = default( DateTime ), DateTime endDay = default( DateTime ))
         {
-            DataTable closePrice = _dbo.GetStockAllPrice(BLL.GetDBTableName(KLineType.Day,isComposite),  stkCode, new List<ValueType> {ValueType.Close}, startDay, endDay);
+            DataTable closePrice = _dbo.GetStockAllPrice(BLL.GetKLineDBTableName(KLineType.Day,isComposite),  stkCode, new List<ValueType> {ValueType.Close}, startDay, endDay);
             Dictionary<DateTime, decimal> ret = SysFunction.GetColDictionary<DateTime, decimal>(closePrice, 0, 1);
             
             return ret;

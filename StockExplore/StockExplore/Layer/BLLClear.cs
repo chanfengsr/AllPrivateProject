@@ -33,7 +33,7 @@ namespace StockExplore
 
         public void TruncateStkKLine(KLineType kLineType, bool isComposite)
         {
-            string tableName = BLL.GetDBTableName(kLineType, isComposite);
+            string tableName = BLL.GetKLineDBTableName(kLineType, isComposite);
             _dbo.TruncateTable(tableName);
         }
 
@@ -51,6 +51,12 @@ namespace StockExplore
         public void ClearStockBlock(List<StockBlockType> lstStockBlockType = null)
         {
             _dbo.ClearStockBlock(lstStockBlockType);
+        }
+
+        public void TruncateStockHead()
+        {
+            string tableName = typeof (StockHead).Name;
+            _dbo.TruncateTable(tableName);
         }
     }
 }

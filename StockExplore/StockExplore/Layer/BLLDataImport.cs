@@ -67,7 +67,7 @@ namespace StockExplore
             FileInfo fileInfo = stkInfo.Value1;
             StockHead stkHead = stkInfo.Value2;
             stkHead.StkType = isComposite ? "0" : "1";
-            string tableName = BLL.GetDBTableName(kLineType, isComposite);
+            string tableName = BLL.GetKLineDBTableName(kLineType, isComposite);
             DateTime existMaxDay = DateTime.MinValue;
             DataTable insTable = _dbo.GetEmptyTable(tableName);
 
@@ -79,10 +79,7 @@ namespace StockExplore
                     existMaxDay = _dbo.FindMaxExistTradeDay(tableName, stkHead);
             }
             
-            this.LoadFileData(fileInfo, stkHead, existMaxDay, ref insTable);
-
-            // 新增或修改 StockHead
-            _dbo.InsertOrUpdateStockHead(stkHead); // todo delete
+            this.LoadDayLineFileData(fileInfo, stkHead, existMaxDay, ref insTable); // todo modify
 
             _dbo.BulkWriteTable(insTable, DataRowState.Added);
 
@@ -92,7 +89,7 @@ namespace StockExplore
         /// <summary>
         /// 从文本文件加载数据，小于最大日期的数据直接过滤掉
         /// </summary>
-        private void LoadFileData(FileInfo fileInfo, StockHead stkHead, DateTime existMaxDay, ref DataTable insTable)
+        private void LoadDayLineFileData(FileInfo fileInfo, StockHead stkHead, DateTime existMaxDay, ref DataTable insTable)
         {
             bool isConvert = existMaxDay == DateTime.MinValue;
             StreamReader sr = new StreamReader(fileInfo.FullName, Encoding.Default);
@@ -520,21 +517,24 @@ namespace StockExplore
             cntAdd += cntDq.Value2;
 
             // 行业、行业明细
-            TupleValue<int, int> cntHyHyDet = this.BlockImportHyHyDet();
+            TupleValue<int, int> cntHyHyDet = this.BlockImportHyHyDet(); 
             cntDel += cntHyHyDet.Value1;
             cntAdd += cntHyHyDet.Value2;
 
             return new TupleValue<int, int>(cntDel, cntAdd);
         }
 
-        readonly Dictionary<string, string> _allDayLineFile = new Dictionary<string, string>();
-        /// <summary> 获取所有日线文件列表（包括 SH、SZ 及指数文件）
+        /// <summary>
+        /// 保存例：["sh600001", fileFullName ]
         /// </summary>
-        public Dictionary<string, string> GetAllDayLineFile()
+        readonly Dictionary<string, string> _allTDXDayLineFile = new Dictionary<string, string>();
+        /// <summary> 获取所有通达信日线文件列表（包括 SH、SZ 及指数文件）
+        /// </summary>
+        public Dictionary<string, string> GetAllTDXDayLineFile()
         {
             // 不太会变动，不需要每次都重新加载
-            if (_allDayLineFile.Count > 0)
-                return _allDayLineFile;
+            if (_allTDXDayLineFile.Count > 0)
+                return _allTDXDayLineFile;
 
             string[] aMrkType = new [] {"sh","sz"};
             foreach (string markType in aMrkType)
@@ -542,10 +542,10 @@ namespace StockExplore
                 string folder = ( CommProp.TDXFolder + BLL.GetDayLineFileFolder(markType) ).Replace(@"\\", @"\");
                 DirectoryInfo dir = new DirectoryInfo(folder);
                 foreach (FileInfo fileInfo in dir.GetFiles())
-                    _allDayLineFile.Add(fileInfo.Name.Substring(0, 8), fileInfo.FullName);
+                    _allTDXDayLineFile.Add(fileInfo.Name.Substring(0, 8), fileInfo.FullName);
             }
 
-            return _allDayLineFile;
+            return _allTDXDayLineFile;
         }
 
         /// <summary> 读取通达信 tnf 文件，获取 代码、名称、缩写 信息
@@ -557,7 +557,7 @@ namespace StockExplore
         private List<StockHead> LoadTDXStockHeadFile(string fileName, string[] zsPrefix, string markType)
         {
             List<StockHead> ret = new List<StockHead>();
-            Dictionary<string, string> allDayLineFile = GetAllDayLineFile();
+            Dictionary<string, string> allDayLineFile = GetAllTDXDayLineFile();
 
             using (BinaryReader reader = new BinaryReader(File.OpenRead(fileName)))
             {
@@ -573,12 +573,12 @@ namespace StockExplore
                 int count = (int)( ( reader.BaseStream.Length - 50 ) / 314 );
                 for (int i = 0; i < count; i++)
                 {
-                    string stkCode = Encoding.Default.GetString(reader.ReadBytes(9)).TrimEnd('\0');
+                    string stkCode = Encoding.Default.GetString(reader.ReadBytes(9)).TrimEnd('\0').Trim();
                     reader.ReadBytes(12); // 未知区域
-                    string stkName = Encoding.Default.GetString(reader.ReadBytes(18)).Trim('\0');
+                    string stkName = Encoding.Default.GetString(reader.ReadBytes(18)).Trim('\0').Trim();
                     reader.ReadBytes(246); // 未知区域
                     // 拼音缩写
-                    string stkNameAbbr = Encoding.Default.GetString(reader.ReadBytes(9)).TrimEnd('\0');
+                    string stkNameAbbr = Encoding.Default.GetString(reader.ReadBytes(9)).TrimEnd('\0').Trim();
                     reader.ReadBytes(20); // 未知区域
 
                     string fullCode = markType.ToLower() + stkCode;
@@ -604,26 +604,80 @@ namespace StockExplore
             DataTable dtStockHead = _dbo.GetStockHeadAll();
             TupleValue<string, string> headFileName = StockHeadFileName();
 
-            string fileSH = (CommProp.TDXFolder + headFileName.Value1).Replace(@"\\", @"\");
-            string fileSZ = (CommProp.TDXFolder + headFileName.Value2).Replace(@"\\", @"\");
+            string fileSH = ( CommProp.TDXFolder + headFileName.Value1 ).Replace(@"\\", @"\");
+            string fileSZ = ( CommProp.TDXFolder + headFileName.Value2 ).Replace(@"\\", @"\");
 
-            List<StockHead> lstStockHeadSH = LoadTDXStockHeadFile(fileSH, new[] {"999", "000"}, "sh");
+            List<StockHead> lstStockHeadSH = LoadTDXStockHeadFile(fileSH, new[] {"999", "000", "880"}, "sh");
             List<StockHead> lstStockHeadSZ = LoadTDXStockHeadFile(fileSZ, new[] {"399"}, "sz");
 
-            Action<List<StockHead>, string> UpdateStockHeadTable =
+            string tableName = typeof (StockHead).Name;
+
+            Action<List<StockHead>, string> updateStockHeadTable =
                 (
                     (lstStockHeadFile, markType) =>
                     {
                         dtStockHead.DefaultView.RowFilter = string.Format("MarkType = '{0}'", markType);
 
-                        List<string> lstAllExistsCode = dtStockHead.DefaultView.ToTable().Rows.Cast<DataRow>().Select(row => row["StkCode"].ToString()).ToList();
+                        // 现有已存在的代码
+                        List<string> lstAllExistsCode = dtStockHead.DefaultView.ToTable().Rows.Cast<DataRow>().Select(row => row["StkCode"].ToString().Trim()).ToList();
+                        // 与 TDX文件 共有，需要检验更新的
                         List<StockHead> lstNeedUpdate = lstStockHeadFile.Where(stkHead => lstAllExistsCode.Contains(stkHead.StkCode)).ToList();
+                        // TDX文件 中有，当前没有的，需要增加
                         List<StockHead> lstNeedAdd = lstStockHeadFile.Where(stkHead => !lstAllExistsCode.Contains(stkHead.StkCode)).ToList();
+                        // TDX文件 中没有，需要删除
                         List<string> lstNeedDelCode = lstAllExistsCode.Where(stkCode => !lstStockHeadFile.Select(stkHead => stkHead.StkCode).ToList().Contains(stkCode)).ToList();
 
-                        // todo
+                        // 处理需要删除或修改的行
+                        foreach (DataRow dr in dtStockHead.Rows.Cast<DataRow>().Where(row => row["MarkType"].ToString() == markType))
+                        {
+                            string stkCode = dr["StkCode"].ToString();
+                            if (lstNeedDelCode.Contains(stkCode))
+                            {
+                                dr.Delete();
+                            }
+                            else
+                            {
+                                StockHead updHead = lstNeedUpdate.FirstOrDefault(head => head.StkCode == stkCode);
+                                if (updHead != null)
+                                {
+                                    if (dr["StkName"].ToString() != updHead.StkName)
+                                        dr["StkName"] = updHead.StkName;
+                                    if (dr["StkNameAbbr"].ToString() != updHead.StkNameAbbr)
+                                        dr["StkNameAbbr"] = updHead.StkNameAbbr;
+                                    if (dr["StkType"].ToString() != updHead.StkType)
+                                        dr["StkType"] = updHead.StkType;
+                                }
+                            }
+                        }
+
+                        // 这样更新大批量有点慢，但是通常没有什么需要删除或修改的
+                        if (SysFunction.TableChanged(dtStockHead))
+                        {
+                            const string strSql = "SELECT * FROM StockHead";
+                            SysFunction.SaveChanges(_cnn, strSql, dtStockHead);
+                            dtStockHead.AcceptChanges();
+                        }
+
+                        // 新增行
+                        DataTable insTable = _dbo.GetEmptyTable(tableName);
+                        foreach (StockHead stkHead in lstNeedAdd)
+                        {
+                            DataRow newRow = insTable.NewRow();
+                            newRow["MarkType"] = stkHead.MarkType;
+                            newRow["StkCode"] = stkHead.StkCode;
+                            newRow["StkName"] = stkHead.StkName;
+                            newRow["StkNameAbbr"] = stkHead.StkNameAbbr;
+                            newRow["StkType"] = stkHead.StkType;
+                            insTable.Rows.Add(newRow);
+                        }
+                        _dbo.BulkWriteTable(insTable, DataRowState.Added);
                     }
                 );
+
+
+            //_dbo.TruncateTable(tableName);
+            updateStockHeadTable(lstStockHeadSH, "sh");
+            updateStockHeadTable(lstStockHeadSZ, "sz");
         }
     }
 }

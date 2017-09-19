@@ -208,7 +208,7 @@ namespace StockExplore
             UIInProcess(true);
             _processCancel = false;
 
-            this.LoadFileList();
+            this.LoadFileList();//todo modify
 
             List<TupleValue<FileInfo, StockHead>> lstStockData = bllDaImpt.LoadMrkTypeAndCode(AllFile);
 
@@ -233,14 +233,14 @@ namespace StockExplore
 
                     Console.Write("正在导入...（");
                     // 是否需要删表动作，如果表中无记录，则省去 Delete 动作
-                    bool haveRecord = bllDaImpt.GetTableRecordCount(BLL.GetDBTableName(arg.Value3, isComposite)) > 0;
+                    bool haveRecord = bllDaImpt.GetTableRecordCount(BLL.GetKLineDBTableName(arg.Value3, isComposite)) > 0;
                     for (int i = 0; i < count; i++)
                     {
                         showMsg(i + 1, count, insLineCount);
                         
                         TupleValue<FileInfo, StockHead> stkData = lstStockData[i];
 
-                        insLineCount += bllDaImpt.InsertStkKLine(stkData, isConvert, isComposite, arg.Value3, haveRecord);
+                        insLineCount += bllDaImpt.InsertStkKLine(stkData, isConvert, isComposite, arg.Value3, haveRecord); // todo modify
 
                         // 最后一批完成后，再刷一下
                         if (i == count - 1)
@@ -272,7 +272,6 @@ namespace StockExplore
 
         private void btnTest_Click(object sender, EventArgs e)
         {
-
             BLLMetrics bll = new BLLMetrics(CommProp.ConnectionString);
             bll.OpenConnection();
             StringBuilder sb = new StringBuilder();
@@ -300,7 +299,7 @@ namespace StockExplore
                     bllDataClear.OpenConnection();
                     bllDataClear.TruncateStkKLine(KLineType.Day, false);
 
-                    Console.WriteLine("日K线数据清除完成！");
+                    Console.WriteLine("日K线数据清空完成！");
                 }
             }
             catch (Exception ex)
@@ -327,7 +326,7 @@ namespace StockExplore
                     bllDataClear.OpenConnection();
                     bllDataClear.TruncateStkKLine(KLineType.Day, true);
 
-                    Console.WriteLine("指数日K线数据清除完成！");
+                    Console.WriteLine("指数日K线数据清空完成！");
                 }
             }
             catch (Exception ex)
@@ -354,7 +353,7 @@ namespace StockExplore
                     bllDataClear.OpenConnection();
                     bllDataClear.TruncateStkKLine(KLineType.Week);
 
-                    Console.WriteLine("周线数据清除完成！");
+                    Console.WriteLine("周线数据清空完成！");
                 }
             }
             catch (Exception ex)
@@ -403,10 +402,9 @@ namespace StockExplore
             {
                 bllDaImpt.OpenConnection();
 
-                //bllDaImpt.BlockImport();
+                bllDaImpt.ImportStockHead();
                 
-
-                Console.WriteLine("导入完成！");
+                Console.WriteLine("执行完成！");
             }
             catch (Exception ex)
             {
@@ -415,6 +413,33 @@ namespace StockExplore
             finally
             {
                 bllDaImpt.CloseConnection();
+            }
+
+            UIInProcess(false);
+        }
+
+        private void dataClearBtnStockHeadTruncate_Click(object sender, EventArgs e)
+        {
+            BLLClear bllDataClear = new BLLClear(CommProp.ConnectionString);
+            UIInProcess(true);
+
+            try
+            {
+                if (SysMessageBox.ShowMessage("清空代码表头，确认？", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+                {
+                    bllDataClear.OpenConnection();
+                    bllDataClear.TruncateStockHead();
+
+                    Console.WriteLine("代码表头清空完成！");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                bllDataClear.CloseConnection();
             }
 
             UIInProcess(false);

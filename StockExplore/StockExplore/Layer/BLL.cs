@@ -8,7 +8,7 @@ namespace StockExplore
 {
     internal class BLL
     {
-        public static string GetDBTableName(KLineType kLineType, bool isComposite)
+        public static string GetKLineDBTableName(KLineType kLineType, bool isComposite)
         {
             const string kLineDay = "KLineDay",
                          kLineDayZS = "KLineDayZS",

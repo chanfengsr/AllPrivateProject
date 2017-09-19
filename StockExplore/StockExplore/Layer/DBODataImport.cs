@@ -84,6 +84,14 @@ namespace StockExplore
         public DataTable GetStockHeadAll()
         {
             const string strSql = "SELECT * FROM StockHead";
+            return SQLHelper.ExecuteDataTable(strSql, CommandType.Text, _cnn, relatePhysicalTable: true, tableName: "StockHead");
+        }
+
+        /// <summary> 返回 StockHead 类型为指数的
+        /// </summary>
+        public DataTable GetStockHeadComposite()
+        {
+            const string strSql = "SELECT * FROM StockHead WHERE StkType = 0";
             return SQLHelper.ExecuteDataTable(strSql, CommandType.Text, _cnn);
         }
 
