@@ -130,5 +130,27 @@ namespace StockExplore
 
             return SQLHelper.ExecuteDataTable(string.Format(sqlMod, sParm), CommandType.Text, _cnn);
         }
+
+        /// <summary>
+        /// </summary>
+        /// <param name="markType">sh sz null 代表所有</param>
+        /// <param name="isComposite">是否指数，null 代表所有</param>
+        /// <returns></returns>
+        public List<string> GetStockFullName(string markType = null, bool? isComposite = null)
+        {
+            List<string> ret = new List<string>();
+
+            string strSql = "SELECT FullCode = MarkType + StkCode FROM StockHead WHERE 1 = 1";
+
+            if (markType != null)
+                strSql += string.Format(" AND MarkType = '{0}' ", markType);
+            if (isComposite != null)
+                strSql += string.Format(" AND StkType = '{0}' ", isComposite == true ? 0 : 1);
+
+            DataTable dt = SQLHelper.ExecuteDataTable(strSql, CommandType.Text, _cnn);
+            ret = dt.Rows.Cast<DataRow>().Select(dr => dr["FullCode"].ToString().ToLower()).ToList();
+
+            return ret;
+        }
     }
 }

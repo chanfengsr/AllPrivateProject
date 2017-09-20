@@ -91,7 +91,9 @@ namespace StockExplore
             btnProcCancel.Visible = inProcessing;
         }
 
-        private string LoadFileList()
+        /// <summary> 加载从通达信导出的数据文件
+        /// </summary>
+        private string LoadFileList_exportFile()
         {
             string retVal = string.Empty;
             string sourceFolder = txtSourceFolder.Text;
@@ -120,6 +122,33 @@ namespace StockExplore
             }
 
             return retVal;
+        }
+
+
+        private string LoadFileList_TDXDayFile(bool isComposite)
+        {
+            StringBuilder sb = new StringBuilder();
+            BLLDataImport bllDaImpt = new BLLDataImport(CommProp.ConnectionString);
+
+            try
+            {
+                bllDaImpt.OpenConnection();
+
+                AllFile.Clear();
+                List<string> lstFullName = bllDaImpt.GetMatchedTDXDayFileFullNameList(isComposite);
+                foreach (string fullName in lstFullName)
+                {
+                    AllFile.Add(new FileInfo(fullName));
+                    sb.AppendLine(fullName);
+                }
+            }
+            finally
+            {
+                bllDaImpt.CloseConnection();
+            }
+
+            //一行一行显示文件名
+            return sb.ToString().TrimEnd(Environment.NewLine.ToCharArray()); ;
         }
 
         private void MainForm_Load(object sender, EventArgs e)
@@ -208,9 +237,12 @@ namespace StockExplore
             UIInProcess(true);
             _processCancel = false;
 
-            this.LoadFileList();//todo modify
+            if (isComposite)
+                this.LoadFileList_TDXDayFile(true);
+            else
+                this.LoadFileList_exportFile();
 
-            List<TupleValue<FileInfo, StockHead>> lstStockData = bllDaImpt.LoadMrkTypeAndCode(AllFile);
+            List<TupleValue<FileInfo, StockHead>> lstStockData = bllDaImpt.LoadMrkTypeAndCodeFromExportFile(AllFile, isComposite);
 
             if (lstStockData.Count > 0)
             {

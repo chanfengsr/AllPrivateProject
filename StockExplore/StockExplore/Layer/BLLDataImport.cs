@@ -31,26 +31,47 @@ namespace StockExplore
                 _cnn.Close();
         }
 
-        /// <summary>从文件名获取市场类型及股票代码
+        /// <summary> 从通达信导出的文件名获取市场类型及股票代码
         /// </summary>
-        public List<TupleValue<FileInfo, StockHead>> LoadMrkTypeAndCode(List<FileInfo> allFile)
+        public List<TupleValue<FileInfo, StockHead>> LoadMrkTypeAndCodeFromExportFile(List<FileInfo> allFile, bool isComposite)
         {
             List<TupleValue<FileInfo, StockHead>> ret = new List<TupleValue<FileInfo, StockHead>>();
 
             foreach (FileInfo file in allFile)
             {
-                string[] nameSplit = file.Name.Replace(file.Extension, "").Split('#');
+                string[] nameSplit;
+                
+                if (isComposite)
+                    nameSplit = file.Name.Replace(file.Extension, "").Split('#');
+                else
+                    nameSplit = new [] {file.Name.Substring(0, 2), file.Name.Substring(2, 6)};
 
                 StockHead stkHead = new StockHead
                 {
                     MarkType = nameSplit[0],
-                    StkCode = nameSplit[1]
+                    StkCode = nameSplit[1],
+                     StkType= isComposite ? "0" : "1"
                 };
 
                 ret.Add(new TupleValue<FileInfo, StockHead>(file, stkHead));
             }
 
             return ret;
+        }
+
+        /// <summary> 返回数据库中存在的，通达信 日线数据文件完整文件名列表
+        /// </summary>
+        /// <param name="isComposite"></param>
+        /// <returns></returns>
+        public List<string> GetMatchedTDXDayFileFullNameList(bool isComposite)
+        {
+            // 例：["sh600001"]
+            List<string> lstStockFullName = _dbo.GetStockFullName(isComposite: isComposite);
+
+            // 例：["sh600001", fileFullName ]
+            Dictionary<string, string> tdxDayLineFile = this.GetAllTDXDayLineFile();
+
+            return tdxDayLineFile.Where(pair => lstStockFullName.Contains(pair.Key.ToUpper())).Select(pair => pair.Value).ToList();
         }
 
         /// <summary> 获取表记录数
@@ -66,7 +87,6 @@ namespace StockExplore
         {
             FileInfo fileInfo = stkInfo.Value1;
             StockHead stkHead = stkInfo.Value2;
-            stkHead.StkType = isComposite ? "0" : "1";
             string tableName = BLL.GetKLineDBTableName(kLineType, isComposite);
             DateTime existMaxDay = DateTime.MinValue;
             DataTable insTable = _dbo.GetEmptyTable(tableName);
@@ -79,7 +99,7 @@ namespace StockExplore
                     existMaxDay = _dbo.FindMaxExistTradeDay(tableName, stkHead);
             }
             
-            this.LoadDayLineFileData(fileInfo, stkHead, existMaxDay, ref insTable); // todo modify
+            this.LoadDayLineFileData_exportFile(fileInfo, stkHead, existMaxDay, ref insTable); // todo modify
 
             _dbo.BulkWriteTable(insTable, DataRowState.Added);
 
@@ -89,7 +109,7 @@ namespace StockExplore
         /// <summary>
         /// 从文本文件加载数据，小于最大日期的数据直接过滤掉
         /// </summary>
-        private void LoadDayLineFileData(FileInfo fileInfo, StockHead stkHead, DateTime existMaxDay, ref DataTable insTable)
+        private void LoadDayLineFileData_exportFile(FileInfo fileInfo, StockHead stkHead, DateTime existMaxDay, ref DataTable insTable)
         {
             bool isConvert = existMaxDay == DateTime.MinValue;
             StreamReader sr = new StreamReader(fileInfo.FullName, Encoding.Default);
@@ -138,7 +158,7 @@ namespace StockExplore
                 {
                     string[] split = line.Split('\t');
                     DateTime tradeDate;
-                    if (DateTime.TryParse(split[0], out tradeDate))
+                    if (DateTime.TryParse(split[idxTradeDay], out tradeDate))
                     {
                         if (isConvert || tradeDate > existMaxDay)
                         {
@@ -156,6 +176,72 @@ namespace StockExplore
                                 newRow[idxTabClose] = split[idxClose];
                                 newRow[idxTabVolume] = vol;
                                 newRow[idxTabAmount] = split[idxAmount];
+
+                                insTable.Rows.Add(newRow);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+        /// <summary>
+        /// 从文本文件加载数据，小于最大日期的数据直接过滤掉
+        /// </summary>
+        private void LoadDayLineFileData_TDXDayFile(FileInfo fileInfo, StockHead stkHead, DateTime existMaxDay, ref DataTable insTable)
+        {
+            bool isConvert = existMaxDay == DateTime.MinValue;
+            string line;
+            decimal vol;
+            const string idxTabMarkType = "MarkType",
+                         idxTabStkCode = "StkCode",
+                         idxTabTradeDay = "TradeDay",
+                         idxTabOpen = "Open",
+                         idxTabHigh = "High",
+                         idxTabLow = "Low",
+                         idxTabClose = "Close",
+                         idxTabVolume = "Volume",
+                         idxTabAmount = "Amount";
+
+            const int lineLength = 32;
+            using (var reader = new BinaryReader(File.OpenRead(fileInfo.FullName))) //  C:\new_tdx\vipdoc\sz\lday\sz399001.day
+            {
+                long len = reader.BaseStream.Length / lineLength;
+                for (int i = 0; i < len; i++)
+                {
+                    int beg = i * lineLength;
+                    int offset = beg;
+
+                    string dateOrg = reader.ReadUInt32().ToString();
+                    string openOrg = reader.ReadUInt32().ToString();
+                    string highOrg = reader.ReadUInt32().ToString();
+                    string lowOrg = reader.ReadUInt32().ToString();
+                    string closeOrg = reader.ReadUInt32().ToString();
+                    string amountOrg = reader.ReadSingle().ToString("0.00");
+                    string volOrg = reader.ReadUInt32().ToString();
+                    string reservationOrg = reader.ReadUInt32().ToString();
+
+                    string dateStr = dateOrg.Substring(0, 4) + "/" + dateOrg.Substring(4, 2) + "/" + dateOrg.Substring(6, 2);
+                    DateTime tradeDate;
+                    if (DateTime.TryParse(dateStr, out tradeDate))
+                    {
+                        if (isConvert || tradeDate > existMaxDay)
+                        {
+                            vol = decimal.Parse(volOrg);
+
+                            if(vol>0)
+                            {
+                                // todo modify
+                                DataRow newRow = insTable.NewRow();
+                                newRow[idxTabMarkType] = stkHead.MarkType;
+                                newRow[idxTabStkCode] = stkHead.StkCode;
+                                newRow[idxTabTradeDay] = tradeDate;
+                                newRow[idxTabOpen] = openOrg;
+                                newRow[idxTabHigh] = highOrg;
+                                newRow[idxTabLow] = lowOrg;
+                                newRow[idxTabClose] = closeOrg;
+                                newRow[idxTabVolume] = vol;
+                                newRow[idxTabAmount] = amountOrg;
 
                                 insTable.Rows.Add(newRow);
                             }
@@ -679,5 +765,7 @@ namespace StockExplore
             updateStockHeadTable(lstStockHeadSH, "sh");
             updateStockHeadTable(lstStockHeadSZ, "sz");
         }
+
+
     }
 }
