@@ -31,29 +31,31 @@ namespace StockExplore
                 _cnn.Close();
         }
 
-        /// <summary> 从通达信导出的文件名获取市场类型及股票代码
+        /// <summary> 
+        /// 从通达信导出的文件名获取市场类型及股票代码
+        /// 返回值：List<TupleValue<完整文件名, StockHead>>
         /// </summary>
-        public List<TupleValue<FileInfo, StockHead>> LoadMrkTypeAndCodeFromExportFile(List<FileInfo> allFile, bool isComposite)
+        public List<TupleValue<string, StockHead>> LoadMrkTypeAndCodeFromExportFile(List<FileInfo> allFile, bool isComposite, bool useTDXFile)
         {
-            List<TupleValue<FileInfo, StockHead>> ret = new List<TupleValue<FileInfo, StockHead>>();
+            List<TupleValue<string, StockHead>> ret = new List<TupleValue<string, StockHead>>();
 
             foreach (FileInfo file in allFile)
             {
                 string[] nameSplit;
-                
-                if (isComposite)
-                    nameSplit = file.Name.Replace(file.Extension, "").Split('#');
+
+                if (useTDXFile)
+                    nameSplit = new[] {file.Name.Substring(0, 2), file.Name.Substring(2, 6)};
                 else
-                    nameSplit = new [] {file.Name.Substring(0, 2), file.Name.Substring(2, 6)};
+                    nameSplit = file.Name.Replace(file.Extension, "").Split('#');
 
                 StockHead stkHead = new StockHead
                 {
                     MarkType = nameSplit[0],
                     StkCode = nameSplit[1],
-                     StkType= isComposite ? "0" : "1"
+                    StkType = isComposite ? "0" : "1"
                 };
 
-                ret.Add(new TupleValue<FileInfo, StockHead>(file, stkHead));
+                ret.Add(new TupleValue<string, StockHead>(file.FullName, stkHead));
             }
 
             return ret;
@@ -83,9 +85,9 @@ namespace StockExplore
             return _dbo.GetTableRecordCount(tableName);
         }
 
-        public int InsertStkKLine(TupleValue<FileInfo, StockHead> stkInfo, bool isConvert, bool isComposite, KLineType kLineType, bool haveRecord = true)
+        public int InsertStkKLine(TupleValue<string, StockHead> stkInfo, bool isConvert, bool isComposite, bool useTDXFile, KLineType kLineType, bool haveRecord = true)
         {
-            FileInfo fileInfo = stkInfo.Value1;
+            string fileFullName = stkInfo.Value1;
             StockHead stkHead = stkInfo.Value2;
             string tableName = BLL.GetKLineDBTableName(kLineType, isComposite);
             DateTime existMaxDay = DateTime.MinValue;
@@ -98,21 +100,24 @@ namespace StockExplore
                 else
                     existMaxDay = _dbo.FindMaxExistTradeDay(tableName, stkHead);
             }
-            
-            this.LoadDayLineFileData_exportFile(fileInfo, stkHead, existMaxDay, ref insTable); // todo modify
+
+            if (useTDXFile)
+                this.LoadDayLineFileData_TDXDayFile(fileFullName, stkHead, existMaxDay, ref insTable);
+            else
+                this.LoadDayLineFileData_exportFile(fileFullName, stkHead, existMaxDay, ref insTable);
 
             _dbo.BulkWriteTable(insTable, DataRowState.Added);
 
             return insTable.Rows.Count;
         }
-        
+
         /// <summary>
         /// 从文本文件加载数据，小于最大日期的数据直接过滤掉
         /// </summary>
-        private void LoadDayLineFileData_exportFile(FileInfo fileInfo, StockHead stkHead, DateTime existMaxDay, ref DataTable insTable)
+        private void LoadDayLineFileData_exportFile(string fileFullName, StockHead stkHead, DateTime existMaxDay, ref DataTable insTable)
         {
             bool isConvert = existMaxDay == DateTime.MinValue;
-            StreamReader sr = new StreamReader(fileInfo.FullName, Encoding.Default);
+            StreamReader sr = new StreamReader(fileFullName, Encoding.Default);
             string line;
             decimal vol;
             const string idxTabMarkType = "MarkType",
@@ -188,11 +193,9 @@ namespace StockExplore
         /// <summary>
         /// 从文本文件加载数据，小于最大日期的数据直接过滤掉
         /// </summary>
-        private void LoadDayLineFileData_TDXDayFile(FileInfo fileInfo, StockHead stkHead, DateTime existMaxDay, ref DataTable insTable)
+        private void LoadDayLineFileData_TDXDayFile(string fileFullName, StockHead stkHead, DateTime existMaxDay, ref DataTable insTable)
         {
             bool isConvert = existMaxDay == DateTime.MinValue;
-            string line;
-            decimal vol;
             const string idxTabMarkType = "MarkType",
                          idxTabStkCode = "StkCode",
                          idxTabTradeDay = "TradeDay",
@@ -204,48 +207,38 @@ namespace StockExplore
                          idxTabAmount = "Amount";
 
             const int lineLength = 32;
-            using (var reader = new BinaryReader(File.OpenRead(fileInfo.FullName))) //  C:\new_tdx\vipdoc\sz\lday\sz399001.day
+            using (var reader = new BinaryReader(File.OpenRead(fileFullName))) //  C:\new_tdx\vipdoc\sz\lday\sz399001.day
             {
                 long len = reader.BaseStream.Length / lineLength;
                 for (int i = 0; i < len; i++)
                 {
-                    int beg = i * lineLength;
-                    int offset = beg;
-
                     string dateOrg = reader.ReadUInt32().ToString();
-                    string openOrg = reader.ReadUInt32().ToString();
-                    string highOrg = reader.ReadUInt32().ToString();
-                    string lowOrg = reader.ReadUInt32().ToString();
-                    string closeOrg = reader.ReadUInt32().ToString();
-                    string amountOrg = reader.ReadSingle().ToString("0.00");
-                    string volOrg = reader.ReadUInt32().ToString();
-                    string reservationOrg = reader.ReadUInt32().ToString();
-
+                    double open = reader.ReadInt32() / 100.00;
+                    double high = reader.ReadInt32() / 100.00;
+                    double low = reader.ReadInt32() / 100.00;
+                    double close = reader.ReadInt32() / 100.00;
+                    float amount = reader.ReadSingle();
+                    int vol = reader.ReadInt32();
+                    reader.ReadInt32(); //reservation
+                    
                     string dateStr = dateOrg.Substring(0, 4) + "/" + dateOrg.Substring(4, 2) + "/" + dateOrg.Substring(6, 2);
                     DateTime tradeDate;
-                    if (DateTime.TryParse(dateStr, out tradeDate))
+                    if (DateTime.TryParse(dateStr, out tradeDate) &&
+                        ( isConvert || tradeDate > existMaxDay ) &&
+                        vol > 0)
                     {
-                        if (isConvert || tradeDate > existMaxDay)
-                        {
-                            vol = decimal.Parse(volOrg);
+                        DataRow newRow = insTable.NewRow();
+                        newRow[idxTabMarkType] = stkHead.MarkType;
+                        newRow[idxTabStkCode] = stkHead.StkCode;
+                        newRow[idxTabTradeDay] = tradeDate;
+                        newRow[idxTabOpen] = open;
+                        newRow[idxTabHigh] = high;
+                        newRow[idxTabLow] = low;
+                        newRow[idxTabClose] = close;
+                        newRow[idxTabVolume] = vol;
+                        newRow[idxTabAmount] = amount;
 
-                            if(vol>0)
-                            {
-                                // todo modify
-                                DataRow newRow = insTable.NewRow();
-                                newRow[idxTabMarkType] = stkHead.MarkType;
-                                newRow[idxTabStkCode] = stkHead.StkCode;
-                                newRow[idxTabTradeDay] = tradeDate;
-                                newRow[idxTabOpen] = openOrg;
-                                newRow[idxTabHigh] = highOrg;
-                                newRow[idxTabLow] = lowOrg;
-                                newRow[idxTabClose] = closeOrg;
-                                newRow[idxTabVolume] = vol;
-                                newRow[idxTabAmount] = amountOrg;
-
-                                insTable.Rows.Add(newRow);
-                            }
-                        }
+                        insTable.Rows.Add(newRow);
                     }
                 }
             }

@@ -39,6 +39,7 @@
             this.txtSourceFolder = new System.Windows.Forms.TextBox();
             this.btnSourceFolderBrowser = new System.Windows.Forms.Button();
             this.tabPageDataClear = new System.Windows.Forms.TabPage();
+            this.dataClearBtnStockHeadTruncate = new System.Windows.Forms.Button();
             this.dataClearBtnWeekKLineTruncate = new System.Windows.Forms.Button();
             this.dataClearBtnDayKLineZSTruncate = new System.Windows.Forms.Button();
             this.dataClearBtnDayKLineTruncate = new System.Windows.Forms.Button();
@@ -49,7 +50,7 @@
             this.txtConsole = new System.Windows.Forms.TextBox();
             this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
             this.bkgDataImport = new System.ComponentModel.BackgroundWorker();
-            this.dataClearBtnStockHeadTruncate = new System.Windows.Forms.Button();
+            this.dataImptDayKLineChkTDXFile = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
             this.splitContainer1.Panel1.SuspendLayout();
             this.splitContainer1.Panel2.SuspendLayout();
@@ -144,7 +145,7 @@
             // grpBlock
             // 
             this.grpBlock.Controls.Add(this.dataImptBtnBlockImport1);
-            this.grpBlock.Location = new System.Drawing.Point(117, 45);
+            this.grpBlock.Location = new System.Drawing.Point(158, 45);
             this.grpBlock.Name = "grpBlock";
             this.grpBlock.Size = new System.Drawing.Size(200, 131);
             this.grpBlock.TabIndex = 18;
@@ -163,12 +164,13 @@
             // 
             // grpDayKLine
             // 
+            this.grpDayKLine.Controls.Add(this.dataImptDayKLineChkTDXFile);
             this.grpDayKLine.Controls.Add(this.dataImptBtnDayKLineImport);
             this.grpDayKLine.Controls.Add(this.dataImptDayKLineChkIsComposite);
             this.grpDayKLine.Controls.Add(this.dataImptDayKLineChkConvert);
             this.grpDayKLine.Location = new System.Drawing.Point(12, 74);
             this.grpDayKLine.Name = "grpDayKLine";
-            this.grpDayKLine.Size = new System.Drawing.Size(99, 102);
+            this.grpDayKLine.Size = new System.Drawing.Size(140, 102);
             this.grpDayKLine.TabIndex = 17;
             this.grpDayKLine.TabStop = false;
             this.grpDayKLine.Text = "日K线";
@@ -192,6 +194,7 @@
             this.dataImptDayKLineChkIsComposite.TabIndex = 0;
             this.dataImptDayKLineChkIsComposite.Text = "指数";
             this.dataImptDayKLineChkIsComposite.UseVisualStyleBackColor = true;
+            this.dataImptDayKLineChkIsComposite.CheckedChanged += new System.EventHandler(this.dataImptDayKLineChkIsComposite_CheckedChanged);
             // 
             // dataImptDayKLineChkConvert
             // 
@@ -246,6 +249,16 @@
             this.tabPageDataClear.TabIndex = 1;
             this.tabPageDataClear.Text = "数据清理";
             this.tabPageDataClear.UseVisualStyleBackColor = true;
+            // 
+            // dataClearBtnStockHeadTruncate
+            // 
+            this.dataClearBtnStockHeadTruncate.Location = new System.Drawing.Point(8, 10);
+            this.dataClearBtnStockHeadTruncate.Name = "dataClearBtnStockHeadTruncate";
+            this.dataClearBtnStockHeadTruncate.Size = new System.Drawing.Size(127, 23);
+            this.dataClearBtnStockHeadTruncate.TabIndex = 6;
+            this.dataClearBtnStockHeadTruncate.Text = "清空股票代码表头";
+            this.dataClearBtnStockHeadTruncate.UseVisualStyleBackColor = true;
+            this.dataClearBtnStockHeadTruncate.Click += new System.EventHandler(this.dataClearBtnStockHeadTruncate_Click);
             // 
             // dataClearBtnWeekKLineTruncate
             // 
@@ -357,15 +370,15 @@
             this.bkgDataImport.WorkerSupportsCancellation = true;
             this.bkgDataImport.DoWork += new System.ComponentModel.DoWorkEventHandler(this.bkgDataImport_DoWork);
             // 
-            // dataClearBtnStockHeadTruncate
+            // dataImptDayKLineChkTDXFile
             // 
-            this.dataClearBtnStockHeadTruncate.Location = new System.Drawing.Point(8, 10);
-            this.dataClearBtnStockHeadTruncate.Name = "dataClearBtnStockHeadTruncate";
-            this.dataClearBtnStockHeadTruncate.Size = new System.Drawing.Size(127, 23);
-            this.dataClearBtnStockHeadTruncate.TabIndex = 6;
-            this.dataClearBtnStockHeadTruncate.Text = "清空股票代码表头";
-            this.dataClearBtnStockHeadTruncate.UseVisualStyleBackColor = true;
-            this.dataClearBtnStockHeadTruncate.Click += new System.EventHandler(this.dataClearBtnStockHeadTruncate_Click);
+            this.dataImptDayKLineChkTDXFile.AutoSize = true;
+            this.dataImptDayKLineChkTDXFile.Location = new System.Drawing.Point(65, 44);
+            this.dataImptDayKLineChkTDXFile.Name = "dataImptDayKLineChkTDXFile";
+            this.dataImptDayKLineChkTDXFile.Size = new System.Drawing.Size(66, 16);
+            this.dataImptDayKLineChkTDXFile.TabIndex = 2;
+            this.dataImptDayKLineChkTDXFile.Text = "TDX文件";
+            this.dataImptDayKLineChkTDXFile.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
@@ -424,6 +437,7 @@
         private System.Windows.Forms.Button btnSourceFileBrowser;
         private System.Windows.Forms.Button dataImptBtnStkHeadImport;
         private System.Windows.Forms.Button dataClearBtnStockHeadTruncate;
+        private System.Windows.Forms.CheckBox dataImptDayKLineChkTDXFile;
     }
 }
 

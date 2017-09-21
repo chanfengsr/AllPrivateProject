@@ -218,7 +218,13 @@ namespace StockExplore
 
         private void dataImptBtnDayKLineImport_Click(object sender, EventArgs e)
         {
-            TupleValue<bool, bool, KLineType> arg = new TupleValue<bool, bool, KLineType>(dataImptDayKLineChkConvert.Checked, dataImptDayKLineChkIsComposite.Checked, KLineType.Day);
+            // < 覆盖，指数，TDX文件，K线级别 >
+            TupleValue<bool, bool, bool, KLineType> arg = new TupleValue<bool, bool, bool, KLineType>(
+                dataImptDayKLineChkConvert.Checked,
+                dataImptDayKLineChkIsComposite.Checked,
+                dataImptDayKLineChkTDXFile.Checked,
+                KLineType.Day);
+
             bkgDataImport.RunWorkerAsync(arg);
         }
 
@@ -229,20 +235,24 @@ namespace StockExplore
         
         private void bkgDataImport_DoWork(object sender, DoWorkEventArgs e)
         {
-            TupleValue<bool, bool, KLineType> arg = (TupleValue<bool, bool, KLineType>)e.Argument;
+            // < 覆盖，指数，TDX文件，K线级别 >
+            TupleValue<bool, bool, bool, KLineType> arg = (TupleValue<bool, bool, bool, KLineType>)e.Argument;
             BLLDataImport bllDaImpt = new BLLDataImport(CommProp.ConnectionString);
             bool isConvert = arg.Value1;
             bool isComposite = arg.Value2;
+            bool useTDXFile = arg.Value3;
+            KLineType kLineType = arg.Value4;
 
             UIInProcess(true);
             _processCancel = false;
 
-            if (isComposite)
-                this.LoadFileList_TDXDayFile(true);
+            if (useTDXFile)
+                this.LoadFileList_TDXDayFile(isComposite);
             else
                 this.LoadFileList_exportFile();
 
-            List<TupleValue<FileInfo, StockHead>> lstStockData = bllDaImpt.LoadMrkTypeAndCodeFromExportFile(AllFile, isComposite);
+            // List<TupleValue<完整文件名, StockHead>>
+            List<TupleValue<string, StockHead>> lstStockData = bllDaImpt.LoadMrkTypeAndCodeFromExportFile(AllFile, isComposite, useTDXFile);
 
             if (lstStockData.Count > 0)
             {
@@ -265,14 +275,15 @@ namespace StockExplore
 
                     Console.Write("正在导入...（");
                     // 是否需要删表动作，如果表中无记录，则省去 Delete 动作
-                    bool haveRecord = bllDaImpt.GetTableRecordCount(BLL.GetKLineDBTableName(arg.Value3, isComposite)) > 0;
+                    bool haveRecord = bllDaImpt.GetTableRecordCount(BLL.GetKLineDBTableName(kLineType, isComposite)) > 0;
                     for (int i = 0; i < count; i++)
                     {
                         showMsg(i + 1, count, insLineCount);
-                        
-                        TupleValue<FileInfo, StockHead> stkData = lstStockData[i];
 
-                        insLineCount += bllDaImpt.InsertStkKLine(stkData, isConvert, isComposite, arg.Value3, haveRecord); // todo modify
+                        // TupleValue<完整文件名, StockHead>
+                        TupleValue<string, StockHead> stkData = lstStockData[i];
+
+                        insLineCount += bllDaImpt.InsertStkKLine(stkData, isConvert, isComposite, useTDXFile, kLineType, haveRecord);
 
                         // 最后一批完成后，再刷一下
                         if (i == count - 1)
@@ -475,6 +486,15 @@ namespace StockExplore
             }
 
             UIInProcess(false);
+        }
+
+        private void dataImptDayKLineChkIsComposite_CheckedChanged(object sender, EventArgs e)
+        {
+            if (dataImptDayKLineChkIsComposite.Checked)
+            {
+                dataImptDayKLineChkConvert.Checked = false;
+                dataImptDayKLineChkTDXFile.Checked = true;
+            }
         }
     }
 }
