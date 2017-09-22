@@ -50,7 +50,7 @@ namespace StockExplore
 
                 StockHead stkHead = new StockHead
                 {
-                    MarkType = nameSplit[0],
+                    MarkType = nameSplit[0].ToLower(),
                     StkCode = nameSplit[1],
                     StkType = isComposite ? "0" : "1"
                 };
@@ -73,7 +73,7 @@ namespace StockExplore
             // 例：["sh600001", fileFullName ]
             Dictionary<string, string> tdxDayLineFile = this.GetAllTDXDayLineFile();
 
-            return tdxDayLineFile.Where(pair => lstStockFullName.Contains(pair.Key.ToUpper())).Select(pair => pair.Value).ToList();
+            return tdxDayLineFile.Where(pair => lstStockFullName.Contains(pair.Key.ToLower())).Select(pair => pair.Value).ToList();
         }
 
         /// <summary> 获取表记录数

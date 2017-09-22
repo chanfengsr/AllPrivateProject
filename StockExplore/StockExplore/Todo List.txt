@@ -1,1 +1,70 @@
-﻿
+﻿函数：涨停板
+函数：一字板
+函数：新股未开板
+
+函数：跌停板
+函数：到过跌停板
+
+
+函数：涨幅过 3% 的 所属板块分布
+函数：跌幅过 7% 的 所属板块分布
+
+
+
+
+
+
+
+DROP FUNCTION SalesByStore
+Create Function SalesByStore(@storeid varchar(30))
+Returns Table
+As
+Return (SELECT * FROM StockHead)
+
+
+
+DROP FUNCTION SalesByStore
+go
+Create Function SalesByStore(@storeid varchar(30))
+Returns [CodeParmTable]
+AS
+BEGIN
+    DECLARE @t as [CodeParmTable] 
+    
+    
+
+    Return @t
+    
+END
+
+
+
+
+DROP FUNCTION [GetOperateCustGroup]
+go
+create function [dbo].[GetOperateCustGroup] 
+( 
+ @CustomerGuid varchar(36), 
+ @StrategyOperateId varchar(36)
+)
+--returns @TempTable table (MaxPrice float,MinPrice float,[Percent] float)        
+returns @TempTable [CodeParmTable]
+AS
+begin
+ 
+
+ declare @CustomerGroupId int
+ 
+/*
+ select @CustomerGroupId = CustomerGroupId from T_CustGroupMember
+ where CustomerGuid = @CustomerGuid
+ set @CustomerGroupId=isnull(@CustomerGroupId,0)
+ insert into @TempTable
+ select MaxPrice,MinPrice,[Percent] from VC_T_StrategyOperateCustGroup
+ where CustomerGroupId = @CustomerGroupId 
+ and StrategyOperateId=@StrategyOperateId
+*/
+
+ return
+
+end 

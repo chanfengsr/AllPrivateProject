@@ -4,7 +4,7 @@ DROP TABLE [dbo].[StockHead]
 GO
 
 CREATE TABLE [dbo].[StockHead](
-    MarkType    CHAR(2) NOT NULL,               -- 市场类型（沪市、深市、创业板）
+    MarkType    CHAR(2) NOT NULL,               -- 市场类型（沪市、深市）
     StkCode     CHAR(6) NOT NULL,
     StkName     NVARCHAR(20) NOT NULL,
     StkNameAbbr NVARCHAR(10) DEFAULT('') NOT NULL,
@@ -188,6 +188,17 @@ GO
 
 
 
+
+-- 目前只有一个，就先放着这
+IF  EXISTS (SELECT * FROM sys.types st JOIN sys.schemas ss ON st.schema_id = ss.schema_id WHERE st.name = N'CodeParmTable' AND ss.name = N'dbo')
+DROP TYPE [dbo].[CodeParmTable]
+GO
+
+CREATE TYPE [dbo].[CodeParmTable] AS TABLE(
+	[MarkType] [char](2) NOT NULL,
+	[StkCode] [char](6) NOT NULL
+)
+GO
 
 
 

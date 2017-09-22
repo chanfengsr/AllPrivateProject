@@ -53,10 +53,19 @@ namespace StockExplore
             _dbo.ClearStockBlock(lstStockBlockType);
         }
 
+        /// <summary> 清空表头数据
+        /// </summary>
         public void TruncateStockHead()
         {
             string tableName = typeof (StockHead).Name;
             _dbo.TruncateTable(tableName);
+        }
+
+        /// <summary> 删除所有表，并收缩数据库
+        /// </summary>
+        public void TruncateAllTable()
+        {
+            _dbo.TruncateAllTable();
         }
     }
 }

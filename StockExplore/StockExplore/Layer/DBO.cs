@@ -138,6 +138,74 @@ namespace StockExplore
             SQLHelper.ExecuteNonQuery(string.Format(strSql, tableName), CommandType.Text, _cnn);
         }
 
+        /// <summary> 删除所有表，并收缩数据库
+        /// </summary>
+        public void TruncateAllTable()
+        {
+            #region SQL
+            #region 原始SQL语句
+            /*
+DECLARE @name AS SYSNAME
+DECLARE @ttSql AS NVARCHAR(100)
+DECLARE cur1 CURSOR LOCAL FAST_FORWARD READ_ONLY FOR SELECT [name] FROM sys.objects WHERE [type] in (N'U')
+OPEN cur1
+    WHILE 1 = 1
+        BEGIN
+            FETCH cur1 INTO @name
+            IF @@FETCH_STATUS <> 0
+                BREAK
+
+            SET @ttSql = 'TRUNCATE TABLE ' + @name
+            --PRINT @ttSql
+            exec sp_executesql @ttSql
+        END
+CLOSE cur1
+DEALLOCATE cur1
+GO
+
+DBCC SHRINKDATABASE(N'tempdb' )
+GO
+
+DECLARE @name AS SYSNAME
+SET @name = DB_NAME()
+PRINT @name
+DBCC SHRINKDATABASE(@name)
+GO
+             */
+            #endregion 原始SQL语句
+
+            const string strSql = "DECLARE @name AS SYSNAME" + "\r\n"
+                                  + "DECLARE @ttSql AS NVARCHAR(100)" + "\r\n"
+                                  + "DECLARE cur1 CURSOR LOCAL FAST_FORWARD READ_ONLY FOR SELECT [name] FROM sys.objects WHERE [type] in (N'U')" + "\r\n"
+                                  + "OPEN cur1" + "\r\n"
+                                  + "    WHILE 1 = 1" + "\r\n"
+                                  + "        BEGIN" + "\r\n"
+                                  + "            FETCH cur1 INTO @name" + "\r\n"
+                                  + "            IF @@FETCH_STATUS <> 0" + "\r\n"
+                                  + "                BREAK" + "\r\n"
+                                  + "" + "\r\n"
+                                  + "            SET @ttSql = 'TRUNCATE TABLE ' + @name" + "\r\n"
+                                  + "            --PRINT @ttSql" + "\r\n"
+                                  + "            exec sp_executesql @ttSql" + "\r\n"
+                                  + "        END" + "\r\n"
+                                  + "CLOSE cur1" + "\r\n"
+                                  + "DEALLOCATE cur1" + "\r\n"
+                                  + "GO" + "\r\n"
+                                  + "" + "\r\n"
+                                  + "DBCC SHRINKDATABASE(N'tempdb' )" + "\r\n"
+                                  + "GO" + "\r\n"
+                                  + "" + "\r\n"
+                                  + "DECLARE @name AS SYSNAME" + "\r\n"
+                                  + "SET @name = DB_NAME()" + "\r\n"
+                                  + "PRINT @name" + "\r\n"
+                                  + "DBCC SHRINKDATABASE(@name)" + "\r\n"
+                                  + "GO";
+
+            #endregion SQL
+
+            SQLHelper.ExecuteNonQuery(strSql, CommandType.Text, _cnn);
+        }
+
         /// <summary> 用 RecId 来批量删表数据
         /// </summary>
         /// <param name="tableName"></param>

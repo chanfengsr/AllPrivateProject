@@ -65,10 +65,13 @@ SELECT [name],[value] FROM sys.extended_properties WHERE major_id IN (SELECT [id
 --示例(Example):            
 --
 --修改记录(Revision History):
+--  2017-9-22   加字段名称静态变量
 --
 --****************************************************************
+SET NOCOUNT ON
+
 DECLARE @TableName NVARCHAR(50)
-SET @TableName = 'InventTable'
+SET @TableName = 'StockHead'
 
 DECLARE @Namespace NVARCHAR(50)
 SET @Namespace = 'WindowsFormsApplication1'
@@ -81,12 +84,15 @@ DECLARE @Default        NVARCHAR(MAX)
 DECLARE @Nullable       INT
 DECLARE @NetType        NVARCHAR(20)
 
-DECLARE @AllColNames    NVARCHAR(MAX)
 DECLARE @DefaultVal     SQL_VARIANT
 DECLARE @DefaultStr     NVARCHAR(100)
 DECLARE @StrSql         NVARCHAR(MAX)
-
 DECLARE @TableId        INT
+
+-- 存放表列名
+DECLARE @tbColName AS TABLE ([ColName] NVARCHAR(20) NOT NULL)
+DECLARE @AllColNames    NVARCHAR(MAX)
+
 
 SET @TableId = (SELECT [object_id] FROM sys.objects WHERE NAME = @TableName)
 SET @AllColNames = ''
@@ -172,6 +178,8 @@ OPEN curPrvtVar
                 BREAK
                 
             SET @AllColNames = @AllColNames + '"' + @ColName + '", '
+            
+            INSERT @tbColName VALUES (@ColName)
 
             SET @DefaultStr = ''
             IF @Default > ''
@@ -232,7 +240,23 @@ DEALLOCATE curPrvtVar
 PRINT N'        #endregion 私有变量及默认值'
 --endregion 私有变量及默认值
 PRINT ''
+PRINT N'        #region 表字段名'
+
+DECLARE curColName CURSOR LOCAL FAST_FORWARD READ_ONLY FOR SELECT [ColName] FROM @tbColName
+OPEN curColName
+    WHILE 1 = 1
+        BEGIN
+            FETCH curColName INTO @ColName
+            IF @@FETCH_STATUS <> 0
+                BREAK
+
+            PRINT '        public static string ColName_' + @ColName + ' = "' + @ColName + '";'
+        END
+CLOSE curColName
+DEALLOCATE curColName
+
 PRINT '        public List<string> AllColNames = new List<string> {' + SUBSTRING(@AllColNames, 0, LEN(@AllColNames)) + '};'
+PRINT N'        #endregion 表字段名'
 PRINT ''
 
 PRINT N'        #region 索引组'

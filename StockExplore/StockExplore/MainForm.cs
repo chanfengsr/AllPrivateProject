@@ -284,7 +284,7 @@ namespace StockExplore
                         TupleValue<string, StockHead> stkData = lstStockData[i];
 
                         insLineCount += bllDaImpt.InsertStkKLine(stkData, isConvert, isComposite, useTDXFile, kLineType, haveRecord);
-
+                        
                         // 最后一批完成后，再刷一下
                         if (i == count - 1)
                             showMsg(i + 1, count, insLineCount);
@@ -495,6 +495,35 @@ namespace StockExplore
                 dataImptDayKLineChkConvert.Checked = false;
                 dataImptDayKLineChkTDXFile.Checked = true;
             }
+        }
+
+        private void dataClearBtnTruncateAllTable_Click(object sender, EventArgs e)
+        {
+            BLLClear bllDataClear = new BLLClear(CommProp.ConnectionString);
+            UIInProcess(true);
+
+            try
+            {
+                if (SysMessageBox.ShowMessage("将会删除所有表，并收缩数据库。谨慎确认！！！", "", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button2) == DialogResult.Yes)
+                {
+                    bllDataClear.OpenConnection();
+
+                    // 删除所有表，并收缩数据库
+                    bllDataClear.TruncateAllTable();
+
+                    Console.WriteLine("任务完成！");
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                bllDataClear.CloseConnection();
+            }
+
+            UIInProcess(false);
         }
     }
 }

@@ -1,11 +1,4 @@
 
-/****** Object:  UserDefinedFunction [dbo].[GetStockRatio]    Script Date: 09/05/2017 10:54:56 ******/
-IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[GetStockRatio]') AND type in (N'FN', N'IF', N'TF', N'FS', N'FT'))
-DROP FUNCTION [dbo].[GetStockRatio]
-GO
-
-
-/****** Object:  UserDefinedFunction [dbo].[GetStockRatio]    Script Date: 09/05/2017 10:54:56 ******/
 SET ANSI_NULLS ON
 GO
 
@@ -13,23 +6,12 @@ SET QUOTED_IDENTIFIER ON
 GO
 
 
---****************************************************************
---
---对象名称(Object Name):    
---
---功能描述(Description):    返回个股某日涨幅
---
---参数(Parameters):         
---
---作者(Author):             王煜
---
---日期(ALTER  Date):        2017/09/05
---
---示例(Example):            
---
---修改记录(Revision History):
---
---****************************************************************
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[GetStockRatio]') AND type in (N'FN', N'IF', N'TF', N'FS', N'FT'))
+DROP FUNCTION [dbo].[GetStockRatio]
+GO
+
+--功能描述: 返回个股某日涨幅
 CREATE FUNCTION [dbo].[GetStockRatio](@StkCode CHAR(6), @TradeDay SMALLDATETIME, @StkType CHAR(1) = 1)
 RETURNS MONEY
 AS 
@@ -63,11 +45,57 @@ ELSE
     ON curP.RowNum = prepP.RowNum
     WHERE curP.TradeDay = @TradeDay
 
-
+/*
 IF (@ret IS NULL) 
     SET @ret = 0
+*/
 
 RETURN @ret
 END
 
 GO
+
+
+
+
+
+
+
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[GetAllStockCodeList]') AND type in (N'FN', N'IF', N'TF', N'FS', N'FT'))
+DROP FUNCTION [dbo].[GetAllStockCodeList]
+GO
+
+--功能描述: 返回A股票代码列表
+CREATE FUNCTION [dbo].[GetAllStockCodeList]()
+RETURNS [CodeParmTable]
+AS 
+BEGIN
+DECLARE @ret [CodeParmTable]
+    
+    INSERT INTO @ret
+    SELECT MarkType, StkCode FROM StockHead
+    WHERE StkType = 1
+    AND   ( (MarkType = 'sh' AND StkCode LIKE '60%') OR
+            (MarkType = 'sz' AND (StkCode LIKE '00%' OR StkCode LIKE '30%')))
+    
+RETURN @ret
+END
+GO
+
+
+
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[GetZTCodeList]') AND type in (N'FN', N'IF', N'TF', N'FS', N'FT'))
+DROP FUNCTION [dbo].[GetZTCodeList]
+GO
+
+--功能描述: 返回某日涨停板列表
+CREATE FUNCTION [dbo].[GetZTCodeList](@TradeDay SMALLDATETIME = '1900/01/01', @RangeList [CodeParmTable] = NULL)
+RETURNS [CodeParmTable]
+AS 
+BEGIN
+DECLARE @ret [CodeParmTable]
+
+RETURN @ret
+END

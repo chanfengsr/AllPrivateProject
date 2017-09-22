@@ -21,8 +21,20 @@ namespace StockExplore
         private Int32? _RecId;
         #endregion 私有变量及默认值
 
+        #region 表字段名
+        public static string ColName_MarkType = "MarkType";
+        public static string ColName_StkCode = "StkCode";
+        public static string ColName_TradeDay = "TradeDay";
+        public static string ColName_Open = "Open";
+        public static string ColName_High = "High";
+        public static string ColName_Low = "Low";
+        public static string ColName_Close = "Close";
+        public static string ColName_Volume = "Volume";
+        public static string ColName_Amount = "Amount";
+        public static string ColName_RecId = "RecId";
         public List<string> AllColNames = new List<string> { "MarkType", "StkCode", "TradeDay", "Open", "High", "Low", "Close", "Volume", "Amount", "RecId" };
-
+        #endregion 表字段名
+ 
         #region 索引组
         public List<string> UniIdxPK_KLineWeek = new List<string> { "MarkType", "StkCode", "TradeDay" };
         public List<string> UniIdxIX_KLineWeek_RecId = new List<string> { "RecId" };

@@ -15,7 +15,15 @@ namespace StockExplore
         private Int32? _RecId;
         #endregion 私有变量及默认值
 
+        #region 字段名
+        public static string ColName_MarkType = "MarkType";
+        public static string ColName_StkCode = "StkCode";
+        public static string ColName_StkName = "StkName";
+        public static string ColName_StkNameAbbr = "StkNameAbbr";
+        public static string ColName_StkType = "StkType";
+        public static string ColName_RecId = "RecId";
         public List<string> AllColNames = new List<string> { "StkCode", "BKType", "BKName", "RecId" };
+        #endregion 字段名
 
         #region 索引组
         public List<string> UniIdxPK_StockBlock = new List<string> { "StkCode", "BKType", "BKName" };
