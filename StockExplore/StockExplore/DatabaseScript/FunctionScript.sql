@@ -68,18 +68,21 @@ GO
 
 --功能描述: 返回A股票代码列表
 CREATE FUNCTION [dbo].[GetAllStockCodeList]()
-RETURNS [CodeParmTable]
+RETURNS @ret [CodeParmTable]
 AS 
 BEGIN
-DECLARE @ret [CodeParmTable]
+--DECLARE @ret [CodeParmTable]
     
+    BEGIN
     INSERT INTO @ret
     SELECT MarkType, StkCode FROM StockHead
     WHERE StkType = 1
     AND   ( (MarkType = 'sh' AND StkCode LIKE '60%') OR
-            (MarkType = 'sz' AND (StkCode LIKE '00%' OR StkCode LIKE '30%')))
+            (MarkType = 'sz' AND (StkCode LIKE '00%' OR StkCode LIKE '30%')));
+        
+    END
     
-RETURN @ret
+--RETURN (SELECT * FROM @ret)
 END
 GO
 
