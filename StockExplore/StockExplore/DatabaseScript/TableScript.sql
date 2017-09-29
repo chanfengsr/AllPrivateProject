@@ -4,7 +4,7 @@ DROP TABLE [dbo].[StockHead]
 GO
 
 CREATE TABLE [dbo].[StockHead](
-    MarkType    CHAR(2) NOT NULL,               -- 市场类型（沪市、深市）
+    MarkType    CHAR(2) NOT NULL,               -- 市场类型（沪市sh、深市sz）
     StkCode     CHAR(6) NOT NULL,
     StkName     NVARCHAR(20) NOT NULL,
     StkNameAbbr NVARCHAR(10) DEFAULT('') NOT NULL,

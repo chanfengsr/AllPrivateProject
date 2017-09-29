@@ -75,11 +75,11 @@ FROM KLineDay curP
 JOIN
 (
     SELECT a.* FROM KLineDay a
-    JOIN (SELECT RecId = MAX(RecId) FROM KLineDay WHERE TradeDay < '2017/06/29' GROUP BY StkCode) b
+    JOIN (SELECT RecId = MAX(RecId) FROM KLineDay WHERE TradeDay < '2017/09/21' GROUP BY MarkType, StkCode) b
     ON a.RecId = b.RecId
 ) prepP
 ON curP.StkCode = prepP.StkCode
-WHERE curP.TradeDay = '2017/06/29'
+WHERE curP.TradeDay = '2017/09/21'
              */
 
             #endregion 原始SQL语句
@@ -89,7 +89,7 @@ WHERE curP.TradeDay = '2017/06/29'
                                   + "JOIN" + "\r\n"
                                   + "(" + "\r\n"
                                   + "    SELECT a.* FROM {0} a" + "\r\n"
-                                  + "    JOIN (SELECT RecId = MAX(RecId) FROM {0} WHERE TradeDay < '{1}' GROUP BY StkCode) b" + "\r\n"
+                                  + "    JOIN (SELECT RecId = MAX(RecId) FROM {0} WHERE TradeDay < '{1}' GROUP BY MarkType, StkCode) b" + "\r\n"
                                   + "    ON a.RecId = b.RecId" + "\r\n"
                                   + ") prepP" + "\r\n"
                                   + "ON curP.StkCode = prepP.StkCode" + "\r\n"
