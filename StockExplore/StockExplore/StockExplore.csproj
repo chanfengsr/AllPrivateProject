@@ -121,6 +121,7 @@
     <Content Include="DatabaseScript\TableScript.sql" />
     <Content Include="DatabaseScript\ProcedureScript.sql" />
     <Content Include="DatabaseScript\FunctionScript.sql" />
+    <Content Include="DatabaseScript\ViewScript.sql" />
     <Content Include="Working\Message.txt" />
     <Content Include="Working\WorkingSQL.sql" />
     <Content Include="Resources\Stocks.ico" />
