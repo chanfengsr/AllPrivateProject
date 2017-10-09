@@ -43,3 +43,23 @@ CREATE VIEW cv_NeighbourKLineDayRecId AS
 
 GO
 -- SELECT TOP 100 * FROM cv_NeighbourKLineDayRecId WHERE StkCode = '000001'
+
+
+
+
+
+
+IF  EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'[dbo].[cv_NeighbourKLineDayZSRecId]'))
+DROP VIEW [dbo].[cv_NeighbourKLineDayZSRecId]
+GO
+
+-- *************** π¶ƒ‹√Ë ˆ: KLineDayZS œ‡¡⁄ RecId ***************
+CREATE VIEW cv_NeighbourKLineDayZSRecId AS
+
+    SELECT *,
+        PrevRecId = ISNULL((SELECT TOP 1 RecId FROM KLineDayZS WHERE MarkType = t.MarkType AND StkCode = t.StkCode AND TradeDay < t.TradeDay ORDER BY TradeDay DESC), -1),
+        NextRecId = ISNULL((SELECT TOP 1 RecId FROM KLineDayZS WHERE MarkType = t.MarkType AND StkCode = t.StkCode AND TradeDay > t.TradeDay ORDER BY TradeDay ASC), -1)            
+    FROM KLineDayZS t
+
+GO
+-- SELECT TOP 100 * FROM cv_NeighbourKLineDayZSRecId WHERE StkCode = '000001'

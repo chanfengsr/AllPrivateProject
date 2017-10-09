@@ -2,8 +2,8 @@ IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[CalcK
 DROP PROCEDURE [dbo].[CalcKLineWeek]
 GO
 
-CREATE PROCEDURE [dbo].[CalcKLineWeek]
-    @ReCalcAll INT = 0
+-- *************** 功能描述: 计算周 K 线 ***************
+CREATE PROCEDURE [dbo].[CalcKLineWeek](@ReCalcAll INT = 0)
 AS
 SET NOCOUNT ON
 
@@ -75,3 +75,101 @@ WHILE @weekDiff <= @maxWeekDiff
 SET NOCOUNT OFF
 GO
 --EXEC [CalcKLineWeek] 1
+
+
+
+
+
+
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[StatisticDayIncreaseBlock]') AND type in (N'P', N'PC'))
+DROP PROCEDURE [dbo].[StatisticDayIncreaseBlock]
+GO
+
+-- *************** 功能描述: 统计某日涨幅居前的板块所属 ***************
+CREATE PROCEDURE [dbo].[StatisticDayIncreaseBlock](@TradeDay SMALLDATETIME = '1900/01/01')
+AS
+SET NOCOUNT ON
+
+    -- 去掉时间
+    IF DATEPART(hour, @TradeDay) + DATEPART(minute, @TradeDay) > 0
+        SET @TradeDay = CAST(@TradeDay AS DATE)
+    
+    -- 没填日期则默认是最后一个交易日
+    IF (@TradeDay = '1900/01/01')
+        SET @TradeDay = (SELECT MAX(TradeDay) FROM KLineDayZS WHERE MarkType = 'sh' AND StkCode = '999999' OR StkCode = '000001')
+    
+    -- 完整 A股 列表
+    DECLARE @AllAList AS [CodeParmTable]
+    INSERT INTO @AllAList SELECT * FROM cv_AStockCodeExcST
+    
+    -- 涨幅大于 3% 的列表
+    DECLARE @BigIncreaseList AS [CodeParmTable]
+    INSERT INTO @BigIncreaseList
+    SELECT curP.MarkType, curP.StkCode
+    FROM KLineDay curP
+    JOIN
+    (
+        SELECT a.StkCode, a.[Close] FROM KLineDay a
+        JOIN (SELECT RecId = MAX(b0.RecId) FROM KLineDay b0
+              WHERE b0.TradeDay < @TradeDay
+                AND EXISTS (SELECT 1 FROM @AllAList WHERE MarkType = b0.MarkType AND StkCode = b0.StkCode) -- 大幅提高已有列表速度
+              GROUP BY b0.MarkType, b0.StkCode
+        ) b
+        ON a.RecId = b.RecId
+    ) prepP
+    ON curP.StkCode = prepP.StkCode
+    JOIN @AllAList rangLst
+    ON   rangLst.MarkType = curP.MarkType AND rangLst.StkCode = curP.StkCode
+    WHERE   curP.TradeDay = @TradeDay
+        AND prepP.[Close] > 0
+        AND ((curP.[Close] - prepP.[Close]) / prepP.[Close] * 100) >= 3 -- 涨幅大于 3%
+
+    -- 涨停板列表
+    DECLARE @ZTList AS [CodeParmTable]
+    INSERT INTO @ZTList SELECT * FROM dbo.GetZTCodeList(@TradeDay, @BigIncreaseList)
+    
+    -- 新股，未开板 列表
+    DECLARE @NewNotBrokenCodeList AS [CodeParmTable]
+    INSERT INTO @NewNotBrokenCodeList SELECT * FROM dbo.GetNewNotBrokenCodeList(@TradeDay, @ZTList)
+
+    -- 涨停板列表（去除新股未开板）
+    DECLARE @ZTListExcNew AS [CodeParmTable]
+    INSERT INTO @ZTListExcNew
+    SELECT * FROM @ZTList a 
+    WHERE NOT EXISTS (SELECT 1 FROM @NewNotBrokenCodeList b WHERE a.MarkType = b.MarkType AND a.StkCode = b.StkCode)
+
+    -- 涨幅大于 3% 的列表（去除新股未开板）
+    DECLARE @BigIncreaseListExcNew AS [CodeParmTable]
+    INSERT INTO @BigIncreaseListExcNew
+    SELECT * FROM @BigIncreaseList a 
+    WHERE NOT EXISTS (SELECT 1 FROM @NewNotBrokenCodeList b WHERE a.MarkType = b.MarkType AND a.StkCode = b.StkCode)
+
+
+    -- 显示涨停板列表（去除新股未开板）
+    SELECT a.MarkType, a.StkCode, b.StkName
+    FROM @ZTListExcNew a JOIN StockHead b ON a.MarkType = b.MarkType AND a.StkCode = b.StkCode AND b.StkType = '1' 
+
+    -- 显示涨幅大于 3% 的列表（去除新股未开板）
+    SELECT a.MarkType, a.StkCode, b.StkName
+    FROM @BigIncreaseList a JOIN StockHead b ON a.MarkType = b.MarkType AND a.StkCode = b.StkCode AND b.StkType = '1'
+
+
+    -- 显示涨停板（去除新股未开板）所在版块统计
+    SELECT b.BKType, b.BKName, COUNT(1)
+    FROM @ZTListExcNew a JOIN StockBlock b ON a.StkCode = b.StkCode
+    GROUP BY b.BKType, b.BKName
+    HAVING COUNT(1) > 1
+    ORDER BY b.BKType, COUNT(1) DESC, b.BKName
+
+    -- 涨幅大于 3% 的（去除新股未开板）所在版块统计
+    SELECT b.BKType, b.BKName, COUNT(1)
+    FROM @BigIncreaseList a JOIN StockBlock b ON a.StkCode = b.StkCode
+    GROUP BY b.BKType, b.BKName
+    HAVING COUNT(1) > 1
+    ORDER BY b.BKType, COUNT(1) DESC, b.BKName
+
+
+SET NOCOUNT OFF
+GO
+--EXEC [StatisticDayIncreaseBlock] '2017/09/21'
