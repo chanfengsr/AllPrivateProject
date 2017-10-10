@@ -27,7 +27,7 @@ ELSE
                          ORDER BY TradeDay)
     END
 
-IF @startDay = NULL OR @endDay = NULL OR @startDay > @endDay
+IF @startDay IS NULL OR @endDay IS NULL OR @startDay > @endDay
     RETURN
 
 
@@ -145,10 +145,14 @@ SET NOCOUNT ON
     SELECT * FROM @BigIncreaseList a 
     WHERE NOT EXISTS (SELECT 1 FROM @NewNotBrokenCodeList b WHERE a.MarkType = b.MarkType AND a.StkCode = b.StkCode)
 
+    DECLARE @MarkType CHAR(2)
+    DECLARE @StkCode  CHAR(6)
+
 
     -- 显示涨停板列表（去除新股未开板）
-    SELECT a.MarkType, a.StkCode, b.StkName
+    SELECT a.MarkType, a.StkCode, b.StkName, ContinueCount = dbo.GetRatioContinueCount(a.StkCode, 9.9, 1, @TradeDay, '1')
     FROM @ZTListExcNew a JOIN StockHead b ON a.MarkType = b.MarkType AND a.StkCode = b.StkCode AND b.StkType = '1' 
+    ORDER BY dbo.GetRatioContinueCount(a.StkCode, 9.9, 1, @TradeDay, '1') DESC
 
     -- 显示涨幅大于 3% 的列表（去除新股未开板）
     SELECT a.MarkType, a.StkCode, b.StkName
@@ -156,20 +160,66 @@ SET NOCOUNT ON
 
 
     -- 显示涨停板（去除新股未开板）所在版块统计
-    SELECT b.BKType, b.BKName, COUNT(1)
-    FROM @ZTListExcNew a JOIN StockBlock b ON a.StkCode = b.StkCode
-    GROUP BY b.BKType, b.BKName
-    HAVING COUNT(1) > 1
-    ORDER BY b.BKType, COUNT(1) DESC, b.BKName
+    SELECT Stk.BKType, Stk.BKName, Stk.StkCount, BK.BKCount, 
+           Prec = CAST( ROUND(CAST(Stk.StkCount AS FLOAT) / BK.BKCount * 100, 1) AS VARCHAR(10)) + '%',
+           GroupOrder = ROW_NUMBER() OVER ( PARTITION BY Stk.BKType 
+                                            ORDER BY CAST(CASE Stk.StkCount WHEN 1 THEN 0 ELSE Stk.StkCount END AS FLOAT) / BK.BKCount DESC, 
+                                                Stk.StkCount DESC, BK.BKCount ASC)
+    FROM 
+    (
+        SELECT b.BKType, b.BKName, StkCount = COUNT(1)
+        FROM @ZTListExcNew a JOIN StockBlock b ON a.StkCode = b.StkCode
+        GROUP BY b.BKType, b.BKName
+    ) Stk
+    JOIN
+    (
+        SELECT BKType, BKName, BKCount = COUNT(1) FROM StockBlock
+        GROUP BY BKType, BKName
+    ) BK ON Stk.BKType = BK.BKType AND Stk.BKName = BK.BKName
+    ORDER BY --Stk.BKType, 
+            CASE Stk.BKType
+                WHEN N'概念' THEN '0'
+                WHEN N'行业' THEN '1'
+                WHEN N'行业细分' THEN '2'
+                WHEN N'地区' THEN '3'
+                ELSE Stk.BKType
+            END,
+            CAST(CASE Stk.StkCount WHEN 1 THEN 0 ELSE Stk.StkCount END AS FLOAT) / BK.BKCount DESC, -- 将只有一个的排到后面去
+            Stk.StkCount DESC, 
+            BK.BKCount ASC
+
+
 
     -- 涨幅大于 3% 的（去除新股未开板）所在版块统计
-    SELECT b.BKType, b.BKName, COUNT(1)
-    FROM @BigIncreaseList a JOIN StockBlock b ON a.StkCode = b.StkCode
-    GROUP BY b.BKType, b.BKName
-    HAVING COUNT(1) > 1
-    ORDER BY b.BKType, COUNT(1) DESC, b.BKName
+    SELECT Stk.BKType, Stk.BKName, Stk.StkCount, BK.BKCount, 
+           Prec = CAST( ROUND(CAST(Stk.StkCount AS FLOAT) / BK.BKCount * 100, 1) AS VARCHAR(10)) + '%',
+           GroupOrder = ROW_NUMBER() OVER ( PARTITION BY Stk.BKType 
+                                            ORDER BY CAST(CASE Stk.StkCount WHEN 1 THEN 0 ELSE Stk.StkCount END AS FLOAT) / BK.BKCount DESC, 
+                                                Stk.StkCount DESC, BK.BKCount ASC)
+    FROM
+    (
+        SELECT b.BKType, b.BKName, StkCount = COUNT(1)
+        FROM @BigIncreaseList a JOIN StockBlock b ON a.StkCode = b.StkCode
+        GROUP BY b.BKType, b.BKName
+    ) Stk
+    JOIN
+    (
+        SELECT BKType, BKName, BKCount = COUNT(1) FROM StockBlock
+        GROUP BY BKType, BKName
+    ) BK ON Stk.BKType = BK.BKType AND Stk.BKName = BK.BKName
+    ORDER BY --Stk.BKType, 
+            CASE Stk.BKType
+                WHEN N'概念' THEN '0'
+                WHEN N'行业' THEN '1'
+                WHEN N'行业细分' THEN '2'
+                WHEN N'地区' THEN '3'
+                ELSE Stk.BKType
+            END,
+            CAST(CASE Stk.StkCount WHEN 1 THEN 0 ELSE Stk.StkCount END AS FLOAT) / BK.BKCount DESC, -- 将只有一个的排到后面去
+            Stk.StkCount DESC, 
+            BK.BKCount ASC
 
 
 SET NOCOUNT OFF
 GO
---EXEC [StatisticDayIncreaseBlock] '2017/09/21'
+--EXEC [StatisticDayIncreaseBlock] '2017/10/09'

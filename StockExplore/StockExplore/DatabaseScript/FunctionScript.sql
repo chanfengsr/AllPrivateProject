@@ -32,7 +32,7 @@ DROP FUNCTION [dbo].[GetStockRatio]
 GO
 
 -- *************** 功能描述: 返回个股某日涨幅 ***************
-CREATE FUNCTION [dbo].[GetStockRatio](@StkCode CHAR(6), @TradeDay SMALLDATETIME, @StkType CHAR(1) = 1)
+CREATE FUNCTION [dbo].[GetStockRatio](@StkCode CHAR(6), @TradeDay SMALLDATETIME = '1900/01/01', @StkType CHAR(1) = 1)
 RETURNS MONEY
 AS 
 BEGIN
@@ -41,6 +41,10 @@ DECLARE @ret MONEY
     -- 去掉时间
     IF DATEPART(hour, @TradeDay) + DATEPART(minute, @TradeDay) > 0
         SET @TradeDay = CAST(@TradeDay AS DATE)
+    
+    -- 没填日期则默认是最后一个交易日
+    IF (@TradeDay = '1900/01/01')
+        SET @TradeDay = (SELECT MAX(TradeDay) FROM KLineDayZS WHERE MarkType = 'sh' AND StkCode = '999999' OR StkCode = '000001')
 
     -- 是否日线是指数
     IF @StkType = 1
@@ -492,4 +496,170 @@ GO
 DECLARE @RangeList AS [CodeParmTable]
 INSERT INTO @RangeList SELECT * FROM cv_AStockCodeExcST
 SELECT * FROM dbo.GetTouchDTCodeList('2017/09/21', @RangeList)
+*/
+
+
+
+
+
+
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[GetRatioContinueCount]') AND type in (N'FN', N'IF', N'TF', N'FS', N'FT'))
+DROP FUNCTION [dbo].[GetRatioContinueCount]
+GO
+
+-- *************** 功能描述: 返回某个涨跌幅持续天数 ***************
+-- @StkType     是否日线是指数
+-- @Ratio       涨跌幅
+-- @Direction   0:小于，1:大于
+-- @Ratio       = 9.9 / -9.9 时默认为：涨停板/跌停板
+CREATE FUNCTION [dbo].[GetRatioContinueCount](@StkCode CHAR(6), @Ratio MONEY, @Direction INT, @TradeDay SMALLDATETIME = '1900/01/01', @StkType CHAR(1) = 1)
+RETURNS INT
+AS 
+BEGIN
+DECLARE @ret INT = 0
+
+    -- 去掉时间
+    IF DATEPART(hour, @TradeDay) + DATEPART(minute, @TradeDay) > 0
+        SET @TradeDay = CAST(@TradeDay AS DATE)
+
+    -- 没填日期则默认是最后一个交易日
+    IF (@TradeDay = '1900/01/01')
+        SET @TradeDay = (SELECT MAX(TradeDay) FROM KLineDayZS WHERE MarkType = 'sh' AND StkCode = '999999' OR StkCode = '000001')
+
+    DECLARE @curRecId INT, @preRecId INT
+    DECLARE @curPrice MONEY, @prePrice MONEY
+    DECLARE @RatioCalc MONEY
+    IF @StkType = 1
+        BEGIN            
+            SELECT TOP 1 @curRecId = RecId, @curPrice = [Close]
+            FROM KLineDay
+            WHERE StkCode = @StkCode AND TradeDay = @TradeDay
+            ORDER BY RecId DESC
+
+            WHILE 1 = 1 AND @curRecId IS NOT NULL
+                BEGIN
+                    SET @preRecId = NULL
+                    SET @prePrice = NULL
+                    SELECT TOP 1 @preRecId = RecId, @prePrice = [Close]
+                    FROM KLineDay 
+                    WHERE StkCode = @StkCode AND RecId < @curRecId
+                        -- 极大提高查找到上市第一天后速度变慢的问题，5000 条记录肯定能跳出 1 天的范围。
+                        -- 可能会碰到停牌前涨停，停牌后继续涨停的问题，这里暂时过滤掉了。反正导入 KLineDay 时都是覆盖导入的。
+                        AND RecId > @curRecId - 5000
+                    ORDER BY RecId DESC
+                    
+                    IF @preRecId IS NULL OR @prePrice IS NULL
+                        BREAK
+
+                    SET @RatioCalc = (@curPrice - @prePrice) / @prePrice * 100
+                    
+                    IF @Direction = 0
+                        -- 跌幅
+                        BEGIN
+                            IF @RatioCalc > @Ratio
+                                BREAK
+
+                            IF @Ratio = -9.9 AND NOT EXISTS(SELECT 1 FROM KLineDay WHERE RecId = @curRecId AND [Close] = [Low])
+                                BREAK
+                        END
+                    ELSE
+                        -- 涨幅
+                        BEGIN
+                            IF @RatioCalc < @Ratio
+                                BREAK
+
+                            IF @Ratio = 9.9 AND NOT EXISTS(SELECT 1 FROM KLineDay WHERE RecId = @curRecId AND [Close] = [High])
+                                BREAK
+                        END
+
+                    SET @ret = @ret + 1
+                    SET @curRecId = @preRecId
+                    SET @curPrice = @prePrice
+                END
+        END
+    ELSE
+        BEGIN            
+            SELECT TOP 1 @curRecId = RecId, @curPrice = [Close]
+            FROM KLineDayZS
+            WHERE StkCode = @StkCode AND TradeDay = @TradeDay
+            ORDER BY RecId DESC
+
+            WHILE 1 = 1 AND @curRecId IS NOT NULL
+                BEGIN
+                    SET @preRecId = NULL
+                    SET @prePrice = NULL
+                    SELECT TOP 1 @preRecId = RecId, @prePrice = [Close]
+                    FROM KLineDayZS 
+                    WHERE StkCode = @StkCode AND RecId < @curRecId
+                        AND RecId > @curRecId - 1000 -- 极大提高查找到上市第一天后速度变慢的问题
+                    ORDER BY RecId DESC
+                    
+                    IF @preRecId IS NULL OR @prePrice IS NULL
+                        BREAK
+
+                    SET @RatioCalc = (@curPrice - @prePrice) / @prePrice * 100
+                    
+                    IF @Direction = 0
+                        -- 跌幅
+                        BEGIN
+                            IF @RatioCalc > @Ratio
+                                BREAK
+
+                            IF @Ratio = -9.9 AND NOT EXISTS(SELECT 1 FROM KLineDayZS WHERE RecId = @curRecId AND [Close] = [Low])
+                                BREAK
+                        END
+                    ELSE
+                        -- 涨幅
+                        BEGIN
+                            IF @RatioCalc < @Ratio
+                                BREAK
+
+                            IF @Ratio = 9.9 AND NOT EXISTS(SELECT 1 FROM KLineDayZS WHERE RecId = @curRecId AND [Close] = [High])
+                                BREAK
+                        END
+
+                    SET @ret = @ret + 1
+                    SET @curRecId = @preRecId
+                    SET @curPrice = @prePrice
+                END
+        END
+        
+    RETURN @ret
+END
+
+GO
+--SELECT dbo.GetRatioContinueCount('300654', 9.9, 1, '2017/10/09', '1')
+
+
+
+
+
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[GetBKStockCodeInRange]') AND type in (N'FN', N'IF', N'TF', N'FS', N'FT'))
+DROP FUNCTION [dbo].[GetBKStockCodeInRange]
+GO
+
+-- *************** 功能描述: 返回指定范围内板块所包含的股票代码及名称 ***************
+CREATE FUNCTION [dbo].[GetBKStockCodeInRange](@BKType NVARCHAR(20), @BKName NVARCHAR(20), @RangeList [CodeParmTable] READONLY)
+RETURNS NVARCHAR(MAX)
+AS 
+BEGIN
+    DECLARE @ret        NVARCHAR(MAX)
+    DECLARE @StkCode    CHAR(6)
+    
+    /* todo modify
+    SELECT b.StkCode, b.StkName 
+    FROM StockBlock a JOIN StockHead b ON b.StkCode = a.StkCode AND b.StkType = 1
+    WHERE   a.BKType = @BKType AND a.BKName = @BKName
+        AND a.StkCode IN (SELECT StkCode FROM @RangeList)
+    */
+    
+    RETURN @ret
+END
+GO
+/*
+DECLARE @RangeList AS [CodeParmTable]
+INSERT INTO @RangeList SELECT * FROM cv_AStockCodeExcST
+SELECT * FROM dbo.GetBKStockCodeInRange('2017/09/21', @RangeList)
 */

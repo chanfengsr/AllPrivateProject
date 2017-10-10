@@ -89,6 +89,7 @@ namespace StockExplore
 
             tabControl1.Enabled = !inProcessing;
             btnProcCancel.Visible = inProcessing;
+            btnClear.Enabled = !inProcessing;
         }
 
         /// <summary> 加载从通达信导出的数据文件

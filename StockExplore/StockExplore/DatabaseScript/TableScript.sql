@@ -1,3 +1,12 @@
+/*
+SELECT * FROM sys.objects WHERE type in (N'U') ORDER BY create_date
+
+StockHead
+KLineDay
+KLineDayZS
+StockBlock
+KLineWeek
+*/
 
 IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[StockHead]') AND type in (N'U'))
 DROP TABLE [dbo].[StockHead]
