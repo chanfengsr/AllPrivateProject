@@ -220,5 +220,40 @@ GO
 
             SQLHelper.ExecuteNonQuery(string.Format(modSql, tableName, sb.ToString().TrimEnd(',')), CommandType.Text, _cnn);
         }
+
+        private List<string> _stockACodeList;
+
+        /// <summary> 沪深 A股代码列表
+        /// </summary>
+        public List<string> GetStockACodeList()
+        {
+            const string strSql = "SELECT StkCode FROM cv_AStockCode";
+
+            if (_stockACodeList == null || _stockACodeList.Count == 0)
+            {
+                DataTable dt = SQLHelper.ExecuteDataTable(strSql, CommandType.Text, _cnn);
+                _stockACodeList = SysFunction.GetColList<string>(dt, 0).ToList();
+            }
+
+            return _stockACodeList;
+        }
+
+        private List<string> _stockZSCodeList;
+
+        /// <summary> 指数代码列表
+        /// </summary>
+        /// <returns></returns>
+        public List<string> GetZSCodeList()
+        {
+            const string strSql = "SELECT StkCode FROM StockHead WHERE StkType = 1";
+
+            if (_stockZSCodeList == null || _stockZSCodeList.Count == 0)
+            {
+                DataTable dt = SQLHelper.ExecuteDataTable(strSql, CommandType.Text, _cnn);
+                _stockZSCodeList = SysFunction.GetColList<string>(dt, 0).ToList();
+            }
+
+            return _stockZSCodeList;
+        }
     }
 }

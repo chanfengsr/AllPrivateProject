@@ -32,12 +32,18 @@ namespace StockExplore
         }
 
         /// <summary> 
-        /// 从通达信导出的文件名获取市场类型及股票代码
+        /// 从通达信导出的文件 / 自有文件 名获取市场类型及股票代码
         /// 返回值：List<TupleValue<完整文件名, StockHead>>
         /// </summary>
-        public List<TupleValue<string, StockHead>> LoadMrkTypeAndCodeFromExportFile(List<FileInfo> allFile, bool isComposite, bool useTDXFile)
+        public List<TupleValue<string, StockHead>> LoadMrkTypeAndCodeFromDataFile(List<FileInfo> allFile, bool isComposite, bool useTDXFile)
         {
             List<TupleValue<string, StockHead>> ret = new List<TupleValue<string, StockHead>>();
+            List<string> codeList;
+
+            if (isComposite)
+                codeList =_dbo.GetZSCodeList(); 
+            else
+                codeList = _dbo.GetStockACodeList();
 
             foreach (FileInfo file in allFile)
             {
@@ -55,7 +61,8 @@ namespace StockExplore
                     StkType = isComposite ? "0" : "1"
                 };
 
-                ret.Add(new TupleValue<string, StockHead>(file.FullName, stkHead));
+                if (codeList.Contains(stkHead.StkCode))
+                    ret.Add(new TupleValue<string, StockHead>(file.FullName, stkHead));
             }
 
             return ret;
@@ -666,7 +673,7 @@ namespace StockExplore
                         StockHead stkHead = new StockHead();
                         stkHead.MarkType = markType;
                         stkHead.StkCode = stkCode;
-                        stkHead.StkName = stkName;
+                        stkHead.StkName = stkName.Replace(" ",""); // 有些三个字的名字中间会有空格
                         stkHead.StkNameAbbr = stkNameAbbr;
                         stkHead.StkType = zsPrefix.Any(stkCode.StartsWith) ? "0" : "1";
 

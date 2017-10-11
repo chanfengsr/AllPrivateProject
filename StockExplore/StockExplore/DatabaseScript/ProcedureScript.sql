@@ -164,7 +164,8 @@ SET NOCOUNT ON
            Prec = CAST( ROUND(CAST(Stk.StkCount AS FLOAT) / BK.BKCount * 100, 1) AS VARCHAR(10)) + '%',
            GroupOrder = ROW_NUMBER() OVER ( PARTITION BY Stk.BKType 
                                             ORDER BY CAST(CASE Stk.StkCount WHEN 1 THEN 0 ELSE Stk.StkCount END AS FLOAT) / BK.BKCount DESC, 
-                                                Stk.StkCount DESC, BK.BKCount ASC)
+                                                Stk.StkCount DESC, BK.BKCount ASC),
+           StockList = dbo.GetBKStockCodeInRange(Stk.BKType, Stk.BKName, @ZTListExcNew)
     FROM 
     (
         SELECT b.BKType, b.BKName, StkCount = COUNT(1)
@@ -195,7 +196,8 @@ SET NOCOUNT ON
            Prec = CAST( ROUND(CAST(Stk.StkCount AS FLOAT) / BK.BKCount * 100, 1) AS VARCHAR(10)) + '%',
            GroupOrder = ROW_NUMBER() OVER ( PARTITION BY Stk.BKType 
                                             ORDER BY CAST(CASE Stk.StkCount WHEN 1 THEN 0 ELSE Stk.StkCount END AS FLOAT) / BK.BKCount DESC, 
-                                                Stk.StkCount DESC, BK.BKCount ASC)
+                                                Stk.StkCount DESC, BK.BKCount ASC),
+           StockList = dbo.GetBKStockCodeInRange(Stk.BKType, Stk.BKName, @BigIncreaseList)
     FROM
     (
         SELECT b.BKType, b.BKName, StkCount = COUNT(1)

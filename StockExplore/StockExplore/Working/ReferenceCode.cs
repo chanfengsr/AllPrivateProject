@@ -160,7 +160,7 @@ namespace StockExplore
              我测试下来：每314个字节为一个记录
              */
 
-            string fileName = @"C:\new_tdx\T0002\hq_cache\szm.tnf";
+            const string fileName = @"C:\new_tdx\T0002\hq_cache\szm.tnf";
 
             using (BinaryReader reader = new BinaryReader(File.OpenRead(fileName)))
             {

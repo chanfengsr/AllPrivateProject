@@ -253,7 +253,7 @@ namespace StockExplore
                 this.LoadFileList_exportFile();
 
             // List<TupleValue<完整文件名, StockHead>>
-            List<TupleValue<string, StockHead>> lstStockData = bllDaImpt.LoadMrkTypeAndCodeFromExportFile(AllFile, isComposite, useTDXFile);
+            List<TupleValue<string, StockHead>> lstStockData = bllDaImpt.LoadMrkTypeAndCodeFromDataFile(AllFile, isComposite, useTDXFile);
 
             if (lstStockData.Count > 0)
             {

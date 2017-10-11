@@ -3,6 +3,23 @@ GO
 SET QUOTED_IDENTIFIER OFF
 GO
 
+IF  EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'[dbo].[cv_AStockCode]'))
+DROP VIEW [dbo].[cv_AStockCode]
+GO
+
+-- *************** 功能描述: 沪深 A股代码列表 ***************
+CREATE VIEW cv_AStockCode AS
+
+    SELECT MarkType, StkCode FROM StockHead
+    WHERE StkType = 1
+    AND   ( (MarkType = 'sh' AND StkCode LIKE '60%') OR
+            (MarkType = 'sz' AND (StkCode LIKE '00%' OR StkCode LIKE '30%'))
+    )
+
+GO
+--SELECT * FROM cv_AStockCode
+
+
 
 
 

@@ -645,14 +645,44 @@ CREATE FUNCTION [dbo].[GetBKStockCodeInRange](@BKType NVARCHAR(20), @BKName NVAR
 RETURNS NVARCHAR(MAX)
 AS 
 BEGIN
-    DECLARE @ret        NVARCHAR(MAX)
-    DECLARE @StkCode    CHAR(6)
+    DECLARE @ret NVARCHAR(MAX) = ''
     
-    /* todo modify
-    SELECT b.StkCode, b.StkName 
-    FROM StockBlock a JOIN StockHead b ON b.StkCode = a.StkCode AND b.StkType = 1
-    WHERE   a.BKType = @BKType AND a.BKName = @BKName
-        AND a.StkCode IN (SELECT StkCode FROM @RangeList)
+    SELECT @ret = STUFF((
+        SELECT ', ' + comb.StkComb FROM
+        (
+            SELECT StkComb = b.StkCode + ' ' + b.StkName
+            FROM StockBlock a JOIN StockHead b ON b.StkCode = a.StkCode AND b.StkType = 1
+            WHERE   a.BKType = @BKType AND a.BKName = @BKName
+                AND a.StkCode IN (SELECT StkCode FROM @RangeList)
+        ) comb FOR XML PATH('')
+    ),1,1,'')
+
+    /*
+    DECLARE @StkCode    CHAR(6)
+    DECLARE @StkName    NVARCHAR(20)
+    DECLARE @isFirst    INT = 1
+    
+    DECLARE cur1 CURSOR LOCAL FAST_FORWARD READ_ONLY FOR 
+        SELECT b.StkCode, b.StkName 
+        FROM StockBlock a JOIN StockHead b ON b.StkCode = a.StkCode AND b.StkType = 1
+        WHERE   a.BKType = @BKType AND a.BKName = @BKName
+            AND a.StkCode IN (SELECT StkCode FROM @RangeList)
+    OPEN cur1
+        WHILE 1 = 1
+            BEGIN
+                FETCH cur1 INTO @StkCode, @StkName
+                IF @@FETCH_STATUS <> 0
+                    BREAK
+
+                IF @isFirst = 0                
+                    SET @ret = @ret + ', ' -- + char(13) + char(10)
+                ELSE
+                    SET @isFirst = 0
+
+                SET @ret = @ret + @StkCode + '  ' + @StkName
+            END
+    CLOSE cur1
+    DEALLOCATE cur1
     */
     
     RETURN @ret
@@ -661,5 +691,5 @@ GO
 /*
 DECLARE @RangeList AS [CodeParmTable]
 INSERT INTO @RangeList SELECT * FROM cv_AStockCodeExcST
-SELECT * FROM dbo.GetBKStockCodeInRange('2017/09/21', @RangeList)
+SELECT dbo.GetBKStockCodeInRange(N'行业', N'小家电', @RangeList)
 */
