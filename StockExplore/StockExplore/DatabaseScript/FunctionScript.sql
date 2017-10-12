@@ -1,6 +1,6 @@
 /*
 ***** 参数表表结构 *****
-CREATE TYPE [dbo].[CodeParmTable] AS TABLE(
+CREATE TYPE dbo.CodeParmTable AS TABLE(
     [MarkType] [char](2) NOT NULL,
     [StkCode] [char](6) NOT NULL
 )
@@ -27,12 +27,12 @@ GO
 
 
 
-IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[GetStockRatio]') AND type in (N'FN', N'IF', N'TF', N'FS', N'FT'))
-DROP FUNCTION [dbo].[GetStockRatio]
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'dbo.GetStockRatio') AND type in (N'FN', N'IF', N'TF', N'FS', N'FT'))
+DROP FUNCTION dbo.GetStockRatio
 GO
 
 -- *************** 功能描述: 返回个股某日涨幅 ***************
-CREATE FUNCTION [dbo].[GetStockRatio](@StkCode CHAR(6), @TradeDay SMALLDATETIME = '1900/01/01', @StkType CHAR(1) = 1)
+CREATE FUNCTION dbo.GetStockRatio(@StkCode CHAR(6), @TradeDay SMALLDATETIME = '1900/01/01', @StkType CHAR(1) = 1)
 RETURNS MONEY
 AS 
 BEGIN
@@ -107,12 +107,12 @@ GO
 
 
 
-IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[GetAllAStockCodeListExcST]') AND type in (N'FN', N'IF', N'TF', N'FS', N'FT'))
-DROP FUNCTION [dbo].[GetAllAStockCodeListExcST]
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'dbo.GetAllAStockCodeListExcST') AND type in (N'FN', N'IF', N'TF', N'FS', N'FT'))
+DROP FUNCTION dbo.GetAllAStockCodeListExcST
 GO
 
 -- *************** 功能描述: 返回A股票代码列表 ***************
-CREATE FUNCTION [dbo].[GetAllAStockCodeListExcST]()
+CREATE FUNCTION dbo.GetAllAStockCodeListExcST()
 RETURNS @retTable Table
     (
 	    [MarkType] [char](2) NOT NULL,
@@ -133,12 +133,12 @@ GO
 
 
 
-IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[GetZTCodeList]') AND type in (N'FN', N'IF', N'TF', N'FS', N'FT'))
-DROP FUNCTION [dbo].[GetZTCodeList]
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'dbo.GetZTCodeList') AND type in (N'FN', N'IF', N'TF', N'FS', N'FT'))
+DROP FUNCTION dbo.GetZTCodeList
 GO
 
 -- *************** 功能描述: 返回某日涨停板列表 ***************
-CREATE FUNCTION [dbo].[GetZTCodeList](@TradeDay SMALLDATETIME = '1900/01/01', @RangeList [CodeParmTable] READONLY)
+CREATE FUNCTION dbo.GetZTCodeList(@TradeDay SMALLDATETIME = '1900/01/01', @RangeList [CodeParmTable] READONLY)
 RETURNS @retTable Table
     (
 	    [MarkType] [char](2) NOT NULL,
@@ -190,12 +190,12 @@ SELECT * FROM dbo.GetZTCodeList('2017/09/21', @RangeList)
 
 
 
-IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[GetYZZTCodeList]') AND type in (N'FN', N'IF', N'TF', N'FS', N'FT'))
-DROP FUNCTION [dbo].[GetYZZTCodeList]
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'dbo.GetYZZTCodeList') AND type in (N'FN', N'IF', N'TF', N'FS', N'FT'))
+DROP FUNCTION dbo.GetYZZTCodeList
 GO
 
 -- *************** 功能描述: 返回某日一字涨停板列表 ***************
-CREATE FUNCTION [dbo].[GetYZZTCodeList](@TradeDay SMALLDATETIME = '1900/01/01', @RangeList [CodeParmTable] READONLY)
+CREATE FUNCTION dbo.GetYZZTCodeList(@TradeDay SMALLDATETIME = '1900/01/01', @RangeList [CodeParmTable] READONLY)
 RETURNS @retTable Table
     (
 	    [MarkType] [char](2) NOT NULL,
@@ -246,12 +246,12 @@ SELECT * FROM dbo.GetYZZTCodeList('2017/09/21', @ZTList)
 
 
 
-IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[GetNewNotBrokenCodeList]') AND type in (N'FN', N'IF', N'TF', N'FS', N'FT'))
-DROP FUNCTION [dbo].[GetNewNotBrokenCodeList]
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'dbo.GetNewNotBrokenCodeList') AND type in (N'FN', N'IF', N'TF', N'FS', N'FT'))
+DROP FUNCTION dbo.GetNewNotBrokenCodeList
 GO
 
 -- *************** 功能描述: 返回新股，未开板 列表 ***************
-CREATE FUNCTION [dbo].[GetNewNotBrokenCodeList](@TradeDay SMALLDATETIME = '1900/01/01', @RangeList [CodeParmTable] READONLY)
+CREATE FUNCTION dbo.GetNewNotBrokenCodeList(@TradeDay SMALLDATETIME = '1900/01/01', @RangeList [CodeParmTable] READONLY)
 RETURNS @retTable Table
     (
 	    [MarkType] [char](2) NOT NULL,
@@ -325,12 +325,12 @@ SELECT * FROM dbo.GetNewNotBrokenCodeList('2017/09/21', @RangeList)
 
 
 
-IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[GetTouchZTCodeList]') AND type in (N'FN', N'IF', N'TF', N'FS', N'FT'))
-DROP FUNCTION [dbo].[GetTouchZTCodeList]
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'dbo.GetTouchZTCodeList') AND type in (N'FN', N'IF', N'TF', N'FS', N'FT'))
+DROP FUNCTION dbo.GetTouchZTCodeList
 GO
 
 -- *************** 功能描述: 返回某日达到过涨停板列表 ***************
-CREATE FUNCTION [dbo].[GetTouchZTCodeList](@TradeDay SMALLDATETIME = '1900/01/01', @RangeList [CodeParmTable] READONLY)
+CREATE FUNCTION dbo.GetTouchZTCodeList(@TradeDay SMALLDATETIME = '1900/01/01', @RangeList [CodeParmTable] READONLY)
 RETURNS @retTable Table
     (
 	    [MarkType] [char](2) NOT NULL,
@@ -383,12 +383,12 @@ SELECT * FROM dbo.GetTouchZTCodeList('2017/09/21', @RangeList)
 
 
 
-IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[GetDTCodeList]') AND type in (N'FN', N'IF', N'TF', N'FS', N'FT'))
-DROP FUNCTION [dbo].[GetDTCodeList]
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'dbo.GetDTCodeList') AND type in (N'FN', N'IF', N'TF', N'FS', N'FT'))
+DROP FUNCTION dbo.GetDTCodeList
 GO
 
 -- *************** 功能描述: 返回某日跌停板列表 ***************
-CREATE FUNCTION [dbo].[GetDTCodeList](@TradeDay SMALLDATETIME = '1900/01/01', @RangeList [CodeParmTable] READONLY)
+CREATE FUNCTION dbo.GetDTCodeList(@TradeDay SMALLDATETIME = '1900/01/01', @RangeList [CodeParmTable] READONLY)
 RETURNS @retTable Table
     (
 	    [MarkType] [char](2) NOT NULL,
@@ -445,12 +445,12 @@ SELECT * FROM dbo.GetDTCodeList('2017/09/21', @RangeList)
 
 
 
-IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[GetTouchDTCodeList]') AND type in (N'FN', N'IF', N'TF', N'FS', N'FT'))
-DROP FUNCTION [dbo].[GetTouchDTCodeList]
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'dbo.GetTouchDTCodeList') AND type in (N'FN', N'IF', N'TF', N'FS', N'FT'))
+DROP FUNCTION dbo.GetTouchDTCodeList
 GO
 
 -- *************** 功能描述: 返回某日达到过跌停板列表 ***************
-CREATE FUNCTION [dbo].[GetTouchDTCodeList](@TradeDay SMALLDATETIME = '1900/01/01', @RangeList [CodeParmTable] READONLY)
+CREATE FUNCTION dbo.GetTouchDTCodeList(@TradeDay SMALLDATETIME = '1900/01/01', @RangeList [CodeParmTable] READONLY)
 RETURNS @retTable Table
     (
 	    [MarkType] [char](2) NOT NULL,
@@ -504,16 +504,16 @@ SELECT * FROM dbo.GetTouchDTCodeList('2017/09/21', @RangeList)
 
 
 
-IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[GetRatioContinueCount]') AND type in (N'FN', N'IF', N'TF', N'FS', N'FT'))
-DROP FUNCTION [dbo].[GetRatioContinueCount]
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'dbo.GetRatioContinueCount') AND type in (N'FN', N'IF', N'TF', N'FS', N'FT'))
+DROP FUNCTION dbo.GetRatioContinueCount
 GO
 
 -- *************** 功能描述: 返回某个涨跌幅持续天数 ***************
--- @StkType     是否日线是指数
+-- @StkType     0:指数，1:股票
 -- @Ratio       涨跌幅
 -- @Direction   0:小于，1:大于
 -- @Ratio       = 9.9 / -9.9 时默认为：涨停板/跌停板
-CREATE FUNCTION [dbo].[GetRatioContinueCount](@StkCode CHAR(6), @Ratio MONEY, @Direction INT, @TradeDay SMALLDATETIME = '1900/01/01', @StkType CHAR(1) = 1)
+CREATE FUNCTION dbo.GetRatioContinueCount(@StkCode CHAR(6), @Ratio MONEY, @Direction INT, @TradeDay SMALLDATETIME = '1900/01/01', @StkType CHAR(1) = 1)
 RETURNS INT
 AS 
 BEGIN
@@ -544,9 +544,9 @@ DECLARE @ret INT = 0
                     SELECT TOP 1 @preRecId = RecId, @prePrice = [Close]
                     FROM KLineDay 
                     WHERE StkCode = @StkCode AND RecId < @curRecId
-                        -- 极大提高查找到上市第一天后速度变慢的问题，5000 条记录肯定能跳出 1 天的范围。
+                        -- 极大提高查找到上市第一天后速度变慢的问题，50000 条记录肯定能跳出 10 天的范围。因为隔好几天才导入
                         -- 可能会碰到停牌前涨停，停牌后继续涨停的问题，这里暂时过滤掉了。反正导入 KLineDay 时都是覆盖导入的。
-                        AND RecId > @curRecId - 5000
+                        AND RecId > @curRecId - 50000
                     ORDER BY RecId DESC
                     
                     IF @preRecId IS NULL OR @prePrice IS NULL
@@ -592,7 +592,7 @@ DECLARE @ret INT = 0
                     SELECT TOP 1 @preRecId = RecId, @prePrice = [Close]
                     FROM KLineDayZS 
                     WHERE StkCode = @StkCode AND RecId < @curRecId
-                        AND RecId > @curRecId - 1000 -- 极大提高查找到上市第一天后速度变慢的问题
+                        AND RecId > @curRecId - 10000 -- 极大提高查找到上市第一天后速度变慢的问题
                     ORDER BY RecId DESC
                     
                     IF @preRecId IS NULL OR @prePrice IS NULL
@@ -636,12 +636,12 @@ GO
 
 
 
-IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'[dbo].[GetBKStockCodeInRange]') AND type in (N'FN', N'IF', N'TF', N'FS', N'FT'))
-DROP FUNCTION [dbo].[GetBKStockCodeInRange]
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'dbo.GetBKStockCodeInRange') AND type in (N'FN', N'IF', N'TF', N'FS', N'FT'))
+DROP FUNCTION dbo.GetBKStockCodeInRange
 GO
 
 -- *************** 功能描述: 返回指定范围内板块所包含的股票代码及名称 ***************
-CREATE FUNCTION [dbo].[GetBKStockCodeInRange](@BKType NVARCHAR(20), @BKName NVARCHAR(20), @RangeList [CodeParmTable] READONLY)
+CREATE FUNCTION dbo.GetBKStockCodeInRange(@BKType NVARCHAR(20), @BKName NVARCHAR(20), @RangeList [CodeParmTable] READONLY)
 RETURNS NVARCHAR(MAX)
 AS 
 BEGIN
@@ -657,33 +657,6 @@ BEGIN
         ) comb FOR XML PATH('')
     ),1,1,'')
 
-    /*
-    DECLARE @StkCode    CHAR(6)
-    DECLARE @StkName    NVARCHAR(20)
-    DECLARE @isFirst    INT = 1
-    
-    DECLARE cur1 CURSOR LOCAL FAST_FORWARD READ_ONLY FOR 
-        SELECT b.StkCode, b.StkName 
-        FROM StockBlock a JOIN StockHead b ON b.StkCode = a.StkCode AND b.StkType = 1
-        WHERE   a.BKType = @BKType AND a.BKName = @BKName
-            AND a.StkCode IN (SELECT StkCode FROM @RangeList)
-    OPEN cur1
-        WHILE 1 = 1
-            BEGIN
-                FETCH cur1 INTO @StkCode, @StkName
-                IF @@FETCH_STATUS <> 0
-                    BREAK
-
-                IF @isFirst = 0                
-                    SET @ret = @ret + ', ' -- + char(13) + char(10)
-                ELSE
-                    SET @isFirst = 0
-
-                SET @ret = @ret + @StkCode + '  ' + @StkName
-            END
-    CLOSE cur1
-    DEALLOCATE cur1
-    */
     
     RETURN @ret
 END
@@ -692,4 +665,68 @@ GO
 DECLARE @RangeList AS [CodeParmTable]
 INSERT INTO @RangeList SELECT * FROM cv_AStockCodeExcST
 SELECT dbo.GetBKStockCodeInRange(N'行业', N'小家电', @RangeList)
+*/
+
+
+
+
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'dbo.GetStockBlockFormat') AND type in (N'FN', N'IF', N'TF', N'FS', N'FT'))
+DROP FUNCTION dbo.GetStockBlockFormat
+GO
+
+-- *************** 功能描述: 返回个股所属板块的格式化字符串 ***************
+CREATE FUNCTION dbo.GetStockBlockFormat(@StkCode CHAR(6))
+RETURNS NVARCHAR(MAX)
+AS 
+BEGIN
+    DECLARE @ret        NVARCHAR(MAX) = ''
+
+    DECLARE @BKType     NVARCHAR(20)
+    DECLARE @BKName     NVARCHAR(20)
+    DECLARE @OrdNum     INT
+    DECLARE @isFirst    INT = 1
+
+    DECLARE cur1 CURSOR LOCAL FAST_FORWARD READ_ONLY FOR
+            SELECT BKType, BKName, OrdNum = ROW_NUMBER() OVER (PARTITION BY BKType ORDER BY BKType) 
+            FROM StockBlock
+            WHERE StkCode = @StkCode --'600050'
+            ORDER BY
+                    CASE BKType
+                        WHEN N'地区'     THEN '0'
+                        WHEN N'行业'     THEN '1'
+                        WHEN N'行业细分' THEN '2'
+                        WHEN N'概念'     THEN '3'
+                        WHEN N'风格'     THEN '4'
+                        WHEN N'指数'     THEN '5'
+                        ELSE BKType
+                    END
+    OPEN cur1
+        WHILE 1 = 1
+            BEGIN
+                FETCH cur1 INTO @BKType, @BKName, @OrdNum
+                IF @@FETCH_STATUS <> 0
+                    BREAK
+
+                IF @OrdNum = 1 AND @isFirst = 0
+                    SET @ret = @ret + ';' + CHAR(13) + CHAR(10)
+
+                IF @OrdNum = 1
+                    SET @ret = @ret + @BKType + ': ' + @BKName
+                ELSE
+                    SET @ret = @ret + ', ' + @BKName
+
+                IF @isFirst = 1
+                    SET @isFirst = 0
+            END
+    CLOSE cur1
+    DEALLOCATE cur1
+    
+    --SELECT @ret
+    RETURN @ret
+END
+GO
+/*
+SELECT dbo.GetStockBlockFormat('600050')
+PRINT dbo.GetStockBlockFormat('600050')
 */

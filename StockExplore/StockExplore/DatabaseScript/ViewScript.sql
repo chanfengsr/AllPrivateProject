@@ -3,8 +3,8 @@ GO
 SET QUOTED_IDENTIFIER OFF
 GO
 
-IF  EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'[dbo].[cv_AStockCode]'))
-DROP VIEW [dbo].[cv_AStockCode]
+IF  EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'dbo.cv_AStockCode'))
+DROP VIEW dbo.cv_AStockCode
 GO
 
 -- *************** 功能描述: 沪深 A股代码列表 ***************
@@ -23,8 +23,8 @@ GO
 
 
 
-IF  EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'[dbo].[cv_AStockCodeExcST]'))
-DROP VIEW [dbo].[cv_AStockCodeExcST]
+IF  EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'dbo.cv_AStockCodeExcST'))
+DROP VIEW dbo.cv_AStockCodeExcST
 GO
 
 -- *************** 功能描述: 沪深 A股代码列表，剔除 ST ***************
@@ -46,8 +46,8 @@ GO
 
 
 
-IF  EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'[dbo].[cv_NeighbourKLineDayRecId]'))
-DROP VIEW [dbo].[cv_NeighbourKLineDayRecId]
+IF  EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'dbo.cv_NeighbourKLineDayRecId'))
+DROP VIEW dbo.cv_NeighbourKLineDayRecId
 GO
 
 -- *************** 功能描述: KLineDay 相邻 RecId ***************
@@ -66,8 +66,8 @@ GO
 
 
 
-IF  EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'[dbo].[cv_NeighbourKLineDayZSRecId]'))
-DROP VIEW [dbo].[cv_NeighbourKLineDayZSRecId]
+IF  EXISTS (SELECT * FROM sys.views WHERE object_id = OBJECT_ID(N'dbo.cv_NeighbourKLineDayZSRecId'))
+DROP VIEW dbo.cv_NeighbourKLineDayZSRecId
 GO
 
 -- *************** 功能描述: KLineDayZS 相邻 RecId ***************

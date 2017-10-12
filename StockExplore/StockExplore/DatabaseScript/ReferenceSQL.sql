@@ -1,4 +1,4 @@
--- 统计当天收盘收在最低价，
+-- 统计当天收盘收在最低价
 WITH RelateRecord (MarkType, StkCode, TradeDay, [Open], [High], [Low], [Close], Volume, Amount, RecId, PrevRecId, NextRecId, Next2RecId) AS
 (
     SELECT MarkType,StkCode,TradeDay,[Open],[High],[Low],[Close],Volume,Amount,RecId,
