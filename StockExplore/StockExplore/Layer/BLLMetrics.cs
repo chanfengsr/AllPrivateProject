@@ -49,11 +49,11 @@ namespace StockExplore
 
         /// <summary> 一次计算指定日期的所有简单移动平均线值
         /// </summary>
-        /// <param name="origNumber">原金额（一般为收盘价）</param>
+        /// <param name="numberList">原金额（一般为收盘价）</param>
         /// <param name="avgNumber">平均日数</param>
         /// <param name="startDay">开始日期</param>
         /// <returns></returns>
-        public Dictionary<DateTime, decimal> CalcAllMA(Dictionary<DateTime, decimal> origNumber, int avgNumber, DateTime startDay = default( DateTime ))
+        public Dictionary<DateTime, decimal> CalcAllMA(Dictionary<DateTime, decimal> numberList, int avgNumber, DateTime startDay = default( DateTime ))
         {
             Dictionary<DateTime, decimal> ret = new Dictionary<DateTime, decimal>();
             Dictionary<int, decimal> calcResult = new Dictionary<int, decimal>();
@@ -63,10 +63,10 @@ namespace StockExplore
             bool havPrev = false;
             bool havStartDay = startDay != default( DateTime );
 
-            if (avgNumber > origNumber.Count)
+            if (avgNumber > numberList.Count)
                 return ret;
 
-            foreach (KeyValuePair<DateTime, decimal> dayPrice in origNumber)
+            foreach (KeyValuePair<DateTime, decimal> dayPrice in numberList)
             {
                 count++;
                 remarkDate.Add(count, dayPrice.Key);

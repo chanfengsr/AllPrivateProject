@@ -32,7 +32,7 @@ DROP FUNCTION dbo.GetStockRatio
 GO
 
 -- *************** 功能描述: 返回个股某日涨幅 ***************
-CREATE FUNCTION dbo.GetStockRatio(@StkCode CHAR(6), @TradeDay SMALLDATETIME = '1900/01/01', @StkType CHAR(1) = 1)
+CREATE FUNCTION dbo.GetStockRatio(@StkCode CHAR(6), @TradeDay SMALLDATETIME = '1900/01/01', @StkType CHAR(1) = '1')
 RETURNS MONEY
 AS 
 BEGIN
@@ -47,7 +47,7 @@ DECLARE @ret MONEY
         SET @TradeDay = (SELECT MAX(TradeDay) FROM KLineDayZS WHERE MarkType = 'sh' AND StkCode = '999999' OR StkCode = '000001')
 
     -- 是否日线是指数
-    IF @StkType = 1
+    IF @StkType = '1'
         /*
         SELECT @ret = (curP.[Close] - prepP.[Close]) / prepP.[Close] * 100 
         FROM KLineDay curP
@@ -513,7 +513,7 @@ GO
 -- @Ratio       涨跌幅
 -- @Direction   0:小于，1:大于
 -- @Ratio       = 9.9 / -9.9 时默认为：涨停板/跌停板
-CREATE FUNCTION dbo.GetRatioContinueCount(@StkCode CHAR(6), @Ratio MONEY, @Direction INT, @TradeDay SMALLDATETIME = '1900/01/01', @StkType CHAR(1) = 1)
+CREATE FUNCTION dbo.GetRatioContinueCount(@StkCode CHAR(6), @Ratio MONEY, @Direction INT, @TradeDay SMALLDATETIME = '1900/01/01', @StkType CHAR(1) = '1')
 RETURNS INT
 AS 
 BEGIN
@@ -530,7 +530,7 @@ DECLARE @ret INT = 0
     DECLARE @curRecId INT, @preRecId INT
     DECLARE @curPrice MONEY, @prePrice MONEY
     DECLARE @RatioCalc MONEY
-    IF @StkType = 1
+    IF @StkType = '1'
         BEGIN            
             SELECT TOP 1 @curRecId = RecId, @curPrice = [Close]
             FROM KLineDay
@@ -730,3 +730,44 @@ GO
 SELECT dbo.GetStockBlockFormat('600050')
 PRINT dbo.GetStockBlockFormat('600050')
 */
+
+
+
+
+
+
+
+IF  EXISTS (SELECT * FROM sys.objects WHERE object_id = OBJECT_ID(N'dbo.GetMAValueByData') AND type in (N'FN', N'IF', N'TF', N'FS', N'FT'))
+DROP FUNCTION dbo.GetMAValueByData
+GO
+
+-- *************** 功能描述: 返回简单移动平均线值 ***************
+-- @AvgNum  均线参数
+-- @MAType  O: 开盘价, H: 最高价, L: 最低价, C: 收盘价
+CREATE FUNCTION dbo.GetMAValueByData(@StkCode CHAR(6), @AvgNum INT, @TradeDay SMALLDATETIME = '1900/01/01', @MAType CHAR(1) = 'C', @StkType CHAR(1) = '1')
+RETURNS MONEY
+AS 
+BEGIN
+DECLARE @ret MONEY = 0
+
+    -- 去掉时间
+    IF DATEPART(hour, @TradeDay) + DATEPART(minute, @TradeDay) > 0
+        SET @TradeDay = CAST(@TradeDay AS DATE)
+
+    -- 没填日期则默认是最后一个交易日
+    IF (@TradeDay = '1900/01/01')
+        SET @TradeDay = (SELECT MAX(TradeDay) FROM KLineDayZS WHERE MarkType = 'sh' AND StkCode = '999999' OR StkCode = '000001')
+
+    IF @StkType = '1'
+    BEGIN
+        IF EXISTS(SELECT 1 FROM KLineDay WHERE StkCode = @StkCode AND TradeDay = @TradeDay) AND
+           (SELECT TOP @AvgNum 1 FROM KLineDay WHERE StkCode = @StkCode AND TradeDay <= @TradeDay) = @AvgNum 
+           PRINT 1
+    END
+
+
+    RETURN @ret
+END
+
+GO
+--SELECT dbo.GetMAValueByData('300654', 5, '2017/10/09', 'C', '1')
