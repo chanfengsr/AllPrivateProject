@@ -761,9 +761,70 @@ DECLARE @ret MONEY = 0
     IF @StkType = '1'
     BEGIN
         IF EXISTS(SELECT 1 FROM KLineDay WHERE StkCode = @StkCode AND TradeDay = @TradeDay) AND
-           (SELECT TOP @AvgNum 1 FROM KLineDay WHERE StkCode = @StkCode AND TradeDay <= @TradeDay) = @AvgNum 
-           PRINT 1
+           (SELECT COUNT(1) FROM KLineDay WHERE StkCode = @StkCode AND TradeDay <= @TradeDay) = @AvgNum 
+        BEGIN
+            IF @MAType = 'C'
+                SELECT @ret = SUM([Close]) / @AvgNum FROM
+                (
+                    SELECT [Close], rowNum = ROW_NUMBER() OVER (ORDER BY RecId DESC) FROM KLineDay 
+                    WHERE   StkCode = @StkCode AND TradeDay <= @TradeDay
+                ) C
+                WHERE C.rowNum <= @AvgNum
+            ELSE IF @MAType = 'O'
+                SELECT @ret = SUM([Open]) / @AvgNum FROM
+                (
+                    SELECT [Open], rowNum = ROW_NUMBER() OVER (ORDER BY RecId DESC) FROM KLineDay 
+                    WHERE   StkCode = @StkCode AND TradeDay <= @TradeDay
+                ) O
+                WHERE O.rowNum <= @AvgNum
+            ELSE IF @MAType = 'H'
+                SELECT @ret = SUM([High]) / @AvgNum FROM
+                (
+                    SELECT [High], rowNum = ROW_NUMBER() OVER (ORDER BY RecId DESC) FROM KLineDay 
+                    WHERE   StkCode = @StkCode AND TradeDay <= @TradeDay
+                ) H
+                WHERE H.rowNum <= @AvgNum
+            ELSE IF @MAType = 'L'
+                SELECT @ret = SUM([Low]) / @AvgNum FROM
+                (
+                    SELECT [Low], rowNum = ROW_NUMBER() OVER (ORDER BY RecId DESC) FROM KLineDay 
+                    WHERE   StkCode = @StkCode AND TradeDay <= @TradeDay
+                ) L
+                WHERE L.rowNum <= @AvgNum
+        END
     END
+        IF EXISTS(SELECT 1 FROM KLineDayZS WHERE StkCode = @StkCode AND TradeDay = @TradeDay) AND
+           (SELECT COUNT(1) FROM KLineDayZS WHERE StkCode = @StkCode AND TradeDay <= @TradeDay) = @AvgNum 
+        BEGIN
+            IF @MAType = 'C'
+                SELECT @ret = SUM([Close]) / @AvgNum FROM
+                (
+                    SELECT [Close], rowNum = ROW_NUMBER() OVER (ORDER BY RecId DESC) FROM KLineDayZS 
+                    WHERE   StkCode = @StkCode AND TradeDay <= @TradeDay
+                ) C
+                WHERE C.rowNum <= @AvgNum
+            ELSE IF @MAType = 'O'
+                SELECT @ret = SUM([Open]) / @AvgNum FROM
+                (
+                    SELECT [Open], rowNum = ROW_NUMBER() OVER (ORDER BY RecId DESC) FROM KLineDayZS 
+                    WHERE   StkCode = @StkCode AND TradeDay <= @TradeDay
+                ) O
+                WHERE O.rowNum <= @AvgNum
+            ELSE IF @MAType = 'H'
+                SELECT @ret = SUM([High]) / @AvgNum FROM
+                (
+                    SELECT [High], rowNum = ROW_NUMBER() OVER (ORDER BY RecId DESC) FROM KLineDayZS 
+                    WHERE   StkCode = @StkCode AND TradeDay <= @TradeDay
+                ) H
+                WHERE H.rowNum <= @AvgNum
+            ELSE IF @MAType = 'L'
+                SELECT @ret = SUM([Low]) / @AvgNum FROM
+                (
+                    SELECT [Low], rowNum = ROW_NUMBER() OVER (ORDER BY RecId DESC) FROM KLineDayZS 
+                    WHERE   StkCode = @StkCode AND TradeDay <= @TradeDay
+                ) L
+                WHERE L.rowNum <= @AvgNum
+        END
 
 
     RETURN @ret

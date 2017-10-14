@@ -44,7 +44,7 @@ namespace StockExplore
                 codeList =_dbo.GetZSCodeList(); 
             else
                 codeList = _dbo.GetStockACodeList();
-
+            
             foreach (FileInfo file in allFile)
             {
                 string[] nameSplit;
@@ -630,7 +630,7 @@ namespace StockExplore
                 foreach (FileInfo fileInfo in dir.GetFiles())
                     _allTDXDayLineFile.Add(fileInfo.Name.Substring(0, 8), fileInfo.FullName);
             }
-
+            
             return _allTDXDayLineFile;
         }
 

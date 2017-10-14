@@ -245,7 +245,7 @@ GO
         /// <returns></returns>
         public List<string> GetZSCodeList()
         {
-            const string strSql = "SELECT StkCode FROM StockHead WHERE StkType = 1";
+            const string strSql = "SELECT StkCode FROM StockHead WHERE StkType = 0";
 
             if (_stockZSCodeList == null || _stockZSCodeList.Count == 0)
             {
