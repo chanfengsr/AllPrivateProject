@@ -161,45 +161,37 @@ OPEN cur1
         END
 CLOSE cur1
 DEALLOCATE cur1
-GO
 
 DBCC SHRINKDATABASE(N'tempdb' )
-GO
 
-DECLARE @name AS SYSNAME
-SET @name = DB_NAME()
-PRINT @name
-DBCC SHRINKDATABASE(@name)
-GO
+DECLARE @name2 AS SYSNAME
+SET @name2 = DB_NAME()
+DBCC SHRINKDATABASE(@name2)
              */
             #endregion 原始SQL语句
 
             const string strSql = "DECLARE @name AS SYSNAME" + "\r\n"
-                                  + "DECLARE @ttSql AS NVARCHAR(100)" + "\r\n"
-                                  + "DECLARE cur1 CURSOR LOCAL FAST_FORWARD READ_ONLY FOR SELECT [name] FROM sys.objects WHERE [type] in (N'U')" + "\r\n"
-                                  + "OPEN cur1" + "\r\n"
-                                  + "    WHILE 1 = 1" + "\r\n"
-                                  + "        BEGIN" + "\r\n"
-                                  + "            FETCH cur1 INTO @name" + "\r\n"
-                                  + "            IF @@FETCH_STATUS <> 0" + "\r\n"
-                                  + "                BREAK" + "\r\n"
-                                  + "" + "\r\n"
-                                  + "            SET @ttSql = 'TRUNCATE TABLE ' + @name" + "\r\n"
-                                  + "            --PRINT @ttSql" + "\r\n"
-                                  + "            exec sp_executesql @ttSql" + "\r\n"
-                                  + "        END" + "\r\n"
-                                  + "CLOSE cur1" + "\r\n"
-                                  + "DEALLOCATE cur1" + "\r\n"
-                                  + "GO" + "\r\n"
-                                  + "" + "\r\n"
-                                  + "DBCC SHRINKDATABASE(N'tempdb' )" + "\r\n"
-                                  + "GO" + "\r\n"
-                                  + "" + "\r\n"
-                                  + "DECLARE @name AS SYSNAME" + "\r\n"
-                                  + "SET @name = DB_NAME()" + "\r\n"
-                                  + "PRINT @name" + "\r\n"
-                                  + "DBCC SHRINKDATABASE(@name)" + "\r\n"
-                                  + "GO";
+              + "DECLARE @ttSql AS NVARCHAR(100)" + "\r\n"
+              + "DECLARE cur1 CURSOR LOCAL FAST_FORWARD READ_ONLY FOR SELECT [name] FROM sys.objects WHERE [type] in (N'U')" + "\r\n"
+              + "OPEN cur1" + "\r\n"
+              + "    WHILE 1 = 1" + "\r\n"
+              + "        BEGIN" + "\r\n"
+              + "            FETCH cur1 INTO @name" + "\r\n"
+              + "            IF @@FETCH_STATUS <> 0" + "\r\n"
+              + "                BREAK" + "\r\n"
+              + "" + "\r\n"
+              + "            SET @ttSql = 'TRUNCATE TABLE ' + @name" + "\r\n"
+              + "            --PRINT @ttSql" + "\r\n"
+              + "            exec sp_executesql @ttSql" + "\r\n"
+              + "        END" + "\r\n"
+              + "CLOSE cur1" + "\r\n"
+              + "DEALLOCATE cur1" + "\r\n"
+              + "" + "\r\n"
+              + "DBCC SHRINKDATABASE(N'tempdb' )" + "\r\n"
+              + "" + "\r\n"
+              + "DECLARE @name2 AS SYSNAME" + "\r\n"
+              + "SET @name2 = DB_NAME()" + "\r\n"
+              + "DBCC SHRINKDATABASE(@name2)";
 
             #endregion SQL
 

@@ -49,4 +49,6 @@ SELECT * FROM StockHead  WHERE StkCode = '603999'
 SELECT * FROM KLineDayZS WHERE StkCode = '000001' ORDER BY RecId
 SELECT * FROM KLineDayZS WHERE StkCode = '999999' ORDER BY RecId
 
-SELECT COUNT(1) FROM KLineDay
+EXEC dbo.StatisticDayIncreaseBlock '2017/10/18'
+EXEC dbo.StatisticDayDecreaseBlock '2017/10/18'
+
