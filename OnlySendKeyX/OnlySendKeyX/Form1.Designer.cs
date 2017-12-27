@@ -35,6 +35,9 @@
             this.btnTest = new System.Windows.Forms.Button();
             this.txtHandle = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.timer2 = new System.Windows.Forms.Timer(this.components);
+            this.btnStartMouseKey = new System.Windows.Forms.Button();
+            this.btnStopMouseKey = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnStart
@@ -65,7 +68,7 @@
             // 
             // btnTest
             // 
-            this.btnTest.Location = new System.Drawing.Point(171, 116);
+            this.btnTest.Location = new System.Drawing.Point(175, 120);
             this.btnTest.Name = "btnTest";
             this.btnTest.Size = new System.Drawing.Size(75, 23);
             this.btnTest.TabIndex = 1;
@@ -90,15 +93,43 @@
             this.label1.TabIndex = 3;
             this.label1.Text = "Handle";
             // 
+            // timer2
+            // 
+            this.timer2.Interval = 5000;
+            this.timer2.Tick += new System.EventHandler(this.timer2_Tick);
+            // 
+            // btnStartMouseKey
+            // 
+            this.btnStartMouseKey.Location = new System.Drawing.Point(39, 91);
+            this.btnStartMouseKey.Name = "btnStartMouseKey";
+            this.btnStartMouseKey.Size = new System.Drawing.Size(75, 23);
+            this.btnStartMouseKey.TabIndex = 0;
+            this.btnStartMouseKey.Text = "开始双击";
+            this.btnStartMouseKey.UseVisualStyleBackColor = true;
+            this.btnStartMouseKey.Click += new System.EventHandler(this.btnStartMouseKey_Click);
+            // 
+            // btnStopMouseKey
+            // 
+            this.btnStopMouseKey.Enabled = false;
+            this.btnStopMouseKey.Location = new System.Drawing.Point(135, 91);
+            this.btnStopMouseKey.Name = "btnStopMouseKey";
+            this.btnStopMouseKey.Size = new System.Drawing.Size(75, 23);
+            this.btnStopMouseKey.TabIndex = 0;
+            this.btnStopMouseKey.Text = "结束双击";
+            this.btnStopMouseKey.UseVisualStyleBackColor = true;
+            this.btnStopMouseKey.Click += new System.EventHandler(this.btnStopMouseKey_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(248, 141);
+            this.ClientSize = new System.Drawing.Size(248, 132);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtHandle);
             this.Controls.Add(this.btnTest);
+            this.Controls.Add(this.btnStopMouseKey);
             this.Controls.Add(this.btnStop);
+            this.Controls.Add(this.btnStartMouseKey);
             this.Controls.Add(this.btnStart);
             this.Name = "Form1";
             this.Text = "Only Send Key X";
@@ -115,6 +146,9 @@
         private System.Windows.Forms.Button btnTest;
         private System.Windows.Forms.TextBox txtHandle;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Timer timer2;
+        private System.Windows.Forms.Button btnStartMouseKey;
+        private System.Windows.Forms.Button btnStopMouseKey;
     }
 }
 

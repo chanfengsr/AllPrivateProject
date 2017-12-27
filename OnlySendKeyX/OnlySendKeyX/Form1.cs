@@ -31,7 +31,26 @@ namespace OnlySendKeyX
         public const int WM_KEYDOWN = 256;
         public const int WM_KEYUP = 257;
 
-        private IntPtr _windowHandler=IntPtr.Zero;
+        private IntPtr _windowHandler = IntPtr.Zero;
+
+        [DllImport("user32")]
+        private static extern int mouse_event(int dwFlags, int dx, int dy, int cButtons, int dwExtraInfo);
+        //移动鼠标 
+        const int MOUSEEVENTF_MOVE = 0x0001;
+        //模拟鼠标左键按下 
+        const int MOUSEEVENTF_LEFTDOWN = 0x0002;
+        //模拟鼠标左键抬起 
+        const int MOUSEEVENTF_LEFTUP = 0x0004;
+        //模拟鼠标右键按下 
+        const int MOUSEEVENTF_RIGHTDOWN = 0x0008;
+        //模拟鼠标右键抬起 
+        const int MOUSEEVENTF_RIGHTUP = 0x0010;
+        //模拟鼠标中键按下 
+        const int MOUSEEVENTF_MIDDLEDOWN = 0x0020;
+        //模拟鼠标中键抬起 
+        const int MOUSEEVENTF_MIDDLEUP = 0x0040;
+        //标示是否采用绝对坐标 
+        const int MOUSEEVENTF_ABSOLUTE = 0x8000;
 
         //向窗体发送消息的函数 
         public void SendMsgToMainForm(int msg)
@@ -86,14 +105,26 @@ namespace OnlySendKeyX
 
         private void btnTest_Click(object sender, EventArgs e)
         {
-            IntPtr windowHandler = (IntPtr)FindWindow(null, "无标题 - 记事本");
-            int intPtr = int.Parse("00090B18", System.Globalization.NumberStyles.AllowHexSpecifier);
+        }
 
-            windowHandler = (IntPtr)0x00090B18;
-            //txtHandle.Focus();
-            //windowHandler = txtHandle.Handle;
-            PostMessage(windowHandler, WM_CHAR, Keys.A, 1);
-            PostMessage(windowHandler, WM_CHAR, Keys.A, 2);
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, 0, 0, 0, 0);
+            mouse_event(MOUSEEVENTF_LEFTDOWN | MOUSEEVENTF_LEFTUP, 0, 0, 0, 0);
+        }
+
+        private void btnStartMouseKey_Click(object sender, EventArgs e)
+        {
+            timer2.Enabled = true;
+            btnStartMouseKey.Enabled = false;
+            btnStopMouseKey.Enabled = true;
+        }
+
+        private void btnStopMouseKey_Click(object sender, EventArgs e)
+        {
+            timer2.Enabled = false;
+            btnStartMouseKey.Enabled = true;
+            btnStopMouseKey.Enabled = false;
         }
     }
 }
