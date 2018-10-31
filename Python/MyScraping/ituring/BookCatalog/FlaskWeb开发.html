@@ -1,0 +1,865 @@
+<html lang="zh-CN"><head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7, IE=9">
+	<title>图灵社区 : 图书  : Flask Web开发：基于Python的Web应用开发实战</title>
+
+<link href="/Content/2012/css/style?v=r8QFEljxS-D1kCzaxP2nCRNrkcTdshu8aKmJoL3w7lw1" rel="stylesheet">
+
+
+
+<!--[if IE 6]>
+<link href="/Content/2012/css/ie6.min.css" rel="stylesheet">
+<![endif]-->
+
+<script type="text/javascript" async="" src="http://www.google-analytics.com/ga.js"></script><script src="/js/frontend?v=mMEO5QkQhrDgiH8awQFIfABMzkqPTCoDKENUcUcCVp41"></script>
+
+
+
+<!--Le HTML5 shim, for IE6-8 support of HTML5 elements-->
+<!--[if lt IE 9]>
+<script src="/Content/2012/js/html5.js"></script>
+<![endif]-->
+<!--[if IE 6]>
+<script src="/Content/2012/js/ie6.min.js"></script>
+<![endif]-->
+<!--Le fav and touch icons-->
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/Content/2012/img/icon-touch-114.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/Content/2012/img/icon-touch-72.png">
+<link rel="apple-touch-icon-precomposed" href="/Content/2012/img/icon-touch-57.png">
+
+</head>
+<body><link href="http://v2.jiathis.com/code_mini/css/jiathis_counter.css" rel="stylesheet" type="text/css"><link href="http://v2.jiathis.com/code_mini/css/jiathis_share.css" rel="stylesheet" type="text/css"><iframe frameborder="0" style="position: absolute; display: none; opacity: 0;"></iframe><div class="jiathis_style" style="position: absolute; z-index: 1000000000; display: none; top: 50%; left: 50%; overflow: auto;"></div><div class="jiathis_style" style="position: absolute; z-index: 1000000000; display: none; overflow: auto;"></div><iframe frameborder="0" src="http://v2.jiathis.com/code_mini/jiathis_utility.html" style="display: none;"></iframe>
+	<div id="topnav"><div class="page">
+
+
+        <!--Donut#55432DB8D458861AC0D7E8830A679C8E907C8479CAF396CD4FA4A987A28BA0D865BE9A8EF6EE27E02A95799C18DF5C0A730D87FC01E4F48E56A2EB49EE165A2390302F8A481F9239800231753186343EB0AC8A513591699A521F68279E5BCAB2DB38064D4D66F7928D5A3804B1FBC7077B2AA957F9F28AA78CAB500434BDA35DE7CBDC8F249F49B0DF09CA3882FDECA50DC4E61999380E7056373E02F2FA3E5E0E603BBC8E4E317A84768F4E5B6B4B0103BB03A3E24BED6F8655895E243FC79796D4171CC5BA96F1046BC0366C0E6E41DBCFA02EC7820418665D8471A91088CF86490D29FDAF2C1FEDB47EC9533C9252E9E9E838EAE452E1D026570032F6D79C84EAAC3DFB2F774A325091EF4A8745F7B51D077B0D126D99CB107B4F6F51DC8B38A87047FB6247681B4E9E2681F6A107FB626F81233430F44C149096DF7F1DF19062942E77D87D0481FA3ECBC1D2CBBF658D5650F0F89CAA5609F12F8E82F13D5BCAB501C128081685FB414D31BC9644A0727C51BFDBC17FC1D34B1F57B99A1F61CB953B#-->	<ul id="check-new-response">
+
+
+</ul>
+	<ul id="usermenu">
+
+		<li>你好！
+<a class="uid" href="/users/194795">CFSR ( chanfengsr )</a>		</li>
+		<li><a href="/users/194795">我的空间</a></li>
+		<li><a href="/account/logoff">退出</a></li>
+	</ul>
+<!--EndDonut-->
+
+
+	</div></div>
+	<div class="page">
+		<div id="header">
+			<a href="/" id="title" title="图灵社区 首页">◁ 首页</a>
+			<div id="menucontainer">
+				<ul id="menu" class="book">
+
+					<form id="nav-search" class="form-search" action="/search" method="get" novalidate="novalidate">
+					  <input type="search" id="q" name="q">
+					  <input type="hidden" id="type" name="type">
+					  <input type="submit" id="search-btn" value="搜索">
+					</form>
+
+					<li><a class="ebooks" href="/book/ebook?sort=updated">电子书</a></li>
+					<li><a class="book" href="/book">图 书</a></li>
+					<li><a class="article" href="/article?sort=newest">文 章</a></li>
+					<li><a class="users" href="/users">会 员</a></li>
+					<li><a class="write" href="/users/mywriting">写 作</a></li>
+				</ul>
+			</div>
+		</div>
+		<div id="main" class="clearfix">
+
+
+
+<div class="row">
+    <div class="span2">
+        <div class="book-cover-col">
+            <div class="book-cover-box wide">
+                <a href="/bookcover/1449.327.big.jpg">
+                    <img src="/bookcover/1449.327.jpg" class="bookcover">
+                </a>
+                        <span class="ebook"></span>
+            </div>
+                <div class="book-sales">
+                        <b>¥ 29.99</b>
+
+                            <script type="text/javascript">
+                                function pushed(data) {
+                                    alert(data);
+                                }
+                                function ask() {
+
+                                         return confirm('如果您刚刚购买本书，系统已经自动推送到您的邮箱，如果10分钟还没有收到，请检查邮箱设置，再次推送。\n\n连续推送同一本书会造成邮箱拥堵。确认推送吗？\n');
+
+                                }
+                            </script>
+
+<a class="btn btn-success" data-ajax="true" data-ajax-begin="ask" data-ajax-success="pushed" href="/book/pushtokindle/1449">推送mobi</a>
+                </div>
+
+            <div class="book-sales">
+                    <b>¥ 59.00</b>
+                                    <div class="btn-group">
+                        <a data-toggle="dropdown" class="btn btn-warning dropdown-toggle">购买纸质书 <span class="caret"></span></a>
+                        <ul class="dropdown-menu span1">
+
+                                <li><a href="http://www.amazon.cn/gp/product/B00QT2TQCG/ref=as_li_ss_tl?ie=UTF8&amp;camp=536&amp;creative=3132&amp;creativeASIN=B00QT2TQCG&amp;linkCode=as2&amp;tag=ituring04-23" target="_blank">到亚马逊购买 ...</a></li>
+
+                                <li><a href="http://product.dangdang.com/23617273.html#ddclick?act=click&amp;pos=23617273_0_1_q&amp;cat=&amp;key=Flask+Web%BF%AA%B7%A2%A3%BA%BB%F9%D3%DAPython%B5%C4Web%D3%A6%D3%C3%BF%AA%B7%A2%CA%B5%D5%BD&amp;qinfo=2_1_60&amp;pinfo=&amp;minfo=&amp;ninfo=&amp;custid=&amp;permid=20140918081907913145220937762531041&amp;ref=http%3A%2F%2Fsearch.dangdang.com%2F%3Fkey%3D%25D6%25A4%25C3%25F7%25B4%25EF%25B6%25FB%25CE%25C4%25A3%25BA%25BD%25F8%25BB%25AF%25BA%25CD%25C9%25FA%25CE%25EF%25B4%25B4%25D4%25EC%25D0%25D4%25B5%25C4%25D2%25BB%25B8%25F6%25CA%25FD%25D1%25A7%25C0%25ED%25C2%25DB&amp;rcount=&amp;type=&amp;t=1418954116000&amp;ver=A" target="_blank">到当当购买 ...</a></li>
+
+                                <li><a href="http://union.click.jd.com/jdc?e=&amp;p=AiIBZRprFDJWWA1FBCVbV0IUEEULW1dCFBBFC1pXUwkEAEAdQFkJBVsVBhoCVBJYCltXWwgrJUV6alUeGR5wZ3BCHlwPbEJQT11aHRkOIgZlH1oXBBY3ZXopJQ%3D%3D&amp;t=W1dCFBBFC1tXQhQQRQtaV1MJBABAHUBZCQVbFQYaAlQSWApbV1sI" target="_blank">到京东购买 ...</a></li>
+
+                                <li><a href="http://www.china-pub.com/log/cpsclick.aspx?id=27&amp;url=http://product.china-pub.com/3770763" target="_blank">到互动购买 ...</a></li>
+
+
+                        </ul>
+                    </div>
+                            </div>
+            <div id="votediv" class="votecell">
+                    <div class="vote">
+
+        <a data-ajax="true" data-ajax-begin="$('#vote-1449').html('取消推荐')" data-ajax-mode="replace" data-ajax-update="#votediv" href="/book/vote/1449" id="vote-1449">推荐</a>
+
+        <strong>44</strong>
+
+        <a data-ajax="true" data-ajax-begin="$('#fav-1449').html('取消收藏')" data-ajax-mode="replace" data-ajax-update="#votediv" href="/book/fav/1449" id="fav-1449">收藏</a>
+
+
+    </div>
+
+            </div>
+            <p> </p>
+            <!-- begin message -->
+
+
+            <!-- end message -->
+
+        </div>
+    </div>
+    <div class="span8">
+        <div class="book-header">
+                <small><a href="/book/collected/3">图灵程序设计丛书</a></small>
+            <h1>Flask Web开发：基于Python的Web应用开发实战</h1><small>
+                ~
+                    <strong>
+                                <span>Miguel Grinberg</span>
+                    </strong>
+                        (作者) 　
+                    <strong>
+                                <a class="show-user-card" userid="102377" href="/users/102377">安道</a>
+                    </strong>
+                        (译者)
+
+            </small>
+            <!-- JiaThis Button BEGIN -->
+            <div id="ckepop">
+                <span class="jiathis_txt"></span><a class="jiathis_button_tsina" title="分享到微博"><span class="jiathis_txt jtico jtico_tsina"></span></a><a class="jiathis_button_douban" title="分享到豆瓣"><span class="jiathis_txt jtico jtico_douban"></span></a><a class="jiathis_button_tqq" title="分享到腾讯微博"><span class="jiathis_txt jtico jtico_tqq"></span></a><a class="jiathis_button_linkedin" title="分享到领英"><span class="jiathis_txt jtico jtico_linkedin"></span></a><a href="http://www.jiathis.com/share?uid=891559" target="_blank" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis"></a><a class="jiathis_counter_style"><span class="jiathis_button_expanded jiathis_counter jiathis_bubble_style" id="jiathis_counter_26" title="累计分享14次">14</span></a>
+            </div>
+            <!-- JiaThis Button END -->
+        </div>
+        <div class="tabbable">
+            <ul class="nav nav-tabs tabs-primary" id="booktabs" bookid="1449">
+                    <li class="active"><a href="#ebook" data-toggle="tab">阅读内容</a></li>
+                    <li><a href="#info" data-toggle="tab">图书信息</a></li>
+                                    <li><a href="#errata" data-toggle="tab">勘误</a></li>
+                <li><a href="#comment" data-toggle="tab">评论</a></li>
+
+                    <li><a href="#articles" data-toggle="tab">延伸阅读 </a></li>
+
+                    <li><a href="#downloads" data-toggle="tab">随书下载</a></li>
+            </ul>
+            <div class="tab-content">
+
+
+
+
+                    <div id="ebook" class="tab-pane active" style="position: relative;">
+
+                                                    <table class="table table-striped">
+
+
+                                    <tbody><tr>
+                                        <td>
+                                                <a href="/tupubarticle/3903">
+                                                    版权声明
+                                                </a>
+
+                                        </td>
+                                        <td>
+                                                <a href="/tupubarticle/3903"><span class="code">阅读</span></a>
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                                <a href="/tupubarticle/3904">
+                                                    O'Reilly Media, Inc.介绍
+                                                </a>
+
+                                        </td>
+                                        <td>
+                                                <a href="/tupubarticle/3904"><span class="code">阅读</span></a>
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                                <a href="/tupubarticle/1673">
+                                                    前言
+                                                </a>
+
+                                        </td>
+                                        <td>
+                                                <a href="/tupubarticle/1673"><span class="code">阅读</span></a>
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                                <a href="/tupubarticle/1952">
+                                                    第一部分　Flask简介
+                                                </a>
+
+                                        </td>
+                                        <td>
+                                                <a href="/tupubarticle/1952"><span class="code">阅读</span></a>
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                                <a href="/tupubarticle/1953">
+                                                    第 1 章　安装
+                                                </a>
+
+                                        </td>
+                                        <td>
+                                                <a href="/tupubarticle/1953"><span class="code">阅读</span></a>
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                                <a href="/tupubarticle/1954">
+                                                    第 2 章　程序的基本结构
+                                                </a>
+
+                                        </td>
+                                        <td>
+                                                <a href="/tupubarticle/1954"><span class="code">阅读</span></a>
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                                <a href="/tupubarticle/1955">
+                                                    第 3 章　模板
+                                                </a>
+
+                                        </td>
+                                        <td>
+                                                <a href="/tupubarticle/1955"><span class="code code-success">已购买</span></a>
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                                <a href="/tupubarticle/1956">
+                                                    第 4 章　Web表单
+                                                </a>
+
+                                        </td>
+                                        <td>
+                                                <a href="/tupubarticle/1956"><span class="code code-success">已购买</span></a>
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                                <a href="/tupubarticle/1957">
+                                                    第 5 章　数据库
+                                                </a>
+
+                                        </td>
+                                        <td>
+                                                <a href="/tupubarticle/1957"><span class="code code-success">已购买</span></a>
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                                <a href="/tupubarticle/1958">
+                                                    第 6 章　电子邮件
+                                                </a>
+
+                                        </td>
+                                        <td>
+                                                <a href="/tupubarticle/1958"><span class="code code-success">已购买</span></a>
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                                <a href="/tupubarticle/1959">
+                                                    第 7 章　大型程序的结构
+                                                </a>
+
+                                        </td>
+                                        <td>
+                                                <a href="/tupubarticle/1959"><span class="code code-success">已购买</span></a>
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                                <a href="/tupubarticle/1961">
+                                                    第二部分　实例：社会化博客程序
+                                                </a>
+
+                                        </td>
+                                        <td>
+                                                <a href="/tupubarticle/1961"><span class="code code-success">已购买</span></a>
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                                <a href="/tupubarticle/1960">
+                                                    第 8 章　用户认证
+                                                </a>
+
+                                        </td>
+                                        <td>
+                                                <a href="/tupubarticle/1960"><span class="code code-success">已购买</span></a>
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                                <a href="/tupubarticle/1962">
+                                                    第 9 章　用户角色
+                                                </a>
+
+                                        </td>
+                                        <td>
+                                                <a href="/tupubarticle/1962"><span class="code code-success">已购买</span></a>
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                                <a href="/tupubarticle/1963">
+                                                    第 10 章　用户资料
+                                                </a>
+
+                                        </td>
+                                        <td>
+                                                <a href="/tupubarticle/1963"><span class="code code-success">已购买</span></a>
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                                <a href="/tupubarticle/1964">
+                                                    第 11 章　博客文章
+                                                </a>
+
+                                        </td>
+                                        <td>
+                                                <a href="/tupubarticle/1964"><span class="code code-success">已购买</span></a>
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                                <a href="/tupubarticle/1965">
+                                                    第 12 章　关注者
+                                                </a>
+
+                                        </td>
+                                        <td>
+                                                <a href="/tupubarticle/1965"><span class="code code-success">已购买</span></a>
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                                <a href="/tupubarticle/1966">
+                                                    第 13 章　用户评论
+                                                </a>
+
+                                        </td>
+                                        <td>
+                                                <a href="/tupubarticle/1966"><span class="code code-success">已购买</span></a>
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                                <a href="/tupubarticle/1967">
+                                                    第 14 章　应用编程接口
+                                                </a>
+
+                                        </td>
+                                        <td>
+                                                <a href="/tupubarticle/1967"><span class="code code-success">已购买</span></a>
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                                <a href="/tupubarticle/1968">
+                                                    第三部分　成功在望
+                                                </a>
+
+                                        </td>
+                                        <td>
+                                                <a href="/tupubarticle/1968"><span class="code code-success">已购买</span></a>
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                                <a href="/tupubarticle/1969">
+                                                    第 15 章　测试
+                                                </a>
+
+                                        </td>
+                                        <td>
+                                                <a href="/tupubarticle/1969"><span class="code code-success">已购买</span></a>
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                                <a href="/tupubarticle/1970">
+                                                    第 16 章　性能
+                                                </a>
+
+                                        </td>
+                                        <td>
+                                                <a href="/tupubarticle/1970"><span class="code code-success">已购买</span></a>
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                                <a href="/tupubarticle/1971">
+                                                    第 17 章　部署
+                                                </a>
+
+                                        </td>
+                                        <td>
+                                                <a href="/tupubarticle/1971"><span class="code code-success">已购买</span></a>
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                                <a href="/tupubarticle/1972">
+                                                    第 18 章　其他资源
+                                                </a>
+
+                                        </td>
+                                        <td>
+                                                <a href="/tupubarticle/1972"><span class="code code-success">已购买</span></a>
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                                <a href="/tupubarticle/1974">
+                                                    关于封面图
+                                                </a>
+
+                                        </td>
+                                        <td>
+                                                <a href="/tupubarticle/1974"><span class="code code-success">已购买</span></a>
+                                        </td>
+
+                                    </tr>
+
+                            </tbody></table>
+
+
+
+
+
+
+                    </div>
+
+                <div id="info" class="tab-pane">
+                    <table class="table table-condensed table-striped">
+
+                            <tbody><tr>
+                                <th>系列书名</th>
+                                <td>
+                                    图灵程序设计丛书
+                                </td>
+                            </tr>
+                        <tr>
+                            <th>书　　号</th>
+                            <td>978-7-115-37399-1</td>
+                        </tr>
+                        <tr>
+                            <th>出版日期</th>
+                            <td>2014-12</td>
+                        </tr>
+                        <tr>
+                            <th>页　　数</th>
+                            <td>224</td>
+                        </tr>
+                            <tr>
+                                <th>定　　价</th>
+                                <td>
+                                    59.00 元
+                                </td>
+                            </tr>
+                                                                            <tr>
+                                <th>印刷方式</th>
+                                <td>
+                                    黑白
+                                </td>
+                            </tr>
+                        <tr>
+                            <th>类　　别</th>
+                            <td>
+<a class="post-tag" href="/book/tagged/11" tagid="11">python</a><a class="post-tag" href="/book/tagged/436" tagid="436">web开发</a><a class="post-tag" href="/book/tagged/31650" tagid="31650">Flask</a>                            </td>
+                        </tr>
+
+
+                    </tbody></table>
+                    <div class="abstract">
+                        <p>
+作者集25年软件开发经验，展示自己使用Flask开发Web程序的工作流程
+<br>从安装与环境设置讲起，一步一步搭建服务器端Web应用
+<br>一个程序贯穿始终，从寥寥几行代码逐章扩展，最终打造成功能完善的社交博客Flasky
+<br>直接给出必知知识，为初学者提供进一步探索的起点
+<br>全流程讲解Web应用开发，让中高级读者掌握最佳实践                        </p>
+                        <p>
+本书共分三部分，全面介绍如何基于Python微框架Flask进行Web开发。第一部分是Flask简介，介绍使用Flask框架及扩展开发Web程序的必备基础知识。第二部分则给出一个实例，真正带领大家一步步开发完整的博客和社交应用Flasky，从而将前述知识融会贯通，付诸实践。第三部分介绍了发布应用之前必须考虑的事项，如单元测试策略、性能分析技术、Flask程序的部署方式等。
+<br>
+<br>本书适合熟悉Python编程，有意通过Flask全面掌控Web开发的程序员学习参考。                        </p>
+
+                        <p>
+&lt;作译者介绍&gt;
+<br>Miguel Grinberg（作者）拥有25年开发经验的高级软件工程师，目前为广播公司开发视频软件。他常在个人博客（blog.miguelgrinberg.com）上撰写各类博文，内容主要涉及Web开发、机器人技术、摄影，偶尔也会有一些影评。他和妻子、四个孩子、两只狗和一只猫共同生活在俄勒冈州波特兰市。Twitter：@miguelgrinberg。
+<br>
+<br>安道（译者）人子人夫人父，机械工程师，翻译爱好者，偶尔写代码。                        </p>
+                    </div>
+                        <table class="table table-condensed table-striped">
+                            <tbody><tr>
+                                <th class="span2">原书书名</th>
+                                <td>
+                                        <a href="http://www.amazon.com/Flask-Web-Development-Developing-Applications/dp/1449372627/" target="_blank"> Flask Web Development: Developing Web Applications with Python </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="span2">原书书号</th>
+                                <td>978-1449372620</td>
+                            </tr>
+                            <tr>
+                                <th class="span2">原书国家</th>
+                                <td>美国</td>
+                            </tr>
+                            <tr>
+                                <th class="span2">原书出版社</th>
+                                <td>O'Reilly</td>
+                            </tr>
+                            <tr>
+                                <th class="span2">原书页数</th>
+                                <td>258</td>
+                            </tr>
+                        </tbody></table>
+                </div>
+                <div id="toc" class="tab-pane">
+                </div>
+                <div id="preface" class="tab-pane">
+                </div>
+                <div id="events" class="tab-pane">
+                </div>
+                    <div id="errata" class="tab-pane">
+
+                    </div>
+                <div id="comment" class="tab-pane">
+                </div>
+                <div id="articles" class="tab-pane">
+                </div>
+                <div id="salesdata" class="tab-pane">
+                </div>
+                <div id="downloads" class="tab-pane">
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <div class="span2">
+        <div class="module">
+            <form action="/Book" method="post" _lpchecked="1" class="form-search" novalidate="novalidate">
+                <div class="input-append"><input class="span1" name="keyword" type="text"><input class="btn" type="submit" value="搜索"></div>
+            </form>
+        </div>
+            <div class="module clearfix">
+                <h4>推荐会员</h4>
+                    <a href="/users/180937">
+                        <img class="side-avatar show-user-card" userid="180937" src="/Users/GetAvatar/180937?size=Small" width="32" height="32">
+                    </a>
+                    <a href="/users/102377">
+                        <img class="side-avatar show-user-card" userid="102377" src="/Users/GetAvatar/102377?size=Small" width="32" height="32">
+                    </a>
+                    <a href="/users/221319">
+                        <img class="side-avatar show-user-card" userid="221319" src="/Users/GetAvatar/221319?size=Small" width="32" height="32">
+                    </a>
+                    <a href="/users/182415">
+                        <img class="side-avatar show-user-card" userid="182415" src="/Users/GetAvatar/182415?size=Small" width="32" height="32">
+                    </a>
+                    <a href="/users/94330">
+                        <img class="side-avatar show-user-card" userid="94330" src="/Users/GetAvatar/94330?size=Small" width="32" height="32">
+                    </a>
+                    <a href="/users/98115">
+                        <img class="side-avatar show-user-card" userid="98115" src="/Users/GetAvatar/98115?size=Small" width="32" height="32">
+                    </a>
+                    <a href="/users/86176">
+                        <img class="side-avatar show-user-card" userid="86176" src="/Users/GetAvatar/86176?size=Small" width="32" height="32">
+                    </a>
+                    <a href="/users/99800">
+                        <img class="side-avatar show-user-card" userid="99800" src="/Users/GetAvatar/99800?size=Small" width="32" height="32">
+                    </a>
+                    <a href="/users/190340">
+                        <img class="side-avatar show-user-card" userid="190340" src="/Users/GetAvatar/190340?size=Small" width="32" height="32">
+                    </a>
+                    <a href="/users/196409">
+                        <img class="side-avatar show-user-card" userid="196409" src="/Users/GetAvatar/196409?size=Small" width="32" height="32">
+                    </a>
+                    <a href="/users/180834">
+                        <img class="side-avatar show-user-card" userid="180834" src="/Users/GetAvatar/180834?size=Small" width="32" height="32">
+                    </a>
+                    <a href="/users/102721">
+                        <img class="side-avatar show-user-card" userid="102721" src="/Users/GetAvatar/102721?size=Small" width="32" height="32">
+                    </a>
+                    <a href="/users/82554">
+                        <img class="side-avatar show-user-card" userid="82554" src="/Users/GetAvatar/82554?size=Small" width="32" height="32">
+                    </a>
+                    <a href="/users/71939">
+                        <img class="side-avatar show-user-card" userid="71939" src="/Users/GetAvatar/71939?size=Small" width="32" height="32">
+                    </a>
+                    <a href="/users/172429">
+                        <img class="side-avatar show-user-card" userid="172429" src="/Users/GetAvatar/172429?size=Small" width="32" height="32">
+                    </a>
+            </div>
+
+            <div class="module clearfix">
+                <h4>他们拥有这本书</h4>
+                    <a href="/users/162750">
+                        <img class="side-avatar show-user-card" userid="162750" src="/Users/GetAvatar/162750?size=Small" width="32" height="32">
+                    </a>
+                    <a href="/users/205029">
+                        <img class="side-avatar show-user-card" userid="205029" src="/Users/GetAvatar/205029?size=Small" width="32" height="32">
+                    </a>
+                    <a href="/users/97431">
+                        <img class="side-avatar show-user-card" userid="97431" src="/Users/GetAvatar/97431?size=Small" width="32" height="32">
+                    </a>
+                    <a href="/users/165492">
+                        <img class="side-avatar show-user-card" userid="165492" src="/Users/GetAvatar/165492?size=Small" width="32" height="32">
+                    </a>
+                    <a href="/users/162059">
+                        <img class="side-avatar show-user-card" userid="162059" src="/Users/GetAvatar/162059?size=Small" width="32" height="32">
+                    </a>
+                    <a href="/users/88320">
+                        <img class="side-avatar show-user-card" userid="88320" src="/Users/GetAvatar/88320?size=Small" width="32" height="32">
+                    </a>
+                    <a href="/users/203437">
+                        <img class="side-avatar show-user-card" userid="203437" src="/Users/GetAvatar/203437?size=Small" width="32" height="32">
+                    </a>
+                    <a href="/users/165855">
+                        <img class="side-avatar show-user-card" userid="165855" src="/Users/GetAvatar/165855?size=Small" width="32" height="32">
+                    </a>
+                    <a href="/users/187289">
+                        <img class="side-avatar show-user-card" userid="187289" src="/Users/GetAvatar/187289?size=Small" width="32" height="32">
+                    </a>
+                    <a href="/users/59771">
+                        <img class="side-avatar show-user-card" userid="59771" src="/Users/GetAvatar/59771?size=Small" width="32" height="32">
+                    </a>
+                    <a href="/users/170769">
+                        <img class="side-avatar show-user-card" userid="170769" src="/Users/GetAvatar/170769?size=Small" width="32" height="32">
+                    </a>
+                    <a href="/users/172798">
+                        <img class="side-avatar show-user-card" userid="172798" src="/Users/GetAvatar/172798?size=Small" width="32" height="32">
+                    </a>
+                    <a href="/users/88264">
+                        <img class="side-avatar show-user-card" userid="88264" src="/Users/GetAvatar/88264?size=Small" width="32" height="32">
+                    </a>
+                    <a href="/users/83804">
+                        <img class="side-avatar show-user-card" userid="83804" src="/Users/GetAvatar/83804?size=Small" width="32" height="32">
+                    </a>
+                    <a href="/users/207137">
+                        <img class="side-avatar show-user-card" userid="207137" src="/Users/GetAvatar/207137?size=Small" width="32" height="32">
+                    </a>
+            </div>
+
+        <div class="module">
+            <h4>本书标签</h4>
+                 <a class="post-tag" href="/book/tagged/11" tagid="11">python</a>
+                <span class="item-multiplier">×&nbsp;2952</span>
+                <br>
+                 <a class="post-tag" href="/book/tagged/436" tagid="436">web开发</a>
+                <span class="item-multiplier">×&nbsp;654</span>
+                <br>
+                 <a class="post-tag" href="/book/tagged/31650" tagid="31650">Flask</a>
+                <span class="item-multiplier">×&nbsp;7</span>
+                <br>
+        </div>
+        <div class="module">
+            <h4>相关标签</h4>
+                 <a class="post-tag" href="/book/tagged/2" tagid="2">web编程与设计</a>
+                <span class="item-multiplier">×&nbsp;3</span>
+                <br>
+        </div>
+
+
+    </div>
+</div>
+<div class="row">
+    <div class="span10 offset2">
+        <div class="page-header">
+            <h2>也许你喜欢</h2>
+        </div>
+        <div class="shelf-horizonal">
+            <ul>
+                    <li>
+                        <a href="/book/1715">
+                            <img class="bookcover" src="/bookcover/1715.161.jpg">
+                            精通Python设计模式
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/book/1861">
+                            <img class="bookcover" src="/bookcover/1861.308.jpg">
+                            Python编程：从入门到实践
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/book/1745">
+                            <img class="bookcover" src="/bookcover/1745.602.jpg">
+                            Python数据挖掘入门与实践
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/book/1863">
+                            <img class="bookcover" src="/bookcover/1863.335.jpg">
+                            编程小白的第一本 Python 入门书
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/book/1744">
+                            <img class="bookcover" src="/bookcover/1744.360.jpg">
+                            Python性能分析与优化
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/book/1695">
+                            <img class="bookcover" src="/bookcover/1695.78.jpg">
+                            CSS揭秘
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/book/1661">
+                            <img class="bookcover" src="/bookcover/1661.987.jpg">
+                            JavaScript网页动画设计
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/book/1560">
+                            <img class="bookcover" src="/bookcover/1560.63.jpg">
+                            Python语言及其应用
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/book/1486">
+                            <img class="bookcover" src="/bookcover/1486.258.jpg">
+                            Python Web开发：测试驱动方法
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/book/1636">
+                            <img class="bookcover" src="/bookcover/1636.656.jpg">
+                            JavaScript Web应用开发
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+      </div>
+<div class="push"></div>
+
+<script type="text/javascript">
+
+    function onSuccess(data) {
+        $("#CommentForm").after(data);
+        $("#CommentFormWrapper").prepend($("#CommentForm"));
+        $("#CommentForm #Content").val("");
+    }
+
+</script>
+
+		</div>
+
+
+	<div id="footer">
+	  <div class="container">
+		<ul id="footmenu">
+			<li class="first"><a href="/users/guaguacode">刮刮卡</a></li>
+			<li><a href="/article/13723">成为译者</a></li>
+			<li><a href="/article/36644">成为作者</a></li>
+			<li><a href="/article/58331">加入我们</a></li>
+			<li><a href="/article/7751">常见问题</a></li>
+			<li><a href="/article/17095">建议改进</a></li>
+			<li><a href="/article/36242">联系我们</a></li>
+		</ul>
+		<p>
+		  2005-2016 © 北京图灵文化发展有限公司 · All Rights Reserved
+		</p>
+		<p class="muted">
+		  京ICP备11039595号　京公网安备11010502011375
+		</p>
+
+	  </div>
+	</div>
+<div id="toTop" style="display: none;">
+<a href="#">▲</a>
+<a href="#footer">▼</a>
+</div>
+		<div id="popup"><div class="user-card" id="tagcard"></div><p class="corner"></p></div>
+
+
+
+<div class="modal fade hide" id="wModal">
+  <div class="modal-header">
+	<button type="button" class="close" data-dismiss="modal">×</button>
+	<h4>modalMsg</h4>
+  </div>
+  <form action="" data-ajax="true" data-ajax-failure="modalMsgError" data-ajax-success="modalMsgSuccess" data-ajax-begin="window.disableCalmer" id="formModalMsg" method="post" novalidate="novalidate">
+  <div class="modal-body">
+	<textarea cols="20" id="msgBody" name="Body" rows="2" style="width:97%;height:80px;"></textarea>
+	<input id="ReceiverUserName" name="ReceiverUserName" type="hidden" value="">
+	<span id="error-span" style="color:red"></span>
+	<span id="success-span" style="color:#080"></span>
+  </div>
+  <div class="modal-footer">
+	<input type="button" class="btn" data-dismiss="modal" value="取消">
+	<input type="submit" id="submitMsg" class="btn btn-message calmer" value=" 发 送 ">
+  </div>
+  </form>
+</div>
+
+
+		<script type="text/javascript">
+			$(function () {
+				$.post('/users/updatelastactivitydate');
+			});
+		</script>
+
+
+</body></html>

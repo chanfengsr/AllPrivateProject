@@ -1,0 +1,667 @@
+<html lang="zh-CN"><head><script src="//i.jiathis.com/url/shares.php?url=http%3A%2F%2Fwww.ituring.com.cn%2Farticle%2F72365" charset="utf-8"></script>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7, IE=9">
+	<title>图灵社区 : 图书 : 1.4 LINQ简介</title>
+
+<link href="/Content/2012/css/style?v=r8QFEljxS-D1kCzaxP2nCRNrkcTdshu8aKmJoL3w7lw1" rel="stylesheet">
+
+
+
+<!--[if IE 6]>
+<link href="/Content/2012/css/ie6.min.css" rel="stylesheet">
+<![endif]-->
+
+<script type="text/javascript" async="" src="http://www.google-analytics.com/ga.js"></script><script src="/js/frontend?v=mMEO5QkQhrDgiH8awQFIfABMzkqPTCoDKENUcUcCVp41"></script>
+
+
+
+<!--Le HTML5 shim, for IE6-8 support of HTML5 elements-->
+<!--[if lt IE 9]>
+<script src="/Content/2012/js/html5.js"></script>
+<![endif]-->
+<!--[if IE 6]>
+<script src="/Content/2012/js/ie6.min.js"></script>
+<![endif]-->
+<!--Le fav and touch icons-->
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/Content/2012/img/icon-touch-114.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/Content/2012/img/icon-touch-72.png">
+<link rel="apple-touch-icon-precomposed" href="/Content/2012/img/icon-touch-57.png">
+
+</head>
+<body><script type="text/javascript">$(function(){KISSY.use('wltaoMFD', function(a,b){var mfd = new b;mfd.init();});});</script><link href="http://v2.jiathis.com/code_mini/css/jiathis_counter.css" rel="stylesheet" type="text/css"><link href="http://v2.jiathis.com/code_mini/css/jiathis_share.css" rel="stylesheet" type="text/css"><iframe frameborder="0" style="position: absolute; display: none; opacity: 0;"></iframe><div class="jiathis_style" style="position: absolute; z-index: 1000000000; display: none; top: 50%; left: 50%; overflow: auto;"></div><div class="jiathis_style" style="position: absolute; z-index: 1000000000; display: none; overflow: auto;"></div><iframe frameborder="0" src="http://v2.jiathis.com/code_mini/jiathis_utility.html" style="display: none;"></iframe>
+	<div id="topnav"><div class="page">
+
+
+        <!--Donut#0B0DC3CCD94012E1B9E69C747E137DA78D982C58937EF6F320B72EF5E9C698AD664EA1167D55BA7EB2B8491B39EB1737943E8168825180A99BBF89A86D2B02DAD75E70828034CF9778D55BA2322AE733B9A66F107DF921429FD91055F297903FE4051B787021C4BA8F8054EFF171F9342CBB1927A12B76B240D45E38A10DD076C0E0DD625EA4F4F6DB77FD5E505056801368E256A0025292D17FE9C516578B62E318667C064B6E14C682F780322D5B0684731FAFF7343E018AC39F739F47313B09E9821CAEE965D8D178186517B74A2F285BE5BE7363F6FDF9BC88D11366095A973980570469370C235B9E014CED172DB9DB7799A91B72FAF73B4C4BCEF6388710DAF0F404E42C50A36292E1EA972F39BC9D42B56D19016669F0C6E32693D3D160B72FC0B6C693D76CDDC8FD0C5FF055D70C6C5045594A54929217801EFC545222A3AD20B6C8321680B2FB0AF07091B85DDE2323B53E4F8676CFE1B217F15A730943B8A487654BCE645A42BC3257AA57B45E02BC1D1AFD8BE8AA697737D8504B276496AC#-->	<ul id="check-new-response">
+
+
+</ul>
+	<ul id="usermenu">
+
+		<li>你好！
+<a class="uid" href="/users/194795">CFSR ( chanfengsr )</a>		</li>
+		<li><a href="/users/194795">我的空间</a></li>
+		<li><a href="/account/logoff">退出</a></li>
+	</ul>
+<!--EndDonut-->
+
+
+	</div></div>
+	<div class="page">
+		<div id="header">
+			<a href="/" id="title" title="图灵社区 首页">◁ 首页</a>
+			<div id="menucontainer">
+				<ul id="menu" class="book">
+
+					<form id="nav-search" class="form-search" action="/search" method="get" novalidate="novalidate">
+					  <input type="search" id="q" name="q">
+					  <input type="hidden" id="type" name="type">
+					  <input type="submit" id="search-btn" value="搜索">
+					</form>
+
+					<li><a class="ebooks" href="/book/ebook?sort=updated">电子书</a></li>
+					<li><a class="book" href="/book">图 书</a></li>
+					<li><a class="article" href="/article?sort=newest">文 章</a></li>
+					<li><a class="users" href="/users">会 员</a></li>
+					<li><a class="write" href="/users/mywriting">写 作</a></li>
+				</ul>
+			</div>
+		</div>
+		<div id="main" class="clearfix">
+
+
+
+
+<script type="text/javascript">
+
+    $(function () {
+        $("pre").addClass("prettyprint");
+        prettyPrint();
+    });
+
+    function onCloneSuccess(data) {
+        alert(data);
+    }
+
+    function onDonateSuccess(data) {
+        alert(data);
+
+        if (data.substring(0, 4) != "赠银失败") {
+            $("#donate_btn").remove();
+            $("#donate_info").show();
+        }
+
+    }
+</script>
+
+<div class="row">
+    <div class="span9">
+        <div id="question-header">
+            <div class="btn-group pull-right">
+                    <a href="/article/72364" class="btn"><i class="icon-arrow-left"></i></a>
+                                    <a href="/article/72367" class="btn"><i class="icon-arrow-right"></i></a>
+            </div>
+            <h1>
+                <a href="/article/72365">1.4 LINQ简介</a>
+            </h1>
+        </div>
+
+        <div class="row">
+            <div class="span1 votecell">
+                <div id="votediv" class="vote">
+
+<a data-ajax="true" data-ajax-begin="$('#vote-72365').html('取消推荐')" data-ajax-mode="replace" data-ajax-update="#votediv" href="/article/vote/72365" id="vote-72365">推荐</a>
+    <strong>0</strong>
+
+    <a data-ajax="true" data-ajax-begin="$('#fav-72365').html('取消收藏')" data-ajax-mode="replace" data-ajax-update="#votediv" href="/article/vote/72365?isFave=True" id="fav-72365">收藏</a>
+
+</div>
+
+
+
+
+
+
+
+            </div>
+            <div class="span8">
+                <div class="post-text">
+<p>LINQ（Language Integrated Query，语言集成查询），是C# 3的核心。顾名思义，LINQ是关于查询的，其目的是使用一致的语法和特性，以一种易阅读、可组合的方式，使对多数据源的查询变得简单。</p>
+
+<p>在很大程度上，C# 2更像是对C# 1的各种不足之处的修修补补，所以并没有一鸣惊人。而C# 3中几乎所有特性都是为了构建LINQ，并且其结果也十分特别。我见过其他语言中的一些特性，可以解决<strong>一些</strong>与LINQ相同领域的问题，但没有一个可以如此全面和灵活。</p>
+
+<h3>1.4.1 查询表达式和进程内查询</h3>
+
+<p>如果你以前见过LINQ，肯定会知道<strong>查询表达式</strong>可以以一种声明式风格对不同数据源创建查询。之所以前面的示例都没有使用查询表达式，是因为那些例子<strong>不</strong>使用查询表达式反而更简单。当然，这并不是说不能使用。例如，代码清单1-15与代码清单1-13是等价的。</p>
+
+<p><strong>代码清单1-15　使用查询表达式的前几步：筛选集合</strong></p>
+
+<pre class="prettyprint"><span class="typ">List</span><span class="pun">&lt;</span><span class="typ">Product</span><span class="pun">&gt;</span><span class="pln"> products </span><span class="pun">=</span><span class="pln"> </span><span class="typ">Product</span><span class="pun">.</span><span class="typ">GetSampleProducts</span><span class="pun">();</span><span class="pln">
+</span><span class="kwd">var</span><span class="pln"> filtered </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">from</span><span class="pln"> </span><span class="typ">Product</span><span class="pln"> p </span><span class="kwd">in</span><span class="pln"> products
+               </span><span class="kwd">where</span><span class="pln"> p</span><span class="pun">.</span><span class="typ">Price</span><span class="pln"> </span><span class="pun">&gt;</span><span class="pln"> </span><span class="lit">10</span><span class="pln">
+               </span><span class="kwd">select</span><span class="pln"> p</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">foreach</span><span class="pln"> </span><span class="pun">(</span><span class="typ">Product</span><span class="pln"> product </span><span class="kwd">in</span><span class="pln"> filtered</span><span class="pun">)</span><span class="pln">
+</span><span class="pun">{</span><span class="pln">
+    </span><span class="typ">Console</span><span class="pun">.</span><span class="typ">WriteLine</span><span class="pun">(</span><span class="pln">product</span><span class="pun">);</span><span class="pln">
+</span><span class="pun">}</span></pre>
+
+<p>我个人认为早先的代码清单（代码清单1-13）更易读——查询表达式唯一的好处就是<code>where</code>子句显得更简单。这里我还偷偷使用了另一个特性——<strong>隐式类型局部变量</strong>（implicitly typed local variable），它使用<code>var</code>上下文关键字声明。编译器可以根据该变量的初始值推断其类型。因此，<code>filtered</code>的类型为<code>IEnumerable&lt;Product&gt;</code>。本章后面的示例中将大量使用<code>var</code>。它对于写书来说也是十分重要的，可以节省代码清单的空间。</p>
+
+<p>那么，如果查询表达式不好，为什么每个人都对它（和LINQ）如此看重呢？第一个答案是，虽然查询表达式不是特别适合简单任务，但在一些较复杂的情况下，如果换成用方法调用来写（尤其是用C# 1或C# 2的方式），代码会变得难以阅读。在这些情况下，查询表达式就显得<strong>非常</strong>好用。为了稍微增大一点难度，引入另一个类型——<code>Supplier</code>（供货商）。</p>
+
+<p>每个供货商都有一个<code>Name(string)</code>和一个<code>SupplierID(int)</code>。我在<code>Product</code>类添加了<code>SupplierID</code>属性，并对示例数据进行了适当的改编。无可否认，为每个产品都提供一个供货商，这不是一种纯面向对象的方式——但它更接近于数据在数据库中的表示方式。目前，这样做更易于演示这个特性（查询表达式）。但到第12章时，你会看到LINQ也允许我们使用一个更自然的模型。</p>
+
+<p>现在来看一下代码（代码清单1-16）。它将示例产品与示例供货商连接起来（明显要基于供货商的ID来连接），并对产品使用和之前一样的价格筛选器，先按供货商名排序，再按产品名排序，最后打印每个匹配项的供货商名称和产品名称。这要放在以前版本的C#中，不知道需要输入多少代码，而且实现起来简直就是一场噩梦。相反，在LINQ中，要做到这些事情实在是太容易了。</p>
+
+<p><strong>代码清单1-16　连接（joining）、筛选（filtering）、排序（ordering）和投影（projecting）（C# 3）</strong></p>
+
+<pre class="prettyprint"><span class="typ">List</span><span class="pun">&lt;</span><span class="typ">Product</span><span class="pun">&gt;</span><span class="pln"> products </span><span class="pun">=</span><span class="pln"> </span><span class="typ">Product</span><span class="pun">.</span><span class="typ">GetSampleProducts</span><span class="pun">();</span><span class="pln">
+</span><span class="typ">List</span><span class="pun">&lt;</span><span class="typ">Supplier</span><span class="pun">&gt;</span><span class="pln"> suppliers </span><span class="pun">=</span><span class="pln"> </span><span class="typ">Supplier</span><span class="pun">.</span><span class="typ">GetSampleSuppliers</span><span class="pun">();</span><span class="pln">
+</span><span class="kwd">var</span><span class="pln"> filtered </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">from</span><span class="pln"> p </span><span class="kwd">in</span><span class="pln"> products
+               join s </span><span class="kwd">in</span><span class="pln"> suppliers
+                   on p</span><span class="pun">.</span><span class="typ">SupplierID</span><span class="pln"> equals s</span><span class="pun">.</span><span class="typ">SupplierID</span><span class="pln">
+               </span><span class="kwd">where</span><span class="pln"> p</span><span class="pun">.</span><span class="typ">Price</span><span class="pln"> </span><span class="pun">&gt;</span><span class="pln"> </span><span class="lit">10</span><span class="pln">
+               </span><span class="kwd">orderby</span><span class="pln"> s</span><span class="pun">.</span><span class="typ">Name</span><span class="pun">,</span><span class="pln"> p</span><span class="pun">.</span><span class="typ">Name</span><span class="pln">
+               </span><span class="kwd">select</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> </span><span class="typ">SupplierName</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> s</span><span class="pun">.</span><span class="typ">Name</span><span class="pun">,</span><span class="pln"> </span><span class="typ">ProductName</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> p</span><span class="pun">.</span><span class="typ">Name</span><span class="pln"> </span><span class="pun">};</span><span class="pln">
+</span><span class="kwd">foreach</span><span class="pln"> </span><span class="pun">(</span><span class="kwd">var</span><span class="pln"> v </span><span class="kwd">in</span><span class="pln"> filtered</span><span class="pun">)</span><span class="pln">
+</span><span class="pun">{</span><span class="pln">
+    </span><span class="typ">Console</span><span class="pun">.</span><span class="typ">WriteLine</span><span class="pun">(</span><span class="str">"Supplier={0}; Product={1}"</span><span class="pun">,</span><span class="pln">
+                      v</span><span class="pun">.</span><span class="typ">SupplierName</span><span class="pun">,</span><span class="pln"> v</span><span class="pun">.</span><span class="typ">ProductName</span><span class="pun">);</span><span class="pln">
+</span><span class="pun">}</span></pre>
+
+<p>明眼人一看便知，这跟SQL实在太像了。事实上，许多人初识LINQ时（但在仔细研究它之前），第一个反应就是抗拒，因为它似乎纯粹就是将SQL引入了语言，目的是为了加强与数据库交互的能力。幸好，LINQ只是借用了SQL的语法和一些思路。正如我们见到的那样，不需要数据库就能使用它，到现在为止，我所运行过的代码中，没有任何代码与数据库有关。事实上，可以从任意来源（如XML）获取数据。</p>
+
+<h3>1.4.2 查询XML</h3>
+
+<p>假定不是将供货商和产品硬编码进来，而是使用以下XML文件：</p>
+
+<pre class="prettyprint"><code><span class="pun">&lt;?</span><span class="pln">xml version</span><span class="pun">=</span><span class="str">"1.0"</span><span class="pun">?&gt;</span><span class="pln">
+</span><span class="tag">&lt;Data&gt;</span><span class="pln">
+    </span><span class="tag">&lt;Products&gt;</span><span class="pln">
+        </span><span class="tag">&lt;Product</span><span class="pln"> </span><span class="atn">Name</span><span class="pun">=</span><span class="atv">"West Side Story"</span><span class="pln"> </span><span class="atn">Price</span><span class="pun">=</span><span class="atv">"9.99"</span><span class="pln"> </span><span class="atn">SupplierID</span><span class="pun">=</span><span class="atv">"1"</span><span class="pln"> </span><span class="tag">/&gt;</span><span class="pln">
+        </span><span class="tag">&lt;Product</span><span class="pln"> </span><span class="atn">Name</span><span class="pun">=</span><span class="atv">"Assassins"</span><span class="pln"> </span><span class="atn">Price</span><span class="pun">=</span><span class="atv">"14.99"</span><span class="pln"> </span><span class="atn">SupplierID</span><span class="pun">=</span><span class="atv">"2"</span><span class="pln"> </span><span class="tag">/&gt;</span><span class="pln">
+        </span><span class="tag">&lt;Product</span><span class="pln"> </span><span class="atn">Name</span><span class="pun">=</span><span class="atv">"Frogs"</span><span class="pln"> </span><span class="atn">Price</span><span class="pun">=</span><span class="atv">"13.99"</span><span class="pln"> </span><span class="atn">SupplierID</span><span class="pun">=</span><span class="atv">"1"</span><span class="pln"> </span><span class="tag">/&gt;</span><span class="pln">
+        </span><span class="tag">&lt;Product</span><span class="pln"> </span><span class="atn">Name</span><span class="pun">=</span><span class="atv">"Sweeney Todd"</span><span class="pln"> </span><span class="atn">Price</span><span class="pun">=</span><span class="atv">"10.99"</span><span class="pln"> </span><span class="atn">SupplierID</span><span class="pun">=</span><span class="atv">"3"</span><span class="pln"> </span><span class="tag">/&gt;</span><span class="pln">
+    </span><span class="tag">&lt;/Products&gt;</span><span class="pln">
+
+    </span><span class="tag">&lt;Suppliers&gt;</span><span class="pln">
+        </span><span class="tag">&lt;Supplier</span><span class="pln"> </span><span class="atn">Name</span><span class="pun">=</span><span class="atv">"Solely Sondheim"</span><span class="pln"> </span><span class="atn">SupplierID</span><span class="pun">=</span><span class="atv">"1"</span><span class="pln"> </span><span class="tag">/&gt;</span><span class="pln">
+        </span><span class="tag">&lt;Supplier</span><span class="pln"> </span><span class="atn">Name</span><span class="pun">=</span><span class="atv">"CD-by-CD-by-Sondheim"</span><span class="pln"> </span><span class="atn">SupplierID</span><span class="pun">=</span><span class="atv">"2"</span><span class="pln"> </span><span class="tag">/&gt;</span><span class="pln">
+        </span><span class="tag">&lt;Supplier</span><span class="pln"> </span><span class="atn">Name</span><span class="pun">=</span><span class="atv">"Barbershop CDs"</span><span class="pln"> </span><span class="atn">SupplierID</span><span class="pun">=</span><span class="atv">"3"</span><span class="pln"> </span><span class="tag">/&gt;</span><span class="pln">
+    </span><span class="tag">&lt;/Suppliers&gt;</span><span class="pln">
+</span><span class="tag">&lt;/Data&gt;</span></code></pre>
+
+<p>虽然这个文件非常简单，但从中提取数据的最佳方式是什么？怎样查询它？怎样基于它来进行连接操作？肯定会比代码清单1-16难吧？代码清单1-17展示了在LINQ to XML中要做多少工作。</p>
+
+<p><strong>代码清单1-17　用LINQ to XML对XML文件进行“复杂”的处理（C# 3）</strong></p>
+
+<pre class="prettyprint"><span class="typ">XDocument</span><span class="pln"> doc </span><span class="pun">=</span><span class="pln"> </span><span class="typ">XDocument</span><span class="pun">.</span><span class="typ">Load</span><span class="pun">(</span><span class="str">"data.xml"</span><span class="pun">);</span><span class="pln">
+</span><span class="kwd">var</span><span class="pln"> filtered </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">from</span><span class="pln"> p </span><span class="kwd">in</span><span class="pln"> doc</span><span class="pun">.</span><span class="typ">Descendants</span><span class="pun">(</span><span class="str">"Product"</span><span class="pun">)</span><span class="pln">
+               join s </span><span class="kwd">in</span><span class="pln"> doc</span><span class="pun">.</span><span class="typ">Descendants</span><span class="pun">(</span><span class="str">"Supplier"</span><span class="pun">)</span><span class="pln">
+                 on </span><span class="pun">(</span><span class="kwd">int</span><span class="pun">)</span><span class="pln">p</span><span class="pun">.</span><span class="typ">Attribute</span><span class="pun">(</span><span class="str">"SupplierID"</span><span class="pun">)</span><span class="pln">
+                 equals </span><span class="pun">(</span><span class="kwd">int</span><span class="pun">)</span><span class="pln">s</span><span class="pun">.</span><span class="typ">Attribute</span><span class="pun">(</span><span class="str">"SupplierID"</span><span class="pun">)</span><span class="pln">
+               </span><span class="kwd">where</span><span class="pln"> </span><span class="pun">(</span><span class="kwd">decimal</span><span class="pun">)</span><span class="pln">p</span><span class="pun">.</span><span class="typ">Attribute</span><span class="pun">(</span><span class="str">"Price"</span><span class="pun">)</span><span class="pln"> </span><span class="pun">&gt;</span><span class="pln"> </span><span class="lit">10</span><span class="pln">
+               </span><span class="kwd">orderby</span><span class="pln"> </span><span class="pun">(</span><span class="kwd">string</span><span class="pun">)</span><span class="pln">s</span><span class="pun">.</span><span class="typ">Attribute</span><span class="pun">(</span><span class="str">"Name"</span><span class="pun">),</span><span class="pln">
+                   </span><span class="pun">(</span><span class="kwd">string</span><span class="pun">)</span><span class="pln">p</span><span class="pun">.</span><span class="typ">Attribute</span><span class="pun">(</span><span class="str">"Name"</span><span class="pun">)</span><span class="pln">
+               </span><span class="kwd">select</span><span class="pln"> </span><span class="kwd">new</span><span class="pln">
+               </span><span class="pun">{</span><span class="pln">
+                   </span><span class="typ">SupplierName</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="pun">(</span><span class="kwd">string</span><span class="pun">)</span><span class="pln">s</span><span class="pun">.</span><span class="typ">Attribute</span><span class="pun">(</span><span class="str">"Name"</span><span class="pun">),</span><span class="pln">
+                   </span><span class="typ">ProductName</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="pun">(</span><span class="kwd">string</span><span class="pun">)</span><span class="pln">p</span><span class="pun">.</span><span class="typ">Attribute</span><span class="pun">(</span><span class="str">"Name"</span><span class="pun">)</span><span class="pln">
+               </span><span class="pun">};</span><span class="pln">
+</span><span class="kwd">foreach</span><span class="pln"> </span><span class="pun">(</span><span class="kwd">var</span><span class="pln"> v </span><span class="kwd">in</span><span class="pln"> filtered</span><span class="pun">)</span><span class="pln">
+</span><span class="pun">{</span><span class="pln">
+    </span><span class="typ">Console</span><span class="pun">.</span><span class="typ">WriteLine</span><span class="pun">(</span><span class="str">"Supplier={0}; Product={1}"</span><span class="pun">,</span><span class="pln">
+                       v</span><span class="pun">.</span><span class="typ">SupplierName</span><span class="pun">,</span><span class="pln"> v</span><span class="pun">.</span><span class="typ">ProductName</span><span class="pun">);</span><span class="pln">
+</span><span class="pun">}</span></pre>
+
+<p>我得承认，现在的代码不像前面那么直观了，因为需要告诉系统如何理解数据（什么属性应该作为什么类型使用）。但是，两者的差别并不太大。尤其是在两个代码清单的每个部分之间，存在着明显的联系。假如不是因为行长的限制需要断行，在两个查询之间，应该是逐行对应的。</p>
+
+<p>印象深刻吗？还没有完全信服吗？我们将数据放到一个它更有可能存在的地方——数据库中。</p>
+
+<h3>1.4.3 LINQ to SQL</h3>
+
+<p>此时要做一些工作（大多数都是自动进行的）让LINQ to SQL知道什么数据表里该有什么内容，但整个过程还是相当直观的。如代码清单1-18所示，我们将直接跳到查询代码。如果你想看<code>LinqDemoDataContext</code>的细节，在可下载的源代码中能找到。</p>
+
+<p><strong>代码清单1-18　对SQL数据库应用查询表达式（C# 3）</strong></p>
+
+<pre class="prettyprint"><span class="kwd">using</span><span class="pln"> </span><span class="pun">(</span><span class="typ">LinqDemoDataContext</span><span class="pln"> db </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">LinqDemoDataContext</span><span class="pun">())</span><span class="pln">
+</span><span class="pun">{</span><span class="pln">
+</span><span class="kwd">var</span><span class="pln"> filtered </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">from</span><span class="pln"> p </span><span class="kwd">in</span><span class="pln"> db</span><span class="pun">.</span><span class="typ">Products</span><span class="pln">
+               join s </span><span class="kwd">in</span><span class="pln"> db</span><span class="pun">.</span><span class="typ">Suppliers</span><span class="pln">
+                 on p</span><span class="pun">.</span><span class="typ">SupplierID</span><span class="pln"> equals s</span><span class="pun">.</span><span class="typ">SupplierID</span><span class="pln">
+               </span><span class="kwd">where</span><span class="pln"> p</span><span class="pun">.</span><span class="typ">Price</span><span class="pln"> </span><span class="pun">&gt;</span><span class="pln"> </span><span class="lit">10</span><span class="pln">
+               </span><span class="kwd">orderby</span><span class="pln"> s</span><span class="pun">.</span><span class="typ">Name</span><span class="pun">,</span><span class="pln"> p</span><span class="pun">.</span><span class="typ">Name</span><span class="pln">
+               </span><span class="kwd">select</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="pun">{</span><span class="pln"> </span><span class="typ">SupplierName</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> s</span><span class="pun">.</span><span class="typ">Name</span><span class="pun">,</span><span class="pln"> </span><span class="typ">ProductName</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> p</span><span class="pun">.</span><span class="typ">Name</span><span class="pln"> </span><span class="pun">};</span><span class="pln">
+</span><span class="kwd">foreach</span><span class="pln"> </span><span class="pun">(</span><span class="kwd">var</span><span class="pln"> v </span><span class="kwd">in</span><span class="pln"> filtered</span><span class="pun">)</span><span class="pln">
+</span><span class="pun">{</span><span class="pln">
+    </span><span class="typ">Console</span><span class="pun">.</span><span class="typ">WriteLine</span><span class="pun">(</span><span class="str">"Supplier={0}; Product={1}"</span><span class="pun">,</span><span class="pln">
+                       v</span><span class="pun">.</span><span class="typ">SupplierName</span><span class="pun">,</span><span class="pln"> v</span><span class="pun">.</span><span class="typ">ProductName</span><span class="pun">);</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+</span><span class="pun">}</span></pre>
+
+<p>这些代码看起来就应该非常熟悉了。<code>join</code>那一行下面的所有内容都是直接从代码清单1-16中复制并粘贴过来的，没有进行任何改动。</p>
+
+<p>这显然使人印象深刻，但思路清晰的人马上会想到一个问题：为什么要将所有数据都从数据库里“拽”回来，再应用这些.NET查询和排序呢？为什么不直接让数据库来做这些事情呢？那不正是它擅长的事情吗？事实上，这正是LINQ to SQL所做的事情。代码清单1-18中的代码发出了一个数据库请求，它基本上被转换为SQL查询。虽然查询是用C#代码来<strong>表示</strong>的，但却是作为SQL来执行的。</p>
+
+<p>以后会知道，当模式（schema）和实体（entity）知道了供货商和产品之间的关系后，可以使用一种更面向关系（relation-oriented）的方式来进行连接。但结果是相同的。这里的例子只是展示了LINQ to Objects（对集合进行操作的“内存中的LINQ”）与LINQ to SQL是多么相似。</p>
+                </div>
+
+            <div class="btn-group pull-right">
+                    <a href="/article/72364" class="btn"><i class="icon-arrow-left"></i></a>
+                                    <a href="/article/72367" class="btn"><i class="icon-arrow-right"></i></a>
+            </div>
+                <div class="copyright-announce">
+                         本书版权属于出版社和作者所有。<br>除非另有声明，没有书面许可任何人不得转载或使用整体或任何部分的内容。
+                </div>
+                <div class="post-taglist">
+
+                         <a class="post-tag" href="/article/tagged/32" tagid="32">程序设计</a>
+                         <a class="post-tag" href="/article/tagged/35" tagid="35">c#</a>
+                                                            <!-- JiaThis Button BEGIN -->
+                        <div id="ckepop">
+
+
+
+                            <a class="jiathis_cwb" target="_blank" href="javascript:dopost()">分享长微博</a>
+                            <form style="display:inline" method="post" id="longweibo" target="_blank" action="/article/share/72365" novalidate="novalidate"></form>
+                            <script language="javascript">
+
+                                function dopost() {
+                                    $("#longweibo").submit();
+                                }
+
+                            </script>
+                            <span class="jiathis_txt"></span><a class="jiathis_button_tsina" title="分享到微博"><span class="jiathis_txt jtico jtico_tsina"></span></a><a class="jiathis_button_douban" title="分享到豆瓣"><span class="jiathis_txt jtico jtico_douban"></span></a><a class="jiathis_button_tqq" title="分享到腾讯微博"><span class="jiathis_txt jtico jtico_tqq"></span></a><a class="jiathis_button_linkedin" title="分享到领英"><span class="jiathis_txt jtico jtico_linkedin"></span></a><a href="http://www.jiathis.com/share?uid=891559" target="_blank" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis"></a><a class="jiathis_counter_style"><span class="jiathis_button_expanded jiathis_counter jiathis_bubble_style" id="jiathis_counter_25" title="累计分享0次">0</span></a>
+                        </div>
+                    <!-- JiaThis Button END -->
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="span9">
+                <div class="well">
+
+                    <div class="btn-admins pull-right">
+
+
+
+
+
+                    </div>
+                    <div class="user-info clearfix">
+                         <a href="/users/90969">
+                             <img class="avatar show-user-card" userid="90969" src="/Users/GetAvatar/90969?size=Middle">木木琦
+                         </a> <br>
+                         <span class="status-date">发表于 2014-03-14 14:09
+                         </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+            <a name="firstcomment"></a>
+            <div id="CommentList">
+
+    <div class="subheader">
+        <h1>
+            评论</h1>
+        <div id="tabs">
+            <a class="" data-ajax="true" data-ajax-mode="replace" data-ajax-update="#CommentList" href="/articlecomment/index/72365?sort=newest">时间</a>
+            <a class="youarehere" data-ajax="true" data-ajax-mode="replace" data-ajax-update="#CommentList" href="/articlecomment/index/72365?sort=vote">推荐</a>
+        </div>
+    </div>
+
+
+
+    <div class="row reply-item" id="comment-31338">
+    <div class="firstcomment">
+        <div class="span1 votecell">
+            <div id="votediv31338" class="vote">
+
+<a data-ajax="true" data-ajax-begin="$('#vote-31338').html('取消推荐')" data-ajax-mode="replace" data-ajax-update="#votediv31338" href="/ArticleComment/vote/31338" id="vote-31338">推荐</a>
+    <strong>0</strong>
+
+</div>
+
+
+
+        </div>
+        <div class="span8 postcell">
+            <div class="post-text">
+            代码清单 1-16 第二行遗漏代码
+<br>
+<br>List&lt;Supplier&gt; suppliers = Supplier.GetSampleSuppliers();
+<br>
+            </div>
+            <div class="user-info clearfix pull-right user-comment">
+                <img class="avatar show-user-card" userid="184957" src="/Users/GetAvatar/184957?size=Small" width="32" height="32"><a class="show-user-card" href="/users/184957" userid="184957">白色程序员</a><br>
+                <span class="status-date"> 2015-02-26 15:34 </span>
+            </div>
+
+            <div class="replies" id="replies-31338">
+            </div>
+            <div class="btn-replies">
+                <div id="reply-form-31338"></div>
+                <div>
+                <a class="add-reply mini-btn" href="#" target-id="31338" target-name="articlecommentId">添加回复</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    </div>
+    <hr>
+
+
+        <h3>我要评论</h3>
+
+    <div id="CommentForm">
+        <form action="/ArticleComment/Add/72365" data-ajax="true" data-ajax-begin="window.disableCalmer" data-ajax-failure="onFail" data-ajax-success="onCommSuccess" id="form0" method="post" novalidate="novalidate"><input name="__RequestVerificationToken" type="hidden" value="_k8oxC7RxzRzMoG8KxylPAV84T1qKSQpS6ynv-jH099Klf0zhjzk07DhD4AUW8Vp05O5AJeZ6PSM0GLwn7gG2npW-Lw1">                 <input data-val="true" data-val-number="The field ArticleId must be a number." data-val-required="ArticleId 字段是必需的。" id="ArticleId" name="ArticleId" type="hidden" value="72365">
+<textarea cols="20" data-val="true" data-val-required="请填写内容" id="Content" name="Content" rows="2"></textarea><div class="validation-summary-valid" data-valmsg-summary="true"><span>请按照提示修改后再提交：</span>
+<ul><li style="display:none"></li>
+</ul></div>                <input type="submit" value=" 提交 " class="btn btn-primary calmer">
+</form>        <script type="text/javascript">
+
+            function onCommSuccess(data) {
+                $("#CommentList").html(data);
+
+                ;
+                $('html,body').animate({
+                    scrollTop: $('#CommentList').offset().top + 'px'
+                }, 'fast');
+
+                $('.firstcomment')
+                    .css({ "background-color": "#eef" });
+            }
+
+            function onFail(jqXHR, textStatus, errorThrown) {
+                $("#CommentForm").html(jqXHR.responseText);
+            }
+
+        </script>
+
+    </div>
+
+
+
+<div id="reply-form" class="hide">
+
+<form action="/reply/add" data-ajax="true" data-ajax-begin="window.disableCalmer" data-ajax-failure="onReplyFailure" data-ajax-mode="after" data-ajax-success="onReplySuccess" data-ajax-update="#placeholder" id="form1" method="post" novalidate="novalidate"><input name="__RequestVerificationToken" type="hidden" value="tSKfsA_eu72QIgDstCfPT9qOawKGEjtYTwFaMMkqtLrn_FuvTZPLG2V8LMhohWDwyBUoGLrS-DaCW59HkRGbYC8ewtQ1">        <input id="cid" type="hidden" name="">
+        <textarea name="body" style="width: 95%">        </textarea>
+        <br>
+<input type="submit" value=" 提交 " class="btn btn-primary calmer"> <input type="button" id="cancel" value=" 取消 " class="btn"> <span id="reply-error" style="color: #c33"></span>
+</form>
+</div>
+
+<script type="text/javascript">
+
+    function onReplySuccess() {
+        $(".add-reply").parent().show();
+        $("#reply-form").hide();
+        window.enableCalmer();
+    }
+
+    function onReplyFailure(jqXHR) {
+        $("#reply-error").text(jqXHR.responseText);
+        window.enableCalmer();
+    }
+
+
+    $(function () {
+
+        $("#cancel").click(function () {
+            $("#reply-form").hide();
+            $(".add-reply").parent().show();
+        });
+
+        $(".add-reply").click(function () {
+            var replyForm = $("#reply-form");
+            replyForm.find("form").attr("data-ajax-update", "#replies-" + $(this).attr("target-id"))
+            replyForm.find("input#cid").attr("name", $(this).attr("target-name"));
+            replyForm.find("input#cid").val($(this).attr("target-id"));
+            replyForm.find("textarea").val("");
+
+            replyForm.show().appendTo($("#reply-form-" + $(this).attr("target-id")));
+            $("#reply-error").text("");
+
+            $(this).parent().hide();
+            return false;
+        });
+
+    });
+</script>
+
+            </div>
+
+    </div>
+    <div class="span3 side-right">
+
+
+        <div class="well minibook-toc" style="padding: 8px 0;">
+        <ul class="nav nav-list">
+            <li class="nav-header">
+                <a href="/minibook/1033">
+                    <i class="icon-book"></i>
+                    深入理解C#（第3版）
+                </a>
+            </li>
+            <li class="divider"></li>
+                    <li><b><a href="/article/72364">上一篇</a></b></li>
+                    <li class="divider"></li>
+
+                <li><a href="/article/72270">版权声明</a></li>
+                <li><a href="/article/66924">献词</a></li>
+                <li><a href="/article/65033">对本书第1版的赞誉</a></li>
+                <li><a href="/article/66267">对第2版的赞誉</a></li>
+                <li><a href="/article/65031">序</a></li>
+                <li><a href="/article/65005">前言</a></li>
+                <li><a href="/article/65006">致谢</a></li>
+                <li><a href="/article/65007">关于本书</a></li>
+                <li><a href="/article/65008">关于封面插图</a></li>
+                <li><a href="/article/65557">第一部分　基础知识</a></li>
+
+
+
+
+
+                        <li style="text-indent: 0em"><a href="/article/65009">第1章　C#开发的进化史</a></li>
+
+                        <li style="text-indent: 1em"><a href="/article/72362">1.1　从简单的数据类型开始</a></li>
+                        <li style="text-indent: 1em"><a href="/article/72363">1.2 排序和过滤</a></li>
+                        <li style="text-indent: 1em"><a href="/article/72364">1.3 处理未知数据 </a></li>
+            <li class="active" style="text-indent: 1em"><a>1.4 LINQ简介</a></li>
+
+
+                        <li style="text-indent: 1em"><a href="/article/72367">1.5 COM和动态类型</a></li>
+                        <li style="text-indent: 1em"><a href="/article/72368">1.6　轻松编写异步代码</a></li>
+                        <li style="text-indent: 1em"><a href="/article/72370">1.7　剖析.NET平台</a></li>
+                        <li style="text-indent: 1em"><a href="/article/72371">1.8　怎样写出超炫的代码</a></li>
+                        <li style="text-indent: 1em"><a href="/article/72372">1.9　小结</a></li>
+
+                                <li><a href="/article/65010">第2章　C# 1所搭建的核心基础</a></li>
+                    <li><a href="/article/65558">第二部分　C# 2 ：解决C# 1 的问题</a></li>
+                    <li><a href="/article/65011">第3章　用泛型实现参数化类型</a></li>
+                    <li><a href="/article/65012">第4章　可空类型</a></li>
+                    <li><a href="/article/65013">第5章　进入快速通道的委托</a></li>
+                    <li><a href="/article/65014">第6章　实现迭代器的捷径</a></li>
+                    <li><a href="/article/65015">第7章　结束C# 2的讲解： 最后的一些特性</a></li>
+                    <li><a href="/article/65559">第三部分　C# 3 ：革新写代码的方式</a></li>
+                    <li><a href="/article/65016">第8章　用智能的编译器来防错</a></li>
+                    <li><a href="/article/65017">第9章　Lambda表达式和表达式树</a></li>
+                    <li><a href="/article/65018">第10章　扩展方法</a></li>
+                    <li><a href="/article/65019">第11章　查询表达式和LINQ to Objects</a></li>
+                    <li><a href="/article/65020">第12章　超越集合的LINQ</a></li>
+                    <li><a href="/article/65560">第四部分　C# 4 ：良好的交互性</a></li>
+                    <li><a href="/article/65021">第13章　简化代码的微小修改</a></li>
+                    <li><a href="/article/65022">第14章　静态语言中的动态绑定</a></li>
+                    <li><a href="/article/65743">第五部分　C# 5：简化的异步编程 </a></li>
+                    <li><a href="/article/65777">第15章　使用async/await进行异步编程</a></li>
+                    <li><a href="/article/66196">第16章　C# 5附加特性和结束语</a></li>
+                    <li><a href="/article/65025">附录A　LINQ标准查询操作符</a></li>
+                    <li><a href="/article/65026">附录B　.NET中的泛型集合</a></li>
+                    <li><a href="/article/65027">附录C　版本总结</a></li>
+
+                    <li class="divider"></li>
+                    <li><b><a href="/article/72367">下一篇</a></b></li>
+        </ul>
+        </div>
+
+
+
+
+
+
+
+    <div id="related-tags" class="module">
+        <h4 id="h-related-tags">
+            本文标签</h4>
+
+             <a class="post-tag" href="/article/tagged/32" tagid="32">程序设计</a>
+            <span class="item-multiplier">×&nbsp;4290</span>
+            <br>
+             <a class="post-tag" href="/article/tagged/35" tagid="35">c#</a>
+            <span class="item-multiplier">×&nbsp;2168</span>
+            <br>
+
+    </div>
+
+
+
+
+
+    <div class="module">
+        <h4 id="h-related-tags">
+            推荐会员</h4>
+        <div style="clear:both"></div>
+    </div>
+
+    <div class="module">
+        <h4 id="h-related-tags">
+            相关标签</h4>
+
+
+             <a class="post-tag" href="/article/tagged/1" tagid="1">计算机</a>
+            <span class="item-multiplier">×&nbsp;434</span>
+            <br>
+             <a class="post-tag" href="/article/tagged/32" tagid="32">程序设计</a>
+            <span class="item-multiplier">×&nbsp;4290</span>
+            <br>
+             <a class="post-tag" href="/article/tagged/33" tagid="33">.net</a>
+            <span class="item-multiplier">×&nbsp;1756</span>
+            <br>
+             <a class="post-tag" href="/article/tagged/35" tagid="35">c#</a>
+            <span class="item-multiplier">×&nbsp;2168</span>
+            <br>
+             <a class="post-tag" href="/article/tagged/36" tagid="36">c++</a>
+            <span class="item-multiplier">×&nbsp;885</span>
+            <br>
+             <a class="post-tag" href="/article/tagged/37" tagid="37">c++-builder</a>
+            <span class="item-multiplier">×&nbsp;1</span>
+            <br>
+             <a class="post-tag" href="/article/tagged/38" tagid="38">delphi</a>
+            <span class="item-multiplier">×&nbsp;1</span>
+            <br>
+             <a class="post-tag" href="/article/tagged/39" tagid="39">java</a>
+            <span class="item-multiplier">×&nbsp;1173</span>
+            <br>
+             <a class="post-tag" href="/article/tagged/40" tagid="40">jbuilder</a>
+            <span class="item-multiplier">×&nbsp;0</span>
+            <br>
+             <a class="post-tag" href="/article/tagged/41" tagid="41">visual-basic</a>
+            <span class="item-multiplier">×&nbsp;1</span>
+            <br>
+             <a class="post-tag" href="/article/tagged/42" tagid="42">visual-basic-.net</a>
+            <span class="item-multiplier">×&nbsp;0</span>
+            <br>
+             <a class="post-tag" href="/article/tagged/43" tagid="43">visual-c++</a>
+            <span class="item-multiplier">×&nbsp;2</span>
+            <br>
+             <a class="post-tag" href="/article/tagged/44" tagid="44">mfc</a>
+            <span class="item-multiplier">×&nbsp;1</span>
+            <br>
+             <a class="post-tag" href="/article/tagged/45" tagid="45">程序设计理论</a>
+            <span class="item-multiplier">×&nbsp;3</span>
+            <br>
+             <a class="post-tag" href="/article/tagged/46" tagid="46">汇编语言</a>
+            <span class="item-multiplier">×&nbsp;3</span>
+            <br>
+             <a class="post-tag" href="/article/tagged/47" tagid="47">移动开发</a>
+            <span class="item-multiplier">×&nbsp;2683</span>
+            <br>
+             <a class="post-tag" href="/article/tagged/88" tagid="88">数据结构</a>
+            <span class="item-multiplier">×&nbsp;180</span>
+            <br>
+             <a class="post-tag" href="/article/tagged/198" tagid="198">ruby</a>
+            <span class="item-multiplier">×&nbsp;815</span>
+            <br>
+             <a class="post-tag" href="/article/tagged/2492" tagid="2492">c</a>
+            <span class="item-multiplier">×&nbsp;1085</span>
+            <br>
+
+    </div>
+
+
+
+    </div>
+</div>
+
+		</div>
+
+	</div>
+	<div id="footer">
+	  <div class="container">
+		<ul id="footmenu">
+			<li class="first"><a href="/users/guaguacode">刮刮卡</a></li>
+			<li><a href="/article/13723">成为译者</a></li>
+			<li><a href="/article/36644">成为作者</a></li>
+			<li><a href="/article/58331">加入我们</a></li>
+			<li><a href="/article/7751">常见问题</a></li>
+			<li><a href="/article/17095">建议改进</a></li>
+			<li><a href="/article/36242">联系我们</a></li>
+		</ul>
+		<p>
+		  2005-2016 © 北京图灵文化发展有限公司 · All Rights Reserved
+		</p>
+		<p class="muted">
+		  京ICP备11039595号　京公网安备11010502011375
+		</p>
+
+	  </div>
+	</div>
+<div id="toTop" style="display: block;">
+<a href="#">▲</a>
+<a href="#footer">▼</a>
+</div>
+		<div id="popup"><div class="user-card" id="tagcard"></div><p class="corner"></p></div>
+
+
+
+<div class="modal fade hide" id="wModal">
+  <div class="modal-header">
+	<button type="button" class="close" data-dismiss="modal">×</button>
+	<h4>modalMsg</h4>
+  </div>
+  <form action="" data-ajax="true" data-ajax-failure="modalMsgError" data-ajax-success="modalMsgSuccess" data-ajax-begin="window.disableCalmer" id="formModalMsg" method="post" novalidate="novalidate">
+  <div class="modal-body">
+	<textarea cols="20" id="msgBody" name="Body" rows="2" style="width:97%;height:80px;"></textarea>
+	<input id="ReceiverUserName" name="ReceiverUserName" type="hidden" value="">
+	<span id="error-span" style="color:red"></span>
+	<span id="success-span" style="color:#080"></span>
+  </div>
+  <div class="modal-footer">
+	<input type="button" class="btn" data-dismiss="modal" value="取消">
+	<input type="submit" id="submitMsg" class="btn btn-message calmer" value=" 发 送 ">
+  </div>
+  </form>
+</div>
+
+
+		<script type="text/javascript">
+			$(function () {
+				$.post('/users/updatelastactivitydate');
+			});
+		</script>
+
+
+</body></html>

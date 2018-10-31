@@ -1,0 +1,3 @@
+python trainFlasky.py db init
+python trainFlasky.py db migrate -m "initial migration"
+python trainFlasky.py db upgrade

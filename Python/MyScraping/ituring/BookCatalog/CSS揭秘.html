@@ -1,0 +1,785 @@
+
+
+
+
+
+ 
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7, IE=9" />
+	<title>图灵社区 : 图书  : CSS揭秘</title>
+
+<link href="/Content/2012/css/style?v=r8QFEljxS-D1kCzaxP2nCRNrkcTdshu8aKmJoL3w7lw1" rel="stylesheet"/>
+
+
+
+<!--[if IE 6]>
+<link href="/Content/2012/css/ie6.min.css" rel="stylesheet">
+<![endif]--> 
+
+<script src="/js/frontend?v=mMEO5QkQhrDgiH8awQFIfABMzkqPTCoDKENUcUcCVp41"></script>
+
+
+
+<!--Le HTML5 shim, for IE6-8 support of HTML5 elements-->
+<!--[if lt IE 9]>
+<script src="/Content/2012/js/html5.js"></script>
+<![endif]-->
+<!--[if IE 6]>
+<script src="/Content/2012/js/ie6.min.js"></script>
+<![endif]-->
+<!--Le fav and touch icons-->
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/Content/2012/img/icon-touch-114.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/Content/2012/img/icon-touch-72.png">
+<link rel="apple-touch-icon-precomposed" href="/Content/2012/img/icon-touch-57.png">
+
+</head>
+<body>
+	<div id="topnav"><div class="page">
+
+	
+        <!--Donut#DA7B4683F59116B1FC19FBBF4FE76D636EEE113576AEB4F37FF9229715EFB8D58EA7BA68B407EB6072C2091B9E22914E1E3E9BA18E4B4DBA15BD7C96DF4222B08F0783EB6001E27B261AC415E7A6AC585816394403A41F9ED196FEA4BCE1F13DBD86D29A837F73210C17D75B992BDC7F4FDA050C7AA07EBE4E2FE9E0CB3E70B4CB9EE54C0EB7ED28D5374C0E4CA04C8DC9027B816F7EDEBF9649072461D2EF7DFFC17BEBD9A2D479FC52DCC673BAC1331D282B11CC836EFA62B878D4AAA95FC2181DB57AF3D7FF2B7964B2072467E2051E4BBFA35A3799D4B657581D18CFBB2BF4029A3CAA26A84ED8038EFB3101A51A3480FA19399D7567DE3F2256DAB4AE44FB3DEBD9BB075C4DAB03CE0E65A4BBA50D16AAD687C08FFA56D446F862CD14D88BDD84053E8B0482C5278CAEAA20CB5377D12CE21FCCFD594199F81BAA711935606A2692F6157E68443BD079CB2239B09003B9A41A149BA7288A1DCA212DBF6D51C7AB537DE71FACE9074176B97D0E774EA2428D8C0314F5AFE135EFFB69D46C15AD969C#-->	<ul id="check-new-response"></ul>
+	<ul id="usermenu">
+		
+		<li>你好！
+<a class="uid" href="/users/194795">CFSR ( chanfengsr )</a>		</li>
+		<li><a href="/users/194795">我的空间</a></li>
+		<li><a href="/account/logoff">退出</a></li>
+	</ul>
+<!--EndDonut-->
+    
+
+	</div></div>
+	<div class="page">
+		<div id="header">
+			<a href="/" id="title" title="图灵社区 首页">◁ 首页</a>
+			<div id="menucontainer">
+				<ul id="menu" class="book" >
+					
+					<form id="nav-search" class="form-search" action="/search" method="get">
+					  <input type="search" id="q" name="q" />
+					  <input type="hidden" id="type" name="type" />
+					  <input type="submit" id="search-btn" value="搜索" />
+					</form>
+
+					<li><a class="ebooks" href="/book/ebook?sort=updated">电子书</a></li>
+					<li><a class="book" href="/book">图 书</a></li>
+					<li><a class="article" href="/article?sort=newest">文 章</a></li>
+					<li><a class="users" href="/users">会 员</a></li>
+					<li><a class="write" href="/users/mywriting">写 作</a></li>
+				</ul>
+			</div>
+		</div>
+		<div id="main" class="clearfix">
+			
+
+
+<div class="row">
+    <div class="span2">
+        <div class="book-cover-col">
+            <div class="book-cover-box wide">
+                <a href="/bookcover/1695.78.big.jpg">
+                    <img src="/bookcover/1695.78.jpg" class="bookcover">
+                </a>
+                        <span class="ebook"></span>
+            </div>
+                <div class="book-sales">
+                        <b>&yen; 49.99</b>
+                                            
+                            <script type="text/javascript">
+                                function pushed(data) {
+                                    alert(data);
+                                }
+                                function ask() {
+
+                                         return confirm('如果您刚刚购买本书，系统已经自动推送到您的邮箱，如果10分钟还没有收到，请检查邮箱设置，再次推送。\n\n连续推送同一本书会造成邮箱拥堵。确认推送吗？\n');
+
+                                }
+                            </script>
+                            
+<a class="btn btn-success" data-ajax="true" data-ajax-begin="ask" data-ajax-success="pushed" href="/book/pushtokindle/1695">推送mobi</a>                        
+                </div>
+
+            <div class="book-sales">
+                    <b>&yen; 99.00</b>
+                                    <div class="btn-group">
+                        <a data-toggle="dropdown" class="btn btn-warning dropdown-toggle">购买纸质书 <span class="caret"></span></a>
+                        <ul class="dropdown-menu span1">
+
+                                <li><a href="http://www.amazon.cn/gp/product/B01ET3FO86/ref=as_li_ss_tl?ie=UTF8&amp;camp=536&amp;creative=3132&amp;creativeASIN=B01ET3FO86&amp;linkCode=as2&amp;tag=ituring04-23" target="_blank">到亚马逊购买 ...</a></li>
+
+                                <li><a href="http://union.dangdang.com/transfer.php?from=P-296766&amp;ad_type=10&amp;sys_id=1&amp;backurl=http://product.dangdang.com/23953090.html" target="_blank">到当当购买 ...</a></li>
+
+                                <li><a href="http://click.union.jd.com/JdClick/?unionId=50375&amp;to=http://item.jd.com/11911279.html" target="_blank">到京东购买 ...</a></li>
+
+                                <li><a href="http://www.china-pub.com/log/cpsclick.aspx?id=27&amp;url=http://product.china-pub.com/4942111" target="_blank">到互动购买 ...</a></li>
+
+
+                        </ul>
+                    </div>
+                            </div>
+            <div id="votediv" class="votecell">
+                    <div class="vote">
+
+        <a data-ajax="true" data-ajax-begin="$(&#39;#vote-1695&#39;).html(&#39;取消推荐&#39;)" data-ajax-mode="replace" data-ajax-update="#votediv" href="/book/vote/1695" id="vote-1695">推荐</a>
+
+        <strong>49</strong>
+
+        <a data-ajax="true" data-ajax-begin="$(&#39;#fav-1695&#39;).html(&#39;取消收藏&#39;)" data-ajax-mode="replace" data-ajax-update="#votediv" href="/book/fav/1695" id="fav-1695">收藏</a>
+
+
+    </div>
+
+            </div>
+            <p> </p>
+            <!-- begin message -->
+
+
+            <!-- end message -->
+
+        </div>
+    </div>
+    <div class="span8">
+        <div class="book-header">
+                <small><a href="/book/collected/3">图灵程序设计丛书</a></small>
+            <h1>CSS揭秘</h1><small>
+                ~
+                    <strong>
+                                <span>Lea Verou</span>
+                    </strong>
+                        (作者) 　
+                    <strong>
+                                <a class="show-user-card" userid="167488" href="/users/167488">CSS魔法</a>
+                    </strong>
+                        (译者)
+
+            </small>
+            <!-- JiaThis Button BEGIN -->
+            <div id="ckepop">
+                <span class="jiathis_txt"></span><a class="jiathis_button_tsina"></a><a class="jiathis_button_douban"></a><a class="jiathis_button_tqq"></a><a class="jiathis_button_linkedin"></a><a href="http://www.jiathis.com/share?uid=891559" target="_blank" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis"></a><a class="jiathis_counter_style"></a>
+            </div>
+            <!-- JiaThis Button END -->
+        </div>
+        <div class="tabbable">
+            <ul class="nav nav-tabs tabs-primary" id="booktabs" bookid="1695">
+                    <li class="active"><a href="#ebook" data-toggle="tab">阅读内容</a></li>
+                    <li><a href="#info" data-toggle="tab">图书信息</a></li>
+                                    <li><a href="#errata" data-toggle="tab">勘误</a></li>
+                <li><a href="#comment" data-toggle="tab">评论</a></li>
+
+                    <li><a href="#articles" data-toggle="tab">延伸阅读 </a></li>
+                
+                    <li><a href="#downloads" data-toggle="tab">随书下载</a></li>
+            </ul>
+            <div class="tab-content">
+
+
+
+
+                    <div id="ebook" class="tab-pane active" style="position: relative;">
+
+                            <div class="alert">
+                                CSS一姐Lea Verou作品！近年来最重要的CSS技术书！全新解答网页设计经典难题！
+                            </div>
+                                                    <table class="table table-striped">
+
+
+                                    <tr>
+                                        <td>
+                                                <a href="/tupubarticle/9360">
+                                                    版权声明
+                                                </a>
+
+                                        </td>
+                                        <td>
+                                                <a href="/tupubarticle/9360"><span class="code">阅读</span></a>
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                                <a href="/tupubarticle/9385">
+                                                    献辞
+                                                </a>
+
+                                        </td>
+                                        <td>
+                                                <a href="/tupubarticle/9385"><span class="code">阅读</span></a>
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                                <a href="/tupubarticle/9386">
+                                                    本书赞誉
+                                                </a>
+
+                                        </td>
+                                        <td>
+                                                <a href="/tupubarticle/9386"><span class="code">阅读</span></a>
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                                <a href="/tupubarticle/9387">
+                                                    译者序
+                                                </a>
+
+                                        </td>
+                                        <td>
+                                                <a href="/tupubarticle/9387"><span class="code">阅读</span></a>
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                                <a href="/tupubarticle/9388">
+                                                    序
+                                                </a>
+
+                                        </td>
+                                        <td>
+                                                <a href="/tupubarticle/9388"><span class="code">阅读</span></a>
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                                <a href="/tupubarticle/9389">
+                                                    前言
+                                                </a>
+
+                                        </td>
+                                        <td>
+                                                <a href="/tupubarticle/9389"><span class="code">阅读</span></a>
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                                <a href="/tupubarticle/9390">
+                                                    致谢
+                                                </a>
+
+                                        </td>
+                                        <td>
+                                                <a href="/tupubarticle/9390"><span class="code">阅读</span></a>
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                                <a href="/tupubarticle/9391">
+                                                    本书是怎样炼成的
+                                                </a>
+
+                                        </td>
+                                        <td>
+                                                <a href="/tupubarticle/9391"><span class="code">阅读</span></a>
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                                <a href="/tupubarticle/9392">
+                                                    关于本书
+                                                </a>
+
+                                        </td>
+                                        <td>
+                                                <a href="/tupubarticle/9392"><span class="code">阅读</span></a>
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                                <a href="/tupubarticle/9393">
+                                                    第 1 章　引言
+                                                </a>
+
+                                        </td>
+                                        <td>
+                                                <a href="/tupubarticle/9393"><span class="code">阅读</span></a>
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                                <a href="/tupubarticle/9394">
+                                                    第 2 章　背景与边框
+                                                </a>
+
+                                        </td>
+                                        <td>
+                                                <a href="/tupubarticle/9394"><span class="code code-success">已购买</span></a>
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                                <a href="/tupubarticle/9395">
+                                                    第 3 章　形状
+                                                </a>
+
+                                        </td>
+                                        <td>
+                                                <a href="/tupubarticle/9395"><span class="code code-success">已购买</span></a>
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                                <a href="/tupubarticle/9396">
+                                                    第 4 章　视觉效果
+                                                </a>
+
+                                        </td>
+                                        <td>
+                                                <a href="/tupubarticle/9396"><span class="code code-success">已购买</span></a>
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                                <a href="/tupubarticle/9397">
+                                                    第 5 章　字体排印
+                                                </a>
+
+                                        </td>
+                                        <td>
+                                                <a href="/tupubarticle/9397"><span class="code code-success">已购买</span></a>
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                                <a href="/tupubarticle/9398">
+                                                    第 6 章　用户体验
+                                                </a>
+
+                                        </td>
+                                        <td>
+                                                <a href="/tupubarticle/9398"><span class="code code-success">已购买</span></a>
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                                <a href="/tupubarticle/9399">
+                                                    第 7 章　结构与布局
+                                                </a>
+
+                                        </td>
+                                        <td>
+                                                <a href="/tupubarticle/9399"><span class="code code-success">已购买</span></a>
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                                <a href="/tupubarticle/9400">
+                                                    第 8 章　过渡与动画
+                                                </a>
+
+                                        </td>
+                                        <td>
+                                                <a href="/tupubarticle/9400"><span class="code code-success">已购买</span></a>
+                                        </td>
+
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                                <a href="/tupubarticle/9401">
+                                                    按规范分类
+                                                </a>
+
+                                        </td>
+                                        <td>
+                                                <a href="/tupubarticle/9401"><span class="code code-success">已购买</span></a>
+                                        </td>
+
+                                    </tr>
+
+                            </table>
+
+
+                        
+
+
+
+                    </div>
+
+                <div id="info"   class="tab-pane"   >
+                    <table class="table table-condensed table-striped">
+
+                            <tr>
+                                <th>系列书名</th>
+                                <td>
+                                    图灵程序设计丛书
+                                </td>
+                            </tr>
+                        <tr>
+                            <th>书　　号</th>
+                            <td>978-7-115-41694-0</td>
+                        </tr>
+                        <tr>
+                            <th>出版日期</th>
+                            <td>2016-04</td>
+                        </tr>
+                        <tr>
+                            <th>页　　数</th>
+                            <td>260</td>
+                        </tr>
+                            <tr>
+                                <th>定　　价</th>
+                                <td>
+                                    99.00 元
+                                </td>
+                            </tr>
+                                                                            <tr>
+                                <th>印刷方式</th>
+                                <td>
+                                    彩色
+                                </td>
+                            </tr>
+                        <tr>
+                            <th>类　　别</th>
+                            <td>
+<a class="post-tag" href="/book/tagged/6" tagid="6">javascript</a><a class="post-tag" href="/book/tagged/238" tagid="238">html5</a><a class="post-tag" href="/book/tagged/270" tagid="270">css</a><a class="post-tag" href="/book/tagged/436" tagid="436">web开发</a>                            </td>
+                        </tr>
+
+                        
+                    </table>
+                    <div class="abstract">
+                        <p>
+“这本书是为新一代CSS所写的新一代CSS图书。在我所知的技术专家中，没人比Lea Verou更能领会新一代CSS的精髓。”——Jeffrey Zeldman，《网站重构》作者<br>“Lea Verou那渊博的学识是无法复制的，但她在这本书中倾囊相授，令我们都有机会一窥CSS的强大威力与神奇魔力。即使你认为自己对CSS已经了如指掌，我保证这本书仍然会让你大开眼界。”——Jeremy Keith，《JavaScript DOM编程艺术》作者<br>“如果你想深入探寻CSS的美妙之处、创意之处与智慧之处，那就别犹豫了——赶快翻开这本书吧。它让我爱不释手！”——Eric A. Meyer，《CSS权威指南》作者<br>“Lea是一位极其智慧的编码人。这本书蕴含了无穷的智慧与创意，即使你已是CSS高手，也仍将从中获益。更重要的是，这本书还将长久激发你的智慧，因为它已传授给你突破平庸的信念。”——Chris Coyier，CodePen创始人<br>“《CSS揭秘》是一部速成经典——它汇集了众多精彩绝伦的技巧，能够立即改善你的网页体验！”——Christopher Schmitt，CSS Cookbook作者<br><br>这是一本注重实践的教程。CSS专家Lea Verou单刀直入，教你用代码解决实际问题。她在书中揭示了47个鲜为人知的CSS技巧，指导中高级CSS开发者循序渐进，探寻更优雅的解决方案，攻克每天都会遇到的各种网页样式难题。<br>读者将在本书中领略作者的缜密思路，并学会用这种思路来应对各种不期而遇的CSS难题，最终达成DRY、可维护、可扩展、轻量级并且符合标准的结果。<br><br>本书涵盖的主题如下：<br>背景与边框<br>形状<br>视觉效果<br>字体排印<br>用户体验<br>结构与布局<br>过渡与动画                        </p>
+                        <p>
+本书是一本注重实践的教程，作者为我们揭示了47个鲜为人知的CSS技巧，主要内容包括背景与边框、形状、视觉效果、字体排印、用户体验、结构与布局、过渡与动画等。本书将带领读者循序渐进地探寻更优雅的解决方案，攻克每天都会遇到的各种网页样式难题。<br>本书的读者对象为前端工程师、网页开发人员。<br>                        </p>
+
+                        <p>
+作译者介绍<br>Lea Verou<br>W3C CSS工作组特邀专家，设计CSS语言的委员之一，此前曾在W3C担任开发者代言人。目前，她在麻省理工学院从事人机交互领域的研究。她还是一位博客作家，并经常在国际性的技术会议上担任讲师；她创建的多个开源项目广受开发者欢迎。<br><br>CSS魔法<br>原名张鹏，国内知名的CSS技术专家，百姓网前端架构师。拥有近十年的网站开发经验，在移动前端领域积累颇深，自称“披着工程师外衣的设计师”。他是CMUI、Action、GHX等开源项目的作者，曾为GitHub、Gulp、Stylus等网站和项目翻译过大量文档；其生动活泼、循序渐进的博客写作风格深受读者喜爱；在CSS Conf等技术会议上所作的演讲广受好评。                        </p>
+                    </div>
+                        <table class="table table-condensed table-striped">
+                            <tr>
+                                <th class="span2">原书书名</th>
+                                <td>
+                                        <a href="http://www.amazon.com/CSS-Secrets-Solutions-Everyday-Problems/dp/1449372635"> CSS Secrets: Better Solutions to Everyday Web Design Problems </a>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th class="span2">原书书号</th>
+                                <td>978-1-4493-7263-7</td>
+                            </tr>
+                            <tr>
+                                <th class="span2">原书国家</th>
+                                <td>美国</td>
+                            </tr>
+                            <tr>
+                                <th class="span2">原书出版社</th>
+                                <td>O&#39;Reilly</td>
+                            </tr>
+                            <tr>
+                                <th class="span2">原书页数</th>
+                                <td>392</td>
+                            </tr>
+                        </table>
+                </div>
+                <div id="toc" class="tab-pane">
+                </div>
+                <div id="preface" class="tab-pane">
+                </div>
+                <div id="events" class="tab-pane">
+                </div>
+                    <div id="errata" class="tab-pane">
+
+                    </div>
+                <div id="comment" class="tab-pane">
+                </div>
+                <div id="articles" class="tab-pane">
+                </div>
+                <div id="salesdata" class="tab-pane">
+                </div>
+                <div id="downloads" class="tab-pane">
+                </div>
+                
+            </div>
+        </div>
+    </div>
+    <div class="span2">
+        <div class="module">
+            <form action="/Book" method="post" _lpchecked="1" class="form-search">
+                <div class="input-append"><input class="span1" name="keyword" type="text" /><input class="btn" type="submit" value="搜索" /></div>
+            </form>
+        </div>
+            <div class="module clearfix">
+                <h4>推荐会员</h4>
+                    <a href="/users/217115">
+                        <img class="side-avatar show-user-card" userid="217115" class="side-avatar" src="/Users/GetAvatar/217115?size=Small" width="32" height="32" />
+                    </a>
+                    <a href="/users/170355">
+                        <img class="side-avatar show-user-card" userid="170355" class="side-avatar" src="/Users/GetAvatar/170355?size=Small" width="32" height="32" />
+                    </a>
+                    <a href="/users/218816">
+                        <img class="side-avatar show-user-card" userid="218816" class="side-avatar" src="/Users/GetAvatar/218816?size=Small" width="32" height="32" />
+                    </a>
+                    <a href="/users/219991">
+                        <img class="side-avatar show-user-card" userid="219991" class="side-avatar" src="/Users/GetAvatar/219991?size=Small" width="32" height="32" />
+                    </a>
+                    <a href="/users/80642">
+                        <img class="side-avatar show-user-card" userid="80642" class="side-avatar" src="/Users/GetAvatar/80642?size=Small" width="32" height="32" />
+                    </a>
+                    <a href="/users/92338">
+                        <img class="side-avatar show-user-card" userid="92338" class="side-avatar" src="/Users/GetAvatar/92338?size=Small" width="32" height="32" />
+                    </a>
+                    <a href="/users/167488">
+                        <img class="side-avatar show-user-card" userid="167488" class="side-avatar" src="/Users/GetAvatar/167488?size=Small" width="32" height="32" />
+                    </a>
+                    <a href="/users/205158">
+                        <img class="side-avatar show-user-card" userid="205158" class="side-avatar" src="/Users/GetAvatar/205158?size=Small" width="32" height="32" />
+                    </a>
+                    <a href="/users/101262">
+                        <img class="side-avatar show-user-card" userid="101262" class="side-avatar" src="/Users/GetAvatar/101262?size=Small" width="32" height="32" />
+                    </a>
+                    <a href="/users/202083">
+                        <img class="side-avatar show-user-card" userid="202083" class="side-avatar" src="/Users/GetAvatar/202083?size=Small" width="32" height="32" />
+                    </a>
+                    <a href="/users/86176">
+                        <img class="side-avatar show-user-card" userid="86176" class="side-avatar" src="/Users/GetAvatar/86176?size=Small" width="32" height="32" />
+                    </a>
+                    <a href="/users/108448">
+                        <img class="side-avatar show-user-card" userid="108448" class="side-avatar" src="/Users/GetAvatar/108448?size=Small" width="32" height="32" />
+                    </a>
+                    <a href="/users/214631">
+                        <img class="side-avatar show-user-card" userid="214631" class="side-avatar" src="/Users/GetAvatar/214631?size=Small" width="32" height="32" />
+                    </a>
+                    <a href="/users/188815">
+                        <img class="side-avatar show-user-card" userid="188815" class="side-avatar" src="/Users/GetAvatar/188815?size=Small" width="32" height="32" />
+                    </a>
+                    <a href="/users/125599">
+                        <img class="side-avatar show-user-card" userid="125599" class="side-avatar" src="/Users/GetAvatar/125599?size=Small" width="32" height="32" />
+                    </a>
+            </div>
+        
+            <div class="module clearfix">
+                <h4>他们拥有这本书</h4>
+                    <a href="/users/218631">
+                        <img class="side-avatar show-user-card" userid="218631" class="side-avatar" src="/Users/GetAvatar/218631?size=Small" width="32" height="32" />
+                    </a>
+                    <a href="/users/98083">
+                        <img class="side-avatar show-user-card" userid="98083" class="side-avatar" src="/Users/GetAvatar/98083?size=Small" width="32" height="32" />
+                    </a>
+                    <a href="/users/205183">
+                        <img class="side-avatar show-user-card" userid="205183" class="side-avatar" src="/Users/GetAvatar/205183?size=Small" width="32" height="32" />
+                    </a>
+                    <a href="/users/215594">
+                        <img class="side-avatar show-user-card" userid="215594" class="side-avatar" src="/Users/GetAvatar/215594?size=Small" width="32" height="32" />
+                    </a>
+                    <a href="/users/179520">
+                        <img class="side-avatar show-user-card" userid="179520" class="side-avatar" src="/Users/GetAvatar/179520?size=Small" width="32" height="32" />
+                    </a>
+                    <a href="/users/194336">
+                        <img class="side-avatar show-user-card" userid="194336" class="side-avatar" src="/Users/GetAvatar/194336?size=Small" width="32" height="32" />
+                    </a>
+                    <a href="/users/188024">
+                        <img class="side-avatar show-user-card" userid="188024" class="side-avatar" src="/Users/GetAvatar/188024?size=Small" width="32" height="32" />
+                    </a>
+                    <a href="/users/82554">
+                        <img class="side-avatar show-user-card" userid="82554" class="side-avatar" src="/Users/GetAvatar/82554?size=Small" width="32" height="32" />
+                    </a>
+                    <a href="/users/178413">
+                        <img class="side-avatar show-user-card" userid="178413" class="side-avatar" src="/Users/GetAvatar/178413?size=Small" width="32" height="32" />
+                    </a>
+                    <a href="/users/194416">
+                        <img class="side-avatar show-user-card" userid="194416" class="side-avatar" src="/Users/GetAvatar/194416?size=Small" width="32" height="32" />
+                    </a>
+                    <a href="/users/229337">
+                        <img class="side-avatar show-user-card" userid="229337" class="side-avatar" src="/Users/GetAvatar/229337?size=Small" width="32" height="32" />
+                    </a>
+                    <a href="/users/84459">
+                        <img class="side-avatar show-user-card" userid="84459" class="side-avatar" src="/Users/GetAvatar/84459?size=Small" width="32" height="32" />
+                    </a>
+                    <a href="/users/188173">
+                        <img class="side-avatar show-user-card" userid="188173" class="side-avatar" src="/Users/GetAvatar/188173?size=Small" width="32" height="32" />
+                    </a>
+                    <a href="/users/214085">
+                        <img class="side-avatar show-user-card" userid="214085" class="side-avatar" src="/Users/GetAvatar/214085?size=Small" width="32" height="32" />
+                    </a>
+                    <a href="/users/201821">
+                        <img class="side-avatar show-user-card" userid="201821" class="side-avatar" src="/Users/GetAvatar/201821?size=Small" width="32" height="32" />
+                    </a>
+            </div>
+
+        <div class="module">
+            <h4>本书标签</h4>
+                 <a class="post-tag" href="/book/tagged/6" tagid="6">javascript</a>
+                <span class="item-multiplier">×&nbsp;2999</span>
+                <br />
+                 <a class="post-tag" href="/book/tagged/238" tagid="238">html5</a>
+                <span class="item-multiplier">×&nbsp;2664</span>
+                <br />
+                 <a class="post-tag" href="/book/tagged/270" tagid="270">css</a>
+                <span class="item-multiplier">×&nbsp;1131</span>
+                <br />
+                 <a class="post-tag" href="/book/tagged/436" tagid="436">web开发</a>
+                <span class="item-multiplier">×&nbsp;655</span>
+                <br />
+        </div>
+        <div class="module">
+            <h4>相关标签</h4>
+                 <a class="post-tag" href="/book/tagged/2" tagid="2">web编程与设计</a>
+                <span class="item-multiplier">×&nbsp;3</span>
+                <br />
+        </div>
+
+        
+    </div>
+</div>
+<div class="row">
+    <div class="span10 offset2">
+        <div class="page-header">
+            <h2>也许你喜欢</h2>
+        </div>
+        <div class="shelf-horizonal">
+            <ul>
+                    <li>
+                        <a href="/book/1563">
+                            <img class="bookcover" src="/bookcover/1563.237.jpg" />
+                            你不知道的JavaScript（中卷）
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/book/1846">
+                            <img class="bookcover" src="/bookcover/1846.743.jpg" />
+                            React Native开发指南
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/book/1503">
+                            <img class="bookcover" src="/bookcover/1503.333.jpg" />
+                            HTML5与WebGL编程
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/book/1455">
+                            <img class="bookcover" src="/bookcover/1455.338.jpg" />
+                            JavaScript程序设计
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/book/1762">
+                            <img class="bookcover" src="/bookcover/1762.554.jpg" />
+                            React Native入门与实战
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/book/1661">
+                            <img class="bookcover" src="/bookcover/1661.987.jpg" />
+                            JavaScript网页动画设计
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/book/1486">
+                            <img class="bookcover" src="/bookcover/1486.258.jpg" />
+                            Python Web开发：测试驱动方法
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/book/1542">
+                            <img class="bookcover" src="/bookcover/1542.738.jpg" />
+                            SVG精髓（第2版）
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/book/1636">
+                            <img class="bookcover" src="/bookcover/1636.656.jpg" />
+                            JavaScript Web应用开发
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/book/1613">
+                            <img class="bookcover" src="/bookcover/1613.330.jpg" />
+                            学习JavaScript数据结构与算法
+                        </a>
+                    </li>
+            </ul>
+        </div>
+    </div>
+</div>
+      </div>
+<div class="push"></div>
+
+<script type="text/javascript">
+
+    function onSuccess(data) {
+        $("#CommentForm").after(data);
+        $("#CommentFormWrapper").prepend($("#CommentForm"));
+        $("#CommentForm #Content").val("");
+    }
+
+</script>
+
+		</div>
+		
+	</div>
+	<div id="footer">
+	  <div class="container">
+		<ul id="footmenu">
+			<li class="first"><a href="/users/guaguacode">刮刮卡</a></li>
+			<li><a href="/article/13723">成为译者</a></li>
+			<li><a href="/article/36644">成为作者</a></li>
+			<li><a href="/article/58331">加入我们</a></li>
+			<li><a href="/article/7751">常见问题</a></li>
+			<li><a href="/article/17095">建议改进</a></li>
+			<li><a href="/article/36242">联系我们</a></li>
+		</ul>
+		<p>
+		  2005-2016 &copy; 北京图灵文化发展有限公司 · All Rights Reserved
+		</p>
+		<p class="muted">
+		  京ICP备11039595号　京公网安备11010502011375
+		</p>
+
+	  </div>
+	</div>
+<div id="toTop">
+<a href="#">▲</a>
+<a href="#footer">▼</a>
+</div>
+		<div id="popup"><div class="user-card" id="tagcard"></div><p class="corner"></p></div>
+
+
+
+<div class="modal fade hide" id="wModal">
+  <div class="modal-header">
+	<button type="button" class="close" data-dismiss="modal">×</button>
+	<h4>modalMsg</h4>
+  </div>
+  <form action="" data-ajax="true" data-ajax-failure="modalMsgError" data-ajax-success="modalMsgSuccess" data-ajax-begin="window.disableCalmer" id="formModalMsg" method="post">
+  <div class="modal-body">
+	<textarea cols="20" id="msgBody" name="Body" rows="2" style="width:97%;height:80px;"></textarea>
+	<input id="ReceiverUserName" name="ReceiverUserName" type="hidden" value="">
+	<span id="error-span" style="color:red"></span>
+	<span id="success-span" style="color:#080"></span>
+  </div>
+  <div class="modal-footer">
+	<input type="button" class="btn" data-dismiss="modal" value="取消">
+	<input type="submit" id="submitMsg" class="btn btn-message calmer" value=" 发 送 ">
+  </div>
+  </form>
+</div>
+		</body>
+
+		<script type="text/javascript">
+			$(function () {
+				$.post('/users/updatelastactivitydate');
+			});
+		</script>
+
+
+</html>

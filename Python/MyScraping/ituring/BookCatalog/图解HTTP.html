@@ -1,0 +1,769 @@
+
+
+
+
+
+ 
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7, IE=9" />
+	<title>图灵社区: 合集 : 图解HTTP</title>
+
+<link href="/Content/2012/css/style?v=r8QFEljxS-D1kCzaxP2nCRNrkcTdshu8aKmJoL3w7lw1" rel="stylesheet"/>
+
+
+
+<!--[if IE 6]>
+<link href="/Content/2012/css/ie6.min.css" rel="stylesheet">
+<![endif]--> 
+
+<script src="/js/frontend?v=mMEO5QkQhrDgiH8awQFIfABMzkqPTCoDKENUcUcCVp41"></script>
+
+
+
+<!--Le HTML5 shim, for IE6-8 support of HTML5 elements-->
+<!--[if lt IE 9]>
+<script src="/Content/2012/js/html5.js"></script>
+<![endif]-->
+<!--[if IE 6]>
+<script src="/Content/2012/js/ie6.min.js"></script>
+<![endif]-->
+<!--Le fav and touch icons-->
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/Content/2012/img/icon-touch-114.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/Content/2012/img/icon-touch-72.png">
+<link rel="apple-touch-icon-precomposed" href="/Content/2012/img/icon-touch-57.png">
+
+</head>
+<body>
+	<div id="topnav"><div class="page">
+
+	
+        <!--Donut#0FCC7D6FDF91D9A971523D9B7CD57EFC25708E9DCF475A7490E39C755ACE63AFF77D566AA1B4B9F0226644F690D0FCF229064BF5FEDBE00C5BD5DD9F57FEBD57CA1947A3784E89B7FAEA413CF94E67D559807AD84630DD266A12DEDE4610A21C4BC86EBFAD0AE5B3CBDF26085CFD96B8907C9EC44573336BFDBC6CBE69A6A03B0EC7C2B9558BA00FF0CB93AC6D47519B731D4809B145C8DD1D67D4AF0B6F20A90EB817139A15EB038E1520FC96EE313831424FDF43D15477853DA261CEFDF5340E1BD884C96C29B67606715699D86B1121FA22727F17E5B7A1B1E61879DCEC7809D711DE987BE47A5A0431D63CC026CE615689D3F3345365AB0CB90FB22EACE4D3BDB6A7B950A1A1C324D32B4850431D58DFF51D3BC2CDE35EF05C33BC3C2540CECC0EE7AED1461E3C5EB1597EE28B9C5D5B1FDFF0A9D7B66CCC539B3C24730D0CF989C482E4136556A750713BC2432E4C4BEFAFBE472B9B1838666071E357628F2FF4936BD1C7F450A715B872E63F0FCB5EB8B30FEF65C6030EAECBC14F4E5FF0DD18C8#-->	<ul id="check-new-response"></ul>
+	<ul id="usermenu">
+		
+		<li>你好！
+<a class="uid" href="/users/194795">CFSR ( chanfengsr )</a>		</li>
+		<li><a href="/users/194795">我的空间</a></li>
+		<li><a href="/account/logoff">退出</a></li>
+	</ul>
+<!--EndDonut-->
+    
+
+	</div></div>
+	<div class="page">
+		<div id="header">
+			<a href="/" id="title" title="图灵社区 首页">◁ 首页</a>
+			<div id="menucontainer">
+				<ul id="menu" class="book" >
+					
+					<form id="nav-search" class="form-search" action="/search" method="get">
+					  <input type="search" id="q" name="q" />
+					  <input type="hidden" id="type" name="type" />
+					  <input type="submit" id="search-btn" value="搜索" />
+					</form>
+
+					<li><a class="ebooks" href="/book/ebook?sort=updated">电子书</a></li>
+					<li><a class="book" href="/book">图 书</a></li>
+					<li><a class="article" href="/article?sort=newest">文 章</a></li>
+					<li><a class="users" href="/users">会 员</a></li>
+					<li><a class="write" href="/users/mywriting">写 作</a></li>
+				</ul>
+			</div>
+		</div>
+		<div id="main" class="clearfix">
+			
+
+<script type="text/javascript">
+
+    $(function () {
+
+        $("#InviteUserName").autocomplete("/Users/_AjaxUserName/", {
+            minChars: 1,
+            width: 400,
+            autoFill: false,
+            formatItem: function (row, i, max) {
+                return row[1];
+            },
+            formatMatch: function (row, i, max) {
+                return row[1];
+            },
+            formatResult: function (row) {
+                return row[1];
+            }
+        });
+
+        $("#InviteUserName").result(function (event, data, formatted) {
+            if (data) {
+                $("input#InviteUserId").val(data[0]);
+                $("span#InviteUserNameString").html("<b>选中会员：</b>" + data[1] + " <a id='removeBook' href='#'>取消</a>");
+                $("#invitebtn").attr("disabled", false);
+            }
+        });
+
+        $("a#removeBook").live("click", function () {
+            $("input#InviteUserName").val('');
+            $("input#InviteUserId").val('');
+            $("span#InviteUserNameString").html("");
+            $("#invitebtn").attr("disabled", true);            
+            return false;
+        });
+
+    });
+
+</script>
+
+
+<div id="mainbar">
+    <div class="page-header">
+        <div class="pull-right">
+
+            
+            
+        </div>
+        <h2>
+            图解HTTP
+        
+                <span class="code code-success">电子书</span>
+                    <span class="code code-info">可申请</span>
+
+
+    </h2>
+
+    </div>
+    <div class="row">
+        <div class="span1">
+          <div class="stats">
+            <div class="vote">
+              <div class="votes">
+                <span class="vote-count-post">
+                  <strong>
+                    <span style="font-size: 20px;">1</span>
+                  </strong>
+                </span>
+                <div class="viewcount">成员</div>
+              </div>
+              <div class="status answered">
+                <strong>73</strong> 文章
+              </div>
+            </div>
+          </div>
+      
+
+        </div>
+        <div class="post-text span7">
+            本书对互联网基盘——HTTP协议进行了全面系统的介绍。作者由HTTP协议的发展历史娓娓道来，严谨细致地剖析了HTTP协议的结构，列举诸多常见通信场景及实战案例，最后延伸到Web安全、最新技术动向等方面。本书的特色为在讲解的同时，辅以大量生动形象的通信图例，更好地帮助读者深刻理解HTTP通信过程中客户端与服务器之间的交互情况。读者可通过本书快速了解并掌握HTTP协议的基础，前端工程师分析抓包数据，后端工程师实现REST API、实现自己的HTTP服务器等过程中所需的HTTP相关知识点本书均有介绍。
+            
+            <div class="tags t-books t-free t-ebook t-creative-commons">
+            <a class="post-tag" href="/article/tagged/699" tagid="699">HTTP</a>
+        </div>
+        </div>
+
+    </div>
+
+
+    <div id="Catalog">
+        
+
+
+
+
+<script type="text/javascript">
+
+    function intoReorderSuccess(data) {
+        $("#Catalog").html(data);
+    }
+
+    function intoReorderFailure(xhr) {
+        alert(xhr.responseText);
+    }
+
+</script>
+    <div class="page-header">
+        <div class="pull-right">
+        </div>
+        <h3>合集文章</h3>
+    </div>    
+
+<div class="minibook-list">
+
+            <div class="minibook-item">
+
+                <div style="float:none;">
+                    <h3>
+                        
+                            <a class="question-hyperlink" href="/article/74614">
+                                     版权声明
+                        
+                            </a>
+                    </h3>
+
+                </div>
+
+
+                <div style="margin-left:30px;">
+                    <ul>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="minibook-item">
+
+                <div style="float:none;">
+                    <h3>
+                        
+                            <a class="question-hyperlink" href="/article/74615">
+                                     译者序
+                        
+                            </a>
+                    </h3>
+
+                </div>
+
+
+                <div style="margin-left:30px;">
+                    <ul>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="minibook-item">
+
+                <div style="float:none;">
+                    <h3>
+                        
+                            <a class="question-hyperlink" href="/article/74616">
+                                     前言
+                        
+                            </a>
+                    </h3>
+
+                </div>
+
+
+                <div style="margin-left:30px;">
+                    <ul>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="minibook-item">
+
+                <div style="float:none;">
+                    <h3>
+                        
+                            <a class="question-hyperlink" href="/article/74617">
+                                     致谢
+                        
+                            </a>
+                    </h3>
+
+                </div>
+
+
+                <div style="margin-left:30px;">
+                    <ul>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="minibook-item">
+
+                <div style="float:none;">
+                    <h3>
+                        
+                            <a class="question-hyperlink" href="/article/74618">
+                                     第 1 章　了解 Web 及网络基础
+                        
+                            </a>
+                    </h3>
+
+                </div>
+
+
+                <div style="margin-left:30px;">
+                    <ul>
+    <li>
+<a href="/article/74619">1.1　使用 HTTP 协议访问 Web</a>        </li>
+    <li>
+<a href="/article/74620">1.2　HTTP 的诞生</a>        </li>
+    <li>
+<a href="/article/74621">1.3　网络基础 TCP/IP</a>        </li>
+    <li>
+<a href="/article/74622">1.4　与 HTTP 关系密切的协议 : IP、TCP 和 DNS</a>        </li>
+    <li>
+<a href="/article/74623">1.5　负责域名解析的 DNS 服务</a>        </li>
+    <li>
+<a href="/article/74624">1.6　各种协议与 HTTP 协议的关系</a>        </li>
+    <li>
+<a href="/article/74625">1.7　URI 和 URL</a>        </li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="minibook-item">
+
+                <div style="float:none;">
+                    <h3>
+                        
+                            <a class="question-hyperlink" href="/article/74626">
+                                     第 2 章　简单的 HTTP 协议
+                        
+                            </a>
+                    </h3>
+
+                </div>
+
+
+                <div style="margin-left:30px;">
+                    <ul>
+    <li>
+<a href="/article/74627">2.1　HTTP 协议用于客户端和服务器端之间的通信</a>        </li>
+    <li>
+<a href="/article/74628">2.2　通过请求和响应的交换达成通信</a>        </li>
+    <li>
+<a href="/article/74629">2.3　HTTP 是不保存状态的协议</a>        </li>
+    <li>
+<a href="/article/74630">2.4　请求 URI 定位资源</a>        </li>
+    <li>
+<a href="/article/74631">2.5　告知服务器意图的 HTTP 方法</a>        </li>
+    <li>
+<a href="/article/74632">2.6　使用方法下达命令</a>        </li>
+    <li>
+<a href="/article/74633">2.7　持久连接节省通信量</a>        </li>
+    <li>
+<a href="/article/74634">2.8　使用 Cookie 的状态管理</a>        </li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="minibook-item">
+
+                <div style="float:none;">
+                    <h3>
+                        
+                            <a class="question-hyperlink" href="/article/74635">
+                                     第 3 章　HTTP 报文内的 HTTP 信息
+                        
+                            </a>
+                    </h3>
+
+                </div>
+
+
+                <div style="margin-left:30px;">
+                    <ul>
+    <li>
+<a href="/article/74636">3.1　HTTP 报文</a>        </li>
+    <li>
+<a href="/article/74637">3.2　请求报文及响应报文的结构</a>        </li>
+    <li>
+<a href="/article/74638">3.3　编码提升传输速率</a>        </li>
+    <li>
+<a href="/article/74639">3.4　发送多种数据的多部分对象集合</a>        </li>
+    <li>
+<a href="/article/74640">3.5　获取部分内容的范围请求</a>        </li>
+    <li>
+<a href="/article/74641">3.6　内容协商返回最合适的内容</a>        </li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="minibook-item">
+
+                <div style="float:none;">
+                    <h3>
+                        
+                            <a class="question-hyperlink" href="/article/74642">
+                                     第 4 章　返回结果的 HTTP 状态码
+                        
+                            </a>
+                    </h3>
+
+                </div>
+
+
+                <div style="margin-left:30px;">
+                    <ul>
+    <li>
+<a href="/article/74643">4.1　状态码告知从服务器端返回的请求结果</a>        </li>
+    <li>
+<a href="/article/74644">4.2　2XX 成功</a>        </li>
+    <li>
+<a href="/article/74645">4.3　3XX 重定向</a>        </li>
+    <li>
+<a href="/article/74646">4.4　4XX 客户端错误</a>        </li>
+    <li>
+<a href="/article/74647">4.5　5XX 服务器错误</a>        </li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="minibook-item">
+
+                <div style="float:none;">
+                    <h3>
+                        
+                            <a class="question-hyperlink" href="/article/74648">
+                                     第 5 章　与 HTTP 协作的 Web 服务器
+                        
+                            </a>
+                    </h3>
+
+                </div>
+
+
+                <div style="margin-left:30px;">
+                    <ul>
+    <li>
+<a href="/article/74649">5.1　用单台虚拟主机实现多个域名</a>        </li>
+    <li>
+<a href="/article/74650">5.2　通信数据转发程序 ：代理、网关、隧道</a>        </li>
+    <li>
+<a href="/article/74651">5.3　保存资源的缓存</a>        </li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="minibook-item">
+
+                <div style="float:none;">
+                    <h3>
+                        
+                            <a class="question-hyperlink" href="/article/74652">
+                                     第 6 章　HTTP 首部
+                        
+                            </a>
+                    </h3>
+
+                </div>
+
+
+                <div style="margin-left:30px;">
+                    <ul>
+    <li>
+<a href="/article/74653">6.1　HTTP 报文首部</a>        </li>
+    <li>
+<a href="/article/74654">6.2　HTTP 首部字段</a>        </li>
+    <li>
+<a href="/article/74655">6.3　HTTP/1.1 通用首部字段</a>        </li>
+    <li>
+<a href="/article/74656">6.4　请求首部字段</a>        </li>
+    <li>
+<a href="/article/74657">6.5　响应首部字段</a>        </li>
+    <li>
+<a href="/article/74658">6.6　实体首部字段</a>        </li>
+    <li>
+<a href="/article/74659">6.7　为 Cookie 服务的首部字段</a>        </li>
+    <li>
+<a href="/article/74660">6.8　其他首部字段</a>        </li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="minibook-item">
+
+                <div style="float:none;">
+                    <h3>
+                        
+                            <a class="question-hyperlink" href="/article/74661">
+                                     第 7 章　确保 Web 安全的 HTTPS
+                        
+                            </a>
+                    </h3>
+
+                </div>
+
+
+                <div style="margin-left:30px;">
+                    <ul>
+    <li>
+<a href="/article/74662">7.1　HTTP 的缺点</a>        </li>
+    <li>
+<a href="/article/74663">7.2　HTTP+ 加密 + 认证 + 完整性保护 =HTTPS</a>        </li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="minibook-item">
+
+                <div style="float:none;">
+                    <h3>
+                        
+                            <a class="question-hyperlink" href="/article/74664">
+                                     第 8 章　确认访问用户身份的认证
+                        
+                            </a>
+                    </h3>
+
+                </div>
+
+
+                <div style="margin-left:30px;">
+                    <ul>
+    <li>
+<a href="/article/74665">8.1　何为认证</a>        </li>
+    <li>
+<a href="/article/74666">8.2　BASIC 认证</a>        </li>
+    <li>
+<a href="/article/74667">8.3　DIGEST 认证</a>        </li>
+    <li>
+<a href="/article/74668">8.4　SSL 客户端认证</a>        </li>
+    <li>
+<a href="/article/74669">8.5　基于表单认证</a>        </li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="minibook-item">
+
+                <div style="float:none;">
+                    <h3>
+                        
+                            <a class="question-hyperlink" href="/article/74670">
+                                     第 9 章　基于 HTTP 的功能追加协议
+                        
+                            </a>
+                    </h3>
+
+                </div>
+
+
+                <div style="margin-left:30px;">
+                    <ul>
+    <li>
+<a href="/article/74671">9.1　基于 HTTP 的协议</a>        </li>
+    <li>
+<a href="/article/74672">9.2　消除 HTTP 瓶颈的 SPDY</a>        </li>
+    <li>
+<a href="/article/74673">9.3　使用浏览器进行全双工通信的 WebSocket</a>        </li>
+    <li>
+<a href="/article/74674">9.4　期盼已久的 HTTP/2.0</a>        </li>
+    <li>
+<a href="/article/74675">9.5　Web 服务器管理文件的 WebDAV</a>        </li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="minibook-item">
+
+                <div style="float:none;">
+                    <h3>
+                        
+                            <a class="question-hyperlink" href="/article/74676">
+                                     第 10 章　构建 Web 内容的技术
+                        
+                            </a>
+                    </h3>
+
+                </div>
+
+
+                <div style="margin-left:30px;">
+                    <ul>
+    <li>
+<a href="/article/74677">10.1　HTML</a>        </li>
+    <li>
+<a href="/article/74678">10.2　动态 HTML</a>        </li>
+    <li>
+<a href="/article/74679">10.3　Web 应用</a>        </li>
+    <li>
+<a href="/article/74680">10.4　数据发布的格式及语言</a>        </li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="minibook-item">
+
+                <div style="float:none;">
+                    <h3>
+                        
+                            <a class="question-hyperlink" href="/article/74681">
+                                     第 11 章　Web 的攻击技术
+                        
+                            </a>
+                    </h3>
+
+                </div>
+
+
+                <div style="margin-left:30px;">
+                    <ul>
+    <li>
+<a href="/article/74682">11.1　针对 Web 的攻击技术</a>        </li>
+    <li>
+<a href="/article/74683">11.2　因输出值转义不完全引发的安全漏洞</a>        </li>
+    <li>
+<a href="/article/74684">11.3　因设置或设计上的缺陷引发的安全漏洞</a>        </li>
+    <li>
+<a href="/article/74685">11.4　因会话管理疏忽引发的安全漏洞</a>        </li>
+    <li>
+<a href="/article/74686">11.5　其他安全漏洞</a>        </li>
+                    </ul>
+                </div>
+
+            </div>
+</div>
+
+    </div>
+
+    
+    <div>
+        
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<div id="sidebar">
+    
+    <div class="module">
+<form action="/Article" method="post" target="_blank">        <div class="input-append">
+            <input data-val="true" data-val-number="The field Int32 must be a number." data-val-required="Int32 字段是必需的。" id="minibookid" name="minibookid" type="hidden" value="1176" />
+            <input class="span2" id="keyword" name="keyword" type="text" value="" /><input type="submit" class="btn" value="搜索" />
+        </div>
+</form></div>
+    
+      <div class="module" style="padding-top: 5px">
+          <h4 id="h-files">相关图书</h4>            
+          <center> 
+              <a href="/book/1229"  target="_blank">
+                  <img class="bookcover" alt="封面" src="/bookcover/1229.136.jpg" width="111" height="140">
+              </a>
+          </center>
+          <center>
+                
+              <a href="/book/1229" target="_blank">图解HTTP</a>
+          </center>
+      </div>
+
+    <div class="module">
+    <h4 id="h-related-tags">
+        推荐合集的人</h4>
+        
+        <a href="/users/171286" >
+            <img class="side-avatar show-user-card" userid="171286" class="side-avatar" src="/Users/GetAvatar/171286?size=Small" width="32" height="32" />
+        </a>
+        <a href="/users/184998" >
+            <img class="side-avatar show-user-card" userid="184998" class="side-avatar" src="/Users/GetAvatar/184998?size=Small" width="32" height="32" />
+        </a>
+        <a href="/users/209490" >
+            <img class="side-avatar show-user-card" userid="209490" class="side-avatar" src="/Users/GetAvatar/209490?size=Small" width="32" height="32" />
+        </a>
+        <a href="/users/202172" >
+            <img class="side-avatar show-user-card" userid="202172" class="side-avatar" src="/Users/GetAvatar/202172?size=Small" width="32" height="32" />
+        </a>
+    <div style="clear:both"></div>
+</div>
+
+
+
+    <div id="related-tags" class="module">
+        <h4 id="h-related-tags">
+            文章中的标签</h4>
+
+             <a class="post-tag" href="/article/tagged/699" tagid="699">HTTP</a>
+            <span class="item-multiplier">×&nbsp;73</span>
+            <br/>
+
+    </div>
+
+    
+
+
+<div id="related-tags" class="module">
+    <h4 id="h-related-tags">
+        关注类别</h4>
+
+
+ </div>
+
+
+  <div class="module">
+    <h4 id="h-related-tags">
+        关注好友</h4>
+        
+    <div style="clear:both"></div>
+ </div>
+
+
+
+
+ <div class="module">
+    <h4 id="h-related-tags">
+        我的粉丝</h4>
+    <div style="clear:both"></div>
+ </div>
+
+
+
+
+</div>
+		</div>
+		
+	</div>
+	<div id="footer">
+	  <div class="container">
+		<ul id="footmenu">
+			<li class="first"><a href="/users/guaguacode">刮刮卡</a></li>
+			<li><a href="/article/13723">成为译者</a></li>
+			<li><a href="/article/36644">成为作者</a></li>
+			<li><a href="/article/58331">加入我们</a></li>
+			<li><a href="/article/7751">常见问题</a></li>
+			<li><a href="/article/17095">建议改进</a></li>
+			<li><a href="/article/36242">联系我们</a></li>
+		</ul>
+		<p>
+		  2005-2016 &copy; 北京图灵文化发展有限公司 · All Rights Reserved
+		</p>
+		<p class="muted">
+		  京ICP备11039595号　京公网安备11010502011375
+		</p>
+
+	  </div>
+	</div>
+<div id="toTop">
+<a href="#">▲</a>
+<a href="#footer">▼</a>
+</div>
+		<div id="popup"><div class="user-card" id="tagcard"></div><p class="corner"></p></div>
+
+
+
+<div class="modal fade hide" id="wModal">
+  <div class="modal-header">
+	<button type="button" class="close" data-dismiss="modal">×</button>
+	<h4>modalMsg</h4>
+  </div>
+  <form action="" data-ajax="true" data-ajax-failure="modalMsgError" data-ajax-success="modalMsgSuccess" data-ajax-begin="window.disableCalmer" id="formModalMsg" method="post">
+  <div class="modal-body">
+	<textarea cols="20" id="msgBody" name="Body" rows="2" style="width:97%;height:80px;"></textarea>
+	<input id="ReceiverUserName" name="ReceiverUserName" type="hidden" value="">
+	<span id="error-span" style="color:red"></span>
+	<span id="success-span" style="color:#080"></span>
+  </div>
+  <div class="modal-footer">
+	<input type="button" class="btn" data-dismiss="modal" value="取消">
+	<input type="submit" id="submitMsg" class="btn btn-message calmer" value=" 发 送 ">
+  </div>
+  </form>
+</div>
+		</body>
+
+		<script type="text/javascript">
+			$(function () {
+				$.post('/users/updatelastactivitydate');
+			});
+		</script>
+
+
+</html>

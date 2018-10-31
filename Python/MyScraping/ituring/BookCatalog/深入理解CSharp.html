@@ -1,0 +1,1248 @@
+<html lang="zh-CN"><head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7, IE=9">
+	<title>图灵社区: 合集 : 深入理解C#（第3版）</title>
+
+<link href="/Content/2012/css/style?v=r8QFEljxS-D1kCzaxP2nCRNrkcTdshu8aKmJoL3w7lw1" rel="stylesheet">
+
+
+
+<!--[if IE 6]>
+<link href="/Content/2012/css/ie6.min.css" rel="stylesheet">
+<![endif]-->
+
+<script type="text/javascript" async="" src="http://www.google-analytics.com/ga.js"></script><script src="/js/frontend?v=mMEO5QkQhrDgiH8awQFIfABMzkqPTCoDKENUcUcCVp41"></script>
+
+
+
+<!--Le HTML5 shim, for IE6-8 support of HTML5 elements-->
+<!--[if lt IE 9]>
+<script src="/Content/2012/js/html5.js"></script>
+<![endif]-->
+<!--[if IE 6]>
+<script src="/Content/2012/js/ie6.min.js"></script>
+<![endif]-->
+<!--Le fav and touch icons-->
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/Content/2012/img/icon-touch-114.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/Content/2012/img/icon-touch-72.png">
+<link rel="apple-touch-icon-precomposed" href="/Content/2012/img/icon-touch-57.png">
+
+</head>
+<body><link href="http://v2.jiathis.com/code_mini/css/jiathis_share.css" rel="stylesheet" type="text/css"><iframe frameborder="0" style="position: absolute; display: none; opacity: 0;"></iframe><div class="jiathis_style" style="position: absolute; z-index: 1000000000; display: none; top: 50%; left: 50%; overflow: auto;"></div><div class="jiathis_style" style="position: absolute; z-index: 1000000000; display: none; overflow: auto;"></div><iframe frameborder="0" src="http://v2.jiathis.com/code_mini/jiathis_utility.html" style="display: none;"></iframe>
+	<div id="topnav"><div class="page">
+
+
+        <!--Donut#28B621636031B95F593F7F7FF0AD59DE5E0580279105C393A61C3669B8AC2CBD33270837CB3846A7A116143F6ED05F8778E847B70461C3CACADD83208981B2ADD9EFD8AA277A832D42F5FD14C180D32E7D8AADB9A34EA19D0A65D151E9680F792AEF51FABA3B7786AE305570B5B7C3D3864CACA28D75E8901AB3F1C8B8756817EC410D472B08F346272F9C97924D2E1D328E6E521289CAB0B94C5D291FF47D17FD5B0E956EA0399CE1FCABB8F68840A7B57762863AD2ADD5A5BDABD016A706DD895E9181D8FB14E882FABA585B71812238C961AA6A37599ACD8A15D231E29B2BEFEA945E1A7C37013F782E1BC45AE64AB9F4C7FB4EC62AEF6CAF23292F413F928CA676FD499E086D02A63F78678EEB6B2B740B50385A2722089A9F98B995E74F3E705020DCEE99F1787E9C0B8479E9BD3A70D0A85E306C9A37A3BFF9B34094E22CCA80FD74DEB1543289BE62B56993978B392210360BA505B0D899374A4FE7EAFB7FEB1DA7845363AB8F0097FC6F99CA4F8D293AD13C1582AAA0E996D52EFE78A20B74E1#-->	<ul id="check-new-response">
+
+
+</ul>
+	<ul id="usermenu">
+
+		<li>你好！
+<a class="uid" href="/users/194795">CFSR ( chanfengsr )</a>		</li>
+		<li><a href="/users/194795">我的空间</a></li>
+		<li><a href="/account/logoff">退出</a></li>
+	</ul>
+<!--EndDonut-->
+
+
+	</div></div>
+	<div class="page">
+		<div id="header">
+			<a href="/" id="title" title="图灵社区 首页">◁ 首页</a>
+			<div id="menucontainer">
+				<ul id="menu" class="book">
+
+					<form id="nav-search" class="form-search" action="/search" method="get" novalidate="novalidate">
+					  <input type="search" id="q" name="q">
+					  <input type="hidden" id="type" name="type">
+					  <input type="submit" id="search-btn" value="搜索">
+					</form>
+
+					<li><a class="ebooks" href="/book/ebook?sort=updated">电子书</a></li>
+					<li><a class="book" href="/book">图 书</a></li>
+					<li><a class="article" href="/article?sort=newest">文 章</a></li>
+					<li><a class="users" href="/users">会 员</a></li>
+					<li><a class="write" href="/users/mywriting">写 作</a></li>
+				</ul>
+			</div>
+		</div>
+		<div id="main" class="clearfix">
+
+
+<script type="text/javascript">
+
+    $(function () {
+
+        $("#InviteUserName").autocomplete("/Users/_AjaxUserName/", {
+            minChars: 1,
+            width: 400,
+            autoFill: false,
+            formatItem: function (row, i, max) {
+                return row[1];
+            },
+            formatMatch: function (row, i, max) {
+                return row[1];
+            },
+            formatResult: function (row) {
+                return row[1];
+            }
+        });
+
+        $("#InviteUserName").result(function (event, data, formatted) {
+            if (data) {
+                $("input#InviteUserId").val(data[0]);
+                $("span#InviteUserNameString").html("<b>选中会员：</b>" + data[1] + " <a id='removeBook' href='#'>取消</a>");
+                $("#invitebtn").attr("disabled", false);
+            }
+        });
+
+        $("a#removeBook").live("click", function () {
+            $("input#InviteUserName").val('');
+            $("input#InviteUserId").val('');
+            $("span#InviteUserNameString").html("");
+            $("#invitebtn").attr("disabled", true);
+            return false;
+        });
+
+    });
+
+</script>
+
+
+<div id="mainbar">
+    <div class="page-header">
+        <div class="pull-right">
+
+
+
+        </div>
+        <h2>
+            深入理解C#（第3版）
+
+                <span class="code code-success">电子书</span>
+
+
+    </h2>
+
+    </div>
+    <div class="row">
+        <div class="span1">
+          <div class="stats">
+            <div class="vote">
+              <div class="votes">
+                <span class="vote-count-post">
+                  <strong>
+                    <span style="font-size: 20px;">2</span>
+                  </strong>
+                </span>
+                <div class="viewcount">成员</div>
+              </div>
+              <div class="status answered">
+                <strong>157</strong> 文章
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+        <div class="post-text span7">
+            本书是C# 领域不可多得的经典著作。作者在详尽地展示C# 各个知识点的同时，更注重从现象中挖掘本质。本书深入探索了C# 的核心概念和经典特性，并将这些特性融入到代码中，让读者能够真正领会到C# 之“深入”与“精妙”。在第2 版的基础上，本书新增了C# 5 的新特性——异步，并更新了随着技术的发展，已经不再适用的内容，确保整本书能达到读者期望的高标准。
+
+            <div class="tags t-books t-free t-ebook t-creative-commons">
+            <a class="post-tag" href="/article/tagged/32" tagid="32">程序设计</a>
+            <a class="post-tag" href="/article/tagged/35" tagid="35">c#</a>
+        </div>
+        </div>
+
+    </div>
+
+
+    <div id="Catalog">
+
+
+
+
+
+<script type="text/javascript">
+
+    function intoReorderSuccess(data) {
+        $("#Catalog").html(data);
+    }
+
+    function intoReorderFailure(xhr) {
+        alert(xhr.responseText);
+    }
+
+</script>
+    <div class="page-header">
+        <div class="pull-right">
+        </div>
+        <h3>合集文章</h3>
+    </div>
+
+<div class="minibook-list">
+
+            <div class="minibook-item">
+
+                <div style="float:none;">
+                    <h3>
+
+                            <a class="question-hyperlink" href="/article/72270">
+                                     版权声明
+
+                            </a>
+                    </h3>
+
+                </div>
+
+
+                <div style="margin-left:30px;">
+                    <ul>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="minibook-item">
+
+                <div style="float:none;">
+                    <h3>
+
+                            <a class="question-hyperlink" href="/article/66924">
+                                     献词
+
+                            </a>
+                    </h3>
+
+                </div>
+
+
+                <div style="margin-left:30px;">
+                    <ul>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="minibook-item">
+
+                <div style="float:none;">
+                    <h3>
+
+                            <a class="question-hyperlink" href="/article/65033">
+                                     对本书第1版的赞誉
+
+                            </a>
+                    </h3>
+
+                </div>
+
+
+                <div style="margin-left:30px;">
+                    <ul>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="minibook-item">
+
+                <div style="float:none;">
+                    <h3>
+
+                            <a class="question-hyperlink" href="/article/66267">
+                                     对第2版的赞誉
+
+                            </a>
+                    </h3>
+
+                </div>
+
+
+                <div style="margin-left:30px;">
+                    <ul>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="minibook-item">
+
+                <div style="float:none;">
+                    <h3>
+
+                            <a class="question-hyperlink" href="/article/65031">
+                                     序
+
+                            </a>
+                    </h3>
+
+                </div>
+
+
+                <div style="margin-left:30px;">
+                    <ul>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="minibook-item">
+
+                <div style="float:none;">
+                    <h3>
+
+                            <a class="question-hyperlink" href="/article/65005">
+                                     前言
+
+                            </a>
+                    </h3>
+
+                </div>
+
+
+                <div style="margin-left:30px;">
+                    <ul>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="minibook-item">
+
+                <div style="float:none;">
+                    <h3>
+
+                            <a class="question-hyperlink" href="/article/65006">
+                                     致谢
+
+                            </a>
+                    </h3>
+
+                </div>
+
+
+                <div style="margin-left:30px;">
+                    <ul>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="minibook-item">
+
+                <div style="float:none;">
+                    <h3>
+
+                            <a class="question-hyperlink" href="/article/65007">
+                                     关于本书
+
+                            </a>
+                    </h3>
+
+                </div>
+
+
+                <div style="margin-left:30px;">
+                    <ul>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="minibook-item">
+
+                <div style="float:none;">
+                    <h3>
+
+                            <a class="question-hyperlink" href="/article/65008">
+                                     关于封面插图
+
+                            </a>
+                    </h3>
+
+                </div>
+
+
+                <div style="margin-left:30px;">
+                    <ul>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="minibook-item">
+
+                <div style="float:none;">
+                    <h3>
+
+                            <a class="question-hyperlink" href="/article/65557">
+                                     第一部分　基础知识
+
+                            </a>
+                    </h3>
+
+                </div>
+
+
+                <div style="margin-left:30px;">
+                    <ul>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="minibook-item">
+
+                <div style="float:none;">
+                    <h3>
+
+                            <a class="question-hyperlink" href="/article/65009">
+                                     第1章　C#开发的进化史
+
+                            </a>
+                    </h3>
+
+                </div>
+
+
+                <div style="margin-left:30px;">
+                    <ul>
+    <li>
+<a href="/article/72362">1.1　从简单的数据类型开始</a>        </li>
+    <li>
+<a href="/article/72363">1.2 排序和过滤</a>        </li>
+    <li>
+<a href="/article/72364">1.3 处理未知数据 </a>        </li>
+    <li>
+<a href="/article/72365">1.4 LINQ简介</a>        </li>
+    <li>
+<a href="/article/72367">1.5 COM和动态类型</a>        </li>
+    <li>
+<a href="/article/72368">1.6　轻松编写异步代码</a>        </li>
+    <li>
+<a href="/article/72370">1.7　剖析.NET平台</a>        </li>
+    <li>
+<a href="/article/72371">1.8　怎样写出超炫的代码</a>        </li>
+    <li>
+<a href="/article/72372">1.9　小结</a>        </li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="minibook-item">
+
+                <div style="float:none;">
+                    <h3>
+
+                            <a class="question-hyperlink" href="/article/65010">
+                                     第2章　C# 1所搭建的核心基础
+
+                            </a>
+                    </h3>
+
+                </div>
+
+
+                <div style="margin-left:30px;">
+                    <ul>
+    <li>
+<a href="/article/72373">2.1　委托</a>        </li>
+    <li>
+<a href="/article/72374">2.2　类型系统的特征</a>        </li>
+    <li>
+<a href="/article/72375">2.3　值类型和引用类型</a>        </li>
+    <li>
+<a href="/article/72376">2.4　C# 1之外：构建于坚实基础之上的新特性</a>        </li>
+    <li>
+<a href="/article/72377">2.5　小结</a>        </li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="minibook-item">
+
+                <div style="float:none;">
+                    <h3>
+
+                            <a class="question-hyperlink" href="/article/65558">
+                                     第二部分　C# 2 ：解决C# 1 的问题
+
+                            </a>
+                    </h3>
+
+                </div>
+
+
+                <div style="margin-left:30px;">
+                    <ul>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="minibook-item">
+
+                <div style="float:none;">
+                    <h3>
+
+                            <a class="question-hyperlink" href="/article/65011">
+                                     第3章　用泛型实现参数化类型
+
+                            </a>
+                    </h3>
+
+                </div>
+
+
+                <div style="margin-left:30px;">
+                    <ul>
+    <li>
+<a href="/article/72422">3.1　为什么需要泛型</a>        </li>
+    <li>
+<a href="/article/72423">3.2　日常使用的简单泛型</a>        </li>
+    <li>
+<a href="/article/72424">3.3　深化与提高</a>        </li>
+    <li>
+<a href="/article/72425">3.4　高级泛型</a>        </li>
+    <li>
+<a href="/article/72426">3.5　泛型在C#和其他语言中的限制</a>        </li>
+    <li>
+<a href="/article/72427">3.6　小结</a>        </li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="minibook-item">
+
+                <div style="float:none;">
+                    <h3>
+
+                            <a class="question-hyperlink" href="/article/65012">
+                                     第4章　可空类型
+
+                            </a>
+                    </h3>
+
+                </div>
+
+
+                <div style="margin-left:30px;">
+                    <ul>
+    <li>
+<a href="/article/72592">4.1　没有值时怎么办</a>        </li>
+    <li>
+<a href="/article/72593">4.2　System.Nullable&lt;T&gt;和System.Nullable</a>        </li>
+    <li>
+<a href="/article/72594">4.3　C# 2为可空类型提供的语法糖</a>        </li>
+    <li>
+<a href="/article/72595">4.4　可空类型的新奇用法</a>        </li>
+    <li>
+<a href="/article/72596">4.5　小结</a>        </li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="minibook-item">
+
+                <div style="float:none;">
+                    <h3>
+
+                            <a class="question-hyperlink" href="/article/65013">
+                                     第5章　进入快速通道的委托
+
+                            </a>
+                    </h3>
+
+                </div>
+
+
+                <div style="margin-left:30px;">
+                    <ul>
+    <li>
+<a href="/article/72597">5.1　向笨拙的委托语法说拜拜</a>        </li>
+    <li>
+<a href="/article/72598">5.2　方法组转换</a>        </li>
+    <li>
+<a href="/article/72599">5.3　协变性和逆变性</a>        </li>
+    <li>
+<a href="/article/72600">5.4　使用匿名方法的内联委托操作</a>        </li>
+    <li>
+<a href="/article/72605">5.5　匿名方法中的捕获变量</a>        </li>
+    <li>
+<a href="/article/72609">5.6　小结</a>        </li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="minibook-item">
+
+                <div style="float:none;">
+                    <h3>
+
+                            <a class="question-hyperlink" href="/article/65014">
+                                     第6章　实现迭代器的捷径
+
+                            </a>
+                    </h3>
+
+                </div>
+
+
+                <div style="margin-left:30px;">
+                    <ul>
+    <li>
+<a href="/article/72614">6.1　C# 1：手写迭代器的痛苦</a>        </li>
+    <li>
+<a href="/article/72617">6.2　C# 2：利用yield语句简化迭代器</a>        </li>
+    <li>
+<a href="/article/72618">6.3　真实的迭代器示例</a>        </li>
+    <li>
+<a href="/article/72619">6.4　使用CCR实现伪同步代码</a>        </li>
+    <li>
+<a href="/article/72620">6.5　小结</a>        </li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="minibook-item">
+
+                <div style="float:none;">
+                    <h3>
+
+                            <a class="question-hyperlink" href="/article/65015">
+                                     第7章　结束C# 2的讲解： 最后的一些特性
+
+                            </a>
+                    </h3>
+
+                </div>
+
+
+                <div style="margin-left:30px;">
+                    <ul>
+    <li>
+<a href="/article/72622">7.1　分部类型</a>        </li>
+    <li>
+<a href="/article/72623">7.2　静态类型</a>        </li>
+    <li>
+<a href="/article/72624">7.3　独立的取值方法/赋值方法属性访问器</a>        </li>
+    <li>
+<a href="/article/72625">7.4　命名空间别名</a>        </li>
+    <li>
+<a href="/article/72626">7.5　pragma指令</a>        </li>
+    <li>
+<a href="/article/72627">7.6　非安全代码中固定大小的缓冲区</a>        </li>
+    <li>
+<a href="/article/72628">7.7　把内部成员暴露给选定的程序集</a>        </li>
+    <li>
+<a href="/article/72629">7.8　小结</a>        </li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="minibook-item">
+
+                <div style="float:none;">
+                    <h3>
+
+                            <a class="question-hyperlink" href="/article/65559">
+                                     第三部分　C# 3 ：革新写代码的方式
+
+                            </a>
+                    </h3>
+
+                </div>
+
+
+                <div style="margin-left:30px;">
+                    <ul>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="minibook-item">
+
+                <div style="float:none;">
+                    <h3>
+
+                            <a class="question-hyperlink" href="/article/65016">
+                                     第8章　用智能的编译器来防错
+
+                            </a>
+                    </h3>
+
+                </div>
+
+
+                <div style="margin-left:30px;">
+                    <ul>
+    <li>
+<a href="/article/72635">8.1　自动实现的属性</a>        </li>
+    <li>
+<a href="/article/72636">8.2　隐式类型的局部变量</a>        </li>
+    <li>
+<a href="/article/72637">8.3　简化的初始化</a>        </li>
+    <li>
+<a href="/article/72638">8.4　隐式类型的数组</a>        </li>
+    <li>
+<a href="/article/72639">8.5　匿名类型</a>        </li>
+    <li>
+<a href="/article/72640">8.6　小结</a>        </li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="minibook-item">
+
+                <div style="float:none;">
+                    <h3>
+
+                            <a class="question-hyperlink" href="/article/65017">
+                                     第9章　Lambda表达式和表达式树
+
+                            </a>
+                    </h3>
+
+                </div>
+
+
+                <div style="margin-left:30px;">
+                    <ul>
+    <li>
+<a href="/article/72642">9.1　作为委托的Lambda表达式</a>        </li>
+    <li>
+<a href="/article/72643">9.2　使用List&lt;T&gt;和事件的简单例子</a>        </li>
+    <li>
+<a href="/article/72645">9.3　表达式树</a>        </li>
+    <li>
+<a href="/article/72648">9.4　类型推断和重载决策的改变</a>        </li>
+    <li>
+<a href="/article/72650">9.5　小结</a>        </li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="minibook-item">
+
+                <div style="float:none;">
+                    <h3>
+
+                            <a class="question-hyperlink" href="/article/65018">
+                                     第10章　扩展方法
+
+                            </a>
+                    </h3>
+
+                </div>
+
+
+                <div style="margin-left:30px;">
+                    <ul>
+    <li>
+<a href="/article/72651">10.1　未引入扩展方法之前的状态</a>        </li>
+    <li>
+<a href="/article/72652">10.2　扩展方法的语法</a>        </li>
+    <li>
+<a href="/article/72653">10.3　.NET 3.5中的扩展方法</a>        </li>
+    <li>
+<a href="/article/72654">10.4　使用思路和原则</a>        </li>
+    <li>
+<a href="/article/72655">10.5　小结</a>        </li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="minibook-item">
+
+                <div style="float:none;">
+                    <h3>
+
+                            <a class="question-hyperlink" href="/article/65019">
+                                     第11章　查询表达式和LINQ to Objects
+
+                            </a>
+                    </h3>
+
+                </div>
+
+
+                <div style="margin-left:30px;">
+                    <ul>
+    <li>
+<a href="/article/72662">11.1　LINQ介绍</a>        </li>
+    <li>
+<a href="/article/72663">11.2　简单的开始：选择元素</a>        </li>
+    <li>
+<a href="/article/72664">11.3　对序列进行过滤和排序</a>        </li>
+    <li>
+<a href="/article/72665">11.4　let子句和透明标识符</a>        </li>
+    <li>
+<a href="/article/72666">11.5　联接</a>        </li>
+    <li>
+<a href="/article/72667">11.6　分组和延续</a>        </li>
+    <li>
+<a href="/article/72668">11.7　在查询表达式和点标记之间作出选择</a>        </li>
+    <li>
+<a href="/article/72669">11.8　小结</a>        </li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="minibook-item">
+
+                <div style="float:none;">
+                    <h3>
+
+                            <a class="question-hyperlink" href="/article/65020">
+                                     第12章　超越集合的LINQ
+
+                            </a>
+                    </h3>
+
+                </div>
+
+
+                <div style="margin-left:30px;">
+                    <ul>
+    <li>
+<a href="/article/72671">12.1　使用LINQ to SQL查询数据库</a>        </li>
+    <li>
+<a href="/article/72673">12.2　用IQueryable和IQueryProvider进行转换</a>        </li>
+    <li>
+<a href="/article/72674">12.3　LINQ友好的API和LINQ to XML</a>        </li>
+    <li>
+<a href="/article/72675">12.4　用并行LINQ代替LINQ to Objects</a>        </li>
+    <li>
+<a href="/article/72676">12.5　使用LINQ to Rx反转查询模型</a>        </li>
+    <li>
+<a href="/article/72677">12.6　扩展LINQ to Objects</a>        </li>
+    <li>
+<a href="/article/72678">12.7　小结</a>        </li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="minibook-item">
+
+                <div style="float:none;">
+                    <h3>
+
+                            <a class="question-hyperlink" href="/article/65560">
+                                     第四部分　C# 4 ：良好的交互性
+
+                            </a>
+                    </h3>
+
+                </div>
+
+
+                <div style="margin-left:30px;">
+                    <ul>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="minibook-item">
+
+                <div style="float:none;">
+                    <h3>
+
+                            <a class="question-hyperlink" href="/article/65021">
+                                     第13章　简化代码的微小修改
+
+                            </a>
+                    </h3>
+
+                </div>
+
+
+                <div style="margin-left:30px;">
+                    <ul>
+    <li>
+<a href="/article/72791">13.1　可选参数和命名实参</a>        </li>
+    <li>
+<a href="/article/72792">13.2　改善COM互操作性</a>        </li>
+    <li>
+<a href="/article/72793">13.3　接口和委托的泛型可变性</a>        </li>
+    <li>
+<a href="/article/72794">13.4　对锁和字段风格的事件的微小改变</a>        </li>
+    <li>
+<a href="/article/72795">13.5　小结</a>        </li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="minibook-item">
+
+                <div style="float:none;">
+                    <h3>
+
+                            <a class="question-hyperlink" href="/article/65022">
+                                     第14章　静态语言中的动态绑定
+
+                            </a>
+                    </h3>
+
+                </div>
+
+
+                <div style="margin-left:30px;">
+                    <ul>
+    <li>
+<a href="/article/72798">14.1　何谓、何时、为何、如何</a>        </li>
+    <li>
+<a href="/article/72799">14.2　关于动态的快速指南</a>        </li>
+    <li>
+<a href="/article/72800">14.3　动态类型示例</a>        </li>
+    <li>
+<a href="/article/72801">14.4　幕后原理</a>        </li>
+    <li>
+<a href="/article/72803">14.5　实现动态行为</a>        </li>
+    <li>
+<a href="/article/72804">14.6　小结</a>        </li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="minibook-item">
+
+                <div style="float:none;">
+                    <h3>
+
+                            <a class="question-hyperlink" href="/article/65743">
+                                     第五部分　C# 5：简化的异步编程
+
+                            </a>
+                    </h3>
+
+                </div>
+
+
+                <div style="margin-left:30px;">
+                    <ul>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="minibook-item">
+
+                <div style="float:none;">
+                    <h3>
+
+                            <a class="question-hyperlink" href="/article/65777">
+                                     第15章　使用async/await进行异步编程
+
+                            </a>
+                    </h3>
+
+                </div>
+
+
+                <div style="margin-left:30px;">
+                    <ul>
+    <li>
+<a href="/article/73085">15.1　异步函数简介</a>        </li>
+    <li>
+<a href="/article/73087">15.2　思考异步编程</a>        </li>
+    <li>
+<a href="/article/73088">15.3　语法和语义</a>        </li>
+    <li>
+<a href="/article/73089">15.4　异步匿名函数</a>        </li>
+    <li>
+<a href="/article/73090">15.5　实现细节：编译器转换</a>        </li>
+    <li>
+<a href="/article/73091">15.6　高效地使用async/await</a>        </li>
+    <li>
+<a href="/article/73092">15.7　小结</a>        </li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="minibook-item">
+
+                <div style="float:none;">
+                    <h3>
+
+                            <a class="question-hyperlink" href="/article/66196">
+                                     第16章　C# 5附加特性和结束语
+
+                            </a>
+                    </h3>
+
+                </div>
+
+
+                <div style="margin-left:30px;">
+                    <ul>
+    <li>
+<a href="/article/73093">16.1　foreach循环中捕获变量的变化</a>        </li>
+    <li>
+<a href="/article/73094">16.2　调用者信息特性</a>        </li>
+    <li>
+<a href="/article/73095">16.3　结束语</a>        </li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="minibook-item">
+
+                <div style="float:none;">
+                    <h3>
+
+                            <a class="question-hyperlink" href="/article/65025">
+                                     附录A　LINQ标准查询操作符
+
+                            </a>
+                    </h3>
+
+                </div>
+
+
+                <div style="margin-left:30px;">
+                    <ul>
+    <li>
+<a href="/article/73096">A.1　聚合</a>        </li>
+    <li>
+<a href="/article/73097">A.2　连接</a>        </li>
+    <li>
+<a href="/article/73098">A.3　转换</a>        </li>
+    <li>
+<a href="/article/73099">A.4　元素操作符</a>        </li>
+    <li>
+<a href="/article/73100">A.5　相等操作</a>        </li>
+    <li>
+<a href="/article/73101">A.6　生成</a>        </li>
+    <li>
+<a href="/article/73102">A.7　分组</a>        </li>
+    <li>
+<a href="/article/73103">A.8　连接</a>        </li>
+    <li>
+<a href="/article/73104">A.9　分部</a>        </li>
+    <li>
+<a href="/article/73105">A.10　投影</a>        </li>
+    <li>
+<a href="/article/73106">A.11　数量</a>        </li>
+    <li>
+<a href="/article/73108">A.12　过滤</a>        </li>
+    <li>
+<a href="/article/73109">A.13　基于集的操作符</a>        </li>
+    <li>
+<a href="/article/73110">A.14　排序</a>        </li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="minibook-item">
+
+                <div style="float:none;">
+                    <h3>
+
+                            <a class="question-hyperlink" href="/article/65026">
+                                     附录B　.NET中的泛型集合
+
+                            </a>
+                    </h3>
+
+                </div>
+
+
+                <div style="margin-left:30px;">
+                    <ul>
+    <li>
+<a href="/article/73111">B.1　接口</a>        </li>
+    <li>
+<a href="/article/73112">B.2　列表</a>        </li>
+    <li>
+<a href="/article/73113">B.3　字典</a>        </li>
+    <li>
+<a href="/article/73114">B.4　集</a>        </li>
+    <li>
+<a href="/article/73115">B.5　Queue&lt;T&gt;和Stack&lt;T&gt;</a>        </li>
+    <li>
+<a href="/article/73116">B.6　并行集合（.NET 4）</a>        </li>
+    <li>
+<a href="/article/73117">B.7　只读接口（.NET 4.5）</a>        </li>
+    <li>
+<a href="/article/73118">B.8　小结</a>        </li>
+                    </ul>
+                </div>
+
+            </div>
+            <div class="minibook-item">
+
+                <div style="float:none;">
+                    <h3>
+
+                            <a class="question-hyperlink" href="/article/65027">
+                                     附录C　版本总结
+
+                            </a>
+                    </h3>
+
+                </div>
+
+
+                <div style="margin-left:30px;">
+                    <ul>
+    <li>
+<a href="/article/73119">C.1　桌面框架的主版本</a>        </li>
+    <li>
+<a href="/article/73120">C.2　C#语言特性</a>        </li>
+    <li>
+<a href="/article/73121">C.3　框架库的特性</a>        </li>
+    <li>
+<a href="/article/73122">C.4　运行时（CLR）特性</a>        </li>
+    <li>
+<a href="/article/73123">C.5　相关框架</a>        </li>
+    <li>
+<a href="/article/73124">C.6　小结</a>        </li>
+                    </ul>
+                </div>
+
+            </div>
+</div>
+
+    </div>
+
+
+    <div>
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+<div id="sidebar">
+
+    <div class="module">
+<form action="/Article" method="post" target="_blank" novalidate="novalidate">        <div class="input-append">
+            <input data-val="true" data-val-number="The field Int32 must be a number." data-val-required="Int32 字段是必需的。" id="minibookid" name="minibookid" type="hidden" value="1033">
+            <input class="span2" id="keyword" name="keyword" type="text" value=""><input type="submit" class="btn" value="搜索">
+        </div>
+</form></div>
+
+      <div class="module" style="padding-top: 5px">
+          <h4 id="h-files">相关图书</h4>
+          <center>
+              <a href="/book/1200" target="_blank">
+                  <img class="bookcover" alt="封面" src="/bookcover/1200.332.jpg" width="111" height="140">
+              </a>
+          </center>
+          <center>
+
+              <a href="/book/1200" target="_blank">深入理解C#（第3版）</a>
+          </center>
+      </div>
+
+    <div class="module">
+    <h4 id="h-related-tags">
+        推荐合集的人</h4>
+
+        <a href="/users/191664">
+            <img class="side-avatar show-user-card" userid="191664" src="/Users/GetAvatar/191664?size=Small" width="32" height="32">
+        </a>
+    <div style="clear:both"></div>
+</div>
+
+
+
+    <div id="related-tags" class="module">
+        <h4 id="h-related-tags">
+            文章中的标签</h4>
+
+             <a class="post-tag" href="/article/tagged/32" tagid="32">程序设计</a>
+            <span class="item-multiplier">×&nbsp;157</span>
+            <br>
+             <a class="post-tag" href="/article/tagged/35" tagid="35">c#</a>
+            <span class="item-multiplier">×&nbsp;157</span>
+            <br>
+
+    </div>
+
+
+
+
+<div id="related-tags" class="module">
+    <h4 id="h-related-tags">
+        关注类别</h4>
+
+
+ </div>
+
+
+  <div class="module">
+    <h4 id="h-related-tags">
+        关注好友</h4>
+
+    <div style="clear:both"></div>
+ </div>
+
+
+
+
+ <div class="module">
+    <h4 id="h-related-tags">
+        我的粉丝</h4>
+    <div style="clear:both"></div>
+ </div>
+
+
+
+
+</div>
+		</div>
+
+	</div>
+	<div id="footer">
+	  <div class="container">
+		<ul id="footmenu">
+			<li class="first"><a href="/users/guaguacode">刮刮卡</a></li>
+			<li><a href="/article/13723">成为译者</a></li>
+			<li><a href="/article/36644">成为作者</a></li>
+			<li><a href="/article/58331">加入我们</a></li>
+			<li><a href="/article/7751">常见问题</a></li>
+			<li><a href="/article/17095">建议改进</a></li>
+			<li><a href="/article/36242">联系我们</a></li>
+		</ul>
+		<p>
+		  2005-2016 © 北京图灵文化发展有限公司 · All Rights Reserved
+		</p>
+		<p class="muted">
+		  京ICP备11039595号　京公网安备11010502011375
+		</p>
+
+	  </div>
+	</div>
+<div id="toTop" style="display: none;">
+<a href="#">▲</a>
+<a href="#footer">▼</a>
+</div>
+		<div id="popup"><div class="user-card" id="tagcard"></div><p class="corner"></p></div>
+
+
+
+<div class="modal fade hide" id="wModal">
+  <div class="modal-header">
+	<button type="button" class="close" data-dismiss="modal">×</button>
+	<h4>modalMsg</h4>
+  </div>
+  <form action="" data-ajax="true" data-ajax-failure="modalMsgError" data-ajax-success="modalMsgSuccess" data-ajax-begin="window.disableCalmer" id="formModalMsg" method="post" novalidate="novalidate">
+  <div class="modal-body">
+	<textarea cols="20" id="msgBody" name="Body" rows="2" style="width:97%;height:80px;"></textarea>
+	<input id="ReceiverUserName" name="ReceiverUserName" type="hidden" value="">
+	<span id="error-span" style="color:red"></span>
+	<span id="success-span" style="color:#080"></span>
+  </div>
+  <div class="modal-footer">
+	<input type="button" class="btn" data-dismiss="modal" value="取消">
+	<input type="submit" id="submitMsg" class="btn btn-message calmer" value=" 发 送 ">
+  </div>
+  </form>
+</div>
+
+
+		<script type="text/javascript">
+			$(function () {
+				$.post('/users/updatelastactivitydate');
+			});
+		</script>
+
+
+</body></html>
