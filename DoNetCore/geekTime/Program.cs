@@ -30,7 +30,8 @@ namespace geekTime
                 else
                     cmdList.Add(string.Format("copy /b r:\\all.ts + {0} r:\\all.ts", lstFileName[i]));
             }
-            cmdList.Add("del r:\\tmp\\*.ts");
+
+            cmdList.Add(string.Format("del {0}\\*.ts", System.Environment.CurrentDirectory).Replace("\\\\", "\\"));
 
             foreach (string cmdStr in cmdList)
             {
