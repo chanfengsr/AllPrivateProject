@@ -1,0 +1,810 @@
+<html lang="zh-CN"><head><script src="//i.jiathis.com/url/shares.php?url=http%3A%2F%2Fwww.ituring.com.cn%2Farticle%2F72605" charset="utf-8"></script>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7, IE=9">
+	<title>图灵社区 : 图书 : 5.5　匿名方法中的捕获变量</title>
+
+<link href="/Content/2012/css/style?v=r8QFEljxS-D1kCzaxP2nCRNrkcTdshu8aKmJoL3w7lw1" rel="stylesheet">
+
+
+
+<!--[if IE 6]>
+<link href="/Content/2012/css/ie6.min.css" rel="stylesheet">
+<![endif]--> 
+
+<script type="text/javascript" async="" src="http://www.google-analytics.com/ga.js"></script><script src="/js/frontend?v=mMEO5QkQhrDgiH8awQFIfABMzkqPTCoDKENUcUcCVp41"></script>
+
+
+
+<!--Le HTML5 shim, for IE6-8 support of HTML5 elements-->
+<!--[if lt IE 9]>
+<script src="/Content/2012/js/html5.js"></script>
+<![endif]-->
+<!--[if IE 6]>
+<script src="/Content/2012/js/ie6.min.js"></script>
+<![endif]-->
+<!--Le fav and touch icons-->
+<link rel="shortcut icon" href="/favicon.ico">
+<link rel="apple-touch-icon-precomposed" sizes="114x114" href="/Content/2012/img/icon-touch-114.png">
+<link rel="apple-touch-icon-precomposed" sizes="72x72" href="/Content/2012/img/icon-touch-72.png">
+<link rel="apple-touch-icon-precomposed" href="/Content/2012/img/icon-touch-57.png">
+
+</head>
+<body><link href="http://v2.jiathis.com/code_mini/css/jiathis_counter.css" rel="stylesheet" type="text/css"><link href="http://v2.jiathis.com/code_mini/css/jiathis_share.css" rel="stylesheet" type="text/css"><iframe frameborder="0" style="position: absolute; display: none; opacity: 0;"></iframe><div class="jiathis_style" style="position: absolute; z-index: 1000000000; display: none; top: 50%; left: 50%; overflow: auto;"></div><div class="jiathis_style" style="position: absolute; z-index: 1000000000; display: none; overflow: auto;"></div><iframe frameborder="0" src="http://v2.jiathis.com/code_mini/jiathis_utility.html" style="display: none;"></iframe>
+	<div id="topnav"><div class="page">
+
+	
+        <!--Donut#0FBBDF8CD1FBE1166F073EDD45C54EEC31FECEC7AA684147CC607C68A8356A360EF2937E21A8D3A4FFC8643A85C0C48164A8217F2A619CBB2583E68247BEAF2BDB4188324523ECFF2F290CF939DEE8E0108B801AAE1EBD4B4813AFF7C023D20B39DFF76FAF91E5F0B78896F88D47FE31F8E80011BD4C54AAA879899B370D98B6D1D40C973EC8BBA222371089269D07AFE6A49B527A71D1743BDCD0A712334DF389F71B05B960C05431D10C0D5463FD16F4835B2FA55238FF60E79F73A8E1D306DD804B9F84DED0A03B7AF6519AB98FE0BB38E8852AB28F86CAD019C94C423EC92BBE026DF3FB285B9B849037F84D8F5F107851D6AE39E42F8A2DB260C4BEB9025F5F2DAC06DC8A630FC8108E9527ADD35FB00318778799E7CA4DBF8C87BAC3106F2F5FD0C2F2416C8D560E02B680468C45F2D595B03142A3139855A946DC39F0457D5B4C5980D84E348A7F8908A5A4B16B8415A53A5CE379D66B378855F6CC2477809E874763D15C2DE48EA1E227553D1C22223476DEBC1761BD2B9B97361C009C0AA087#-->	<ul id="check-new-response">
+
+
+</ul>
+	<ul id="usermenu">
+		
+		<li>你好！
+<a class="uid" href="/users/194795">CFSR ( chanfengsr )</a>		</li>
+		<li><a href="/users/194795">我的空间</a></li>
+		<li><a href="/account/logoff">退出</a></li>
+	</ul>
+<!--EndDonut-->
+    
+
+	</div></div>
+	<div class="page">
+		<div id="header">
+			<a href="/" id="title" title="图灵社区 首页">◁ 首页</a>
+			<div id="menucontainer">
+				<ul id="menu" class="book">
+					
+					<form id="nav-search" class="form-search" action="/search" method="get" novalidate="novalidate">
+					  <input type="search" id="q" name="q">
+					  <input type="hidden" id="type" name="type">
+					  <input type="submit" id="search-btn" value="搜索">
+					</form>
+
+					<li><a class="ebooks" href="/book/ebook?sort=updated">电子书</a></li>
+					<li><a class="book" href="/book">图 书</a></li>
+					<li><a class="article" href="/article?sort=newest">文 章</a></li>
+					<li><a class="users" href="/users">会 员</a></li>
+					<li><a class="write" href="/users/mywriting">写 作</a></li>
+				</ul>
+			</div>
+		</div>
+		<div id="main" class="clearfix">
+			
+
+
+
+<script type="text/javascript">
+
+    $(function () {
+        $("pre").addClass("prettyprint");
+        prettyPrint();
+    });
+    
+    function onCloneSuccess(data) {
+        alert(data);
+    }
+
+    function onDonateSuccess(data) {
+        alert(data);
+
+        if (data.substring(0, 4) != "赠银失败") {
+            $("#donate_btn").remove();
+            $("#donate_info").show();
+        }
+            
+    }
+</script>
+
+<div class="row">
+    <div class="span9">
+        <div id="question-header">
+            <div class="btn-group pull-right">
+                    <a href="/article/72600" class="btn"><i class="icon-arrow-left"></i></a>
+                                    <a href="/article/72609" class="btn"><i class="icon-arrow-right"></i></a>
+            </div>
+            <h1>
+                <a href="/article/72605">5.5　匿名方法中的捕获变量</a> 
+            </h1>
+        </div>
+
+        <div class="row">
+            <div class="span1 votecell">
+                <div id="votediv" class="vote">
+    
+<a data-ajax="true" data-ajax-begin="$('#vote-72605').html('取消推荐')" data-ajax-mode="replace" data-ajax-update="#votediv" href="/article/vote/72605" id="vote-72605">推荐</a>
+    <strong>0</strong>
+
+    <a data-ajax="true" data-ajax-begin="$('#fav-72605').html('取消收藏')" data-ajax-mode="replace" data-ajax-update="#votediv" href="/article/vote/72605?isFave=True" id="fav-72605">收藏</a>
+
+</div>
+
+
+
+
+
+
+
+            </div>
+            <div class="span8">
+                <div class="post-text">
+<p>我不喜欢迫不得已发出警告，但我感觉下面这个警告是必要的：如果你是初次接触这个主题，那么除非你感觉特别清醒，而且愿意花点时间来研究它，否则暂时不要开始本节的学习。但我又不希望给你没有必要的警告。事实上，只需花费一点精力，理解本节的主题并不太难。只是被捕获的变量会推翻你现有的一些知识和直觉，所以刚开始可能觉得它有点儿难。</p>
+
+<p>不过，还是应该弄懂它。因为在掌握了本节的主题之后，代码的简洁性和可读性都会有<strong>很大</strong>的提高。另外，以后在研究C# 3中的Lambda表达式和LINQ时，这个主题也是至关重要的。所以，完全值得你花费精力去学习。</p>
+
+<p>先从一些定义开始。</p>
+
+<h3>5.5.1　定义闭包和不同类型的变量</h3>
+
+<p>闭包是一个很古老的概念，最初是在Scheme中实现的。但是，随着近年来被越来越多的主流语言所接纳，人们对它的关注也越来越多。它的基本概念是：一个函数<sup>1</sup>除了能通过提供给它的参数交互之外，还能同环境进行更大程度的互动。但这个定义过于抽象，为了真正理解它在C# 2中的应用情况，还需理解另两个术语<sup>2</sup>。</p>
+
+<p><sub>1. 这里的“函数”是常规意义上的计算机科学术语，而不是C#术语。</sub></p>
+
+<p><sub>2. 这两个术语定义在C# 4.0语言规范的7.14.4节。——译者注</sub></p>
+
+<ul>
+<li><p><strong>外部变量</strong>（outer variable）是指作用域（scope）内包括匿名方法的局部变量或参数（不包括<code>ref</code>和<code>out</code>参数） 。在类的实例成员内部的匿名方法中，<code>this</code>引用也被认为是一个外部变量。</p></li>
+<li><p><strong>捕获的外部变量</strong>（captured outer variable）通常简称为<strong>捕获变量</strong>（captured variable），它是在匿名方法内部使用的外部变量。重新研究一下“闭包”的定义，其中所说的“函数”是指匿名方法，而与之交互的“环境”是指由这个匿名方法捕获到的变量集。</p></li>
+</ul>
+
+<p>所有这些解释听起来都“干巴巴”的，而且可能很难想象。但它主要强调的就是，匿名方法能使用在声明该匿名方法的方法内部定义的局部变量。这听起来似乎并不是一个了不起的设计，但在许多时候，它能带来巨大的便利——你可以使用现有的上下文信息，而不必专门设置额外的类型来存储你已经知道的数据。很快就会看到一些<strong>有用的</strong>、具体的例子，这一点我可以保证，但在此之前，有必要通过一些代码来明确上面那些定义。</p>
+
+<p>在代码清单5-10的例子中包含大量局部变量。它是单独的一个方法，所以不能独自运行。这里不打算解释它的工作原理，或者它的功能，只是解释不同的变量是如何划分的。简化起见，我们再次使用了<code>MethodInvoker</code>委托类型。</p>
+
+<p><strong>代码清单5-10　不同种类的变量和匿名方法的关系</strong></p>
+
+<pre class="prettyprint"><span class="kwd">void</span><span class="pln"> </span><span class="typ">EnclosingMethod</span><span class="pun">()</span><span class="pln">
+</span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">int</span><span class="pln"> outerVariable </span><span class="pun">=</span><span class="pln"> </span><span class="lit">5</span><span class="pun">;</span><span class="pln">    </span><span class="com">//❶ 外部变量（未捕获的变量）</span><span class="pln">
+    </span><span class="kwd">string</span><span class="pln"> capturedVariable </span><span class="pun">=</span><span class="pln"> </span><span class="str">"captured"</span><span class="pun">;</span><span class="pln">   </span><span class="com">//❷  被匿名方法捕获的外部变量</span><span class="pln">
+
+    </span><span class="kwd">if</span><span class="pln"> </span><span class="pun">(</span><span class="typ">DateTime</span><span class="pun">.</span><span class="typ">Now</span><span class="pun">.</span><span class="typ">Hour</span><span class="pln"> </span><span class="pun">==</span><span class="pln"> </span><span class="lit">23</span><span class="pun">)</span><span class="pln">
+    </span><span class="pun">{</span><span class="pln">
+        </span><span class="kwd">int</span><span class="pln"> normalLocalVariable </span><span class="pun">=</span><span class="pln"> </span><span class="typ">DateTime</span><span class="pun">.</span><span class="typ">Now</span><span class="pun">.</span><span class="typ">Minute</span><span class="pun">;</span><span class="pln">   </span><span class="com">//❸ 普通方法的局部变量 </span><span class="pln">
+        </span><span class="typ">Console</span><span class="pun">.</span><span class="typ">WriteLine</span><span class="pun">(</span><span class="pln">normalLocalVariable</span><span class="pun">);</span><span class="pln">
+    </span><span class="pun">}</span><span class="pln">
+
+    </span><span class="typ">MethodInvoker</span><span class="pln"> x </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">delegate</span><span class="pun">()</span><span class="pln">
+    </span><span class="pun">{</span><span class="pln">
+        </span><span class="kwd">string</span><span class="pln"> anonLocal </span><span class="pun">=</span><span class="pln"> </span><span class="str">"local to anonymous method"</span><span class="pun">;</span><span class="pln">   </span><span class="com">//❹  匿名方法的局部变量</span><span class="pln">
+        </span><span class="typ">Console</span><span class="pun">.</span><span class="typ">WriteLine</span><span class="pun">(</span><span class="pln">capturedVariable </span><span class="pun">+</span><span class="pln"> anonLocal</span><span class="pun">);</span><span class="pln">   </span><span class="com">//❺ 捕获外部变量</span><span class="pln">
+    </span><span class="pun">};</span><span class="pln"> 
+    x</span><span class="pun">();</span><span class="pln">
+</span><span class="pun">}</span></pre>
+
+<p>我们由易到难来解释所有这些变量。</p>
+
+<ul>
+<li><p><code>normalLocalVariable</code>❸不是外部变量，因为它的作用域内没有匿名方法。它的行为和普通局部变量别无二致。</p></li>
+<li><p><code>anonLocal</code>❹也不是外部变量，它是匿名方法的局部变量，但不是<code>EnclosingMethod</code>的局部变量。只有委托实例被调用之后，它才会存在[于一个正在执行的栈帧（frame）中]。</p></li>
+<li><p><code>outerVariable</code>❶是一个外部变量，因为在它的作用域内声明了一个匿名方法。但是，匿名方法没有引用它，所以它未被捕捉。</p></li>
+<li><p><code>capturedVariable</code>❷是一个外部变量，因为在它的作用域内声明了一个匿名方法，而且由于在❺这个位置使用了该变量，所以它成为了一个<strong>被捕捉</strong>的变量。</p></li>
+</ul>
+
+<p>好了，虽然理解了术语，但我们对被捕捉的变量所做的事情并不是特别清楚。假设你能猜出运行代码清单5-10中方法后的输出结果。但在另一些情况下，结果可能会出乎你的预料。我们将从一个简单的例子开始，然后逐渐接触更复杂的。</p>
+
+<h3>5.5.2　捕获变量的行为</h3>
+
+<p>被匿名方法捕捉到的确实是<strong>变量</strong>，而不是创建委托实例时该变量的值。稍后就会看到它所产生的深远影响，但首先，我们必须理解对于相对简单的情况来说，这意味着什么。</p>
+
+<p>代码清单5-11有一个捕获的变量和一个匿名方法，它们都能打印并改变变量。我们会看到，在匿名方法外部对变量的更改在匿名方法内部是可见的，反之亦然。</p>
+
+<p><strong>代码清单5-11　从匿名方法内外访问一个变量</strong></p>
+
+<pre class="prettyprint"><span class="kwd">string</span><span class="pln"> captured </span><span class="pun">=</span><span class="pln"> </span><span class="str">"before x is created"</span><span class="pun">;</span><span class="pln">
+
+</span><span class="typ">MethodInvoker</span><span class="pln"> x </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">delegate</span><span class="pln">
+</span><span class="pun">{</span><span class="pln">
+    </span><span class="typ">Console</span><span class="pun">.</span><span class="typ">WriteLine</span><span class="pun">(</span><span class="pln">captured</span><span class="pun">);</span><span class="pln">
+    captured </span><span class="pun">=</span><span class="pln"> </span><span class="str">"changed by x"</span><span class="pun">;</span><span class="pln">
+</span><span class="pun">};</span><span class="pln">
+captured </span><span class="pun">=</span><span class="pln"> </span><span class="str">"directly before x is invoked"</span><span class="pun">;</span><span class="pln">
+x</span><span class="pun">();</span><span class="pln">
+
+</span><span class="typ">Console</span><span class="pun">.</span><span class="typ">WriteLine</span><span class="pun">(</span><span class="pln">captured</span><span class="pun">);</span><span class="pln">
+
+captured </span><span class="pun">=</span><span class="pln"> </span><span class="str">"before second invocation"</span><span class="pun">;</span><span class="pln">
+x</span><span class="pun">();</span></pre>
+
+<p>代码清单5-11的输出如下：</p>
+
+<pre class="prettyprint"><span class="pln">directly before x </span><span class="kwd">is</span><span class="pln"> invoked
+changed </span><span class="kwd">by</span><span class="pln"> x
+before second invocation</span></pre>
+
+<p>来看看具体是如何发生的。首先，声明变量<code>captured</code>，并将它的值设为一个十分普通的字符串字面量。到目前为止，变量没有任何特别的地方。然后，声明委托实例<code>x</code>，并将它的值设为捕获了<code>captured</code>的一个匿名方法。委托实例总是先打印<code>captured</code>的当前值，再把它更改为<code>"changed by x"</code>。需要注意的是，创建委托实例<strong>不会导致执行</strong>。</p>
+
+<p>请记住，假如只是创建一个委托实例，不会读取变量，并将它的值存储到某个地方。为了证明这一点，现在将<code>captured</code>的值更改为<code>"directly before x is invoked"</code>。然后，我们第一次调用<code>x</code>。它会读取<code>captured</code>的值，并把它打印出来，从而产生第1行输出。然后，它会将<code>captured</code>的值设为<code>"changed by x"</code>并返回。委托实例返回后，这个“普通”的方法会照常进行，它会打印<code>captured</code>的当前值，从而产生第2行输出。</p>
+
+<p>然后，普通方法<sup>3</sup>再次更改<code>captured</code>的值（这次修改为<code>before second invocation</code>），然后第二次调用<code>x</code>。<code>captured</code>的当前值会被打印出来，从而产生第3行输出。然后，委托实例将<code>captured</code>的值更改为<code>"changed by x"</code>并返回。此时，普通方法运行结束，整个程序结束。</p>
+
+<p><sub>3. 也就是<code>Main</code>方法。——译者注</sub></p>
+
+<p>虽然我们用这么多话解释了这么短一段代码的功能，但其中实际只有一个要点：<strong>在整个方法中，我们使用的始终是同一个<code>captured</code>变量</strong>。对一些人来说，这或许很难理解；对另一些人来说，这又或许是颇为自然。如果你觉得很难理解，不要担心，随着时间的推移，它必将变得越来越容易理解。</p>
+
+<p>但是，即使你能很轻松地理解到目前为止我所讲的一切，也可能会产生这样的一个疑问：所有这一切到底有什么意义？OK，是时候展示一个真正有用的例子了。</p>
+
+<h3>5.5.3　捕获变量到底有什么用处</h3>
+
+<p>简单地说，捕获变量能简化避免专门创建一些类来存储一个委托需要处理的信息（除了作为参数传递的信息之外）。在<code>ParameterizedThreadStart</code>问世以前，如果你想启动一个新（非线程池）线程，并向其提供一些信息（比如要获取的一个网页的URL）就不得不创建一个额外的类型来容纳URL，并将<code>ThreadStart</code>委托实例的操作放到那个类型中。即使对于<code>ParameterizedThreadStart</code>来说，我们的方法也不得不接受一个<code>object</code>类型的参数，再将其强制转换为所需要的类型。这样一来，本来应该很简单的事情就被搞得很复杂。</p>
+
+<p>再来看看另一个例子，假定你有一个人物列表，并希望写一个方法来返回包含低于特定年龄的所有人的另一个列表。<code>List&lt;T&gt;</code>有一个<code>FindAll</code>方法能返回一个新列表，包含了和特定谓词匹配的所有内容。但是，在匿名方法和捕获变量问世之前，<code>List&lt;T&gt;.FindAll</code><sup>4</sup>的存在并没有多大意义，因为要创建一个合适的委托，整个过程实在是太麻烦了。遍历整个列表并手动复制符合条件的项也许会简单一些。但是，在C# 2中，这一切变得非常容易：</p>
+
+<pre class="prettyprint"><code><span class="typ">List</span><span class="pun">&lt;</span><span class="typ">Person</span><span class="pun">&gt;</span><span class="pln"> </span><span class="typ">FindAllYoungerThan</span><span class="pun">(</span><span class="typ">List</span><span class="pun">&lt;</span><span class="typ">Person</span><span class="pun">&gt;</span><span class="pln"> people</span><span class="pun">,</span><span class="pln"> </span><span class="kwd">int</span><span class="pln"> limit</span><span class="pun">)</span><span class="pln">
+</span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">return</span><span class="pln"> people</span><span class="pun">.</span><span class="typ">FindAll</span><span class="pun">(</span><span class="kwd">delegate</span><span class="pln"> </span><span class="pun">(</span><span class="typ">Person</span><span class="pln"> person</span><span class="pun">)</span><span class="pln">
+        </span><span class="pun">{</span><span class="pln"> </span><span class="kwd">return</span><span class="pln"> person</span><span class="pun">.</span><span class="typ">Age</span><span class="pln"> </span><span class="pun">&lt;</span><span class="pln"> limit</span><span class="pun">;</span><span class="pln"> </span><span class="pun">}</span><span class="pln">
+    </span><span class="pun">);</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+
+<p><sub>4. <code>FindAll</code>的参数是一个<code>Predicate&lt;T&gt;</code>委托。——译者注</sub></p>
+
+<p>我们在委托实例内部捕获了<code>limit</code>参数——如果仅有匿名方法而没有捕获变量，就只能在匿名方法中使用一个“硬编码”的限制年龄，而不能使用作为参数传递的<code>limit</code>。这无疑是一个非常巧妙的设计。和C# 1的版本相比，新的设计使我们能准确地描述自己的 “目的”，而不是将大量精力放在“过程”上。（在C# 3中，我们的代码甚至还能得到进一步的简化<sup>5</sup>。）你会很少遇到需要改写捕获变量的情况，但同样，这无疑也会有它的用处。</p>
+
+<p><sub>5. 如果你感到好奇，可以提前告诉你C# 3的写法是：<code>return people.Where(person =&gt; person.Age &lt; limit);</code>。</sub></p>
+
+<p>能跟上我的思路吗？很好。到目前为止，我们一直是在创建委托实例的那个方法内部使用委托实例。在这种情况下，你对捕获变量的生存期（lifetime）不会有太大的疑问。但是，假如委托实例“逃”到另一个黑暗的世界（big bad world），那么会发生什么？假如创建它的那个方法结束，它将何以应对？</p>
+
+<h3>5.5.4  捕获变量的延长生存期</h3>
+
+<p>在理解这种问题时，最简单的办法就是制定一个规则，给出一个例子，然后思考假如没有那个规则，会发生什么。下面就是规则，我们开始吧：</p>
+
+<p><strong>对于一个捕获变量，只要还有任何委托实例在引用它，它就会一直存在。</strong></p>
+
+<p>如果暂时没有头绪，请不要担心——例子就是帮助你理清头绪的。代码清单5-12展示了一个方法，它能<strong>返回</strong>一个委托实例。委托实例用捕获了一个外部变量的匿名方法来创建。那么，在方法返回之后，假如调用那个委托实例，会发生什么？</p>
+
+<p><strong>代码清单5-12　捕捉变量的生存期延长了</strong></p>
+
+<pre class="prettyprint"><span class="kwd">static</span><span class="pln"> </span><span class="typ">MethodInvoker</span><span class="pln"> </span><span class="typ">CreateDelegateInstance</span><span class="pun">()</span><span class="pln">
+</span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">int</span><span class="pln"> counter </span><span class="pun">=</span><span class="pln"> </span><span class="lit">5</span><span class="pun">;</span><span class="pln">
+
+    </span><span class="typ">MethodInvoker</span><span class="pln"> ret </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">delegate</span><span class="pln">
+    </span><span class="pun">{</span><span class="pln">
+        </span><span class="typ">Console</span><span class="pun">.</span><span class="typ">WriteLine</span><span class="pun">(</span><span class="pln">counter</span><span class="pun">);</span><span class="pln">
+        counter</span><span class="pun">++;</span><span class="pln">
+    </span><span class="pun">};</span><span class="pln">
+    ret</span><span class="pun">();</span><span class="pln">
+    </span><span class="kwd">return</span><span class="pln"> ret</span><span class="pun">;</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+</span><span class="pun">...</span><span class="pln">
+</span><span class="typ">MethodInvoker</span><span class="pln"> x </span><span class="pun">=</span><span class="pln"> </span><span class="typ">CreateDelegateInstance</span><span class="pun">();</span><span class="pln">
+x</span><span class="pun">();</span><span class="pln">
+x</span><span class="pun">();</span></pre>
+
+<p>代码清单5-12的输出结果包括3行，每一行分别显示数字5、6和7。第1行输出是在<code>CreateDelegateInstance</code>内部调用委托实例的结果。这证明了<code>counter</code>的值在那个时候是可用的。但是，当方法返回之后呢？我们一般会认为<code>counter</code>在栈上，所以只要与<code>CreateDelegateInstance</code>对应的栈帧被销毁，<code>counter</code>也会随之消失……但令人惊讶的是，以后调用返回的委托实例时，使用的似乎还是那个<code>counter</code>。</p>
+
+<p>秘密在于前面那个假设，<code>counter</code>真的是在栈上吗？答案是否定的。事实上，编译器创建了一个额外的类来容纳变量。<code>CreateDelegateInstance</code>方法拥有对该类的一个实例的引用，所以它能使用<code>counter</code>。另外，委托也有对该实例的一个引用，这个实例和其他实例一样都在堆上。除非委托准备好被垃圾回收，否则那个实例是不会被回收的。</p>
+
+<p>匿名方法的一些方面要严重依赖于编译器（不同的编译器可能使用不同的方式来支持相同的语义），但假如不用一个额外的类来容纳捕获变量，就很难明白指定的行为是如何实现的。要注意的是，如果只捕捉<code>this</code>，就不需要额外的类型了——编译器将直接创建一个实例方法来作为委托的操作。我之前提过，你不必过于担心栈和堆的细节，但有必要了解编译器能够实现什么样的东西，以防你对特定的行为是如何产生的感到困惑。</p>
+
+<p>OK，现在你明白了，局部变量并非始终是“局部”的，即使在方法返回之后，它依然存在！你可能非常好奇我接下来会讲什么——现在，看看用多个委托来捕捉同一个变量的不同实例会发生什么？听起来是不是有些疯狂？这就是现在要讲述的一类问题。</p>
+
+<h3>5.5.5　局部变量实例化</h3>
+
+<p>运气不错时，捕获的变量的行为和我设想的基本一致，但运气差时情况很糟糕，由于我没有特别细心，结果令我很吃惊。如果出问题，几乎都是因为忘记了自己实际创建了多少个局部变量的“实例”。每当执行到声明一个局部变量的作用域时，就称该局部变量被<strong>实例化</strong><sup>6</sup>。下面展示了一个简单的例子，它对两段非常相似的代码进行了比较：</p>
+
+<p><sub>6. 简单来说就是，每声明一次局部变量，它就被实例化一次。——译者注</sub></p>
+
+<pre class="prettyprint"><code><span class="kwd">int</span><span class="pln"> single</span><span class="pun">;</span><span class="pln">
+</span><span class="kwd">for</span><span class="pln"> </span><span class="pun">(</span><span class="kwd">int</span><span class="pln"> i </span><span class="pun">=</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span><span class="pln"> i </span><span class="pun">&lt;</span><span class="pln"> </span><span class="lit">10</span><span class="pun">;</span><span class="pln"> i</span><span class="pun">++)</span><span class="pln">
+</span><span class="pun">{</span><span class="pln">
+    single </span><span class="pun">=</span><span class="pln"> </span><span class="lit">5</span><span class="pun">;</span><span class="pln">
+    </span><span class="typ">Console</span><span class="pun">.</span><span class="typ">WriteLine</span><span class="pun">(</span><span class="pln">single </span><span class="pun">+</span><span class="pln"> i</span><span class="pun">);</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+
+
+</span><span class="kwd">for</span><span class="pln"> </span><span class="pun">(</span><span class="kwd">int</span><span class="pln"> i </span><span class="pun">=</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span><span class="pln"> i </span><span class="pun">&lt;</span><span class="pln"> </span><span class="lit">10</span><span class="pun">;</span><span class="pln"> i</span><span class="pun">++)</span><span class="pln">
+</span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">int</span><span class="pln"> multiple </span><span class="pun">=</span><span class="pln"> </span><span class="lit">5</span><span class="pun">;</span><span class="pln">
+    </span><span class="typ">Console</span><span class="pun">.</span><span class="typ">WriteLine</span><span class="pun">(</span><span class="pln">multiple </span><span class="pun">+</span><span class="pln"> i</span><span class="pun">);</span><span class="pln">
+</span><span class="pun">}</span></code></pre>
+
+<p>在过去美好的日子里，这样的两段代码在语义上完全一致，所以通常会编译成相同的IL。假如不涉及任何匿名方法，现在仍将这样处理。局部变量所需的全部空间都在方法开始时在栈上分配，所以不会产生每次循环迭代都“重新声明”变量的开销<sup>7</sup>。但是，采用我们的新术语，<code>single</code>变量只实例化一次，而<code>multiple</code>变量将实例化10次——就像有10个局部变量，全部都叫做<code>multiple</code>，它们一个接一个地创建。</p>
+
+<p><sub>7. 在我看来，重新声明变量要更加整洁，除非需要在多个迭代之间维护这个值。</sub></p>
+
+<p>相信你现在已经明白我想说的话了——当一个变量被捕获时，捕捉的是变量的“实例”。如果在循环内捕捉<code>multiple</code>，第一次循环迭代时捕获的变量与第二次循环时捕获的变量是不同的，以此类推。代码清单5-13演示了由此产生的影响。</p>
+
+<p><strong>代码清单5-13　使用多个委托来捕捉多个变量实例</strong></p>
+
+<pre class="prettyprint"><code><span class="typ">List</span><span class="pun">&amp;</span><span class="pln">lt</span><span class="pun">;</span><span class="typ">MethodInvoker</span><span class="pun">&gt;</span><span class="pln"> list </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">List</span><span class="pun">&amp;</span><span class="pln">lt</span><span class="pun">;</span><span class="typ">MethodInvoker</span><span class="pun">&gt;();</span><span class="pln">
+
+</span><span class="kwd">for</span><span class="pln"> </span><span class="pun">(</span><span class="kwd">int</span><span class="pln"> index </span><span class="pun">=</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span><span class="pln"> index </span><span class="pun">&lt;</span><span class="pln"> </span><span class="lit">5</span><span class="pun">;</span><span class="pln"> index</span><span class="pun">++)</span><span class="pln">
+</span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">int</span><span class="pln"> counter </span><span class="pun">=</span><span class="pln"> index </span><span class="pun">*</span><span class="pln"> </span><span class="lit">10</span><span class="pun">;</span><span class="pln">   </span><span class="com">//❶ 实例化counter</span><span class="pln">
+
+    list</span><span class="pun">.</span><span class="typ">Add</span><span class="pun">(</span><span class="kwd">delegate</span><span class="pln">
+    </span><span class="pun">{</span><span class="pln">
+        </span><span class="typ">Console</span><span class="pun">.</span><span class="typ">WriteLine</span><span class="pun">(</span><span class="pln">counter</span><span class="pun">);</span><span class="pln">   </span><span class="com">//❷ 打印并递增捕获的变量</span><span class="pln">
+        counter</span><span class="pun">++;</span><span class="pln">
+    </span><span class="pun">});</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+</span><span class="kwd">foreach</span><span class="pln"> </span><span class="pun">(</span><span class="typ">MethodInvoker</span><span class="pln"> t </span><span class="kwd">in</span><span class="pln"> list</span><span class="pun">)</span><span class="pln">
+</span><span class="pun">{</span><span class="pln">
+    t</span><span class="pun">();</span><span class="pln">   </span><span class="com">//❸ 执行全部5个委托实例</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+list</span><span class="pun">[</span><span class="lit">0</span><span class="pun">]();</span><span class="pln">    </span><span class="com">//❹ 第1个委托多执行3次</span><span class="pln">
+list</span><span class="pun">[</span><span class="lit">0</span><span class="pun">]();</span><span class="pln">
+list</span><span class="pun">[</span><span class="lit">0</span><span class="pun">]();</span><span class="pln">
+
+list</span><span class="pun">[</span><span class="lit">1</span><span class="pun">]();</span><span class="pln">   </span><span class="com">//❺ 第2个委托多执行1次</span></code></pre>
+
+<p>代码清单5-13创建5个不同的委托实例❷——每次循环都创建一个。调用委托时，会先打印<code>counter</code>的值，再对它进行递增。现在，由于<code>counter</code>变量是在循环<strong>内部</strong>声明的，所以每次循环迭代，它都会被实例化❶。这样一来，每个委托捕捉到的都是一个不同的变量。所以，依次调用每个实例❸，就可以看到每次赋给<code>counter</code>的不同的初始值：0、10、20、30、40。为了加深你的理解，当返回第1个委托实例，再多执行它3次时❹，它会从那个实例的<code>counter</code>变量停止的地方继续，所以会输出1，2，3。最后，我们多执行一次第2个委托实例❺，这将从那个实例的<code>counter</code>变量停止的地方继续，所以会输出11。</p>
+
+<p>所以，在这个例子中，每个委托实例都捕获了一个不同的变量。结束对这个例子的讨论之前，应该思考的一点是，假如捕捉的是<code>index</code>（由<code>for</code>循环声明的变量）而不是<code>counter</code>，那么会发生什么？在这种情况下，所有委托都将共享同一个变量。输出的将是数字5～13。之所以先输出5，是因为在循环终止之前，对<code>index</code>的最后一次赋值会把它设为5。不管涉及的是哪个委托，递增的都是同一个变量。<code>foreach</code>循环具有同样的行为：由循环的初始部分声明的变量只被实例化一次。这很容易弄错！如果你想捕获循环变量在一次特定的循环迭代中的值，必须在循环内部引入另一个变量，并将循环变量的值复制给它，再捕捉那个新变量——这正是我们在代码清单5-13中使用<code>counter</code>变量所做的事情。</p>
+
+<blockquote>
+  <p>说明　<strong>C# 5中的变化</strong>  尽管<code>for</code>循环中的行为是合理的（毕竟变量只声明了一次），但在<code>foreach</code>中则有些意外。事实上，如果匿名方法超出了当前迭代，那么在其内部捕获迭代变量时通常都会产生错误。（如果委托实例仅用于迭代内部，则不会有问题。）这导致很多开发者深陷其中，以至于C#团队正在考虑在未来版本中改变<code>foreach</code>的语义，使其拥有更自然的行为——就好像每次迭代都拥有单独的变量。更多详细内容，请参见16.1节。</p>
+</blockquote>
+
+<p>在最后一个例子中，来看一些非常糟糕的事情：只共享一部分捕获的变量，另一部分不共享。</p>
+
+<h3>5.5.6  共享和非共享的变量混合使用</h3>
+
+<p>在正式展示这个例子之前，我要明确的一点是：并不推荐你写这样的代码！事实上，之所以展示这个例子，我只是想向你证明：如果试图以过于复杂的方式来使用被捕捉的变量，情况很快就会变得很棘手。代码清单5-14创建了两个委托实例，每个都捕捉“相同”的两个变量。但是，仔细研究一下，就会发现实际发生的远比你想象得复杂。</p>
+
+<p><strong>代码清单5-14　捕捉不同作用域中的变量。警告：前面的代码非常糟糕</strong></p>
+
+<pre class="prettyprint"><code><span class="typ">MethodInvoker</span><span class="pun">[]</span><span class="pln"> delegates </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">new</span><span class="pln"> </span><span class="typ">MethodInvoker</span><span class="pun">[</span><span class="lit">2</span><span class="pun">];</span><span class="pln">
+
+</span><span class="kwd">int</span><span class="pln"> outside </span><span class="pun">=</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span><span class="pln">   </span><span class="com">//❶ 实例化变量一次</span><span class="pln">
+
+</span><span class="kwd">for</span><span class="pln"> </span><span class="pun">(</span><span class="kwd">int</span><span class="pln"> i </span><span class="pun">=</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span><span class="pln"> i </span><span class="pun">&lt;</span><span class="pln"> </span><span class="lit">2</span><span class="pun">;</span><span class="pln"> i</span><span class="pun">++)</span><span class="pln">
+</span><span class="pun">{</span><span class="pln">
+    </span><span class="kwd">int</span><span class="pln"> inside </span><span class="pun">=</span><span class="pln"> </span><span class="lit">0</span><span class="pun">;</span><span class="pln">    </span><span class="com">//❷ 实例化变量多次</span><span class="pln">
+
+    delegates</span><span class="pun">[</span><span class="pln">i</span><span class="pun">]</span><span class="pln"> </span><span class="pun">=</span><span class="pln"> </span><span class="kwd">delegate</span><span class="pln">  </span><span class="com">//❸ 使用匿名方法捕获变量</span><span class="pln">
+    </span><span class="pun">{</span><span class="pln">
+        </span><span class="typ">Console</span><span class="pun">.</span><span class="typ">WriteLine</span><span class="pln"> </span><span class="pun">(</span><span class="str">"({0},{1})"</span><span class="pun">,</span><span class="pln"> outside</span><span class="pun">,</span><span class="pln"> inside</span><span class="pun">);</span><span class="pln">
+        outside</span><span class="pun">++;</span><span class="pln">
+         inside</span><span class="pun">++;</span><span class="pln">
+    </span><span class="pun">};</span><span class="pln">
+</span><span class="pun">}</span><span class="pln">
+
+</span><span class="typ">MethodInvoker</span><span class="pln"> first </span><span class="pun">=</span><span class="pln"> delegates</span><span class="pun">[</span><span class="lit">0</span><span class="pun">];</span><span class="pln">
+</span><span class="typ">MethodInvoker</span><span class="pln"> second </span><span class="pun">=</span><span class="pln"> delegates</span><span class="pun">[</span><span class="lit">1</span><span class="pun">];</span><span class="pln">
+
+first</span><span class="pun">();</span><span class="pln">
+first</span><span class="pun">();</span><span class="pln">
+first</span><span class="pun">();</span><span class="pln">
+
+second</span><span class="pun">();</span><span class="pln">
+second</span><span class="pun">();</span></code></pre>
+
+<p>你花多少时间才能预测出代码清单5-14的输出（即使是在有注释的情况下）？老实说，它可花了我不少时间——比我愿意花在理解代码上的时间还要长。无论如何，把它作为一次练习，来看看具体发生了什么。</p>
+
+<p>首先考虑一下<code>outside</code>变量❶。声明该变量的作用域只进入了一次<sup>8</sup>，所以很简单——它只有一个。<code>inside</code>变量❷则不同——每次循环迭代，都会实例化一个新的<code>inside</code>变量。这意味着当我们创建委托实例时❸，<code>outside</code>变量将由两个委托实例共享，但每个委托实例都有它们自己的<code>inside</code>变量。</p>
+
+<p><sub>8. 也就是说，它只声明了一次。——译者注</sub></p>
+
+<p>循环结束后，我们创建的第1个委托实例被调用了3次。由于它每次都要对捕获到的变量进行递增，而且每个变量的初始值都是0，所以会看到先输出的是(0,0)，然后是(1,1)，再是(2,2)。执行第2个委托实例时，两个变量在作用域上的区别就变得非常明显了。在第2个委托实例中，有1个不同的<code>inside</code>变量，所以它的初始值仍为0，但共享的<code>outside</code>变量已经递增了3次。第2个委托实例被调用两次，所以，输出的先是(3,0)，然后是(4,1)。</p>
+
+<p>出于兴趣，思考一下这是如何实现的——至少微软的C# 2编译器是如何实现的。这里发生的事情是：生成了一个额外的类，它包含外部变量（<code>outside</code>）；还生成了另一个额外的类，它包含内部变量（<code>inside</code>）<strong>和对第一个额外的类的引用</strong>。从根本上说，包含了一个捕获变量的每个作用域都有它自己的类型。在这个类型中，有一个引用指向下一个包含了捕获变量的作用域。在我们的例子中，类型的两个实例都包含着<code>inside</code>，这两个实例都含有同一个类型实例的引用，该类型实例中包含了<code>outer</code>类。其他的实现可能会采取别的做法，但这应该是最容易想到的一种做法。图5-1展示了代码清单5-14执行后的值。（这些名称可能并非编译器生成的确切名称，但是十分接近。注意，实际上委托实例可能还含有其他成员，但这里我们只关心目标。）</p>
+
+<p><img src="/download/01feXSA3gDcl.small" width="500">
+
+</p>
+
+<p><strong>图5-1 内存中多个捕获变量作用域的简单说明</strong></p>
+
+<p>即使完全理解了代码，也可以继续把它作为模板使用，以便对捕获变量的其他方面进行试验。前面提到，对变量进行捕获时，某些方面是依赖于具体实现的<sup>9</sup>。通常，通过阅读语言规范以了解它所支持的功能是很有用的，但有时也需要多写写代码来看一看实际发生的事情。</p>
+
+<p><sub>9. 换言之，不同的编译器可能有不同的实现方法。——译者注</sub></p>
+
+<p>虽然代码清单5-14的代码不好懂，但在某些情况下，为了表示一个你希望的行为，像那样的代码反而可能是最简单、最清楚的一种方式。但是，眼见为实。另外，那时，我也肯定会在代码中添加详尽的注释来解释发生的事情。那么，什么时候适合使用捕获变量？需要注意什么？</p>
+
+<h3>5.5.7　捕获变量的使用规则和小结</h3>
+
+<p>我希望通过本节的学习，你在使用捕获的变量时能<strong>特别</strong>小心。它们虽然在逻辑上讲得通（为使它们变得更简单而进行修改的企图，要么会使它们失去实用性，要么使它们失去逻辑性），但却很容易产生异常复杂的代码。</p>
+
+<p>但是，不要因为这一点就害怕使用它们——它们能使你避免写大量枯燥的代码，而且假如运用得当，还能通过最容易让人理解的代码来完成工作。那么，怎样才算<strong>得当</strong>？</p>
+
+<p>使用捕获变量时，请参照以下规则。</p>
+
+<ul>
+<li><p>如果用或不用捕获变量时的代码同样简单，那就不要用。</p></li>
+<li><p>捕获由<code>for</code>或<code>foreach</code>语句声明的变量之前，思考你的委托是否需要在循环迭代结束之后延续，以及是否想让它看到那个变量的后续值。如果不是，就在循环内另建一个变量，用来复制你想要的值。（在C# 5中，你不必担心<code>foreach</code>语句，但仍需小心<code>for</code>语句。）</p></li>
+<li><p>如果创建多个委托实例（不管是在循环内，还是显式地创建），而且捕获了变量，思考一下是否希望它们捕捉同一个变量。</p></li>
+<li><p>如果捕捉的变量不会发生改变（不管是在匿名方法中，还是在包围着匿名方法的外层方法主体中），就不需要有这么多担心。</p></li>
+<li><p>如果你创建的委托实例永远不从方法中“逃脱”，换言之，它们永远不会存储到别的地方，不会返回，也不会用于启动线程——那么事情就会简单得多。</p></li>
+<li><p>从垃圾回收的角度，思考任何捕获变量被延长的生存期。这方面的问题一般都不大，但假如捕获的对象会产生昂贵的内存开销，问题就会凸现出来。</p></li>
+</ul>
+
+<p>第一条规则可奉为金科玉律。简化总是好事。所以在任何时候，如果使用一个捕获的变量能使代码变得更简单（前提是你已将强迫代码维护人员理解捕获的变量所做的事情这一额外复杂性考虑在内），那么就用它。但你也要考虑它所带来的额外的复杂度，不要一味地追求最少的代码量。</p>
+
+<p>本节讨论了大量基础知识，我也意识到这些内容可能很难理解。我列出了一些要记住的重要知识点，以后需要温习本节的内容时，可以直接参考这些要点，不需要重新阅读所有内容。</p>
+
+<ul>
+<li>捕获的是<strong>变量</strong>，而不是创建委托实例时它的值。</li>
+<li>捕获的变量的生存期被延长了，至少和捕捉它的委托一样长。</li>
+<li>多个委托可以捕获同一个变量……</li>
+<li>……但在循环内部，同一个变量声明实际上会引用不同的变量“实例”。</li>
+<li>在<code>for</code>循环的声明中创建的变量<sup>10</sup>仅在循环持续期间有效——不会在每次循环迭代时都实例化。这一情况对于C# 5之前的<code>foreach</code>语句也适用。</li>
+<li>必要时创建额外的类型来保存捕获变量。</li>
+<li>要小心！简单几乎总是比耍小聪明好。</li>
+</ul>
+
+<p><sub>10. 比如代码清单5-13中的<code>index</code>变量。——译者注</sub></p>
+
+<p>以后在讨论C# 3及其Lambda表达式时，会看到有更多的变量被捕捉。但就目前来说，我们已经完成了对新的C# 2委托特性的总结。（是不是感觉松了一口气？）</p>
+                </div>
+
+            <div class="btn-group pull-right">
+                    <a href="/article/72600" class="btn"><i class="icon-arrow-left"></i></a>
+                                    <a href="/article/72609" class="btn"><i class="icon-arrow-right"></i></a>
+            </div>
+                <div class="copyright-announce">
+                         本书版权属于出版社和作者所有。<br>除非另有声明，没有书面许可任何人不得转载或使用整体或任何部分的内容。                    
+                </div>
+                <div class="post-taglist">
+
+                         <a class="post-tag" href="/article/tagged/32" tagid="32">程序设计</a>
+                         <a class="post-tag" href="/article/tagged/35" tagid="35">c#</a>
+                                                            <!-- JiaThis Button BEGIN -->
+                        <div id="ckepop">
+                            
+
+
+                            <a class="jiathis_cwb" target="_blank" href="javascript:dopost()">分享长微博</a>
+                            <form style="display:inline" method="post" id="longweibo" target="_blank" action="/article/share/72605" novalidate="novalidate"></form>
+                            <script language="javascript">
+
+                                function dopost() {
+                                    $("#longweibo").submit();
+                                }
+
+                            </script>
+                            <span class="jiathis_txt"></span><a class="jiathis_button_tsina" title="分享到微博"><span class="jiathis_txt jtico jtico_tsina"></span></a><a class="jiathis_button_douban" title="分享到豆瓣"><span class="jiathis_txt jtico jtico_douban"></span></a><a class="jiathis_button_tqq" title="分享到腾讯微博"><span class="jiathis_txt jtico jtico_tqq"></span></a><a class="jiathis_button_linkedin" title="分享到领英"><span class="jiathis_txt jtico jtico_linkedin"></span></a><a href="http://www.jiathis.com/share?uid=891559" target="_blank" class="jiathis jiathis_txt jiathis_separator jtico jtico_jiathis"></a><a class="jiathis_counter_style"><span class="jiathis_button_expanded jiathis_counter jiathis_bubble_style" id="jiathis_counter_26" title="累计分享0次">0</span></a>
+                        </div>
+                    <!-- JiaThis Button END -->
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="span9">
+                <div class="well">
+
+                    <div class="btn-admins pull-right">
+
+
+
+
+
+                    </div>
+                    <div class="user-info clearfix">
+                         <a href="/users/90969">
+                             <img class="avatar show-user-card" userid="90969" src="/Users/GetAvatar/90969?size=Middle">木木琦
+                         </a> <br>
+                         <span class="status-date">发表于 2014-03-17 13:32
+                         </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+            <a name="firstcomment"></a>
+            <div id="CommentList">
+                
+    <div class="subheader">
+        <h1>
+            评论</h1>
+        <div id="tabs">
+            <a class="" data-ajax="true" data-ajax-mode="replace" data-ajax-update="#CommentList" href="/articlecomment/index/72605?sort=newest">时间</a>
+            <a class="youarehere" data-ajax="true" data-ajax-mode="replace" data-ajax-update="#CommentList" href="/articlecomment/index/72605?sort=vote">推荐</a>
+        </div>
+    </div>
+
+
+
+    <p>本文目前还没有评论……</p>
+
+
+        <h3>我要评论</h3>
+
+    <div id="CommentForm">
+        <form action="/ArticleComment/Add/72605" data-ajax="true" data-ajax-begin="window.disableCalmer" data-ajax-failure="onFail" data-ajax-success="onCommSuccess" id="form0" method="post" novalidate="novalidate"><input name="__RequestVerificationToken" type="hidden" value="w4IJ51aBcKq6Qa_3cTPW5ZPOBpnNXvfIZXYmp4WSbZIrOBjvC5WkaEshtbYrE8P64LEz4PRXM1_oprWBD-Ztt-3y6fE1">                 <input data-val="true" data-val-number="The field ArticleId must be a number." data-val-required="ArticleId 字段是必需的。" id="ArticleId" name="ArticleId" type="hidden" value="72605">
+<textarea cols="20" data-val="true" data-val-required="请填写内容" id="Content" name="Content" rows="2"></textarea><div class="validation-summary-valid" data-valmsg-summary="true"><span>请按照提示修改后再提交：</span>
+<ul><li style="display:none"></li>
+</ul></div>                <input type="submit" value=" 提交 " class="btn btn-primary calmer">
+</form>        <script type="text/javascript">
+
+            function onCommSuccess(data) {
+                $("#CommentList").html(data);
+
+                ;
+                $('html,body').animate({
+                    scrollTop: $('#CommentList').offset().top + 'px'
+                }, 'fast');
+
+                $('.firstcomment')
+                    .css({ "background-color": "#eef" }); 
+            }
+
+            function onFail(jqXHR, textStatus, errorThrown) {
+                $("#CommentForm").html(jqXHR.responseText);
+            }  
+
+        </script>
+
+    </div>
+
+
+
+<div id="reply-form" class="hide">
+
+<form action="/reply/add" data-ajax="true" data-ajax-begin="window.disableCalmer" data-ajax-failure="onReplyFailure" data-ajax-mode="after" data-ajax-success="onReplySuccess" data-ajax-update="#placeholder" id="form1" method="post" novalidate="novalidate"><input name="__RequestVerificationToken" type="hidden" value="fxpf_tZUP9dCNRHLw4Rcq0MPhCGy6jA3ybvIsl65S0Fi4ynuFw7sLNxn02m_D5LuaX3__8_tGA_kEtMAw-4xTGTM7qc1">        <input id="cid" type="hidden" name="">
+        <textarea name="body" style="width: 95%">        </textarea>
+        <br>
+<input type="submit" value=" 提交 " class="btn btn-primary calmer"> <input type="button" id="cancel" value=" 取消 " class="btn"> <span id="reply-error" style="color: #c33"></span>
+</form>
+</div>
+
+<script type="text/javascript">
+
+    function onReplySuccess() {
+        $(".add-reply").parent().show();
+        $("#reply-form").hide();
+        window.enableCalmer();
+    }
+
+    function onReplyFailure(jqXHR) {
+        $("#reply-error").text(jqXHR.responseText);
+        window.enableCalmer();
+    }
+
+
+    $(function () {
+
+        $("#cancel").click(function () {
+            $("#reply-form").hide();
+            $(".add-reply").parent().show();
+        });
+
+        $(".add-reply").click(function () {
+            var replyForm = $("#reply-form");
+            replyForm.find("form").attr("data-ajax-update", "#replies-" + $(this).attr("target-id"))
+            replyForm.find("input#cid").attr("name", $(this).attr("target-name"));
+            replyForm.find("input#cid").val($(this).attr("target-id"));
+            replyForm.find("textarea").val("");
+
+            replyForm.show().appendTo($("#reply-form-" + $(this).attr("target-id")));
+            $("#reply-error").text("");
+
+            $(this).parent().hide();
+            return false;
+        });
+
+    });
+</script>
+
+            </div>
+
+    </div>
+    <div class="span3 side-right">
+
+
+        <div class="well minibook-toc" style="padding: 8px 0;">
+        <ul class="nav nav-list">
+            <li class="nav-header">
+                <a href="/minibook/1033">
+                    <i class="icon-book"></i>
+                    深入理解C#（第3版）
+                </a>
+            </li>
+            <li class="divider"></li>
+                    <li><b><a href="/article/72600">上一篇</a></b></li>
+                    <li class="divider"></li>
+
+                <li><a href="/article/72270">版权声明</a></li>
+                <li><a href="/article/66924">献词</a></li>
+                <li><a href="/article/65033">对本书第1版的赞誉</a></li>
+                <li><a href="/article/66267">对第2版的赞誉</a></li>
+                <li><a href="/article/65031">序</a></li>
+                <li><a href="/article/65005">前言</a></li>
+                <li><a href="/article/65006">致谢</a></li>
+                <li><a href="/article/65007">关于本书</a></li>
+                <li><a href="/article/65008">关于封面插图</a></li>
+                <li><a href="/article/65557">第一部分　基础知识</a></li>
+                <li><a href="/article/65009">第1章　C#开发的进化史</a></li>
+                <li><a href="/article/65010">第2章　C# 1所搭建的核心基础</a></li>
+                <li><a href="/article/65558">第二部分　C# 2 ：解决C# 1 的问题</a></li>
+                <li><a href="/article/65011">第3章　用泛型实现参数化类型</a></li>
+                <li><a href="/article/65012">第4章　可空类型</a></li>
+
+
+
+            
+            
+                        <li style="text-indent: 0em"><a href="/article/65013">第5章　进入快速通道的委托</a></li>
+            
+                        <li style="text-indent: 1em"><a href="/article/72597">5.1　向笨拙的委托语法说拜拜</a></li>
+                        <li style="text-indent: 1em"><a href="/article/72598">5.2　方法组转换</a></li>
+                        <li style="text-indent: 1em"><a href="/article/72599">5.3　协变性和逆变性</a></li>
+                        <li style="text-indent: 1em"><a href="/article/72600">5.4　使用匿名方法的内联委托操作</a></li>
+            <li class="active" style="text-indent: 1em"><a>5.5　匿名方法中的捕获变量</a></li>
+
+                                     
+                        <li style="text-indent: 1em"><a href="/article/72609">5.6　小结</a></li>
+                                                 
+                                <li><a href="/article/65014">第6章　实现迭代器的捷径</a></li>
+                    <li><a href="/article/65015">第7章　结束C# 2的讲解： 最后的一些特性</a></li>
+                    <li><a href="/article/65559">第三部分　C# 3 ：革新写代码的方式</a></li>
+                    <li><a href="/article/65016">第8章　用智能的编译器来防错</a></li>
+                    <li><a href="/article/65017">第9章　Lambda表达式和表达式树</a></li>
+                    <li><a href="/article/65018">第10章　扩展方法</a></li>
+                    <li><a href="/article/65019">第11章　查询表达式和LINQ to Objects</a></li>
+                    <li><a href="/article/65020">第12章　超越集合的LINQ</a></li>
+                    <li><a href="/article/65560">第四部分　C# 4 ：良好的交互性</a></li>
+                    <li><a href="/article/65021">第13章　简化代码的微小修改</a></li>
+                    <li><a href="/article/65022">第14章　静态语言中的动态绑定</a></li>
+                    <li><a href="/article/65743">第五部分　C# 5：简化的异步编程 </a></li>
+                    <li><a href="/article/65777">第15章　使用async/await进行异步编程</a></li>
+                    <li><a href="/article/66196">第16章　C# 5附加特性和结束语</a></li>
+                    <li><a href="/article/65025">附录A　LINQ标准查询操作符</a></li>
+                    <li><a href="/article/65026">附录B　.NET中的泛型集合</a></li>
+                    <li><a href="/article/65027">附录C　版本总结</a></li>
+                
+                    <li class="divider"></li>
+                    <li><b><a href="/article/72609">下一篇</a></b></li>
+        </ul>
+        </div>
+
+
+                         
+
+                         
+
+
+    <div id="related-tags" class="module">
+        <h4 id="h-related-tags">
+            本文标签</h4>
+
+             <a class="post-tag" href="/article/tagged/32" tagid="32">程序设计</a>
+            <span class="item-multiplier">×&nbsp;4289</span>
+            <br>
+             <a class="post-tag" href="/article/tagged/35" tagid="35">c#</a>
+            <span class="item-multiplier">×&nbsp;2168</span>
+            <br>
+
+    </div>
+
+
+
+
+
+    <div class="module">
+        <h4 id="h-related-tags">
+            推荐会员</h4>
+        <div style="clear:both"></div>
+    </div>
+
+    <div class="module">
+        <h4 id="h-related-tags">
+            相关标签</h4>
+
+
+             <a class="post-tag" href="/article/tagged/1" tagid="1">计算机</a>
+            <span class="item-multiplier">×&nbsp;434</span>
+            <br>
+             <a class="post-tag" href="/article/tagged/32" tagid="32">程序设计</a>
+            <span class="item-multiplier">×&nbsp;4289</span>
+            <br>
+             <a class="post-tag" href="/article/tagged/33" tagid="33">.net</a>
+            <span class="item-multiplier">×&nbsp;1756</span>
+            <br>
+             <a class="post-tag" href="/article/tagged/35" tagid="35">c#</a>
+            <span class="item-multiplier">×&nbsp;2168</span>
+            <br>
+             <a class="post-tag" href="/article/tagged/36" tagid="36">c++</a>
+            <span class="item-multiplier">×&nbsp;885</span>
+            <br>
+             <a class="post-tag" href="/article/tagged/37" tagid="37">c++-builder</a>
+            <span class="item-multiplier">×&nbsp;1</span>
+            <br>
+             <a class="post-tag" href="/article/tagged/38" tagid="38">delphi</a>
+            <span class="item-multiplier">×&nbsp;1</span>
+            <br>
+             <a class="post-tag" href="/article/tagged/39" tagid="39">java</a>
+            <span class="item-multiplier">×&nbsp;1080</span>
+            <br>
+             <a class="post-tag" href="/article/tagged/40" tagid="40">jbuilder</a>
+            <span class="item-multiplier">×&nbsp;0</span>
+            <br>
+             <a class="post-tag" href="/article/tagged/41" tagid="41">visual-basic</a>
+            <span class="item-multiplier">×&nbsp;1</span>
+            <br>
+             <a class="post-tag" href="/article/tagged/42" tagid="42">visual-basic-.net</a>
+            <span class="item-multiplier">×&nbsp;0</span>
+            <br>
+             <a class="post-tag" href="/article/tagged/43" tagid="43">visual-c++</a>
+            <span class="item-multiplier">×&nbsp;2</span>
+            <br>
+             <a class="post-tag" href="/article/tagged/44" tagid="44">mfc</a>
+            <span class="item-multiplier">×&nbsp;1</span>
+            <br>
+             <a class="post-tag" href="/article/tagged/45" tagid="45">程序设计理论</a>
+            <span class="item-multiplier">×&nbsp;3</span>
+            <br>
+             <a class="post-tag" href="/article/tagged/46" tagid="46">汇编语言</a>
+            <span class="item-multiplier">×&nbsp;3</span>
+            <br>
+             <a class="post-tag" href="/article/tagged/47" tagid="47">移动开发</a>
+            <span class="item-multiplier">×&nbsp;2677</span>
+            <br>
+             <a class="post-tag" href="/article/tagged/88" tagid="88">数据结构</a>
+            <span class="item-multiplier">×&nbsp;178</span>
+            <br>
+             <a class="post-tag" href="/article/tagged/198" tagid="198">ruby</a>
+            <span class="item-multiplier">×&nbsp;815</span>
+            <br>
+             <a class="post-tag" href="/article/tagged/2492" tagid="2492">c</a>
+            <span class="item-multiplier">×&nbsp;1085</span>
+            <br>
+
+    </div>
+
+
+
+    </div>
+</div>
+
+		</div>
+		
+	</div>
+	<div id="footer">
+	  <div class="container">
+		<ul id="footmenu">
+			<li class="first"><a href="/users/guaguacode">刮刮卡</a></li>
+			<li><a href="/article/13723">成为译者</a></li>
+			<li><a href="/article/36644">成为作者</a></li>
+			<li><a href="/article/58331">加入我们</a></li>
+			<li><a href="/article/7751">常见问题</a></li>
+			<li><a href="/article/17095">建议改进</a></li>
+			<li><a href="/article/36242">联系我们</a></li>
+		</ul>
+		<p>
+		  2005-2016 © 北京图灵文化发展有限公司 · All Rights Reserved
+		</p>
+		<p class="muted">
+		  京ICP备11039595号　京公网安备11010502011375
+		</p>
+
+	  </div>
+	</div>
+<div id="toTop" style="display: none;">
+<a href="#">▲</a>
+<a href="#footer">▼</a>
+</div>
+		<div id="popup"><div class="user-card" id="tagcard"></div><p class="corner"></p></div>
+
+
+
+<div class="modal fade hide" id="wModal">
+  <div class="modal-header">
+	<button type="button" class="close" data-dismiss="modal">×</button>
+	<h4>modalMsg</h4>
+  </div>
+  <form action="" data-ajax="true" data-ajax-failure="modalMsgError" data-ajax-success="modalMsgSuccess" data-ajax-begin="window.disableCalmer" id="formModalMsg" method="post" novalidate="novalidate">
+  <div class="modal-body">
+	<textarea cols="20" id="msgBody" name="Body" rows="2" style="width:97%;height:80px;"></textarea>
+	<input id="ReceiverUserName" name="ReceiverUserName" type="hidden" value="">
+	<span id="error-span" style="color:red"></span>
+	<span id="success-span" style="color:#080"></span>
+  </div>
+  <div class="modal-footer">
+	<input type="button" class="btn" data-dismiss="modal" value="取消">
+	<input type="submit" id="submitMsg" class="btn btn-message calmer" value=" 发 送 ">
+  </div>
+  </form>
+</div>
+		
+
+		<script type="text/javascript">
+			$(function () {
+				$.post('/users/updatelastactivitydate');
+			});
+		</script>
+
+
+</body></html>
