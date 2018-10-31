@@ -37,6 +37,8 @@ namespace geekTime
                 //Console.WriteLine(cmdStr);
                 RunCmd(cmdStr);
             }
+
+            Console.WriteLine(string.Format("Combine {0} files.", lstFileName.Count));
         }
 
         #region 调用DOS执行CMD方法
