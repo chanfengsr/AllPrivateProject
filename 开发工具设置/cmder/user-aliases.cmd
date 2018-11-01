@@ -7,7 +7,6 @@ cccc;= @echo off
 e.=explorer .
 gl=git log --oneline --all --graph --decorate  $*
 ls=ls --show-control-chars -F --color $*
-pwd=echo fdhg9901314
 clear=cls
 history=cat "%CMDER_ROOT%\config\.history"
 unalias=alias /d $1
@@ -15,7 +14,8 @@ vi=vim $*
 cmderr=cd /d "%CMDER_ROOT%"
 
 
-edit=EditPlus
+pwd=echo fdhg9901314
+edit=EditPlus /n
 bcomp=BCompare
 vps=ssh root@45.77.22.199
 inet=inetcpl.cpl
@@ -30,9 +30,11 @@ music="C:\Program Files (x86)\Netease\CloudMusic\cloudmusic.exe"
 miaosu="D:\Software\ExtractProgram\MiaoSS√ÓÀŸ\MiaoSS√ÓÀŸ.exe"
 skype="C:\Program Files (x86)\Microsoft\Skype for Desktop\Skype.exe"
 ie="C:\Program Files\Internet Explorer\iexplore.exe"
-outlook="C:\Program Files\Microsoft Office\Office16\OUTLOOK.EXE /safe"
+repOutlook="C:\Program Files\Microsoft Office\Office16\OUTLOOK.EXE /safe"
+gitExt="C:\Program Files (x86)\GitExtensions\GitExtensions.exe"
 
 proj=explorer D:\Project
+allGit=explorer D:\Project\Private\AllInGitHub
 son=explorer D:\Project\AX\Sonepar
 bin=explorer D:\Project\AX\BIN
 quant=explorer D:\Project\AX\QUANT
@@ -41,5 +43,5 @@ hoya=explorer D:\Project\AX\HOYA
 dan=explorer D:\Project\AX\DAN
 
 .build=dotnet build --runtime win-x64
-
-
+pGeekTime=cd /d "D:\Project\Private\AllInGitHub\DoNetCore\geekTime"
+gt1="D:\Project\Private\AllInGitHub\DoNetCore\geekTime\bin\Debug\netcoreapp2.1\win-x64\geekTime.exe"
