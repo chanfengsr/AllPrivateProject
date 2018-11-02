@@ -10,8 +10,15 @@ namespace geekTime
         static void Main(string[] args)
         {
             List<string> lstFileName = new List<string>();
+            string workDir = System.Environment.CurrentDirectory;
 
-            DirectoryInfo dirInfo = new DirectoryInfo(System.Environment.CurrentDirectory);
+            // 有参数传入路径的话就用传入的
+            if (args != null && args.Length > 0)
+                if (System.IO.Directory.Exists(args[0]))
+                    workDir = args[0];
+
+            DirectoryInfo dirInfo = new DirectoryInfo(workDir);
+            Console.WriteLine(string.Format("Work directory: {0}", dirInfo.FullName));
 
             foreach (FileInfo file in dirInfo.GetFiles())
             {
