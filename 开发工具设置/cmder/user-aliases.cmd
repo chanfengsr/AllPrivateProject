@@ -1,4 +1,4 @@
-cccc;= @echo off
+;= @echo off
 ;= rem Call DOSKEY and use this file as the macrofile
 ;= %SystemRoot%\system32\doskey /listsize=1000 /macrofile=%0%
 ;= rem In batch mode, jump to the end of the file
@@ -14,7 +14,7 @@ vi=vim $*
 cmderr=cd /d "%CMDER_ROOT%"
 
 
-pwd=echo fdhg9901314
+pwd=echo VPS:fdhg9901314 & echo BIN:K4BWB2+R & echo Sonepar:P@ssword01 & echo SAG:Chanfengsr026!
 edit=EditPlus /n
 bcomp=BCompare
 vps=ssh root@45.77.22.199
