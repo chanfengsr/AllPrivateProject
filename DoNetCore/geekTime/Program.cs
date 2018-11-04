@@ -50,6 +50,8 @@ namespace geekTime
                 Console.WriteLine(string.Format("Combined {0} file(s).", lstFileName.Count));
             else
                 Console.WriteLine("No file Combined.");
+
+            Console.WriteLine("Done.");
         }
 
         #region 调用DOS执行CMD方法
