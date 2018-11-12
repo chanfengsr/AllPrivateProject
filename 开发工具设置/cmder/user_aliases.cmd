@@ -14,7 +14,7 @@ vi=vim $*
 cmderr=cd /d "%CMDER_ROOT%"
 
 initPath=echo cmd /k "%ConEmuDir%\..\init.bat"  -new_console:d:R:\
-pwd=echo VPS:fdhg9901314 & echo BIN:K4BWB2+R & echo Sonepar:P@ssword01 & echo SAG:Chanfengsr026!
+pwd=echo VPS:fdhg9901314 & echo BIN:K4BWB2+R & echo Sonepar:P@ssword01 & echo SAG:Chanfengsr026! & echo WZYHome:1qaz@WSX
 edit=EditPlus /n
 bcomp="%Software%\ExtractProgram\Beyond Compare\BCompare.exe"
 vps=ssh root@45.77.22.199
@@ -45,4 +45,5 @@ dan=explorer %Project%\AX\DAN
 
 .build=dotnet build --runtime win-x64
 pGeekTime=cd /d "%Project%\AllInGitHub\DoNetCore\geekTime"
+gtFile=explorer %OneDrive%\极客时间
 gt1="%Project%\AllInGitHub\DoNetCore\geekTime\bin\Debug\netcoreapp2.1\win-x64\geekTime.exe"

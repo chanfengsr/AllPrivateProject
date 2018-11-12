@@ -1,0 +1,7 @@
+不要直接 Copy
+
+设置环境变量：Project Software OneDrive
+
+要用 VSCode 打开实际配置文件，然后将内容复制过去，
+并将文件改成 CRLF 编码改成 gb2312
+
