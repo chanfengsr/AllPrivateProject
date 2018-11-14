@@ -230,3 +230,12 @@ _Pvt_Extensions
 
 # FAKE - F# Make
 .fake/
+
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
