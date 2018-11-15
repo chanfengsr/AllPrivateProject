@@ -8,7 +8,7 @@
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
   <component name="PackageRequirementsSettings">
-    <option name="requirementsPath" value="D:\Project\AllInGitHub\Python\MyScraping" />
+    <option name="requirementsPath" value="D:\Project\AllInGitHub\Python\MyScraping\requirements.txt" />
   </component>
   <component name="TestRunnerService">
     <option name="PROJECT_TEST_RUNNER" value="Unittests" />
