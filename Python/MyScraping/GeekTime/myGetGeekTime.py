@@ -35,8 +35,57 @@ fileObj.close()
 
 courseList = \
     [
-        ("91 程序员面试攻略：面试前的准备", "https://time.geekbang.org/column/article/13067"),
-        ("100 高效沟通：Talk和Code同等重要", "https://time.geekbang.org/column/article/28550")
+        ("00 开篇词 洞悉技术的本质，享受科技的乐趣", "https://time.geekbang.org/column/article/181"),
+        ("01 程序员如何用技术变现（上）", "https://time.geekbang.org/column/article/183"),
+        ("02 程序员如何用技术变现（下）", "https://time.geekbang.org/column/article/185"),
+        ("03 Equifax信息泄露始末", "https://time.geekbang.org/column/article/281"),
+        ("04 从Equifax信息泄露看数据安全", "https://time.geekbang.org/column/article/285"),
+        ("05 何为技术领导力？", "https://time.geekbang.org/column/article/288"),
+        ("06 如何才能拥有技术领导力？", "https://time.geekbang.org/column/article/291"),
+        ("07 推荐阅读：每个程序员都该知道的知识", "https://time.geekbang.org/column/article/471"),
+        ("08 Go语言，Docker和新技术", "https://time.geekbang.org/column/article/294"),
+        ("09 答疑解惑：渴望、热情和选择", "https://time.geekbang.org/column/article/540"),
+        ("10 如何成为一个大家愿意追随的Leader？", "https://time.geekbang.org/column/article/297"),
+        ("11 程序中的错误处理：错误返回码和异常捕捉", "https://time.geekbang.org/column/article/675"),
+        ("12 程序中的错误处理：异步编程和最佳实践", "https://time.geekbang.org/column/article/693"),
+        ("13 魔数 0x5f3759df", "https://time.geekbang.org/column/article/730"),
+        ("14 推荐阅读：机器学习101", "https://time.geekbang.org/column/article/862"),
+        ("15 时间管理：同扭曲时间的事儿抗争", "https://time.geekbang.org/column/article/995"),
+        ("16 时间管理：投资赚取时间", "https://time.geekbang.org/column/article/997"),
+        ("17 故障处理最佳实践：应对故障", "https://time.geekbang.org/column/article/1059"),
+        ("18 故障处理最佳实践：故障改进", "https://time.geekbang.org/column/article/1064"),
+        ("19 答疑解惑：我们应该能够识别的表象和本质", "https://time.geekbang.org/column/article/865"),
+        ("20 Git协同工作流，你该怎样选", "https://time.geekbang.org/column/article/2440"),
+        ("21 分布式系统架构的冰与火", "https://time.geekbang.org/column/article/1411"),
+        ("22 从亚马逊的实践，谈分布式系统的难点", "https://time.geekbang.org/column/article/1505"),
+        ("23 分布式系统的技术栈", "https://time.geekbang.org/column/article/1512"),
+        ("24 分布式系统关键技术：全栈监控", "https://time.geekbang.org/column/article/1513"),
+        ("25 分布式系统关键技术：服务调度", "https://time.geekbang.org/column/article/1604"),
+        ("26 分布式系统关键技术：流量与数据调度", "https://time.geekbang.org/column/article/1609"),
+        ("27 洞悉PaaS平台的本质", "https://time.geekbang.org/column/article/1610"),
+        ("28 推荐阅读：分布式系统架构经典资料", "https://time.geekbang.org/column/article/2080"),
+        ("29 推荐阅读：分布式数据调度相关论文", "https://time.geekbang.org/column/article/2421"),
+        ("30 编程范式游记（1）- 起源", "https://time.geekbang.org/column/article/301"),
+        ("31 编程范式游记（2）- 泛型编程", "https://time.geekbang.org/column/article/303"),
+        ("32 编程范式游记（3） - 类型系统和泛型的本质", "https://time.geekbang.org/column/article/2017"),
+        ("33 编程范式游记（4）- 函数式编程", "https://time.geekbang.org/column/article/2711"),
+        ("34 编程范式游记（5）- 修饰器模式", "https://time.geekbang.org/column/article/2723"),
+        ("35 编程范式游记（6）- 面向对象编程", "https://time.geekbang.org/column/article/2729"),
+        ("36 编程范式游记（7）- 基于原型的编程范式", "https://time.geekbang.org/column/article/2741"),
+        ("37 编程范式游记（8）- Go 语言的委托模式", "https://time.geekbang.org/column/article/2748"),
+        ("38 编程范式游记（9）- 编程的本质", "https://time.geekbang.org/column/article/2751"),
+        ("39 编程范式游记（10）- 逻辑编程范式", "https://time.geekbang.org/column/article/2752"),
+        ("40 编程范式游记（11）- 程序世界里的编程范式", "https://time.geekbang.org/column/article/2754"),
+        ("41 弹力设计篇之“认识故障和弹力设计”", "https://time.geekbang.org/column/article/3912"),
+        ("42 弹力设计篇之“隔离设计”", "https://time.geekbang.org/column/article/3917"),
+        ("43 弹力设计篇之“异步通讯设计”", "https://time.geekbang.org/column/article/3926"),
+        ("44 弹力设计篇之“幂等性设计”", "https://time.geekbang.org/column/article/4050"),
+        ("45 弹力设计篇之“服务的状态”", "https://time.geekbang.org/column/article/4086"),
+        ("46 弹力设计篇之“补偿事务”", "https://time.geekbang.org/column/article/4087"),
+        ("47 弹力设计篇之“重试设计”", "https://time.geekbang.org/column/article/4121"),
+        ("48 弹力设计篇之“熔断设计”", "https://time.geekbang.org/column/article/4241"),
+        ("49 弹力设计篇之“限流设计”", "https://time.geekbang.org/column/article/4245"),
+        ("50 弹力设计篇之“降级设计”", "https://time.geekbang.org/column/article/4252")
     ]
 
 
@@ -60,6 +109,7 @@ def main():
         pFile = open("password.txt")
         userId = pFile.readline().strip()
         password = pFile.readline().strip()
+        pFile.close()
     if userId == "": userId = input("UserId:")
     if password == "": password = input("Password:")
 
@@ -136,8 +186,9 @@ def main():
         if pdfkit.from_string(targetHtml, 'R:\\' + tarTitle + '.pdf', options=options):
             print("PDF 已生成。  --> %s.pdf" % (tarTitle))
 
-        # 爬一篇文章后休息 5 秒钟
-        time.sleep(5)
+        # 爬一篇文章后休息几秒钟
+        time.sleep(10)
+        print("\n\n")
 
     # 记录爬取文章的结束时间
     end = time.time()
