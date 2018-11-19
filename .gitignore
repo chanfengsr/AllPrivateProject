@@ -3,6 +3,8 @@
 
 Thumbs.db
 
+password.txt
+
 # User-specific files
 *.suo
 *.user
@@ -345,3 +347,4 @@ venv.bak/
 .mypy_cache/
 
 .idea/
+

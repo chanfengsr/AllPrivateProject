@@ -37,14 +37,28 @@ def main():
         ]
     }
 
-    modFile = open('r:\\b.html', 'rt', encoding='UTF-8')
+
+    modFile = open('GeekTime/demo.html','rt', encoding='UTF-8')
     origHtml = modFile.read()
     bs = BeautifulSoup(origHtml, "html.parser")
+    [s.extract() for s in bs.find_all("script")]
 
     title = bs.find("h1", {"class": "article-title"}).get_text().strip()
-    raw_title = re.sub('[\/:：*?"<>|]', '', title).replace('  ', ' ')
+    tarTitle = re.sub('[\/:：*?"<>|]', '', title).replace('  ', ' ')
 
-    m3u8 = bs.find("audio","src")
+    ffmpegList = []
+    m3u8 = bs.find("audio")
+    if m3u8 is not None:
+        ffmpegList.append(m3u8["src"]+"\n")
+        ffmpegList.append(m3u8["src"]+"\n")
+        ffmpegList.append(m3u8["src"]+"\n")
+
+    # 写 ffmpeg 下载列表
+    ffmpegListFile = open('R:\\ffmpegDownList.txt', 'w', encoding='utf-8')
+    # ffmpegListFile.write(repr(ffmpegList))
+    ffmpegListFile.writelines(ffmpegList)
+    ffmpegListFile.close()
+
 
     modHtml = "<html>%s<body>%s</body></html>"
     headHtml = bs.find("head")
@@ -52,11 +66,11 @@ def main():
     targetHtml = modHtml % (headHtml, bodyDivHtml)
 
     # Write to html
-    fileObj = open('R:\\abc.html', 'w', encoding='utf-8')
+    fileObj = open('R:\\' + tarTitle + '.html', 'w', encoding='utf-8')
     fileObj.write(targetHtml)
     fileObj.close()
 
-    # pdfkit.from_string(targetHtml, 'R:\\abc.pdf', options=options)
+    pdfkit.from_string(targetHtml, 'R:\\' + tarTitle + '.pdf', options=options)
 
     print('Done.')
 
