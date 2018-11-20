@@ -33,6 +33,7 @@ ie="C:\Program Files\Internet Explorer\iexplore.exe"
 repOutlook="C:\Program Files\Microsoft Office\Office16\OUTLOOK.EXE /safe"
 gitExt="C:\Program Files (x86)\GitExtensions\GitExtensions.exe"
 miaosu="%Software%\ExtractProgram\MiaoSS√ÓÀŸ\MiaoSS√ÓÀŸ.exe"
+pyc="C:\Program Files\JetBrains\PyCharm Community Edition 183.3283.4\bin\pycharm64.exe"
 
 proj=explorer %Project%
 allGit=explorer %Project%\AllInGitHub

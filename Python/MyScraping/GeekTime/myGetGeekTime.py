@@ -41,6 +41,9 @@ courseList = \
 
 
 def main():
+    # 抓取成功的数量
+    catchCount = 0
+
     # 生成干净的 html 的模板
     modHtml = "<html>%s<body>%s</body></html>"
 
@@ -141,15 +144,15 @@ def main():
             print("PDF 已生成。  --> %s.pdf" % (tarTitle))
 
         # 爬一篇文章后休息几秒钟
-        time.sleep(10)
+        catchCount += 1
+        time.sleep(5)
         print("\n\n")
 
     # 记录爬取文章的结束时间
     end = time.time()
 
-    print("ffmpeg 下载列表: ffmpegDownList.txt")
-
-    print("所有文章爬取完毕！共耗时" + str(int(end - start)) + "秒")
+    print("ffmpeg 下载列表  --> ffmpegDownList.txt")
+    print("所有文章爬取完毕！共 %d 篇，耗时 %d 秒" % (catchCount,int(end - start)))
 
 
 if __name__ == '__main__':
