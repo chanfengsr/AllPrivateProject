@@ -2,7 +2,7 @@ import time, re, os
 from bs4 import BeautifulSoup
 
 # demoArtList.html
-listFile = open('demoArtList.html', 'rt', encoding='UTF-8')
+listFile = open('GeekTime\demoArtList.html', 'rt', encoding='UTF-8')
 origHtml = listFile.read()
 bs = BeautifulSoup(origHtml, "html.parser")
 
