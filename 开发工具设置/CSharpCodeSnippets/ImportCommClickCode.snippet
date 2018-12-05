@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippet Format="1.0.0" xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<Header>
+		<Title>ImportCommClickCode</Title>
+		<Author>巉沨散人</Author>
+		<Shortcut>ImportCommClickCode</Shortcut>
+		<Description>数据导入工具中单击事件常用代码</Description>
+		<SnippetTypes>
+			<SnippetType>Expansion</SnippetType>
+		</SnippetTypes>
+	</Header>
+	<Snippet>
+		<Code Language="csharp">
+			<![CDATA[DBOImptInventoryClassInfo dbo = new DBOImptInventoryClassInfo(_sourceConnection, _targetConnection, _cpnyID);
+DataTable dtsourceTable = dbo.GetSourceINDXTable();
+
+if (dtsourceTable == null || dtsourceTable.Rows.Count < 1)
+{
+    MessageBox.Show("数据源无数据！", "出错", MessageBoxButtons.OK, MessageBoxIcon.Error);
+    return;
+}
+
+bool mustCloseConnection = false;
+
+#region CheckConnection
+if (_targetConnection.State != ConnectionState.Open)
+{
+    mustCloseConnection = true;
+    _targetConnection.Open();
+}
+else
+{
+    mustCloseConnection = false;
+}
+#endregion CheckConnection
+
+try
+{
+    this.Cursor = Cursors.WaitCursor;
+
+    using (SqlTransaction trans = _targetConnection.BeginTransaction())
+    {
+        try
+        {
+            progressBar1.Maximum = dtsourceTable.Rows.Count;
+            SetButtonEnable(false);
+
+            for (int iRow = 0; iRow < dtsourceTable.Rows.Count; iRow++)
+            {
+                labInfoMessage.Text = "正在处理：" + dtsourceTable.Rows[iRow]["PRD_NO"].ToString() + " " + dtsourceTable.Rows[iRow]["SNM"].ToString();
+
+                //do something
+
+                progressBar1.Value++;
+                this.Refresh();
+            }
+
+            trans.Commit();
+            MessageBox.Show("完成！", "完成", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+        catch (Exception ex)
+        {
+            trans.Rollback();
+            throw ex;
+        }
+    }
+}
+catch (Exception ex)
+{
+    MessageBox.Show(ex.Message, "出错", MessageBoxButtons.OK, MessageBoxIcon.Error);
+}
+finally
+{
+    this.Cursor = Cursors.Default;
+    labInfoMessage.Text = "InfoMessage";
+    SetButtonEnable(true);
+    progressBar1.Value = 0;
+
+    if (mustCloseConnection)
+        _targetConnection.Close();
+}]]>
+		</Code>
+	</Snippet>
+</CodeSnippet>

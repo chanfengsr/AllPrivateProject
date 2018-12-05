@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippet Format="1.0.0" xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<Header>
+		<Title>MultithreadedExecutionFunction</Title>
+		<Author>巉沨散人</Author>
+		<Shortcut>MultithreadedExecutionFunction</Shortcut>
+		<Description>多线程执行方法委托方法</Description>
+		<SnippetTypes>
+			<SnippetType>Expansion</SnippetType>
+		</SnippetTypes>
+	</Header>
+	<Snippet>
+		<Code Language="csharp">
+			<![CDATA[
+/// <summary>多线程执行方法委托
+/// </summary>
+/// <param name="act">委托</param>
+/// <example>MultithreadedExecution(delegate() {/*执行内容*/ });</example>
+public void MultithreadedExecution(Action act)
+{
+    ThreadStart tds = new ThreadStart(act);
+    Thread td = new Thread(tds);
+    td.Start();
+
+    // Task.Factory.StartNew(act);
+}
+			]]>
+		</Code>
+	</Snippet>
+</CodeSnippet>

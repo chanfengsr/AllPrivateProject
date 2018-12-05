@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippet Format="1.0.0" xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<Header>
+		<Title>DBOTranCommon</Title>
+		<Author>巉沨散人</Author>
+		<Shortcut>dbotran</Shortcut>
+		<Description>DBO中直接用Tran代码</Description>
+		<SnippetTypes>
+			<SnippetType>Expansion</SnippetType>
+		</SnippetTypes>
+	</Header>
+	<Snippet>
+		<Code Language="csharp">
+			<![CDATA[bool mustCloseConnection = false;
+
+#region CheckConnection
+if (_connection.State != ConnectionState.Open)
+{
+    mustCloseConnection = true;
+    _connection.Open();
+}
+else
+{
+    mustCloseConnection = false;
+}
+#endregion CheckConnection
+
+try
+{
+    using (SqlTransaction tran = _connection.BeginTransaction())
+    {
+        try
+        {
+            //do something
+
+            tran.Commit();
+        }
+        catch (Exception ex)
+        {
+            tran.Rollback();
+            throw ex;
+        }
+    }
+}
+catch (SqlException ex) { throw ex; }
+catch (Exception ex) { throw ex; }
+finally
+{
+    if (mustCloseConnection)
+        _connection.Close();
+}]]>
+		</Code>
+	</Snippet>
+</CodeSnippet>

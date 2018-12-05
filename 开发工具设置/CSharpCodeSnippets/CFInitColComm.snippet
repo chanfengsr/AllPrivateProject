@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippets  xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>CFInitColComm</Title>
+			<Shortcut>CFInitColComm</Shortcut>
+			<Description>通用初始化网格中的列</Description>
+			<Author>巉沨散人</Author>
+			<SnippetTypes>
+				<SnippetType>Expansion</SnippetType>
+			</SnippetTypes>
+		</Header>
+		<Snippet>
+			<Code Language="csharp">
+				<![CDATA[//base.ClearDataGridView(dgvMenuRight);
+
+List<ColumnProperty> lstColumnProps = new List<ColumnProperty>();
+ColumnProperty ColumnProp;
+
+#region 菜单权限网格
+lstColumnProps.Clear();
+
+#region 添加列的列表数组
+ColumnProp = new ColumnProperty();
+ColumnProp.ColumnType = ColumnType.TextBoxColumn;
+ColumnProp.DataPropertyName = "CpnyID";
+ColumnProp.HeaderText = "公司编号";
+ColumnProp.ValueType = typeof(string);
+ColumnProp.ReadOnly = false;
+ColumnProp.Frozen = false;
+ColumnProp.Visible = false;
+ColumnProp.SortMode = DataGridViewColumnSortMode.Automatic;
+ColumnProp.MaxInputLength = 10;
+lstColumnProps.Add(ColumnProp);
+#endregion 添加列的列表数组
+
+//base.InitColumns(dgvMenuRight, lstColumnProps.ToArray());
+#endregion 菜单权限网格]]>
+			</Code>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>

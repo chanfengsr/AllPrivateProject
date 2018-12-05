@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippet Format="1.0.0" xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<Header>
+		<Title>ERPToolSubFormCode</Title>
+		<Author>巉沨散人</Author>
+		<Shortcut>ERPToolSubFormCode</Shortcut>
+		<Description>ERP外挂小工具子窗体代码</Description>
+		<SnippetTypes>
+			<SnippetType>Expansion</SnippetType>
+		</SnippetTypes>
+	</Header>
+	<Snippet>
+		<Declarations>
+			<Literal>
+				<ID>frmClassName</ID>
+				<ToolTip>窗体类名</ToolTip>
+				<Default>FormClassName</Default>
+			</Literal>
+		</Declarations>
+		<Code Language="csharp">
+			<![CDATA[//public static string ScreenID { get { return ""; } }
+        private static $frmClassName$ _forminstance;
+        private static readonly object _lockobj = new object();
+
+        private SqlConnection _cnnERPSqlConnection;
+        private SqlConnection _cnnERPToolSqlConnection;
+
+        /// <summary>
+        /// 给出窗口唯一实例
+        /// </summary>
+        /// <returns></returns>
+        public static $frmClassName$ GetForm(SqlConnection ERPSqlConnection, SqlConnection ERPToolSqlConnection)
+        {
+            if (_forminstance == null || (_forminstance as Form).IsDisposed)
+                lock (_lockobj)
+                    if (_forminstance == null || (_forminstance as Form).IsDisposed)
+                        _forminstance = new $frmClassName$(SqlConnection ERPSqlConnection, SqlConnection ERPToolSqlConnection);
+
+            return _forminstance;
+        }
+
+        private $frmClassName$(SqlConnection ERPSqlConnection, SqlConnection ERPToolSqlConnection)
+        {
+            InitializeComponent();
+            _screenID = "";
+
+            _cnnERPSqlConnection = ERPSqlConnection;
+            _cnnERPToolSqlConnection = ERPToolSqlConnection;
+        }
+
+        //_cnnERPSqlConnection = (this.MdiParent as ERPEHToolMain).ERPSqlConnection;
+        //_cnnERPToolSqlConnection = (this.MdiParent as ERPEHToolMain).ERPToolSqlConnection;$selected$ $end$]]>
+		</Code>
+	</Snippet>
+</CodeSnippet>

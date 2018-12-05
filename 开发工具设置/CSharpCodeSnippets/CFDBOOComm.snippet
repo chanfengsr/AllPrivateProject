@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippets  xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>CFDBOComm</Title>
+			<Shortcut>cfdboc</Shortcut>
+			<Description>DBO构造函数模板</Description>
+			<Author>巉沨散人</Author>
+			<SnippetTypes>
+				<SnippetType>Expansion</SnippetType>
+			</SnippetTypes>
+		</Header>
+		<Snippet>
+      <Declarations>
+        <Literal Editable="false">
+          <ID>classname</ID>
+          <ToolTip>Class name</ToolTip>
+          <Function>ClassName()</Function>
+          <Default>ClassNamePlaceholder</Default>
+        </Literal>
+      </Declarations>
+			<Code Language="csharp">
+				<![CDATA[SqlConnection _connection;
+string _screenID;
+string _userID;
+string _cpnyID;
+
+/// <summary>构造函数
+/// </summary>
+/// <param name="sqlConnection">SQL连接</param>
+/// <param name="screenID">屏幕号</param>
+/// <param name="userID">用户编号</param>
+/// <param name="cpnyID">公司编号</param>
+public $classname$(SqlConnection sqlConnection, string screenID, string userID, string cpnyID)
+{
+    _connection = sqlConnection;
+    _screenID = screenID;
+    _userID = userID;
+    _cpnyID = cpnyID;
+}]]>
+			</Code>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>

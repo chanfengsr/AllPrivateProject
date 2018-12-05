@@ -1,0 +1,82 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<CodeSnippets  xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<CodeSnippet Format="1.0.0">
+		<Header>
+			<Title>CFSubFormComm</Title>
+			<Shortcut>cfsubfrm</Shortcut>
+			<Description>SubForm通用构造函数及注释快</Description>
+			<Author>巉沨散人</Author>
+			<SnippetTypes>
+				<SnippetType>Expansion</SnippetType>
+			</SnippetTypes>
+		</Header>
+		<Snippet>
+			<Declarations>
+				<Literal Editable="false">
+					<ID>classname</ID>
+					<ToolTip>Class name</ToolTip>
+					<Function>ClassName()</Function>
+					<Default>ClassNamePlaceholder</Default>
+				</Literal>
+			</Declarations>
+			<Code Language="csharp">
+				<![CDATA[const string _strScreenID = "";
+
+#region 窗体构造函数
+/// <summary>本窗体实例</summary>
+private static object _forminstance;
+private static readonly object _lockobj = new object();
+
+/// <summary>构造函数
+/// </summary>
+/// <param name="globalParm">全局参数</param>
+/// <param name="moduleID">模块编号</param>
+/// <param name="rightLevel">权限值</param>
+private $classname$ (GlobalParameter globalParm, string moduleID, int rightLevel)
+    : base(globalParm, moduleID, rightLevel)
+{
+    InitializeComponent();
+
+    _screenID = _strScreenID;
+
+//    dbo = new DBO$classname$(SysParm.Connection, ScreenID, SysParm.UserID, SysParm.CpnyID);
+}
+
+/// <summary>主窗体调用，返回实例函数
+/// </summary>
+/// <param name="globalParm">全局参数</param>
+/// <param name="moduleID">模块编号</param>
+/// <param name="rightLevel">权限值</param>
+/// <returns>窗体实例</returns>
+public new static object GetFormInstance(GlobalParameter globalParm, string moduleID, int rightLevel)
+{
+    if (_forminstance == null || (_forminstance as Form).IsDisposed)
+        lock (_lockobj)
+            if (_forminstance == null || (_forminstance as Form).IsDisposed)
+                _forminstance = new $classname$ (globalParm, moduleID, rightLevel);
+
+    return _forminstance;
+}
+#endregion 窗体构造函数
+
+#region 全局定义
+//const string _strSelScreenDBTable = "SELECT * FROM Sys_Screen";
+
+//DBO$classname$ dbo;
+#endregion 全局定义
+
+#region 重载基类函数
+        
+#endregion 重载基类函数
+
+#region 窗体方法
+        
+#endregion 窗体方法
+
+#region 委托方法
+
+#endregion 委托方法]]>
+			</Code>
+		</Snippet>
+	</CodeSnippet>
+</CodeSnippets>

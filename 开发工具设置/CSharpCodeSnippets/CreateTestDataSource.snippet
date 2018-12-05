@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CodeSnippet Format="1.0.0" xmlns="http://schemas.microsoft.com/VisualStudio/2005/CodeSnippet">
+	<Header>
+		<Title>CreateTestDataSource</Title>
+		<Author>巉沨散人</Author>
+		<Shortcut>CreateTestDataSource</Shortcut>
+		<Description>测试用数据生成方法</Description>
+		<SnippetTypes>
+			<SnippetType>Expansion</SnippetType>
+		</SnippetTypes>
+	</Header>
+	<Snippet>
+		<Code Language="csharp">
+			<![CDATA[
+private DataTable CreateDataSource()
+{
+    System.Data.DataTable dt = new System.Data.DataTable();
+    System.Data.DataRow dr;
+    dt.Columns.Add(new System.Data.DataColumn("Name", typeof (System.String)));
+    dt.Columns.Add(new System.Data.DataColumn("Value1", typeof (System.Decimal)));
+    dt.Columns.Add(new System.Data.DataColumn("Value2", typeof (System.Decimal)));
+    dt.Columns.Add(new System.Data.DataColumn("Value3", typeof (System.Decimal)));
+    for (int i = 0; i < 8; i++)
+    {
+        System.Random rd = new System.Random(Environment.TickCount * i);
+
+        dr = dt.NewRow();
+        dr[0] = "Name" + i.ToString();
+        dr[1] = System.Math.Round(rd.NextDouble() * 100, 2);
+        dr[2] = System.Math.Round(rd.NextDouble() * 100, 2);
+        dr[3] = System.Math.Round(rd.NextDouble() * 100, 2);
+        dt.Rows.Add(dr);
+    }
+
+    return dt;
+}
+			]]>
+		</Code>
+	</Snippet>
+</CodeSnippet>
