@@ -9,5 +9,4 @@ namespace Training
             (new 单链表删第K个元素()).run();
         }
     }
-
 }

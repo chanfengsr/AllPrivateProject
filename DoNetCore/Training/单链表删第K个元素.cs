@@ -9,41 +9,45 @@ namespace Training
     {
         public void run()
         {
-            SingleListNode head = new SingleListNode(1);
-            head.Next = new SingleListNode(2);
-            head.Next.Next = new SingleListNode(3);
-            head.Next.Next.Next = new SingleListNode(4);
-            head.Next.Next.Next.Next = new SingleListNode(5);
+            // 要被删掉的那个
+            const int k = 4;
 
-            SingleListNode c = head;
-            int k = 4;
-            int i = 1;
-            while (i < k)
+            // 默认给 5 个
+            SingleListNode head = new SingleListNode(1);
+            SingleListNode tNode = head;
+            tNode = tNode.Next = new SingleListNode(2);
+            tNode = tNode.Next = new SingleListNode(3);
+            tNode = tNode.Next = new SingleListNode(4);
+            tNode = tNode.Next = new SingleListNode(5);
+
+            SingleListNode wrkNode = head;
+            int idx = 1; // 元素下标，1 开始
+            while (idx < k)
             {
-                if (c.Next == null)
+                if (wrkNode.Next == null)
                     break;
 
-                if (i == k - 1)
+                if (idx == k - 1)
                 {
-                    SingleListNode nodeK = c.Next;
-                    c.Next = nodeK.Next;
+                    SingleListNode nodeK = wrkNode.Next;
+                    wrkNode.Next = nodeK.Next;
                     nodeK = null;
                     break;
                 }
                 else
                 {
-                    c = c.Next;
+                    wrkNode = wrkNode.Next;
                 }
 
-                i++;
+                idx++;
             }
 
-            Console.WriteLine("删除单链表中的第 K 个元素：");
-            c = head;
-            while (c != null)
+            Console.WriteLine("删除单链表中的第 K({0}) 个元素：", k);
+            wrkNode = head;
+            while (wrkNode != null)
             {
-                Console.WriteLine(c.Val);
-                c = c.Next;
+                Console.WriteLine(wrkNode.Val);
+                wrkNode = wrkNode.Next;
             }
         }
     }
