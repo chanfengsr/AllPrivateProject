@@ -35,8 +35,8 @@ fileObj.close()
 
 courseList = \
     [
-        ("00 开篇词 洞悉技术的本质，享受科技的乐趣", "https://time.geekbang.org/column/article/181"),
-        ("01 程序员如何用技术变现（上）", "https://time.geekbang.org/column/article/183")
+        ('00 开篇词 从今天起，跨过“数据结构与算法”这道坎', 'https://time.geekbang.org/column/article/39922'),
+        ('01 为什么要学习数据结构和算法？', 'https://time.geekbang.org/column/article/39972')
     ]
 
 
@@ -118,13 +118,26 @@ def main():
         # 获取到网页完整内容
         bs = BeautifulSoup(driver.page_source, "html.parser")
 
+        # 专栏名称
+        columnName = bs.select_one('a[class="title"]').text.strip()
+
+        # 保存目录
+        exportPath = "R:\\%s\\" % columnName
+        exportPathPDF = exportPath + "PDF\\"
+        exportPathHTML = exportPath + "HTML\\"
+        if not os.path.exists(exportPathPDF):
+            os.makedirs(exportPathPDF)
+        if not os.path.exists(exportPathHTML):
+            os.makedirs(exportPathHTML)
+
+
         # 获取 m3u8 文件地址
         m3u8 = bs.find("audio")
         if m3u8 is not None:
-            ffmpeg = 'ffmpeg -i %s -vcodec copy -acodec copy "R:\%s.mp4"\n' % (m3u8["src"], tarTitle)
+            ffmpeg = 'ffmpeg -i %s -vcodec copy -acodec copy "%s.mp4"\n' % (m3u8["src"], tarTitle)
 
             # 写 ffmpeg 下载列表
-            ffmpegListFile = open('R:\\ffmpegDownList.txt', 'a', encoding='gb2312')
+            ffmpegListFile = open(exportPath + "ffmpegDownList.txt", 'a', encoding='gb2312')
             ffmpegListFile.write(ffmpeg)
             ffmpegListFile.close()
 
@@ -133,14 +146,14 @@ def main():
         headHtml = bs.find("head")
         bodyDivHtml = bs.find("div", {"id": "app"})
         targetHtml = modHtml % (headHtml, bodyDivHtml)
-        htmlFile = open('R:\\' + tarTitle + '.html', 'w', encoding='utf-8')
+        htmlFile = open(exportPathHTML + tarTitle + '.html', 'w', encoding='utf-8')
         htmlFile.write(targetHtml)
         htmlFile.close()
         print("Html 抓取完成。  --> %s.html" % (tarTitle))
 
         # 用 html 生成 PDF 文件
         print("正在生成 PDF...")
-        if pdfkit.from_string(targetHtml, 'R:\\' + tarTitle + '.pdf', options=options):
+        if pdfkit.from_string(targetHtml, exportPathPDF + tarTitle + '.pdf', options=options):
             print("PDF 已生成。  --> %s.pdf" % (tarTitle))
 
         # 爬一篇文章后休息几秒钟
