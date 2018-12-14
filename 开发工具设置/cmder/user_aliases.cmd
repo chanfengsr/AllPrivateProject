@@ -68,6 +68,7 @@ proj        = explorer %Project%
 allGit      = explorer %Project%\AllInGitHub
 
 ;= For Work
+ske         = explorer %Project%\SKE
 son         = explorer %Project%\AX\Sonepar
 bin         = explorer %Project%\AX\BIN
 quant       = explorer %Project%\AX\QUANT
