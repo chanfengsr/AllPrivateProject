@@ -15,9 +15,9 @@
 ;=D:\Software\ExtractProgram\Beyond Compare
 
 ;=新建环境变量
-;=D:\Project
-;=D:\Software
-
+;=Project
+;=WorkProject
+;=Software
 
 
 
@@ -64,17 +64,17 @@ gt1         = "%Project%\AllInGitHub\DoNetCore\geekTime\bin\Debug\netcoreapp2.1\
 
 one         = explorer %onedrive%
 soft        = explorer %software%
-proj        = explorer %Project%
+proj        = explorer %WorkProject%
 allGit      = explorer %Project%\AllInGitHub
 
 ;= For Work
-ske         = explorer %Project%\SKE
-son         = explorer %Project%\AX\Sonepar
-bin         = explorer %Project%\AX\BIN
-quant       = explorer %Project%\AX\QUANT
-maz         = explorer %Project%\AX\Mazak
-hoya        = explorer %Project%\AX\HOYA
-dan         = explorer %Project%\AX\DAN
+ske         = explorer %WorkProject%\SKE
+son         = explorer %WorkProject%\AX\Sonepar
+bin         = explorer %WorkProject%\AX\BIN
+quant       = explorer %WorkProject%\AX\QUANT
+maz         = explorer %WorkProject%\AX\Mazak
+hoya        = explorer %WorkProject%\AX\HOYA
+dan         = explorer %WorkProject%\AX\DAN
 
 rm30        = mstsc /v:192.168.1.30
 rm70        = mstsc /v:192.168.1.70
