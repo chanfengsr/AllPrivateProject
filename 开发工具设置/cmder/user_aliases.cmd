@@ -54,13 +54,14 @@ miaosu      = "%Software%\ExtractProgram\MiaoSS妙速\MiaoSS妙速.exe"
 dict        = "%AppData%\..\Local\youdao\dict\Application\YoudaoDict.exe"
 pyc         = pycharm64.exe
 st          = shutdown -s -t 60
+st0         = shutdown -a
 
 syncConfig  = copy /y %CMDER_ROOT%\config\user_aliases.cmd "%Project%\AllInGitHub\开发工具设置\cmder\"
 
 .build      = dotnet build --runtime win-x64
 pGeekTime   = cd /d "%Project%\AllInGitHub\DoNetCore\geekTime"
 gtFile      = explorer %OneDrive%\极客时间
-gt1         = "%Project%\AllInGitHub\DoNetCore\geekTime\bin\Debug\netcoreapp2.1\win-x64\geekTime.exe"
+ClearProxy  = %Project%\AllInGitHub\Bat\ClearProxy.bat
 
 one         = explorer %onedrive%
 soft        = explorer %software%
