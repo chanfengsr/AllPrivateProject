@@ -76,6 +76,7 @@ quant       = explorer %WorkProject%\AX\QUANT
 maz         = explorer %WorkProject%\AX\Mazak
 hoya        = explorer %WorkProject%\AX\HOYA
 dan         = explorer %WorkProject%\AX\DAN
+dljc        = explorer %WorkProject%\AX\¥Û¡¨æ©¥…
 
 rm30        = mstsc /v:192.168.1.30
 rm70        = mstsc /v:192.168.1.70
