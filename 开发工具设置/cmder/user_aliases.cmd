@@ -59,9 +59,10 @@ st0         = shutdown -a
 syncConfig  = copy /y %CMDER_ROOT%\config\user_aliases.cmd "%Project%\AllInGitHub\开发工具设置\cmder\"
 
 .build      = dotnet build --runtime win-x64
+.play       = dotnet new console --name play & code .\play
 pGeekTime   = cd /d "%Project%\AllInGitHub\DoNetCore\geekTime"
 gtFile      = explorer %OneDrive%\极客时间
-ClearProxy  = %Project%\AllInGitHub\Bat\ClearProxy.bat
+clrProxy    = %Project%\AllInGitHub\Bat\ClearProxy.bat
 
 one         = explorer %onedrive%
 soft        = explorer %software%
@@ -76,7 +77,7 @@ quant       = explorer %WorkProject%\AX\QUANT
 maz         = explorer %WorkProject%\AX\Mazak
 hoya        = explorer %WorkProject%\AX\HOYA
 dan         = explorer %WorkProject%\AX\DAN
-dljc        = explorer %WorkProject%\AX\大连京瓷
+kit        = explorer %WorkProject%\AX\大连京瓷
 
 rm30        = mstsc /v:192.168.1.30
 rm70        = mstsc /v:192.168.1.70
