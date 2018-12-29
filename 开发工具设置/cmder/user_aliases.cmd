@@ -52,11 +52,13 @@ repOutlook  = "C:\Program Files\Microsoft Office\Office16\OUTLOOK.EXE /safe"
 gitExt      = "C:\Program Files (x86)\GitExtensions\GitExtensions.exe"
 miaosu      = "%Software%\ExtractProgram\MiaoSS妙速\MiaoSS妙速.exe"
 dict        = "%AppData%\..\Local\youdao\dict\Application\YoudaoDict.exe"
+vs          = "C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\devenv.exe"
 pyc         = pycharm64.exe
 st          = shutdown -s -t 60
 st0         = shutdown -a
 
 syncConfig  = copy /y %CMDER_ROOT%\config\user_aliases.cmd "%Project%\AllInGitHub\开发工具设置\cmder\"
+compConfig  = "%Software%\ExtractProgram\Beyond Compare\BCompare.exe" "%CMDER_ROOT%\config\user_aliases.cmd" "%Project%\AllInGitHub\开发工具设置\cmder\user_aliases.cmd"
 
 .build      = dotnet build --runtime win-x64
 .play       = dotnet new console --name play & code .\play
