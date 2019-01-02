@@ -56,6 +56,7 @@ vs          = "C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\d
 pyc         = pycharm64.exe
 st          = shutdown -s -t 60
 st0         = shutdown -a
+startSQL    = net start MSSQLSERVER
 
 syncConfig  = copy /y %CMDER_ROOT%\config\user_aliases.cmd "%Project%\AllInGitHub\开发工具设置\cmder\"
 compConfig  = "%Software%\ExtractProgram\Beyond Compare\BCompare.exe" "%CMDER_ROOT%\config\user_aliases.cmd" "%Project%\AllInGitHub\开发工具设置\cmder\user_aliases.cmd"
