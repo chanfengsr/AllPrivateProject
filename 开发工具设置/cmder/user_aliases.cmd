@@ -33,6 +33,7 @@ cmderr      = cd /d "%CMDER_ROOT%"
 initPath    = echo cmd /k "%ConEmuDir%\..\init.bat"  -new_console:d:R:\
 pwd         = echo VPS:fdhg9901314 & echo BIN:K4BWB2+R & echo Sonepar:P@ssword01 & echo SAG:Chanfengsr026! & echo VPN:wangy/KC02!L & echo WZYHome:1qaz@WSX
 dns         = echo 210.22.70.3 & echo 210.22.84.3
+re          = echo "^/\*.*\*/$      exp:/* ×¢ÊÍÐÐ */" & echo "^\s*$           exp:¿Õ°×ÐÐ"
 edit        = EditPlus /n
 bcomp       = "%Software%\ExtractProgram\Beyond Compare\BCompare.exe"
 vps         = ssh root@45.77.22.199
