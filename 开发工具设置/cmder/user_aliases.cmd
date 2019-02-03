@@ -31,7 +31,6 @@ vi          = vim $*
 cmderr      = cd /d "%CMDER_ROOT%"
 
 initPath    = echo cmd /k "%ConEmuDir%\..\init.bat"  -new_console:d:R:\
-pwd         = echo VPS:fdhg9901314 & echo BIN:K4BWB2+R & echo Sonepar:P@ssword01 & echo SAG:Chanfengsr026! & echo VPN:wangy/KC02!L & echo WZYHome:1qaz@WSX
 dns         = echo 210.22.70.3 & echo 210.22.84.3
 re          = echo "/* 注释行 */:    ^/\*.*\*/$" & echo "空白行      :    ^\s*$"
 edit        = EditPlus /n
@@ -40,6 +39,9 @@ vps         = ssh root@45.77.22.199
 inet        = inetcpl.cpl
 ncpa        = ncpa.cpl
 sysdm       = sysdm.cpl
+
+;= 先要切成管理员模式运行
+host        = notepad %windir%\System32\drivers\etc\hosts & echo explorer %windir%\System32\drivers\etc
 
 bcomp0      = echo 1 > 1.txt & echo 2 > 2.txt
 bcomp1      = "%Software%\ExtractProgram\Beyond Compare\BCompare.exe" 1.txt 2.txt
@@ -91,3 +93,6 @@ rm30        = mstsc /v:192.168.1.30
 rm70        = mstsc /v:192.168.1.70
 rm71        = mstsc /v:192.168.1.71
 rm111       = mstsc /v:192.168.50.111
+
+pwd         = echo VPS:fdhg9901314 & echo BIN:K4BWB2+R & echo Sonepar:P@ssword01 & echo SAG:Chanfengsr026! & echo VPN:wangy/KC02!L & echo WZYHome:1qaz@WSX
+skePwd      = type "%Project%\AllInGitHub\Info\ske.txt"
