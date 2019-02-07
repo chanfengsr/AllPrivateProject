@@ -1,0 +1,56 @@
+DESKTOP-7JQPK2H
+
+New server 10.73.16.66
+
+Solomon1
+sa  skehfs
+kyocera\hfs hfshfshfs
+
+Solomon55
+kyocera\hfs hfshfshfs
+heautoimport$ hontec aaa-4321
+
+10.17.16.11
+sa hfs
+
+10.73.19.17 人事
+administrator htfs1403
+sysadmin htfshrjc1403
+
+人事DB
+10.73.16.15
+sa hfs1403ske
+hfs
+
+用友
+10.73.16.5
+sa Pwmgl13100
+
+SKERPT KAMS
+10.73.16.13
+sa aoc-111
+rptuser Shaske02(sys)
+sdp htfs1403
+administrator Shaske01
+
+10.73.16.27 揭示板
+\SKEPortal
+sa hfs
+sdp htfs1403
+
+10.73.19.201 shaske31
+\SKEGM
+rw hfs1403
+sdp htfs1403
+
+10.73.18.65 MCHE
+sdp htfs1403
+sa kcss0011!
+
+部门共通
+SYSADMIN
+htfs1403
+
+Solomon
+SL:ske-1111
+FA:aaa-1234

@@ -31,14 +31,17 @@ vi          = vim $*
 cmderr      = cd /d "%CMDER_ROOT%"
 
 initPath    = echo cmd /k "%ConEmuDir%\..\init.bat"  -new_console:d:R:\
-pwd         = echo VPS:fdhg9901314 & echo BIN:K4BWB2+R & echo Sonepar:P@ssword01 & echo SAG:Chanfengsr026! & echo VPN:wangy/KC02!L & echo WZYHome:1qaz@WSX
 dns         = echo 210.22.70.3 & echo 210.22.84.3
+re          = echo "/* 注释行 */:    ^/\*.*\*/$" & echo "空白行      :    ^\s*$"
 edit        = EditPlus /n
 bcomp       = "%Software%\ExtractProgram\Beyond Compare\BCompare.exe"
 vps         = ssh root@45.77.22.199
 inet        = inetcpl.cpl
 ncpa        = ncpa.cpl
 sysdm       = sysdm.cpl
+
+;= 先要切成管理员模式运行
+host        = notepad %windir%\System32\drivers\etc\hosts & echo explorer %windir%\System32\drivers\etc
 
 bcomp0      = echo 1 > 1.txt & echo 2 > 2.txt
 bcomp1      = "%Software%\ExtractProgram\Beyond Compare\BCompare.exe" 1.txt 2.txt
@@ -62,7 +65,7 @@ startSQL    = net start MSSQLSERVER
 syncConfig  = copy /y %CMDER_ROOT%\config\user_aliases.cmd "%Project%\AllInGitHub\开发工具设置\cmder\"
 compConfig  = "%Software%\ExtractProgram\Beyond Compare\BCompare.exe" "%CMDER_ROOT%\config\user_aliases.cmd" "%Project%\AllInGitHub\开发工具设置\cmder\user_aliases.cmd"
 
-.build      = dotnet build --runtime win-x64
+.build      = dotnet build --runtime win-x64 & cd .\bin\Debug\netcoreapp2.1\win-x64
 .play       = dotnet new console --name play & code .\play
 pGeekTime   = cd /d "%Project%\AllInGitHub\DoNetCore\geekTime"
 gtFile      = explorer %OneDrive%\极客时间
@@ -90,3 +93,6 @@ rm30        = mstsc /v:192.168.1.30
 rm70        = mstsc /v:192.168.1.70
 rm71        = mstsc /v:192.168.1.71
 rm111       = mstsc /v:192.168.50.111
+
+pwd         = echo VPS:fdhg9901314 & echo BIN:K4BWB2+R & echo Sonepar:P@ssword01 & echo SAG:Chanfengsr026! & echo VPN:wangy/KC02!L & echo WZYHome:1qaz@WSX
+skePwd      = type "%Project%\AllInGitHub\Info\ske.txt"
