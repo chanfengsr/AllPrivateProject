@@ -34,10 +34,33 @@ fileObj.close()
 '''
 
 courseList = \
-    [
-        ('00 开篇词 从今天起，跨过“数据结构与算法”这道坎', 'https://time.geekbang.org/column/article/39922'),
-        ('01 为什么要学习数据结构和算法？', 'https://time.geekbang.org/column/article/39972')
-    ]
+    [('35 Trie树如何实现搜索引擎的搜索关键词提示功能？', 'https://time.geekbang.org/column/article/72414'),
+     ('36 AC自动机如何用多模式串匹配实现敏感词过滤功能？', 'https://time.geekbang.org/column/article/72810'),
+     ('37 贪心算法如何用贪心算法实现Huffman压缩编码？', 'https://time.geekbang.org/column/article/73188'),
+     ('38 分治算法谈一谈大规模计算框架MapReduce中的分治思想', 'https://time.geekbang.org/column/article/73503'),
+     ('不定期福利第三期 测一测你的算法阶段学习成果', 'https://time.geekbang.org/column/article/73786'),
+     ('39 回溯算法从电影《蝴蝶效应》中学习回溯算法的核心思想', 'https://time.geekbang.org/column/article/74287'),
+     ('40 初识动态规划如何巧妙解决“双十一”购物时的凑单问题？', 'https://time.geekbang.org/column/article/74788'),
+     ('不定期福利第四期 刘超我是怎么学习《数据结构与算法之美》的？', 'https://time.geekbang.org/column/article/75197'),
+     ('41 动态规划理论一篇文章带你彻底搞懂最优子结构、无后效性和重复子问题', 'https://time.geekbang.org/column/article/75702'),
+     ('42 动态规划实战如何实现搜索引擎中的拼写纠错功能？', 'https://time.geekbang.org/column/article/75794'),
+     ('43 拓扑排序如何确定代码源文件的编译依赖关系？', 'https://time.geekbang.org/column/article/76207'),
+     ('44 最短路径地图软件是如何计算出最优出行路径的？', 'https://time.geekbang.org/column/article/76468'),
+     ('45 位图如何实现网页爬虫中的URL去重功能？', 'https://time.geekbang.org/column/article/76827'),
+     ('46 概率统计如何利用朴素贝叶斯算法过滤垃圾短信？', 'https://time.geekbang.org/column/article/77142'),
+     ('47 向量空间如何实现一个简单的音乐推荐系统？', 'https://time.geekbang.org/column/article/77457'),
+     ('48 B+树MySQL数据库索引是如何实现的？', 'https://time.geekbang.org/column/article/77830'),
+     ('49 搜索如何用A搜索算法实现游戏中的寻路功能？', 'https://time.geekbang.org/column/article/78175'),
+     ('50 索引如何在海量数据中快速查找某个数据？', 'https://time.geekbang.org/column/article/78449'),
+     ('51 并行算法如何利用并行处理提高算法的执行效率？', 'https://time.geekbang.org/column/article/78795'),
+     ('52 算法实战（一）剖析Redis常用数据类型对应的数据结构', 'https://time.geekbang.org/column/article/79159'),
+     ('53 算法实战（二）剖析搜索引擎背后的经典数据结构和算法', 'https://time.geekbang.org/column/article/79433'),
+     ('54 算法实战（三）剖析高性能队列Disruptor背后的数据结构和算法', 'https://time.geekbang.org/column/article/79871'),
+     ('55 算法实战（四）剖析微服务接口鉴权限流背后的数据结构和算法', 'https://time.geekbang.org/column/article/80388'),
+     ('56 算法实战（五）如何用学过的数据结构和算法实现一个短网址系统？', 'https://time.geekbang.org/column/article/80850'),
+     ('春节7天练 Day 1数组和链表', 'https://time.geekbang.org/column/article/80456'),
+     ('春节7天练 Day 2栈、队列和递归', 'https://time.geekbang.org/column/article/80457'),
+     ('春节7天练 Day 3排序和二分查找', 'https://time.geekbang.org/column/article/80458')]
 
 
 def main():
@@ -75,6 +98,7 @@ def main():
     # 获取chrome浏览器驱动
     driver = webdriver.Chrome(executable_path=driver_path)
 
+    ''''''
     # 使用driver打开极客时间登录页面
     print("正在登录网站...")
     login_url = 'https://account.geekbang.org/signin'
@@ -119,7 +143,9 @@ def main():
         bs = BeautifulSoup(driver.page_source, "html.parser")
 
         # 专栏名称
-        columnName = bs.select_one('a[class="title"]').text.strip()
+        # columnName = bs.select_one('a[class="title"]').text.strip()
+        # columnName = tarTitle
+        columnName = ''
 
         # 保存目录
         exportPath = "R:\\%s\\" % columnName
@@ -129,7 +155,6 @@ def main():
             os.makedirs(exportPathPDF)
         if not os.path.exists(exportPathHTML):
             os.makedirs(exportPathHTML)
-
 
         # 获取 m3u8 文件地址
         m3u8 = bs.find("audio")
@@ -151,10 +176,12 @@ def main():
         htmlFile.close()
         print("Html 抓取完成。  --> %s.html" % (tarTitle))
 
+        '''
         # 用 html 生成 PDF 文件
         print("正在生成 PDF...")
         if pdfkit.from_string(targetHtml, exportPathPDF + tarTitle + '.pdf', options=options):
             print("PDF 已生成。  --> %s.pdf" % (tarTitle))
+        '''
 
         # 爬一篇文章后休息几秒钟
         catchCount += 1
@@ -165,7 +192,7 @@ def main():
     end = time.time()
 
     print("ffmpeg 下载列表  --> ffmpegDownList.txt")
-    print("所有文章爬取完毕！共 %d 篇，耗时 %d 秒" % (catchCount,int(end - start)))
+    print("所有文章爬取完毕！共 %d 篇，耗时 %d 秒" % (catchCount, int(end - start)))
 
 
 if __name__ == '__main__':
