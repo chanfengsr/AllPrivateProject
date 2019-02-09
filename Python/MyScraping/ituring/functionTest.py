@@ -11,6 +11,10 @@ from selenium import webdriver
 import time
 
 
+artUrlList = {'Name': 'Zara', 'Age': 7, 'Class': 'First'}
+artUrlList['School'] = "RUNOOB"
+print(artUrlList)
+exit()
 
 st = ScrapITuring("深入理解C#（第3版）", True)
 html = st.ScrapOrigHtml("http://www.ituring.com.cn/article/72365")
