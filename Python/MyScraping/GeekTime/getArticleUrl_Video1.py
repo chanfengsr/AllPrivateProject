@@ -3,7 +3,7 @@ from bs4 import BeautifulSoup
 from selenium import webdriver
 
 # 视频课程的目录
-artUrl = "https://time.geekbang.org/course/intro/145"  # https://time.geekbang.org/column/48
+artUrl = "https://time.geekbang.org/course/intro/130"  # https://time.geekbang.org/column/48
 artFile = '.\\*.html'  # GeekTime\demoArtList.html
 
 realDir = os.path.dirname(os.path.realpath(__file__))
@@ -99,7 +99,7 @@ time.sleep(3)
 # 文章总数
 artCount = len(driver.find_element_by_class_name('video-list').find_elements_by_tag_name('li'))
 
-dicArtUrl = {}
+listArtUrl = []
 findCurLoc = False  # 找到当前网页的位置
 for i in range(artCount):
     videoList = driver.find_element_by_class_name('video-list')
@@ -107,7 +107,7 @@ for i in range(artCount):
         if findCurLoc:  # 点击下一篇
             t.click()
             driver.implicitly_wait(1)
-            # time.sleep(1)
+            time.sleep(1)
             findCurLoc = False
             break
 
@@ -116,10 +116,12 @@ for i in range(artCount):
             findCurLoc = True
             artTitle = driver.find_element_by_class_name('vplayer').find_element_by_class_name('title').text
             artTitle = artTitle.replace('当前播放:','').strip()
-            dicArtUrl[artTitle] = driver.current_url
+            # dicArtUrl[artTitle] = driver.current_url
+            listArtUrl.append((artTitle,driver.current_url))
 
 # 完成找到所有 URL
-print(dicArtUrl)
+print(repr(listArtUrl).replace("),", "),\n"))
+
 
 
 '''

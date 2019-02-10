@@ -56,6 +56,7 @@ def main():
         }
         # 找到文章列表页面所有的文章标题
         titles = driver.find_elements_by_class_name("article-item-title")
+
         print("正在爬取专栏文章，并生成PDF文件...")
         # 记录爬取文章的开始时间
         start = time.time()
