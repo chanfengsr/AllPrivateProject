@@ -4,10 +4,15 @@ from selenium import webdriver
 import requests
 from urllib.request import urlopen, urlretrieve, pathname2url
 
+file = open('r\\0784 字母大小写全排列(Letter Case Permutation).py', 'w', encoding='utf-8')
+file.close()
+print('Done')
+exit()
+
 f = open('r:\\1.py', 'rt', encoding='UTF-8')
 ers = f.read()
 f.close()
-# ers = ers.replace(chr(160),chr(32))
+ers = ers.replace(chr(8203),'')
 for s in ers:
     print("%s-->%s"%(s, ord(s)))
 print(ers)
