@@ -2,7 +2,23 @@ import time, re, os
 from bs4 import BeautifulSoup
 from selenium import webdriver
 import requests
+from urllib.request import urlopen, urlretrieve, pathname2url
 
+f = open('r:\\1.py', 'rt', encoding='UTF-8')
+ers = f.read()
+f.close()
+# ers = ers.replace(chr(160),chr(32))
+for s in ers:
+    print("%s-->%s"%(s, ord(s)))
+print(ers)
+exit()
+
+
+url = "https://leetcode-cn.com/problems/two-sum/"
+html = urlopen(url)
+bs = BeautifulSoup(html, "html.parser")
+print(bs)
+exit()
 
 # 生成干净的 html 的模板
 modHtml = "<html>%s<body><h3>03 | 如何计算算法的复杂度</h3>%s%s</body></html>"

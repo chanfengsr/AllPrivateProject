@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup
 from selenium import webdriver
 
 # 视频课程的目录
-artUrl = "https://time.geekbang.org/course/intro/130"  # https://time.geekbang.org/column/48
+artUrl = "https://time.geekbang.org/course/intro/153"  # https://time.geekbang.org/column/48
 artFile = '.\\*.html'  # GeekTime\demoArtList.html
 
 realDir = os.path.dirname(os.path.realpath(__file__))
@@ -124,27 +124,3 @@ for i in range(artCount):
 
 # 完成找到所有 URL
 print(repr(listArtUrl).replace("),", "),\n"))
-
-
-
-'''
-artTitle = bs.find("span", {"class": "title"}).get_text().strip()
-outputList = []
-for artItem in bs.find_all("div", {"class": "article-item"}):
-    title = artItem.find("h2", {"class": "article-item-title"}).get_text().strip()
-    url = artItem.find("a", {"class": "article-item-more-text"})["data-gk-spider-link"].strip()
-
-    tarTitle = re.sub('[\/:：*?"<>|]', '', title.strip()).replace('  ', ' ')
-    tarUrl = url.replace("/column/article/", "https://time.geekbang.org/column/article/")
-
-    outputList.append((tarTitle, tarUrl))
-    artItem.find("a", {"class": "article-item-more-text"})["href"] = tarUrl
-    artItem.find("a", {"class": "article-item-more-text"})["data-gk-spider-link"] = tarUrl
-
-print(repr(outputList).replace("),", "),\n"))
-
-[s.extract() for s in bs.find_all("script")]  # 去干净 JS
-htmlFile = open('R:\\' + artTitle + '.html', 'w', encoding='utf-8')
-htmlFile.write(repr(bs))
-htmlFile.close()
-'''
