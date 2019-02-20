@@ -67,6 +67,7 @@ compConfig  = "%Software%\ExtractProgram\Beyond Compare\BCompare.exe" "%CMDER_RO
 
 .build      = dotnet build --runtime win-x64 & cd .\bin\Debug\netcoreapp2.1\win-x64
 .play       = dotnet new console --name play & code .\play
+playPy      = md playPy & echo print('play') > .\playPy\play.py & code .\playPy\
 pGeekTime   = cd /d "%Project%\AllInGitHub\DoNetCore\geekTime"
 gtFile      = explorer %OneDrive%\极客时间
 gtInit      = md HTML & md PDF & md 音频 & echo List > List.txt & type "%OneDrive%\极客时间\1.txt"
@@ -76,6 +77,7 @@ one         = explorer %onedrive%
 soft        = explorer %software%
 proj        = explorer %WorkProject%
 allGit      = explorer %Project%\AllInGitHub
+leetcode    = explorer %Project%\AllInGitHub\Python\LeetCodeTraining\题库
 
 ;= For Work
 ske         = explorer %WorkProject%\SKE
