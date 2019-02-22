@@ -179,7 +179,7 @@ def main():
         '''
         # 用 html 生成 PDF 文件
         print("正在生成 PDF...")
-        if pdfkit.from_string(targetHtml, exportPathPDF + tarTitle + '.pdf', options=options):
+        if pdfkit.from_string(targetHtml.replace(r'background:#000',r'background:#fff'), exportPathPDF + tarTitle + '.pdf', options=options):
             print("PDF 已生成。  --> %s.pdf" % (tarTitle))
         '''
 

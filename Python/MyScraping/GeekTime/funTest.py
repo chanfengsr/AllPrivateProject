@@ -1,23 +1,58 @@
-import time, re, os
+import pdfkit, time, re, os
 from bs4 import BeautifulSoup
 from selenium import webdriver
 import requests
 from urllib.request import urlopen, urlretrieve, pathname2url
 
-file = open('r\\0784 字母大小写全排列(Letter Case Permutation).py', 'w', encoding='utf-8')
-file.close()
+# 方法一：os.listdir
+# 遍历filepath下所有文件，包括子目录
+def gci(filepath):
+  files = os.listdir(filepath)
+  for fi in files:
+    fi_d = os.path.join(filepath,fi)
+    if os.path.isdir(fi_d):
+      gci(fi_d)
+    else:
+      print (os.path.join(filepath,fi_d))
+
+# 方法二：os.walk
+# for fpathe,dirs,fs in os.walk('r:\\'):
+#   for f in fs:
+#     print (os.path.join(fpathe,f))
+
+h = [i for i in os.listdir('r:\\') if os.path.isfile(os.path.join('r:\\',i)) and os.path.splitext(i)[1].lower()=='.html']
+print(h)
+for i in os.listdir('r:\\') :
+    fullName=os.path.join('r:\\',i)
+    if os.path.isfile(fullName)   and  os.path.splitext(i)[1].lower() == '.html':
+        print(i)
+
+exit()
+
+# 配置PDF选项 避免中文乱码
+options = {
+    'page-size': 'Letter',
+    'encoding': "UTF-8",
+    'custom-header': [
+        ('Accept-Encoding', 'gzip')
+    ]
+}
+fileName = r"r:\a.pdf"
+file = open(r'r:\a.html', 'rt', encoding='utf-8')
+origHtml = file.read()
+origHtml = origHtml.replace(r'background:#000',r'background:#fff')
+pdfkit.from_string(origHtml, fileName, options=options)
 print('Done')
 exit()
 
 f = open('r:\\1.py', 'rt', encoding='UTF-8')
 ers = f.read()
 f.close()
-ers = ers.replace(chr(8203),'')
+ers = ers.replace(chr(8203), '')
 for s in ers:
-    print("%s-->%s"%(s, ord(s)))
+    print("%s-->%s" % (s, ord(s)))
 print(ers)
 exit()
-
 
 url = "https://leetcode-cn.com/problems/two-sum/"
 html = urlopen(url)
@@ -53,7 +88,6 @@ htmlFile.write(targetHtml)
 htmlFile.close()
 print("Done.")
 exit()
-
 
 dicArtUrl = {}
 # 定义 chromedriver 路径
