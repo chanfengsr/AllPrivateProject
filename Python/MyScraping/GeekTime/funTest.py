@@ -40,6 +40,7 @@ options = {
 fileName = r"r:\a.pdf"
 file = open(r'r:\a.html', 'rt', encoding='utf-8')
 origHtml = file.read()
+file.close()
 origHtml = origHtml.replace(r'background:#000',r'background:#fff')
 pdfkit.from_string(origHtml, fileName, options=options)
 print('Done')

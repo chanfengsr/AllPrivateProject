@@ -34,33 +34,51 @@ fileObj.close()
 '''
 
 courseList = \
-    [('35 Trie树如何实现搜索引擎的搜索关键词提示功能？', 'https://time.geekbang.org/column/article/72414'),
-     ('36 AC自动机如何用多模式串匹配实现敏感词过滤功能？', 'https://time.geekbang.org/column/article/72810'),
-     ('37 贪心算法如何用贪心算法实现Huffman压缩编码？', 'https://time.geekbang.org/column/article/73188'),
-     ('38 分治算法谈一谈大规模计算框架MapReduce中的分治思想', 'https://time.geekbang.org/column/article/73503'),
-     ('不定期福利第三期 测一测你的算法阶段学习成果', 'https://time.geekbang.org/column/article/73786'),
-     ('39 回溯算法从电影《蝴蝶效应》中学习回溯算法的核心思想', 'https://time.geekbang.org/column/article/74287'),
-     ('40 初识动态规划如何巧妙解决“双十一”购物时的凑单问题？', 'https://time.geekbang.org/column/article/74788'),
-     ('不定期福利第四期 刘超我是怎么学习《数据结构与算法之美》的？', 'https://time.geekbang.org/column/article/75197'),
-     ('41 动态规划理论一篇文章带你彻底搞懂最优子结构、无后效性和重复子问题', 'https://time.geekbang.org/column/article/75702'),
-     ('42 动态规划实战如何实现搜索引擎中的拼写纠错功能？', 'https://time.geekbang.org/column/article/75794'),
-     ('43 拓扑排序如何确定代码源文件的编译依赖关系？', 'https://time.geekbang.org/column/article/76207'),
-     ('44 最短路径地图软件是如何计算出最优出行路径的？', 'https://time.geekbang.org/column/article/76468'),
-     ('45 位图如何实现网页爬虫中的URL去重功能？', 'https://time.geekbang.org/column/article/76827'),
-     ('46 概率统计如何利用朴素贝叶斯算法过滤垃圾短信？', 'https://time.geekbang.org/column/article/77142'),
-     ('47 向量空间如何实现一个简单的音乐推荐系统？', 'https://time.geekbang.org/column/article/77457'),
-     ('48 B+树MySQL数据库索引是如何实现的？', 'https://time.geekbang.org/column/article/77830'),
-     ('49 搜索如何用A搜索算法实现游戏中的寻路功能？', 'https://time.geekbang.org/column/article/78175'),
-     ('50 索引如何在海量数据中快速查找某个数据？', 'https://time.geekbang.org/column/article/78449'),
-     ('51 并行算法如何利用并行处理提高算法的执行效率？', 'https://time.geekbang.org/column/article/78795'),
-     ('52 算法实战（一）剖析Redis常用数据类型对应的数据结构', 'https://time.geekbang.org/column/article/79159'),
-     ('53 算法实战（二）剖析搜索引擎背后的经典数据结构和算法', 'https://time.geekbang.org/column/article/79433'),
-     ('54 算法实战（三）剖析高性能队列Disruptor背后的数据结构和算法', 'https://time.geekbang.org/column/article/79871'),
-     ('55 算法实战（四）剖析微服务接口鉴权限流背后的数据结构和算法', 'https://time.geekbang.org/column/article/80388'),
-     ('56 算法实战（五）如何用学过的数据结构和算法实现一个短网址系统？', 'https://time.geekbang.org/column/article/80850'),
-     ('春节7天练 Day 1数组和链表', 'https://time.geekbang.org/column/article/80456'),
-     ('春节7天练 Day 2栈、队列和递归', 'https://time.geekbang.org/column/article/80457'),
-     ('春节7天练 Day 3排序和二分查找', 'https://time.geekbang.org/column/article/80458')]
+ \
+    [
+     ('10 通道的基本操作', 'https://time.geekbang.org/column/article/14660'),
+     ('11 通道的高级玩法', 'https://time.geekbang.org/column/article/14664'),
+     ('12 使用函数的正确姿势', 'https://time.geekbang.org/column/article/14671'),
+     ('13 结构体及其方法的使用法门', 'https://time.geekbang.org/column/article/18035'),
+     ('14 接口类型的合理运用', 'https://time.geekbang.org/column/article/18037'),
+     ('15 关于指针的有限操作', 'https://time.geekbang.org/column/article/18042'),
+     ('16 go语句及其执行规则（上）', 'https://time.geekbang.org/column/article/39841'),
+     ('17 go语句及其执行规则（下）', 'https://time.geekbang.org/column/article/39844'),
+     ('18 if语句、for语句和switch语句', 'https://time.geekbang.org/column/article/39858'),
+     ('19 错误处理（上）', 'https://time.geekbang.org/column/article/40311'),
+     ('20 错误处理 （下）', 'https://time.geekbang.org/column/article/40333'),
+     ('21 panic函数、recover函数以及defer语句 （上）', 'https://time.geekbang.org/column/article/40359'),
+     ('22 panic函数、recover函数以及defer语句（下）', 'https://time.geekbang.org/column/article/40889'),
+     ('23 测试的基本规则和流程 （上）', 'https://time.geekbang.org/column/article/41036'),
+     ('24 测试的基本规则和流程（下）', 'https://time.geekbang.org/column/article/41189'),
+     ('25 更多的测试手法', 'https://time.geekbang.org/column/article/41255'),
+     ('26 sync.Mutex与sync.RWMutex', 'https://time.geekbang.org/column/article/41350'),
+     ('27 条件变量sync.Cond （上）', 'https://time.geekbang.org/column/article/41588'),
+     ('28 条件变量sync.Cond （下）', 'https://time.geekbang.org/column/article/41717'),
+     ('29 原子操作（上）', 'https://time.geekbang.org/column/article/41908'),
+     ('30 原子操作（下）', 'https://time.geekbang.org/column/article/41929'),
+     ('31 sync.WaitGroup和sync.Once', 'https://time.geekbang.org/column/article/42156'),
+     ('32 context.Context类型', 'https://time.geekbang.org/column/article/42158'),
+     ('33 临时对象池sync.Pool', 'https://time.geekbang.org/column/article/42160'),
+     ('34 并发安全字典sync.Map （上）', 'https://time.geekbang.org/column/article/42798'),
+     ('35 并发安全字典sync.Map (下)', 'https://time.geekbang.org/column/article/42800'),
+     ('36 unicode与字符编码', 'https://time.geekbang.org/column/article/64407'),
+     ('37 strings包与字符串操作', 'https://time.geekbang.org/column/article/64877'),
+     ('38 bytes包与字节串操作（上）', 'https://time.geekbang.org/column/article/64879'),
+     ('39 bytes包与字节串操作（下）', 'https://time.geekbang.org/column/article/64881'),
+     ('40 io包中的接口和工具 （上）', 'https://time.geekbang.org/column/article/67474'),
+     ('41 io包中的接口和工具 （下）', 'https://time.geekbang.org/column/article/67477'),
+     ('42 bufio包中的数据类型 （上）', 'https://time.geekbang.org/column/article/67485'),
+     ('43 bufio包中的数据类型（下）', 'https://time.geekbang.org/column/article/68776'),
+     ('44 使用os包中的API （上）', 'https://time.geekbang.org/column/article/68779'),
+     ('45 使用os包中的API （下）', 'https://time.geekbang.org/column/article/68782'),
+     ('46 访问网络服务', 'https://time.geekbang.org/column/article/69742'),
+     ('47 基于HTTP协议的网络服务', 'https://time.geekbang.org/column/article/69808'),
+     ('48 程序性能分析基础（上）', 'https://time.geekbang.org/column/article/69812'),
+     ('49 程序性能分析基础（下）', 'https://time.geekbang.org/column/article/70805'),
+     ('50 学习专栏的正确姿势', 'https://time.geekbang.org/column/article/71043'),
+     ('尾声 愿你披荆斩棘，所向无敌', 'https://time.geekbang.org/column/article/71485'),
+     ('新年彩蛋 完整版思考题答案', 'https://time.geekbang.org/column/article/80362')]
 
 
 def main():
@@ -176,12 +194,12 @@ def main():
         htmlFile.close()
         print("Html 抓取完成。  --> %s.html" % (tarTitle))
 
-        '''
+        ''''''
         # 用 html 生成 PDF 文件
         print("正在生成 PDF...")
         if pdfkit.from_string(targetHtml.replace(r'background:#000',r'background:#fff'), exportPathPDF + tarTitle + '.pdf', options=options):
             print("PDF 已生成。  --> %s.pdf" % (tarTitle))
-        '''
+
 
         # 爬一篇文章后休息几秒钟
         catchCount += 1

@@ -2,7 +2,7 @@ import time, re, os
 from bs4 import BeautifulSoup
 from selenium import webdriver
 
-artUrl = "https://time.geekbang.org/column/126"  # https://time.geekbang.org/column/48
+artUrl = "https://time.geekbang.org/column/112"  # https://time.geekbang.org/column/48
 artFile = '.\\demoArtList.html'  # GeekTime\demoArtList.html
 
 if artUrl == "":  # 使用已保存的网页解析
