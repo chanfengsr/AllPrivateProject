@@ -6,8 +6,13 @@ import pdfkit, time, re, os
 htmlPath = r'r:\HTML'
 targetPath = r'r:\PDF'
 
+def createPdfFile(sourceHtml, pdfFileName):
+    """
+    :param sourceHtml: 源 html 可以是文件或 html 源码字符串
+    :param pdfFileName:pdf 文件
+    :return:
+    """
 
-def createPdfFile(htmlFileName, pdfFileName):
     # 配置PDF选项 避免中文乱码
     options = {
         'page-size': 'Letter',
@@ -17,12 +22,15 @@ def createPdfFile(htmlFileName, pdfFileName):
         ]
     }
 
-    htmlFile=open(htmlFileName,'rt',encoding='utf-8')
-    html=htmlFile.read()
-    htmlFile.close()
-    html=html.replace(r'background:#000',r'background:#fff') # 黑色背景色转成白色
-    pdfkit.from_string(html,pdfFileName,options=options)
-    print(pdfFileName + " --> Done.")
+    if len(sourceHtml) < 150 and os.path.exists(sourceHtml):
+        htmlFile = open(sourceHtml, 'rt', encoding='utf-8')
+        html = htmlFile.read()
+        htmlFile.close()
+    else:
+        html = sourceHtml
+    html = html.replace(r'background:#000', r'background:#fff')  # 黑色背景色转成白色
+    if pdfkit.from_string(html, pdfFileName, options=options):
+        print("PDF 已生成。  --> %s.pdf" % (pdfFileName))
 
 
 if __name__ == '__main__':
@@ -37,7 +45,7 @@ if __name__ == '__main__':
                 os.path.isfile(os.path.join(htmlPath, i)) and os.path.splitext(i)[1].lower() == '.html']
     for file in fileList:
         htmlFileName = os.path.join(htmlPath, file)
-        pdfName=os.path.splitext(file)[0]+".pdf"
+        pdfName = os.path.splitext(file)[0] + ".pdf"
         pdfFileName = os.path.join(targetPath, pdfName)
 
         createPdfFile(htmlFileName, pdfFileName)

@@ -28,12 +28,44 @@ https://leetcode-cn.com/problems/linked-list-cycle-ii
 你是否可以不用额外空间解决此题？
 '''
 
+"""
+思路：
+0：起点
+A：环点
+B：相遇点
+0--->A------>
+     ^      |
+     |      B
+     <------|
+
+0AB * 2 = 0ABAB
+SO: 0AB = BAB
+SO: 0A = BA
+SO: 从 相遇点 B 开始出发和从 0 开始出发，会在 A 处相遇
+
+"""
+
 class Solution(object):
     def detectCycle(self, head):
         """
         :type head: ListNode
         :rtype: ListNode
         """
+
+        # 找环
+        hasCycle = False
+
+        slow = fast=head
+        while fast and fast.next:
+            slow,fast=slow.next,fast.next.next
+            if slow is fast:
+                hasCycle=True
+                break
+
+        if not hasCycle:return False
+
+        # 找环点
+
 
 # Definition for singly-linked list.
 class ListNode:
@@ -61,5 +93,30 @@ class ListNode:
 
 if __name__ == '__main__':
     s = Solution()
-    # ret = s.
-    print(s)
+    n1 = ListNode.creatByList([1, 2, 3, 4, 5])
+
+    # 环起始下标
+    pos = 2
+
+    if pos >= 0:
+        i = 0
+        wrkNode = n1
+        ringNode = None  # 环起始点
+        while wrkNode.next is not None:
+            if i == pos:
+                ringNode = wrkNode
+
+            i += 1
+            wrkNode = wrkNode.next
+
+        if ringNode is None:
+            wrkNode.next = wrkNode
+        else:
+            wrkNode.next = ringNode
+
+    # for j in range(20):
+    #     print(n1.val)
+    #     n1 = n1.next
+    # exit()
+
+    print(s.detectCycle(n1))

@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup
 from selenium import webdriver
 
 # 元素 1：文章原始标题
-# 元素 2：网页地址或网页文件绝对路径
+# 元素 2：网页地址或手工保存网页文件的绝对路径
 listArtUrl = [('01 | 课程内容综述', 'https://time.geekbang.org/course/detail/153-76547'),
  ('02 | 第一章内容概述', 'https://time.geekbang.org/course/detail/153-76546'),
  ('03 | TensorFlow产生的历史必然性', 'https://time.geekbang.org/course/detail/153-76548'),

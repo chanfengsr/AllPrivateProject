@@ -2,41 +2,13 @@ import pdfkit, time, re, os
 from bs4 import BeautifulSoup
 from selenium import webdriver
 
-'''
-# 获取 m3u8 文件地址
-ffmpegList=[]
-m3u8 = driver.find_element_by_tag_name('audio').get_attribute('src')
-ffmpeg = 'ffmpeg -i %s -vcodec copy -acodec copy "R:\%s.mp4"' % (m3u8, raw_title)
-ffmpegList.append(ffmpeg)
+# Debug 状态，网页不登陆，不滚动
+inDebug = True
 
-# 滚到最底端
-pageHeight_orig = driver.execute_script('return document.body.scrollHeight')
-while True:
-    driver.execute_script('window.scrollBy(0,10000)')
-    driver.implicitly_wait(2)
-    time.sleep(3)
-    pageHeight_new = driver.execute_script('return document.body.scrollHeight')
-
-    if pageHeight_new == pageHeight_orig:
-        break
-    else:
-        pageHeight_orig = pageHeight_new
-
-# Write to html
-modHtml = "<html>%s<body>%s</body></html>"
-headHtml = bs.find("head")
-bodyDivHtml = bs.find("div", {"id": "app"})
-targetHtml = modHtml % (headHtml, bodyDivHtml)
-    
-fileObj = open('R:\\' + raw_title + '.html', 'w', encoding='utf-8')
-fileObj.write(targetHtml)
-fileObj.close()
-'''
-
+# 元素 1：文章原始标题
+# 元素 2：网页地址或手工保存网页文件的绝对路径
 courseList = \
- \
-    [
-     ('10 通道的基本操作', 'https://time.geekbang.org/column/article/14660'),
+    [('10 通道的基本操作', 'https://time.geekbang.org/column/article/14660'),
      ('11 通道的高级玩法', 'https://time.geekbang.org/column/article/14664'),
      ('12 使用函数的正确姿势', 'https://time.geekbang.org/column/article/14671'),
      ('13 结构体及其方法的使用法门', 'https://time.geekbang.org/column/article/18035'),
@@ -80,24 +52,16 @@ courseList = \
      ('尾声 愿你披荆斩棘，所向无敌', 'https://time.geekbang.org/column/article/71485'),
      ('新年彩蛋 完整版思考题答案', 'https://time.geekbang.org/column/article/80362')]
 
+realDir = os.path.dirname(os.path.realpath(__file__))
 
-def main():
-    # 抓取成功的数量
-    catchCount = 0
 
-    # 生成干净的 html 的模板
-    modHtml = "<html>%s<body>%s</body></html>"
-
-    # 配置PDF选项 避免中文乱码
-    options = {
-        'page-size': 'Letter',
-        'encoding': "UTF-8",
-        'custom-header': [
-            ('Accept-Encoding', 'gzip')
-        ]
-    }
-
-    realDir = os.path.dirname(os.path.realpath(__file__))
+# 用户名、密码登录网站
+def Login(driver):
+    """
+    用户名、密码登录网站
+    :param driver: 浏览器
+    :return:
+    """
 
     # 用户名密码
     userId = ""
@@ -111,12 +75,6 @@ def main():
     if userId == "": userId = input("UserId:")
     if password == "": password = input("Password:")
 
-    # 定义chromedriver路径
-    driver_path = realDir + r'\..\..\virtualEnv\chromedriver_2.43\chromedriver.exe'
-    # 获取chrome浏览器驱动
-    driver = webdriver.Chrome(executable_path=driver_path)
-
-    ''''''
     # 使用driver打开极客时间登录页面
     print("正在登录网站...")
     login_url = 'https://account.geekbang.org/signin'
@@ -133,84 +91,172 @@ def main():
     time.sleep(3)
     print("已登录。")
 
+
+def createPdfFile(sourceHtml, pdfFileName):
+    """
+    :param sourceHtml: 源 html 可以是文件或 html 源码字符串
+    :param pdfFileName:pdf 文件
+    :return:
+    """
+
+    # 配置PDF选项 避免中文乱码
+    options = {
+        'page-size': 'Letter',
+        'encoding': "UTF-8",
+        'custom-header': [
+            ('Accept-Encoding', 'gzip')
+        ]
+    }
+
+    if len(sourceHtml) < 150 and os.path.exists(sourceHtml):
+        htmlFile = open(sourceHtml, 'rt', encoding='utf-8')
+        html = htmlFile.read()
+        htmlFile.close()
+    else:
+        html = sourceHtml
+    html = html.replace(r'background:#000', r'background:#fff')  # 黑色背景色转成白色
+    if pdfkit.from_string(html, pdfFileName, options=options):
+        print("PDF 已生成。  --> %s.pdf" % (pdfFileName))
+
+
+def processHtml(html, tarTitle):
+    """
+    处理 HTML 源码，生成文件，生成 PDF
+    :param html: 原始网页的 html 源码
+    :param tarTitle:生成文件的标题
+    :return:
+    """
+
+    # 生成干净的 html 的模板
+    modHtml = "<html>%s<body>%s</body></html>"
+
+    bs = BeautifulSoup(html, "html.parser")
+
+    # 专栏名称
+    # columnName = bs.select_one('a[class="title"]').text.strip()
+    # columnName = tarTitle
+    columnName = ''
+
+    # 保存目录
+    exportPath = ("R:\\%s\\" % columnName).replace("\\\\", "\\")
+    exportPathPDF = exportPath + "PDF\\"
+    exportPathHTML = exportPath + "HTML\\"
+    if not os.path.exists(exportPathPDF):
+        os.makedirs(exportPathPDF)
+    if not os.path.exists(exportPathHTML):
+        os.makedirs(exportPathHTML)
+
+    # 获取 m3u8 文件地址
+    m3u8 = bs.find("audio")
+    if m3u8 is not None:
+        ffmpeg = 'ffmpeg -i %s -vcodec copy -acodec copy "%s.mp4"\n' % (m3u8["src"], tarTitle)
+
+        # 写 ffmpeg 下载列表
+        ffmpegListFile = open(exportPath + "ffmpegDownList.txt", 'a', encoding='gb2312')
+        ffmpegListFile.write(ffmpeg)
+        ffmpegListFile.close()
+
+    # 获取干净的 html 并保存
+    [s.extract() for s in bs.find_all("script")]  # 去干净 JS
+    headHtml = bs.find("head")
+    bodyDivHtml = bs.find("div", {"id": "app"})
+    targetHtml = modHtml % (headHtml, bodyDivHtml)
+    htmlFile = open(exportPathHTML + tarTitle + '.html', 'w', encoding='utf-8')
+    htmlFile.write(targetHtml)
+    htmlFile.close()
+    print("Html 抓取完成。  --> %s.html" % (tarTitle))
+
+    # 用 html 生成 PDF 文件
+    createPdfFile(targetHtml, exportPathPDF + tarTitle + '.pdf')
+
+
+# 滚到最底端，获取完整的网页内容
+def scrollDrive2Bottom(driver):
+    pageHeight_orig = driver.execute_script('return document.body.scrollHeight')
+    while True:
+        driver.execute_script('window.scrollBy(0,50000)')
+        time.sleep(3)
+        pageHeight_new = driver.execute_script('return document.body.scrollHeight')
+
+        if pageHeight_new == pageHeight_orig:
+            break
+        else:
+            pageHeight_orig = pageHeight_new
+
+
+def main():
+    # 抓取成功的数量
+    catchCount = 0
+
+    # 抓取失败的列表
+    errList = []
+
+    t, f = courseList[0]
+    isFile = os.path.exists(f)
+
     print("开始爬取专栏文章...")
     # 记录爬取文章的开始时间
     start = time.time()
 
-    # 正式开始抓取
-    for doc in courseList:
-        title, url = doc
-        tarTitle = re.sub('[\/:：*?"<>|]', '', title.strip()).replace('  ', ' ')
+    if isFile:
+        for doc in courseList:
+            title, fileFullName = doc
+            tarTitle = re.sub('[\/:：*?"<>|]', '', title.strip()).replace('  ', ' ')
 
-        print("正在抓取文章：" + tarTitle)
-        driver.get(url)
+            try:
+                file = open(fileFullName, 'rt', encoding='UTF-8')
+                html = file.read()
+                file.close()
 
-        # 滚到最底端，获取完整的网页内容
-        pageHeight_orig = driver.execute_script('return document.body.scrollHeight')
-        while True:
-            driver.execute_script('window.scrollBy(0,50000)')
-            time.sleep(3)
-            pageHeight_new = driver.execute_script('return document.body.scrollHeight')
+                # 处理 HTML 源码，生成文件，生成 PDF
+                processHtml(html, tarTitle)
+            except:
+                errList.append(title)
 
-            if pageHeight_new == pageHeight_orig:
-                break
-            else:
-                pageHeight_orig = pageHeight_new
+            catchCount += 1
+            print("\n\n")
+    else:
 
-        # 获取到网页完整内容
-        bs = BeautifulSoup(driver.page_source, "html.parser")
+        # 定义chromedriver路径
+        driver_path = realDir + r'\..\..\virtualEnv\chromedriver_2.43\chromedriver.exe'
+        # 获取chrome浏览器驱动
+        driver = webdriver.Chrome(executable_path=driver_path)
 
-        # 专栏名称
-        # columnName = bs.select_one('a[class="title"]').text.strip()
-        # columnName = tarTitle
-        columnName = ''
+        if not inDebug:
+            Login(driver)
 
-        # 保存目录
-        exportPath = "R:\\%s\\" % columnName
-        exportPathPDF = exportPath + "PDF\\"
-        exportPathHTML = exportPath + "HTML\\"
-        if not os.path.exists(exportPathPDF):
-            os.makedirs(exportPathPDF)
-        if not os.path.exists(exportPathHTML):
-            os.makedirs(exportPathHTML)
+        # 正式开始抓取
+        for doc in courseList:
+            title, url = doc
+            tarTitle = re.sub('[\/:：*?"<>|]', '', title.strip()).replace('  ', ' ')
 
-        # 获取 m3u8 文件地址
-        m3u8 = bs.find("audio")
-        if m3u8 is not None:
-            ffmpeg = 'ffmpeg -i %s -vcodec copy -acodec copy "%s.mp4"\n' % (m3u8["src"], tarTitle)
+            try:
+                print("正在抓取文章：" + tarTitle)
+                driver.get(url)
 
-            # 写 ffmpeg 下载列表
-            ffmpegListFile = open(exportPath + "ffmpegDownList.txt", 'a', encoding='gb2312')
-            ffmpegListFile.write(ffmpeg)
-            ffmpegListFile.close()
+                # 滚到最底端，获取完整的网页内容
+                if not inDebug:
+                    scrollDrive2Bottom(driver)
 
-        # 获取干净的 html 并保存
-        [s.extract() for s in bs.find_all("script")]  # 去干净 JS
-        headHtml = bs.find("head")
-        bodyDivHtml = bs.find("div", {"id": "app"})
-        targetHtml = modHtml % (headHtml, bodyDivHtml)
-        htmlFile = open(exportPathHTML + tarTitle + '.html', 'w', encoding='utf-8')
-        htmlFile.write(targetHtml)
-        htmlFile.close()
-        print("Html 抓取完成。  --> %s.html" % (tarTitle))
+                # 处理 HTML 源码，生成文件，生成 PDF
+                processHtml(driver.page_source, tarTitle)
+            except:
+                errList.append(title)
 
-        ''''''
-        # 用 html 生成 PDF 文件
-        print("正在生成 PDF...")
-        if pdfkit.from_string(targetHtml.replace(r'background:#000',r'background:#fff'), exportPathPDF + tarTitle + '.pdf', options=options):
-            print("PDF 已生成。  --> %s.pdf" % (tarTitle))
-
-
-        # 爬一篇文章后休息几秒钟
-        catchCount += 1
-        time.sleep(5)
-        print("\n\n")
+            # 爬一篇文章后休息几秒钟
+            catchCount += 1
+            time.sleep(5)
+            print("\n\n")
 
     # 记录爬取文章的结束时间
     end = time.time()
 
     print("ffmpeg 下载列表  --> ffmpegDownList.txt")
     print("所有文章爬取完毕！共 %d 篇，耗时 %d 秒" % (catchCount, int(end - start)))
+
+    if len(errList) > 0:
+        print("失败的抓取：")
+        for name in errList: print(name)
 
 
 if __name__ == '__main__':

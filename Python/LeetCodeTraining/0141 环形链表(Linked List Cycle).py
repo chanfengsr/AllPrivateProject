@@ -1,4 +1,4 @@
-﻿''' Todo
+﻿''' Done
 https://leetcode-cn.com/problems/linked-list-cycle
 
 给定一个链表，判断链表中是否有环。
@@ -27,12 +27,34 @@ https://leetcode-cn.com/problems/linked-list-cycle
 你能用 O(1)（即，常量）内存解决此问题吗？
 '''
 
+
 class Solution(object):
     def hasCycle(self, head):
         """
         :type head: ListNode
         :rtype: bool
         """
+
+        # 慢、快 指针
+        p1, p2 = head, head
+
+        while p2 is not None and p2.next is not None:
+            p1, p2 = p1.next, p2.next.next
+            if p1 is p2:
+                return True
+
+        return False
+
+    def hasCycleGeedTime(self, head):
+        fast = slow = head
+        while slow and fast and fast.next:
+            slow, fast = slow.next, fast.next.next
+
+            if slow is fast:
+                return True
+        return False
+
+
 # Definition for singly-linked list.
 class ListNode:
     def __init__(self, x):
@@ -57,7 +79,33 @@ class ListNode:
 
     creatByList = staticmethod(creatByList)
 
+
 if __name__ == '__main__':
     s = Solution()
-    # ret = s.
-    print(s)
+    n1 = ListNode.creatByList([1, 2, 3, 4, 5])
+
+    # 环起始下标
+    pos = -1
+
+    if pos >= 0:
+        i = 0
+        wrkNode = n1
+        ringNode = None  # 环起始点
+        while wrkNode.next is not None:
+            if i == pos:
+                ringNode = wrkNode
+
+            i += 1
+            wrkNode = wrkNode.next
+
+        if ringNode is None:
+            wrkNode.next = wrkNode
+        else:
+            wrkNode.next = ringNode
+
+    # for j in range(20):
+    #     print(n1.val)
+    #     n1 = n1.next
+    # exit()
+
+    print(s.hasCycle(n1))
