@@ -3,54 +3,19 @@ from bs4 import BeautifulSoup
 from selenium import webdriver
 
 # Debug 状态，网页不登陆，不滚动
-inDebug = True
+inDebug = True and False
 
 # 元素 1：文章原始标题
 # 元素 2：网页地址或手工保存网页文件的绝对路径
 courseList = \
-    [('10 通道的基本操作', 'https://time.geekbang.org/column/article/14660'),
-     ('11 通道的高级玩法', 'https://time.geekbang.org/column/article/14664'),
-     ('12 使用函数的正确姿势', 'https://time.geekbang.org/column/article/14671'),
-     ('13 结构体及其方法的使用法门', 'https://time.geekbang.org/column/article/18035'),
-     ('14 接口类型的合理运用', 'https://time.geekbang.org/column/article/18037'),
-     ('15 关于指针的有限操作', 'https://time.geekbang.org/column/article/18042'),
-     ('16 go语句及其执行规则（上）', 'https://time.geekbang.org/column/article/39841'),
-     ('17 go语句及其执行规则（下）', 'https://time.geekbang.org/column/article/39844'),
-     ('18 if语句、for语句和switch语句', 'https://time.geekbang.org/column/article/39858'),
-     ('19 错误处理（上）', 'https://time.geekbang.org/column/article/40311'),
-     ('20 错误处理 （下）', 'https://time.geekbang.org/column/article/40333'),
-     ('21 panic函数、recover函数以及defer语句 （上）', 'https://time.geekbang.org/column/article/40359'),
-     ('22 panic函数、recover函数以及defer语句（下）', 'https://time.geekbang.org/column/article/40889'),
-     ('23 测试的基本规则和流程 （上）', 'https://time.geekbang.org/column/article/41036'),
-     ('24 测试的基本规则和流程（下）', 'https://time.geekbang.org/column/article/41189'),
-     ('25 更多的测试手法', 'https://time.geekbang.org/column/article/41255'),
-     ('26 sync.Mutex与sync.RWMutex', 'https://time.geekbang.org/column/article/41350'),
-     ('27 条件变量sync.Cond （上）', 'https://time.geekbang.org/column/article/41588'),
-     ('28 条件变量sync.Cond （下）', 'https://time.geekbang.org/column/article/41717'),
-     ('29 原子操作（上）', 'https://time.geekbang.org/column/article/41908'),
-     ('30 原子操作（下）', 'https://time.geekbang.org/column/article/41929'),
-     ('31 sync.WaitGroup和sync.Once', 'https://time.geekbang.org/column/article/42156'),
-     ('32 context.Context类型', 'https://time.geekbang.org/column/article/42158'),
-     ('33 临时对象池sync.Pool', 'https://time.geekbang.org/column/article/42160'),
-     ('34 并发安全字典sync.Map （上）', 'https://time.geekbang.org/column/article/42798'),
-     ('35 并发安全字典sync.Map (下)', 'https://time.geekbang.org/column/article/42800'),
-     ('36 unicode与字符编码', 'https://time.geekbang.org/column/article/64407'),
-     ('37 strings包与字符串操作', 'https://time.geekbang.org/column/article/64877'),
-     ('38 bytes包与字节串操作（上）', 'https://time.geekbang.org/column/article/64879'),
-     ('39 bytes包与字节串操作（下）', 'https://time.geekbang.org/column/article/64881'),
-     ('40 io包中的接口和工具 （上）', 'https://time.geekbang.org/column/article/67474'),
-     ('41 io包中的接口和工具 （下）', 'https://time.geekbang.org/column/article/67477'),
-     ('42 bufio包中的数据类型 （上）', 'https://time.geekbang.org/column/article/67485'),
-     ('43 bufio包中的数据类型（下）', 'https://time.geekbang.org/column/article/68776'),
-     ('44 使用os包中的API （上）', 'https://time.geekbang.org/column/article/68779'),
-     ('45 使用os包中的API （下）', 'https://time.geekbang.org/column/article/68782'),
-     ('46 访问网络服务', 'https://time.geekbang.org/column/article/69742'),
-     ('47 基于HTTP协议的网络服务', 'https://time.geekbang.org/column/article/69808'),
-     ('48 程序性能分析基础（上）', 'https://time.geekbang.org/column/article/69812'),
-     ('49 程序性能分析基础（下）', 'https://time.geekbang.org/column/article/70805'),
-     ('50 学习专栏的正确姿势', 'https://time.geekbang.org/column/article/71043'),
-     ('尾声 愿你披荆斩棘，所向无敌', 'https://time.geekbang.org/column/article/71485'),
-     ('新年彩蛋 完整版思考题答案', 'https://time.geekbang.org/column/article/80362')]
+    [ ('春节7天练 Day 4散列表和字符串', 'https://time.geekbang.org/column/article/81008'),
+ ('春节7天练 Day 5二叉树和堆', 'https://time.geekbang.org/column/article/81186'),
+ ('春节7天练 Day 6图', 'https://time.geekbang.org/column/article/81218'),
+ ('春节7天练 Day 7贪心、分治、回溯和动态规划', 'https://time.geekbang.org/column/article/80459'),
+ ('用户故事 Jerry银银这一年我的脑海里只有算法', 'https://time.geekbang.org/column/article/81230'),
+ ('用户故事 zixuan站在思维的高处，才有足够的视野和能力欣赏“美”', 'https://time.geekbang.org/column/article/81263'),
+ ('总结课 在实际开发中，如何权衡选择使用哪种数据结构和算法？', 'https://time.geekbang.org/column/article/81997'),
+ ('结束语 送君千里，终须一别', 'https://time.geekbang.org/column/article/81835')]
 
 realDir = os.path.dirname(os.path.realpath(__file__))
 
@@ -108,7 +73,7 @@ def createPdfFile(sourceHtml, pdfFileName):
         ]
     }
 
-    if len(sourceHtml) < 150 and os.path.exists(sourceHtml):
+    if not sourceHtml.startswith('<') and os.path.exists(sourceHtml):
         htmlFile = open(sourceHtml, 'rt', encoding='utf-8')
         html = htmlFile.read()
         htmlFile.close()
@@ -233,9 +198,10 @@ def main():
             try:
                 print("正在抓取文章：" + tarTitle)
                 driver.get(url)
+                driver.implicitly_wait(3)
 
                 # 滚到最底端，获取完整的网页内容
-                if not inDebug:
+                if not inDebug or not inDebug: # 有时候不滚到最底下会抓出来空白的
                     scrollDrive2Bottom(driver)
 
                 # 处理 HTML 源码，生成文件，生成 PDF

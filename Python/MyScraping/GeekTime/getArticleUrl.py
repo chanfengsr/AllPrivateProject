@@ -5,6 +5,7 @@ from selenium import webdriver
 artUrl = "https://time.geekbang.org/column/112"  # https://time.geekbang.org/column/48
 artFile = '.\\demoArtList.html'  # GeekTime\demoArtList.html
 
+artUrl = ""
 if artUrl == "":  # 使用已保存的网页解析
     listFile = open(artFile, 'rt', encoding='UTF-8')
     origHtml = listFile.read()

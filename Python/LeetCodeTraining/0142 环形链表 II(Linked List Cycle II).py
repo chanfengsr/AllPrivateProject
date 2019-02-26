@@ -1,4 +1,4 @@
-''' Todo
+''' Done
 https://leetcode-cn.com/problems/linked-list-cycle-ii
 
 给定一个链表，返回链表开始入环的第一个节点。 如果链表无环，则返回 null。
@@ -45,6 +45,7 @@ SO: 从 相遇点 B 开始出发和从 0 开始出发，会在 A 处相遇
 
 """
 
+
 class Solution(object):
     def detectCycle(self, head):
         """
@@ -55,16 +56,21 @@ class Solution(object):
         # 找环
         hasCycle = False
 
-        slow = fast=head
+        slow = fast = head
         while fast and fast.next:
-            slow,fast=slow.next,fast.next.next
+            slow, fast = slow.next, fast.next.next
             if slow is fast:
-                hasCycle=True
+                hasCycle = True
                 break
 
-        if not hasCycle:return False
+        if not hasCycle:
+            return None
 
-        # 找环点
+        # 找环点，一起慢走
+        fast = head
+        while fast is not slow:
+            fast, slow = fast.next, slow.next
+        return slow
 
 
 # Definition for singly-linked list.
@@ -90,6 +96,7 @@ class ListNode:
         return ret
 
     creatByList = staticmethod(creatByList)
+
 
 if __name__ == '__main__':
     s = Solution()
@@ -119,4 +126,8 @@ if __name__ == '__main__':
     #     n1 = n1.next
     # exit()
 
-    print(s.detectCycle(n1))
+    ret = s.detectCycle(n1)
+    if ret is not None:
+        print(ret.val)
+    else:
+        print(ret)

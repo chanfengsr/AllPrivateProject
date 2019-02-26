@@ -22,7 +22,7 @@ def createPdfFile(sourceHtml, pdfFileName):
         ]
     }
 
-    if len(sourceHtml) < 150 and os.path.exists(sourceHtml):
+    if not sourceHtml.startswith('<') and os.path.exists(sourceHtml):
         htmlFile = open(sourceHtml, 'rt', encoding='utf-8')
         html = htmlFile.read()
         htmlFile.close()
