@@ -88,13 +88,59 @@ class ListNode:
 
     creatByList = staticmethod(creatByList)
 
+"""
+
+last -> (1 -> 2 -> 3) -> (4 -> 5 -> 6) -> (7 -> 8 -> 9)
+                   newLast
+last -> (3 -> 2 -> 1) -> (4 -> 5 -> 6) -> (7 -> 8 -> 9)
+                                    newLast
+last -> (3 -> 2 -> 1) -> (6 -> 5 -> 4) -> (7 -> 8 -> 9)
+                                                     newLast
+last -> (3 -> 2 -> 1) -> (6 -> 5 -> 4) -> (9 -> 8 -> 7)
+
+此方法 reverse() 方法写得很精妙，没有一句废话
+
+"""
+class leetCodeTop1:
+    def reverse(self, head, k):
+        p = head
+        for i in range(k):
+            p = p.next
+            if p is None:
+                return None
+        p = head.next.next
+        last = head.next
+        for i in range(k - 1):
+            # 这四句话转的秒
+            last.next = p.next
+            p.next = head.next
+            head.next = p
+            p = last.next
+        return last
+
+    def reverseKGroup(self, head, k):
+        if k < 2:
+            return head
+        last = ListNode(0)
+        last.next = head
+        p = last
+        while p is not None:
+            p = self.reverse(p, k)
+        return last.next
 
 if __name__ == '__main__':
     s = Solution()
-    head = ListNode.creatByList(list(range(1, 5 + 1)))
-
-    head = None
-
-    ret = s.reverseKGroup(head, 6)
+    head = ListNode.creatByList(list(range(1, 10 + 1)))
+    # head = None
+    ret = s.reverseKGroup(head, 3)
     if ret:
         ret.print()
+
+    s = leetCodeTop1()
+    head = ListNode.creatByList(list(range(1, 10 + 1)))
+    # head = None
+    ret = s.reverseKGroup(head, 3)
+    if ret:
+        ret.print()
+
+
