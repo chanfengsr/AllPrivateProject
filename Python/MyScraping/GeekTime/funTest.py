@@ -4,6 +4,21 @@ from selenium import webdriver
 import requests
 from urllib.request import urlopen, urlretrieve, pathname2url
 
+realDir = os.path.dirname(os.path.realpath(__file__))
+driver_path = realDir + r'\..\..\virtualEnv\chromedriver_2.43\chromedriver.exe'
+driver = webdriver.Chrome(executable_path=driver_path)
+driver.get("https://www.baidu.com/")
+driver.implicitly_wait(3)
+
+# Microsoft
+# driver.find_element_by_id('kw').__setattr__("value","Microsoft")
+driver.execute_script('document.getElementById(“kw”).value="Microsoft"')
+driver.find_element_by_id('su').click()
+
+time.sleep(10)
+driver.close()
+exit()
+
 # 方法一：os.listdir
 # 遍历filepath下所有文件，包括子目录
 def gci(filepath):
