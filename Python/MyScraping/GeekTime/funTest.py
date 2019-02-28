@@ -10,9 +10,8 @@ driver = webdriver.Chrome(executable_path=driver_path)
 driver.get("https://www.baidu.com/")
 driver.implicitly_wait(3)
 
-# Microsoft
-# driver.find_element_by_id('kw').__setattr__("value","Microsoft")
-driver.execute_script('document.getElementById(“kw”).value="Microsoft"')
+# driver.execute_script('document.getElementById(“kw”).value="Microsoft"')
+driver.find_element_by_id('kw').send_keys('SAG')
 driver.find_element_by_id('su').click()
 
 time.sleep(10)
