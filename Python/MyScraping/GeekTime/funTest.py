@@ -3,18 +3,28 @@ from bs4 import BeautifulSoup
 from selenium import webdriver
 import requests
 from urllib.request import urlopen, urlretrieve, pathname2url
+from turtle import *
+
+forward(100)
+left(120)
+forward(100)
+left(120)
+forward(100)
+time.sleep(3)
+exit()
 
 realDir = os.path.dirname(os.path.realpath(__file__))
 driver_path = realDir + r'\..\..\virtualEnv\chromedriver_2.43\chromedriver.exe'
 driver = webdriver.Chrome(executable_path=driver_path)
 driver.get("https://www.baidu.com/")
 driver.implicitly_wait(3)
+time.sleep(3)
 
 # driver.execute_script('document.getElementById(“kw”).value="Microsoft"')
 driver.find_element_by_id('kw').send_keys('SAG')
 driver.find_element_by_id('su').click()
 
-time.sleep(10)
+time.sleep(5)
 driver.close()
 exit()
 

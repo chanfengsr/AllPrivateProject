@@ -7,7 +7,6 @@ from selenium import webdriver
 
 # 视频课程的目录
 artUrl = "https://time.geekbang.org/course/intro/153"  # https://time.geekbang.org/column/48
-artFile = '.\\*.html'  # GeekTime\demoArtList.html
 
 realDir = os.path.dirname(os.path.realpath(__file__))
 
@@ -31,7 +30,7 @@ driver = webdriver.Chrome(executable_path=driver_path)
 '''
 # 使用driver打开极客时间登录页面
 print("正在登录网站...")
-login_url = 'https://account.geekbang.org/signin'
+login_url = 'https://account.geekbang.org/login'
 driver.get(login_url)
 
 # 输入手机号

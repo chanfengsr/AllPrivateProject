@@ -4,56 +4,21 @@
 import pdfkit, time, re, os
 from bs4 import BeautifulSoup
 from selenium import webdriver
+from selenium.webdriver.common.keys import Keys
+
+inDebug = True
 
 # 元素 1：文章原始标题
 # 元素 2：网页地址或手工保存网页文件的绝对路径
-listArtUrl = [('01 | 课程内容综述', 'https://time.geekbang.org/course/detail/153-76547'),
- ('02 | 第一章内容概述', 'https://time.geekbang.org/course/detail/153-76546'),
- ('03 | TensorFlow产生的历史必然性', 'https://time.geekbang.org/course/detail/153-76548'),
- ('04 | TensorFlow与Jeff Dean的那些事', 'https://time.geekbang.org/course/detail/153-76549'),
- ('05 | TensorFlow的应用场景', 'https://time.geekbang.org/course/detail/153-76550'),
- ('06 | TensorFlow的落地应用', 'https://time.geekbang.org/course/detail/153-76551'),
- ('07 | TensorFlow的发展现状', 'https://time.geekbang.org/course/detail/153-76552'),
- ('08 | 第二章内容概述', 'https://time.geekbang.org/course/detail/153-76553'),
- ('09 | 搭建你的TensorFlow开发环境', 'https://time.geekbang.org/course/detail/153-76554'),
- ('10 | Hello TensorFlow', 'https://time.geekbang.org/course/detail/153-76555'),
- ('11 | 在交互环境中使用TensorFlow', 'https://time.geekbang.org/course/detail/153-76556'),
- ('12 | 在容器中使用TensorFlow', 'https://time.geekbang.org/course/detail/153-76557'),
- ('13 | 第三章内容概述', 'https://time.geekbang.org/course/detail/153-76954'),
- ('14 | TensorFlow模块与架构介绍', 'https://time.geekbang.org/course/detail/153-76955'),
- ('15 | TensorFlow数据流图介绍', 'https://time.geekbang.org/course/detail/153-76956'),
- ('16 | 张量（Tensor）是什么（上）', 'https://time.geekbang.org/course/detail/153-77203'),
- ('17 | 张量（Tensor）是什么（下）', 'https://time.geekbang.org/course/detail/153-77204'),
- ('18 | 变量（Variable）是什么（上）', 'https://time.geekbang.org/course/detail/153-77205'),
- ('19 | 变量（Variable）是什么（下）', 'https://time.geekbang.org/course/detail/153-77207'),
- ('20 | 操作（Operation）是什么（上）', 'https://time.geekbang.org/course/detail/153-77209'),
- ('21 | 操作（Operation）是什么（下）', 'https://time.geekbang.org/course/detail/153-77210'),
- ('22 | 会话（Session）是什么', 'https://time.geekbang.org/course/detail/153-77212'),
- ('23 | 优化器（Optimizer）是什么', 'https://time.geekbang.org/course/detail/153-77215'),
- ('24 | 第四章内容概述', 'https://time.geekbang.org/course/detail/153-78978'),
- ('25 | 房价预测模型的前置知识', 'https://time.geekbang.org/course/detail/153-78981'),
- ('26 | 房价预测模型介绍', 'https://time.geekbang.org/course/detail/153-78979'),
- ('27 | 房价预测模型之数据处理', 'https://time.geekbang.org/course/detail/153-79136'),
- ('28 | 房价预测模型之创建与训练', 'https://time.geekbang.org/course/detail/153-79138'),
- ('29 | TensorBoard 可视化工具介绍', 'https://time.geekbang.org/course/detail/153-79411'),
- ('30 | 使用 TensorBoard 可视化数据流图', 'https://time.geekbang.org/course/detail/153-80135'),
- ('31 | 实战房价预测模型：数据分析与处理', 'https://time.geekbang.org/course/detail/153-80136'),
- ('32 | 实战房价预测模型：创建与训练', 'https://time.geekbang.org/course/detail/153-80137'),
- ('33 | 实战房价预测模型：可视化数据流图', 'https://time.geekbang.org/course/detail/153-80142'),
- ('34 | 第五章内容概述', 'https://time.geekbang.org/course/detail/153-81594'),
- ('35 | 手写体数字数据集 MNIST 介绍（上）', 'https://time.geekbang.org/course/detail/153-81596'),
- ('36 | 手写体数字数据集 MNIST 介绍（下）', 'https://time.geekbang.org/course/detail/153-81598'),
- ('37 | MNIST Softmax 网络介绍（上）', 'https://time.geekbang.org/course/detail/153-81600'),
- ('38 | MNIST Softmax 网络介绍（下）', 'https://time.geekbang.org/course/detail/153-81602'),
- ('39 | 实战MNIST Softmax网络（上）', 'https://time.geekbang.org/course/detail/153-81843'),
- ('40 | 实战MNIST Softmax网络（下）', 'https://time.geekbang.org/course/detail/153-81844'),
- ('41 | MNIST CNN网络介绍', 'https://time.geekbang.org/course/detail/153-81845'),
- ('42 | 实战MNIST CNN网络', 'https://time.geekbang.org/course/detail/153-81846')]
+listArtUrl =  [('01 | 课程内容综述', 'https://time.geekbang.org/course/detail/153-76556')]
 
 realDir = os.path.dirname(os.path.realpath(__file__))
 
 # 用户名、密码登录网站
 def Login(driver):
+    if inDebug:
+        return
+
     # 用户名密码
     userId = ""
     password = ""
@@ -68,7 +33,7 @@ def Login(driver):
 
     # 使用driver打开极客时间登录页面
     print("正在登录网站...")
-    login_url = 'https://account.geekbang.org/signin'
+    login_url = 'https://account.geekbang.org/login'
     driver.get(login_url)
 
     # 输入手机号
@@ -98,10 +63,10 @@ def SaveFile(artTitle, orgHtml):
     [s.extract() for s in bs.find_all("script")]  # 去干净 JS
     headHtml = bs.find("head")
     contentBoxHtml = bs.find("div", {"class": "content-box"})
-    commentsHtml = bs.find("div", {"class": "comments"})
-    noCommentsHtml = bs.find("div", {"class": "no-comment"})
+    commentsHtml = bs.find("div", {"class": "extra"})
+    noCommentsHtml = bs.find("div", {"class": "lNgript7_1"})  # 可能过段时间会变
     if contentBoxHtml is None: contentBoxHtml = ''
-    if commentsHtml is None or noCommentsHtml is not None: commentsHtml = ''
+    if noCommentsHtml is not None: commentsHtml = ''
 
     # 跳过，不输出
     if contentBoxHtml == '' and commentsHtml == '':
@@ -111,6 +76,27 @@ def SaveFile(artTitle, orgHtml):
     htmlFile = open(exportPath + fileTitle + '.html', 'w', encoding='utf-8')
     htmlFile.write(targetHtml)
     htmlFile.close()
+
+'''
+点击页面上的 “展开”
+'''
+def ExpTag(driver):
+    # driver.findElement(By.xpath("//div[text()=\"A\"]")).click();//点击A（如果是span，就把div改为span）
+
+    try:
+        zhanK = driver.find_element_by_xpath("//span[text()=\"展开\"]")
+        while zhanK is not None:
+            # .send_keys(Keys.DOWN)
+            zhanK.send_keys(Keys.DOWN)
+
+            zhanK.click()
+
+            driver.implicitly_wait(3)
+            time.sleep(3)
+
+            zhanK = driver.find_element_by_xpath("//span[text()=\"展开\"]")
+    except:
+        pass
 
 t, f = listArtUrl[0]
 isFile = os.path.exists(f)
@@ -137,7 +123,7 @@ else:
     driver = webdriver.Chrome(executable_path=driver_path)
 
     # 调试可注释
-    # Login(driver)
+    Login(driver)
 
     for doc in listArtUrl:
         title, url = doc
@@ -159,11 +145,16 @@ else:
             else:
                 pageHeight_orig = pageHeight_new
 
+        # 点击页面上的 “展开”
+        ExpTag(driver)
+
         try:
             SaveFile(title, driver.page_source)
             print("Done.")
         except:
             errList.append(title)
+
+    driver.close()
 
 if len(errList) > 0:
     print('失败的抓取：')

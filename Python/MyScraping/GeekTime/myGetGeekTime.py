@@ -42,7 +42,7 @@ def Login(driver):
 
     # 使用driver打开极客时间登录页面
     print("正在登录网站...")
-    login_url = 'https://account.geekbang.org/signin'
+    login_url = 'https://account.geekbang.org/login'
     driver.get(login_url)
 
     # 输入手机号

@@ -33,7 +33,7 @@ else:  # 直接解析原始 URL
 
     # 使用driver打开极客时间登录页面
     print("正在登录网站...")
-    login_url = 'https://account.geekbang.org/signin'
+    login_url = 'https://account.geekbang.org/login'
     driver.get(login_url)
 
     # 输入手机号
