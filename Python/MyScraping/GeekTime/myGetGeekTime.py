@@ -3,19 +3,12 @@ from bs4 import BeautifulSoup
 from selenium import webdriver
 
 # Debug 状态，网页不登陆，不滚动
-inDebug = True and False
+inDebug = True #and False
 
 # 元素 1：文章原始标题
 # 元素 2：网页地址或手工保存网页文件的绝对路径
 courseList = \
-    [ ('春节7天练 Day 4散列表和字符串', 'https://time.geekbang.org/column/article/81008'),
- ('春节7天练 Day 5二叉树和堆', 'https://time.geekbang.org/column/article/81186'),
- ('春节7天练 Day 6图', 'https://time.geekbang.org/column/article/81218'),
- ('春节7天练 Day 7贪心、分治、回溯和动态规划', 'https://time.geekbang.org/column/article/80459'),
- ('用户故事 Jerry银银这一年我的脑海里只有算法', 'https://time.geekbang.org/column/article/81230'),
- ('用户故事 zixuan站在思维的高处，才有足够的视野和能力欣赏“美”', 'https://time.geekbang.org/column/article/81263'),
- ('总结课 在实际开发中，如何权衡选择使用哪种数据结构和算法？', 'https://time.geekbang.org/column/article/81997'),
- ('结束语 送君千里，终须一别', 'https://time.geekbang.org/column/article/81835')]
+    [ ('Test', 'https://time.geekbang.org/column/article/70844')]
 
 realDir = os.path.dirname(os.path.realpath(__file__))
 
@@ -201,7 +194,7 @@ def main():
                 driver.implicitly_wait(3)
 
                 # 滚到最底端，获取完整的网页内容
-                if not inDebug or not inDebug: # 有时候不滚到最底下会抓出来空白的
+                if not inDebug or inDebug: # 有时候不滚到最底下会抓出来空白的
                     scrollDrive2Bottom(driver)
 
                 # 处理 HTML 源码，生成文件，生成 PDF
