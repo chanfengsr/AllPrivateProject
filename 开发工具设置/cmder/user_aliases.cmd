@@ -55,6 +55,7 @@ ie          = "C:\Program Files\Internet Explorer\iexplore.exe"
 repOutlook  = "C:\Program Files\Microsoft Office\Office16\OUTLOOK.EXE /safe"
 gitExt      = "C:\Program Files (x86)\GitExtensions\GitExtensions.exe"
 miaosu      = "%Software%\ExtractProgram\MiaoSS妙速\MiaoSS妙速.exe" & choice /t 15 /d y /n > nul & %Project%\AllInGitHub\Bat\ClearProxy.bat
+Dism        = "%Software%\ExtractProgram\Dism\Dism++x64.exe"
 dict        = "%AppData%\..\Local\youdao\dict\Application\YoudaoDict.exe"
 vs          = "C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\devenv.exe"
 pyc         = pycharm64.exe
@@ -72,6 +73,7 @@ pGeekTime   = cd /d "%Project%\AllInGitHub\DoNetCore\geekTime"
 gtFile      = explorer %OneDrive%\极客时间
 gtInit      = md HTML & md PDF & md 音频 & echo List > List.txt & type "%OneDrive%\极客时间\1.txt"
 clrProxy    = %Project%\AllInGitHub\Bat\ClearProxy.bat
+killIDM     = taskkill /im IDMan.exe /f
 
 one         = explorer %onedrive%
 soft        = explorer %software%
@@ -96,6 +98,8 @@ rm30        = mstsc /v:192.168.1.30
 rm70        = mstsc /v:192.168.1.70
 rm71        = mstsc /v:192.168.1.71
 rm111       = mstsc /v:192.168.50.111
+rmSonUAT    = mstsc /v:172.20.3.64
+rmSonSTG    = mstsc /v:172.20.3.11
 
-pwd         = echo VPS:fdhg9901314 & echo BIN:K4BWB2+R & echo Sonepar:P@ssword01 & echo SAG:Chanfengsr026! & echo VPN:wangy/KC02!L & echo WZYHome:1qaz@WSX
+pwd         = echo VPS:fdhg9901314 & echo BIN:K4BWB2+R & echo Sonepar:SoneparSEA\Wang.YU & echo     Pwd:P@ssword01 & echo     VPN:pEJUF7Fr & echo     SoneparSEA\ZhenCheng.Wang & echo     Pwd:Password001 & echo SAG:Chanfengsr026! & echo VPN:wangy/KC02!L & echo WZYHome:1qaz@WSX
 skePwd      = type "%Project%\AllInGitHub\Info\ske.txt"
