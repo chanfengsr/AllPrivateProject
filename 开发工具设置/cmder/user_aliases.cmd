@@ -73,7 +73,7 @@ pGeekTime   = cd /d "%Project%\AllInGitHub\DoNetCore\geekTime"
 gtFile      = explorer %OneDrive%\极客时间
 gtInit      = md HTML & md PDF & md 音频 & echo List > List.txt & type "%OneDrive%\极客时间\1.txt"
 clrProxy    = %Project%\AllInGitHub\Bat\ClearProxy.bat
-killIDM     = taskkill /im IDMan.exe /f
+kIDM        = taskkill /im IDMan.exe /f
 
 one         = explorer %onedrive%
 soft        = explorer %software%
