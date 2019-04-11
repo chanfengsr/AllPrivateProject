@@ -24,11 +24,13 @@ namespace JQB
                 // 去掉文件名中的这些关键字
                 string newName = file.Directory + "\\" +
                     file.Name.Replace(file.Extension, "")
-                    .Replace("(金錢爆官方YouTube)", "")
-                    .Replace("(金錢爆官方YouTube)_2", "")
-                    .Replace("(金錢爆官方YouTube)_3", "")
+                    .Replace("金錢爆官方YouTube", "")
+                    .Replace(")_2", ")")
+                    .Replace(")_3", ")")
                     .Replace("（完整版）", " ")
                     .Replace("- YouTube", "")
+                    .Replace("《楊世光在金錢爆》", "")                    
+                    .Replace("()", "")
                     .Trim() +
                     file.Extension;
                 newName = newName.Replace("\\\\", "\\");
@@ -41,7 +43,7 @@ namespace JQB
                 }
             }
 
-            Console.WriteLine("Done.");            
+            Console.WriteLine("Done.");
         }
 
         #region 调用DOS执行CMD方法

@@ -60,7 +60,8 @@ dict        = "%AppData%\..\Local\youdao\dict\Application\YoudaoDict.exe"
 vs          = "C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\devenv.exe"
 pyc         = pycharm64.exe
 st          = shutdown -s -t 60
-st0         = shutdown -a
+st0         = shutdown -s -t 0
+sta         = shutdown -a
 startSQL    = net start MSSQLSERVER
 
 syncConfig  = copy /y %CMDER_ROOT%\config\user_aliases.cmd "%Project%\AllInGitHub\开发工具设置\cmder\"
@@ -69,11 +70,12 @@ compConfig  = "%Software%\ExtractProgram\Beyond Compare\BCompare.exe" "%CMDER_RO
 .build      = dotnet build --runtime win-x64 & cd .\bin\Debug\netcoreapp2.1\win-x64
 .play       = dotnet new console --name play & code .\play
 playPy      = md playPy & echo print('play') > .\playPy\play.py & code .\playPy\
-pGeekTime   = cd /d "%Project%\AllInGitHub\DoNetCore\geekTime"
 gtFile      = explorer %OneDrive%\极客时间
 gtInit      = md HTML & md PDF & md 音频 & echo List > List.txt & type "%OneDrive%\极客时间\1.txt"
 clrProxy    = %Project%\AllInGitHub\Bat\ClearProxy.bat
 kIDM        = taskkill /im IDMan.exe /f
+JQB         = dotnet run -p %Project%\AllInGitHub\DoNetCore\JQB
+kl          = %Project%\AllInGitHub\Python\MyScraping\venv\Scripts\activate.bat & python %Project%\AllInGitHub\Python\MyScraping\Play\ScrapWeibo.py
 
 one         = explorer %onedrive%
 soft        = explorer %software%
@@ -100,6 +102,7 @@ rm71        = mstsc /v:192.168.1.71
 rm111       = mstsc /v:192.168.50.111
 rmSonUAT    = mstsc /v:172.20.3.64
 rmSonSTG    = mstsc /v:172.20.3.11
+rmSKE       = mstsc /v:q204h49620.51mypc.cn:55066
 
 pwd         = echo VPS:fdhg9901314 & echo BIN:K4BWB2+R & echo Sonepar:SoneparSEA\Wang.YU & echo     Pwd:P@ssword01 & echo     VPN:pEJUF7Fr & echo     SoneparSEA\ZhenCheng.Wang & echo     Pwd:Password001 & echo SAG:Chanfengsr026! & echo VPN:wangy/KC02!L & echo WZYHome:1qaz@WSX
 skePwd      = type "%Project%\AllInGitHub\Info\ske.txt"
