@@ -3,12 +3,12 @@ from bs4 import BeautifulSoup
 from selenium import webdriver
 
 # Debug 状态，网页不登陆，不滚动
-inDebug = True #and False
+inDebug = True and False
 
 # 元素 1：文章原始标题
 # 元素 2：网页地址或手工保存网页文件的绝对路径
 courseList = \
-    [ ('Test', 'https://time.geekbang.org/column/article/70844')]
+    [ ('加餐 | 谈谈我的“三观”', 'https://time.geekbang.org/column/article/84603')]
 
 realDir = os.path.dirname(os.path.realpath(__file__))
 
@@ -117,8 +117,9 @@ def processHtml(html, tarTitle):
     # 获取干净的 html 并保存
     [s.extract() for s in bs.find_all("script")]  # 去干净 JS
     headHtml = bs.find("head")
-    bodyDivHtml = bs.find("div", {"id": "app"})
+    bodyDivHtml = bs.find("div", {"class": "_1Dgl7pMn_0"})   # 可能随时会变，谁知道呢
     targetHtml = modHtml % (headHtml, bodyDivHtml)
+    targetHtml = targetHtml.replace('CFSR','') # 去掉私人信息
     htmlFile = open(exportPathHTML + tarTitle + '.html', 'w', encoding='utf-8')
     htmlFile.write(targetHtml)
     htmlFile.close()
@@ -130,17 +131,27 @@ def processHtml(html, tarTitle):
 
 # 滚到最底端，获取完整的网页内容
 def scrollDrive2Bottom(driver):
-    pageHeight_orig = driver.execute_script('return document.body.scrollHeight')
-    while True:
-        driver.execute_script('window.scrollBy(0,50000)')
-        time.sleep(3)
-        pageHeight_new = driver.execute_script('return document.body.scrollHeight')
+    # pageHeight_orig = driver.execute_script('return document.body.scrollHeight')
+    # while True:
+    #     driver.execute_script('window.scrollBy(0,50000)')
+    #     time.sleep(3)
+    #     pageHeight_new = driver.execute_script('return document.body.scrollHeight')
+    #
+    #     if pageHeight_new == pageHeight_orig:
+    #         break
+    #     else:
+    #         pageHeight_orig = pageHeight_new
 
-        if pageHeight_new == pageHeight_orig:
+    divHeightOrg = driver.execute_script('return document.getElementsByClassName(\'ibY_sXau_0 ps\')[0].scrollTop')
+    while True:
+        driver.execute_script('document.getElementsByClassName(\'ibY_sXau_0 ps\')[0].scrollTop += 5000')
+        time.sleep(3)
+        divHeightNew = driver.execute_script('return document.getElementsByClassName(\'ibY_sXau_0 ps\')[0].scrollTop')
+
+        if divHeightNew == divHeightOrg:
             break
         else:
-            pageHeight_orig = pageHeight_new
-
+            divHeightOrg = divHeightNew
 
 def main():
     # 抓取成功的数量
@@ -191,7 +202,8 @@ def main():
             try:
                 print("正在抓取文章：" + tarTitle)
                 driver.get(url)
-                driver.implicitly_wait(3)
+                driver.implicitly_wait(5)
+                time.sleep(5)
 
                 # 滚到最底端，获取完整的网页内容
                 if not inDebug or inDebug: # 有时候不滚到最底下会抓出来空白的

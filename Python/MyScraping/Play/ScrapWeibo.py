@@ -1,5 +1,6 @@
-import time
+﻿import time, os
 import requests
+import threading
 from urllib.parse import urlencode
 from pyquery import PyQuery as pq
 
@@ -53,6 +54,11 @@ def parse_page(json):
             yield data
 
 
+def input_func(context):
+    context['data'] = input()
+
+
+context = {'data': 'default'}
 if __name__ == '__main__':
     '''
     for page in range(1, 2):  # 抓取前十页的数据
@@ -62,6 +68,7 @@ if __name__ == '__main__':
             print('(%s)' % result['created'])
             print(result['text'])
     '''
+
     lastCrt = ''
     lastMsg = ''
     while True:
@@ -71,6 +78,7 @@ if __name__ == '__main__':
         i = 0
         for result in results:
             if i > 0:
+                os.system('cls')
                 print()
                 print('(%s)\n%s' % (result['created'], result['text']))
                 print()
@@ -85,4 +93,11 @@ if __name__ == '__main__':
 
             i += 1
 
-        time.sleep(60)
+        # time.sleep(60)
+        # 键盘有别的输入则退出
+        t = threading.Thread(target=input_func, args=(context,))
+        t.start()
+        t.join(60)
+        if context['data'] != 'default':
+            # print(context['data'])
+            break
