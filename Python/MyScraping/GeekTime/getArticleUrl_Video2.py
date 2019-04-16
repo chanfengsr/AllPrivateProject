@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 
-inDebug = not True
+inDebug = True and False
 
 # 元素 1：文章原始标题
 # 元素 2：网页地址或手工保存网页文件的绝对路径

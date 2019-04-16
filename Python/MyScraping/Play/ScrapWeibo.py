@@ -1,6 +1,7 @@
 ﻿import time, os
 import requests
 import threading
+import queue
 from urllib.parse import urlencode
 from pyquery import PyQuery as pq
 
@@ -60,44 +61,51 @@ def input_func(context):
 
 context = {'data': 'default'}
 if __name__ == '__main__':
-    '''
-    for page in range(1, 2):  # 抓取前十页的数据
-        json = get_single_page(page)
-        results = parse_page(json)
-        for result in results:
-            print('(%s)' % result['created'])
-            print(result['text'])
-    '''
 
     lastCrt = ''
     lastMsg = ''
+    stack = queue.LifoQueue()
+
+    t = threading.Thread(target=input_func, args=(context,))
+
     while True:
         json = get_single_page(1)
         results = parse_page(json)
 
-        i = 0
+        # 每次只取前三条消息，消息不一致才压栈
+        i = 1
         for result in results:
-            if i > 0:
-                os.system('cls')
-                print()
-                print('(%s)\n%s' % (result['created'], result['text']))
-                print()
-                print('(%s)\n%s' % (lastCrt, lastMsg))
+            if i > 3:
                 break
 
-            if result['text'] != lastMsg or result['created'] != lastCrt:
-                lastCrt = result['created']
-                lastMsg = result['text']
-            else:
-                break
+            if i == 1:
+                if result['text'] == lastMsg and result['created'] == lastCrt:
+                    break
+                else:
+                    lastCrt = result['created']
+                    lastMsg = result['text']
+
+            stack.put((result['created'], result['text']))
 
             i += 1
 
-        # time.sleep(60)
+        # 从堆栈中拿出来显示，最新的消息放在最后
+        if not stack.empty():
+            os.system('cls')
+            print()
+
+            while not stack.empty():
+                crtdTime, msg = stack.get()
+                print('(%s)\n%s' % (crtdTime, msg))
+                print()
+
+        # lastCrt = ''
+
         # 键盘有别的输入则退出
-        t = threading.Thread(target=input_func, args=(context,))
-        t.start()
+        if not t.is_alive():
+            t.start()
         t.join(60)
         if context['data'] != 'default':
             # print(context['data'])
             break
+
