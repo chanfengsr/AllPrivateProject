@@ -54,7 +54,7 @@ skype       = "C:\Program Files (x86)\Microsoft\Skype for Desktop\Skype.exe"
 ie          = "C:\Program Files\Internet Explorer\iexplore.exe"
 repOutlook  = "C:\Program Files\Microsoft Office\Office16\OUTLOOK.EXE /safe"
 gitExt      = "C:\Program Files (x86)\GitExtensions\GitExtensions.exe"
-miaosu      = "%Software%\ExtractProgram\MiaoSS妙速\MiaoSS妙速.exe" & choice /t 15 /d y /n > nul & %Project%\AllInGitHub\Bat\ClearProxy.bat
+msu         = "%Software%\ExtractProgram\MiaoSS妙速\MiaoSS妙速.exe" & choice /t 15 /d y /n > nul & %Project%\AllInGitHub\Bat\ClearProxy.bat
 Dism        = "%Software%\ExtractProgram\Dism\Dism++x64.exe"
 dict        = "%AppData%\..\Local\youdao\dict\Application\YoudaoDict.exe"
 vs          = "C:\Program Files (x86)\Microsoft Visual Studio 10.0\Common7\IDE\devenv.exe"
@@ -75,7 +75,7 @@ gtInit      = md HTML & md PDF & md 音频 & echo List > List.txt & type "%OneDriv
 clrProxy    = %Project%\AllInGitHub\Bat\ClearProxy.bat
 kIDM        = taskkill /im IDMan.exe /f
 JQB         = dotnet run -p %Project%\AllInGitHub\DoNetCore\JQB
-kl          = %Project%\AllInGitHub\Python\MyScraping\venv\Scripts\activate.bat & python %Project%\AllInGitHub\Python\MyScraping\Play\ScrapWeibo.py
+kl          = %Project%\AllInGitHub\Python\MyScraping\venv\Scripts\activate.bat & python %Project%\AllInGitHub\Python\MyScraping\Play\ScrapWeibo.py & deactivate & cls
 
 one         = explorer %onedrive%
 soft        = explorer %software%
