@@ -44,15 +44,29 @@ def parse_page(json):
         if item:
             data = {
                 'id': item.get('id'),
-                'text': pq(item.get("text")).text().replace('\n\n',
-                                                            '\n'),  # 仅提取内容中的文本
-                # 'text': item.get("text"),
+                'text': pq(item.get("text")).text().replace('\n\n', '\n'),  # 仅提取内容中的文本
                 'attitudes': item.get('attitudes_count'),
                 'comments': item.get('comments_count'),
                 'reposts': item.get('reposts_count'),
                 'created': item.get('created_at')
             }
+
+            # 点开 “全文”
+            if data['text'].endswith('...全文'):
+                data['text'] = getLongTextContent(data['id'])
+
             yield data
+
+
+def getLongTextContent(id):
+    url = 'https://m.weibo.cn/statuses/extend?id=%s' % id
+    response = requests.get(url, headers=headers)
+    longText = ''
+    if response.status_code == 200:
+        json = response.json()
+        item = json.get('data')
+        longText = pq(item.get('longTextContent')).text().replace('\n\n', '\n')
+    return longText
 
 
 def input_func(context):
@@ -75,7 +89,7 @@ if __name__ == '__main__':
         # 每次只取前三条消息，消息不一致才压栈
         i = 1
         for result in results:
-            if i > 3:
+            if i > 5:
                 break
 
             if i == 1:
@@ -108,4 +122,3 @@ if __name__ == '__main__':
         if context['data'] != 'default':
             # print(context['data'])
             break
-

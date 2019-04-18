@@ -29,8 +29,9 @@ namespace JQB
                     .Replace(")_3", ")")
                     .Replace("（完整版）", " ")
                     .Replace("- YouTube", "")
-                    .Replace("《楊世光在金錢爆》", "")                    
+                    .Replace("《楊世光在金錢爆》", "")
                     .Replace("()", "")
+                    .TrimEnd('-')
                     .Trim() +
                     file.Extension;
                 newName = newName.Replace("\\\\", "\\");
