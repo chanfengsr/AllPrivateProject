@@ -6,76 +6,55 @@ from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 
-inDebug = True and False
+inDebug = True  and False
 
 # 元素 1：文章原始标题
 # 元素 2：网页地址或手工保存网页文件的绝对路径
-listArtUrl = [('01 | 课程内容综述', 'https://time.geekbang.org/course/detail/153-76547'),
-              ('02 | 第一章内容概述', 'https://time.geekbang.org/course/detail/153-76546'),
-              ('03 | TensorFlow产生的历史必然性', 'https://time.geekbang.org/course/detail/153-76548'),
-              ('04 | TensorFlow与Jeff Dean的那些事', 'https://time.geekbang.org/course/detail/153-76549'),
-              ('05 | TensorFlow的应用场景', 'https://time.geekbang.org/course/detail/153-76550'),
-              ('06 | TensorFlow的落地应用', 'https://time.geekbang.org/course/detail/153-76551'),
-              ('07 | TensorFlow的发展现状', 'https://time.geekbang.org/course/detail/153-76552'),
-              ('08 | 第二章内容概述', 'https://time.geekbang.org/course/detail/153-76553'),
-              ('09 | 搭建你的TensorFlow开发环境', 'https://time.geekbang.org/course/detail/153-76554'),
-              ('10 | Hello TensorFlow', 'https://time.geekbang.org/course/detail/153-76555'),
-              ('11 | 在交互环境中使用TensorFlow', 'https://time.geekbang.org/course/detail/153-76556'),
-              ('12 | 在容器中使用TensorFlow', 'https://time.geekbang.org/course/detail/153-76557'),
-              ('13 | 第三章内容概述', 'https://time.geekbang.org/course/detail/153-76954'),
-              ('14 | TensorFlow模块与架构介绍', 'https://time.geekbang.org/course/detail/153-76955'),
-              ('15 | TensorFlow数据流图介绍', 'https://time.geekbang.org/course/detail/153-76956'),
-              ('16 | 张量（Tensor）是什么（上）', 'https://time.geekbang.org/course/detail/153-77203'),
-              ('17 | 张量（Tensor）是什么（下）', 'https://time.geekbang.org/course/detail/153-77204'),
-              ('18 | 变量（Variable）是什么（上）', 'https://time.geekbang.org/course/detail/153-77205'),
-              ('19 | 变量（Variable）是什么（下）', 'https://time.geekbang.org/course/detail/153-77207'),
-              ('20 | 操作（Operation）是什么（上）', 'https://time.geekbang.org/course/detail/153-77209'),
-              ('21 | 操作（Operation）是什么（下）', 'https://time.geekbang.org/course/detail/153-77210'),
-              ('22 | 会话（Session）是什么', 'https://time.geekbang.org/course/detail/153-77212'),
-              ('23 | 优化器（Optimizer）是什么', 'https://time.geekbang.org/course/detail/153-77215'),
-              ('24 | 第四章内容概述', 'https://time.geekbang.org/course/detail/153-78978'),
-              ('25 | 房价预测模型的前置知识', 'https://time.geekbang.org/course/detail/153-78981'),
-              ('26 | 房价预测模型介绍', 'https://time.geekbang.org/course/detail/153-78979'),
-              ('27 | 房价预测模型之数据处理', 'https://time.geekbang.org/course/detail/153-79136'),
-              ('28 | 房价预测模型之创建与训练', 'https://time.geekbang.org/course/detail/153-79138'),
-              ('29 | TensorBoard 可视化工具介绍', 'https://time.geekbang.org/course/detail/153-79411'),
-              ('30 | 使用 TensorBoard 可视化数据流图', 'https://time.geekbang.org/course/detail/153-80135'),
-              ('31 | 实战房价预测模型：数据分析与处理', 'https://time.geekbang.org/course/detail/153-80136'),
-              ('32 | 实战房价预测模型：创建与训练', 'https://time.geekbang.org/course/detail/153-80137'),
-              ('33 | 实战房价预测模型：可视化数据流图', 'https://time.geekbang.org/course/detail/153-80142'),
-              ('34 | 第五章内容概述', 'https://time.geekbang.org/course/detail/153-81594'),
-              ('35 | 手写体数字数据集 MNIST 介绍（上）', 'https://time.geekbang.org/course/detail/153-81596'),
-              ('36 | 手写体数字数据集 MNIST 介绍（下）', 'https://time.geekbang.org/course/detail/153-81598'),
-              ('37 | MNIST Softmax 网络介绍（上）', 'https://time.geekbang.org/course/detail/153-81600'),
-              ('38 | MNIST Softmax 网络介绍（下）', 'https://time.geekbang.org/course/detail/153-81602'),
-              ('39 | 实战MNIST Softmax网络（上）', 'https://time.geekbang.org/course/detail/153-81843'),
-              ('40 | 实战MNIST Softmax网络（下）', 'https://time.geekbang.org/course/detail/153-81844'),
-              ('41 | MNIST CNN网络介绍', 'https://time.geekbang.org/course/detail/153-81845'),
-              ('42 | 实战MNIST CNN网络', 'https://time.geekbang.org/course/detail/153-81846'),
-              ('43 | 第六章内容概述', 'https://time.geekbang.org/course/detail/153-83923'),
-              ('44 | 准备模型开发环境', 'https://time.geekbang.org/course/detail/153-83924'),
-              ('45 | 生成验证码数据集', 'https://time.geekbang.org/course/detail/153-83925'),
-              ('46 | 输入与输出数据处理', 'https://time.geekbang.org/course/detail/153-84142'),
-              ('47 | 模型结构设计', 'https://time.geekbang.org/course/detail/153-84149'),
-              ('48 | 模型损失函数设计', 'https://time.geekbang.org/course/detail/153-84154'),
-              ('49 | 模型训练过程分析', 'https://time.geekbang.org/course/detail/153-84160'),
-              ('50 | 模型部署与效果演示', 'https://time.geekbang.org/course/detail/153-84163'),
-              ('51 | 第七部分内容介绍', 'https://time.geekbang.org/course/detail/153-84661'),
-              ('52 | 人脸识别问题概述', 'https://time.geekbang.org/course/detail/153-84701'),
-              ('53 | 典型人脸相关数据集介绍', 'https://time.geekbang.org/course/detail/153-84704'),
-              ('54 | 人脸检测算法介绍', 'https://time.geekbang.org/course/detail/153-84706'),
-              ('55 | 人脸识别算法介绍', 'https://time.geekbang.org/course/detail/153-84707'),
-              ('56 | 人脸检测工具介绍', 'https://time.geekbang.org/course/detail/153-84751'),
-              ('57 | 解析 FaceNet 人脸识别模型', 'https://time.geekbang.org/course/detail/153-84765'),
-              ('58 | 实战 FaceNet 人脸识别模型', 'https://time.geekbang.org/course/detail/153-84771'),
-              ('59 | 测试与可视化分析', 'https://time.geekbang.org/course/detail/153-84948'),
-              ('60 | 番外篇内容介绍', 'https://time.geekbang.org/course/detail/153-85703'),
-              ('61 | TensorFlow 社区介绍', 'https://time.geekbang.org/course/detail/153-85704'),
-              ('62 | TensorFlow 生态-TFX', 'https://time.geekbang.org/course/detail/153-85708'),
-              ('63 | TensorFlow 生态-Kubeflow', 'https://time.geekbang.org/course/detail/153-85710'),
-              ('64 | 如何参与 TensorFlow 社区开源贡献', 'https://time.geekbang.org/course/detail/153-85712'),
-              ('65 | ML GDE 是 TensorFlow 社区与开发者的桥梁', 'https://time.geekbang.org/course/detail/153-85721'),
-              ('66 | 课程总结', 'https://time.geekbang.org/course/detail/153-85715')]
+listArtUrl = [('01 | Go语言课程介绍', 'https://time.geekbang.org/course/detail/160-84335'),
+              ('02 | 内容综述', 'https://time.geekbang.org/course/detail/160-84354'),
+              ('03 | Go 语言简介：历史背景、发展现状及语言特性', 'https://time.geekbang.org/course/detail/160-84355'),
+              ('04 | 编写第一个Go程序', 'https://time.geekbang.org/course/detail/160-84356'),
+              ('05 | 变量、常量以及与其他语言的差异', 'https://time.geekbang.org/course/detail/160-84357'),
+              ('06 | 数据类型', 'https://time.geekbang.org/course/detail/160-84358'),
+              ('07 | 运算符', 'https://time.geekbang.org/course/detail/160-84359'),
+              ('08 | 条件和循环', 'https://time.geekbang.org/course/detail/160-84360'),
+              ('09 | 数组和切片', 'https://time.geekbang.org/course/detail/160-84361'),
+              ('10 | Map 声明、元素访问及遍历', 'https://time.geekbang.org/course/detail/160-84629'),
+              ('11 | Map与工厂模式，在Go语言中实现Set', 'https://time.geekbang.org/course/detail/160-84630'),
+              ('12 | 字符串', 'https://time.geekbang.org/course/detail/160-85348'),
+              ('13 | Go 语言的函数', 'https://time.geekbang.org/course/detail/160-85350'),
+              ('14 | 可变参数和 defer', 'https://time.geekbang.org/course/detail/160-85466'),
+              ('15 | 行为的定义和实现', 'https://time.geekbang.org/course/detail/160-85465'),
+              ('16 | Go语言的相关接口', 'https://time.geekbang.org/course/detail/160-85770'),
+              ('17 | 扩展与复用', 'https://time.geekbang.org/course/detail/160-85776'),
+              ('18 | 不一样的接口类型，一样的多态', 'https://time.geekbang.org/course/detail/160-85777'),
+              ('19 | 编写好的错误处理', 'https://time.geekbang.org/course/detail/160-85953'),
+              ('20 | panic和recover', 'https://time.geekbang.org/course/detail/160-85954'),
+              ('21 | 构建可复用的模块（包）', 'https://time.geekbang.org/course/detail/160-85955'),
+              ('22 | 依赖管理', 'https://time.geekbang.org/course/detail/160-85956'),
+              ('23 | 协程机制', 'https://time.geekbang.org/course/detail/160-86799'),
+              ('24 | 共享内存并发机制', 'https://time.geekbang.org/course/detail/160-86537'),
+              ('25 | CSP并发机制', 'https://time.geekbang.org/course/detail/160-86538'),
+              ('26 | 多路选择和超时', 'https://time.geekbang.org/course/detail/160-86539'),
+              ('27 | channel的关闭和广播', 'https://time.geekbang.org/course/detail/160-86540'),
+              ('28 | 任务的取消', 'https://time.geekbang.org/course/detail/160-85957'),
+              ('29 | Context与任务取消', 'https://time.geekbang.org/course/detail/160-85958'),
+              ('30 | 只运行一次', 'https://time.geekbang.org/course/detail/160-86541'),
+              ('31 | 仅需任意任务完成', 'https://time.geekbang.org/course/detail/160-86544'),
+              ('32 | 所有任务完成', 'https://time.geekbang.org/course/detail/160-86545'),
+              ('33 | 对象池', 'https://time.geekbang.org/course/detail/160-87730'),
+              ('34 | sync.pool 对象缓存', 'https://time.geekbang.org/course/detail/160-87731'),
+              ('35 | 单元测试', 'https://time.geekbang.org/course/detail/160-87732'),
+              ('36 | Benchmark', 'https://time.geekbang.org/course/detail/160-87733'),
+              ('37 | BDD', 'https://time.geekbang.org/course/detail/160-87734'),
+              ('38 | 反射编程', 'https://time.geekbang.org/course/detail/160-87797'),
+              ('39 | 万能程序', 'https://time.geekbang.org/course/detail/160-88531'),
+              ('40 | 不安全编程', 'https://time.geekbang.org/course/detail/160-88539'),
+              ('41 | 实现pipe-filter framework', 'https://time.geekbang.org/course/detail/160-88542'),
+              ('42 | 实现micro-kernel framework', 'https://time.geekbang.org/course/detail/160-88543'),
+              ('43 | 内置JSON解析', 'https://time.geekbang.org/course/detail/160-88544'),
+              ('44 | easyjson', 'https://time.geekbang.org/course/detail/160-88545'),
+              ('45 | HTTP服务', 'https://time.geekbang.org/course/detail/160-88546')]
 
 realDir = os.path.dirname(os.path.realpath(__file__))
 
@@ -113,6 +92,7 @@ def Login(driver):
     time.sleep(3)
     print("已登录。")
 
+
 # 保存 HTML 文件
 def SaveFile(artTitle, orgHtml):
     # 保存目录
@@ -144,6 +124,7 @@ def SaveFile(artTitle, orgHtml):
     htmlFile.write(targetHtml)
     htmlFile.close()
 
+
 # 点击页面上的 “展开”
 def ExpTag(driver):
     try:
@@ -151,6 +132,9 @@ def ExpTag(driver):
         while zhanKai is not None:
             # 页面滚动到指定元素
             driver.execute_script("arguments[0].scrollIntoView();", zhanKai)
+
+            # 再往上翻一点点，否则可能会被登录 DIV 挡住
+            driver.execute_script('window.scrollBy(0,-200)')
 
             zhanKai.click()
 

@@ -6,7 +6,7 @@ from bs4 import BeautifulSoup
 from selenium import webdriver
 
 # 视频课程的目录
-artUrl = "https://time.geekbang.org/course/intro/153"  # https://time.geekbang.org/column/48
+artUrl = "https://time.geekbang.org/course/intro/153"
 
 realDir = os.path.dirname(os.path.realpath(__file__))
 

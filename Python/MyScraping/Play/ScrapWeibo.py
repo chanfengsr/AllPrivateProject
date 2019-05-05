@@ -1,7 +1,8 @@
 ﻿import time, os
 import requests
 import threading
-import queue
+import random
+# import queue
 from urllib.parse import urlencode
 from pyquery import PyQuery as pq
 
@@ -15,6 +16,8 @@ headers = {
     'User-Agent': user_agent
 }
 
+# 置顶数据
+topData = None
 
 # 按页数抓取数据
 def get_single_page(page):
@@ -25,6 +28,7 @@ def get_single_page(page):
         'page': page
     }
     url = base_url + urlencode(params)
+    # https://m.weibo.cn/api/container/getIndex?type=uid&value=5828706619&containerid=1076035828706619&page=1
     # print(url)
 
     try:
@@ -55,6 +59,13 @@ def parse_page(json):
             if data['text'].endswith('...全文'):
                 data['text'] = getLongTextContent(data['id'])
 
+            # 置顶信息
+            if item.get('title') is not None:
+                if item.get('title').get('text') == '置顶':
+                    global topData
+                    topData = data
+                    continue
+
             yield data
 
 
@@ -78,47 +89,54 @@ if __name__ == '__main__':
 
     lastCrt = ''
     lastMsg = ''
-    stack = queue.LifoQueue()
+    stack = [] # queue.LifoQueue()
 
     t = threading.Thread(target=input_func, args=(context,))
 
     while True:
-        json = get_single_page(1)
-        results = parse_page(json)
+        try:
+            topData = None
+            json = get_single_page(1)
+            results = parse_page(json)
 
-        # 每次只取前三条消息，消息不一致才压栈
-        i = 1
-        for result in results:
-            if i > 5:
-                break
-
-            if i == 1:
-                if result['text'] == lastMsg and result['created'] == lastCrt:
+            # 每次只取前三条消息，消息不一致才压栈
+            i = 1
+            for result in results:
+                if i > 5:
                     break
-                else:
-                    lastCrt = result['created']
-                    lastMsg = result['text']
 
-            stack.put((result['created'], result['text']))
+                if i == 1:
+                    if result['text'] == lastMsg and result['created'] == lastCrt:
+                        break
+                    else:
+                        lastCrt = result['created']
+                        lastMsg = result['text']
 
-            i += 1
+                stack.append((result['created'], result['text']))
 
-        # 从堆栈中拿出来显示，最新的消息放在最后
-        if not stack.empty():
-            os.system('cls')
-            print()
+                i += 1
 
-            while not stack.empty():
-                crtdTime, msg = stack.get()
-                print('(%s)\n%s' % (crtdTime, msg))
+            # 从堆栈中拿出来显示，最新的消息放在最后
+            if len(stack) > 0:
+                os.system('cls')
                 print()
 
-        # lastCrt = ''
+                # 置顶的消息放在最后
+                if topData is not None:
+                    print('置顶\n(%s)\n%s\n' % (topData['created'], topData['text']))
+
+                while len(stack) > 0:
+                    crtdTime, msg = stack.pop()
+                    print('(%s)\n%s' % (crtdTime, msg))
+                    print()
+        except:
+            continue
 
         # 键盘有别的输入则退出
         if not t.is_alive():
             t.start()
-        t.join(60)
+        # 随机等待时间，防止服务器发现
+        t.join(random.randint(30, 70))
         if context['data'] != 'default':
             # print(context['data'])
             break
