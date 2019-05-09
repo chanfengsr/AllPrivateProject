@@ -76,6 +76,7 @@ clrProxy    = %Project%\AllInGitHub\Bat\ClearProxy.bat
 kIDM        = taskkill /im IDMan.exe /f
 JQB         = dotnet run -p %Project%\AllInGitHub\DoNetCore\JQB
 kl          = %Project%\AllInGitHub\Python\MyScraping\venv\Scripts\activate.bat & python %Project%\AllInGitHub\Python\MyScraping\Play\ScrapWeibo.py & deactivate & cls
+bDown       = dotnet run -p %Project%\AllInGitHub\DoNetCore\bDown & ffmpegCvtFlv.bat
 
 one         = explorer %onedrive%
 soft        = explorer %software%

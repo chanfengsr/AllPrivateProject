@@ -5,6 +5,7 @@ artFile = '.\\demoArtList.html'  # GeekTime\demoArtList.html
 
 listFile = open(artFile, 'rt', encoding='UTF-8')
 origHtml = listFile.read()
+listFile.close()
 bs = BeautifulSoup(origHtml, "html.parser")
 
 outputList = []
