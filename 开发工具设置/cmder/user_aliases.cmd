@@ -107,3 +107,4 @@ rmSKE       = mstsc /v:q204h49620.51mypc.cn:55066
 
 pwd         = echo VPS:fdhg9901314 & echo BIN:K4BWB2+R & echo Sonepar:SoneparSEA\Wang.YU & echo     Pwd:P@ssword01 & echo     VPN:pEJUF7Fr & echo     SoneparSEA\ZhenCheng.Wang & echo     Pwd:Password001 & echo SAG:Chanfengsr026! & echo VPN:wangy/KC02!L & echo WZYHome:1qaz@WSX
 skePwd      = type "%Project%\AllInGitHub\Info\ske.txt"
+ffhelp      = echo TS 转 MP4 & echo ffmpeg -y -i r:\1.ts -vcodec copy -acodec copy -vbsf h264_mp4toannexb r:\1.mp4 & echo flv 转 MP4 & echo ffmpeg -i 1.flv -vcodec copy -acodec copy 1.mp4 & echo m4a 转 aac mp3 & echo ffmpeg -i input.m4a -acodec copy output.aac & echo ffmpeg -i input.m4a -codec:a libmp3lame -qscale:a 2 output.mp3 & echo 合并 flv & echo ffmpeg -i "concat:1.flv|2.flv|3.flv|4.flv" -c copy all.flv

@@ -12,13 +12,16 @@ using System.IO;
 
 namespace bDown
 {
+    /// <summary>
+    /// 生成 将目录下的 flv 文件连成一个 mp4 文件的 bat
+    /// </summary>
     class Program
     {
         static void Main(string[] args)
         {
-            const string cmdMod = "ffmpeg -f concat -i fileList.txt -c copy {0}";
+            const string cmdMod = "ffmpeg -f concat -i fileList.txt -vcodec copy -acodec copy {0}";
 
-            string tarFileName = @"out.flv";
+            string tarFileName = @"output.mp4";
             string tarPath = @"D:\Download\";
             string workDir = System.Environment.CurrentDirectory; //@"R:\"; //                        
 
@@ -64,10 +67,10 @@ namespace bDown
 
             // 过长的中文名称会导致 ffmpeg 执行出错，所以让其运行后再改名字
             StringBuilder sbCmdCont = new StringBuilder();
-            sbCmdCont.AppendLine(string.Format(cmdMod, tarPath + "out.flv"));
-            if (tarFileName != "out.flv")
+            sbCmdCont.AppendLine(string.Format(cmdMod, tarPath + "output.mp4"));
+            if (tarFileName != "output.mp4")
             {
-                string cmdRename = "ren \"" + tarPath + "out.flv\" \"" + tarFileName + "\"";
+                string cmdRename = "ren \"" + tarPath + "output.mp4\" \"" + tarFileName + "\"";
                 sbCmdCont.AppendLine(cmdRename);
             }
 
