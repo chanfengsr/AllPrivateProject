@@ -1,0 +1,13 @@
+VPS:fdhg9901314
+BIN:K4BWB2+R
+Sonepar:SoneparSEA\Wang.YU
+    Pwd:P@ssword01
+    VPN:pEJUF7Fr
+    SoneparSEA\ZhenCheng.Wang
+    Pwd:Password001
+SAG:Chanfengsr026!
+VPN:wangy/KC02!L
+WZYHome:1qaz@WSX
+mazak-dev01.eastus.cloudapp.azure.com
+Sagax\wangyu
+P@ssw0rd

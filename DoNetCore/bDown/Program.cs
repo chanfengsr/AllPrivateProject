@@ -22,8 +22,8 @@ namespace bDown
             const string cmdMod = "ffmpeg -f concat -i fileList.txt -vcodec copy -acodec copy {0}";
 
             string tarFileName = @"output.mp4";
-            string tarPath = @"D:\Download\";
-            string workDir = System.Environment.CurrentDirectory; //@"R:\"; //                        
+            string tarPath = System.Environment.CurrentDirectory; //@"D:\Download\";
+            string workDir = System.Environment.CurrentDirectory; //@"R:\"; //
 
             // 有参数传入路径的话就用传入的
             // args[0]  输出文件名(不含后缀)
@@ -33,14 +33,19 @@ namespace bDown
             {
                 if (args.Length > 0 && args[0].Length > 0)
                 {
-                    tarFileName = args[0].Trim() + ".flv";
+                    tarFileName = args[0].Trim() + ".mp4";
                     tarFileName = ReplaceBadFileName(tarFileName);
                 }
                 if (args.Length > 1 && System.IO.Directory.Exists(args[1]))
-                    tarPath = (args[1] + "\\").Replace("\\\\", "\\");
+                    tarPath = args[1];
                 if (args.Length > 2 && System.IO.Directory.Exists(args[2]))
-                    workDir = (args[2] + "\\").Replace("\\\\", "\\");
+                    workDir = args[2];
             }
+
+            if (!tarPath.EndsWith("\\"))
+                tarPath += "\\";
+            if (!workDir.EndsWith("\\"))
+                workDir += "\\";
 
             DirectoryInfo dirInfo = new DirectoryInfo(workDir);
             Console.WriteLine(string.Format("Work directory: {0}", dirInfo.FullName));
