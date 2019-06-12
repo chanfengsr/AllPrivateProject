@@ -95,6 +95,8 @@ dan         = explorer %WorkProject%\AX\DAN
 kit         = explorer %WorkProject%\AX\大连京瓷
 kitDoc      = explorer %WorkProject%\AX\大连京瓷\Document\Own
 
+gitSAG      = explorer %WorkProject%\GitHub\SAG
+
 sql         = "D:\Program Files (x86)\Microsoft SQL Server\140\Tools\Binn\ManagementStudio\Ssms.exe"
 
 rm30        = mstsc /v:192.168.1.30

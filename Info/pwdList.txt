@@ -8,6 +8,11 @@ Sonepar:SoneparSEA\Wang.YU
 SAG:Chanfengsr026!
 VPN:wangy/KC02!L
 WZYHome:1qaz@WSX
+
 mazak-dev01.eastus.cloudapp.azure.com
 Sagax\wangyu
 P@ssw0rd
+
+192.168.1.120
+wangy
+P@ssw0rd!
