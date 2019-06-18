@@ -25,7 +25,7 @@ if password == "": password = input("Password:")
 # 定义 chromedriver 路径
 driver_path = realDir + r'\..\..\virtualEnv\chromedriver_2.43\chromedriver.exe'
 # 获取chrome浏览器驱动
-driver = webdriver.Chrome(executable_path=driver_path)
+driver = webdriver.Chrome()  # executable_path=driver_path
 
 '''
 # 使用driver打开极客时间登录页面

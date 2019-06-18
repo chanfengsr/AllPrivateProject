@@ -3,9 +3,9 @@ from bs4 import BeautifulSoup
 from selenium import webdriver
 
 # Debug 状态，网页不登陆，不滚动
-inDebug = True and False
+inDebug = True #and False
 
-createPdf = True #and False
+createPdf = True and False
 
 # 滚动区域的 DIV
 CLASS_SCROLL_NAME = 'ibY_sXau_0 ps'
@@ -15,7 +15,15 @@ CLASS_SCRAP_NAME = '_1Dgl7pMn_0'
 # 元素 1：文章原始标题
 # 元素 2：网页地址或手工保存网页文件的绝对路径
 courseList = \
-    [('一键直达 | 法律专栏“食用”指南', 'https://time.geekbang.org/column/article/90548')]
+    [('011 | 周鸿祎和BAT的沉浮录（上）', 'https://time.geekbang.org/column/article/475'),
+     ('012 | 周鸿祎和BAT的沉浮录（中）', 'https://time.geekbang.org/column/article/544'),
+     ('013 | 周鸿祎和BAT的沉浮录（下）', 'https://time.geekbang.org/column/article/546'),
+     ('014 | 周鸿祎和BAT的沉浮录（后记）', 'https://time.geekbang.org/column/article/556'),
+     ('021 | 彼得 · 蒂尔的投资人生', 'https://time.geekbang.org/column/article/901'),
+     ('022 | 商业之外的彼得 · 蒂尔', 'https://time.geekbang.org/column/article/903'),
+     ('023 | 创业的智慧：从彼得·蒂尔的创投哲学说起', 'https://time.geekbang.org/column/article/917'),
+     ('131 | 杰克·多西：分身有术之兼任两家上市公司CEO', 'https://time.geekbang.org/column/article/12355'),
+     ]
 
 realDir = os.path.dirname(os.path.realpath(__file__))
 
@@ -81,7 +89,7 @@ def createPdfFile(sourceHtml, pdfFileName):
         html = sourceHtml
     html = html.replace(r'background:#000', r'background:#fff')  # 黑色背景色转成白色
     if pdfkit.from_string(html, pdfFileName, options=options):
-        print("PDF 已生成。  --> %s.pdf" % (pdfFileName))
+        print("PDF 已生成。  --> %s" % (pdfFileName))
 
 
 def processHtml(html, tarTitle):
@@ -150,11 +158,13 @@ def scrollDrive2Bottom(driver):
     #     else:
     #         pageHeight_orig = pageHeight_new
 
-    divHeightOrg = driver.execute_script('return document.getElementsByClassName(\'' + CLASS_SCROLL_NAME + '\')[0].scrollTop')
+    divHeightOrg = driver.execute_script(
+        'return document.getElementsByClassName(\'' + CLASS_SCROLL_NAME + '\')[0].scrollTop')
     while True:
         driver.execute_script('document.getElementsByClassName(\'' + CLASS_SCROLL_NAME + '\')[0].scrollTop += 5000')
         time.sleep(3)
-        divHeightNew = driver.execute_script('return document.getElementsByClassName(\'' + CLASS_SCROLL_NAME + '\')[0].scrollTop')
+        divHeightNew = driver.execute_script(
+            'return document.getElementsByClassName(\'' + CLASS_SCROLL_NAME + '\')[0].scrollTop')
 
         if divHeightNew == divHeightOrg:
             break
@@ -197,8 +207,9 @@ def main():
 
         # 定义chromedriver路径
         driver_path = realDir + r'\..\..\virtualEnv\chromedriver_2.43\chromedriver.exe'
+
         # 获取chrome浏览器驱动
-        driver = webdriver.Chrome(executable_path=driver_path)
+        driver = webdriver.Chrome()  # executable_path=driver_path
 
         if not inDebug:
             Login(driver)

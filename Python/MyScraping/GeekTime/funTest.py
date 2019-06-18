@@ -17,7 +17,7 @@ exit()
 
 realDir = os.path.dirname(os.path.realpath(__file__))
 driver_path = realDir + r'\..\..\virtualEnv\chromedriver_2.43\chromedriver.exe'
-driver = webdriver.Chrome(executable_path=driver_path)
+driver = webdriver.Chrome()  # executable_path=driver_path
 driver.get("https://www.baidu.com/")
 driver.implicitly_wait(3)
 time.sleep(3)

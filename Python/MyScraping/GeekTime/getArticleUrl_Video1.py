@@ -4,10 +4,12 @@ from selenium import webdriver
 
 # 第一个视频的网址
 firstUrl = "https://time.geekbang.org/course/detail/160-84335"
+firstUrl = "https://time.geekbang.org/course/detail/160-88546"
 
 realDir = os.path.dirname(os.path.realpath(__file__))
 driver_path = realDir + r'\..\..\virtualEnv\chromedriver_2.43\chromedriver.exe'
-driver = webdriver.Chrome(executable_path=driver_path)
+
+driver = webdriver.Chrome() # executable_path=driver_path
 
 driver.get(firstUrl)
 driver.implicitly_wait(3)

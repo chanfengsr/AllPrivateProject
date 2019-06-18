@@ -12,7 +12,7 @@ def main():
     # 定义chromedriver路径
     driver_path = r'..\..\virtualEnv\chromedriver_2.43\chromedriver.exe'
     # 获取chrome浏览器驱动
-    driver = webdriver.Chrome(executable_path=driver_path)
+    driver = webdriver.Chrome()  # executable_path=driver_path
     # 使用driver打开极客时间登录页面
     login_url = 'https://account.geekbang.org/signin'
     driver.get(login_url)

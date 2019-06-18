@@ -3,7 +3,7 @@
 '''
 import pdfkit, time, re, os
 
-htmlPath = r'r:\\'
+htmlPath = r'r:\\HTML'
 targetPath = r'r:\PDF'
 
 def createPdfFile(sourceHtml, pdfFileName):
@@ -30,7 +30,7 @@ def createPdfFile(sourceHtml, pdfFileName):
         html = sourceHtml
     html = html.replace(r'background:#000', r'background:#fff')  # 黑色背景色转成白色
     if pdfkit.from_string(html, pdfFileName, options=options):
-        print("PDF 已生成。  --> %s.pdf" % (pdfFileName))
+        print("PDF 已生成。  --> %s" % (pdfFileName))
 
 
 if __name__ == '__main__':

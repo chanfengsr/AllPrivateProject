@@ -6,55 +6,20 @@ from bs4 import BeautifulSoup
 from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 
-inDebug = True  and False
+inDebug = True  #and False
 
 # 元素 1：文章原始标题
 # 元素 2：网页地址或手工保存网页文件的绝对路径
-listArtUrl = [('01 | Go语言课程介绍', 'https://time.geekbang.org/course/detail/160-84335'),
-              ('02 | 内容综述', 'https://time.geekbang.org/course/detail/160-84354'),
-              ('03 | Go 语言简介：历史背景、发展现状及语言特性', 'https://time.geekbang.org/course/detail/160-84355'),
-              ('04 | 编写第一个Go程序', 'https://time.geekbang.org/course/detail/160-84356'),
-              ('05 | 变量、常量以及与其他语言的差异', 'https://time.geekbang.org/course/detail/160-84357'),
-              ('06 | 数据类型', 'https://time.geekbang.org/course/detail/160-84358'),
-              ('07 | 运算符', 'https://time.geekbang.org/course/detail/160-84359'),
-              ('08 | 条件和循环', 'https://time.geekbang.org/course/detail/160-84360'),
-              ('09 | 数组和切片', 'https://time.geekbang.org/course/detail/160-84361'),
-              ('10 | Map 声明、元素访问及遍历', 'https://time.geekbang.org/course/detail/160-84629'),
-              ('11 | Map与工厂模式，在Go语言中实现Set', 'https://time.geekbang.org/course/detail/160-84630'),
-              ('12 | 字符串', 'https://time.geekbang.org/course/detail/160-85348'),
-              ('13 | Go 语言的函数', 'https://time.geekbang.org/course/detail/160-85350'),
-              ('14 | 可变参数和 defer', 'https://time.geekbang.org/course/detail/160-85466'),
-              ('15 | 行为的定义和实现', 'https://time.geekbang.org/course/detail/160-85465'),
-              ('16 | Go语言的相关接口', 'https://time.geekbang.org/course/detail/160-85770'),
-              ('17 | 扩展与复用', 'https://time.geekbang.org/course/detail/160-85776'),
-              ('18 | 不一样的接口类型，一样的多态', 'https://time.geekbang.org/course/detail/160-85777'),
-              ('19 | 编写好的错误处理', 'https://time.geekbang.org/course/detail/160-85953'),
-              ('20 | panic和recover', 'https://time.geekbang.org/course/detail/160-85954'),
-              ('21 | 构建可复用的模块（包）', 'https://time.geekbang.org/course/detail/160-85955'),
-              ('22 | 依赖管理', 'https://time.geekbang.org/course/detail/160-85956'),
-              ('23 | 协程机制', 'https://time.geekbang.org/course/detail/160-86799'),
-              ('24 | 共享内存并发机制', 'https://time.geekbang.org/course/detail/160-86537'),
-              ('25 | CSP并发机制', 'https://time.geekbang.org/course/detail/160-86538'),
-              ('26 | 多路选择和超时', 'https://time.geekbang.org/course/detail/160-86539'),
-              ('27 | channel的关闭和广播', 'https://time.geekbang.org/course/detail/160-86540'),
-              ('28 | 任务的取消', 'https://time.geekbang.org/course/detail/160-85957'),
-              ('29 | Context与任务取消', 'https://time.geekbang.org/course/detail/160-85958'),
-              ('30 | 只运行一次', 'https://time.geekbang.org/course/detail/160-86541'),
-              ('31 | 仅需任意任务完成', 'https://time.geekbang.org/course/detail/160-86544'),
-              ('32 | 所有任务完成', 'https://time.geekbang.org/course/detail/160-86545'),
-              ('33 | 对象池', 'https://time.geekbang.org/course/detail/160-87730'),
-              ('34 | sync.pool 对象缓存', 'https://time.geekbang.org/course/detail/160-87731'),
-              ('35 | 单元测试', 'https://time.geekbang.org/course/detail/160-87732'),
-              ('36 | Benchmark', 'https://time.geekbang.org/course/detail/160-87733'),
-              ('37 | BDD', 'https://time.geekbang.org/course/detail/160-87734'),
-              ('38 | 反射编程', 'https://time.geekbang.org/course/detail/160-87797'),
-              ('39 | 万能程序', 'https://time.geekbang.org/course/detail/160-88531'),
-              ('40 | 不安全编程', 'https://time.geekbang.org/course/detail/160-88539'),
-              ('41 | 实现pipe-filter framework', 'https://time.geekbang.org/course/detail/160-88542'),
-              ('42 | 实现micro-kernel framework', 'https://time.geekbang.org/course/detail/160-88543'),
-              ('43 | 内置JSON解析', 'https://time.geekbang.org/course/detail/160-88544'),
-              ('44 | easyjson', 'https://time.geekbang.org/course/detail/160-88545'),
-              ('45 | HTTP服务', 'https://time.geekbang.org/course/detail/160-88546')]
+listArtUrl = [('46 | 构建Restful服务', 'https://time.geekbang.org/course/detail/160-91446'),
+ ('47 | 性能分析工具', 'https://time.geekbang.org/course/detail/160-91253'),
+ ('48 | 性能调优示例', 'https://time.geekbang.org/course/detail/160-91255'),
+ ('49 | 别让性能被锁住', 'https://time.geekbang.org/course/detail/160-91258'),
+ ('50 | GC友好的代码', 'https://time.geekbang.org/course/detail/160-91261'),
+ ('51 | 高效字符串连接', 'https://time.geekbang.org/course/detail/160-91264'),
+ ('52 | 面向错误的设计', 'https://time.geekbang.org/course/detail/160-91265'),
+ ('53 | 面向恢复的设计', 'https://time.geekbang.org/course/detail/160-91270'),
+ ('54 | Chaos Engineering', 'https://time.geekbang.org/course/detail/160-91299'),
+ ('55 | 结束语', 'https://time.geekbang.org/course/detail/160-91302')]
 
 realDir = os.path.dirname(os.path.realpath(__file__))
 
@@ -168,7 +133,7 @@ else:
     driver_path = realDir + r'\..\..\virtualEnv\chromedriver_2.43\chromedriver.exe'
 
     # 获取chrome浏览器驱动
-    driver = webdriver.Chrome(executable_path=driver_path)
+    driver = webdriver.Chrome()  # executable_path=driver_path
 
     # 调试可注释
     Login(driver)
