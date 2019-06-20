@@ -5,12 +5,12 @@ from selenium import webdriver
 # Debug 状态，网页不登陆，不滚动
 inDebug = True #and False
 
-createPdf = True #and False
+createPdf = True and False
 
 # 滚动区域的 DIV
 CLASS_SCROLL_NAME = 'ibY_sXau_0 ps'
 # 抓取正文的 DIV
-CLASS_SCRAP_NAME = '_1Dgl7pMn_0'
+CLASS_SCRAP_NAME = '_20-cXID6_0'
 
 # 元素 1：文章原始标题
 # 元素 2：网页地址或手工保存网页文件的绝对路径
@@ -48,6 +48,7 @@ courseList = \
      ('第31期 | 程序员后来都干啥去了', 'https://time.geekbang.org/column/article/101400'),
      ('第32期 | 做好交付的四个心法', 'https://time.geekbang.org/column/article/101662'),
      ('第33期 | 你只能做到阶段性正确', 'https://time.geekbang.org/column/article/101821')]
+
 
 realDir = os.path.dirname(os.path.realpath(__file__))
 
@@ -155,6 +156,12 @@ def processHtml(html, tarTitle):
 
     # 获取干净的 html 并保存
     [s.extract() for s in bs.find_all("script")]  # 去干净 JS
+
+    # 去除菜单栏的 DIV
+    headDiv = bs.find("div", {"class": "_3O_7qs2p_0 _2q1SuvsS_0"}).find("div")
+    if headDiv:
+        headDiv.extract()
+
     headHtml = bs.find("head")
     bodyDivHtml = bs.find("div", {"class": CLASS_SCRAP_NAME})
     targetHtml = modHtml % (headHtml, bodyDivHtml)
@@ -171,29 +178,29 @@ def processHtml(html, tarTitle):
 
 # 滚到最底端，获取完整的网页内容
 def scrollDrive2Bottom(driver):
-    # pageHeight_orig = driver.execute_script('return document.body.scrollHeight')
-    # while True:
-    #     driver.execute_script('window.scrollBy(0,50000)')
-    #     time.sleep(3)
-    #     pageHeight_new = driver.execute_script('return document.body.scrollHeight')
-    #
-    #     if pageHeight_new == pageHeight_orig:
-    #         break
-    #     else:
-    #         pageHeight_orig = pageHeight_new
-
-    divHeightOrg = driver.execute_script(
-        'return document.getElementsByClassName(\'' + CLASS_SCROLL_NAME + '\')[0].scrollTop')
+    pageHeight_orig = driver.execute_script('return document.body.scrollHeight')
     while True:
-        driver.execute_script('document.getElementsByClassName(\'' + CLASS_SCROLL_NAME + '\')[0].scrollTop += 5000')
+        driver.execute_script('window.scrollBy(0,50000)')
         time.sleep(3)
-        divHeightNew = driver.execute_script(
-            'return document.getElementsByClassName(\'' + CLASS_SCROLL_NAME + '\')[0].scrollTop')
+        pageHeight_new = driver.execute_script('return document.body.scrollHeight')
 
-        if divHeightNew == divHeightOrg:
+        if pageHeight_new == pageHeight_orig:
             break
         else:
-            divHeightOrg = divHeightNew
+            pageHeight_orig = pageHeight_new
+
+    # divHeightOrg = driver.execute_script(
+    #     'return document.getElementsByClassName(\'' + CLASS_SCROLL_NAME + '\')[0].scrollTop')
+    # while True:
+    #     driver.execute_script('document.getElementsByClassName(\'' + CLASS_SCROLL_NAME + '\')[0].scrollTop += 5000')
+    #     time.sleep(3)
+    #     divHeightNew = driver.execute_script(
+    #         'return document.getElementsByClassName(\'' + CLASS_SCROLL_NAME + '\')[0].scrollTop')
+    #
+    #     if divHeightNew == divHeightOrg:
+    #         break
+    #     else:
+    #         divHeightOrg = divHeightNew
 
 
 def main():

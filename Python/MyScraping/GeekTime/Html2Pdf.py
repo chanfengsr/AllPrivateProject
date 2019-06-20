@@ -4,7 +4,7 @@
 import pdfkit, time, re, os
 
 htmlPath = r'r:\\HTML'
-targetPath = r'r:\PDF'
+targetPath = r'r:\\PDF'
 
 def createPdfFile(sourceHtml, pdfFileName):
     """

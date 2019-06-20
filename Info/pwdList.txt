@@ -16,3 +16,7 @@ P@ssw0rd
 192.168.1.120
 wangy
 P@ssw0rd!
+
+192.168.1.155
+axlocal020\wangy
+P@ssw0rd!
