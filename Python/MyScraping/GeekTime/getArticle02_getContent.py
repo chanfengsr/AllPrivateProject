@@ -1,4 +1,4 @@
-import pdfkit, time, re, os
+﻿import pdfkit, time, re, os
 from bs4 import BeautifulSoup
 from selenium import webdriver
 
@@ -146,7 +146,7 @@ def processHtml(html, tarTitle):
     # 获取 m3u8 文件地址
     m3u8 = bs.find("audio")
     if m3u8 is not None:
-        ffmpeg = 'ffmpeg -i %s -vcodec copy -acodec copy "%s.mp4"\n' % (m3u8["src"], tarTitle)
+        ffmpeg = 'ffmpeg -i %s -vcodec copy -acodec copy "%s.aac"\n' % (m3u8["src"], tarTitle)
 
         # 写 ffmpeg 下载列表
         ffmpegListFile = open(exportPath + "ffmpegDownList.txt", 'a', encoding='gb2312')

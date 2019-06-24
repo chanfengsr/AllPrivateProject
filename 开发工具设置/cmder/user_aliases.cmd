@@ -70,8 +70,8 @@ compConfig  = "%Software%\ExtractProgram\Beyond Compare\BCompare.exe" "%CMDER_RO
 .build      = dotnet build --runtime win-x64 & cd .\bin\Debug\netcoreapp2.1\win-x64
 .play       = dotnet new console --name play & code .\play
 playPy      = md playPy & echo print('play') > .\playPy\play.py & code .\playPy\
-gtFile      = explorer %OneDrive%\极客时间
-gtInit      = md HTML & md PDF & md 音频 & echo List > List.txt & type "%OneDrive%\极客时间\1.txt"
+gtFile      = explorer %OneDrive%\同步资料\极客时间
+gtInit      = md HTML & md PDF & md 音频 & echo List > List.txt & type "%OneDrive%\同步资料\极客时间\1.txt"
 clrProxy    = %Project%\AllInGitHub\Bat\ClearProxy.bat
 kIDM        = taskkill /im IDMan.exe /f
 JQB         = dotnet run -p %Project%\AllInGitHub\DoNetCore\JQB
@@ -91,7 +91,7 @@ bin         = explorer %WorkProject%\AX\BIN
 quant       = explorer %WorkProject%\AX\QUANT
 mzk         = explorer %WorkProject%\AX\Mazak
 hoya        = explorer %WorkProject%\AX\HOYA
-dan         = explorer %WorkProject%\AX\DAN
+dan         = explorer %WorkProject%\AX\DANCN
 kit         = explorer %WorkProject%\AX\大连京瓷
 kitDoc      = explorer %WorkProject%\AX\大连京瓷\Document\Own
 
@@ -110,4 +110,4 @@ rmMzk       = mstsc /v:mazak-dev01.eastus.cloudapp.azure.com
 
 pwd         = type "%Project%\AllInGitHub\Info\pwdList.txt"
 skePwd      = type "%Project%\AllInGitHub\Info\ske.txt"
-ffhelp      = echo TS 转 MP4 & echo ffmpeg -y -i r:\1.ts -vcodec copy -acodec copy -vbsf h264_mp4toannexb r:\1.mp4 & echo flv 转 MP4 & echo ffmpeg -i 1.flv -vcodec copy -acodec copy 1.mp4 & echo m4a 转 aac mp3 & echo ffmpeg -i input.m4a -acodec copy output.aac & echo ffmpeg -i input.m4a -codec:a libmp3lame -qscale:a 2 output.mp3 & echo 合并 flv & echo ffmpeg -i "concat:1.flv|2.flv|3.flv|4.flv" -c copy all.flv
+ffhelp      = echo TS 转 MP4 & echo ffmpeg -y -i r:\1.ts -vcodec copy -acodec copy -vbsf h264_mp4toannexb r:\1.mp4 & echo flv 转 MP4 & echo ffmpeg -i 1.flv -vcodec copy -acodec copy 1.mp4 & echo m4a 转 aac mp3 & echo ffmpeg -i input.m4a -acodec copy output.aac & echo ffmpeg -i input.m4a -codec:a libmp3lame -qscale:a 2 output.mp3 & echo 合并 flv & echo ffmpeg -i "concat:1.flv|2.flv|3.flv|4.flv" -c copy all.flv & echo for %a in ("*") do ffmpeg -i "%a" -vcodec copy -acodec copy "r:\mp4\%~na.mp4"

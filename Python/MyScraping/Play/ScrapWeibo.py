@@ -136,7 +136,7 @@ if __name__ == '__main__':
         if not t.is_alive():
             t.start()
         # 随机等待时间，防止服务器发现
-        t.join(random.randint(30, 70))
+        t.join(random.randint(50, 80))
         if context['data'] != 'default':
             # print(context['data'])
             break

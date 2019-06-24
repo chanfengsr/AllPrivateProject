@@ -1,9 +1,9 @@
-import pdfkit, time, re, os
+﻿import pdfkit, time, re, os
 from bs4 import BeautifulSoup
 from selenium import webdriver
 
 # Debug 状态，网页不登陆，不滚动
-inDebug = True #and False
+inDebug = True  # and False
 
 createPdf = True and False
 
@@ -15,40 +15,9 @@ CLASS_SCRAP_NAME = '_20-cXID6_0'
 # 元素 1：文章原始标题
 # 元素 2：网页地址或手工保存网页文件的绝对路径
 courseList = \
-    [('第1期 | 聊聊有效学习这件事', 'https://time.geekbang.org/column/article/93521'),
-     ('第2期 | 35岁程序员惹谁了？', 'https://time.geekbang.org/column/article/93780'),
-     ('第3期 | 你真的会问问题吗？', 'https://time.geekbang.org/column/article/94077'),
-     ('第4期 | Python之父和他的编程理念', 'https://time.geekbang.org/column/article/94312'),
-     ('第5期 | 创业谈钱第一位', 'https://time.geekbang.org/column/article/94554'),
-     ('第6期 | Linux诞生背后带来的思考', 'https://time.geekbang.org/column/article/94937'),
-     ('第7期 | 创业后再看Linux从0到1', 'https://time.geekbang.org/column/article/95126'),
-     ('第8期 | 今天你写bug了吗？', 'https://time.geekbang.org/column/article/95408'),
-     ('第9期 | 做到专注就赢了一大半人', 'https://time.geekbang.org/column/article/95603'),
-     ('第10期 | 笨办法才最有效', 'https://time.geekbang.org/column/article/95733'),
-     ('第11期 | 程序员是个好职业', 'https://time.geekbang.org/column/article/96160'),
-     ('第12期 | 因兴趣而诞生的Ruby', 'https://time.geekbang.org/column/article/96380'),
-     ('第13期 | 为什么大公司槽点都那么多？', 'https://time.geekbang.org/column/article/96685'),
-     ('第14期 | GitHub颠覆了编程世界吗？', 'https://time.geekbang.org/column/article/96926'),
-     ('第15期 | 晚睡是我的宿命，你呢？', 'https://time.geekbang.org/column/article/97042'),
-     ('第16期 | 后端工程师的危机', 'https://time.geekbang.org/column/article/97481'),
-     ('第17期 | 如何打造你的技术影响力？', 'https://time.geekbang.org/column/article/97698'),
-     ('第18期 | 最可怕的产品经理', 'https://time.geekbang.org/column/article/98039'),
-     ('第19期 | 如何找到自己的长处？', 'https://time.geekbang.org/column/article/98254'),
-     ('第20期 | 我的读书之路', 'https://time.geekbang.org/column/article/98461'),
-     ('第21期 | 纳德拉与开源的微软', 'https://time.geekbang.org/column/article/98891'),
-     ('第22期 | 什么是重要但没那么优秀的人才', 'https://time.geekbang.org/column/article/99066'),
-     ('第23期 | WWDC 发布了我期待已久的产品', 'https://time.geekbang.org/column/article/99222'),
-     ('第24期 | 找到你的财富成长曲线', 'https://time.geekbang.org/column/article/99487'),
-     ('第25期 | 第十人理论——The Tenth Man', 'https://time.geekbang.org/column/article/99752'),
-     ('第26期 | 犯错是成长的契机', 'https://time.geekbang.org/column/article/100085'),
-     ('第27期 | 阅读源代码的一些心得', 'https://time.geekbang.org/column/article/100371'),
-     ('第28期 | 你是职场里的“成年人”吗？', 'https://time.geekbang.org/column/article/100607'),
-     ('第29期 | 互联网女皇报告发布了', 'https://time.geekbang.org/column/article/100882'),
-     ('第30期 | 程序员和键盘', 'https://time.geekbang.org/column/article/101050'),
-     ('第31期 | 程序员后来都干啥去了', 'https://time.geekbang.org/column/article/101400'),
-     ('第32期 | 做好交付的四个心法', 'https://time.geekbang.org/column/article/101662'),
-     ('第33期 | 你只能做到阶段性正确', 'https://time.geekbang.org/column/article/101821')]
-
+    [('第34期 | 反正项目都会延期的？', 'https://time.geekbang.org/column/article/102052'),
+     ('第35期 | 程序员创业容易遇到的麻烦事', 'https://time.geekbang.org/column/article/102370'),
+     ('第36期 | Deadline 的魅力', 'https://time.geekbang.org/column/article/102898')]
 
 realDir = os.path.dirname(os.path.realpath(__file__))
 
@@ -147,7 +116,7 @@ def processHtml(html, tarTitle):
     # 获取 m3u8 文件地址
     m3u8 = bs.find("audio")
     if m3u8 is not None:
-        ffmpeg = 'ffmpeg -i %s -vcodec copy -acodec copy "%s.mp4"\n' % (m3u8["src"], tarTitle)
+        ffmpeg = 'ffmpeg -i %s -vcodec copy -acodec copy "%s.aac"\n' % (m3u8["src"], tarTitle)
 
         # 写 ffmpeg 下载列表
         ffmpegListFile = open(exportPath + "ffmpegDownList.txt", 'a', encoding='gb2312')
