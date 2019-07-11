@@ -93,7 +93,6 @@ mzk         = explorer %WorkProject%\AX\Mazak
 hoya        = explorer %WorkProject%\AX\HOYA
 dan         = explorer %WorkProject%\AX\DANCN
 kit         = explorer %WorkProject%\AX\大连京瓷
-kitDoc      = explorer %WorkProject%\AX\大连京瓷\Document\Own
 
 gitSAG      = explorer %Project%\SAGGitHub\SAG
 
@@ -102,6 +101,7 @@ sql         = "D:\Program Files (x86)\Microsoft SQL Server\140\Tools\Binn\Manage
 rm30        = mstsc /v:192.168.1.30
 rm70        = mstsc /v:192.168.1.70
 rm71        = mstsc /v:192.168.1.71
+rm81        = mstsc /v:192.168.1.81
 rm111       = mstsc /v:192.168.50.111
 rmSonUAT    = mstsc /v:172.20.3.64
 rmSonSTG    = mstsc /v:172.20.3.11

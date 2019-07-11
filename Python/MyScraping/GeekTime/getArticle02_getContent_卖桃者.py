@@ -15,9 +15,10 @@ CLASS_SCRAP_NAME = '_20-cXID6_0'
 # 元素 1：文章原始标题
 # 元素 2：网页地址或手工保存网页文件的绝对路径
 courseList = \
-    [('第34期 | 反正项目都会延期的？', 'https://time.geekbang.org/column/article/102052'),
-     ('第35期 | 程序员创业容易遇到的麻烦事', 'https://time.geekbang.org/column/article/102370'),
-     ('第36期 | Deadline 的魅力', 'https://time.geekbang.org/column/article/102898')]
+    [('第37期 | 如何读好一本书', 'https://time.geekbang.org/column/article/103201'),
+     ('第38期 | 为什么获得提拔的不是你？', 'https://time.geekbang.org/column/article/103439'),
+     ('第39期 | 我是如何收集知识的', 'https://time.geekbang.org/column/article/103671'),
+     ('第40期 | 把Linux内核当成一家软件外包公司的老板', 'https://time.geekbang.org/column/article/103918')]
 
 realDir = os.path.dirname(os.path.realpath(__file__))
 
