@@ -229,8 +229,8 @@ Emojis for smileys, people, families, hand gestures, clothing and accessories.
 👩‍💼 Woman Office Worker  （女上班族）  
 👨‍🔬 Man Scientist  （男科学家）  
 👩‍🔬 Woman Scientist  （女科学家）  
-👨‍💻 Man Technologist  （男技师）  
-👩‍💻 Woman Technologist  （女技师）  
+👨‍💻 Man Technologist  （男技术专家）  
+👩‍💻 Woman Technologist  （女技术专家）  
 👨‍🎤 Man Singer  （男歌手）  
 👩‍🎤 Woman Singer  （女歌手）  
 👨‍🎨 Man Artist  （男艺术家）  
