@@ -103,7 +103,7 @@ Emojis for smileys, people, families, hand gestures, clothing and accessories.
 👹 Ogre  （怪物）  
 👺 Goblin  （小妖精）  
 👻 Ghost  （鬼）  
-👽 Alien  （1外星人）  
+👽 Alien  （外星人）  
 👾 Alien Monster  （异形怪物）  
 🤖 Robot Face  （机器人脸）  
 😺 Grinning Cat Face  （咧着嘴笑的猫脸）  
