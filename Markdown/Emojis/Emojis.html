@@ -1,0 +1,2090 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Emojis.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: "Segoe WPC", "Segoe UI", "SFUIText-Light", "HelveticaNeue-Light", sans-serif, "Droid Sans Fallback";
+	font-size: 14px;
+	padding: 0 12px;
+	line-height: 22px;
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	color: #4080D0;
+	text-decoration: none;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+h1 code,
+h2 code,
+h3 code,
+h4 code,
+h5 code,
+h6 code {
+	font-size: inherit;
+	line-height: auto;
+}
+
+a:hover {
+	color: #4080D0;
+	text-decoration: underline;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left: 5px solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 14px;
+	line-height: 19px;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+.mac code {
+	font-size: 12px;
+	line-height: 18px;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+/** Theming */
+
+.vscode-light,
+.vscode-light pre code {
+	color: rgb(30, 30, 30);
+}
+
+.vscode-dark,
+.vscode-dark pre code {
+	color: #DDD;
+}
+
+.vscode-high-contrast,
+.vscode-high-contrast pre code {
+	color: white;
+}
+
+.vscode-light code {
+	color: #A31515;
+}
+
+.vscode-dark code {
+	color: #D7BA7D;
+}
+
+.vscode-light pre:not(.hljs),
+.vscode-light code > div {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre:not(.hljs),
+.vscode-dark code > div {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre:not(.hljs),
+.vscode-high-contrast code > div {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+.vscode-light blockquote,
+.vscode-dark blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.vscode-high-contrast blockquote {
+	background: transparent;
+	border-color: #fff;
+}
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family:  "Meiryo", "Segoe WPC", "Segoe UI", "SFUIText-Light", "HelveticaNeue-Light", sans-serif, "Droid Sans Fallback";
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+</head>
+<body>
+<h1 id="emojis">Emojis</h1>
+<p><a href="https://emojipedia.org/">Emojipedia</a></p>
+<h2 id="smileys-people">Smileys &amp; People</h2>
+<p>Emojis for smileys, people, families, hand gestures, clothing and accessories.</p>
+<p>😀 Grinning Face  （咧着嘴笑）<br>
+😃 Grinning Face With Big Eyes  （咧着嘴笑的大眼睛）<br>
+😄 Grinning Face With Smiling Eyes  （笑眼咧嘴笑）<br>
+😁 Beaming Face With Smiling Eyes  （笑眼愉快的脸）<br>
+😆 Grinning Squinting Face  （眯眼咧嘴笑）<br>
+😅 Grinning Face With Sweat  （流汗咧嘴笑）<br>
+🤣 Rolling on the Floor Laughing  （笑得在地上打滚）<br>
+😂 Face With Tears of Joy  （喜悦的泪水）<br>
+🙂 Slightly Smiling Face  （微笑脸）<br>
+🙃 Upside-Down Face  （颠倒的脸）<br>
+😉 Winking Face  （眨眼）<br>
+😊 Smiling Face With Smiling Eyes  （笑眼笑脸）<br>
+😇 Smiling Face With Halo  （光环笑脸）<br>
+🥰 Smiling Face With Hearts  （爱心笑脸）<br>
+😍 Smiling Face With Heart-Eyes  （眼冒爱心笑脸）<br>
+🤩 Star-Struck  （两眼放光）<br>
+😘 Face Blowing a Kiss  （飞吻）<br>
+😗 Kissing Face  （亲吻）<br>
+☺ Smiling Face  （微笑脸）<br>
+😚 Kissing Face With Closed Eyes  （闭眼亲吻）<br>
+😙 Kissing Face With Smiling Eyes  （笑眼亲吻）<br>
+😋 Face Savoring Food  （面对美食）<br>
+😛 Face With Tongue  （吐舌头）<br>
+😜 Winking Face With Tongue  （眨眼吐舌头）<br>
+🤪 Zany Face  （扎尼脸）<br>
+😝 Squinting Face With Tongue  （眯眼吐舌头）<br>
+🤑 Money-Mouth Face  （两眼冒钱）<br>
+🤗 Hugging Face  （拥抱）<br>
+🤭 Face With Hand Over Mouth  （捂嘴）<br>
+🤫 Shushing Face  （嘘）<br>
+🤔 Thinking Face  （思考）<br>
+🤐 Zipper-Mouth Face  （拉链嘴）<br>
+🤨 Face With Raised Eyebrow  （扬起眉毛）<br>
+😐 Neutral Face  （中性脸）<br>
+😑 Expressionless Face  （无表情）<br>
+😶 Face Without Mouth  （无嘴脸）<br>
+😏 Smirking Face  （傻笑）<br>
+😒 Unamused Face  （不悦）<br>
+🙄 Face With Rolling Eyes  （滚眼珠）<br>
+😬 Grimacing Face  （做鬼脸）<br>
+🤥 Lying Face  （撒混）<br>
+😌 Relieved Face  （放心）<br>
+😔 Pensive Face  （忧郁）<br>
+😪 Sleepy Face  （昏昏欲睡）<br>
+🤤 Drooling Face  （流口水）<br>
+😴 Sleeping Face  （睡脸）<br>
+😷 Face With Medical Mask  （带口罩）<br>
+🤒 Face With Thermometer  （口含温度计）<br>
+🤕 Face With Head-Bandage  （头绷带）<br>
+🤢 Nauseated Face  （恶心）<br>
+🤮 Face Vomiting  （呕吐）<br>
+🤧 Sneezing Face  （打喷嚏）<br>
+🥵 Hot Face  （热脸）<br>
+🥶 Cold Face  （冷脸）<br>
+🥴 Woozy Face  （沃兹脸）<br>
+😵 Dizzy Face  （头晕目眩）<br>
+🤯 Exploding Head  （爆炸头）<br>
+🤠 Cowboy Hat Face  （牛仔帽）<br>
+🥳 Partying Face  （派对）<br>
+😎 Smiling Face With Sunglasses  （墨镜 + 微笑）<br>
+🤓 Nerd Face  （书呆子）<br>
+🧐 Face With Monocle  （单片眼镜）<br>
+😕 Confused Face  （困惑）<br>
+😟 Worried Face  （担心）<br>
+🙁 Slightly Frowning Face  （微皱眉头）<br>
+☹ Frowning Face  （皱眉）<br>
+😮 Face With Open Mouth  （张开嘴）<br>
+😯 Hushed Face  （安静）<br>
+😲 Astonished Face  （惊讶）<br>
+😳 Flushed Face  （脸红）<br>
+🥺 Pleading Face  （恳求）<br>
+😦 Frowning Face With Open Mouth  （皱眉 + 张嘴）<br>
+😧 Anguished Face  （痛苦）<br>
+😨 Fearful Face  （害怕）<br>
+😰 Anxious Face With Sweat  （流汗焦虑）<br>
+😥 Sad but Relieved Face  （悲伤但放心）<br>
+😢 Crying Face  （哭脸）<br>
+😭 Loudly Crying Face  （大哭）<br>
+😱 Face Screaming in Fear  （恐惧尖叫）<br>
+😖 Confounded Face  （困惑）<br>
+😣 Persevering Face  （坚持不懈）<br>
+😞 Disappointed Face  （失望）<br>
+😓 Downcast Face With Sweat  （垂头丧气）<br>
+😩 Weary Face  （疲惫）<br>
+😫 Tired Face  （累）<br>
+😤 Face With Steam From Nose  （鼻子冒蒸汽）<br>
+😡 Pouting Face  （撅嘴、不高兴）<br>
+😠 Angry Face  （愤怒）<br>
+🤬 Face With Symbols on Mouth  （嘴上带符号）<br>
+😈 Smiling Face With Horns  （带犄角的笑脸）<br>
+👿 Angry Face With Horns  （带犄角愤怒的脸）<br>
+💀 Skull  （骷髅）<br>
+☠ Skull and Crossbones  （骷髅和交叉骨）<br>
+💩 Pile of Poo  （便便）<br>
+🤡 Clown Face  （小丑）<br>
+👹 Ogre  （怪物）<br>
+👺 Goblin  （小妖精）<br>
+👻 Ghost  （鬼）<br>
+👽 Alien  （外星人）<br>
+👾 Alien Monster  （异形怪物）<br>
+🤖 Robot Face  （机器人脸）<br>
+😺 Grinning Cat Face  （咧着嘴笑的猫脸）<br>
+😸 Grinning Cat Face With Smiling Eyes  （笑眼咧嘴笑的猫脸）<br>
+😹 Cat Face With Tears of Joy  （欢乐泪水猫脸）<br>
+😻 Smiling Cat Face With Heart-Eyes  （眼冒爱心微笑猫脸）<br>
+😼 Cat Face With Wry Smile  （苦笑猫脸）<br>
+😽 Kissing Cat Face  （亲吻猫脸）<br>
+🙀 Weary Cat Face  （疲倦猫脸）<br>
+😿 Crying Cat Face  （哭猫脸）<br>
+😾 Pouting Cat Face  （撅嘴猫脸）<br>
+💋 Kiss Mark  （吻痕）<br>
+👋 Waving Hand  （挥手）<br>
+🤚 Raised Back of Hand  （举起手背）<br>
+🖐 Hand With Fingers Splayed  （张开手指的手）<br>
+✋ Raised Hand  （举手）<br>
+🖖 Vulcan Salute  （瓦肯敬礼）<br>
+👌 OK Hand  （OK）<br>
+✌ Victory Hand  （胜利手势）<br>
+🤞 Crossed Fingers  （交叉手指）<br>
+🤟 Love-You Gesture  （爱你手势）<br>
+🤘 Sign of the Horns  （喇叭手势）<br>
+🤙 Call Me Hand  （Call我手势）<br>
+👈 Backhand Index Pointing Left  （手背，指向左）<br>
+👉 Backhand Index Pointing Right  （手背，指向右）<br>
+👆 Backhand Index Pointing Up  （手背，指向上）<br>
+🖕 Middle Finger  （竖中指）<br>
+👇 Backhand Index Pointing Down  （手背，指向下）<br>
+☝ Index Pointing Up  （指向上）<br>
+👍 Thumbs Up  （竖大拇指）<br>
+👎 Thumbs Down  （不看好）<br>
+✊ Raised Fist  （举起拳头）<br>
+👊 Oncoming Fist  （迎面而来的拳头）<br>
+🤛 Left-Facing Fist  （左手拳头）<br>
+🤜 Right-Facing Fist  （右手拳头）<br>
+👏 Clapping Hands  （拍手）<br>
+🙌 Raising Hands  （举手）<br>
+👐 Open Hands  （张开双手）<br>
+🤲 Palms Up Together  （手掌托起）<br>
+🤝 Handshake  （握手）<br>
+🙏 Folded Hands  （合起双手）<br>
+✍ Writing Hand  （写字手）<br>
+💅 Nail Polish  （指甲油）<br>
+🤳 Selfie  （自拍）<br>
+💪 Flexed Biceps  （弯曲的二头肌）<br>
+🦵 Leg  （腿）<br>
+🦶 Foot  （脚丫子）<br>
+👂 Ear  （耳）<br>
+👃 Nose  （鼻子）<br>
+🧠 Brain  （脑）<br>
+🦷 Tooth  （齿）<br>
+🦴 Bone  （骨）<br>
+👀 Eyes  （眼睛）<br>
+👁 Eye  （眼睛）<br>
+👅 Tongue  （舌）<br>
+👄 Mouth  （口）<br>
+👶 Baby  （宝宝）<br>
+🧒 Child  （儿童）<br>
+👦 Boy  （男孩）<br>
+👧 Girl  （女孩）<br>
+🧑 Person  （人）<br>
+👱 Person: Blond Hair  （人：金发）<br>
+👨 Man  （男人）<br>
+🧔 Man: Beard  （男人：胡子）<br>
+👱‍♂️ Man: Blond Hair  （男人：金发）<br>
+👨‍🦰 Man: Red Hair  （男人：红头发）<br>
+👨‍🦱 Man: Curly Hair  （男人：卷发）<br>
+👨‍🦳 Man: White Hair  （男人：白发）<br>
+👨‍🦲 Man: Bald  （男人：秃头）<br>
+👩 Woman  （女人）<br>
+👱‍♀️ Woman: Blond Hair  （女人：金色的头发）<br>
+👩‍🦰 Woman: Red Hair  （女人：红头发）<br>
+👩‍🦱 Woman: Curly Hair  （女人：卷发）<br>
+👩‍🦳 Woman: White Hair  （女人：白头发）<br>
+👩‍🦲 Woman: Bald  （女人：秃头）<br>
+🧓 Older Person  （年长者）<br>
+👴 Old Man  （老头）<br>
+👵 Old Woman  （老女人）<br>
+🙍 Person Frowning  （皱着眉头的人）<br>
+🙍‍♂️ Man Frowning  （男人皱着眉头）<br>
+🙍‍♀️ Woman Frowning  （皱着眉头的女人）<br>
+🙎 Person Pouting  （噘嘴的人）<br>
+🙎‍♂️ Man Pouting  （男人噘嘴）<br>
+🙎‍♀️ Woman Pouting  （噘嘴的女人）<br>
+🙅 Person Gesturing No  （打手势没有）<br>
+🙅‍♂️ Man Gesturing No  （打手势没有的男人）<br>
+🙅‍♀️ Woman Gesturing No  （打手势没有的女人）<br>
+🙆 Person Gesturing OK  （打手势好的人）<br>
+🙆‍♂️ Man Gesturing OK  （打手势好的男人）<br>
+🙆‍♀️ Woman Gesturing OK  （打手势好的女人）<br>
+💁 Person Tipping Hand  （小费手）<br>
+💁‍♂️ Man Tipping Hand  （男人小费手）<br>
+💁‍♀️ Woman Tipping Hand  （女人小费手）<br>
+🙋 Person Raising Hand  （举手）<br>
+🙋‍♂️ Man Raising Hand  （举手的男人）<br>
+🙋‍♀️ Woman Raising Hand  （举手的女人）<br>
+🙇 Person Bowing  （鞠躬）<br>
+🙇‍♂️ Man Bowing  （男人鞠躬）<br>
+🙇‍♀️ Woman Bowing  （女人鞠躬）<br>
+🤦 Person Facepalming  （面部凝固）<br>
+🤦‍♂️ Man Facepalming  （男人面部凝固）<br>
+🤦‍♀️ Woman Facepalming  （女人面部凝固）<br>
+🤷 Person Shrugging  （耸了耸肩）<br>
+🤷‍♂️ Man Shrugging  （男人耸了耸肩）<br>
+🤷‍♀️ Woman Shrugging  （女人耸了耸肩）<br>
+👨‍⚕️ Man Health Worker  （男性健康工作者）<br>
+👩‍⚕️ Woman Health Worker  （女性健康工作者）<br>
+👨‍🎓 Man Student  （男学生）<br>
+👩‍🎓 Woman Student  （女学生）<br>
+👨‍🏫 Man Teacher  （老师）<br>
+👩‍🏫 Woman Teacher  （女老师）<br>
+👨‍⚖️ Man Judge  （男法官）<br>
+👩‍⚖️ Woman Judge  （女法官）<br>
+👨‍🌾 Man Farmer  （男农民）<br>
+👩‍🌾 Woman Farmer  （女农民）<br>
+👨‍🍳 Man Cook  （男厨师）<br>
+👩‍🍳 Woman Cook  （女厨师）<br>
+👨‍🔧 Man Mechanic  （男技工）<br>
+👩‍🔧 Woman Mechanic  （女技工）<br>
+👨‍🏭 Man Factory Worker  （男工厂工人）<br>
+👩‍🏭 Woman Factory Worker  （女工厂工人）<br>
+👨‍💼 Man Office Worker  （男上班族）<br>
+👩‍💼 Woman Office Worker  （女上班族）<br>
+👨‍🔬 Man Scientist  （男科学家）<br>
+👩‍🔬 Woman Scientist  （女科学家）<br>
+👨‍💻 Man Technologist  （男技术专家）<br>
+👩‍💻 Woman Technologist  （女技术专家）<br>
+👨‍🎤 Man Singer  （男歌手）<br>
+👩‍🎤 Woman Singer  （女歌手）<br>
+👨‍🎨 Man Artist  （男艺术家）<br>
+👩‍🎨 Woman Artist  （女艺术家）<br>
+👨‍✈️ Man Pilot  （男飞行员）<br>
+👩‍✈️ Woman Pilot  （女飞行员）<br>
+👨‍🚀 Man Astronaut  （男宇航员）<br>
+👩‍🚀 Woman Astronaut  （女宇航员）<br>
+👨‍🚒 Man Firefighter  （男消防员）<br>
+👩‍🚒 Woman Firefighter  （女消防员）<br>
+👮 Police Officer  （警官）<br>
+👮‍♂️ Man Police Officer  （男警官）<br>
+👮‍♀️ Woman Police Officer  （女警官）<br>
+🕵 Detective  （侦探）<br>
+🕵️‍♂️ Man Detective  （男侦探）<br>
+🕵️‍♀️ Woman Detective  （女侦探）<br>
+💂 Guard  （卫兵）<br>
+💂‍♂️ Man Guard  （男卫兵）<br>
+💂‍♀️ Woman Guard  （女卫兵）<br>
+👷 Construction Worker  （建筑工人）<br>
+👷‍♂️ Man Construction Worker  （男建筑工人）<br>
+👷‍♀️ Woman Construction Worker  （女建筑工人）<br>
+🤴 Prince  （王子）<br>
+👸 Princess  （公主）<br>
+👳 Person Wearing Turban  （戴头巾的人）<br>
+👳‍♂️ Man Wearing Turban  （戴头巾的男人）<br>
+👳‍♀️ Woman Wearing Turban  （戴头巾的女人）<br>
+👲 Man With Chinese Cap  （戴中国帽的男人）<br>
+🧕 Woman With Headscarf  （戴头巾的女人）<br>
+🤵 Man in Tuxedo  （穿燕尾服的男人）<br>
+👰 Bride With Veil  （戴面纱的新娘）<br>
+🤰 Pregnant Woman  （怀孕的女人）<br>
+🤱 Breast-Feeding  （哺乳）<br>
+👼 Baby Angel  （宝贝天使）<br>
+🎅 Santa Claus  （圣诞老人）<br>
+🤶 Mrs. Claus  （克劳斯夫人）<br>
+🦸 Superhero  （超级英雄）<br>
+🦸‍♂️ Man Superhero  （男超级英雄）<br>
+🦸‍♀️ Woman Superhero  （女超级英雄）<br>
+🦹 Supervillain  （超级大反派）<br>
+🦹‍♂️ Man Supervillain  （男超级大反派）<br>
+🦹‍♀️ Woman Supervillain  （女超级大反派）<br>
+🧙 Mage  （魔法师）<br>
+🧙‍♂️ Man Mage  （男法师）<br>
+🧙‍♀️ Woman Mage  （女法师）<br>
+🧚 Fairy  （仙女）<br>
+🧚‍♂️ Man Fairy  （男仙）<br>
+🧚‍♀️ Woman Fairy  （仙女）<br>
+🧛 Vampire  （吸血鬼）<br>
+🧛‍♂️ Man Vampire  （男吸血鬼）<br>
+🧛‍♀️ Woman Vampire  （女吸血鬼）<br>
+🧜 Merperson  （人鱼）<br>
+🧜‍♂️ Merman  （人鱼）<br>
+🧜‍♀️ Mermaid  （美人鱼）<br>
+🧝 Elf  （小精灵）<br>
+🧝‍♂️ Man Elf  （男精灵）<br>
+🧝‍♀️ Woman Elf  （女精灵）<br>
+🧞 Genie  （妖怪）<br>
+🧞‍♂️ Man Genie  （男妖怪）<br>
+🧞‍♀️ Woman Genie  （女妖怪）<br>
+🧟 Zombie  （僵尸）<br>
+🧟‍♂️ Man Zombie  （男僵尸）<br>
+🧟‍♀️ Woman Zombie  （女僵尸）<br>
+💆 Person Getting Massage  （被按摩的人）<br>
+💆‍♂️ Man Getting Massage  （被按摩的男人）<br>
+💆‍♀️ Woman Getting Massage  （被按摩的女人）<br>
+💇 Person Getting Haircut  （理发的人）<br>
+💇‍♂️ Man Getting Haircut  （男人理发）<br>
+💇‍♀️ Woman Getting Haircut  （女人理发）<br>
+🚶 Person Walking  （走路的人）<br>
+🚶‍♂️ Man Walking  （走路男人）<br>
+🚶‍♀️ Woman Walking  （走路女人）<br>
+🏃 Person Running  （跑）<br>
+🏃‍♂️ Man Running  （男人跑）<br>
+🏃‍♀️ Woman Running  （女人跑）<br>
+💃 Woman Dancing  （跳舞女人）<br>
+🕺 Man Dancing  （跳舞男人）<br>
+🕴 Man in Suit Levitating  （衣服漂浮的男人）<br>
+👯 People With Bunny Ears  （兔耳朵的人们）<br>
+👯‍♂️ Men With Bunny Ears  （兔耳朵的男人）<br>
+👯‍♀️ Women With Bunny Ears  （兔耳朵的女人）<br>
+🧖 Person in Steamy Room  （桑拿房里的人）<br>
+🧖‍♂️ Man in Steamy Room  （桑拿房里的男人）<br>
+🧖‍♀️ Woman in Steamy Room  （桑拿房里的女人）<br>
+🧘 Person in Lotus Position  （莲花坐）<br>
+👭 Women Holding Hands  （女人手拉手）<br>
+👫 Woman and Man Holding Hands  （男女手拉手）<br>
+👬 Men Holding Hands  （男人手拉手）<br>
+💏 Kiss  （吻）<br>
+👨‍❤️‍💋‍👨 Kiss: Man, Man  （吻：男人，男人）<br>
+👩‍❤️‍💋‍👩 Kiss: Woman, Woman  （吻：女人，女人）<br>
+💑 Couple With Heart  （夫妻加上心脏）<br>
+👨‍❤️‍👨 Couple With Heart: Man, Man  （夫妻加上心脏：男人，男人）<br>
+👩‍❤️‍👩 Couple With Heart: Woman, Woman  （夫妻加上心脏：女人，女人）<br>
+👪 Family  （家庭）<br>
+👨‍👩‍👦 Family: Man, Woman, Boy  （家庭：男人，女人，男孩）<br>
+👨‍👩‍👧 Family: Man, Woman, Girl  （家庭：男人，女人，女孩）<br>
+👨‍👩‍👧‍👦 Family: Man, Woman, Girl, Boy  （家庭：男人，女人，女孩，男孩）<br>
+👨‍👩‍👦‍👦 Family: Man, Woman, Boy, Boy  （家庭：男人，女人，男孩，男孩）<br>
+👨‍👩‍👧‍👧 Family: Man, Woman, Girl, Girl  （家庭：男人，女人，女孩，女孩）<br>
+👨‍👨‍👦 Family: Man, Man, Boy  （家庭：男人，男人，男孩）<br>
+👨‍👨‍👧 Family: Man, Man, Girl  （家庭：男人，男人，女孩）<br>
+👨‍👨‍👧‍👦 Family: Man, Man, Girl, Boy  （家庭：男人，男人，女孩，男孩）<br>
+👨‍👨‍👦‍👦 Family: Man, Man, Boy, Boy  （家庭：男人，男人，男孩，男孩）<br>
+👨‍👨‍👧‍👧 Family: Man, Man, Girl, Girl  （家庭：男人，男人，女孩，女孩）<br>
+👩‍👩‍👦 Family: Woman, Woman, Boy  （家庭：女人，女人，男孩）<br>
+👩‍👩‍👧 Family: Woman, Woman, Girl  （家庭：女人，女人，女孩）<br>
+👩‍👩‍👧‍👦 Family: Woman, Woman, Girl, Boy  （家庭：女人，女人，女孩，男孩）<br>
+👩‍👩‍👦‍👦 Family: Woman, Woman, Boy, Boy  （家庭：女人，女人，男孩，男孩）<br>
+👩‍👩‍👧‍👧 Family: Woman, Woman, Girl, Girl  （家庭：女人，女人，女孩，女孩）<br>
+👨‍👦 Family: Man, Boy  （家庭：男人，男孩）<br>
+👨‍👦‍👦 Family: Man, Boy, Boy  （家庭：男人，男孩，男孩）<br>
+👨‍👧 Family: Man, Girl  （家庭：男人，女孩）<br>
+👨‍👧‍👦 Family: Man, Girl, Boy  （家庭：男人，女孩，男孩）<br>
+👨‍👧‍👧 Family: Man, Girl, Girl  （家庭：男人，女孩，女孩）<br>
+👩‍👦 Family: Woman, Boy  （家庭：女人，男孩）<br>
+👩‍👦‍👦 Family: Woman, Boy, Boy  （家庭：女人，男孩，男孩）<br>
+👩‍👧 Family: Woman, Girl  （家庭：女人，女孩）<br>
+👩‍👧‍👦 Family: Woman, Girl, Boy  （家庭：女人，女孩，男孩）<br>
+👩‍👧‍👧 Family: Woman, Girl, Girl  （家庭：女人，女孩，女孩）<br>
+🗣 Speaking Head  （说话头）<br>
+👤 Bust in Silhouette  （在剪影中的半身像）<br>
+👥 Busts in Silhouette  （在剪影中的半身像）<br>
+👣 Footprints  （足迹）<br>
+🧳 Luggage  （行李）<br>
+🌂 Closed Umbrella  （合上的伞）<br>
+☂ Umbrella  （雨伞）<br>
+🧵 Thread  （线）<br>
+🧶 Yarn  （纱）<br>
+👓 Glasses  （眼镜）<br>
+🕶 Sunglasses  （墨镜）<br>
+🥽 Goggles  （风镜）<br>
+🥼 Lab Coat  （实验工作服）<br>
+👔 Necktie  （领带）<br>
+👕 T-Shirt  （T恤）<br>
+👖 Jeans  （牛仔裤）<br>
+🧣 Scarf  （围巾）<br>
+🧤 Gloves  （手套）<br>
+🧥 Coat  （外套）<br>
+🧦 Socks  （袜子）<br>
+👗 Dress  （连衣裙）<br>
+👘 Kimono  （和服）<br>
+👙 Bikini  （比基尼）<br>
+👚 Woman’s Clothes  （女人的衣服）<br>
+👛 Purse  （钱包）<br>
+👜 Handbag  （手提包）<br>
+👝 Clutch Bag  （手提包）<br>
+🎒 Backpack  （背包）<br>
+👞 Man’s Shoe  （男人的鞋子）<br>
+👟 Running Shoe  （跑鞋）<br>
+🥾 Hiking Boot  （远足靴）<br>
+🥿 Flat Shoe  （平底鞋）<br>
+👠 High-Heeled Shoe  （高跟鞋）<br>
+👡 Woman’s Sandal  （女人的凉鞋）<br>
+👢 Woman’s Boot  （女人的靴子）<br>
+👑 Crown  （王冠）<br>
+👒 Woman’s Hat  （女人的帽子）<br>
+🎩 Top Hat  （高顶礼帽）<br>
+🎓 Graduation Cap  （毕业帽）<br>
+🧢 Billed Cap  （收费上限）<br>
+⛑ Rescue Worker’s Helmet  （救援人员的头盔）<br>
+💄 Lipstick  （口红）<br>
+💍 Ring  （戒指）<br>
+💼 Briefcase  （公文包）</p>
+<h2 id="animals-nature">Animals &amp; Nature</h2>
+<p>Emojis for animals, nature, and weather.</p>
+<p>🙈 See-No-Evil Monkey  （看见没有邪恶的猴子）<br>
+🙉 Hear-No-Evil Monkey  （听到没有邪恶的猴子）<br>
+🙊 Speak-No-Evil Monkey  （说话没有邪恶的猴子）<br>
+💥 Collision  （碰撞）<br>
+💫 Dizzy  （头晕）<br>
+💦 Sweat Droplets  （汗滴）<br>
+💨 Dashing Away  （冲走）<br>
+🐵 Monkey Face  （猴脸）<br>
+🐒 Monkey  （猴）<br>
+🦍 Gorilla  （大猩猩）<br>
+🐶 Dog Face  （狗脸）<br>
+🐕 Dog  （狗）<br>
+🐩 Poodle  （贵宾犬）<br>
+🐺 Wolf Face  （狼脸）<br>
+🦊 Fox Face  （狐狸脸）<br>
+🦝 Raccoon  （狸）<br>
+🐱 Cat Face  （猫脸）<br>
+🐈 Cat  （猫）<br>
+🦁 Lion Face  （狮子脸）<br>
+🐯 Tiger Face  （虎脸）<br>
+🐅 Tiger  （虎）<br>
+🐆 Leopard  （豹）<br>
+🐴 Horse Face  （马脸）<br>
+🐎 Horse  （马）<br>
+🦄 Unicorn Face  （独角兽脸）<br>
+🦓 Zebra  （斑马）<br>
+🐮 Cow Face  （牛脸）<br>
+🐂 Ox  （公牛）<br>
+🐃 Water Buffalo  （水牛）<br>
+🐄 Cow  （奶牛）<br>
+🐷 Pig Face  （猪脸）<br>
+🐖 Pig  （猪）<br>
+🐗 Boar  （公猪、野猪）<br>
+🐽 Pig Nose  （猪鼻子）<br>
+🐏 Ram  （公羊）<br>
+🐑 Ewe  （母羊）<br>
+🐐 Goat  （山羊）<br>
+🐪 Camel  （骆驼）<br>
+🐫 Two-Hump Camel  （双驼峰骆驼）<br>
+🦙 Llama  （羊驼）<br>
+🦒 Giraffe  （长颈鹿）<br>
+🐘 Elephant  （象）<br>
+🦏 Rhinoceros  （犀牛）<br>
+🦛 Hippopotamus  （河马）<br>
+🐭 Mouse Face  （老鼠脸）<br>
+🐁 Mouse  （老鼠）<br>
+🐀 Rat  （鼠）<br>
+🐹 Hamster Face  （仓鼠脸）<br>
+🐰 Rabbit Face  （兔脸）<br>
+🐇 Rabbit  （兔子）<br>
+🐿 Chipmunk  （花栗鼠）<br>
+🦔 Hedgehog  （刺猬）<br>
+🦇 Bat  （蝙蝠）<br>
+🐻 Bear Face  （熊脸）<br>
+🐨 Koala  （考拉）<br>
+🐼 Panda Face  （熊猫脸）<br>
+🦘 Kangaroo  （袋鼠）<br>
+🦡 Badger  （獾）<br>
+🐾 Paw Prints  （掌印）<br>
+🦃 Turkey  （火鸡）<br>
+🐔 Chicken  （鸡）<br>
+🐓 Rooster  （公鸡）<br>
+🐣 Hatching Chick  （孵化小鸡）<br>
+🐤 Baby Chick  （宝贝小鸡）<br>
+🐥 Front-Facing Baby Chick  （正面小鸡）<br>
+🐦 Bird  （鸟）<br>
+🐧 Penguin  （企鹅）<br>
+🕊 Dove  （鸽子）<br>
+🦅 Eagle  （鹰）<br>
+🦆 Duck  （鸭）<br>
+🦢 Swan  （天鹅）<br>
+🦉 Owl  （猫头鹰）<br>
+🦚 Peacock  （孔雀）<br>
+🦜 Parrot  （鹦鹉）<br>
+🐸 Frog Face  （青蛙脸）<br>
+🐊 Crocodile  （鳄鱼）<br>
+🐢 Turtle  （龟）<br>
+🦎 Lizard  （蜥蜴）<br>
+🐍 Snake  （蛇）<br>
+🐲 Dragon Face  （龙脸）<br>
+🐉 Dragon  （龙）<br>
+🦕 Sauropod  （蜥脚类）<br>
+🦖 T-Rex  （霸王龙）<br>
+🐳 Spouting Whale  （喷水的鲸鱼）<br>
+🐋 Whale  （鲸）<br>
+🐬 Dolphin  （海豚）<br>
+🐟 Fish  （鱼）<br>
+🐠 Tropical Fish  （热带鱼）<br>
+🐡 Blowfish  （河豚）<br>
+🦈 Shark  （鲨鱼）<br>
+🐙 Octopus  （章鱼）<br>
+🐚 Spiral Shell  （螺）<br>
+🐌 Snail  （蜗牛）<br>
+🦋 Butterfly  （蝴蝶）<br>
+🐛 Bug  （昆虫）<br>
+🐜 Ant  （蚂蚁）<br>
+🐝 Honeybee  （蜜蜂）<br>
+🐞 Lady Beetle  （瓢虫）<br>
+🦗 Cricket  （蟋蟀）<br>
+🕷 Spider  （蜘蛛）<br>
+🕸 Spider Web  （蜘蛛网）<br>
+🦂 Scorpion  （蝎）<br>
+🦟 Mosquito  （蚊子）<br>
+🦠 Microbe  （微生物）<br>
+💐 Bouquet  （花束）<br>
+🌸 Cherry Blossom  （樱花）<br>
+💮 White Flower  （白色的花）<br>
+🏵 Rosette  （玫瑰花结、圆花饰）<br>
+🌹 Rose  （玫瑰）<br>
+🥀 Wilted Flower  （枯萎的花）<br>
+🌺 Hibiscus  （木槿，芙蓉）<br>
+🌻 Sunflower  （向日葵）<br>
+🌼 Blossom  （开花）<br>
+🌷 Tulip  （郁金香）<br>
+🌱 Seedling  （幼苗）<br>
+🌲 Evergreen Tree  （常青树）<br>
+🌳 Deciduous Tree  （落叶乔木）<br>
+🌴 Palm Tree  （棕榈树）<br>
+🌵 Cactus  （仙人掌）<br>
+🌾 Sheaf of Rice  （一捆水稻）<br>
+🌿 Herb  （草本植物）<br>
+☘ Shamrock  （三叶草）<br>
+🍀 Four Leaf Clover  （四叶草）<br>
+🍁 Maple Leaf  （枫叶）<br>
+🍂 Fallen Leaf  （落叶）<br>
+🍃 Leaf Fluttering in Wind  （叶子在风中飘动）<br>
+🍄 Mushroom  （蘑菇）<br>
+🌰 Chestnut  （板栗）<br>
+🦀 Crab  （螃蟹）<br>
+🦞 Lobster  （龙虾）<br>
+🦐 Shrimp  （虾）<br>
+🦑 Squid  （乌贼）<br>
+🌍 Globe Showing Europe-Africa  （显示欧洲非洲的地球）<br>
+🌎 Globe Showing Americas  （显示美洲的地球）<br>
+🌏 Globe Showing Asia-Australia  （显示亚洲澳洲的地球）<br>
+🌐 Globe With Meridians  （地球与经络）<br>
+🌑 New Moon  （新月）<br>
+🌒 Waxing Crescent Moon  （月牙）<br>
+🌓 First Quarter Moon  （半月，上弦月）<br>
+🌔 Waxing Gibbous Moon  （凸月）<br>
+🌕 Full Moon  （满月）<br>
+🌖 Waning Gibbous Moon  （亏月）<br>
+🌗 Last Quarter Moon  （半月，下弦月）<br>
+🌘 Waning Crescent Moon  （新月）<br>
+🌙 Crescent Moon  （新月）<br>
+🌚 New Moon Face  （新月脸）<br>
+🌛 First Quarter Moon Face  （上弦月脸）<br>
+🌜 Last Quarter Moon Face  （下弦月脸）<br>
+☀ Sun  （太阳）<br>
+🌝 Full Moon Face  （满月脸）<br>
+🌞 Sun With Face  （太阳脸）<br>
+⭐ Star  （星）<br>
+🌟 Glowing Star  （发光之星）<br>
+🌠 Shooting Star  （射击之星）<br>
+☁ Cloud  （云）<br>
+⛅ Sun Behind Cloud  （云背后的太阳）<br>
+⛈ Cloud With Lightning and Rain  （云与闪电和雨）<br>
+🌤 Sun Behind Small Cloud  （小云背后的太阳）<br>
+🌥 Sun Behind Large Cloud  （大云背后的太阳）<br>
+🌦 Sun Behind Rain Cloud  （雨云背后的太阳）<br>
+🌧 Cloud With Rain  （云与雨）<br>
+🌨 Cloud With Snow  （云与雪）<br>
+🌩 Cloud With Lightning  （云与闪电）<br>
+🌪 Tornado  （龙卷风）<br>
+🌫 Fog  （多雾路段）<br>
+🌬 Wind Face  （风脸）<br>
+🌈 Rainbow  （彩虹）<br>
+☂ Umbrella  （雨伞）<br>
+☔ Umbrella With Rain Drops  （有雨下落的伞）<br>
+⚡ High Voltage  （高压）<br>
+❄ Snowflake  （雪花）<br>
+☃ Snowman  （雪人）<br>
+⛄ Snowman Without Snow  （没有雪的雪人）<br>
+☄ Comet  （彗星）<br>
+🔥 Fire  （火）<br>
+💧 Droplet  （水滴）<br>
+🌊 Water Wave  （水波）<br>
+🎄 Christmas Tree  （圣诞树）<br>
+✨ Sparkles  （闪闪发光）<br>
+🎋 Tanabata Tree  （七夕树）<br>
+🎍 Pine Decoration  （松木装饰）</p>
+<h2 id="food-drink">Food &amp; Drink</h2>
+<p>Emojis for fruit, vegetables, meals, beverages and utensils.</p>
+<p>🍇 Grapes  （葡萄）<br>
+🍈 Melon  （瓜）<br>
+🍉 Watermelon  （西瓜）<br>
+🍊 Tangerine  （柑橘）<br>
+🍋 Lemon  （柠檬）<br>
+🍌 Banana  （香蕉）<br>
+🍍 Pineapple  （菠萝）<br>
+🥭 Mango  （芒果）<br>
+🍎 Red Apple  （红苹果）<br>
+🍏 Green Apple  （青苹果）<br>
+🍐 Pear  （梨）<br>
+🍑 Peach  （桃子）<br>
+🍒 Cherries  （樱桃）<br>
+🍓 Strawberry  （草莓）<br>
+🥝 Kiwi Fruit  （奇异果）<br>
+🍅 Tomato  （番茄）<br>
+🥥 Coconut  （椰子）<br>
+🥑 Avocado  （鳄梨）<br>
+🍆 Eggplant  （茄子）<br>
+🥔 Potato  （土豆）<br>
+🥕 Carrot  （胡萝卜）<br>
+🌽 Ear of Corn  （玉米穗）<br>
+🌶 Hot Pepper  （辣椒）<br>
+🥒 Cucumber  （黄瓜）<br>
+🥬 Leafy Green  （绿叶菜）<br>
+🥦 Broccoli  （西兰花）<br>
+🍄 Mushroom  （蘑菇）<br>
+🥜 Peanuts  （花生）<br>
+🌰 Chestnut  （板栗）<br>
+🍞 Bread  （面包）<br>
+🥐 Croissant  （羊角面包）<br>
+🥖 Baguette Bread  （法式面包）<br>
+🥨 Pretzel  （椒盐脆饼）<br>
+🥯 Bagel  （贝果）<br>
+🥞 Pancakes  （薄煎饼）<br>
+🧀 Cheese Wedge  （奶酪楔子）<br>
+🍖 Meat on Bone  （骨上的肉）<br>
+🍗 Poultry Leg  （家禽腿）<br>
+🥩 Cut of Meat  （片肉）<br>
+🥓 Bacon  （培根）<br>
+🍔 Hamburger  （汉堡包）<br>
+🍟 French Fries  （炸薯条）<br>
+🍕 Pizza  （比萨）<br>
+🌭 Hot Dog  （热狗）<br>
+🥪 Sandwich  （三明治）<br>
+🌮 Taco  （塔克，（包着肉、蔬菜和辣酱的）墨西哥玉米薄饼卷）<br>
+🌯 Burrito  （墨西哥玉米煎饼）<br>
+🥙 Stuffed Flatbread  （夹心面包）<br>
+🍳 Cooking  （烹饪）<br>
+🥘 Shallow Pan of Food  （浅锅食物）<br>
+🍲 Pot of Food  （一锅食物）<br>
+🥣 Bowl With Spoon  （碗和勺子）<br>
+🥗 Green Salad  （绿色的沙拉）<br>
+🍿 Popcorn  （爆米花）<br>
+🧂 Salt  （盐）<br>
+🥫 Canned Food  （罐头食品）<br>
+🍱 Bento Box  （便当盒）<br>
+🍘 Rice Cracker  （米饼）<br>
+🍙 Rice Ball  （饭团）<br>
+🍚 Cooked Rice  （熟米饭）<br>
+🍛 Curry Rice  （咖喱饭）<br>
+🍜 Steaming Bowl  （蒸碗）<br>
+🍝 Spaghetti  （意大利面）<br>
+🍠 Roasted Sweet Potato  （烤甘薯）<br>
+🍢 Oden  （奥登）<br>
+🍣 Sushi  （寿司）<br>
+🍤 Fried Shrimp  （炒虾仁）<br>
+🍥 Fish Cake With Swirl  （旋涡式鱼饼）<br>
+🥮 Moon Cake  （月饼）<br>
+🍡 Dango  （丹戈）<br>
+🥟 Dumpling  （饺）<br>
+🥠 Fortune Cookie  （幸运饼干、福饼）<br>
+🥡 Takeout Box  （外卖盒）<br>
+🍦 Soft Ice Cream  （软冰淇淋）<br>
+🍧 Shaved Ice  （刨冰）<br>
+🍨 Ice Cream  （冰淇淋）<br>
+🍩 Doughnut  （甜甜圈）<br>
+🍪 Cookie  （曲奇饼）<br>
+🎂 Birthday Cake  （生日蛋糕）<br>
+🍰 Shortcake  （水果蛋糕、油酥饼、松饼）<br>
+🧁 Cupcake  （纸杯蛋糕）<br>
+🥧 Pie  （馅饼）<br>
+🍫 Chocolate Bar  （巧克力块）<br>
+🍬 Candy  （糖果）<br>
+🍭 Lollipop  （棒棒糖）<br>
+🍮 Custard  （蛋奶糊，牛奶沙司，蛋羹）<br>
+🍯 Honey Pot  （蜜罐）<br>
+🍼 Baby Bottle  （婴儿奶瓶）<br>
+🥛 Glass of Milk  （一杯牛奶）<br>
+☕ Hot Beverage  （热饮料）<br>
+🍵 Teacup Without Handle  （没有把柄的茶杯）<br>
+🍶 Sake  （清酒）<br>
+🍾 Bottle With Popping Cork  （带弹出软木塞的瓶子）<br>
+🍷 Wine Glass  （红酒杯）<br>
+🍸 Cocktail Glass  （鸡尾酒杯）<br>
+🍹 Tropical Drink  （热带饮料）<br>
+🍺 Beer Mug  （啤酒杯）<br>
+🍻 Clinking Beer Mugs  （干杯啤酒杯）<br>
+🥂 Clinking Glasses  （碰杯）<br>
+🥃 Tumbler Glass  （平底杯）<br>
+🥤 Cup With Straw  （有吸管的杯子）<br>
+🥢 Chopsticks  （筷子）<br>
+🍽 Fork and Knife With Plate  （叉子和刀子与盘子）<br>
+🍴 Fork and Knife  （叉子和刀子）<br>
+🥄 Spoon  （勺）</p>
+<h2 id="activity">Activity</h2>
+<p>Emojis for sports, music, the arts, hobbies and other activities.</p>
+<p>🕴 Man in Suit Levitating  （衣服漂浮的男人）<br>
+🧗 Person Climbing  （人攀登）<br>
+🧗‍♂️ Man Climbing  （男人爬）<br>
+🧗‍♀️ Woman Climbing  （女人爬）<br>
+🏇 Horse Racing  （赛马）<br>
+⛷ Skier  （滑雪者）<br>
+🏂 Snowboarder  （滑雪板）<br>
+🏌 Person Golfing  （打高尔夫球）<br>
+🏌️‍♂️ Man Golfing  （男子打高尔夫球）<br>
+🏌️‍♀️ Woman Golfing  （女子打高尔夫球）<br>
+🏄 Person Surfing  （冲浪）<br>
+🏄‍♂️ Man Surfing  （男人冲浪）<br>
+🏄‍♀️ Woman Surfing  （女人冲浪）<br>
+🚣 Person Rowing Boat  （划艇）<br>
+🚣‍♂️ Man Rowing Boat  （男子划艇）<br>
+🚣‍♀️ Woman Rowing Boat  （女子划艇）<br>
+🏊 Person Swimming  （游泳）<br>
+🏊‍♂️ Man Swimming  （男子游泳）<br>
+🏊‍♀️ Woman Swimming  （女子游泳）<br>
+⛹ Person Bouncing Ball  （拍球）<br>
+⛹️‍♂️ Man Bouncing Ball  （男人拍球）<br>
+⛹️‍♀️ Woman Bouncing Ball  （女人拍球）<br>
+🏋 Person Lifting Weights  （举重）<br>
+🏋️‍♂️ Man Lifting Weights  （男子举重）<br>
+🏋️‍♀️ Woman Lifting Weights  （女子举重）<br>
+🚴 Person Biking  （骑自行车的人）<br>
+🚴‍♂️ Man Biking  （骑自行车的男人）<br>
+🚴‍♀️ Woman Biking  （骑自行车的女人）<br>
+🚵 Person Mountain Biking  （骑山地自行车）<br>
+🚵‍♂️ Man Mountain Biking  （骑山地自行车的男人）<br>
+🚵‍♀️ Woman Mountain Biking  （骑山地自行车的女人）<br>
+🤸 Person Cartwheeling  （侧手翻）<br>
+🤸‍♂️ Man Cartwheeling  （男人侧手翻）<br>
+🤸‍♀️ Woman Cartwheeling  （女人侧手翻）<br>
+🤼 People Wrestling  （摔跤）<br>
+🤼‍♂️ Men Wrestling  （男子摔跤）<br>
+🤼‍♀️ Women Wrestling  （女子摔跤）<br>
+🤽 Person Playing Water Polo  （打水球）<br>
+🤽‍♂️ Man Playing Water Polo  （男子打水球）<br>
+🤽‍♀️ Woman Playing Water Polo  （女子打水球）<br>
+🤾 Person Playing Handball  （打手球）<br>
+🤾‍♂️ Man Playing Handball  （男子打手球）<br>
+🤾‍♀️ Woman Playing Handball  （女子打手球）<br>
+🤹 Person Juggling  （玩杂耍）<br>
+🤹‍♂️ Man Juggling  （男人玩杂耍）<br>
+🤹‍♀️ Woman Juggling  （女人玩杂耍）<br>
+🧘 Person in Lotus Position  （莲花坐）<br>
+🧘‍♂️ Man in Lotus Position  （莲花坐的男人）<br>
+🧘‍♀️ Woman in Lotus Position  （莲花坐的女人）<br>
+🎪 Circus Tent  （马戏团帐篷）<br>
+🛹 Skateboard  （滑板）<br>
+🎗 Reminder Ribbon  （提醒功能区）<br>
+🎟 Admission Tickets  （门票）<br>
+🎫 Ticket  （票）<br>
+🎖 Military Medal  （军事奖章）<br>
+🏆 Trophy  （杯）<br>
+🏅 Sports Medal  （体育奖章）<br>
+🥇 1st Place Medal  （第一名奖牌）<br>
+🥈 2nd Place Medal  （第二名奖牌）<br>
+🥉 3rd Place Medal  （第三名奖牌）<br>
+⚽ Soccer Ball  （足球）<br>
+⚾ Baseball  （棒球）<br>
+🥎 Softball  （垒球）<br>
+🏀 Basketball  （篮球）<br>
+🏐 Volleyball  （排球）<br>
+🏈 American Football  （美式足球）<br>
+🏉 Rugby Football  （橄榄球）<br>
+🎾 Tennis  （网球）<br>
+🥏 Flying Disc  （飞盘）<br>
+🎳 Bowling  （保龄球）<br>
+🏏 Cricket Game  （板球比赛）<br>
+🏑 Field Hockey  （曲棍球）<br>
+🏒 Ice Hockey  （冰球）<br>
+🥍 Lacrosse  （长曲棍球（两队各十名队员，用带网兜的球棒接球、带球和传球））<br>
+🏓 Ping Pong  （乒乓）<br>
+🏸 Badminton  （羽毛球）<br>
+🥊 Boxing Glove  （拳击手套）<br>
+🥋 Martial Arts Uniform  （武术制服）<br>
+⛳ Flag in Hole  （洞旗）<br>
+⛸ Ice Skate  （滑冰）<br>
+🎣 Fishing Pole  （钓鱼杆）<br>
+🎽 Running Shirt  （运动背心）<br>
+🎿 Skis  （滑雪）<br>
+🛷 Sled  （雪橇）<br>
+🥌 Curling Stone  （冰壶石）<br>
+🎯 Direct Hit  （直接命中）<br>
+🎱 Pool 8 Ball  （黑8球）<br>
+🎮 Video Game  （电子游戏）<br>
+🎰 Slot Machine  （老虎机）<br>
+🎲 Game Die  （游戏骰子）<br>
+🧩 Jigsaw  （拼图）<br>
+♟ Chess Pawn  （国际象棋棋子）<br>
+🎭 Performing Arts  （表演艺术）<br>
+🎨 Artist Palette  （艺术家调色板）<br>
+🧵 Thread  （线）<br>
+🧶 Yarn  （纱）<br>
+🎼 Musical Score  （乐谱）<br>
+🎤 Microphone  （麦克风）<br>
+🎧 Headphone  （耳机）<br>
+🎷 Saxophone  （萨克管）<br>
+🎸 Guitar  （吉他）<br>
+🎹 Musical Keyboard  （音乐键盘）<br>
+🎺 Trumpet  （喇叭）<br>
+🎻 Violin  （小提琴）<br>
+🥁 Drum  （鼓）<br>
+🎬 Clapper Board  （拍板）<br>
+🏹 Bow and Arrow  （弓箭）</p>
+<h2 id="travel-places">Travel &amp; Places</h2>
+<p>Emojis for varied scenes, locations, buildings and modes of transport.</p>
+<p>🚣 Person Rowing Boat  （划艇）<br>
+🗾 Map of Japan  （日本地图）<br>
+🏔 Snow-Capped Mountain  （白雪皑皑的山）<br>
+⛰ Mountain  （山）<br>
+🌋 Volcano  （火山）<br>
+🗻 Mount Fuji  （富士山）<br>
+🏕 Camping  （露营）<br>
+🏖 Beach With Umbrella  （有伞的海滩）<br>
+🏜 Desert  （沙漠）<br>
+🏝 Desert Island  （沙漠荒岛）<br>
+🏞 National Park  （国家公园）<br>
+🏟 Stadium  （体育场）<br>
+🏛 Classical Building  （古典建筑）<br>
+🏗 Building Construction  （建筑施工）<br>
+🏘 Houses  （房屋）<br>
+🏚 Derelict House  （废弃的房子）<br>
+🏠 House  （屋）<br>
+🏡 House With Garden  （有花园的房子）<br>
+🏢 Office Building  （办公楼）<br>
+🏣 Japanese Post Office  （日本邮局）<br>
+🏤 Post Office  （邮局）<br>
+🏥 Hospital  （医院）<br>
+🏦 Bank  （银行）<br>
+🏨 Hotel  （旅馆）<br>
+🏩 Love Hotel  （情侣酒店）<br>
+🏪 Convenience Store  （便利店）<br>
+🏫 School  （学校）<br>
+🏬 Department Store  （百货商店）<br>
+🏭 Factory  （工厂）<br>
+🏯 Japanese Castle  （日本城堡）<br>
+🏰 Castle  （城堡）<br>
+💒 Wedding  （婚礼）<br>
+🗼 Tokyo Tower  （东京铁塔）<br>
+🗽 Statue of Liberty  （自由女神像）<br>
+⛪ Church  （教会）<br>
+🕌 Mosque  （清真寺）<br>
+🕍 Synagogue  （犹太教堂）<br>
+⛩ Shinto Shrine  （神社）<br>
+🕋 Kaaba  （天房）<br>
+⛲ Fountain  （喷泉）<br>
+⛺ Tent  （帐篷）<br>
+🌁 Foggy  （有雾）<br>
+🌃 Night With Stars  （有星星的夜晚）<br>
+🏙 Cityscape  （城市景观）<br>
+🌄 Sunrise Over Mountains  （山上日出）<br>
+🌅 Sunrise  （日出）<br>
+🌆 Cityscape at Dusk  （黄昏的城市景观）<br>
+🌇 Sunset  （日落）<br>
+🌉 Bridge at Night  （在晚上的桥）<br>
+🎠 Carousel Horse  （旋转木马）<br>
+🎡 Ferris Wheel  （摩天轮）<br>
+🎢 Roller Coaster  （过山车）<br>
+🚂 Locomotive  （火车头；机车）<br>
+🚃 Railway Car  （火车车厢）<br>
+🚄 High-Speed Train  （高速火车）<br>
+🚅 Bullet Train  （子弹头列车）<br>
+🚆 Train  （火车）<br>
+🚇 Metro  （地铁）<br>
+🚈 Light Rail  （轻轨列车）<br>
+🚉 Station  （站）<br>
+🚊 Tram  （有轨电车）<br>
+🚝 Monorail  （单轨铁路）<br>
+🚞 Mountain Railway  （山区铁路）<br>
+🚋 Tram Car  （有轨电车）<br>
+🚌 Bus  （巴士）<br>
+🚍 Oncoming Bus  （迎面而来的巴士）<br>
+🚎 Trolleybus  （电车）<br>
+🚐 Minibus  （小巴）<br>
+🚑 Ambulance  （救护车）<br>
+🚒 Fire Engine  （消防车）<br>
+🚓 Police Car  （警车）<br>
+🚔 Oncoming Police Car  （迎面而来的警车）<br>
+🚕 Taxi  （出租车）<br>
+🚖 Oncoming Taxi  （即将到来的出租车）<br>
+🚗 Automobile  （汽车）<br>
+🚘 Oncoming Automobile  （迎面而来的汽车）<br>
+🚚 Delivery Truck  （货运卡车）<br>
+🚛 Articulated Lorry  （铰接式卡车）<br>
+🚜 Tractor  （拖拉机）<br>
+🏎 Racing Car  （赛车）<br>
+🏍 Motorcycle  （摩托车）<br>
+🛵 Motor Scooter  （小型摩托车）<br>
+🚲 Bicycle  （自行车）<br>
+🛴 Kick Scooter  （踏板车）<br>
+🚏 Bus Stop  （巴士车站）<br>
+🛤 Railway Track  （铁轨）<br>
+⛽ Fuel Pump  （燃油泵）<br>
+🚨 Police Car Light  （警车灯）<br>
+🚥 Horizontal Traffic Light  （水平交通灯）<br>
+🚦 Vertical Traffic Light  （垂直交通灯）<br>
+🚧 Construction  （施工）<br>
+⚓ Anchor  （锚）<br>
+⛵ Sailboat  （帆船）<br>
+🚤 Speedboat  （快艇）<br>
+🛳 Passenger Ship  （客船）<br>
+⛴ Ferry  （渡船）<br>
+🛥 Motor Boat  （摩托艇）<br>
+🚢 Ship  （船）<br>
+✈ Airplane  （飞机）<br>
+🛩 Small Airplane  （小飞机）<br>
+🛫 Airplane Departure  （飞机起飞）<br>
+🛬 Airplane Arrival  （飞机抵达）<br>
+💺 Seat  （座位）<br>
+🚁 Helicopter  （直升机）<br>
+🚟 Suspension Railway  （悬索铁路）<br>
+🚠 Mountain Cableway  （山地索道）<br>
+🚡 Aerial Tramway  （空中缆车）<br>
+🛰 Satellite  （卫星）<br>
+🚀 Rocket  （火箭）<br>
+🛸 Flying Saucer  （飞碟）<br>
+🌠 Shooting Star  （射击之星）<br>
+🌌 Milky Way  （银河）<br>
+⛱ Umbrella on Ground  （在地面上的伞）<br>
+🎆 Fireworks  （烟花）<br>
+🎇 Sparkler  （焰火）<br>
+🎑 Moon Viewing Ceremony  （赏月仪式）<br>
+💴 Yen Banknote  （日元钞票）<br>
+💵 Dollar Banknote  （美元钞票）<br>
+💶 Euro Banknote  （欧元钞票）<br>
+💷 Pound Banknote  （英镑钞票）<br>
+🗿 Moai  （复活节岛雕像摩埃）<br>
+🛂 Passport Control  （护照控制）<br>
+🛃 Customs  （海关）<br>
+🛄 Baggage Claim  （行李认领）<br>
+🛅 Left Luggage  （左行李箱）</p>
+<h2 id="objects">Objects</h2>
+<p>Emojis for household items, celebrations, stationery and miscellaneous objects.</p>
+<p>💌 Love Letter  （情书）<br>
+🕳 Hole  （洞）<br>
+💣 Bomb  （炸弹）<br>
+🛀 Person Taking Bath  （洗澡的人）<br>
+🛌 Person in Bed  （躺在床上的人）<br>
+🔪 Kitchen Knife  （菜刀）<br>
+🏺 Amphora  （安芙兰、双耳细颈椭圆土罐）<br>
+🗺 World Map  （世界地图）<br>
+🧭 Compass  （罗盘）<br>
+🧱 Brick  （砖）<br>
+💈 Barber Pole  （理发店招牌）<br>
+🛢 Oil Drum  （油桶）<br>
+🛎 Bellhop Bell  （侍者门铃）<br>
+🧳 Luggage  （行李）<br>
+⌛ Hourglass Done  （沙漏完成）<br>
+⏳ Hourglass Not Done  （沙漏没有完成）<br>
+⌚ Watch  （表）<br>
+⏰ Alarm Clock  （闹钟）<br>
+⏱ Stopwatch  （跑表）<br>
+⏲ Timer Clock  （定时器时钟）<br>
+🕰 Mantelpiece Clock  （壁炉架时钟）<br>
+🌡 Thermometer  （温度计）<br>
+⛱ Umbrella on Ground  （在地面上的伞）<br>
+🧨 Firecracker  （鞭炮）<br>
+🎈 Balloon  （气球）<br>
+🎉 Party Popper  （礼花）<br>
+🎊 Confetti Ball  （五彩纸屑球）<br>
+🎎 Japanese Dolls  （日本娃娃）<br>
+🎏 Carp Streamer  （鲤鱼飘带）<br>
+🎐 Wind Chime  （风铃）<br>
+🧧 Red Envelope  （红信封）<br>
+🎀 Ribbon  （丝带）<br>
+🎁 Wrapped Gift  （包裹的礼物）<br>
+🔮 Crystal Ball  （水晶球）<br>
+🧿 Nazar Amulet  （纳扎护身符，一个眼睛形状的护身符被认为可以抵御邪恶的眼睛）<br>
+🕹 Joystick  （游戏杆）<br>
+🧸 Teddy Bear  （泰迪熊）<br>
+🖼 Framed Picture  （裱框图片）<br>
+🧵 Thread  （线）<br>
+🧶 Yarn  （纱）<br>
+🛍 Shopping Bags  （购物袋）<br>
+📿 Prayer Beads  （念珠）<br>
+💎 Gem Stone  （宝石）<br>
+📯 Postal Horn  （邮政号角）<br>
+🎙 Studio Microphone  （工作室麦克风）<br>
+🎚 Level Slider  （水平滑块）<br>
+🎛 Control Knobs  （控制旋钮）<br>
+📻 Radio  （无线电）<br>
+📱 Mobile Phone  （移动电话）<br>
+📲 Mobile Phone With Arrow  （有箭头的手机）<br>
+☎ Telephone  （电话）<br>
+📞 Telephone Receiver  （电话听筒）<br>
+📟 Pager  （寻呼机）<br>
+📠 Fax Machine  （传真机）<br>
+🔋 Battery  （电池）<br>
+🔌 Electric Plug  （电插头）<br>
+💻 Laptop Computer  （笔记本电脑）<br>
+🖥 Desktop Computer  （台式电脑）<br>
+🖨 Printer  （打印机）<br>
+⌨ Keyboard  （键盘）<br>
+🖱 Computer Mouse  （电脑鼠标）<br>
+🖲 Trackball  （轨迹球）<br>
+💽 Computer Disk  （电脑磁盘）<br>
+💾 Floppy Disk  （软盘）<br>
+💿 Optical Disk  （光盘）<br>
+📀 DVD  （DVD）<br>
+🧮 Abacus  （算盘）<br>
+🎥 Movie Camera  （电影摄影机）<br>
+🎞 Film Frames  （胶片框）<br>
+📽 Film Projector  （电影放映机）<br>
+📺 Television  （电视）<br>
+📷 Camera  （相机）<br>
+📸 Camera With Flash  （相机带闪光灯）<br>
+📹 Video Camera  （摄像机）<br>
+📼 Videocassette  （录像带）<br>
+🔍 Magnifying Glass Tilted Left  （向左倾斜放大镜）<br>
+🔎 Magnifying Glass Tilted Right  （向右倾斜放大镜）<br>
+🕯 Candle  （蜡烛）<br>
+💡 Light Bulb  （灯泡）<br>
+🔦 Flashlight  （手电筒）<br>
+🏮 Red Paper Lantern  （红纸灯笼）<br>
+📔 Notebook With Decorative Cover  （有装饰盖子的笔记本）<br>
+📕 Closed Book  （合上的书）<br>
+📖 Open Book  （打开的书）<br>
+📗 Green Book  （绿皮书）<br>
+📘 Blue Book  （蓝皮书）<br>
+📙 Orange Book  （橙皮书）<br>
+📚 Books  （图书）<br>
+📓 Notebook  （笔记本）<br>
+📃 Page With Curl  （卷曲页面）<br>
+📜 Scroll  （滚动）<br>
+📄 Page Facing Up  （页面朝上）<br>
+📰 Newspaper  （报纸）<br>
+🗞 Rolled-Up Newspaper  （卷起的报纸）<br>
+📑 Bookmark Tabs  （书签标签）<br>
+🔖 Bookmark  （书签）<br>
+🏷 Label  （标签）<br>
+💰 Money Bag  （钱袋子）<br>
+💴 Yen Banknote  （日元钞票）<br>
+💵 Dollar Banknote  （美元钞票）<br>
+💶 Euro Banknote  （欧元钞票）<br>
+💷 Pound Banknote  （英镑钞票）<br>
+💸 Money With Wings  （带翅膀的钱）<br>
+💳 Credit Card  （信用卡）<br>
+🧾 Receipt  （收据）<br>
+✉ Envelope  （信封）<br>
+📧 E-Mail  （电子邮件）<br>
+📨 Incoming Envelope  （收件信封）<br>
+📩 Envelope With Arrow  （带箭头的信封）<br>
+📤 Outbox Tray  （发件箱托盘）<br>
+📥 Inbox Tray  （收件箱托盘）<br>
+📦 Package  （包裹）<br>
+📫 Closed Mailbox With Raised Flag  （封闭的邮箱与竖起的标志）<br>
+📪 Closed Mailbox With Lowered Flag  （封闭的邮箱与放下的标志）<br>
+📬 Open Mailbox With Raised Flag  （打开的邮箱与竖起的标志）<br>
+📭 Open Mailbox With Lowered Flag  （打开邮箱与放下的标志）<br>
+📮 Postbox  （邮箱）<br>
+🗳 Ballot Box With Ballot  （带投票的投票箱）<br>
+✏ Pencil  （铅笔）<br>
+✒ Black Nib  （黑色笔尖）<br>
+🖋 Fountain Pen  （钢笔）<br>
+🖊 Pen  （钢笔）<br>
+🖌 Paintbrush  （画笔）<br>
+🖍 Crayon  （蜡笔）<br>
+📝 Memo  （备忘录）<br>
+📁 File Folder  （文件夹）<br>
+📂 Open File Folder  （打开的文件夹）<br>
+🗂 Card Index Dividers  （卡片索引分配器）<br>
+📅 Calendar  （日历）<br>
+📆 Tear-Off Calendar  （撕下的日历）<br>
+🗒 Spiral Notepad  （螺旋记事本）<br>
+🗓 Spiral Calendar  （螺旋日历）<br>
+📇 Card Index  （卡片索引）<br>
+📈 Chart Increasing  （增加图表）<br>
+📉 Chart Decreasing  （减少图表）<br>
+📊 Bar Chart  （条形图）<br>
+📋 Clipboard  （剪贴板）<br>
+📌 Pushpin  （图钉）<br>
+📍 Round Pushpin  （圆形图钉）<br>
+📎 Paperclip  （回形针）<br>
+🖇 Linked Paperclips  （链接回形针）<br>
+📏 Straight Ruler  （直尺）<br>
+📐 Triangular Ruler  （三角尺）<br>
+✂ Scissors  （剪刀）<br>
+🗃 Card File Box  （卡片文件盒）<br>
+🗄 File Cabinet  （文件柜）<br>
+🗑 Wastebasket  （废纸篓）<br>
+🔒 Locked  （锁定）<br>
+🔓 Unlocked  （解锁）<br>
+🔏 Locked With Pen  （锁定和笔）<br>
+🔐 Locked With Key  （锁定和钥匙）<br>
+🔑 Key  （钥匙、键）<br>
+🗝 Old Key  （旧钥匙）<br>
+🔨 Hammer  （锤子）<br>
+⛏ Pick  （锹；挖、采）<br>
+⚒ Hammer and Pick  （锤子和锹）<br>
+🛠 Hammer and Wrench  （锤子和扳手）<br>
+🗡 Dagger  （匕首）<br>
+⚔ Crossed Swords  （交叉的剑）<br>
+🔫 Pistol  （手枪）<br>
+🛡 Shield  （盾）<br>
+🔧 Wrench  （扳手）<br>
+🔩 Nut and Bolt  （螺母和螺栓）<br>
+⚙ Gear  （齿轮）<br>
+🗜 Clamp  （钳）<br>
+⚖ Balance Scale  （天平秤）<br>
+🔗 Link  （链接）<br>
+⛓ Chains  （链）<br>
+🧰 Toolbox  （工具箱）<br>
+🧲 Magnet  （磁铁）<br>
+⚗ Alembic  （蒸馏器）<br>
+🧪 Test Tube  （试管）<br>
+🧫 Petri Dish  （培养皿）<br>
+🧬 DNA  （DNA 脱氧核糖核酸）<br>
+🔬 Microscope  （显微镜）<br>
+🔭 Telescope  （望远镜）<br>
+📡 Satellite Antenna  （卫星天线）<br>
+💉 Syringe  （注射器）<br>
+💊 Pill  （药丸）<br>
+🚪 Door  （门）<br>
+🛏 Bed  （床）<br>
+🛋 Couch and Lamp  （沙发和灯）<br>
+🚽 Toilet  （厕所）<br>
+🚿 Shower  （淋浴）<br>
+🛁 Bathtub  （浴缸）<br>
+🧴 Lotion Bottle  （乳液瓶）<br>
+🧷 Safety Pin  （安全别针）<br>
+🧹 Broom  （扫帚）<br>
+🧺 Basket  （篮）<br>
+🧻 Roll of Paper  （卷纸）<br>
+🧼 Soap  （肥皂）<br>
+🧽 Sponge  （海绵）<br>
+🧯 Fire Extinguisher  （灭火器）<br>
+🚬 Cigarette  （香烟）<br>
+⚰ Coffin  （棺材）<br>
+⚱ Funeral Urn  （葬礼骨灰瓮）<br>
+🗿 Moai  （复活节岛雕像摩埃）<br>
+🚰 Potable Water  （饮用水）</p>
+<h2 id="symbols">Symbols</h2>
+<p>Heart emojis, clocks, arrows, signs and shapes.</p>
+<p>💘 Heart With Arrow  （一箭穿心）<br>
+💝 Heart With Ribbon  （带丝带的心）<br>
+💖 Sparkling Heart  （闪闪发光的心）<br>
+💗 Growing Heart  （成长的心）<br>
+💓 Beating Heart  （跳动的心）<br>
+💞 Revolving Hearts  （旋转的心）<br>
+💕 Two Hearts  （两颗心）<br>
+💟 Heart Decoration  （心装饰）<br>
+❣ Heavy Heart Exclamation  （沉重的心感叹号）<br>
+💔 Broken Heart  （破碎的心）<br>
+❤ Red Heart  （红心）<br>
+🧡 Orange Heart  （橙心）<br>
+💛 Yellow Heart  （黄心）<br>
+💚 Green Heart  （绿心）<br>
+💙 Blue Heart  （蓝心）<br>
+💜 Purple Heart  （紫心）<br>
+🖤 Black Heart  （黑心）<br>
+💯 Hundred Points  （一百分）<br>
+💢 Anger Symbol  （愤怒符号）<br>
+💬 Speech Balloon  （语音气球）<br>
+👁️‍🗨️ Eye in Speech Bubble  （讲话泡泡时的眼睛）<br>
+🗯 Right Anger Bubble  （右愤怒泡泡）<br>
+💭 Thought Balloon  （思想气球）<br>
+💤 Zzz  （ZZZ，瞌睡）<br>
+💮 White Flower  （白色的花）<br>
+♨ Hot Springs  （温泉）<br>
+💈 Barber Pole  （理发店招牌）<br>
+🛑 Stop Sign  （停止标志）<br>
+🕛 Twelve O’Clock  （十二点）<br>
+🕧 Twelve-Thirty  （十二点三十分）<br>
+🕐 One O’Clock  （一点钟）<br>
+🕜 One-Thirty  （三十分之一）<br>
+🕑 Two O’Clock  （两点钟）<br>
+🕝 Two-Thirty  （两点半）<br>
+🕒 Three O’Clock  （三点钟）<br>
+🕞 Three-Thirty  （三点半）<br>
+🕓 Four O’Clock  （四点钟）<br>
+🕟 Four-Thirty  （四点半）<br>
+🕔 Five O’Clock  （五点钟）<br>
+🕠 Five-Thirty  （五点半）<br>
+🕕 Six O’Clock  （六点钟）<br>
+🕡 Six-Thirty  （六点半）<br>
+🕖 Seven O’Clock  （七点钟）<br>
+🕢 Seven-Thirty  （七点半）<br>
+🕗 Eight O’Clock  （八点钟）<br>
+🕣 Eight-Thirty  （八点半）<br>
+🕘 Nine O’Clock  （九点钟）<br>
+🕤 Nine-Thirty  （九点半）<br>
+🕙 Ten O’Clock  （十点钟）<br>
+🕥 Ten-Thirty  （十点半）<br>
+🕚 Eleven O’Clock  （十一点）<br>
+🕦 Eleven-Thirty  （十一点三十分）<br>
+🌀 Cyclone  （气旋）<br>
+♠ Spade Suit  （黑桃纸牌）<br>
+♥ Heart Suit  （红心纸牌）<br>
+♦ Diamond Suit  （方块纸牌）<br>
+♣ Club Suit  （梅花纸牌）<br>
+🃏 Joker  （小丑牌）<br>
+🀄 Mahjong Red Dragon  （麻将红龙）<br>
+🎴 Flower Playing Cards  （花扑克牌）<br>
+🔇 Muted Speaker  （静音）<br>
+🔈 Speaker Low Volume  （扬声器低音量）<br>
+🔉 Speaker Medium Volume  （扬声器中音量）<br>
+🔊 Speaker High Volume  （扬声器大音量）<br>
+📢 Loudspeaker  （扩音器）<br>
+📣 Megaphone  （扩音器）<br>
+📯 Postal Horn  （邮政号角）<br>
+🔔 Bell  （钟，铃； 钟声，铃声）<br>
+🔕 Bell With Slash  （钟与斜线）<br>
+🎵 Musical Note  （音符）<br>
+🎶 Musical Notes  （音符）<br>
+🏧 ATM Sign  （ATM标志）<br>
+🚮 Litter in Bin Sign  （丢垃圾）<br>
+🚰 Potable Water  （饮用水）<br>
+♿ Wheelchair Symbol  （轮椅符号）<br>
+🚹 Men’s Room  （男厕所）<br>
+🚺 Women’s Room  （女厕所）<br>
+🚻 Restroom  （卫生间）<br>
+🚼 Baby Symbol  （婴儿符号）<br>
+🚾 Water Closet  （洗手间）<br>
+⚠ Warning  （警告）<br>
+🚸 Children Crossing  （注意儿童）<br>
+⛔ No Entry  （禁止入内）<br>
+🚫 Prohibited  （禁止）<br>
+🚳 No Bicycles  （自行车禁行）<br>
+🚭 No Smoking  （禁止抽烟）<br>
+🚯 No Littering  （禁止乱扔垃圾）<br>
+🚱 Non-Potable Water  （非饮用水）<br>
+🚷 No Pedestrians  （行人禁止通行）<br>
+🔞 No One Under Eighteen  （禁止未满十八岁）<br>
+☢ Radioactive  （放射性的）<br>
+☣ Biohazard  （生化危机）<br>
+⬆ Up Arrow  （向上箭头）<br>
+↗ Up-Right Arrow  （右上箭头）<br>
+➡ Right Arrow  （右箭头）<br>
+↘ Down-Right Arrow  （右下箭头）<br>
+⬇ Down Arrow  （向下箭头）<br>
+↙ Down-Left Arrow  （左下箭头）<br>
+⬅ Left Arrow  （左箭头）<br>
+↖ Up-Left Arrow  （左上箭头）<br>
+↕ Up-Down Arrow  （上下箭头）<br>
+↔ Left-Right Arrow  （左右箭头）<br>
+↩ Right Arrow Curving Left  （右箭头向左弯曲）<br>
+↪ Left Arrow Curving Right  （左箭头向右弯曲）<br>
+⤴ Right Arrow Curving Up  （右箭头弯曲）<br>
+⤵ Right Arrow Curving Down  （右箭头向下弯曲）<br>
+🔃 Clockwise Vertical Arrows  （顺时针垂直箭头）<br>
+🔄 Counterclockwise Arrows Button  （逆时针箭头按钮）<br>
+🔙 Back Arrow  （后箭头）<br>
+🔚 End Arrow  （结束箭头）<br>
+🔛 On! Arrow  （上！箭头）<br>
+🔜 Soon Arrow  （很快箭头）<br>
+🔝 Top Arrow  （顶箭头）<br>
+🛐 Place of Worship  （礼拜的场所）<br>
+⚛ Atom Symbol  （原子符号）<br>
+🕉 Om  （嗡）<br>
+✡ Star of David  （大卫之星，犹太教的六芒星形）<br>
+☸ Wheel of Dharma  （达摩之轮，佛法之轮）<br>
+☯ Yin Yang  （阴阳）<br>
+✝ Latin Cross  （拉丁十字架）<br>
+☦ Orthodox Cross  （东正教十字架）<br>
+☪ Star and Crescent  （星和新月）<br>
+☮ Peace Symbol  （和平的象征）<br>
+🕎 Menorah  （灯台）<br>
+🔯 Dotted Six-Pointed Star  （虚线六角星）<br>
+♈ Aries  （白羊座）<br>
+♉ Taurus  （金牛座）<br>
+♊ Gemini  （双子座）<br>
+♋ Cancer  （巨蟹座）<br>
+♌ Leo  （狮子座）<br>
+♍ Virgo  （处女座）<br>
+♎ Libra  （天秤座）<br>
+♏ Scorpio  （天蝎座）<br>
+♐ Sagittarius  （射手座）<br>
+♑ Capricorn  （摩羯座）<br>
+♒ Aquarius  （水瓶座）<br>
+♓ Pisces  （双鱼座）<br>
+⛎ Ophiuchus  （蛇夫座）<br>
+🔀 Shuffle Tracks Button  （随机曲目按钮）<br>
+🔁 Repeat Button  （重复按钮）<br>
+🔂 Repeat Single Button  （重复单个按钮）<br>
+▶ Play Button  （播放按钮）<br>
+⏩ Fast-Forward Button  （快进按钮）<br>
+◀ Reverse Button  （反向按钮）<br>
+⏪ Fast Reverse Button  （快速反向按钮）<br>
+🔼 Upwards Button  （向上按钮）<br>
+⏫ Fast Up Button  （快速向上按钮）<br>
+🔽 Downwards Button  （向下按钮）<br>
+⏬ Fast Down Button  （快速向下按钮）<br>
+⏹ Stop Button  （停止按钮）<br>
+⏏ Eject Button  （弹出按钮）<br>
+🎦 Cinema  （电影）<br>
+🔅 Dim Button  （昏暗的按钮）<br>
+🔆 Bright Button  （明亮的按钮）<br>
+📶 Antenna Bars  （天线杆）<br>
+📳 Vibration Mode  （振动模式）<br>
+📴 Mobile Phone Off  （手机关机）<br>
+♾ Infinity  （无限、无穷）<br>
+♻ Recycling Symbol  （回收符号）<br>
+🔱 Trident Emblem  （三叉戟徽章）<br>
+📛 Name Badge  （名牌）<br>
+🔰 Japanese Symbol for Beginner  （初学者的日语符号）<br>
+⭕ Heavy Large Circle  （重大圈、红圈）<br>
+✅ White Heavy Check Mark  （白色复选标记）<br>
+☑ Ballot Box With Check  （复选标记）<br>
+✔ Heavy Check Mark  （复选标记）<br>
+✖ Heavy Multiplication X  （叉号）<br>
+❌ Cross Mark  （叉号）<br>
+❎ Cross Mark Button  （叉号按钮）<br>
+➕ Heavy Plus Sign  （重加标志）<br>
+➖ Heavy Minus Sign  （减号）<br>
+➗ Heavy Division Sign  （除号）<br>
+➰ Curly Loop  （卷曲循环）<br>
+➿ Double Curly Loop  （双卷曲循环）<br>
+〽 Part Alternation Mark  （部分交替标记）<br>
+✳ Eight-Spoked Asterisk  （八辐星号）<br>
+✴ Eight-Pointed Star  （八角星）<br>
+❇ Sparkle  （火花）<br>
+‼ Double Exclamation Mark  （双感叹号）<br>
+⁉ Exclamation Question Mark  （感叹号问号）<br>
+❓ Question Mark  （问号）<br>
+❔ White Question Mark  （白色问号）<br>
+❕ White Exclamation Mark  （白色感叹号）<br>
+❗ Exclamation Mark  （感叹号）<br>
+© Copyright  （版权）<br>
+® Registered  （注册）<br>
+™ Trade Mark  （商标）<br>
+#️⃣ Keycap Number Sign  （键帽数字标志）<br>
+0️⃣ Keycap Digit Zero  （键帽数字零）<br>
+1️⃣ Keycap Digit One  （键帽数字一）<br>
+2️⃣ Keycap Digit Two  （键帽数字二）<br>
+3️⃣ Keycap Digit Three  （键帽数字三）<br>
+4️⃣ Keycap Digit Four  （键帽数字四）<br>
+5️⃣ Keycap Digit Five  （键帽数字五）<br>
+6️⃣ Keycap Digit Six  （键帽数字六）<br>
+7️⃣ Keycap Digit Seven  （键帽数字七）<br>
+8️⃣ Keycap Digit Eight  （键帽数字八）<br>
+9️⃣ Keycap Digit Nine  （键帽数字九）<br>
+🔟 Keycap: 10  （键帽：10）<br>
+🔠 Input Latin Uppercase  （输入拉丁文大写）<br>
+🔡 Input Latin Lowercase  （输入拉丁语小写）<br>
+🔢 Input Numbers  （输入数字）<br>
+🔣 Input Symbols  （输入符号）<br>
+🔤 Input Latin Letters  （输入拉丁字母）<br>
+🅰 A Button (Blood Type)  （按钮（红色））<br>
+🆎 AB Button (Blood Type)  （AB按钮（红色））<br>
+🅱 B Button (Blood Type)  （B按钮（红色））<br>
+🆑 CL Button  （CL按钮）<br>
+🆒 Cool Button  （酷按钮）<br>
+🆓 Free Button  （免费按钮）<br>
+ℹ Information  （信息）<br>
+🆔 ID Button  （ID按钮）<br>
+Ⓜ Circled M  （圆圈的M）<br>
+🆕 New Button  （新按钮）<br>
+🆖 NG Button  （NG按钮）<br>
+🅾 O Button (Blood Type)  （O按钮（红色））<br>
+🆗 OK Button  （确定按钮）<br>
+🅿 P Button  （P按钮）<br>
+🆘 SOS Button  （SOS按钮）<br>
+🆙 Up! Button  （起来！按键）<br>
+🆚 Vs Button  （Vs按钮）<br>
+🈁 Japanese “Here” Button  （日语“这里”按钮）<br>
+🈂 Japanese “Service Charge” Button  （日语“服务费”按钮）<br>
+🈷 Japanese “Monthly Amount” Button  （日语“月度金额”按钮）<br>
+🈶 Japanese “Not Free of Charge” Button  （日语“不免费”按钮）<br>
+🈯 Japanese “Reserved” Button  （日语“保留”按钮）<br>
+🉐 Japanese “Bargain” Button  （日本“讨价还价”按钮）<br>
+🈹 Japanese “Discount” Button  （日本“折扣”按钮）<br>
+🈚 Japanese “Free of Charge” Button  （日语“免费”按钮）<br>
+🈲 Japanese “Prohibited” Button  （日本“禁止”按钮）<br>
+🉑 Japanese “Acceptable” Button  （日语“可接受”按钮）<br>
+🈸 Japanese “Application” Button  （日语“应用程序”按钮）<br>
+🈴 Japanese “Passing Grade” Button  （日语“通过成绩”按钮）<br>
+🈳 Japanese “Vacancy” Button  （日本“空缺”按钮）<br>
+㊗ Japanese “Congratulations” Button  （日语“祝贺”按钮）<br>
+㊙ Japanese “Secret” Button  （日本“秘密”按钮）<br>
+🈺 Japanese “Open for Business” Button  （日本“商业开放”按钮）<br>
+🈵 Japanese “No Vacancy” Button  （日语“没有空缺”按钮）<br>
+🔴 Red Circle  （红圈）<br>
+🔵 Blue Circle  （蓝圈）<br>
+⚫ Black Circle  （黑圈）<br>
+⚪ White Circle  （白圈）<br>
+⬛ Black Large Square  （黑色方块）<br>
+⬜ White Large Square  （白色方块）<br>
+◼ Black Medium Square  （黑色中方块）<br>
+◻ White Medium Square  （白色中方块）<br>
+◾ Black Medium-Small Square  （黑色中小方块）<br>
+◽ White Medium-Small Square  （白色中小方块）<br>
+▪ Black Small Square  （黑色小方块）<br>
+▫ White Small Square  （白色小方块）<br>
+🔶 Large Orange Diamond  （大橙色菱形）<br>
+🔷 Large Blue Diamond  （大蓝菱形）<br>
+🔸 Small Orange Diamond  （小橙菱形）<br>
+🔹 Small Blue Diamond  （小蓝菱形）<br>
+🔺 Red Triangle Pointed Up  （红色三角形向上）<br>
+🔻 Red Triangle Pointed Down  （红色三角形向下）<br>
+💠 Diamond With a Dot  （菱形点）<br>
+🔳 White Square Button  （白色方形按钮）<br>
+🔲 Black Square Button  （黑色方形按钮）</p>
+<h2 id="events">Events</h2>
+<p>🇦🇺 Australia Day  （澳大利亚日）<br>
+🇫🇷 Bastille Day  （巴士底日）<br>
+🎂 Birthday  （生日）<br>
+🛍 Black Friday  （黑色星期五）<br>
+🇨🇦 Canada Day  （加拿大国庆日）<br>
+🇧🇷 Carnaval  （狂欢节）<br>
+🐉 Chinese New Year  （中国新年）<br>
+🎅 Christmas  （圣诞）<br>
+🇲🇽 Cinco de Mayo  （五月五日节）<br>
+🕯 Diwali  （排灯节）<br>
+🇨🇳 Dragon Boat Festival  （端午节）<br>
+🐰 Easter  （复活节）<br>
+🎥 Emoji Movie  （表情符号电影）<br>
+🍂 Fall / Autumn  （秋/秋）<br>
+👨 Father’s Day  （父亲节）<br>
+💪 Festivus  （每年十二月二十三日的一个节日，是作家单-欧基非(Dan O'Keefe)的创意。该节日因出现在美国著名情景喜剧《欢乐单身派对》(Seinfeld)中，后被很多人所知并效仿剧情庆祝该节日；）<br>
+🎓 Graduation  （毕业）<br>
+🔥 Guy Fawkes  （盖伊·福克斯（企图在国会大厦炸死英王詹姆士一世“火药阴谋”的策划者））<br>
+🎃 Halloween  （万圣节）<br>
+🕎 Hanukkah  （光明节）<br>
+💕 Hearts  （心）<br>
+🕉 Holi  （洒红节）<br>
+🇺🇸 Independence Day  （独立日）<br>
+👩 Mother’s Day  （母亲节）<br>
+🎊 New Year’s Eve  （除夕夜）<br>
+🏊 Olympics  （奥运会）<br>
+🏳️‍🌈 Pride  （自豪）<br>
+👑 Queen’s Birthday  （女王的生日）<br>
+☪ Ramadan  （斋月）<br>
+🌱 Spring  （弹簧）<br>
+☘ St Patrick’s Day  （圣帕特里克节）<br>
+☀ Summer  （夏季）<br>
+🏈 Super Bowl  （超级碗）<br>
+🦃 Thanksgiving  （感恩节）<br>
+💘 Valentine’s Day  （情人节）<br>
+👰 Wedding / Marriage  （婚礼/婚姻、新娘）<br>
+⛄ Winter  （冬季）<br>
+🎿 Winter Olympics  （冬奥会）<br>
+⚽ World Cup  （世界杯）<br>
+🌎 World Emoji Day  （世界表情符号日）</p>
+<h2 id="flags">Flags</h2>
+<p>List of country flag emojis. 🇯🇵 🇰🇷 🇩🇪 🇨🇳 🇺🇸 🇫🇷 🇪🇸 🇮🇹 🇷🇺 🇬🇧 Emoji flags are supported on all major platforms except Windows, which displays two-letter country codes instead of emoji flag images.</p>
+<p>Copy and paste any flag emoji from this list and it will show on all supported platforms. All emojis on this page are RGI (Recommended for General Interchange by Unicode) except Flag for Texas and Transgender Pride Flag which are supported by WhatsApp only.</p>
+<p>Emoji country flags are based on ISO 3166-1: a list of internationally recognized two-letter country codes. As of 2019 England, Scotland and Wales are the only RGI subdivision flags.</p>
+<p>🏁 Chequered Flag  （方格旗）<br>
+🚩 Triangular Flag  （三角旗）<br>
+🎌 Crossed Flags  （交叉标志）<br>
+🏴 Black Flag  （黑旗）<br>
+🏳 White Flag  （白旗）<br>
+🏳️‍🌈 Rainbow Flag  （彩虹旗）<br>
+🏴‍☠️ Pirate Flag  （海盗旗）<br>
+🇦🇨 Flag: Ascension Island  （阿森松岛）<br>
+🇦🇩 Flag: Andorra  （安道尔）<br>
+🇦🇪 Flag: United Arab Emirates  （阿拉伯联合酋长国）<br>
+🇦🇫 Flag: Afghanistan  （阿富汗）<br>
+🇦🇬 Flag: Antigua &amp; Barbuda  （安提瓜和巴布达）<br>
+🇦🇮 Flag: Anguilla  （安圭拉）<br>
+🇦🇱 Flag: Albania  （阿尔巴尼亚）<br>
+🇦🇲 Flag: Armenia  （亚美尼亚）<br>
+🇦🇴 Flag: Angola  （安哥拉）<br>
+🇦🇶 Flag: Antarctica  （南极洲）<br>
+🇦🇷 Flag: Argentina  （阿根廷）<br>
+🇦🇸 Flag: American Samoa  （美属萨摩亚）<br>
+🇦🇹 Flag: Austria  （奥地利）<br>
+🇦🇺 Flag: Australia  （澳大利亚）<br>
+🇦🇼 Flag: Aruba  （阿鲁巴）<br>
+🇦🇽 Flag: Åland Islands  （奥兰群岛）<br>
+🇦🇿 Flag: Azerbaijan  （阿塞拜疆）<br>
+🇧🇦 Flag: Bosnia &amp; Herzegovina  （波斯尼亚和黑塞哥维那）<br>
+🇧🇧 Flag: Barbados  （巴巴多斯）<br>
+🇧🇩 Flag: Bangladesh  （孟加拉国）<br>
+🇧🇪 Flag: Belgium  （比利时）<br>
+🇧🇫 Flag: Burkina Faso  （布基纳法索）<br>
+🇧🇬 Flag: Bulgaria  （保加利亚）<br>
+🇧🇭 Flag: Bahrain  （巴林）<br>
+🇧🇮 Flag: Burundi  （布隆迪）<br>
+🇧🇯 Flag: Benin  （贝宁）<br>
+🇧🇱 Flag: St. Barthélemy  （圣巴泰勒米）<br>
+🇧🇲 Flag: Bermuda  （百慕大）<br>
+🇧🇳 Flag: Brunei  （文莱）<br>
+🇧🇴 Flag: Bolivia  （玻利维亚）<br>
+🇧🇶 Flag: Caribbean Netherlands  （加勒比荷兰）<br>
+🇧🇷 Flag: Brazil  （巴西）<br>
+🇧🇸 Flag: Bahamas  （巴哈马）<br>
+🇧🇹 Flag: Bhutan  （不丹）<br>
+🇧🇻 Flag: Bouvet Island  （布维岛）<br>
+🇧🇼 Flag: Botswana  （博茨瓦纳）<br>
+🇧🇾 Flag: Belarus  （白俄罗斯）<br>
+🇧🇿 Flag: Belize  （伯利兹）<br>
+🇨🇦 Flag: Canada  （加拿大）<br>
+🇨🇨 Flag: Cocos (Keeling) Islands  （科科斯（基林）群岛）<br>
+🇨🇩 Flag: Congo - Kinshasa  （刚果 - 金沙萨）<br>
+🇨🇫 Flag: Central African Republic  （中非共和国）<br>
+🇨🇬 Flag: Congo - Brazzaville  （刚果 - 布拉柴维尔）<br>
+🇨🇭 Flag: Switzerland  （瑞士）<br>
+🇨🇮 Flag: Côte d’Ivoire  （科特迪瓦）<br>
+🇨🇰 Flag: Cook Islands  （库克群岛）<br>
+🇨🇱 Flag: Chile  （智利）<br>
+🇨🇲 Flag: Cameroon  （喀麦隆）<br>
+🇨🇳 Flag: China  （中国）<br>
+🇨🇴 Flag: Colombia  （哥伦比亚）<br>
+🇨🇵 Flag: Clipperton Island  （克利珀顿岛）<br>
+🇨🇷 Flag: Costa Rica  （哥斯达黎加）<br>
+🇨🇺 Flag: Cuba  （古巴）<br>
+🇨🇻 Flag: Cape Verde  （佛得角）<br>
+🇨🇼 Flag: Curaçao  （库拉索）<br>
+🇨🇽 Flag: Christmas Island  （圣诞岛）<br>
+🇨🇾 Flag: Cyprus  （塞浦路斯）<br>
+🇨🇿 Flag: Czechia  （捷克的）<br>
+🇩🇪 Flag: Germany  （德国）<br>
+🇩🇬 Flag: Diego Garcia  （迪戈加西亚）<br>
+🇩🇯 Flag: Djibouti  （吉布提）<br>
+🇩🇰 Flag: Denmark  （丹麦）<br>
+🇩🇲 Flag: Dominica  （多米尼加）<br>
+🇩🇴 Flag: Dominican Republic  （多明尼加共和国）<br>
+🇩🇿 Flag: Algeria  （阿尔及利亚）<br>
+🇪🇦 Flag: Ceuta &amp; Melilla  （休达和梅利利亚）<br>
+🇪🇨 Flag: Ecuador  （厄瓜多尔）<br>
+🇪🇪 Flag: Estonia  （爱沙尼亚）<br>
+🇪🇬 Flag: Egypt  （埃及）<br>
+🇪🇭 Flag: Western Sahara  （撒哈拉沙漠西部）<br>
+🇪🇷 Flag: Eritrea  （厄立特里亚）<br>
+🇪🇸 Flag: Spain  （西班牙）<br>
+🇪🇹 Flag: Ethiopia  （埃塞俄比亚）<br>
+🇪🇺 Flag: European Union  （欧洲联盟）<br>
+🇫🇮 Flag: Finland  （芬兰）<br>
+🇫🇯 Flag: Fiji  （斐）<br>
+🇫🇰 Flag: Falkland Islands  （福克兰群岛）<br>
+🇫🇲 Flag: Micronesia  （密克罗尼西亚）<br>
+🇫🇴 Flag: Faroe Islands  （法罗群岛）<br>
+🇫🇷 Flag: France  （法国）<br>
+🇬🇦 Flag: Gabon  （加蓬）<br>
+🇬🇧 Flag: United Kingdom  （英国）<br>
+🇬🇩 Flag: Grenada  （格林纳达）<br>
+🇬🇪 Flag: Georgia  （格鲁吉亚）<br>
+🇬🇫 Flag: French Guiana  （法属圭亚那）<br>
+🇬🇬 Flag: Guernsey  （根西岛）<br>
+🇬🇭 Flag: Ghana  （加纳）<br>
+🇬🇮 Flag: Gibraltar  （直布罗陀）<br>
+🇬🇱 Flag: Greenland  （格陵兰）<br>
+🇬🇲 Flag: Gambia  （冈比亚）<br>
+🇬🇳 Flag: Guinea  （几内亚）<br>
+🇬🇵 Flag: Guadeloupe  （瓜德罗普岛）<br>
+🇬🇶 Flag: Equatorial Guinea  （赤道几内亚）<br>
+🇬🇷 Flag: Greece  （希腊）<br>
+🇬🇸 Flag: South Georgia &amp; South Sandwich Islands  （南乔治亚岛和南桑威奇群岛）<br>
+🇬🇹 Flag: Guatemala  （危地马拉）<br>
+🇬🇺 Flag: Guam  （关岛）<br>
+🇬🇼 Flag: Guinea-Bissau  （几内亚比绍）<br>
+🇬🇾 Flag: Guyana  （圭亚那）<br>
+🇭🇰 Flag: Hong Kong SAR China  （中国香港特别行政区）<br>
+🇭🇲 Flag: Heard &amp; McDonald Islands  （赫德和麦克唐纳群岛）<br>
+🇭🇳 Flag: Honduras  （洪都拉斯）<br>
+🇭🇷 Flag: Croatia  （克罗地亚）<br>
+🇭🇹 Flag: Haiti  （海地）<br>
+🇭🇺 Flag: Hungary  （匈牙利）<br>
+🇮🇨 Flag: Canary Islands  （加那利群岛）<br>
+🇮🇩 Flag: Indonesia  （印度尼西亚）<br>
+🇮🇪 Flag: Ireland  （爱尔兰）<br>
+🇮🇱 Flag: Israel  （以色列）<br>
+🇮🇲 Flag: Isle of Man  （马恩岛）<br>
+🇮🇳 Flag: India  （印度）<br>
+🇮🇴 Flag: British Indian Ocean Territory  （英属印度洋领地）<br>
+🇮🇶 Flag: Iraq  （伊拉克）<br>
+🇮🇷 Flag: Iran  （伊朗）<br>
+🇮🇸 Flag: Iceland  （冰岛）<br>
+🇮🇹 Flag: Italy  （意大利）<br>
+🇯🇪 Flag: Jersey  （新泽西）<br>
+🇯🇲 Flag: Jamaica  （牙买加）<br>
+🇯🇴 Flag: Jordan  （约旦）<br>
+🇯🇵 Flag: Japan  （日本）<br>
+🇰🇪 Flag: Kenya  （肯尼亚）<br>
+🇰🇬 Flag: Kyrgyzstan  （吉尔吉斯斯坦）<br>
+🇰🇭 Flag: Cambodia  （柬埔寨）<br>
+🇰🇮 Flag: Kiribati  （基里巴斯）<br>
+🇰🇲 Flag: Comoros  （科摩罗）<br>
+🇰🇳 Flag: St. Kitts &amp; Nevis  （圣基茨和尼维斯）<br>
+🇰🇵 Flag: North Korea  （北朝鲜）<br>
+🇰🇷 Flag: South Korea  （韩国）<br>
+🇰🇼 Flag: Kuwait  （科威特）<br>
+🇰🇾 Flag: Cayman Islands  （开曼群岛）<br>
+🇰🇿 Flag: Kazakhstan  （哈萨克斯坦）<br>
+🇱🇦 Flag: Laos  （老挝）<br>
+🇱🇧 Flag: Lebanon  （黎巴嫩）<br>
+🇱🇨 Flag: St. Lucia  （圣卢西亚）<br>
+🇱🇮 Flag: Liechtenstein  （列支敦士登）<br>
+🇱🇰 Flag: Sri Lanka  （斯里兰卡）<br>
+🇱🇷 Flag: Liberia  （利比里亚）<br>
+🇱🇸 Flag: Lesotho  （莱索托）<br>
+🇱🇹 Flag: Lithuania  （立陶宛）<br>
+🇱🇺 Flag: Luxembourg  （卢森堡）<br>
+🇱🇻 Flag: Latvia  （拉脱维亚）<br>
+🇱🇾 Flag: Libya  （利比亚）<br>
+🇲🇦 Flag: Morocco  （摩洛哥）<br>
+🇲🇨 Flag: Monaco  （摩纳哥）<br>
+🇲🇩 Flag: Moldova  （摩尔多瓦）<br>
+🇲🇪 Flag: Montenegro  （黑山）<br>
+🇲🇫 Flag: St. Martin  （圣马丁）<br>
+🇲🇬 Flag: Madagascar  （马达加斯加）<br>
+🇲🇭 Flag: Marshall Islands  （马绍尔群岛）<br>
+🇲🇰 Flag: North Macedonia  （北马其顿）<br>
+🇲🇱 Flag: Mali  （马里）<br>
+🇲🇲 Flag: Myanmar (Burma)  （缅甸（缅甸））<br>
+🇲🇳 Flag: Mongolia  （蒙古）<br>
+🇲🇴 Flag: Macau Sar China  （澳门Sar中国）<br>
+🇲🇵 Flag: Northern Mariana Islands  （北马里亚纳群岛）<br>
+🇲🇶 Flag: Martinique  （马提尼克）<br>
+🇲🇷 Flag: Mauritania  （毛里塔尼亚）<br>
+🇲🇸 Flag: Montserrat  （蒙特塞拉特）<br>
+🇲🇹 Flag: Malta  （马耳他）<br>
+🇲🇺 Flag: Mauritius  （毛里求斯）<br>
+🇲🇻 Flag: Maldives  （马尔代夫）<br>
+🇲🇼 Flag: Malawi  （马拉维）<br>
+🇲🇽 Flag: Mexico  （墨西哥）<br>
+🇲🇾 Flag: Malaysia  （马来西亚）<br>
+🇲🇿 Flag: Mozambique  （莫桑比克）<br>
+🇳🇦 Flag: Namibia  （纳米比亚）<br>
+🇳🇨 Flag: New Caledonia  （新喀里多尼亚）<br>
+🇳🇪 Flag: Niger  （尼日尔）<br>
+🇳🇫 Flag: Norfolk Island  （诺福克岛）<br>
+🇳🇬 Flag: Nigeria  （尼日利亚）<br>
+🇳🇮 Flag: Nicaragua  （尼加拉瓜）<br>
+🇳🇱 Flag: Netherlands  （荷兰）<br>
+🇳🇴 Flag: Norway  （挪威）<br>
+🇳🇵 Flag: Nepal  （尼泊尔）<br>
+🇳🇷 Flag: Nauru  （瑙鲁）<br>
+🇳🇺 Flag: Niue  （纽埃）<br>
+🇳🇿 Flag: New Zealand  （新西兰）<br>
+🇴🇲 Flag: Oman  （阿曼）<br>
+🇵🇦 Flag: Panama  （巴拿马）<br>
+🇵🇪 Flag: Peru  （秘鲁）<br>
+🇵🇫 Flag: French Polynesia  （法属波利尼西亚）<br>
+🇵🇬 Flag: Papua New Guinea  （巴布亚新几内亚）<br>
+🇵🇭 Flag: Philippines  （菲律宾）<br>
+🇵🇰 Flag: Pakistan  （巴基斯坦）<br>
+🇵🇱 Flag: Poland  （波兰）<br>
+🇵🇲 Flag: St. Pierre &amp; Miquelon  （圣皮埃尔和密克隆）<br>
+🇵🇳 Flag: Pitcairn Islands  （皮特凯恩群岛）<br>
+🇵🇷 Flag: Puerto Rico  （波多黎各）<br>
+🇵🇸 Flag: Palestinian Territories  （巴勒斯坦领土）<br>
+🇵🇹 Flag: Portugal  （葡萄牙）<br>
+🇵🇼 Flag: Palau  （帕劳）<br>
+🇵🇾 Flag: Paraguay  （巴拉圭）<br>
+🇶🇦 Flag: Qatar  （卡塔尔）<br>
+🇷🇪 Flag: Réunion  （团圆）<br>
+🇷🇴 Flag: Romania  （罗马尼亚）<br>
+🇷🇸 Flag: Serbia  （塞尔维亚）<br>
+🇷🇺 Flag: Russia  （俄国）<br>
+🇷🇼 Flag: Rwanda  （卢旺达）<br>
+🇸🇦 Flag: Saudi Arabia  （沙特阿拉伯）<br>
+🇸🇧 Flag: Solomon Islands  （所罗门群岛）<br>
+🇸🇨 Flag: Seychelles  （塞舌尔）<br>
+🇸🇩 Flag: Sudan  （苏丹）<br>
+🇸🇪 Flag: Sweden  （瑞典）<br>
+🇸🇬 Flag: Singapore  （新加坡）<br>
+🇸🇭 Flag: St. Helena  （圣赫勒拿岛）<br>
+🇸🇮 Flag: Slovenia  （斯洛文尼亚）<br>
+🇸🇯 Flag: Svalbard &amp; Jan Mayen  （斯瓦尔巴和扬马延）<br>
+🇸🇰 Flag: Slovakia  （斯洛伐克）<br>
+🇸🇱 Flag: Sierra Leone  （塞拉利昂）<br>
+🇸🇲 Flag: San Marino  （圣马力诺）<br>
+🇸🇳 Flag: Senegal  （塞内加尔）<br>
+🇸🇴 Flag: Somalia  （索马里）<br>
+🇸🇷 Flag: Suriname  （苏里南）<br>
+🇸🇸 Flag: South Sudan  （南苏丹）<br>
+🇸🇹 Flag: São Tomé &amp; Príncipe  （圣多美和普林西比）<br>
+🇸🇻 Flag: El Salvador  （萨尔瓦多）<br>
+🇸🇽 Flag: Sint Maarten  （圣马丁岛）<br>
+🇸🇾 Flag: Syria  （叙利亚）<br>
+🇸🇿 Flag: Swaziland  （斯威士兰）<br>
+🇹🇦 Flag: Tristan Da Cunha  （特里斯坦达库尼亚）<br>
+🇹🇨 Flag: Turks &amp; Caicos Islands  （特克斯和凯科斯群岛）<br>
+🇹🇩 Flag: Chad  （乍得）<br>
+🇹🇫 Flag: French Southern Territories  （法属南部领土）<br>
+🇹🇬 Flag: Togo  （多哥）<br>
+🇹🇭 Flag: Thailand  （泰国）<br>
+🇹🇯 Flag: Tajikistan  （塔吉克斯坦）<br>
+🇹🇰 Flag: Tokelau  （托克劳）<br>
+🇹🇱 Flag: Timor-Leste  （东帝汶）<br>
+🇹🇲 Flag: Turkmenistan  （土库曼斯坦）<br>
+🇹🇳 Flag: Tunisia  （突尼斯）<br>
+🇹🇴 Flag: Tonga  （汤加）<br>
+🇹🇷 Flag: Turkey  （火鸡）<br>
+🇹🇹 Flag: Trinidad &amp; Tobago  （特立尼达和多巴哥）<br>
+🇹🇻 Flag: Tuvalu  （图瓦卢）<br>
+🇹🇼 Flag: Taiwan  （台湾）<br>
+🇹🇿 Flag: Tanzania  （坦桑尼亚）<br>
+🇺🇦 Flag: Ukraine  （乌克兰）<br>
+🇺🇬 Flag: Uganda  （乌干达）<br>
+🇺🇲 Flag: U.S. Outlying Islands  （美国离岛）<br>
+🇺🇳 Flag: United Nations  （联合国）<br>
+🇺🇸 Flag: United States  （美国）<br>
+🇺🇾 Flag: Uruguay  （乌拉圭）<br>
+🇺🇿 Flag: Uzbekistan  （乌兹别克斯坦）<br>
+🇻🇦 Flag: Vatican City  （梵蒂冈城）<br>
+🇻🇨 Flag: St. Vincent &amp; Grenadines  （圣文森特和格林纳丁斯）<br>
+🇻🇪 Flag: Venezuela  （委内瑞拉）<br>
+🇻🇬 Flag: British Virgin Islands  （英属维尔京群岛）<br>
+🇻🇮 Flag: U.S. Virgin Islands  （美属维尔京群岛）<br>
+🇻🇳 Flag: Vietnam  （越南）<br>
+🇻🇺 Flag: Vanuatu  （瓦努阿图）<br>
+🇼🇫 Flag: Wallis &amp; Futuna  （瓦利斯和富图纳群岛）<br>
+🇼🇸 Flag: Samoa  （萨摩亚）<br>
+🇽🇰 Flag: Kosovo  （科索沃）<br>
+🇾🇪 Flag: Yemen  （也门）<br>
+🇾🇹 Flag: Mayotte  （马约特）<br>
+🇿🇦 Flag: South Africa  （南非）<br>
+🇿🇲 Flag: Zambia  （赞比亚）<br>
+🇿🇼 Flag: Zimbabwe  （津巴布韦）<br>
+🏴󠁧󠁢󠁥󠁮󠁧󠁿 Flag: England  （英国）<br>
+🏴󠁧󠁢󠁳󠁣󠁴󠁿 Flag: Scotland  （苏格兰）<br>
+🏴󠁧󠁢󠁷󠁬󠁳󠁿 Flag: Wales  （威尔士）<br>
+🏳️‍⚧️ Blue, Pink, and White Flag  （蓝色，粉红色和白色的旗帜）<br>
+🏴󠁵󠁳󠁴󠁸󠁿 Flag for Texas (US-TX)  （德克萨斯州旗（美国德克萨斯州））</p>
+<p>来小伙子，我看你骨骼惊奇，这套九阳神功传授给你𓀀𓀁𓀂𓀃𓀄𓀅𓀆𓀇𓀈𓀉𓀊𓀋𓀌𓀍𓀎𓀏𓀐𓀑𓀒𓀓𓀔𓀕𓀖𓀗𓀘𓀙𓀚𓀛𓀜𓀝𓀞𓀟𓀠𓀡𓀢𓀣𓀤𓀥</p>
+<p>666ญ์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์ญ์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์ญ์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์ญ์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์์
+无早餐，差评？ۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣ ➷　➷　　ۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۖۖۖۖۖۖۖۖۖۖۖۖۖ　　　 ➶　➶　 ➵　 ➴➴　➷。ۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣ ➷　➷　　ۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۖۖۖۖۖۖۖۖۖۖۖۖۖ　　　 ➶　➶　 ➵　 ➴➴　➷ ➴　➷➶➹　　　 ➴　➷➶➹　　　。ۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣ ➷　➷　　。ۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣ ➷　➷　　ۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣۣ</p>
+<p>End</p>
+
+</body>
+</html>
