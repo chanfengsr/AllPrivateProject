@@ -183,10 +183,10 @@ Emojis for smileys, people, families, hand gestures, clothing and accessories.
 👴 Old Man  （老头）  
 👵 Old Woman  （老女人）  
 🙍 Person Frowning  （皱着眉头的人）  
-🙍‍♂️ Man Frowning  （男人皱着眉头）  
+🙍‍♂️ Man Frowning  （皱着眉头的男人）  
 🙍‍♀️ Woman Frowning  （皱着眉头的女人）  
 🙎 Person Pouting  （噘嘴的人）  
-🙎‍♂️ Man Pouting  （男人噘嘴）  
+🙎‍♂️ Man Pouting  （噘嘴的男人）  
 🙎‍♀️ Woman Pouting  （噘嘴的女人）  
 🙅 Person Gesturing No  （打手势没有）  
 🙅‍♂️ Man Gesturing No  （打手势没有的男人）  
@@ -203,9 +203,9 @@ Emojis for smileys, people, families, hand gestures, clothing and accessories.
 🙇 Person Bowing  （鞠躬）  
 🙇‍♂️ Man Bowing  （男人鞠躬）  
 🙇‍♀️ Woman Bowing  （女人鞠躬）  
-🤦 Person Facepalming  （面部凝固）  
-🤦‍♂️ Man Facepalming  （男人面部凝固）  
-🤦‍♀️ Woman Facepalming  （女人面部凝固）  
+🤦 Person Facepalming  （捂脸）  
+🤦‍♂️ Man Facepalming  （捂脸男人）  
+🤦‍♀️ Woman Facepalming  （捂脸女人）  
 🤷 Person Shrugging  （耸了耸肩）  
 🤷‍♂️ Man Shrugging  （男人耸了耸肩）  
 🤷‍♀️ Woman Shrugging  （女人耸了耸肩）  
@@ -390,7 +390,7 @@ Emojis for smileys, people, families, hand gestures, clothing and accessories.
 👒 Woman’s Hat  （女人的帽子）  
 🎩 Top Hat  （高顶礼帽）  
 🎓 Graduation Cap  （毕业帽）  
-🧢 Billed Cap  （收费上限）  
+🧢 Billed Cap  （宣传帽）  
 ⛑ Rescue Worker’s Helmet  （救援人员的头盔）  
 💄 Lipstick  （口红）  
 💍 Ring  （戒指）  
@@ -462,8 +462,8 @@ Emojis for animals, nature, and weather.
 🐔 Chicken  （鸡）  
 🐓 Rooster  （公鸡）  
 🐣 Hatching Chick  （孵化小鸡）  
-🐤 Baby Chick  （宝贝小鸡）  
-🐥 Front-Facing Baby Chick  （正面小鸡）  
+🐤 Baby Chick  （小鸡）  
+🐥 Front-Facing Baby Chick  （小鸡正面）  
 🐦 Bird  （鸟）  
 🐧 Penguin  （企鹅）  
 🕊 Dove  （鸽子）  
