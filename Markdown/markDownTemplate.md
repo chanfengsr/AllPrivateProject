@@ -1,3 +1,22 @@
+- [This is an H1](#This-is-an-H1)
+  - [This is an H2](#This-is-an-H2)
+          - [This is an H6](#This-is-an-H6)
+- [一级标题](#%E4%B8%80%E7%BA%A7%E6%A0%87%E9%A2%98)
+  - [二级标题](#%E4%BA%8C%E7%BA%A7%E6%A0%87%E9%A2%98)
+  - [列表](#%E5%88%97%E8%A1%A8)
+  - [引用](#%E5%BC%95%E7%94%A8)
+  - [选择框](#%E9%80%89%E6%8B%A9%E6%A1%86)
+  - [表格](#%E8%A1%A8%E6%A0%BC)
+  - [引用网址](#%E5%BC%95%E7%94%A8%E7%BD%91%E5%9D%80)
+  - [引用特定类型文本](#%E5%BC%95%E7%94%A8%E7%89%B9%E5%AE%9A%E7%B1%BB%E5%9E%8B%E6%96%87%E6%9C%AC)
+  - [数学公式](#%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F)
+  - [转义字符，加 “\”](#%E8%BD%AC%E4%B9%89%E5%AD%97%E7%AC%A6%E5%8A%A0)
+  - [图片](#%E5%9B%BE%E7%89%87)
+    - [base64的图片转换 Python 代码](#base64%E7%9A%84%E5%9B%BE%E7%89%87%E8%BD%AC%E6%8D%A2-Python-%E4%BB%A3%E7%A0%81)
+- [🎉Life is fantastic🥳!](#%F0%9F%8E%89Life-is-fantastic%F0%9F%A5%B3)
+
+
+
 # This is an H1
 ## This is an H2
 ###### This is an H6
@@ -85,7 +104,7 @@ f(x) = \int_{-\infty}^\infty
    \,d\xi
 $$
 
-## 转义字符
+## 转义字符，加 “\”
 \*literal asterisks\*
 
 
@@ -94,16 +113,17 @@ $$
 
 ![](./logo.png)
 
-![avatar](data:image/png;base64,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)
+![avatar](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAADt3eJSAAAALVBMVEXM3fm+1Pfb5/rF2fjw9f23z/aavPOhwfTp8PyTt/L3+v7T4vqMs/K7zP////+qRWzhAAAAXElEQVQIW2O4CwUM996BwVskxtOqd++2rwMyPI+ve31GD8h4Madqz2mwms5jZ/aBGS/mHIDoen3m+DowY8/hOVUgxusz+zqPg7SvPA1UxQfSvu/du0YUK2AMmDMA5H1qhVX33T8AAAAASUVORK5CYII=)
 
 ### base64的图片转换 Python 代码
 ```python
 # 使用python将图片转化为base64字符串
 import base64
-f=open('723.png','rb') #二进制方式打开图文件
+f=open('a.png','rb') #二进制方式打开图文件
 ls_f=base64.b64encode(f.read()) #读取文件内容，转换为base64编码
 f.close()
 print(ls_f)
+
 
 # base64字符串转化为图片
 import base64
@@ -115,3 +135,8 @@ file.close()
 ```
 
 [Markdown语法说明（详解版）](http://www.ituring.com.cn/article/504)
+
+
+# 🎉Life is fantastic🥳!
+
+
