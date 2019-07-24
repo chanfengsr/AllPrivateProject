@@ -82,7 +82,7 @@ bDown       = dotnet run -p %Project%\AllInGitHub\DoNetCore\bDown & ffmpegCvtFlv
 one         = explorer %onedrive%
 soft        = explorer %software%
 proj        = explorer %WorkProject%
-allGit      = explorer %Project%\AllInGitHub
+gitAll      = explorer %Project%\AllInGitHub
 leetcode    = explorer %Project%\AllInGitHub\Python\LeetCodeTraining\Ã‚ø‚
 
 ;= For Work

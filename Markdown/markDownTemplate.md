@@ -1,19 +1,20 @@
-- [This is an H1](#This-is-an-H1)
-  - [This is an H2](#This-is-an-H2)
-          - [This is an H6](#This-is-an-H6)
-- [一级标题](#%E4%B8%80%E7%BA%A7%E6%A0%87%E9%A2%98)
-  - [二级标题](#%E4%BA%8C%E7%BA%A7%E6%A0%87%E9%A2%98)
-  - [列表](#%E5%88%97%E8%A1%A8)
-  - [引用](#%E5%BC%95%E7%94%A8)
-  - [选择框](#%E9%80%89%E6%8B%A9%E6%A1%86)
-  - [表格](#%E8%A1%A8%E6%A0%BC)
-  - [引用网址](#%E5%BC%95%E7%94%A8%E7%BD%91%E5%9D%80)
-  - [引用特定类型文本](#%E5%BC%95%E7%94%A8%E7%89%B9%E5%AE%9A%E7%B1%BB%E5%9E%8B%E6%96%87%E6%9C%AC)
-  - [数学公式](#%E6%95%B0%E5%AD%A6%E5%85%AC%E5%BC%8F)
-  - [转义字符，加 “\”](#%E8%BD%AC%E4%B9%89%E5%AD%97%E7%AC%A6%E5%8A%A0)
-  - [图片](#%E5%9B%BE%E7%89%87)
-    - [base64的图片转换 Python 代码](#base64%E7%9A%84%E5%9B%BE%E7%89%87%E8%BD%AC%E6%8D%A2-Python-%E4%BB%A3%E7%A0%81)
-- [🎉Life is fantastic🥳!](#%F0%9F%8E%89Life-is-fantastic%F0%9F%A5%B3)
+- [This is an H1](#this-is-an-h1)
+  - [This is an H2](#this-is-an-h2)
+          - [This is an H6](#this-is-an-h6)
+- [一级标题](#%e4%b8%80%e7%ba%a7%e6%a0%87%e9%a2%98)
+  - [二级标题](#%e4%ba%8c%e7%ba%a7%e6%a0%87%e9%a2%98)
+  - [列表](#%e5%88%97%e8%a1%a8)
+  - [引用](#%e5%bc%95%e7%94%a8)
+  - [选择框](#%e9%80%89%e6%8b%a9%e6%a1%86)
+  - [表格](#%e8%a1%a8%e6%a0%bc)
+  - [引用网址](#%e5%bc%95%e7%94%a8%e7%bd%91%e5%9d%80)
+  - [引用特定类型文本](#%e5%bc%95%e7%94%a8%e7%89%b9%e5%ae%9a%e7%b1%bb%e5%9e%8b%e6%96%87%e6%9c%ac)
+  - [数学公式](#%e6%95%b0%e5%ad%a6%e5%85%ac%e5%bc%8f)
+  - [转义字符，加 “\”](#%e8%bd%ac%e4%b9%89%e5%ad%97%e7%ac%a6%e5%8a%a0)
+  - [图片](#%e5%9b%be%e7%89%87)
+    - [base64的图片转换 Python 代码](#base64%e7%9a%84%e5%9b%be%e7%89%87%e8%bd%ac%e6%8d%a2-python-%e4%bb%a3%e7%a0%81)
+    - [base64的图片转换 HTML5 代码](#base64%e7%9a%84%e5%9b%be%e7%89%87%e8%bd%ac%e6%8d%a2-html5-%e4%bb%a3%e7%a0%81)
+- [🎉Life is fantastic🥳!](#%f0%9f%8e%89life-is-fantastic%f0%9f%a5%b3)
 
 
 
@@ -51,10 +52,12 @@
 行尾加两个空格，这里->  
 即可段内换行。
 
-*这些文字显示为斜体*
-
+ctrl + b  
 **这些文字显示为粗体**
 
+ctrl + i  
+*这些文字显示为斜体*
+  
 ~~*这些文字删除线*~~
 
 分割线
@@ -109,7 +112,7 @@ $$
 
 
 ## 图片
-![Alt text](https://www.chiphell.com/static/image/common/logo.png "Optional title")
+![Alt text](https://raw.githubusercontent.com/chanfengsr/AllPrivateProject/master/Markdown/logo.png "Optional title")
 
 ![](./logo.png)
 
@@ -132,6 +135,48 @@ imgdata=base64.b64decode(bs)
 file=open('2.jpg','wb')
 file.write(imgdata)
 file.close()
+```
+
+### base64的图片转换 HTML5 代码
+```html
+<!Doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>html5 image to base64</title>
+</head>
+
+<body>
+    <script type="text/javascript">
+        window.onload = function () {
+            // 抓取上传图片，转换代码结果，显示图片的dom
+            var img_upload = document.getElementById("img_upload");
+            var base64_code = document.getElementById("base64_code");
+            var img_area = document.getElementById("img_area");
+            // 添加功能出发监听事件
+            img_upload.addEventListener('change', readFile, false);
+        }
+        function readFile() {
+            var file = this.files[0];
+            if (!/image\/\w+/.test(file.type)) {
+                alert("请确保文件为图像类型");
+                return false;
+            }
+            var reader = new FileReader();
+            reader.readAsDataURL(file);
+            reader.onload = function () {
+                base64_code.innerHTML = this.result;
+                img_area.innerHTML = '<div>图片img标签展示：</div><img src="' + this.result + '" alt=""/>';
+            }
+        }
+    </script>
+    <input type="file" id="img_upload" />
+    <textarea id="base64_code" rows="30" cols="360"></textarea>
+    <p id="img_area"></p>
+</body>
+
+</html>
 ```
 
 [Markdown语法说明（详解版）](http://www.ituring.com.cn/article/504)
