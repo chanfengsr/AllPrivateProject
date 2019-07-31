@@ -116,6 +116,26 @@ def createPdfFile(sourceHtml, pdfFileName):
         print("PDF 已生成。  --> %s" % (pdfFileName))
 
 
+# 点击页面上的 “展开”
+def ExpTag(driver):
+    try:
+        zhanKai = driver.find_element_by_xpath("//span[text()=\"展开\"]")
+        while zhanKai is not None:
+            # 页面滚动到指定元素
+            driver.execute_script("arguments[0].scrollIntoView();", zhanKai)
+
+            # 再往上翻一点点，否则可能会被登录 DIV 挡住
+            driver.execute_script('window.scrollBy(0,-200)')
+
+            zhanKai.click()
+
+            driver.implicitly_wait(1)
+            time.sleep(1)
+
+            zhanKai = driver.find_element_by_xpath("//span[text()=\"展开\"]")
+    except:
+        pass
+
 def processHtml(html, tarTitle):
     """
     处理 HTML 源码，生成文件，生成 PDF
@@ -156,6 +176,7 @@ def processHtml(html, tarTitle):
     # 获取干净的 html 并保存
     [s.extract() for s in bs.find_all("script")]  # 去干净 JS
     headHtml = bs.find("head")
+    headHtml = repr(headHtml).replace('="//static001.', '="https://static001.')  # 替换标签图标路径
     bodyDivHtml = bs.find("div", {"class": CLASS_SCRAP_NAME})
     targetHtml = modHtml % (headHtml, bodyDivHtml)
     targetHtml = targetHtml.replace('CFSR', '')  # 去掉私人信息
@@ -194,6 +215,9 @@ def scrollDrive2Bottom(driver):
             break
         else:
             divHeightOrg = divHeightNew
+
+    # 点击页面上的 “展开”
+    ExpTag(driver)
 
 
 def main():

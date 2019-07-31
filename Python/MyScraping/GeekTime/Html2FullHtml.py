@@ -1,11 +1,9 @@
-'''
-清洗一个目录下的所有 HTML 文件中的 JS
-'''
 import os
-from bs4 import BeautifulSoup
+import GeekTime.webpage2html as web2html
 
-htmlPath = r'r:\\'
-targetPath = r'r:\Clearn'
+
+htmlPath = r'r:\Html'
+targetPath = r'r:\FullHtml'
 
 if __name__ == '__main__':
     if not os.path.exists(htmlPath):
@@ -20,19 +18,11 @@ if __name__ == '__main__':
     for file in fileList:
         htmlFileName = os.path.join(htmlPath, file)
         tarFileName = os.path.join(targetPath, file)
-        print(htmlFileName)
+        print(file)
 
-        htmlFile = open(htmlFileName, 'rt', encoding='UTF-8')
-        origHtml = htmlFile.read()
-        htmlFile.close()
-        bs = BeautifulSoup(origHtml, "html.parser")
-
-        # 获取干净的 html 并保存
-        [s.extract() for s in bs.find_all("script")]
-
+        gen = web2html.generate(htmlFileName, comment=False, full_url=True, verbose=True)
         tarHtmlFile = open(tarFileName, 'w', encoding='utf-8')
-        tarHtmlFile.write(repr(bs))
+        tarHtmlFile.write(gen)
         tarHtmlFile.close()
 
-
-    print('Done.')
+    print('%s Done.' % len(fileList))

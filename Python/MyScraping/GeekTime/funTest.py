@@ -4,8 +4,49 @@ from selenium import webdriver
 import requests
 from urllib.request import urlopen, urlretrieve, pathname2url
 from turtle import *
+import GeekTime.webpage2html as web2html
+from termcolor import colored
 
 
+print('Origin color')
+print(colored('grey', 'grey'))
+print(colored('red', 'red'))
+print(colored('green', 'green'))
+print(colored('yellow', 'yellow'))
+print(colored('blue', 'blue'))
+print(colored('magenta', 'magenta'))
+print(colored('cyan', 'cyan'))
+print(colored('white', 'white'))
+exit()
+
+print('Origin color')
+colors = ['grey', 'red', 'green', 'yellow', 'blue', 'magenta', 'cyan', 'white']
+for color in colors:
+    web2html.log(color, color)
+exit()
+
+# 替换标签图标路径
+htmlPath = r'r:\Html'
+i = 0
+if not os.path.exists(htmlPath):
+    print('%s not exists.' % (htmlPath))
+    exit()
+fileList = [i for i in os.listdir(htmlPath) if
+            os.path.isfile(os.path.join(htmlPath, i)) and os.path.splitext(i)[1].lower() == '.html']
+for file in fileList:
+    htmlFileName = os.path.join(htmlPath, file)
+    htmlFile = open(htmlFileName, 'r', encoding='UTF-8')
+    html = htmlFile.read()
+    htmlFile.close()
+
+    html = html.replace('="//static001.', '="https://static001.')  # 替换标签图标路径
+    htmlFile = open(htmlFileName, 'w', encoding='UTF-8')
+    htmlFile.write(html)
+    htmlFile.close()
+    i += 1
+
+print('%s Done.' % i)
+exit()
 
 forward(100)
 left(120)
@@ -30,27 +71,30 @@ time.sleep(5)
 driver.close()
 exit()
 
+
 # 方法一：os.listdir
 # 遍历filepath下所有文件，包括子目录
 def gci(filepath):
-  files = os.listdir(filepath)
-  for fi in files:
-    fi_d = os.path.join(filepath,fi)
-    if os.path.isdir(fi_d):
-      gci(fi_d)
-    else:
-      print (os.path.join(filepath,fi_d))
+    files = os.listdir(filepath)
+    for fi in files:
+        fi_d = os.path.join(filepath, fi)
+        if os.path.isdir(fi_d):
+            gci(fi_d)
+        else:
+            print(os.path.join(filepath, fi_d))
+
 
 # 方法二：os.walk
 # for fpathe,dirs,fs in os.walk('r:\\'):
 #   for f in fs:
 #     print (os.path.join(fpathe,f))
 
-h = [i for i in os.listdir('r:\\') if os.path.isfile(os.path.join('r:\\',i)) and os.path.splitext(i)[1].lower()=='.html']
+h = [i for i in os.listdir('r:\\') if
+     os.path.isfile(os.path.join('r:\\', i)) and os.path.splitext(i)[1].lower() == '.html']
 print(h)
-for i in os.listdir('r:\\') :
-    fullName=os.path.join('r:\\',i)
-    if os.path.isfile(fullName)   and  os.path.splitext(i)[1].lower() == '.html':
+for i in os.listdir('r:\\'):
+    fullName = os.path.join('r:\\', i)
+    if os.path.isfile(fullName) and os.path.splitext(i)[1].lower() == '.html':
         print(i)
 
 exit()
@@ -67,7 +111,7 @@ fileName = r"r:\a.pdf"
 file = open(r'r:\a.html', 'rt', encoding='utf-8')
 origHtml = file.read()
 file.close()
-origHtml = origHtml.replace(r'background:#000',r'background:#fff')
+origHtml = origHtml.replace(r'background:#000', r'background:#fff')
 pdfkit.from_string(origHtml, fileName, options=options)
 print('Done')
 exit()

@@ -15,10 +15,8 @@ CLASS_SCRAP_NAME = '_20-cXID6_0'
 # 元素 1：文章原始标题
 # 元素 2：网页地址或手工保存网页文件的绝对路径
 courseList = \
-    [('第37期 | 如何读好一本书', 'https://time.geekbang.org/column/article/103201'),
-     ('第38期 | 为什么获得提拔的不是你？', 'https://time.geekbang.org/column/article/103439'),
-     ('第39期 | 我是如何收集知识的', 'https://time.geekbang.org/column/article/103671'),
-     ('第40期 | 把Linux内核当成一家软件外包公司的老板', 'https://time.geekbang.org/column/article/103918')]
+    [('第61期 | 你会主动跟你的上级沟通吗？', 'https://time.geekbang.org/column/article/111197'),
+     ('第62期 | 有准备的面试才能拿到更好的 Offer', 'https://time.geekbang.org/column/article/111394')]
 
 realDir = os.path.dirname(os.path.realpath(__file__))
 
@@ -87,6 +85,27 @@ def createPdfFile(sourceHtml, pdfFileName):
         print("PDF 已生成。  --> %s" % (pdfFileName))
 
 
+# 点击页面上的 “展开”
+def ExpTag(driver):
+    try:
+        zhanKai = driver.find_element_by_xpath("//span[text()=\"展开\"]")
+        while zhanKai is not None:
+            # 页面滚动到指定元素
+            driver.execute_script("arguments[0].scrollIntoView();", zhanKai)
+
+            # 再往上翻一点点，否则可能会被登录 DIV 挡住
+            driver.execute_script('window.scrollBy(0,-200)')
+
+            zhanKai.click()
+
+            driver.implicitly_wait(1)
+            time.sleep(1)
+
+            zhanKai = driver.find_element_by_xpath("//span[text()=\"展开\"]")
+    except:
+        pass
+
+
 def processHtml(html, tarTitle):
     """
     处理 HTML 源码，生成文件，生成 PDF
@@ -133,6 +152,7 @@ def processHtml(html, tarTitle):
         headDiv.extract()
 
     headHtml = bs.find("head")
+    headHtml = repr(headHtml).replace('="//static001.', '="https://static001.')  # 替换标签图标路径
     bodyDivHtml = bs.find("div", {"class": CLASS_SCRAP_NAME})
     targetHtml = modHtml % (headHtml, bodyDivHtml)
     targetHtml = targetHtml.replace('CFSR', '')  # 去掉私人信息
@@ -158,6 +178,9 @@ def scrollDrive2Bottom(driver):
             break
         else:
             pageHeight_orig = pageHeight_new
+
+    # 点击页面上的 “展开”
+    ExpTag(driver)
 
     # divHeightOrg = driver.execute_script(
     #     'return document.getElementsByClassName(\'' + CLASS_SCROLL_NAME + '\')[0].scrollTop')
