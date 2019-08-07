@@ -36,6 +36,7 @@ re          = echo "/* ×¢ÊÍÐÐ */:    ^/\*.*\*/$" & echo "¿Õ°×ÐÐ      :    ^\s*$"
 edit        = EditPlus /n
 bcomp       = "%Software%\ExtractProgram\Beyond Compare\BCompare.exe"
 vps         = ssh root@45.77.22.199
+ssh98       = ssh -p 9822 root@58.246.52.42
 inet        = inetcpl.cpl
 ncpa        = ncpa.cpl
 sysdm       = sysdm.cpl
