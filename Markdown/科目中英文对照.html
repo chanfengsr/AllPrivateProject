@@ -1,0 +1,780 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>科目中英文对照.md</title>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+
+<style>
+/*---------------------------------------------------------------------------------------------
+ *  Copyright (c) Microsoft Corporation. All rights reserved.
+ *  Licensed under the MIT License. See License.txt in the project root for license information.
+ *--------------------------------------------------------------------------------------------*/
+
+body {
+	font-family: "Segoe WPC", "Segoe UI", "SFUIText-Light", "HelveticaNeue-Light", sans-serif, "Droid Sans Fallback";
+	font-size: 14px;
+	padding: 0 12px;
+	line-height: 22px;
+	word-wrap: break-word;
+}
+
+#code-csp-warning {
+	position: fixed;
+	top: 0;
+	right: 0;
+	color: white;
+	margin: 16px;
+	text-align: center;
+	font-size: 12px;
+	font-family: sans-serif;
+	background-color:#444444;
+	cursor: pointer;
+	padding: 6px;
+	box-shadow: 1px 1px 1px rgba(0,0,0,.25);
+}
+
+#code-csp-warning:hover {
+	text-decoration: none;
+	background-color:#007acc;
+	box-shadow: 2px 2px 2px rgba(0,0,0,.25);
+}
+
+
+body.scrollBeyondLastLine {
+	margin-bottom: calc(100vh - 22px);
+}
+
+body.showEditorSelection .code-line {
+	position: relative;
+}
+
+body.showEditorSelection .code-active-line:before,
+body.showEditorSelection .code-line:hover:before {
+	content: "";
+	display: block;
+	position: absolute;
+	top: 0;
+	left: -12px;
+	height: 100%;
+}
+
+body.showEditorSelection li.code-active-line:before,
+body.showEditorSelection li.code-line:hover:before {
+	left: -30px;
+}
+
+.vscode-light.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.15);
+}
+
+.vscode-light.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(0, 0, 0, 0.40);
+}
+
+.vscode-dark.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.4);
+}
+
+.vscode-dark.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 255, 255, 0.60);
+}
+
+.vscode-high-contrast.showEditorSelection .code-active-line:before {
+	border-left: 3px solid rgba(255, 160, 0, 0.7);
+}
+
+.vscode-high-contrast.showEditorSelection .code-line:hover:before {
+	border-left: 3px solid rgba(255, 160, 0, 1);
+}
+
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+
+a {
+	color: #4080D0;
+	text-decoration: none;
+}
+
+a:focus,
+input:focus,
+select:focus,
+textarea:focus {
+	outline: 1px solid -webkit-focus-ring-color;
+	outline-offset: -1px;
+}
+
+hr {
+	border: 0;
+	height: 2px;
+	border-bottom: 2px solid;
+}
+
+h1 {
+	padding-bottom: 0.3em;
+	line-height: 1.2;
+	border-bottom-width: 1px;
+	border-bottom-style: solid;
+}
+
+h1, h2, h3 {
+	font-weight: normal;
+}
+
+h1 code,
+h2 code,
+h3 code,
+h4 code,
+h5 code,
+h6 code {
+	font-size: inherit;
+	line-height: auto;
+}
+
+a:hover {
+	color: #4080D0;
+	text-decoration: underline;
+}
+
+table {
+	border-collapse: collapse;
+}
+
+table > thead > tr > th {
+	text-align: left;
+	border-bottom: 1px solid;
+}
+
+table > thead > tr > th,
+table > thead > tr > td,
+table > tbody > tr > th,
+table > tbody > tr > td {
+	padding: 5px 10px;
+}
+
+table > tbody > tr + tr > td {
+	border-top: 1px solid;
+}
+
+blockquote {
+	margin: 0 7px 0 5px;
+	padding: 0 16px 0 10px;
+	border-left: 5px solid;
+}
+
+code {
+	font-family: Menlo, Monaco, Consolas, "Droid Sans Mono", "Courier New", monospace, "Droid Sans Fallback";
+	font-size: 14px;
+	line-height: 19px;
+}
+
+body.wordWrap pre {
+	white-space: pre-wrap;
+}
+
+.mac code {
+	font-size: 12px;
+	line-height: 18px;
+}
+
+pre:not(.hljs),
+pre.hljs code > div {
+	padding: 16px;
+	border-radius: 3px;
+	overflow: auto;
+}
+
+/** Theming */
+
+.vscode-light,
+.vscode-light pre code {
+	color: rgb(30, 30, 30);
+}
+
+.vscode-dark,
+.vscode-dark pre code {
+	color: #DDD;
+}
+
+.vscode-high-contrast,
+.vscode-high-contrast pre code {
+	color: white;
+}
+
+.vscode-light code {
+	color: #A31515;
+}
+
+.vscode-dark code {
+	color: #D7BA7D;
+}
+
+.vscode-light pre:not(.hljs),
+.vscode-light code > div {
+	background-color: rgba(220, 220, 220, 0.4);
+}
+
+.vscode-dark pre:not(.hljs),
+.vscode-dark code > div {
+	background-color: rgba(10, 10, 10, 0.4);
+}
+
+.vscode-high-contrast pre:not(.hljs),
+.vscode-high-contrast code > div {
+	background-color: rgb(0, 0, 0);
+}
+
+.vscode-high-contrast h1 {
+	border-color: rgb(0, 0, 0);
+}
+
+.vscode-light table > thead > tr > th {
+	border-color: rgba(0, 0, 0, 0.69);
+}
+
+.vscode-dark table > thead > tr > th {
+	border-color: rgba(255, 255, 255, 0.69);
+}
+
+.vscode-light h1,
+.vscode-light hr,
+.vscode-light table > tbody > tr + tr > td {
+	border-color: rgba(0, 0, 0, 0.18);
+}
+
+.vscode-dark h1,
+.vscode-dark hr,
+.vscode-dark table > tbody > tr + tr > td {
+	border-color: rgba(255, 255, 255, 0.18);
+}
+
+.vscode-light blockquote,
+.vscode-dark blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.vscode-high-contrast blockquote {
+	background: transparent;
+	border-color: #fff;
+}
+</style>
+
+<style>
+/* Tomorrow Theme */
+/* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+/* Original theme - https://github.com/chriskempson/tomorrow-theme */
+
+/* Tomorrow Comment */
+.hljs-comment,
+.hljs-quote {
+	color: #8e908c;
+}
+
+/* Tomorrow Red */
+.hljs-variable,
+.hljs-template-variable,
+.hljs-tag,
+.hljs-name,
+.hljs-selector-id,
+.hljs-selector-class,
+.hljs-regexp,
+.hljs-deletion {
+	color: #c82829;
+}
+
+/* Tomorrow Orange */
+.hljs-number,
+.hljs-built_in,
+.hljs-builtin-name,
+.hljs-literal,
+.hljs-type,
+.hljs-params,
+.hljs-meta,
+.hljs-link {
+	color: #f5871f;
+}
+
+/* Tomorrow Yellow */
+.hljs-attribute {
+	color: #eab700;
+}
+
+/* Tomorrow Green */
+.hljs-string,
+.hljs-symbol,
+.hljs-bullet,
+.hljs-addition {
+	color: #718c00;
+}
+
+/* Tomorrow Blue */
+.hljs-title,
+.hljs-section {
+	color: #4271ae;
+}
+
+/* Tomorrow Purple */
+.hljs-keyword,
+.hljs-selector-tag {
+	color: #8959a8;
+}
+
+.hljs {
+	display: block;
+	overflow-x: auto;
+	color: #4d4d4c;
+	padding: 0.5em;
+}
+
+.hljs-emphasis {
+	font-style: italic;
+}
+
+.hljs-strong {
+	font-weight: bold;
+}
+</style>
+
+<style>
+/*
+ * Markdown PDF CSS
+ */
+
+ body {
+	font-family:  "Meiryo", "Segoe WPC", "Segoe UI", "SFUIText-Light", "HelveticaNeue-Light", sans-serif, "Droid Sans Fallback";
+}
+
+pre {
+	background-color: #f8f8f8;
+	border: 1px solid #cccccc;
+	border-radius: 3px;
+	overflow-x: auto;
+	white-space: pre-wrap;
+	overflow-wrap: break-word;
+}
+
+pre:not(.hljs) {
+	padding: 23px;
+	line-height: 19px;
+}
+
+blockquote {
+	background: rgba(127, 127, 127, 0.1);
+	border-color: rgba(0, 122, 204, 0.5);
+}
+
+.emoji {
+	height: 1.4em;
+}
+
+/* for inline code */
+:not(pre):not(.hljs) > code {
+	color: #C9AE75; /* Change the old color so it seems less like an error */
+	font-size: inherit;
+}
+
+/* Page Break : use <div class="page"/> to insert page break
+-------------------------------------------------------- */
+.page {
+	page-break-after: always;
+}
+
+</style>
+
+</head>
+<body>
+<table>
+<thead>
+<tr>
+<th style="text-align:left">Cn</th>
+<th style="text-align:left">En</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:left">库存现金</td>
+<td style="text-align:left">cash on hand</td>
+</tr>
+<tr>
+<td style="text-align:left">银行存款</td>
+<td style="text-align:left">bank deposit</td>
+</tr>
+<tr>
+<td style="text-align:left">其他货币资金</td>
+<td style="text-align:left">other monetary capital</td>
+</tr>
+<tr>
+<td style="text-align:left">交易性金融资产</td>
+<td style="text-align:left">transaction monetary assets</td>
+</tr>
+<tr>
+<td style="text-align:left">应收票据</td>
+<td style="text-align:left">notes receivable</td>
+</tr>
+<tr>
+<td style="text-align:left">应收账款</td>
+<td style="text-align:left">Account receivable</td>
+</tr>
+<tr>
+<td style="text-align:left">预付账款</td>
+<td style="text-align:left">account prepaid</td>
+</tr>
+<tr>
+<td style="text-align:left">应收股利</td>
+<td style="text-align:left">dividend receivable</td>
+</tr>
+<tr>
+<td style="text-align:left">应收利息</td>
+<td style="text-align:left">accrued interest receivable</td>
+</tr>
+<tr>
+<td style="text-align:left">其他应收款</td>
+<td style="text-align:left">accounts receivable-others</td>
+</tr>
+<tr>
+<td style="text-align:left">坏账准备</td>
+<td style="text-align:left">had debts reserve</td>
+</tr>
+<tr>
+<td style="text-align:left">材料采购</td>
+<td style="text-align:left">procurement of materials</td>
+</tr>
+<tr>
+<td style="text-align:left">在途物资</td>
+<td style="text-align:left">materials in transit</td>
+</tr>
+<tr>
+<td style="text-align:left">原材料</td>
+<td style="text-align:left">raw materials</td>
+</tr>
+<tr>
+<td style="text-align:left">库存商品</td>
+<td style="text-align:left">commodity stocks</td>
+</tr>
+<tr>
+<td style="text-align:left">发出商品</td>
+<td style="text-align:left">goods in transit</td>
+</tr>
+<tr>
+<td style="text-align:left">包装物及低值易耗品</td>
+<td style="text-align:left">wrappage and low value and easily wornout articles</td>
+</tr>
+<tr>
+<td style="text-align:left">存货跌价准备</td>
+<td style="text-align:left">reserve against stock price declining</td>
+</tr>
+<tr>
+<td style="text-align:left">持有至到期投资</td>
+<td style="text-align:left">hold investment due</td>
+</tr>
+<tr>
+<td style="text-align:left">持有至到期投资减值准备</td>
+<td style="text-align:left">hold investment due reduction reserve</td>
+</tr>
+<tr>
+<td style="text-align:left">可供出售金融资产</td>
+<td style="text-align:left">financial assets available for sale</td>
+</tr>
+<tr>
+<td style="text-align:left">长期股权投资</td>
+<td style="text-align:left">long-term stock ownership investment</td>
+</tr>
+<tr>
+<td style="text-align:left">长期股权投资减值准备</td>
+<td style="text-align:left">long-term stock ownership investment reduction reserve</td>
+</tr>
+<tr>
+<td style="text-align:left">投资性房地产</td>
+<td style="text-align:left">investment real eastate</td>
+</tr>
+<tr>
+<td style="text-align:left">长期应收款</td>
+<td style="text-align:left">long-term account receivable</td>
+</tr>
+<tr>
+<td style="text-align:left">未实现融资收益</td>
+<td style="text-align:left">unrealized financing income</td>
+</tr>
+<tr>
+<td style="text-align:left">固定资产</td>
+<td style="text-align:left">permanent assets</td>
+</tr>
+<tr>
+<td style="text-align:left">累计折旧</td>
+<td style="text-align:left">accumulated depreciation</td>
+</tr>
+<tr>
+<td style="text-align:left">固定资产减值准</td>
+<td style="text-align:left">permanent assets reduction reserve</td>
+</tr>
+<tr>
+<td style="text-align:left">在建工程</td>
+<td style="text-align:left">construction in process</td>
+</tr>
+<tr>
+<td style="text-align:left">工程物资</td>
+<td style="text-align:left">engineer material</td>
+</tr>
+<tr>
+<td style="text-align:left">固定资产清理</td>
+<td style="text-align:left">disposal of fixed assets</td>
+</tr>
+<tr>
+<td style="text-align:left">融资租赁资产 租赁专用</td>
+<td style="text-align:left">financial leasing assets exclusively for leasing</td>
+</tr>
+<tr>
+<td style="text-align:left">未担保余值 租赁专用</td>
+<td style="text-align:left">unguaranteed residual value exclusively for leasing</td>
+</tr>
+<tr>
+<td style="text-align:left">生产性生物资产 农业专用</td>
+<td style="text-align:left">productive living assets exclusively for agriculture</td>
+</tr>
+<tr>
+<td style="text-align:left">生产性生物资产累计折旧 农业专用</td>
+<td style="text-align:left">productive living assets accumulated depreciation exclusively for agriculture</td>
+</tr>
+<tr>
+<td style="text-align:left">公益性生物资产 农业专用</td>
+<td style="text-align:left">non-profit living assets exclusively for agriculture</td>
+</tr>
+<tr>
+<td style="text-align:left">油气资产 石油天然气开采专用</td>
+<td style="text-align:left">oil and gas assets exclusively for oil and gas exploitation</td>
+</tr>
+<tr>
+<td style="text-align:left">累计折耗 石油天然气开采专用</td>
+<td style="text-align:left">accumulated depletion exclusively for oil and gas exploitation</td>
+</tr>
+<tr>
+<td style="text-align:left">无形资产</td>
+<td style="text-align:left">intangible assets</td>
+</tr>
+<tr>
+<td style="text-align:left">累计摊销</td>
+<td style="text-align:left">accumulated amortization</td>
+</tr>
+<tr>
+<td style="text-align:left">无形资产减值准备</td>
+<td style="text-align:left">intangible assets reduction reserve</td>
+</tr>
+<tr>
+<td style="text-align:left">商誉</td>
+<td style="text-align:left">business reputation</td>
+</tr>
+<tr>
+<td style="text-align:left">长期待摊费用</td>
+<td style="text-align:left">long-term deferred expenses</td>
+</tr>
+<tr>
+<td style="text-align:left">递延所得税资产</td>
+<td style="text-align:left">deferred income tax assets</td>
+</tr>
+<tr>
+<td style="text-align:left">待处理财产损溢</td>
+<td style="text-align:left">waiting assets profit and loss</td>
+</tr>
+<tr>
+<td style="text-align:left">短期借款</td>
+<td style="text-align:left">short-term loan</td>
+</tr>
+<tr>
+<td style="text-align:left">交易性金融负债</td>
+<td style="text-align:left">transaction financial liabilities</td>
+</tr>
+<tr>
+<td style="text-align:left">应付票据</td>
+<td style="text-align:left">notes payable</td>
+</tr>
+<tr>
+<td style="text-align:left">应付账款</td>
+<td style="text-align:left">account payable</td>
+</tr>
+<tr>
+<td style="text-align:left">预收账款</td>
+<td style="text-align:left">item received in advance</td>
+</tr>
+<tr>
+<td style="text-align:left">应付职工薪酬</td>
+<td style="text-align:left">employee pay payable</td>
+</tr>
+<tr>
+<td style="text-align:left">应交税费</td>
+<td style="text-align:left">tax payable</td>
+</tr>
+<tr>
+<td style="text-align:left">应付股利</td>
+<td style="text-align:left">dividend payable</td>
+</tr>
+<tr>
+<td style="text-align:left">应付利息</td>
+<td style="text-align:left">interest payable</td>
+</tr>
+<tr>
+<td style="text-align:left">其他应付款</td>
+<td style="text-align:left">other account payable</td>
+</tr>
+<tr>
+<td style="text-align:left">预计负债</td>
+<td style="text-align:left">estimated liabilities</td>
+</tr>
+<tr>
+<td style="text-align:left">递延收益</td>
+<td style="text-align:left">deferred income</td>
+</tr>
+<tr>
+<td style="text-align:left">长期借款</td>
+<td style="text-align:left">money borrowed for long term</td>
+</tr>
+<tr>
+<td style="text-align:left">长期债券</td>
+<td style="text-align:left">long-term bond</td>
+</tr>
+<tr>
+<td style="text-align:left">长期应付款</td>
+<td style="text-align:left">long-term account payable</td>
+</tr>
+<tr>
+<td style="text-align:left">未确认融资费用</td>
+<td style="text-align:left">unacknowledged financial charges</td>
+</tr>
+<tr>
+<td style="text-align:left">专项应付款</td>
+<td style="text-align:left">special accounts payable</td>
+</tr>
+<tr>
+<td style="text-align:left">递延所得税负债</td>
+<td style="text-align:left">deferred income tax liabilities</td>
+</tr>
+<tr>
+<td style="text-align:left">实收资本</td>
+<td style="text-align:left">paid-up capital</td>
+</tr>
+<tr>
+<td style="text-align:left">资本公积</td>
+<td style="text-align:left">contributed surplus</td>
+</tr>
+<tr>
+<td style="text-align:left">盈余公积</td>
+<td style="text-align:left">earned surplus</td>
+</tr>
+<tr>
+<td style="text-align:left">本年利润</td>
+<td style="text-align:left">profit for the current year</td>
+</tr>
+<tr>
+<td style="text-align:left">利润分配</td>
+<td style="text-align:left">allocation of profits</td>
+</tr>
+<tr>
+<td style="text-align:left">库存股</td>
+<td style="text-align:left">treasury stock</td>
+</tr>
+<tr>
+<td style="text-align:left">生产成本</td>
+<td style="text-align:left">production cost</td>
+</tr>
+<tr>
+<td style="text-align:left">制造费用</td>
+<td style="text-align:left">cost of production</td>
+</tr>
+<tr>
+<td style="text-align:left">劳务成本</td>
+<td style="text-align:left">service cost</td>
+</tr>
+<tr>
+<td style="text-align:left">研发支出</td>
+<td style="text-align:left">research and development expenditures</td>
+</tr>
+<tr>
+<td style="text-align:left">工程施工 建造承包商专用</td>
+<td style="text-align:left">engineering construction exclusively for construction contractor</td>
+</tr>
+<tr>
+<td style="text-align:left">工程结算 建造承包商专用</td>
+<td style="text-align:left">engineering settlement exclusively for construction contractor</td>
+</tr>
+<tr>
+<td style="text-align:left">机械作业 建造承包商专用</td>
+<td style="text-align:left">mechanical operation exclusively for construction contractor</td>
+</tr>
+<tr>
+<td style="text-align:left">主营业务收入</td>
+<td style="text-align:left">main business income</td>
+</tr>
+<tr>
+<td style="text-align:left">利息收入 金融共用</td>
+<td style="text-align:left">interest income financial sharing</td>
+</tr>
+<tr>
+<td style="text-align:left">其他业务收入</td>
+<td style="text-align:left">other business income</td>
+</tr>
+<tr>
+<td style="text-align:left">汇兑损益 金融专用</td>
+<td style="text-align:left">exchange gain or loss exclusively for finance</td>
+</tr>
+<tr>
+<td style="text-align:left">公允价值变动损益</td>
+<td style="text-align:left">sound value flexible loss and profit</td>
+</tr>
+<tr>
+<td style="text-align:left">投资收益</td>
+<td style="text-align:left">income on investment</td>
+</tr>
+<tr>
+<td style="text-align:left">营业外收入</td>
+<td style="text-align:left">nonrevenue receipt</td>
+</tr>
+<tr>
+<td style="text-align:left">主营业务成本</td>
+<td style="text-align:left">main business cost</td>
+</tr>
+<tr>
+<td style="text-align:left">其他业务支出</td>
+<td style="text-align:left">other business expense</td>
+</tr>
+<tr>
+<td style="text-align:left">营业税金及附加</td>
+<td style="text-align:left">business tariff and annex</td>
+</tr>
+<tr>
+<td style="text-align:left">利息支出 金融共用</td>
+<td style="text-align:left">interest expense financial sharing</td>
+</tr>
+<tr>
+<td style="text-align:left">销售费用</td>
+<td style="text-align:left">marketing cost</td>
+</tr>
+<tr>
+<td style="text-align:left">管理费用</td>
+<td style="text-align:left">managing cost</td>
+</tr>
+<tr>
+<td style="text-align:left">财务费用</td>
+<td style="text-align:left">financial cost</td>
+</tr>
+<tr>
+<td style="text-align:left">勘探费用</td>
+<td style="text-align:left">exploration expense</td>
+</tr>
+<tr>
+<td style="text-align:left">资产减值损失</td>
+<td style="text-align:left">loss from asset devaluation</td>
+</tr>
+<tr>
+<td style="text-align:left">营业外支出</td>
+<td style="text-align:left">nonoperating expense</td>
+</tr>
+<tr>
+<td style="text-align:left">所得税</td>
+<td style="text-align:left">income tax</td>
+</tr>
+</tbody>
+</table>
+
+</body>
+</html>
