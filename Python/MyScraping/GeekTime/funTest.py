@@ -7,6 +7,9 @@ from turtle import *
 import GeekTime.webpage2html as web2html
 from termcolor import colored
 
+print(os.environ.get("Project"))
+print(os.getcwd())
+exit()
 
 print('Origin color')
 print(colored('grey', 'grey'))
