@@ -188,14 +188,14 @@ Emojis for smileys, people, families, hand gestures, clothing and accessories.
 🙎 Person Pouting  （噘嘴的人）  
 🙎‍♂️ Man Pouting  （噘嘴的男人）  
 🙎‍♀️ Woman Pouting  （噘嘴的女人）  
-🙅 Person Gesturing No  （打手势没有）  
-🙅‍♂️ Man Gesturing No  （打手势没有的男人）  
-🙅‍♀️ Woman Gesturing No  （打手势没有的女人）  
-🙆 Person Gesturing OK  （打手势好的人）  
-🙆‍♂️ Man Gesturing OK  （打手势好的男人）  
-🙆‍♀️ Woman Gesturing OK  （打手势好的女人）  
+🙅 Person Gesturing No  （打手势“不”）  
+🙅‍♂️ Man Gesturing No  （打手势“不”的男人）  
+🙅‍♀️ Woman Gesturing No  （打手势“不”的女人）  
+🙆 Person Gesturing OK  （打手势“好”的人）  
+🙆‍♂️ Man Gesturing OK  （打手势“好”的男人）  
+🙆‍♀️ Woman Gesturing OK  （打手势“好”的女人）  
 💁 Person Tipping Hand  （小费手）  
-💁‍♂️ Man Tipping Hand  （男人小费手）  
+💁‍♂️ Man Tipping Hand  （男人小费手）  ****
 💁‍♀️ Woman Tipping Hand  （女人小费手）  
 🙋 Person Raising Hand  （举手）  
 🙋‍♂️ Man Raising Hand  （举手的男人）  
@@ -399,9 +399,9 @@ Emojis for smileys, people, families, hand gestures, clothing and accessories.
 ## Animals & Nature
 Emojis for animals, nature, and weather.
 
-🙈 See-No-Evil Monkey  （看见没有邪恶的猴子）  
-🙉 Hear-No-Evil Monkey  （听到没有邪恶的猴子）  
-🙊 Speak-No-Evil Monkey  （说话没有邪恶的猴子）  
+🙈 See-No-Evil Monkey  （不看猴子）  
+🙉 Hear-No-Evil Monkey  （不听猴子）  
+🙊 Speak-No-Evil Monkey  （不说猴子）  
 💥 Collision  （碰撞）  
 💫 Dizzy  （头晕）  
 💦 Sweat Droplets  （汗滴）  
@@ -536,14 +536,14 @@ Emojis for animals, nature, and weather.
 🌏 Globe Showing Asia-Australia  （显示亚洲澳洲的地球）  
 🌐 Globe With Meridians  （地球与经络）  
 🌑 New Moon  （新月）  
-🌒 Waxing Crescent Moon  （月牙）  
+🌒 Waxing Crescent Moon  （娥眉月）  
 🌓 First Quarter Moon  （半月，上弦月）  
-🌔 Waxing Gibbous Moon  （凸月）  
+🌔 Waxing Gibbous Moon  （盈凸月）  
 🌕 Full Moon  （满月）  
 🌖 Waning Gibbous Moon  （亏月）  
 🌗 Last Quarter Moon  （半月，下弦月）  
-🌘 Waning Crescent Moon  （新月）  
-🌙 Crescent Moon  （新月）  
+🌘 Waning Crescent Moon  （残月）  
+🌙 Crescent Moon  （月牙）  
 🌚 New Moon Face  （新月脸）  
 🌛 First Quarter Moon Face  （上弦月脸）  
 🌜 Last Quarter Moon Face  （下弦月脸）  
