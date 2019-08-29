@@ -395,6 +395,7 @@ Emojis for smileys, people, families, hand gestures, clothing and accessories.
 💄 Lipstick  （口红）  
 💍 Ring  （戒指）  
 💼 Briefcase  （公文包）  
+｜ ⃢👁-👁⃢ ｜ （戴眼镜）
 
 ## Animals & Nature
 Emojis for animals, nature, and weather.

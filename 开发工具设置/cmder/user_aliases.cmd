@@ -36,7 +36,6 @@ re          = echo "/* ×¢ÊÍÐÐ */:    ^/\*.*\*/$" & echo "¿Õ°×ÐÐ      :    ^\s*$"
 edit        = EditPlus /n
 bcomp       = "%Software%\ExtractProgram\Beyond Compare\BCompare.exe"
 vps         = ssh root@45.77.22.199
-ssh98       = ssh -p 9822 root@58.246.52.42
 inet        = inetcpl.cpl
 ncpa        = ncpa.cpl
 sysdm       = sysdm.cpl
@@ -103,12 +102,13 @@ sql         = "D:\Program Files (x86)\Microsoft SQL Server\140\Tools\Binn\Manage
 rm30        = mstsc /v:192.168.1.30
 rm70        = mstsc /v:192.168.1.70
 rm71        = mstsc /v:192.168.1.71
-rm81        = mstsc /v:192.168.1.81
-rm111       = mstsc /v:192.168.50.111
+rm82        = mstsc /v:192.168.1.82
 rmSonUAT    = mstsc /v:172.20.3.64
 rmSonSTG    = mstsc /v:172.20.3.11
 rmSKE       = mstsc /v:q204h49620.51mypc.cn:55066
 rmMzk       = mstsc /v:mazak-dev01.eastus.cloudapp.azure.com
+
+ssh98       = ssh -p 9822 root@58.246.52.42
 
 pwd         = type "%Project%\AllPrivateProject\Info\pwdList.txt"
 skePwd      = type "%Project%\AllPrivateProject\Info\ske.txt"
