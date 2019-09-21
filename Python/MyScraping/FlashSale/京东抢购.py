@@ -87,7 +87,7 @@ if __name__ == "__main__":
         exit()
 
     # 时间格式："2018-09-06 11:20:00.000000"
-    times = "2019-08-20 00:00:00.000000" # input("请输入抢购时间，格式如(2018-09-06 11:20:00.000000):")
+    times = "2019-09-02 10:00:00.000000" # input("请输入抢购时间，格式如(2018-09-06 11:20:00.000000):")
     realDir = os.path.dirname(os.path.realpath(__file__))
     driver_path = os.environ.get("Project") + r'\AllInGitHub\CommonDriver\ChromeDriver\chromedriver.exe'
 

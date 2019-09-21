@@ -49,10 +49,11 @@ config      = EditPlus "%CMDER_ROOT%\config\user_aliases.cmd"
 wx          = "C:\Program Files (x86)\Tencent\WeChat\WeChat.exe"
 qq          = "D:\Program Files (x86)\Tencent\TIM\Bin\QQScLauncher.exe"
 wxqq        = "C:\Program Files (x86)\Tencent\WeChat\WeChat.exe" & "D:\Program Files (x86)\Tencent\TIM\Bin\QQScLauncher.exe"
+sb          = "C:\Program Files (x86)\Tencent\WeChat\WeChat.exe" & "D:\Program Files (x86)\Tencent\TIM\Bin\QQScLauncher.exe" & "C:\Program Files (x86)\Microsoft Office\root\Office16\OUTLOOK.EXE"
 music       = "C:\Program Files (x86)\Netease\CloudMusic\cloudmusic.exe"
 skype       = "C:\Program Files (x86)\Microsoft\Skype for Desktop\Skype.exe"
 ie          = "C:\Program Files\Internet Explorer\iexplore.exe"
-repOutlook  = "C:\Program Files\Microsoft Office\Office16\OUTLOOK.EXE /safe"
+repOutlook  = "C:\Program Files (x86)\Microsoft Office\root\Office16\OUTLOOK.EXE /safe"
 gitExt      = "C:\Program Files (x86)\GitExtensions\GitExtensions.exe"
 msu         = "%Software%\ExtractProgram\MiaoSS妙速\MiaoSS妙速.exe" & choice /t 15 /d y /n > nul & %Project%\AllPrivateProject\BatchShell\ClearProxy.bat
 Dism        = "%Software%\ExtractProgram\Dism\Dism++x64.exe"
@@ -86,6 +87,8 @@ gitAll      = explorer %Project%\AllPrivateProject
 leetcode    = explorer %Project%\AllPrivateProject\Python\LeetCodeTraining\题库
 
 ;= For Work
+axNote      = notepad "%WorkProject%\AX\AX Note.txt"
+
 ske         = explorer %WorkProject%\SKE
 son         = explorer %WorkProject%\AX\Sonepar
 bin         = explorer %WorkProject%\AX\BIN
@@ -96,7 +99,6 @@ dan         = explorer %WorkProject%\AX\DANCN
 kit         = explorer %WorkProject%\AX\大连京瓷
 
 gitSAG      = explorer %Project%\SAGGitHub\SAG
-
 sql         = "D:\Program Files (x86)\Microsoft SQL Server\140\Tools\Binn\ManagementStudio\Ssms.exe"
 
 rm30        = mstsc /v:192.168.1.30

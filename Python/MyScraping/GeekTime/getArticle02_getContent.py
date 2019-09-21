@@ -3,9 +3,9 @@ from bs4 import BeautifulSoup
 from selenium import webdriver
 
 # Debug 状态，网页不登陆，不滚动
-inDebug = True #and False
+inDebug = True and False
 
-createPdf = True #and False
+createPdf = True and False
 
 # 滚动区域的 DIV
 CLASS_SCROLL_NAME = 'ibY_sXau_0 ps'
@@ -15,39 +15,54 @@ CLASS_SCRAP_NAME = '_1Dgl7pMn_0'
 # 元素 1：文章原始标题
 # 元素 2：网页地址或手工保存网页文件的绝对路径
 courseList = \
-    [('第1期 | 聊聊有效学习这件事', 'https://time.geekbang.org/column/article/93521'),
-     ('第2期 | 35岁程序员惹谁了？', 'https://time.geekbang.org/column/article/93780'),
-     ('第3期 | 你真的会问问题吗？', 'https://time.geekbang.org/column/article/94077'),
-     ('第4期 | Python之父和他的编程理念', 'https://time.geekbang.org/column/article/94312'),
-     ('第5期 | 创业谈钱第一位', 'https://time.geekbang.org/column/article/94554'),
-     ('第6期 | Linux诞生背后带来的思考', 'https://time.geekbang.org/column/article/94937'),
-     ('第7期 | 创业后再看Linux从0到1', 'https://time.geekbang.org/column/article/95126'),
-     ('第8期 | 今天你写bug了吗？', 'https://time.geekbang.org/column/article/95408'),
-     ('第9期 | 做到专注就赢了一大半人', 'https://time.geekbang.org/column/article/95603'),
-     ('第10期 | 笨办法才最有效', 'https://time.geekbang.org/column/article/95733'),
-     ('第11期 | 程序员是个好职业', 'https://time.geekbang.org/column/article/96160'),
-     ('第12期 | 因兴趣而诞生的Ruby', 'https://time.geekbang.org/column/article/96380'),
-     ('第13期 | 为什么大公司槽点都那么多？', 'https://time.geekbang.org/column/article/96685'),
-     ('第14期 | GitHub颠覆了编程世界吗？', 'https://time.geekbang.org/column/article/96926'),
-     ('第15期 | 晚睡是我的宿命，你呢？', 'https://time.geekbang.org/column/article/97042'),
-     ('第16期 | 后端工程师的危机', 'https://time.geekbang.org/column/article/97481'),
-     ('第17期 | 如何打造你的技术影响力？', 'https://time.geekbang.org/column/article/97698'),
-     ('第18期 | 最可怕的产品经理', 'https://time.geekbang.org/column/article/98039'),
-     ('第19期 | 如何找到自己的长处？', 'https://time.geekbang.org/column/article/98254'),
-     ('第20期 | 我的读书之路', 'https://time.geekbang.org/column/article/98461'),
-     ('第21期 | 纳德拉与开源的微软', 'https://time.geekbang.org/column/article/98891'),
-     ('第22期 | 什么是重要但没那么优秀的人才', 'https://time.geekbang.org/column/article/99066'),
-     ('第23期 | WWDC 发布了我期待已久的产品', 'https://time.geekbang.org/column/article/99222'),
-     ('第24期 | 找到你的财富成长曲线', 'https://time.geekbang.org/column/article/99487'),
-     ('第25期 | 第十人理论——The Tenth Man', 'https://time.geekbang.org/column/article/99752'),
-     ('第26期 | 犯错是成长的契机', 'https://time.geekbang.org/column/article/100085'),
-     ('第27期 | 阅读源代码的一些心得', 'https://time.geekbang.org/column/article/100371'),
-     ('第28期 | 你是职场里的“成年人”吗？', 'https://time.geekbang.org/column/article/100607'),
-     ('第29期 | 互联网女皇报告发布了', 'https://time.geekbang.org/column/article/100882'),
-     ('第30期 | 程序员和键盘', 'https://time.geekbang.org/column/article/101050'),
-     ('第31期 | 程序员后来都干啥去了', 'https://time.geekbang.org/column/article/101400'),
-     ('第32期 | 做好交付的四个心法', 'https://time.geekbang.org/column/article/101662'),
-     ('第33期 | 你只能做到阶段性正确', 'https://time.geekbang.org/column/article/101821')]
+[('开篇词 | 为什么要学习Kafka？', 'https://time.geekbang.org/column/article/98683'),
+ ('01 |  消息引擎系统ABC', 'https://time.geekbang.org/column/article/98948'),
+ ('02 | 一篇文章带你快速搞定Kafka术语', 'https://time.geekbang.org/column/article/99318'),
+ ('03 | Kafka只是消息引擎系统吗？', 'https://time.geekbang.org/column/article/99797'),
+ ('04 | 我应该选择哪种Kafka？', 'https://time.geekbang.org/column/article/100285'),
+ ('05 | 聊聊Kafka的版本号', 'https://time.geekbang.org/column/article/100726'),
+ ('06 | Kafka线上集群部署方案怎么做？', 'https://time.geekbang.org/column/article/101107'),
+ ('07 | 最最最重要的集群参数配置（上）', 'https://time.geekbang.org/column/article/101171'),
+ ('08 | 最最最重要的集群参数配置（下）', 'https://time.geekbang.org/column/article/101763'),
+ ('09 |  生产者消息分区机制原理剖析', 'https://time.geekbang.org/column/article/102067'),
+ ('10 | 生产者压缩算法面面观', 'https://time.geekbang.org/column/article/102132'),
+ ('11 | 无消息丢失配置怎么实现？', 'https://time.geekbang.org/column/article/102931'),
+ ('12 | 客户端都有哪些不常见但是很高级的功能？', 'https://time.geekbang.org/column/article/103397'),
+ ('13 |  Java生产者是如何管理TCP连接的？', 'https://time.geekbang.org/column/article/103844'),
+ ('14 | 幂等生产者和事务生产者是一回事吗？', 'https://time.geekbang.org/column/article/103974'),
+ ('15 | 消费者组到底是什么？', 'https://time.geekbang.org/column/article/105112'),
+ ('16 | 揭开神秘的“位移主题”面纱', 'https://time.geekbang.org/column/article/105473'),
+ ('17 | 消费者组重平衡能避免吗？', 'https://time.geekbang.org/column/article/105737'),
+ ('18 | Kafka中位移提交那些事儿', 'https://time.geekbang.org/column/article/106904'),
+ ('19 | CommitFailedException异常怎么处理？', 'https://time.geekbang.org/column/article/107845'),
+ ('20 | 多线程开发消费者实例', 'https://time.geekbang.org/column/article/108512'),
+ ('21 | Java 消费者是如何管理TCP连接的?', 'https://time.geekbang.org/column/article/109121'),
+ ('22 | 消费者组消费进度监控都怎么实现？', 'https://time.geekbang.org/column/article/109238'),
+ ('23 | Kafka副本机制详解', 'https://time.geekbang.org/column/article/110388'),
+ ('24 | 请求是怎么被处理的？', 'https://time.geekbang.org/column/article/110482'),
+ ('25 | 消费者组重平衡全流程解析', 'https://time.geekbang.org/column/article/111226'),
+ ('26 | 你一定不能错过的Kafka控制器', 'https://time.geekbang.org/column/article/111339'),
+ ('27 | 关于高水位和Leader Epoch的讨论', 'https://time.geekbang.org/column/article/112118'),
+ ('28 | 主题管理知多少?', 'https://time.geekbang.org/column/article/112202'),
+ ('29 | Kafka动态配置了解下？', 'https://time.geekbang.org/column/article/113504'),
+ ('30 | 怎么重设消费者组位移？', 'https://time.geekbang.org/column/article/116070'),
+ ('31 | 常见工具脚本大汇总', 'https://time.geekbang.org/column/article/116111'),
+ ('32 | KafkaAdminClient：Kafka的运维利器', 'https://time.geekbang.org/column/article/118319'),
+ ('33 | Kafka认证机制用哪家？', 'https://time.geekbang.org/column/article/118347'),
+ ('34 | 云环境下的授权该怎么做？', 'https://time.geekbang.org/column/article/120099'),
+ ('35 | 跨集群备份解决方案MirrorMaker', 'https://time.geekbang.org/column/article/120991'),
+ ('36 | 你应该怎么监控Kafka？', 'https://time.geekbang.org/column/article/126109'),
+ ('37 | 主流的Kafka监控框架', 'https://time.geekbang.org/column/article/127192'),
+ ('38 | 调优Kafka，你做到了吗？', 'https://time.geekbang.org/column/article/128184'),
+ ('39 | 从0搭建基于Kafka的企业级实时日志流处理平台', 'https://time.geekbang.org/column/article/130907'),
+ ('40 | Kafka Streams与其他流处理平台的差异在哪里？', 'https://time.geekbang.org/column/article/132096'),
+ ('41 | Kafka Streams DSL开发实例', 'https://time.geekbang.org/column/article/132819'),
+ ('42 | Kafka Streams在金融领域的应用', 'https://time.geekbang.org/column/article/134098'),
+ ('加餐 | 搭建开发环境、阅读源码方法、经典学习资料大揭秘', 'https://time.geekbang.org/column/article/128613'),
+ ('结束语 | 以梦为马，莫负韶华！', 'https://time.geekbang.org/column/article/135135')]
+
+
+
 
 realDir = os.path.dirname(os.path.realpath(__file__))
 
@@ -158,7 +173,7 @@ def processHtml(html, tarTitle):
     exportPath = ("R:\\%s\\" % columnName).replace("\\\\", "\\")
     exportPathPDF = exportPath + "PDF\\"
     exportPathHTML = exportPath + "HTML\\"
-    if not os.path.exists(exportPathPDF):
+    if createPdf and not os.path.exists(exportPathPDF):
         os.makedirs(exportPathPDF)
     if not os.path.exists(exportPathHTML):
         os.makedirs(exportPathHTML)
