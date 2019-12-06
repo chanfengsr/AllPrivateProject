@@ -9,6 +9,7 @@ import requests
 import html
 from urllib.request import urlretrieve, pathname2url
 from bs4 import BeautifulSoup
+from selenium import webdriver
 
 headersBasic = {
 	"User-Agent": "Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/51.0.2704.103 Safari/537.36",
@@ -18,19 +19,21 @@ headersBasic = {
 	"Accept-Language": "zh-CN,zh;q=0.8,en;q=0.6"
 }
 
-urlPerfix = "https://ke.youdao.com/course/detail/"
+urlPerfix = "https://c.youdao.com/article/index.html?pid="
 
-session = requests.session()
 fileName = r'r:\\course.txt'
 
-subFixRng = range(50000, 26346, -1)
+webBrowser = webdriver.PhantomJS('r:\\phantomjs.exe')
+
+
+subFixRng = range(16096, 40000, 1)
 for i in subFixRng:
 	url = urlPerfix + repr(i)
-	s = session.get(url)
-	bs = BeautifulSoup(s.text, "html.parser")
+	webBrowser.get(url)
+	bs = BeautifulSoup(webBrowser.page_source, "html.parser")
 	title = bs.find("title").text
 
-	if title.find("不存在") > -1 or title.find("出错") > -1 or title.find("undefined") > -1:
+	if title.strip() == '' or title.find("不存在") > -1 or title.find("出错") > -1 or title.find("undefined") > -1:
 		pass
 	else:
 		print(title)
@@ -42,3 +45,7 @@ for i in subFixRng:
 		file.close()
 
 	# time.sleep(1)
+
+webBrowser.quit()
+
+print('All done.')

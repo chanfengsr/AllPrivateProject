@@ -1,7 +1,7 @@
 import os
 import GeekTime.webpage2html as web2html
 
-sourceRootFolder = r'R:\testF'
+sourceRootFolder = r'C:\Users\SAG_WangYu\Documents\ToFullHtml'
 
 pathList = [i for i in os.listdir(sourceRootFolder) if
 				os.path.isdir(os.path.join(sourceRootFolder, i))]
