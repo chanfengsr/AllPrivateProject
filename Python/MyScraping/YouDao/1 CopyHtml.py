@@ -1,3 +1,6 @@
+'''
+连文件夹拷贝 html 文件
+'''
 import time
 import random
 import shutil

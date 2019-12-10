@@ -25,7 +25,7 @@ fileName = r'r:\\course.txt'
 
 webBrowser = webdriver.PhantomJS('r:\\phantomjs.exe')
 
-
+# 当前到存在的 40000
 subFixRng = range(16096, 40000, 1)
 for i in subFixRng:
 	url = urlPerfix + repr(i)
@@ -33,13 +33,16 @@ for i in subFixRng:
 	bs = BeautifulSoup(webBrowser.page_source, "html.parser")
 	title = bs.find("title").text
 
-	if title.strip() == '' or title.find("不存在") > -1 or title.find("出错") > -1 or title.find("undefined") > -1:
-		pass
-	else:
+	if title.strip() != '':
 		print(title)
 		print(url)
 		print()
 
+	if not (title.strip() == ''
+			or title.find("登录-有道精品课") > -1
+			or title.find("不存在") > -1
+			or title.find("出错") > -1
+			or title.find("undefined") > -1):
 		file = open(fileName, 'a+', encoding='UTF-8')
 		file.write(title + '\r' + url + '\r\r')
 		file.close()
