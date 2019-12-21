@@ -5,6 +5,7 @@ from bs4 import BeautifulSoup
 from selenium import webdriver
 
 courseListFile = 'R:\\21天英语口语实战蜕变营·音频轻学.txt'
+targetPath = 'R:\\'
 
 realDir = os.path.dirname(os.path.realpath(__file__))
 
@@ -37,18 +38,42 @@ def file2List(fileName):
 # 点击页面上的 “展开”
 def ExpTag(driver):
     try:
-        # zhanKai = driver.find_element_by_xpath("//span[text()=\"展开\"]")
-        zhanKai = driver.find_element_by_xpath("//div[text()=\"展开全文\"]")
-
+        zhanKai = driver.find_element_by_xpath('/html/body/div/article/section/div[2]/a')
+        if zhanKai is None:
+            zhanKai = driver.find_element_by_class_name('src-components-Article-index__articleMore--Nk2NZ')
+            zhanKai = zhanKai.find_element_by_tag_name('a')
         if zhanKai is not None:
             zhanKai.click()
     except:
         pass
 
+# 点击页面上的 播放视频
+def ClickPlayVideo(driver):
+    try:
+        divsVideoPlay = driver.find_elements_by_class_name('video-play-btn')
+        if divsVideoPlay is not None:
+            for divVideoPlay in divsVideoPlay:
+                divToClick = divVideoPlay.find_element_by_tag_name('div')
+                if divToClick is not None:
+                    divToClick = divToClick.find_element_by_class_name('video-cover')
+                    if divToClick is not None:
+                        divToClick.click()
+                        time.sleep(3)
+    except:
+        pass
 
 # 滚到最底端，获取完整的网页内容
 def scrollDrive2Bottom(driver):
-    pass
+    pageHeight_orig = driver.execute_script('return document.body.scrollHeight')
+    while True:
+        driver.execute_script('window.scrollBy(0,5000)')
+        time.sleep(1)
+        pageHeight_new = driver.execute_script('return document.body.scrollHeight')
+
+        if pageHeight_new == pageHeight_orig:
+            break
+        else:
+            pageHeight_orig = pageHeight_new
 
 def processHtml(html, tarTitle):
     """
@@ -57,7 +82,29 @@ def processHtml(html, tarTitle):
     :param tarTitle:生成文件的标题
     :return:
     """
-    pass
+    artExportPath = ( targetPath + '\\' + tarTitle ).replace("\\\\", "\\")
+    if artExportPath and not os.path.exists(artExportPath):
+        os.makedirs(artExportPath)
+
+    bs = BeautifulSoup(html, "html.parser")
+
+    # 获取 音频 文件列表
+    audioList = []
+    for classInfo in bs.find_all("div", {"class": 'info'}):
+        if classInfo.attrs['src'] is not None and classInfo.attrs['src'] not in audioList:
+            audioList.append(classInfo.attrs['src'])
+
+    # 获取 视频 文件列表
+    videoList = []
+    for classVideoPlayBtn in bs.find_all("div", {"class": 'video-play-btn'}):
+        tagVideo = classVideoPlayBtn.find('video')
+        if tagVideo is not None:
+            if tagVideo.attrs['src'] is not None and tagVideo.attrs['src'] not in videoList:
+                videoList.append(tagVideo.attrs['src'])
+
+    # todo 下载
+    print(audioList)
+    print(videoList)
 
 def main():
     # 抓取成功的数量
@@ -85,6 +132,9 @@ def main():
 
             # 点击页面上的 “展开”
             ExpTag(driver)
+
+            # 点击页面上的 播放视频
+            ClickPlayVideo(driver)
 
             # 滚到最底端，获取完整的网页内容
             scrollDrive2Bottom(driver)
