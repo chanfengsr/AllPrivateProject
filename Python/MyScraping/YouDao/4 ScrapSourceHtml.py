@@ -7,7 +7,7 @@ import GeekTime.webpage2html as web2html
 
 # 是否去掉评论区（默认 False）
 clearComment = False
-courseListFile = 'R:\\21天英语口语实战蜕变营·音频轻学.txt'
+courseListFile = 'R:\\背词攻略·音频轻学.txt'
 targetPath = 'R:\\'
 
 realDir = os.path.dirname(os.path.realpath(__file__))
@@ -111,8 +111,8 @@ def clearHtml(html):
 
 def saveHtml(html, tarTitle, artExportPath):
     fullHtmlPath = (artExportPath + '\\' + 'fullHtml' + '\\').replace("\\\\", "\\")
-    htmlFileName = artExportPath + '\\' + tarTitle + '.html'
-    fullHtmlFileName = fullHtmlPath + '\\' + tarTitle + '.html'
+    htmlFileName = (artExportPath + '\\' + tarTitle + '.html').replace("\\\\", "\\")
+    fullHtmlFileName = (fullHtmlPath + '\\' + tarTitle + '.html').replace("\\\\", "\\")
 
     if fullHtmlPath and not os.path.exists(fullHtmlPath):
         os.makedirs(fullHtmlPath)
@@ -185,7 +185,8 @@ def processHtml(html, tarTitle):
             suffix = repr(i) + suffix
         expFileName = artExportPath + 'audio' + suffix
         ffmpeg = 'ffmpeg -i %s -vcodec copy -acodec copy "%s"\n' % (audioUrl, expFileName)
-        ffmpegListFile = open(artExportPath + "ffmpegDownList.txt", 'a', encoding='gb2312')
+        ffmpegFileName = artExportPath + "ffmpegDownList.txt"
+        ffmpegListFile = open(ffmpegFileName, 'a', encoding='gb2312')
         ffmpegListFile.write(ffmpeg)
         ffmpegListFile.close()
         ffmpegCmdList.append(ffmpeg)
@@ -199,7 +200,8 @@ def processHtml(html, tarTitle):
             suffix = repr(i) + suffix
         expFileName = artExportPath + 'video' + suffix
         ffmpeg = 'ffmpeg -i %s -vcodec copy -acodec copy "%s"\n' % (videoUrl, expFileName)
-        ffmpegListFile = open(artExportPath + "ffmpegDownList.txt", 'a', encoding='gb2312')
+        ffmpegFileName = artExportPath + "ffmpegDownList.txt"
+        ffmpegListFile = open(ffmpegFileName, 'a', encoding='gb2312')
         ffmpegListFile.write(ffmpeg)
         ffmpegListFile.close()
         ffmpegCmdList.append(ffmpeg)
@@ -258,6 +260,7 @@ def main():
         time.sleep(3)
         print("\n\n")
 
+        # break
 
     # 记录爬取文章的结束时间
     end = time.time()
@@ -269,4 +272,35 @@ def main():
         for name in errList: print(name)
 
 if __name__ == '__main__':
-    main()
+    ffmpegFileName = r'R:\﻿21 看电影学单词 之 燃情岁月•疯子还是传奇？' + "\\ffmpegDownList.txt"
+    ffmpegListFile = open(ffmpegFileName, 'a', encoding='gb2312')
+    ffmpegListFile.write('abc')
+    ffmpegListFile.close()
+
+    # main()
+
+
+
+'''
+错误的抓取
+
+21 | 看电影学单词 之 燃情岁月•疯子还是传奇？
+23 | 看电影学单词 之 猩球崛起3·凯撒的愿望
+24 | 看电影学单词 之 布达佩斯大饭店·作家与创作
+25 | 看电影学单词 之 诸神之战•人类的反抗
+26 | 听演讲学单词 之 亚伯拉罕•林肯•葛底斯堡演说
+27 | 听演讲学单词 之 史蒂夫•乔布斯•2005年斯坦福大学毕业演讲
+28 | 听演讲学单词 之 肯•罗宾逊•如何逃出教育的死亡谷
+29 | 听演讲学单词 之 麦当娜•致敬迈克•杰克逊的演讲
+30 | 听演讲学单词 之 J.K.罗琳•2008哈佛毕业典礼演讲•不要害怕失败
+31 | 听名言学单词 之 海伦凯勒·何为可悲之人
+32 | 听名言学单词 之 奥斯卡·王尔德·圣人与罪人
+33 | 听名言学单词 之 欧内斯特•海明威•智者和愚者
+34 | 听名言学单词 之 塞缪尔•约翰逊•如何衡量一个人
+35 | 听名言学单词 之 阿尔伯特•爱因斯坦•伟大和平庸
+36 | 读名著学单词 之 海伦·凯勒•《假如给我三天光明》
+37 | 读名著学单词 之 弗朗西斯·培根•《谈读书》
+38 | 读名著学单词 之 伯特兰·罗素·《我为何而活？》
+39 | 读名著学单词 之 威廉·毛姆·《月亮和六便士》
+40 | 读名著学单词 之 乔治•奥威尔•《动物农场》
+'''
