@@ -3,7 +3,10 @@ import re
 import pdfkit, time, re, os
 from bs4 import BeautifulSoup
 from selenium import webdriver
+import GeekTime.webpage2html as web2html
 
+# 是否去掉评论区（默认 False）
+clearComment = False
 courseListFile = 'R:\\21天英语口语实战蜕变营·音频轻学.txt'
 targetPath = 'R:\\'
 
@@ -43,7 +46,11 @@ def ExpTag(driver):
             zhanKai = driver.find_element_by_class_name('src-components-Article-index__articleMore--Nk2NZ')
             zhanKai = zhanKai.find_element_by_tag_name('a')
         if zhanKai is not None:
+            # 页面滚动到指定元素
+            driver.execute_script("arguments[0].scrollIntoView();", zhanKai)
+            driver.implicitly_wait(5)
             zhanKai.click()
+            driver.implicitly_wait(5)
     except:
         pass
 
@@ -57,7 +64,11 @@ def ClickPlayVideo(driver):
                 if divToClick is not None:
                     divToClick = divToClick.find_element_by_class_name('video-cover')
                     if divToClick is not None:
+                        # 页面滚动到指定元素
+                        driver.execute_script("arguments[0].scrollIntoView();", divToClick)
+
                         divToClick.click()
+                        driver.implicitly_wait(5)
                         time.sleep(3)
     except:
         pass
@@ -75,14 +86,75 @@ def scrollDrive2Bottom(driver):
         else:
             pageHeight_orig = pageHeight_new
 
+# 清洗
+def clearHtml(html):
+    bs = BeautifulSoup(html, "html.parser")
+
+    # 去掉 script
+    [s.extract() for s in bs.find_all("script")]
+
+    # 去掉 noscript
+    [s.extract() for s in bs.find_all("noscript")]
+
+    # 去掉 DIV imgzoom_pack
+    [s.extract() for s in bs.find_all("div", {"class": "imgzoom_pack"})]
+
+    # 去掉 footer
+    [s.extract() for s in bs.find_all("footer")]
+
+    # 去掉 评论
+    if clearComment:
+        [s.extract() for s in
+         bs.find_all("article", {"class": "src-components-CommentZone-CommentZoneNew-index__commentWrapper--1Y8Bw"})]
+
+    return repr(bs)
+
+def saveHtml(html, tarTitle, artExportPath):
+    fullHtmlPath = (artExportPath + '\\' + 'fullHtml' + '\\').replace("\\\\", "\\")
+    htmlFileName = artExportPath + '\\' + tarTitle + '.html'
+    fullHtmlFileName = fullHtmlPath + '\\' + tarTitle + '.html'
+
+    if fullHtmlPath and not os.path.exists(fullHtmlPath):
+        os.makedirs(fullHtmlPath)
+
+    # 清洗
+    html = clearHtml(html)
+
+    # 保存
+    htmlFile = open(htmlFileName, 'w', encoding='UTF-8')
+    htmlFile.write(html)
+
+    # 保存 fullHtml
+    fullHtml = web2html.generate(htmlFileName, comment=False, full_url=True, verbose=True)
+    fullHtmlFile = open(fullHtmlFileName, 'w', encoding='UTF-8')
+    fullHtmlFile.write(fullHtml)
+    fullHtmlFile.close()
+
+# 替换播放音频控件
+def replaceAudioControl(html):
+    # 音乐、视频播放的模板
+    mediaMod = '<div class="video-play-btn" data-inited="true"><video controls="controls" src="@SourceUrl"></video></div>'
+
+    bs = BeautifulSoup(html, "html.parser")
+
+    for audioCube in bs.find_all("div", {"class": 'audioCube'}):
+        classInfo = audioCube.find("div", {"class": 'info'})
+        if classInfo.attrs['src'] is not None:
+            srcUrl = classInfo.attrs['src']
+            newHtml = mediaMod.replace('@SourceUrl', srcUrl)
+            newNod = BeautifulSoup(newHtml, "html.parser")
+            audioCube.replaceWith(newNod)
+
+    return repr(bs)
+
 def processHtml(html, tarTitle):
     """
-    处理 HTML 源码，生成文件，生成 PDF
+    处理 HTML 源码，生成 HTML，抓取网页上的资源
     :param html: 原始网页的 html 源码
     :param tarTitle:生成文件的标题
     :return:
     """
-    artExportPath = ( targetPath + '\\' + tarTitle ).replace("\\\\", "\\")
+    artExportPath = ( targetPath + '\\' + tarTitle + '\\').replace("\\\\", "\\")
     if artExportPath and not os.path.exists(artExportPath):
         os.makedirs(artExportPath)
 
@@ -102,9 +174,46 @@ def processHtml(html, tarTitle):
             if tagVideo.attrs['src'] is not None and tagVideo.attrs['src'] not in videoList:
                 videoList.append(tagVideo.attrs['src'])
 
-    # todo 下载
-    print(audioList)
-    print(videoList)
+
+    # 写 ffmpeg 下载列表
+    ffmpegCmdList = []
+    oneItem = len(audioList) == 1
+    i = 1
+    for audioUrl in audioList:
+        suffix = audioUrl[audioUrl.rfind('.'):]
+        if not oneItem:
+            suffix = repr(i) + suffix
+        expFileName = artExportPath + 'audio' + suffix
+        ffmpeg = 'ffmpeg -i %s -vcodec copy -acodec copy "%s"\n' % (audioUrl, expFileName)
+        ffmpegListFile = open(artExportPath + "ffmpegDownList.txt", 'a', encoding='gb2312')
+        ffmpegListFile.write(ffmpeg)
+        ffmpegListFile.close()
+        ffmpegCmdList.append(ffmpeg)
+        i += 1
+
+    oneItem = len(videoList) == 1
+    i = 1
+    for videoUrl in videoList:
+        suffix = videoUrl[videoUrl.rfind('.'):]
+        if not oneItem:
+            suffix = repr(i) + suffix
+        expFileName = artExportPath + 'video' + suffix
+        ffmpeg = 'ffmpeg -i %s -vcodec copy -acodec copy "%s"\n' % (videoUrl, expFileName)
+        ffmpegListFile = open(artExportPath + "ffmpegDownList.txt", 'a', encoding='gb2312')
+        ffmpegListFile.write(ffmpeg)
+        ffmpegListFile.close()
+        ffmpegCmdList.append(ffmpeg)
+        i += 1
+
+    # 替换播放音频控件
+    html = replaceAudioControl(html)
+
+    # 保存 HTML
+    saveHtml(html, tarTitle, artExportPath)
+
+    # 直接调用命令来下载
+    for cmdLine in ffmpegCmdList:
+        os.system(cmdLine)
 
 def main():
     # 抓取成功的数量
@@ -146,11 +255,9 @@ def main():
 
         # 爬一篇文章后休息几秒钟
         catchCount += 1
-        time.sleep(1)
+        time.sleep(3)
         print("\n\n")
 
-        # todo Delete
-        break
 
     # 记录爬取文章的结束时间
     end = time.time()
