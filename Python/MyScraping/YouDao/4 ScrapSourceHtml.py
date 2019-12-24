@@ -9,7 +9,7 @@ import GeekTime.webpage2html as web2html
 clearComment = False
 # 是否下载媒体资源
 downloadMedia = False
-courseListFile = 'R:/背词攻略·音频轻学.txt'
+courseListFile = 'R:/杨亮讲英文·全民英语背诵营 Done.txt'
 targetPath = 'R:/'
 
 realDir = os.path.dirname(os.path.realpath(__file__))
@@ -18,7 +18,7 @@ def getDriver():
     # 定义chromedriver路径
     # driver_path = realDir + r'\..\..\virtualEnv\chromedriver_2.43\chromedriver.exe'
     # driver_path = 'r:\\chromedriver.exe'
-    driver_path = os.environ.get("Project").replace('\\', '/') + '/AllInGitHub/CommonDriver/ChromeDriver/chromedriver.exe'
+    driver_path = os.environ.get("Project").replace('\\', '/') + '/AllPrivateProject/CommonDriver/ChromeDriver/chromedriver.exe'
 
     # 获取chrome浏览器驱动
     return webdriver.Chrome(executable_path=driver_path)
