@@ -7,6 +7,16 @@ from turtle import *
 import GeekTime.webpage2html as web2html
 from termcolor import colored
 
+
+driverFileName = os.environ.get("Project").replace('\\', '/') + '/AllInGitHub/CommonDriver/ChromeDriver/chromedriver.exe'
+print(driverFileName)
+print(os.path.exists(driverFileName))
+exit()
+
+print(os.environ.get("Project")) # 系统 Path
+print(os.getcwd()) # 当前目录
+exit()
+
 os.system('ffmpeg -i http://ydschool-video.nosdn.127.net/156747737223901+E38-1%C2%B7+Transformers+Opening+Scene%E3%80%8A%E5%8F%98%E5%BD%A2%E9%87%91%E5%88%9A%E3%80%8B%E5%BC%80%E5%9C%BA%EF%BC%88%E6%96%87%E6%9C%AC%E7%B2%BE%E8%AE%B2%EF%BC%89.mp3 -vcodec copy -acodec copy "R:\\Day 38文本精讲 Transformers Opening Scene （《变形金刚》开场）\\audio1.mp3"')
 exit()
 
@@ -14,10 +24,6 @@ str = 'http://ydschool-video.nosdn.127.net/156747737223901+E38-1%C2%B7+Transform
 print(str.rfind('.'))
 print(len(str))
 print(str[str.rfind('.'):])
-exit()
-
-print(os.environ.get("Project"))
-print(os.getcwd())
 exit()
 
 print('Origin color')
