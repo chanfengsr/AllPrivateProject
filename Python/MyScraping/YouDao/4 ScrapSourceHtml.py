@@ -197,7 +197,7 @@ def processHtml(html, tarTitle):
         expFileName = artExportPath + 'audio' + suffix
         ffmpeg = 'ffmpeg -i %s -vcodec copy -acodec copy "%s"\n' % (audioUrl, expFileName)
         ffmpegFileName = artExportPath + "ffmpegDownList.txt"
-        ffmpegListFile = open(ffmpegFileName, 'a', encoding='UTF-8') # gb2312
+        ffmpegListFile = open(ffmpegFileName, 'a', encoding='UTF-8')  # 有可能文件夹名称包含特殊字符，使用 gb2312 会报错
         ffmpegListFile.write(ffmpeg)
         ffmpegListFile.close()
         ffmpegCmdList.append(ffmpeg)
@@ -212,7 +212,7 @@ def processHtml(html, tarTitle):
         expFileName = artExportPath + 'video' + suffix
         ffmpeg = 'ffmpeg -i %s -vcodec copy -acodec copy "%s"\n' % (videoUrl, expFileName)
         ffmpegFileName = artExportPath + "ffmpegDownList.txt"
-        ffmpegListFile = open(ffmpegFileName, 'a', encoding='UTF-8') # gb2312
+        ffmpegListFile = open(ffmpegFileName, 'a', encoding='UTF-8')  # gb2312
         ffmpegListFile.write(ffmpeg)
         ffmpegListFile.close()
         ffmpegCmdList.append(ffmpeg)
@@ -285,20 +285,6 @@ def main():
         for name in errList: print(name)
 
 if __name__ == '__main__':
-    # courseList = file2List(courseListFile)
-    # for title, url in courseList:
-    #     tarTitle = re.sub('[\/:：*?"<>|]', '', title.strip()).replace('  ', ' ')
-    #     artExportPath = (targetPath + '/' + tarTitle + '/').replace("//", "/")
-    #     if artExportPath and not os.path.exists(artExportPath):
-    #         os.makedirs(artExportPath)
-    #
-    #     ffmpeg = 'ffmpeg -i %s -vcodec copy -acodec copy "%s"\n' % ('audioUrl', 'expFileName')
-    #     ffmpegFileName = artExportPath + "ffmpegDownList.txt"
-    #     ffmpegListFile = open(ffmpegFileName, 'a', encoding='gb2312')
-    #     ffmpegListFile.write(ffmpeg)
-    #     ffmpegListFile.close()
-    #
-    # exit()
 
     main()
 
