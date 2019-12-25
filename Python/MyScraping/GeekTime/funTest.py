@@ -8,6 +8,19 @@ import GeekTime.webpage2html as web2html
 from termcolor import colored
 
 
+f = open('r:/Day1.html', 'r', encoding='UTF-8')
+html = f.read()
+f.close()
+bs = BeautifulSoup(html, "html.parser")
+for sty in bs.find_all('style', {"type": 'text/css'}):
+    print(sty)
+    bs.css
+    for delSty in sty.find_all('ipadxw'):
+        print(delSty)
+
+    break
+exit()
+
 driverFileName = os.environ.get("Project").replace('\\', '/') + '/AllInGitHub/CommonDriver/ChromeDriver/chromedriver.exe'
 print(driverFileName)
 print(os.path.exists(driverFileName))

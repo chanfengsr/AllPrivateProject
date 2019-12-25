@@ -297,4 +297,48 @@ if __name__ == '__main__':
 这里会有多个
 .src-components-Article-ArticleContent-index__articleContent--TJtbr.src-components-Article-ArticleContent-index__forTeenager--3Y5pQ {
    
+.src-components-Clock-User-index__container--HznrX
+
+.src-pages-Error-index__container--39-lj:before
+
+.audioCube.forTeenager .btn.play
+.audioCube.forTeenager .btn.pause
+.src-components-Calendar-index__simpleOpenUp--36XVT
+
+.src-components-Calendar-index__linkRank--2eBgk:before {
+.src-components-Calendar-index__linkLog--3DlfR:before {
+.src-components-Calendar-index__completeCloseUp--24XA9 {
+.src-components-Article-index__articleMore--Nk2NZ {
+.src-components-ListLoading-index__loading--5w2A5 {
+.src-pages-Article-index__commentBtnLike--1uDqJ {
+.src-pages-Article-index__commentBtnLikeActive--2chyr {
+.src-components-Clock-User-index__rankTitle--3Uk89
+.src-components-Clock-User-index__logTitle--3_q0r {
+.src-components-Clock-User-index__logTitleHideRank--39DxK {
+.audioCube.normal .btn.play {
+.audioCube.normal .btn.pause {
+.audioCube.normal .control input[type=range]::-webkit-slider-thumb {    
+.audioCube.forTeenager .control input[type=range]::-webkit-slider-thumb {
+.src-components-Calendar-index__signHasClock--2m1JZ {
+.src-components-Calendar-index__signNotClock--1-I7- {
+.src-components-CommentZone-CommentZoneNew-index__quizLink--3zhC1:before {
+.src-components-CommentZone-CommentZoneNew-index__videoLink--1AYZR:before {
+.src-components-Comment-index__deleteCommentBtn--1JF3l {
+
+
+    .src-components-CommentZone-CommentZoneNew-index__clockLink--5SOc-:before,
+    .src-components-CommentZone-CommentZoneNew-index__missClockLink--2rcyK:before {
+
+from bs4 import BeautifulSoup
+#去除属性ul
+[s.extract() for s in soup("ul")]
+# 去除属性svg
+[s.extract() for s in soup("svg")]
+# 去除属性script
+[s.extract() for s in soup("script")]
+————————————————
+
+#去除注释
+comments = soup.findAll(text=lambda text: isinstance(text, Comment))
+[comment.extract() for comment in comments]
 '''
