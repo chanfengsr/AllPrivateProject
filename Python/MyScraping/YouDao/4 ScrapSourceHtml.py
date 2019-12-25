@@ -8,9 +8,9 @@ import GeekTime.webpage2html as web2html
 # 是否去掉评论区（默认 False）
 clearComment = False
 # 是否下载媒体资源
-downloadMedia = False
-courseListFile = 'R:/杨亮讲英文·全民英语背诵营 Done.txt'
-targetPath = 'R:/'
+downloadMedia = True #and False
+courseListFile = 'R:/太极语法前传.txt'
+targetPath = 'R:/太极语法前传'
 
 realDir = os.path.dirname(os.path.realpath(__file__))
 
@@ -289,3 +289,12 @@ if __name__ == '__main__':
     main()
 
 
+# todo 去掉下面 css 的 base 64，太大，又没用
+'''
+.src-components-ListEmpty-index__container--3STMO:before {
+    <article class="src-components-ListEmpty-index__container--3STMO undefined"><p class="src-components-ListEmpty-index__desc--2Fa8z">还是空的，快去抢先评论吧！</p></article>
+
+这里会有多个
+.src-components-Article-ArticleContent-index__articleContent--TJtbr.src-components-Article-ArticleContent-index__forTeenager--3Y5pQ {
+   
+'''
