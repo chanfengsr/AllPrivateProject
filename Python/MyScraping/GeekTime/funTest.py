@@ -8,6 +8,171 @@ import GeekTime.webpage2html as web2html
 from termcolor import colored
 
 
+def clearDefCSSValue123(html):
+    suffixReg = "[^\{]*\{[^\}]*\}"
+    perfixRegNodList = [".src-components-Clock-User-index__container--HznrX",
+                        ".src-pages-Error-index__container--39-lj:",
+                        ".audioCube.forTeenager .btn.play",
+                        ".audioCube.forTeenager .btn.pause",
+                        ".src-components-Calendar-index__simpleOpenUp--36XVT",
+                        ".src-components-Calendar-index__linkRank--2eBgk",
+                        ".src-components-Calendar-index__linkLog--3DlfR:",
+                        ".src-components-Calendar-index__completeCloseUp--24XA9",
+                        ".src-components-Article-index__articleMore--Nk2NZ",
+                        ".src-components-ListLoading-index__loading--5w2A5",
+                        ".src-pages-Article-index__commentBtnLike--1uDqJ",
+                        ".src-pages-Article-index__commentBtnLikeActive--2chyr",
+                        ".src-components-Clock-User-index__rankTitle--3Uk89",
+                        ".src-components-Clock-User-index__logTitle--3_q0r",
+                        ".src-components-Clock-User-index__logTitleHideRank--39DxK",
+                        ".audioCube.normal .btn.play",
+                        ".audioCube.normal .btn.pause",
+                        ".audioCube.normal .control input\[type=range\]::-webkit-slider-thumb",
+                        ".audioCube.forTeenager .control input\[type=range\]::-webkit-slider-thumb",
+                        ".src-components-Calendar-index__signHasClock--2m1JZ",
+                        ".src-components-Calendar-index__signNotClock--1-I7-",
+                        ".src-components-CommentZone-CommentZoneNew-index__quizLink--3zhC1:",
+                        ".src-components-CommentZone-CommentZoneNew-index__videoLink--1AYZR:",
+                        ".src-components-Comment-index__deleteCommentBtn--1JF3l",
+                        ".src-components-CommentZone-CommentZoneNew-index__clockLink--5SOc-:",
+                        ".src-components-CommentZone-CommentZoneNew-index__missClockLink--2rcyK:"]
+
+    ret2 = ''
+
+    for nod in perfixRegNodList:
+        regExp = nod + suffixReg
+        # html = re.sub(regExp, '', html)
+
+        match = re.findall(regExp, html)
+        if match is None or len(match) == 0:
+            print(regExp)
+        else:
+            for m in match:
+                ret2 += m + "\n"
+
+            html = re.sub(regExp, '', html)
+
+    return ret2
+
+
+# 清除 fullHtml 中多余的 css 打包对象
+def clearDefCSSValue(html):
+    suffixReg = "[^\{]*\{[^\}]*\}"
+    perfixRegNodList = [".src-components-ListEmpty-index__container--3STMO:",
+                        ".src-components-Article-ArticleContent-index__articleContent--TJtbr.src-components-Article-ArticleContent-index__forTeenager--3Y5pQ",
+                        ".src-components-Clock-User-index__container--HznrX",
+                        ".src-pages-Error-index__container--39-lj:",
+                        ".audioCube.forTeenager .btn.play",
+                        ".audioCube.forTeenager .btn.pause",
+                        ".src-components-Calendar-index__simpleOpenUp--36XVT",
+                        ".src-components-Calendar-index__linkRank--2eBgk",
+                        ".src-components-Calendar-index__linkLog--3DlfR:",
+                        ".src-components-Calendar-index__completeCloseUp--24XA9",
+                        ".src-components-Article-index__articleMore--Nk2NZ",
+                        ".src-components-ListLoading-index__loading--5w2A5",
+                        ".src-pages-Article-index__commentBtnLike--1uDqJ",
+                        ".src-pages-Article-index__commentBtnLikeActive--2chyr",
+                        ".src-components-Clock-User-index__rankTitle--3Uk89",
+                        ".src-components-Clock-User-index__logTitle--3_q0r",
+                        ".src-components-Clock-User-index__logTitleHideRank--39DxK",
+                        ".audioCube.normal .btn.play",
+                        ".audioCube.normal .btn.pause",
+                        ".audioCube.normal .control input\[type=range\]::-webkit-slider-thumb",
+                        ".audioCube.forTeenager .control input\[type=range\]::-webkit-slider-thumb",
+                        ".src-components-Calendar-index__signHasClock--2m1JZ",
+                        ".src-components-Calendar-index__signNotClock--1-I7-",
+                        ".src-components-CommentZone-CommentZoneNew-index__quizLink--3zhC1:",
+                        ".src-components-CommentZone-CommentZoneNew-index__videoLink--1AYZR:",
+                        ".src-components-Comment-index__deleteCommentBtn--1JF3l",
+                        ".src-components-CommentZone-CommentZoneNew-index__clockLink--5SOc-:",
+                        ".src-components-CommentZone-CommentZoneNew-index__missClockLink--2rcyK:"]
+
+    for nod in perfixRegNodList:
+        regExp = nod + suffixReg
+        html = re.sub(regExp, '', html)
+
+    return html
+
+def clearHtml(html, clearComment):
+    bs = BeautifulSoup(html, "html.parser")
+
+    # 去掉 script
+    [s.extract() for s in bs.find_all("script")]
+
+    # 去掉 noscript
+    [s.extract() for s in bs.find_all("noscript")]
+
+    # 去掉 DIV imgzoom_pack
+    [s.extract() for s in bs.find_all("div", {"class": "imgzoom_pack"})]
+
+    # 去掉 footer
+    [s.extract() for s in bs.find_all("footer")]
+
+    # 去掉 评论
+    if clearComment:
+        [s.extract() for s in
+         bs.find_all("article", {"class": "src-components-CommentZone-CommentZoneNew-index__commentWrapper--1Y8Bw"})]
+
+    return repr(bs)
+
+# dir /s/b *.html > h.txt
+def tempClear():
+    fileList = ["R:/全民英语背诵营 代码抓取 Html/Day 1 课后练习/fullHtml/Day 1 课后练习.html",
+                "R:/全民英语背诵营 代码抓取 Html/Day 1亮解单词 Find Your Greatness (发现你的伟大)/fullHtml/Day 1亮解单词 Find Your Greatness (发现你的伟大).html",
+                "R:/全民英语背诵营 代码抓取 Html/Day 1带读训练 Find Your Greatness （发现你的伟大）/fullHtml/Day 1带读训练 Find Your Greatness （发现你的伟大）.html",
+                "R:/全民英语背诵营 代码抓取 Html/Day 1文本精讲 Find Your Greatness (发现你的伟大)/fullHtml/Day 1文本精讲 Find Your Greatness (发现你的伟大).html",
+                "R:/全民英语背诵营 代码抓取 Html/Day 2亮解单词 Ideas Are Scary（想法是可怕的）/fullHtml/Day 2亮解单词 Ideas Are Scary（想法是可怕的）.html",
+                "R:/全民英语背诵营 代码抓取 Html/Day 2带读训练 Ideas Are Scary（想法是可怕的）/fullHtml/Day 2带读训练 Ideas Are Scary（想法是可怕的）.html",
+                "R:/全民英语背诵营 代码抓取 Html/Day 2文本精讲 Ideas Are Scary（想法是可怕的）/fullHtml/Day 2文本精讲 Ideas Are Scary（想法是可怕的）.html",
+                "R:/全民英语背诵营 代码抓取 Html/Day 2课后练习/fullHtml/Day 2课后练习.html",
+                "R:/全民英语背诵营 代码抓取 Html/Day 3 课后练习/fullHtml/Day 3 课后练习.html",
+                "R:/全民英语背诵营 代码抓取 Html/Day 3亮解单词 Airplane Announcement（民航播音稿）上篇/fullHtml/Day 3亮解单词 Airplane Announcement（民航播音稿）上篇.html",
+                "R:/全民英语背诵营 代码抓取 Html/Day 3带读训练 Airplane Announcement（民航播音稿）上篇/fullHtml/Day 3带读训练 Airplane Announcement（民航播音稿）上篇.html",
+                "R:/全民英语背诵营 代码抓取 Html/Day 3文本精讲 Airplane Announcement（民航播音稿）上篇/fullHtml/Day 3文本精讲 Airplane Announcement（民航播音稿）上篇.html",
+                "R:/全民英语背诵营 代码抓取 Html/Day 4 课后练习/fullHtml/Day 4 课后练习.html",
+                "R:/全民英语背诵营 代码抓取 Html/Day 4亮解单词 Airplane Announcement（民航播音稿）下篇/fullHtml/Day 4亮解单词 Airplane Announcement（民航播音稿）下篇.html",
+                "R:/全民英语背诵营 代码抓取 Html/Day 4带读训练 Airplane Announcement（民航播音稿）下篇/fullHtml/Day 4带读训练 Airplane Announcement（民航播音稿）下篇.html",
+                "R:/全民英语背诵营 代码抓取 Html/Day 4文本精讲 Airplane Announcement（民航播音稿）下篇/fullHtml/Day 4文本精讲 Airplane Announcement（民航播音稿）下篇.html"]
+    tot = len(fileList)
+    cur = 0
+    for fName in fileList:
+        f = open(fName, 'r', encoding='UTF-8')
+        html = f.read()
+        f.close()
+        html = clearHtml(html, True)
+        html = clearDefCSSValue(html)
+        f = open(fName, 'w', encoding='UTF-8')
+        f.write(html)
+        f.close()
+
+        cur += 1
+        print('%s' % (cur / tot * 100) + '%')
+
+tempClear()
+print('Done')
+exit()
+
+f = open('r:/Day1.html', 'r', encoding='UTF-8')
+html = f.read()
+f.close()
+html = clearDefCSSValue123(html)
+f = open('r:/Clear.html', 'w', encoding='UTF-8')
+f.write(html)
+f.close()
+exit()
+
+f = open('r:/Day2.html', 'r', encoding='UTF-8')
+html = f.read()
+regExp = ".src-components-Calendar-index__linkRank--2eBgk[^\{]+\{[^\}]+\}"
+regExp = ".src-components-CommentZone-CommentZoneNew-index__clockLink--5SOc-:[^\{]+\{[^\}]+\}"
+match = re.findall(regExp, html)
+print(len(match))
+print(match[0])
+# print(re.sub(regExp, '', html))
+f.close()
+
+exit()
+
 f = open('r:/Day1.html', 'r', encoding='UTF-8')
 html = f.read()
 f.close()
@@ -21,16 +186,18 @@ for sty in bs.find_all('style', {"type": 'text/css'}):
     break
 exit()
 
-driverFileName = os.environ.get("Project").replace('\\', '/') + '/AllInGitHub/CommonDriver/ChromeDriver/chromedriver.exe'
+driverFileName = os.environ.get("Project").replace('\\',
+                                                   '/') + '/AllInGitHub/CommonDriver/ChromeDriver/chromedriver.exe'
 print(driverFileName)
 print(os.path.exists(driverFileName))
 exit()
 
-print(os.environ.get("Project")) # 系统 Path
-print(os.getcwd()) # 当前目录
+print(os.environ.get("Project"))  # 系统 Path
+print(os.getcwd())  # 当前目录
 exit()
 
-os.system('ffmpeg -i http://ydschool-video.nosdn.127.net/156747737223901+E38-1%C2%B7+Transformers+Opening+Scene%E3%80%8A%E5%8F%98%E5%BD%A2%E9%87%91%E5%88%9A%E3%80%8B%E5%BC%80%E5%9C%BA%EF%BC%88%E6%96%87%E6%9C%AC%E7%B2%BE%E8%AE%B2%EF%BC%89.mp3 -vcodec copy -acodec copy "R:\\Day 38文本精讲 Transformers Opening Scene （《变形金刚》开场）\\audio1.mp3"')
+os.system(
+    'ffmpeg -i http://ydschool-video.nosdn.127.net/156747737223901+E38-1%C2%B7+Transformers+Opening+Scene%E3%80%8A%E5%8F%98%E5%BD%A2%E9%87%91%E5%88%9A%E3%80%8B%E5%BC%80%E5%9C%BA%EF%BC%88%E6%96%87%E6%9C%AC%E7%B2%BE%E8%AE%B2%EF%BC%89.mp3 -vcodec copy -acodec copy "R:\\Day 38文本精讲 Transformers Opening Scene （《变形金刚》开场）\\audio1.mp3"')
 exit()
 
 str = 'http://ydschool-video.nosdn.127.net/156747737223901+E38-1%C2%B7+Transformers+Opening+Scene%E3%80%8A%E5%8F%98%E5%BD%A2%E9%87%91%E5%88%9A%E3%80%8B%E5%BC%80%E5%9C%BA%EF%BC%88%E6%96%87%E6%9C%AC%E7%B2%BE%E8%AE%B2%EF%BC%89.mp3'

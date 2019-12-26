@@ -6,7 +6,8 @@ from selenium import webdriver
 import GeekTime.webpage2html as web2html
 
 # 是否去掉评论区（默认 False）
-clearComment = False
+clearCommentNod = False
+clearCommentNodFullHtml = True
 # 是否下载媒体资源
 downloadMedia = True #and False
 courseListFile = 'R:/太极语法前传.txt'
@@ -98,7 +99,7 @@ def scrollDrive2Bottom(driver):
 # document.documentElement.scrollTop
 
 # 清洗
-def clearHtml(html):
+def clearHtml(html, clearComment):
     bs = BeautifulSoup(html, "html.parser")
 
     # 去掉 script
@@ -129,7 +130,7 @@ def saveHtml(html, tarTitle, artExportPath):
         os.makedirs(fullHtmlPath)
 
     # 清洗
-    html = clearHtml(html)
+    html = clearHtml(html, clearCommentNod)
 
     # 保存
     htmlFile = open(htmlFileName, 'w', encoding='UTF-8')
@@ -137,6 +138,8 @@ def saveHtml(html, tarTitle, artExportPath):
 
     # 保存 fullHtml
     fullHtml = web2html.generate(htmlFileName, comment=False, full_url=True, verbose=True)
+    fullHtml = clearHtml(html, clearCommentNodFullHtml) # 去掉评论区
+    fullHtml = clearDefCSSValue(fullHtml) # 清除 fullHtml 中多余的 css 打包对象
     fullHtmlFile = open(fullHtmlFileName, 'w', encoding='UTF-8')
     fullHtmlFile.write(fullHtml)
     fullHtmlFile.close()
@@ -157,6 +160,44 @@ def replaceAudioControl(html):
             audioCube.replaceWith(newNod)
 
     return repr(bs)
+
+# 清除 fullHtml 中多余的 css 打包对象
+def clearDefCSSValue(html):
+    suffixReg = "[^\{]*\{[^\}]*\}"
+    perfixRegNodList = [".src-components-ListEmpty-index__container--3STMO:",
+                        ".src-components-Article-ArticleContent-index__articleContent--TJtbr.src-components-Article-ArticleContent-index__forTeenager--3Y5pQ",
+                        ".src-components-Clock-User-index__container--HznrX",
+                        ".src-pages-Error-index__container--39-lj:",
+                        ".audioCube.forTeenager .btn.play",
+                        ".audioCube.forTeenager .btn.pause",
+                        ".src-components-Calendar-index__simpleOpenUp--36XVT",
+                        ".src-components-Calendar-index__linkRank--2eBgk",
+                        ".src-components-Calendar-index__linkLog--3DlfR:",
+                        ".src-components-Calendar-index__completeCloseUp--24XA9",
+                        ".src-components-Article-index__articleMore--Nk2NZ",
+                        ".src-components-ListLoading-index__loading--5w2A5",
+                        ".src-pages-Article-index__commentBtnLike--1uDqJ",
+                        ".src-pages-Article-index__commentBtnLikeActive--2chyr",
+                        ".src-components-Clock-User-index__rankTitle--3Uk89",
+                        ".src-components-Clock-User-index__logTitle--3_q0r",
+                        ".src-components-Clock-User-index__logTitleHideRank--39DxK",
+                        ".audioCube.normal .btn.play",
+                        ".audioCube.normal .btn.pause",
+                        ".audioCube.normal .control input\[type=range\]::-webkit-slider-thumb",
+                        ".audioCube.forTeenager .control input\[type=range\]::-webkit-slider-thumb",
+                        ".src-components-Calendar-index__signHasClock--2m1JZ",
+                        ".src-components-Calendar-index__signNotClock--1-I7-",
+                        ".src-components-CommentZone-CommentZoneNew-index__quizLink--3zhC1:",
+                        ".src-components-CommentZone-CommentZoneNew-index__videoLink--1AYZR:",
+                        ".src-components-Comment-index__deleteCommentBtn--1JF3l",
+                        ".src-components-CommentZone-CommentZoneNew-index__clockLink--5SOc-:",
+                        ".src-components-CommentZone-CommentZoneNew-index__missClockLink--2rcyK:"]
+
+    for nod in perfixRegNodList:
+        regExp = nod + suffixReg
+        html = re.sub(regExp, '', html)
+
+    return html
 
 def processHtml(html, tarTitle):
     """
