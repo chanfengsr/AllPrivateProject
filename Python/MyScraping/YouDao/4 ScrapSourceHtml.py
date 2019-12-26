@@ -6,12 +6,12 @@ from selenium import webdriver
 import GeekTime.webpage2html as web2html
 
 # 是否去掉评论区（默认 False）
-clearCommentNod = False
-clearCommentNodFullHtml = True
+clearCommentNode = True
+clearCommentNodeFullHtml = True
 # 是否下载媒体资源
 downloadMedia = True #and False
-courseListFile = 'R:/太极语法前传.txt'
-targetPath = 'R:/太极语法前传'
+courseListFile = 'R:/零基础.txt'
+targetPath = 'R:/零基础'
 
 realDir = os.path.dirname(os.path.realpath(__file__))
 
@@ -54,7 +54,7 @@ def ExpTag(driver):
             driver.execute_script("arguments[0].scrollIntoView();", zhanKai)
             driver.implicitly_wait(5)
             zhanKai.click()
-            driver.implicitly_wait(5)
+            driver.implicitly_wait(2)
     except:
         pass
 
@@ -86,7 +86,7 @@ def scrollDrive2Bottom(driver):
     while True:
         # 5000 快速滚动；1000 慢速滚动
         # 缓慢滚动有利于加载图片
-        driver.execute_script('window.scrollBy(0,1000)')
+        driver.execute_script('window.scrollBy(0,500)')
         time.sleep(1)
         pageHeight_new = driver.execute_script('return document.documentElement.scrollTop')
 
@@ -130,7 +130,7 @@ def saveHtml(html, tarTitle, artExportPath):
         os.makedirs(fullHtmlPath)
 
     # 清洗
-    html = clearHtml(html, clearCommentNod)
+    html = clearHtml(html, clearCommentNode)
 
     # 保存
     htmlFile = open(htmlFileName, 'w', encoding='UTF-8')
@@ -138,7 +138,7 @@ def saveHtml(html, tarTitle, artExportPath):
 
     # 保存 fullHtml
     fullHtml = web2html.generate(htmlFileName, comment=False, full_url=True, verbose=True)
-    fullHtml = clearHtml(html, clearCommentNodFullHtml) # 去掉评论区
+    fullHtml = clearHtml(html, clearCommentNodeFullHtml) # 去掉评论区
     fullHtml = clearDefCSSValue(fullHtml) # 清除 fullHtml 中多余的 css 打包对象
     fullHtmlFile = open(fullHtmlFileName, 'w', encoding='UTF-8')
     fullHtmlFile.write(fullHtml)
@@ -296,6 +296,14 @@ def main():
 
             # 点击页面上的 “展开”
             ExpTag(driver)
+
+
+            # 是否直接删除评论区
+            # if clearCommentNode:
+            #     CommentZone = driver.find_element_by_class_name("src-components-CommentZone-CommentZoneNew-index__commentWrapper--1Y8Bw")
+            #     if CommentZone is not None:
+            #         CommentZone.clear()
+
 
             # 点击页面上的 播放视频
             ClickPlayVideo(driver)
