@@ -10,8 +10,8 @@ clearCommentNode = True
 clearCommentNodeFullHtml = True
 # 是否下载媒体资源
 downloadMedia = True #and False
-courseListFile = 'R:/零基础.txt'
-targetPath = 'R:/零基础'
+courseListFile = 'R:/死磕团词串记忆树.txt'
+targetPath = 'd:/死磕团词串记忆树'
 
 realDir = os.path.dirname(os.path.realpath(__file__))
 
@@ -116,8 +116,14 @@ def clearHtml(html, clearComment):
 
     # 去掉 评论
     if clearComment:
-        [s.extract() for s in
+        [s.extract() for s in # 评论区
          bs.find_all("article", {"class": "src-components-CommentZone-CommentZoneNew-index__commentWrapper--1Y8Bw"})]
+        [s.extract() for s in # “今日作业”
+         bs.find_all("div", {"class": "src-components-CommentZone-CommentZoneNew-index__linkWrapper--A3jeo"})]
+        [s.extract() for s in # 评论区
+         bs.find_all("div", {"class": "luna-comment lunacomment-web"})]
+        [s.extract() for s in  # 评论区
+         bs.find_all("div", {"id": "lunaComment"})]
 
     return repr(bs)
 
@@ -236,13 +242,14 @@ def processHtml(html, tarTitle):
         if not oneItem:
             suffix = repr(i) + suffix
         expFileName = artExportPath + 'audio' + suffix
-        ffmpeg = 'ffmpeg -i %s -vcodec copy -acodec copy "%s"\n' % (audioUrl, expFileName)
-        ffmpegFileName = artExportPath + "ffmpegDownList.txt"
-        ffmpegListFile = open(ffmpegFileName, 'a', encoding='UTF-8')  # 有可能文件夹名称包含特殊字符，使用 gb2312 会报错
-        ffmpegListFile.write(ffmpeg)
-        ffmpegListFile.close()
-        ffmpegCmdList.append(ffmpeg)
-        i += 1
+        if not os.path.exists(expFileName):
+            ffmpeg = 'ffmpeg -i %s -vcodec copy -acodec copy "%s"\n' % (audioUrl, expFileName)
+            ffmpegFileName = artExportPath + "ffmpegDownList.txt"
+            ffmpegListFile = open(ffmpegFileName, 'a', encoding='UTF-8')  # 有可能文件夹名称包含特殊字符，使用 gb2312 会报错
+            ffmpegListFile.write(ffmpeg)
+            ffmpegListFile.close()
+            ffmpegCmdList.append(ffmpeg)
+            i += 1
 
     oneItem = len(videoList) == 1
     i = 1
@@ -251,13 +258,14 @@ def processHtml(html, tarTitle):
         if not oneItem:
             suffix = repr(i) + suffix
         expFileName = artExportPath + 'video' + suffix
-        ffmpeg = 'ffmpeg -i %s -vcodec copy -acodec copy "%s"\n' % (videoUrl, expFileName)
-        ffmpegFileName = artExportPath + "ffmpegDownList.txt"
-        ffmpegListFile = open(ffmpegFileName, 'a', encoding='UTF-8')  # gb2312
-        ffmpegListFile.write(ffmpeg)
-        ffmpegListFile.close()
-        ffmpegCmdList.append(ffmpeg)
-        i += 1
+        if not os.path.exists(expFileName):
+            ffmpeg = 'ffmpeg -i %s -vcodec copy -acodec copy "%s"\n' % (videoUrl, expFileName)
+            ffmpegFileName = artExportPath + "ffmpegDownList.txt"
+            ffmpegListFile = open(ffmpegFileName, 'a', encoding='UTF-8')  # gb2312
+            ffmpegListFile.write(ffmpeg)
+            ffmpegListFile.close()
+            ffmpegCmdList.append(ffmpeg)
+            i += 1
 
     # 替换播放音频控件
     html = replaceAudioControl(html)
@@ -299,13 +307,20 @@ def main():
 
 
             # 是否直接删除评论区
-            # if clearCommentNode:
-            #     CommentZone = driver.find_element_by_class_name("src-components-CommentZone-CommentZoneNew-index__commentWrapper--1Y8Bw")
-            #     if CommentZone is not None:
-            #         CommentZone.clear()
+            if clearCommentNode:
+                try:
+                    elements = driver.find_elements_by_class_name("src-components-CommentZone-CommentZoneNew-index__commentWrapper--1Y8Bw")
+                    for CommentZone in elements:
+                        driver.execute_script("var element = arguments[0]; element.parentNode.removeChild(element);", CommentZone)
+
+                    elements = driver.find_elements_by_id("lunaComment")
+                    for CommentZone in elements:
+                        driver.execute_script("var element = arguments[0]; element.parentNode.removeChild(element);", CommentZone)
+                except:
+                    pass
 
 
-            # 点击页面上的 播放视频
+                # 点击页面上的 播放视频
             ClickPlayVideo(driver)
 
             # 滚到最底端，获取完整的网页内容
@@ -315,7 +330,7 @@ def main():
             processHtml(driver.page_source, tarTitle)
         except Exception as e:
             # print(e)
-            errList.append(title)
+            errList.append((title, url))
 
         # 爬一篇文章后休息几秒钟
         catchCount += 1
@@ -331,7 +346,8 @@ def main():
 
     if len(errList) > 0:
         print("失败的抓取：")
-        for name in errList: print(name)
+        for title, url in errList:
+            print("%s   : %s" % (title, url))
 
 if __name__ == '__main__':
 
