@@ -11,7 +11,7 @@ clearCommentNodeFullHtml = True
 # 是否下载媒体资源
 downloadMedia = True #and False
 courseListFile = 'R:/死磕团词串记忆树.txt'
-targetPath = 'd:/死磕团词串记忆树'
+targetPath = 'r:/死磕团词串记忆树'
 
 realDir = os.path.dirname(os.path.realpath(__file__))
 
@@ -144,7 +144,7 @@ def saveHtml(html, tarTitle, artExportPath):
 
     # 保存 fullHtml
     fullHtml = web2html.generate(htmlFileName, comment=False, full_url=True, verbose=True)
-    fullHtml = clearHtml(html, clearCommentNodeFullHtml) # 去掉评论区
+    fullHtml = clearHtml(fullHtml, clearCommentNodeFullHtml) # 去掉评论区
     fullHtml = clearDefCSSValue(fullHtml) # 清除 fullHtml 中多余的 css 打包对象
     fullHtmlFile = open(fullHtmlFileName, 'w', encoding='UTF-8')
     fullHtmlFile.write(fullHtml)

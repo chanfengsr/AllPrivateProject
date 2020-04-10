@@ -50,8 +50,8 @@ def absurl(index, relpath=None, normpath=None):
         else:
             return index
 
-
-def get(index, relpath=None, verbose=True, usecache=True, verify=True, ignore_error=False, username=None,
+# TODO usecache=True
+def get(index, relpath=None, verbose=True, usecache=False, verify=True, ignore_error=False, username=None,
         password=None):
     global webpage2html_cache
     if index.startswith('http') or (relpath and relpath.startswith('http')):
