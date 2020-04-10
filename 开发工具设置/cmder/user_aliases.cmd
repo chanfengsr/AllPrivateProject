@@ -39,6 +39,7 @@ vps         = ssh root@45.77.22.199
 inet        = inetcpl.cpl
 ncpa        = ncpa.cpl
 sysdm       = sysdm.cpl
+bth         = rundll32.exe shell32.dll,Control_RunDLL bthprops.cpl,,0
 
 ;= 先要切成管理员模式运行
 host        = notepad %windir%\System32\drivers\etc\hosts & echo explorer %windir%\System32\drivers\etc
@@ -97,8 +98,12 @@ mzk         = explorer %WorkProject%\AX\Mazak\AXProject
 hoya        = explorer %WorkProject%\AX\HOYA
 dan         = explorer %WorkProject%\AX\DANCN
 kit         = explorer %WorkProject%\AX\大连京瓷
+ote         = explorer %WorkProject%\AX\OTE\Document
 
 gitSAG      = explorer %Project%\SAGGitHub\SAG
+gitMzk      = explorer %Project%\SAGGitHub\SAG\Mazak\XPO
+gitOTE      = explorer %Project%\SAGGitHub\SAG\OTE\XPO & "C:\Program Files (x86)\GitExtensions\GitExtensions.exe"
+
 sql         = "D:\Program Files (x86)\Microsoft SQL Server\140\Tools\Binn\ManagementStudio\Ssms.exe"
 
 rm30        = mstsc /v:192.168.1.30
