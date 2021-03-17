@@ -117,10 +117,13 @@ $$
 
 
 ## 图片
+远程图片  
 ![Alt text](https://raw.githubusercontent.com/chanfengsr/AllPrivateProject/master/Markdown/logo.png "Optional title")
 
+本地图片  
 ![](./logo.png)
 
+base64 图片（一个叉）  
 ![avatar](data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQBAMAAADt3eJSAAAALVBMVEXM3fm+1Pfb5/rF2fjw9f23z/aavPOhwfTp8PyTt/L3+v7T4vqMs/K7zP////+qRWzhAAAAXElEQVQIW2O4CwUM996BwVskxtOqd++2rwMyPI+ve31GD8h4Madqz2mwms5jZ/aBGS/mHIDoen3m+DowY8/hOVUgxusz+zqPg7SvPA1UxQfSvu/du0YUK2AMmDMA5H1qhVX33T8AAAAASUVORK5CYII=)
 
 ### base64的图片转换 Python 代码
@@ -186,7 +189,7 @@ file.close()
 
 
 ## 字体颜色
-$\color{red}{红色字}$
+$\color{blue}{蓝色字}$
 $\color{#FF0000}{红色字}$
 $\color{rgb(255,255,0)}{黄色字}$
 
